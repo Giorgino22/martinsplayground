@@ -24,14 +24,13 @@
     button.primary, .btn.primary { background: #111; color: #fff; border-color: #111; }
     button:active { background: #f2f2f2; }
     button:disabled { opacity: 0.4; cursor: default; }
-    input[type=text] { font: inherit; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; flex: 1; min-width: 160px; }
+    input[type=text], input[type=password] { font: inherit; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; flex: 1; min-width: 160px; }
     .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
     .muted { color: #777; font-size: 0.9rem; }
     .box { border: 1px solid #eee; border-radius: 12px; padding: 16px; margin: 16px 0; }
     .hidden { display: none; }
     a { color: #1a5fd0; }
 
-    /* Folder list on home */
     #folderList { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
     .folder { border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
     .folder .cover { aspect-ratio: 4/3; background: #f3f3f3; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #bbb; }
@@ -41,7 +40,6 @@
     .folder .meta .row { margin-top: 6px; gap: 6px; }
     .folder .btn, .folder button { padding: 6px 10px; font-size: 0.85rem; }
 
-    /* Gallery grid */
     #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; margin-top: 16px; }
     .tile { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: #f3f3f3; border: 1px solid #eee; }
     .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -55,36 +53,42 @@
     .bar { height: 6px; background: #eee; border-radius: 4px; overflow: hidden; margin-top: 2px; }
     .bar > span { display: block; height: 100%; background: #111; width: 0; transition: width 0.2s; }
     .footer { margin-top: 40px; }
-    .footer a { color: #bbb; cursor: pointer; text-decoration: none; }
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <!-- ========== HOME VIEW ========== -->
+    <!-- ========== HOME (owner only) ========== -->
     <section id="homeView">
       <h1>📸 Fottis</h1>
-      <p>Erstelle einen Ordner, lade Fotos &amp; Videos rein und alle können sie herunterladen. Kein Login.</p>
-      <div class="box">
+
+      <div id="loginBox">
         <div class="row">
-          <input type="text" id="folderName" placeholder="Ordnername (z.B. Italien 2026)">
-          <button class="primary" id="createBtn">Ordner erstellen</button>
+          <input type="password" id="adminInput" placeholder="Passwort" autocomplete="current-password">
+          <button class="primary" id="loginBtn">Login</button>
         </div>
       </div>
 
-      <h2>Alle Ordner</h2>
-      <div id="folderList"></div>
-      <p id="noFolders" class="muted hidden">Noch keine Ordner. Erstelle den ersten! ☝️</p>
-
-      <p class="footer"><a id="adminLink">·</a></p>
+      <div id="adminArea" class="hidden">
+        <div class="box">
+          <div class="row">
+            <input type="text" id="folderName" placeholder="Ordnername (z.B. Italien 2026)">
+            <button class="primary" id="createBtn">Ordner erstellen</button>
+          </div>
+        </div>
+        <h2>Alle Ordner</h2>
+        <div id="folderList"></div>
+        <p id="noFolders" class="muted hidden">Noch keine Ordner. Erstelle den ersten! ☝️</p>
+        <p class="footer"><a id="logoutLink">Logout</a></p>
+      </div>
     </section>
 
-    <!-- ========== GALLERY VIEW ========== -->
+    <!-- ========== GALLERY (anyone with the link) ========== -->
     <section id="galleryView" class="hidden">
       <div class="row" style="justify-content: space-between;">
-        <h1 id="galleryTitle" style="margin:0;">📸 Fottis</h1>
+        <h1 style="margin:0;">📸 Fottis</h1>
         <div class="row">
-          <a class="btn" href="/">← Alle Ordner</a>
+          <button id="copyLink">Link kopieren</button>
           <button id="deleteFolder" class="hidden">Ordner löschen</button>
         </div>
       </div>
@@ -110,38 +114,44 @@
   <script>
     const params = new URLSearchParams(location.search);
     const folderId = params.get('f');
-
-    // admin password (only the owner ever sets this; stored on their device)
     const ADMIN_LS = 'fottis_admin';
     const getAdmin = () => localStorage.getItem(ADMIN_LS) || '';
-    async function unlockAdmin() {
-      const key = prompt('Admin-Passwort:');
-      if (!key) return false;
-      const ok = (await (await fetch('/api/admin', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ adminKey: key }) })).json()).ok;
-      if (ok) { localStorage.setItem(ADMIN_LS, key); return true; }
-      alert('Falsches Passwort.'); return false;
-    }
 
-    // ============================ HOME ============================
+    // ============================ HOME (owner) ============================
     if (!folderId) {
-      const createBtn = document.getElementById('createBtn');
-      createBtn.onclick = async () => {
-        createBtn.disabled = true;
-        const name = document.getElementById('folderName').value.trim();
-        const { folderId } = await (await fetch('/api/folder', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name }) })).json();
-        location.href = '/?f=' + folderId; // jump straight into the new folder
-      };
+      const loginBox = document.getElementById('loginBox');
+      const adminArea = document.getElementById('adminArea');
 
-      document.getElementById('adminLink').onclick = async () => {
-        if (getAdmin()) { localStorage.removeItem(ADMIN_LS); alert('Admin abgemeldet.'); }
-        else if (await unlockAdmin()) alert('Admin entsperrt.');
-        loadFolders();
+      async function showAdmin() {
+        const ok = await loadFolders();           // sends the saved password
+        if (ok) { loginBox.classList.add('hidden'); adminArea.classList.remove('hidden'); }
+        else { localStorage.removeItem(ADMIN_LS); loginBox.classList.remove('hidden'); adminArea.classList.add('hidden'); }
+      }
+
+      document.getElementById('loginBtn').onclick = async () => {
+        const key = document.getElementById('adminInput').value.trim();
+        if (!key) return;
+        const ok = (await (await fetch('/api/admin', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ adminKey: key }) })).json()).ok;
+        if (!ok) { alert('Falsches Passwort.'); return; }
+        localStorage.setItem(ADMIN_LS, key);       // remembered on this device -> automatic next time
+        showAdmin();
+      };
+      document.getElementById('adminInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); });
+
+      document.getElementById('logoutLink').onclick = () => { localStorage.removeItem(ADMIN_LS); location.reload(); };
+
+      document.getElementById('createBtn').onclick = async () => {
+        const name = document.getElementById('folderName').value.trim();
+        const r = await fetch('/api/folder', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, adminKey: getAdmin() }) });
+        const { folderId } = await r.json();
+        location.href = '/?f=' + folderId;
       };
 
       async function loadFolders() {
-        const folders = (await (await fetch('/api/folders')).json()).folders || [];
+        const res = await fetch('/api/folders', { headers: { 'x-admin-key': getAdmin() } });
+        if (res.status === 403) return false;
+        const folders = (await res.json()).folders || [];
         const list = document.getElementById('folderList');
-        const admin = getAdmin();
         list.innerHTML = '';
         document.getElementById('noFolders').classList.toggle('hidden', folders.length > 0);
         for (const f of folders) {
@@ -152,24 +162,30 @@
             `<a href="/?f=${f.folderId}" style="text-decoration:none;color:inherit"><div class="cover">${cover}</div></a>` +
             `<div class="meta"><b>${esc(f.name || 'Ohne Namen')}</b>` +
             `<span class="muted">${f.count} Datei${f.count === 1 ? '' : 'en'}</span>` +
-            `<div class="row"><a class="btn" href="/?f=${f.folderId}">Öffnen</a>` +
-            (admin ? `<button data-del="${f.folderId}">Löschen</button>` : '') +
+            `<div class="row">` +
+            `<a class="btn" href="/?f=${f.folderId}">Öffnen</a>` +
+            `<button data-copy="${f.folderId}">Link</button>` +
+            `<button data-del="${f.folderId}">Löschen</button>` +
             `</div></div>`;
           list.appendChild(el);
         }
+        list.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => copy(location.origin + '/?f=' + b.dataset.copy));
         list.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
           if (!confirm('Diesen Ordner und ALLE Fotos löschen?')) return;
           await fetch('/api/delete', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ folderId: b.dataset.del, adminKey: getAdmin() }) });
           loadFolders();
         });
+        return true;
       }
-      loadFolders();
+
+      if (getAdmin()) showAdmin();
     }
 
-    // ============================ GALLERY ============================
+    // ============================ GALLERY (anyone with link) ============================
     else {
       document.getElementById('homeView').classList.add('hidden');
       document.getElementById('galleryView').classList.remove('hidden');
+      document.getElementById('copyLink').onclick = () => copy(location.href);
 
       if (getAdmin()) {
         const delBtn = document.getElementById('deleteFolder');
@@ -272,6 +288,10 @@
 
     // ---------------- helpers ----------------
     function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+    async function copy(text) {
+      try { await navigator.clipboard.writeText(text); alert('Link kopiert!'); }
+      catch { prompt('Link kopieren:', text); }
+    }
   </script>
 </body>
 </html>

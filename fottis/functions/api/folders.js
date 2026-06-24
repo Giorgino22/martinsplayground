@@ -1,7 +1,10 @@
-// List ALL folders for the home page (GET). One scan, grouped by folder.
+// List ALL folders (GET, owner only via x-admin-key header). One scan, grouped by folder.
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json' } });
 
-export async function onRequestGet({ env }) {
+export async function onRequestGet({ env, request }) {
+  const key = request.headers.get('x-admin-key');
+  if (!env.ADMIN_KEY || key !== env.ADMIN_KEY) return json({ error: 'forbidden' }, 403);
+
   const map = new Map();
   let cursor;
   do {
