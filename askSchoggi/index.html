@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>askSchoggi</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Arial Black", Arial, sans-serif;
+    }
+    #nei {
+      color: #e10600;
+      font-size: 45vw;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      opacity: 0;
+      transform: scale(0);
+      text-shadow: 0 0 6vw rgba(225, 6, 0, 0.6);
+      will-change: transform, opacity;
+    }
+    /* The burst makes "NEI" explode onto the screen; the shake makes it scream. */
+    #nei.show {
+      animation:
+        burst 0.35s cubic-bezier(0.2, 1.6, 0.4, 1) forwards,
+        shake 0.09s linear 0.35s infinite;
+    }
+    @keyframes burst {
+      0%   { opacity: 0; transform: scale(0)    rotate(-10deg); }
+      70%  { opacity: 1; transform: scale(1.2)  rotate(4deg);  }
+      100% { opacity: 1; transform: scale(1)    rotate(0deg);  }
+    }
+    @keyframes shake {
+      0%   { transform: translate(-2vw,  1vw) rotate(-2deg) scale(1.02); }
+      25%  { transform: translate( 2vw, -1vw) rotate( 2deg) scale(1.05); }
+      50%  { transform: translate(-1vw, -2vw) rotate(-1deg) scale(1.0);  }
+      75%  { transform: translate( 1vw,  2vw) rotate( 1deg) scale(1.04); }
+      100% { transform: translate(-2vw,  1vw) rotate(-2deg) scale(1.02); }
+    }
+  </style>
+</head>
+<body>
+  <div id="nei">NEI</div>
+  <script>
+    // Wait a random 2–3 seconds, then let Schoggi scream.
+    const delay = 2000 + Math.random() * 1000;
+    setTimeout(() => {
+      document.getElementById("nei").classList.add("show");
+    }, delay);
+  </script>
+</body>
+</html>
