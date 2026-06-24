@@ -1,14 +1,10 @@
-// Delete an entire folder. Only works with the creator's delete token (POST {folderId, deleteToken}).
+// Delete an entire folder. Owner only: requires the admin password (POST {folderId, adminKey}).
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json' } });
-const sha256 = async s => { const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)); return [...new Uint8Array(d)].map(x => x.toString(16).padStart(2, '0')).join(''); };
 
 export async function onRequestPost({ env, request }) {
-  const { folderId, deleteToken } = await request.json();
-  if (!folderId || !deleteToken) return json({ error: 'missing' }, 400);
-  const meta = await env.BUCKET.get(`${folderId}/_meta.json`);
-  if (!meta) return json({ error: 'gone' }, 404);
-  const { tokenHash } = await meta.json();
-  if (await sha256(deleteToken) !== tokenHash) return json({ error: 'forbidden' }, 403);
+  const { folderId, adminKey } = await request.json().catch(() => ({}));
+  if (!folderId) return json({ error: 'missing' }, 400);
+  if (!env.ADMIN_KEY || adminKey !== env.ADMIN_KEY) return json({ error: 'forbidden' }, 403);
 
   let cursor;
   const keys = [];
