@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fottis</title>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #fff;
+      color: #111;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+    h1 { font-weight: 600; }
+    button, .btn {
+      font: inherit; font-size: 1rem; padding: 10px 18px;
+      border: 1px solid #ccc; border-radius: 8px; background: #fff; color: #111;
+      cursor: pointer; text-decoration: none; display: inline-block;
+    }
+    button.primary, .btn.primary { background: #111; color: #fff; border-color: #111; }
+    button:active { background: #f2f2f2; }
+    button:disabled { opacity: 0.4; cursor: default; }
+    input[type=text] { font: inherit; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; width: 100%; }
+    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .muted { color: #777; font-size: 0.9rem; }
+    .box { border: 1px solid #eee; border-radius: 12px; padding: 16px; margin: 16px 0; }
+    .hidden { display: none; }
+
+    /* Gallery grid */
+    #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; margin-top: 16px; }
+    .tile { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: #f3f3f3; border: 1px solid #eee; }
+    .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .tile .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #999; flex-direction: column; gap: 4px; padding: 6px; text-align: center; }
+    .tile .ph small { font-size: 0.65rem; word-break: break-all; }
+    .tile a.open { position: absolute; inset: 0; }
+    .tile .save { position: absolute; bottom: 6px; right: 6px; background: rgba(255,255,255,0.92); border-radius: 8px; padding: 4px 8px; font-size: 0.8rem; border: 1px solid #ddd; }
+    .badge { position: absolute; top: 6px; left: 6px; background: rgba(0,0,0,0.6); color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 6px; }
+
+    /* Upload progress */
+    #progress div { font-size: 0.85rem; margin: 4px 0; }
+    .bar { height: 6px; background: #eee; border-radius: 4px; overflow: hidden; margin-top: 2px; }
+    .bar > span { display: block; height: 100%; background: #111; width: 0; transition: width 0.2s; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ========== CREATE VIEW ========== -->
+    <section id="createView">
+      <h1>📸 Fottis</h1>
+      <p>Erstelle einen Ordner und teile den Link. Alle mit dem Link können Fotos &amp; Videos hochladen und herunterladen – kein Login nötig.</p>
+      <button class="primary" id="createBtn">Ordner erstellen</button>
+
+      <div id="created" class="box hidden">
+        <strong>Ordner erstellt! 🎉</strong>
+        <p class="muted">Teile diesen Link mit deinen Freunden:</p>
+        <div class="row">
+          <input type="text" id="shareLink" readonly>
+          <button id="copyLink">Kopieren</button>
+        </div>
+        <p class="muted">Nur du (auf diesem Gerät) kannst diesen Ordner später löschen.</p>
+        <a class="btn primary" id="openFolder" href="#">Ordner öffnen →</a>
+      </div>
+    </section>
+
+    <!-- ========== GALLERY VIEW ========== -->
+    <section id="galleryView" class="hidden">
+      <div class="row" style="justify-content: space-between;">
+        <h1 style="margin:0;">📸 Fottis</h1>
+        <div class="row">
+          <button id="copyLink2">Link kopieren</button>
+          <button id="deleteFolder" class="hidden">Ordner löschen</button>
+        </div>
+      </div>
+
+      <div class="box">
+        <label class="btn primary" for="fileInput">Fotos / Videos hochladen</label>
+        <input id="fileInput" type="file" multiple accept="image/*,video/*" class="hidden">
+        <span class="muted" id="uploadHint"></span>
+        <div id="progress"></div>
+      </div>
+
+      <div class="row">
+        <button id="dlAll">⬇ Alle herunterladen</button>
+        <label class="muted"><input type="checkbox" id="exceptMine" checked> ohne meine</label>
+      </div>
+      <p class="muted" id="dlNote">Tipp: Am Computer landet alles im Download-Ordner. Auf dem iPhone kommen die Dateien in die <b>Dateien</b>-App – dort alle markieren und „In Fotos sichern“. Einzeln: Foto antippen → gedrückt halten → „Zu Fotos hinzufügen“.</p>
+
+      <div id="empty" class="muted hidden">Noch keine Fotos. Lade die ersten hoch! ☝️</div>
+      <div id="grid"></div>
+    </section>
+
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const folderId = params.get('f');
+    const createView = document.getElementById('createView');
+    const galleryView = document.getElementById('galleryView');
+
+    // ---------------- CREATE ----------------
+    if (!folderId) {
+      const createBtn = document.getElementById('createBtn');
+      createBtn.onclick = async () => {
+        createBtn.disabled = true;
+        createBtn.textContent = 'Erstelle…';
+        const r = await fetch('/api/folder', { method: 'POST' });
+        const { folderId, deleteToken } = await r.json();
+        localStorage.setItem('fottis_admin_' + folderId, deleteToken); // creator's delete key, stays on this device
+        const link = location.origin + '/?f=' + folderId;
+        document.getElementById('shareLink').value = link;
+        document.getElementById('openFolder').href = link;
+        document.getElementById('created').classList.remove('hidden');
+        createBtn.classList.add('hidden');
+      };
+      document.getElementById('copyLink').onclick = () => copy(document.getElementById('shareLink').value);
+    }
+
+    // ---------------- GALLERY ----------------
+    else {
+      createView.classList.add('hidden');
+      galleryView.classList.remove('hidden');
+
+      const shareUrl = location.origin + '/?f=' + folderId;
+      document.getElementById('copyLink2').onclick = () => copy(shareUrl);
+
+      // Delete button only for the creator (whose device holds the token)
+      const adminToken = localStorage.getItem('fottis_admin_' + folderId);
+      if (adminToken) {
+        const delBtn = document.getElementById('deleteFolder');
+        delBtn.classList.remove('hidden');
+        delBtn.onclick = async () => {
+          if (!confirm('Diesen Ordner und ALLE Fotos endgültig löschen?')) return;
+          await fetch('/api/delete', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ folderId, deleteToken: adminToken }) });
+          localStorage.removeItem('fottis_admin_' + folderId);
+          alert('Ordner gelöscht.');
+          location.href = '/';
+        };
+      }
+
+      let files = [];
+      const mineKey = 'fottis_mine_' + folderId;
+      const getMine = () => new Set(JSON.parse(localStorage.getItem(mineKey) || '[]'));
+      const addMine = k => { const m = getMine(); m.add(k); localStorage.setItem(mineKey, JSON.stringify([...m])); };
+
+      async function loadGallery() {
+        const r = await fetch('/api/list?f=' + folderId);
+        files = (await r.json()).files || [];
+        const grid = document.getElementById('grid');
+        const mine = getMine();
+        grid.innerHTML = '';
+        document.getElementById('empty').classList.toggle('hidden', files.length > 0);
+        for (const f of files) {
+          const isImg = f.contentType.startsWith('image/') || /\.(jpe?g|png|gif|webp|heic|heif)$/i.test(f.filename);
+          const src = '/api/file?key=' + encodeURIComponent(f.key);
+          const tile = document.createElement('div');
+          tile.className = 'tile';
+          tile.innerHTML =
+            (isImg
+              ? `<img loading="lazy" src="${src}" onerror="this.outerHTML='<div class=ph>🖼️<small>${esc(f.filename)}</small></div>'">`
+              : `<div class="ph">🎬<small>${esc(f.filename)}</small></div>`) +
+            (mine.has(f.key) ? `<span class="badge">meine</span>` : '') +
+            `<a class="open" href="${src}" target="_blank" rel="noopener"></a>` +
+            `<a class="save" href="${src}&download=1" download="${esc(f.filename)}">⬇</a>`;
+          grid.appendChild(tile);
+        }
+      }
+
+      // ---- Upload (chunked multipart so big videos work) ----
+      const CHUNK = 90 * 1024 * 1024; // 90 MB, under the 100 MB request limit
+      const fileInput = document.getElementById('fileInput');
+      const progress = document.getElementById('progress');
+      fileInput.onchange = async () => {
+        const chosen = [...fileInput.files];
+        fileInput.value = '';
+        for (const file of chosen) await uploadOne(file);
+        progress.innerHTML = '';
+        await loadGallery();
+      };
+
+      async function uploadOne(file) {
+        const row = document.createElement('div');
+        row.innerHTML = `${esc(file.name)} <div class="bar"><span></span></div>`;
+        progress.appendChild(row);
+        const bar = row.querySelector('span');
+
+        const c = await (await fetch('/api/upload/create', {
+          method: 'POST', headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ folderId, filename: file.name, contentType: file.type })
+        })).json();
+        if (c.error) { row.innerHTML = `❌ ${esc(file.name)} (${c.error})`; return; }
+
+        const parts = [];
+        let pos = 0, n = 1;
+        while (pos < file.size) {
+          const chunk = file.slice(pos, pos + CHUNK);
+          const res = await fetch(`/api/upload/part?key=${encodeURIComponent(c.key)}&uploadId=${encodeURIComponent(c.uploadId)}&partNumber=${n}`, { method: 'PUT', body: chunk });
+          const p = await res.json();
+          parts.push({ partNumber: n, etag: p.etag });
+          pos += CHUNK; n++;
+          bar.style.width = Math.min(100, Math.round(pos / file.size * 100)) + '%';
+        }
+        await fetch('/api/upload/complete', {
+          method: 'POST', headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ key: c.key, uploadId: c.uploadId, parts })
+        });
+        addMine(c.key);
+        bar.style.width = '100%';
+      }
+
+      // ---- Download all ----
+      document.getElementById('dlAll').onclick = async () => {
+        const exceptMine = document.getElementById('exceptMine').checked;
+        const mine = getMine();
+        const targets = files.filter(f => !(exceptMine && mine.has(f.key)));
+        if (!targets.length) { alert('Nichts zum Herunterladen.'); return; }
+        for (const f of targets) {
+          const a = document.createElement('a');
+          a.href = '/api/file?key=' + encodeURIComponent(f.key) + '&download=1';
+          a.download = f.filename;
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          await new Promise(r => setTimeout(r, 700));
+        }
+      };
+
+      loadGallery();
+    }
+
+    // ---------------- helpers ----------------
+    function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+    async function copy(text) {
+      try { await navigator.clipboard.writeText(text); alert('Link kopiert!'); }
+      catch { prompt('Link kopieren:', text); }
+    }
+  </script>
+</body>
+</html>
