@@ -12,6 +12,8 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 | `askSchoggi/` | `askschoggi.odermatts.ch`    | Waits 2–3s, then screams a massive "NEI". |
 | `chooser/`    | `chooser.odermatts.ch`       | Wheel-of-names spinner + multi-finger picker (rigged so the first finger never wins). |
 | `fottis/`     | `fottis.odermatts.ch`        | Shared photo/video drop: create a folder, share the link, everyone up/downloads. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
+| `hater/`      | `hater.odermatts.ch`         | Upload a photo, AI roasts it. Needs Workers AI (binding `AI`). |
+| `nizza/`      | `nizza.odermatts.ch`         | Global aura battle: 4 heroes start at 67, ±10 buttons, shared live for everyone. Needs D1 (binding `DB`). |
 
 ## Adding a new site
 

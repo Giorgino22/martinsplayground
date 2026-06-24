@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nizza</title>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fff; color: #111; line-height: 1.5; }
+    .wrap { max-width: 640px; margin: 0 auto; padding: 24px 16px 60px; }
+    h1 { font-weight: 600; text-align: center; }
+    .muted { color: #777; font-size: 0.9rem; text-align: center; }
+    .hero { display: flex; align-items: center; gap: 14px; border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 12px 0; }
+    .hero .emoji { font-size: 2rem; }
+    .hero .info { flex: 1; }
+    .hero .name { font-weight: 600; }
+    .hero .aura { font-size: 1.6rem; font-weight: 700; transition: color 0.2s; }
+    .hero .aura.neg { color: #c00; }
+    .hero .buttons { display: flex; gap: 8px; }
+    .hero button { font: inherit; font-size: 1.3rem; width: 48px; height: 48px; border: 1px solid #ccc; border-radius: 10px; background: #fff; cursor: pointer; }
+    .hero button:active { background: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>✨ Aura</h1>
+    <p class="muted">Alle sehen die gleichen Zahlen – live für alle.</p>
+    <div id="list"></div>
+  </div>
+
+  <script>
+    const HEROES = [
+      { name: 'Batman', emoji: '🦇' },
+      { name: 'Hulk', emoji: '🟢' },
+      { name: 'Ironman', emoji: '🤖' },
+      { name: 'Rocket Racoon', emoji: '🦝' }
+    ];
+    const values = {};
+
+    // Build the cards once.
+    const list = document.getElementById('list');
+    for (const h of HEROES) {
+      const el = document.createElement('div');
+      el.className = 'hero';
+      el.innerHTML =
+        `<span class="emoji">${h.emoji}</span>` +
+        `<div class="info"><div class="name">${h.name}</div><div class="aura" id="aura-${cssId(h.name)}">…</div></div>` +
+        `<div class="buttons"><button data-name="${h.name}" data-d="-10">−</button>` +
+        `<button data-name="${h.name}" data-d="10">+</button></div>`;
+      list.appendChild(el);
+    }
+
+    list.querySelectorAll('button').forEach(b => b.onclick = async () => {
+      const name = b.dataset.name, delta = parseInt(b.dataset.d, 10);
+      render({ ...values, [name]: (values[name] ?? 0) + delta });     // optimistic
+      const res = await fetch('/api/aura', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, delta }) });
+      apply((await res.json()).aura);
+    });
+
+    function apply(rows) {
+      if (!rows) return;
+      const map = {};
+      for (const r of rows) map[r.name] = r.value;
+      render(map);
+    }
+    function render(map) {
+      for (const h of HEROES) {
+        if (map[h.name] === undefined) continue;
+        values[h.name] = map[h.name];
+        const el = document.getElementById('aura-' + cssId(h.name));
+        el.textContent = map[h.name];
+        el.classList.toggle('neg', map[h.name] < 0);
+      }
+    }
+    function cssId(s) { return s.replace(/\s+/g, '-'); }
+
+    async function poll() {
+      try { apply((await (await fetch('/api/aura')).json()).aura); } catch {}
+    }
+    poll();
+    setInterval(poll, 1500);   // keep everyone in sync
+  </script>
+</body>
+</html>
