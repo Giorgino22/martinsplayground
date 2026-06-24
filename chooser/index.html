@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Chooser</title>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #11131a;
+      color: #f2f3f7;
+      overflow: hidden;
+    }
+    .view { position: fixed; inset: 0; display: none; flex-direction: column; }
+    .view.active { display: flex; }
+
+    /* ---------- Home ---------- */
+    #home {
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 24px;
+    }
+    #home h1 { font-size: 2.4rem; margin: 0 0 8px; }
+    .card {
+      width: min(90vw, 340px);
+      padding: 26px;
+      border-radius: 18px;
+      border: none;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .card small { display: block; font-weight: 400; opacity: 0.8; font-size: 0.85rem; margin-top: 4px; }
+    .card .emoji { font-size: 2rem; }
+    #toWheel  { background: linear-gradient(135deg, #6a5cff, #9b5cff); }
+    #toFinger { background: linear-gradient(135deg, #ff5c7a, #ff9b5c); }
+
+    .back {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: rgba(255,255,255,0.1);
+      color: #fff; border: none;
+      padding: 10px 16px; border-radius: 12px;
+      font-size: 1rem; cursor: pointer; z-index: 10;
+    }
+
+    /* ---------- Wheel ---------- */
+    #wheel { align-items: center; padding: 64px 20px 28px; gap: 16px; overflow-y: auto; }
+    .name-input { display: flex; gap: 8px; width: min(92vw, 360px); }
+    .name-input input {
+      flex: 1; padding: 12px 14px; border-radius: 12px; border: none;
+      font-size: 1rem; background: #20232e; color: #fff;
+    }
+    .name-input button {
+      padding: 0 18px; border: none; border-radius: 12px; background: #6a5cff;
+      color: #fff; font-size: 1.4rem; cursor: pointer;
+    }
+    #chips { display: flex; flex-wrap: wrap; gap: 8px; width: min(92vw, 360px); justify-content: center; min-height: 8px; }
+    .chip {
+      background: #20232e; padding: 6px 10px 6px 12px; border-radius: 999px;
+      display: flex; align-items: center; gap: 6px; font-size: 0.95rem;
+    }
+    .chip span { cursor: pointer; opacity: 0.6; font-weight: 700; }
+    .wheel-wrap { position: relative; width: 320px; height: 320px; max-width: 88vw; max-height: 88vw; }
+    #wheelCanvas { width: 100%; height: 100%; display: block; transition: transform 4.5s cubic-bezier(0.17, 0.67, 0.12, 0.99); }
+    .pointer {
+      position: absolute; top: -6px; left: 50%; transform: translateX(-50%);
+      width: 0; height: 0; border-left: 16px solid transparent; border-right: 16px solid transparent;
+      border-top: 26px solid #fff; z-index: 5; filter: drop-shadow(0 2px 3px rgba(0,0,0,0.5));
+    }
+    #spinBtn {
+      padding: 14px 40px; border: none; border-radius: 14px; font-size: 1.2rem; font-weight: 700;
+      background: #9b5cff; color: #fff; cursor: pointer;
+    }
+    #spinBtn:disabled { opacity: 0.4; cursor: default; }
+    #wheelResult { font-size: 1.6rem; font-weight: 700; min-height: 1.6em; text-align: center; }
+
+    /* ---------- Finger ---------- */
+    #finger { background: #0c0d12; }
+    #touchpad { flex: 1; position: relative; touch-action: none; }
+    #fingerHint {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 30px; font-size: 1.3rem; opacity: 0.55; pointer-events: none;
+    }
+    .dot {
+      position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px;
+      border-radius: 50%; pointer-events: none;
+      border: 6px solid #fff; box-shadow: 0 0 24px rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dot.pulse { animation: pulse 0.8s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+    .dot.winner { animation: win 0.5s ease-out forwards; z-index: 3; }
+    @keyframes win { to { transform: scale(2.4); border-width: 10px; } }
+    .dot.loser { animation: lose 0.4s ease-out forwards; }
+    @keyframes lose { to { transform: scale(0); opacity: 0; } }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== HOME ===================== -->
+  <section id="home" class="view active">
+    <h1>Chooser</h1>
+    <button class="card" id="toWheel">
+      <span class="emoji">🎡</span>
+      <div>Glücksrad<small>Namen eingeben & drehen</small></div>
+    </button>
+    <button class="card" id="toFinger">
+      <span class="emoji">👆</span>
+      <div>Finger-Chooser<small>Alle Finger drauf – einer wird gewählt</small></div>
+    </button>
+  </section>
+
+  <!-- ===================== WHEEL ===================== -->
+  <section id="wheel" class="view">
+    <button class="back" data-home>← Zurück</button>
+    <div class="name-input">
+      <input id="nameInput" placeholder="Name eingeben…" autocomplete="off">
+      <button id="addBtn">＋</button>
+    </div>
+    <div id="chips"></div>
+    <div class="wheel-wrap">
+      <div class="pointer"></div>
+      <canvas id="wheelCanvas" width="640" height="640"></canvas>
+    </div>
+    <button id="spinBtn">Drehen</button>
+    <div id="wheelResult"></div>
+  </section>
+
+  <!-- ===================== FINGER ===================== -->
+  <section id="finger" class="view">
+    <button class="back" data-home>← Zurück</button>
+    <div id="touchpad">
+      <div id="fingerHint">Alle legen einen Finger auf den Bildschirm.<br>Nach ein paar Sekunden wird einer gewählt.</div>
+    </div>
+  </section>
+
+  <script>
+    // ---------- Navigation ----------
+    const views = { home: document.getElementById('home'), wheel: document.getElementById('wheel'), finger: document.getElementById('finger') };
+    function show(name) {
+      Object.values(views).forEach(v => v.classList.remove('active'));
+      views[name].classList.add('active');
+      if (name === 'wheel') drawWheel();
+      if (name !== 'finger') resetFinger();
+    }
+    document.getElementById('toWheel').onclick = () => show('wheel');
+    document.getElementById('toFinger').onclick = () => show('finger');
+    document.querySelectorAll('[data-home]').forEach(b => b.onclick = () => show('home'));
+
+    const palette = ['#e6194B','#3cb44b','#f58231','#4363d8','#911eb4','#f032e6','#469990','#9A6324','#800000','#808000','#000075','#e67e22'];
+
+    // ========================================================
+    //  WHEEL
+    // ========================================================
+    let names = ['Martin', 'Schoggi', 'Tim', 'Lea'];
+    let rotation = 0;
+    let spinning = false;
+    const canvas = document.getElementById('wheelCanvas');
+    const ctx = canvas.getContext('2d');
+    const SIZE = canvas.width;
+    const R = SIZE / 2;
+
+    const chips = document.getElementById('chips');
+    const nameInput = document.getElementById('nameInput');
+    const spinBtn = document.getElementById('spinBtn');
+    const wheelResult = document.getElementById('wheelResult');
+
+    function renderChips() {
+      chips.innerHTML = '';
+      names.forEach((n, i) => {
+        const el = document.createElement('div');
+        el.className = 'chip';
+        el.innerHTML = `${n} <span>✕</span>`;
+        el.querySelector('span').onclick = () => { names.splice(i, 1); renderChips(); drawWheel(); };
+        chips.appendChild(el);
+      });
+      spinBtn.disabled = names.length < 2;
+    }
+
+    function addName() {
+      const v = nameInput.value.trim();
+      if (v) { names.push(v); nameInput.value = ''; renderChips(); drawWheel(); }
+      nameInput.focus();
+    }
+    document.getElementById('addBtn').onclick = addName;
+    nameInput.addEventListener('keydown', e => { if (e.key === 'Enter') addName(); });
+
+    function drawWheel() {
+      const n = names.length;
+      ctx.clearRect(0, 0, SIZE, SIZE);
+      if (n === 0) return;
+      const seg = (2 * Math.PI) / n;
+      for (let i = 0; i < n; i++) {
+        const start = i * seg, end = start + seg;
+        ctx.beginPath();
+        ctx.moveTo(R, R);
+        ctx.arc(R, R, R, start, end);
+        ctx.closePath();
+        ctx.fillStyle = palette[i % palette.length];
+        ctx.fill();
+        // label
+        ctx.save();
+        ctx.translate(R, R);
+        ctx.rotate(start + seg / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 30px sans-serif';
+        ctx.fillText(names[i].slice(0, 12), R - 24, 10);
+        ctx.restore();
+      }
+    }
+
+    spinBtn.onclick = () => {
+      if (spinning || names.length < 2) return;
+      spinning = true;
+      wheelResult.textContent = '';
+      const n = names.length;
+      const seg = 360 / n;
+      const target = rotation + 5 * 360 + Math.random() * 360;
+      rotation = target;
+      canvas.style.transform = `rotate(${target}deg)`;
+      // Pointer sits at the top (canvas angle 270°). Find which segment ends up there.
+      const finalRot = ((target % 360) + 360) % 360;
+      const pointerAngle = ((270 - finalRot) % 360 + 360) % 360;
+      const index = Math.floor(pointerAngle / seg) % n;
+      setTimeout(() => {
+        wheelResult.textContent = '🎉 ' + names[index];
+        spinning = false;
+      }, 4600);
+    };
+
+    renderChips();
+
+    // ========================================================
+    //  FINGER CHOOSER  (rigged: the FIRST finger never wins)
+    // ========================================================
+    const touchpad = document.getElementById('touchpad');
+    const hint = document.getElementById('fingerHint');
+    const fingers = new Map();   // touchId -> { el, order }
+    let order = 0;
+    let pickTimer = null;
+    let decided = false;
+
+    function resetFinger() {
+      fingers.forEach(f => f.el.remove());
+      fingers.clear();
+      clearTimeout(pickTimer);
+      pickTimer = null;
+      decided = false;
+      order = 0;
+      hint.style.display = '';
+    }
+
+    function schedulePick() {
+      clearTimeout(pickTimer);
+      if (decided || fingers.size < 2) return;
+      fingers.forEach(f => f.el.classList.add('pulse'));
+      pickTimer = setTimeout(pickWinner, 3000);
+    }
+
+    function pickWinner() {
+      if (fingers.size < 2) return;
+      decided = true;
+      // The earliest finger (smallest order) is excluded from winning.
+      const entries = [...fingers.values()];
+      const firstOrder = Math.min(...entries.map(f => f.order));
+      const candidates = entries.filter(f => f.order !== firstOrder);
+      const winner = candidates[Math.floor(Math.random() * candidates.length)];
+      if (navigator.vibrate) navigator.vibrate(200);
+      fingers.forEach(f => {
+        f.el.classList.remove('pulse');
+        f.el.classList.add(f === winner ? 'winner' : 'loser');
+      });
+    }
+
+    function makeDot(x, y, idx) {
+      const el = document.createElement('div');
+      el.className = 'dot';
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+      el.style.borderColor = palette[idx % palette.length];
+      el.style.boxShadow = '0 0 24px ' + palette[idx % palette.length];
+      touchpad.appendChild(el);
+      return el;
+    }
+
+    touchpad.addEventListener('touchstart', e => {
+      e.preventDefault();
+      if (decided) return;
+      hint.style.display = 'none';
+      for (const t of e.changedTouches) {
+        const el = makeDot(t.clientX, t.clientY, order);
+        fingers.set(t.identifier, { el, order: order++ });
+      }
+      schedulePick();
+    }, { passive: false });
+
+    touchpad.addEventListener('touchmove', e => {
+      e.preventDefault();
+      for (const t of e.changedTouches) {
+        const f = fingers.get(t.identifier);
+        if (f) { f.el.style.left = t.clientX + 'px'; f.el.style.top = t.clientY + 'px'; }
+      }
+    }, { passive: false });
+
+    function onTouchEnd(e) {
+      for (const t of e.changedTouches) {
+        const f = fingers.get(t.identifier);
+        if (f) { f.el.remove(); fingers.delete(t.identifier); }
+      }
+      if (fingers.size === 0) resetFinger();
+      else if (!decided) schedulePick();
+    }
+    touchpad.addEventListener('touchend', onTouchEnd);
+    touchpad.addEventListener('touchcancel', onTouchEnd);
+  </script>
+</body>
+</html>

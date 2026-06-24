@@ -10,6 +10,7 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 |---------------|------------------------------|-------------------------------------------|
 | `askMartin/`  | `askmartin.odermatts.ch`     | A big "Ja" in the middle of the page.     |
 | `askSchoggi/` | `askschoggi.odermatts.ch`    | Waits 2–3s, then screams a massive "NEI". |
+| `chooser/`    | `chooser.odermatts.ch`       | Wheel-of-names spinner + multi-finger picker (rigged so the first finger never wins). |
 
 ## Adding a new site
 
