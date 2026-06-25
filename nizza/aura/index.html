@@ -101,7 +101,21 @@
     }
 
     // ---- video upload (chunked multipart so big videos work) ----
-    const CHUNK = 90 * 1024 * 1024;
+    const CHUNK = 20 * 1024 * 1024;   // 20 MB: resilient on flaky connections, well under limits
+    async function putPart(c, n, chunk) {
+      for (let attempt = 0; attempt < 4; attempt++) {
+        try {
+          const res = await fetch(`/api/video/part?key=${encodeURIComponent(c.key)}&uploadId=${encodeURIComponent(c.uploadId)}&partNumber=${n}`, { method: 'PUT', body: chunk });
+          if (!res.ok) throw new Error('status ' + res.status);
+          const j = await res.json();
+          if (!j.etag) throw new Error('no etag');
+          return j.etag;
+        } catch (e) {
+          if (attempt === 3) throw e;
+          await new Promise(r => setTimeout(r, 1200 * (attempt + 1)));   // back off, then retry
+        }
+      }
+    }
     async function uploadVideo(name, file, btn) {
       const label = btn.textContent;
       try {
@@ -111,8 +125,8 @@
         let pos = 0, n = 1;
         while (pos < file.size) {
           const chunk = file.slice(pos, pos + CHUNK);
-          const res = await fetch(`/api/video/part?key=${encodeURIComponent(c.key)}&uploadId=${encodeURIComponent(c.uploadId)}&partNumber=${n}`, { method: 'PUT', body: chunk });
-          parts.push({ partNumber: n, etag: (await res.json()).etag });
+          const etag = await putPart(c, n, chunk);
+          parts.push({ partNumber: n, etag });
           pos += CHUNK; n++;
           btn.textContent = Math.min(99, Math.round(pos / file.size * 100)) + '%';
         }
