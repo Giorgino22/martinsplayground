@@ -29,6 +29,12 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 Bindings on the nizza project: **`DB`** (D1), **`AI`** (Workers AI), **`BUCKET`** (R2).
 The old standalone `chooser.odermatts.ch` / `hater.odermatts.ch` projects can be deleted.
 
+**Cloudflare config (important):** because this project uses Pages Functions in
+`nizza/functions/`, the project's **Root directory** must be set to `nizza` (Functions are
+detected relative to the Root directory). With Root directory = `nizza`, the **Build output
+directory** is `/` (assets sit at the root of `nizza`). If Root directory is left at the repo
+root, Functions are not deployed and `/api/*` returns 405.
+
 ## Adding a new site
 
 1. Create a new folder named after the subdomain (e.g. `mysite/`).
