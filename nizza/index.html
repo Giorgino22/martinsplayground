@@ -4,75 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nizza</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nizza">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta name="theme-color" content="#11131a">
   <style>
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fff; color: #111; }
-    #list { max-width: 520px; margin: 0 auto; padding: 20px 16px; display: flex; flex-direction: column; }
-    .hero { display: flex; align-items: center; gap: 16px; border: 1px solid #eee; border-radius: 14px; padding: 14px; margin: 8px 0; }
-    .hero svg { width: 64px; height: 64px; flex: none; }
-    .aura { flex: 1; text-align: center; font-size: 2rem; font-weight: 700; }
-    .aura.neg { color: #c00; }
-    .btns { display: flex; gap: 8px; }
-    .btns button { font: inherit; font-size: 1.5rem; width: 52px; height: 52px; border: 1px solid #ccc; border-radius: 12px; background: #fff; cursor: pointer; line-height: 1; }
-    .btns button:active { background: #f2f2f2; }
+    .wrap { max-width: 480px; margin: 0 auto; padding: 40px 20px; min-height: 100vh; display: flex; flex-direction: column; gap: 14px; justify-content: center; text-align: center; }
+    h1 { font-weight: 600; margin: 0 0 10px; }
+    a.tile { display: block; text-decoration: none; color: #111; border: 1px solid #ccc; border-radius: 14px; padding: 22px; font-size: 1.3rem; font-weight: 600; }
+    a.tile:active { background: #f2f2f2; }
+    .emoji { font-size: 1.6rem; margin-right: 8px; }
+    .muted { color: #999; font-size: 0.85rem; margin-top: 18px; }
   </style>
 </head>
 <body>
-  <div id="list"></div>
-
+  <div class="wrap">
+    <h1>Nizza</h1>
+    <a class="tile" href="/aura/"><span class="emoji">✨</span>Aura</a>
+    <a class="tile" href="/chooser/"><span class="emoji">🎡</span>Chooser</a>
+    <a class="tile" href="/hater/"><span class="emoji">🔥</span>Hater</a>
+    <p class="muted">Tipp: Teilen → „Zum Home-Bildschirm" für die App.</p>
+  </div>
   <script>
-    const FACES = {
-      'Batman': `<svg viewBox="0 0 100 100"><rect x="22" y="26" width="56" height="56" rx="16" fill="#f4c220"/><polygon points="30,8 39,30 21,30" fill="#15171a"/><polygon points="70,8 79,30 61,30" fill="#15171a"/><rect x="22" y="26" width="56" height="20" rx="10" fill="#15171a"/><path d="M22 44 q28 16 56 0 v-2 q-28 14 -56 0 Z" fill="#15171a"/><path d="M30 41 l12 -2 -2 8 -10 -2 Z" fill="#fff"/><path d="M70 41 l-12 -2 2 8 10 -2 Z" fill="#fff"/><line x1="42" y1="70" x2="58" y2="70" stroke="#7a5c00" stroke-width="3" stroke-linecap="round"/></svg>`,
-      'Hulk': `<svg viewBox="0 0 100 100"><rect x="22" y="24" width="56" height="58" rx="16" fill="#5cb000"/><line x1="30" y1="44" x2="46" y2="50" stroke="#1c3b00" stroke-width="5" stroke-linecap="round"/><line x1="70" y1="44" x2="54" y2="50" stroke="#1c3b00" stroke-width="5" stroke-linecap="round"/><circle cx="39" cy="57" r="4" fill="#15240a"/><circle cx="61" cy="57" r="4" fill="#15240a"/><rect x="36" y="67" width="28" height="9" rx="2" fill="#15240a"/><line x1="43" y1="67" x2="43" y2="76" stroke="#5cb000" stroke-width="2"/><line x1="50" y1="67" x2="50" y2="76" stroke="#5cb000" stroke-width="2"/><line x1="57" y1="67" x2="57" y2="76" stroke="#5cb000" stroke-width="2"/></svg>`,
-      'Ironman': `<svg viewBox="0 0 100 100"><rect x="22" y="24" width="56" height="58" rx="16" fill="#c1121f"/><rect x="22" y="34" width="56" height="9" fill="#f4c220"/><path d="M22 43 h56 v18 q-28 18 -56 0 Z" fill="#f4c220"/><path d="M32 49 l12 0 -2 7 -10 0 Z" fill="#bfe9ff"/><path d="M68 49 l-12 0 2 7 10 0 Z" fill="#bfe9ff"/><line x1="40" y1="68" x2="60" y2="68" stroke="#8a0b16" stroke-width="3" stroke-linecap="round"/></svg>`,
-      'Rocket Racoon': `<svg viewBox="0 0 100 100"><circle cx="30" cy="22" r="10" fill="#6b5a4a"/><circle cx="70" cy="22" r="10" fill="#6b5a4a"/><circle cx="30" cy="22" r="5" fill="#3a3026"/><circle cx="70" cy="22" r="5" fill="#3a3026"/><rect x="22" y="26" width="56" height="54" rx="16" fill="#9a9a9a"/><ellipse cx="50" cy="63" rx="22" ry="15" fill="#f0efe9"/><path d="M26 45 q24 -14 48 0 q-10 12 -24 12 q-14 0 -24 -12 Z" fill="#3a3026"/><circle cx="38" cy="49" r="4.5" fill="#fff"/><circle cx="62" cy="49" r="4.5" fill="#fff"/><circle cx="38" cy="49" r="2" fill="#000"/><circle cx="62" cy="49" r="2" fill="#000"/><path d="M45 58 h10 l-5 6 Z" fill="#1c1c1c"/></svg>`
-    };
-    const HEROES = ['Batman', 'Hulk', 'Ironman', 'Rocket Racoon'];
-    const START = 67;
-    const values = {};
-    const cards = {};
-
-    const list = document.getElementById('list');
-    for (const name of HEROES) {
-      const el = document.createElement('div');
-      el.className = 'hero';
-      el.innerHTML = FACES[name] +
-        `<div class="aura" id="aura-${cssId(name)}">…</div>` +
-        `<div class="btns"><button data-name="${name}" data-d="-10">−</button><button data-name="${name}" data-d="10">+</button></div>`;
-      list.appendChild(el);
-      cards[name] = el;
+    if (window.navigator.standalone) {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a');
+        if (a && a.host === location.host && !a.target) { e.preventDefault(); location.href = a.href; }
+      });
     }
-
-    list.querySelectorAll('button').forEach(b => b.onclick = async () => {
-      const name = b.dataset.name, delta = parseInt(b.dataset.d, 10);
-      render({ ...values, [name]: (values[name] ?? START) + delta });   // optimistic
-      const res = await fetch('/api/aura', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, delta }) });
-      apply((await res.json()).aura);
-    });
-
-    function apply(rows) {
-      if (!rows) return;
-      const map = {};
-      for (const r of rows) map[r.name] = r.value;
-      render(map);
-    }
-    function render(map) {
-      for (const name of HEROES) {
-        if (map[name] === undefined) continue;
-        values[name] = map[name];
-        const el = document.getElementById('aura-' + cssId(name));
-        el.textContent = map[name];
-        el.classList.toggle('neg', map[name] < 0);
-      }
-      // highest aura on top
-      [...HEROES].sort((a, b) => (values[b] ?? START) - (values[a] ?? START))
-        .forEach((name, i) => cards[name].style.order = i);
-    }
-    function cssId(s) { return s.replace(/\s+/g, '-'); }
-
-    async function poll() { try { apply((await (await fetch('/api/aura')).json()).aura); } catch {} }
-    poll();
-    setInterval(poll, 1500);
   </script>
 </body>
 </html>

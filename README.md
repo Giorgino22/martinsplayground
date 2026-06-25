@@ -10,10 +10,24 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 |---------------|------------------------------|-------------------------------------------|
 | `askMartin/`  | `askmartin.odermatts.ch`     | A big "Ja" in the middle of the page.     |
 | `askSchoggi/` | `askschoggi.odermatts.ch`    | Waits 2–3s, then screams a massive "NEI". |
-| `chooser/`    | `chooser.odermatts.ch`       | Wheel-of-names spinner + multi-finger picker (rigged so the first finger never wins). |
-| `fottis/`     | `fottis.odermatts.ch`        | Shared photo/video drop: create a folder, share the link, everyone up/downloads. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
-| `hater/`      | `hater.odermatts.ch`         | Upload a photo, AI roasts it. Needs Workers AI (binding `AI`). |
-| `nizza/`      | `nizza.odermatts.ch`         | Global aura battle: 4 heroes start at 67, ±10 buttons, shared live for everyone. Needs D1 (binding `DB`). |
+| `fottis/`     | `fottis.odermatts.ch`        | (Parked) Shared photo/video drop. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
+| `nizza/`      | `nizza.odermatts.ch`         | **The app.** Installable PWA hub: home launcher + `/aura/`, `/chooser/`, `/hater/`. Needs D1 (`DB`), Workers AI (`AI`), R2 (`BUCKET`). |
+
+### nizza app (everything in one PWA)
+
+`nizza/` is one Cloudflare Pages project (build output dir `nizza`) serving the whole app:
+
+- `/` — home launcher.
+- `/aura/` — global hero aura battle (D1). Start 67, custom ±amounts, per-hero video upload
+  (R2) that grants +10% on positive gains, highest on top, live via polling.
+- `/chooser/` — name wheel + rigged finger picker.
+- `/hater/` — AI photo roast (Workers AI).
+- `functions/api/` — `aura.js`, `roast.js`, `video/{create,part,complete,get}.js`.
+- PWA: `manifest.json` + `icon-180/512.png` + apple-touch meta; add to home screen for an
+  app-like, full-screen experience (stays in-app because it's all one origin).
+
+Bindings on the nizza project: **`DB`** (D1), **`AI`** (Workers AI), **`BUCKET`** (R2).
+The old standalone `chooser.odermatts.ch` / `hater.odermatts.ch` projects can be deleted.
 
 ## Adding a new site
 

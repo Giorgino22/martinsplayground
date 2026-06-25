@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hater</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nizza">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta name="theme-color" content="#11131a">
   <style>
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fff; color: #111; line-height: 1.5; }
@@ -15,9 +21,11 @@
     #preview { max-width: 100%; max-height: 320px; border-radius: 12px; margin: 18px 0; display: none; }
     #roast { font-size: 1.25rem; margin: 20px 0; min-height: 1.4em; white-space: pre-wrap; }
     .muted { color: #777; font-size: 0.9rem; }
+    .apphome { position: fixed; top: 12px; left: 12px; z-index: 50; text-decoration: none; font-size: 1.2rem; line-height: 1; background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 6px 12px; color: #111; }
   </style>
 </head>
 <body>
+  <a href="/" class="apphome">←</a>
   <div class="wrap">
     <h1>🔥 Hater</h1>
     <p class="muted">Lade ein Foto hoch und die KI roastet es gnadenlos.</p>
@@ -73,6 +81,14 @@
       } catch (e) {
         roastEl.textContent = '😬 Netzwerk-Fehler: ' + e;
       }
+    }
+  </script>
+  <script>
+    if (window.navigator.standalone) {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a');
+        if (a && a.host === location.host && !a.target) { e.preventDefault(); location.href = a.href; }
+      });
     }
   </script>
 </body>

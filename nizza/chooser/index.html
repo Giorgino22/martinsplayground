@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Chooser</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nizza">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta name="theme-color" content="#11131a">
   <style>
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     html, body {
@@ -30,7 +36,8 @@
     button:active { background: #f2f2f2; }
     button:disabled { opacity: 0.4; cursor: default; }
 
-    .back { position: absolute; top: 14px; left: 14px; z-index: 10; }
+    .back { position: absolute; top: 14px; right: 14px; z-index: 10; }
+    .apphome { position: fixed; top: 14px; left: 14px; z-index: 11; text-decoration: none; font-size: 1.2rem; line-height: 1; background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 6px 12px; color: #111; }
 
     /* ---------- Home ---------- */
     #home { align-items: center; justify-content: center; gap: 16px; padding: 24px; }
@@ -74,6 +81,7 @@
   </style>
 </head>
 <body>
+  <a href="/" class="apphome">←</a>
 
   <!-- ===================== HOME ===================== -->
   <section id="home" class="view active">
@@ -284,6 +292,14 @@
     }
     touchpad.addEventListener('touchend', onTouchEnd);
     touchpad.addEventListener('touchcancel', onTouchEnd);
+  </script>
+  <script>
+    if (window.navigator.standalone) {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a');
+        if (a && a.host === location.host && !a.target) { e.preventDefault(); location.href = a.href; }
+      });
+    }
   </script>
 </body>
 </html>

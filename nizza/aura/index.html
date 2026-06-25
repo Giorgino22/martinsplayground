@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Nizza">
+  <link rel="apple-touch-icon" href="/icon-180.png">
+  <meta name="theme-color" content="#11131a">
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #fff; color: #111; }
+    .apphome { position: fixed; top: 12px; left: 12px; z-index: 50; text-decoration: none; font-size: 1.3rem; line-height: 1; background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 6px 12px; color: #111; }
+    #list { max-width: 560px; margin: 0 auto; padding: 64px 14px 30px; display: flex; flex-direction: column; }
+    .hero { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; border: 1px solid #eee; border-radius: 14px; padding: 12px; margin: 8px 0; }
+    .hero svg { width: 56px; height: 56px; flex: none; }
+    .aura { font-size: 1.8rem; font-weight: 700; min-width: 56px; text-align: center; }
+    .aura.neg { color: #c00; }
+    .spacer { flex: 1; }
+    .boost { font-size: 0.7rem; color: #0a8a00; border: 1px solid #0a8a00; border-radius: 6px; padding: 2px 5px; }
+    .play { text-decoration: none; font-size: 1.1rem; color: #111; border: 1px solid #ccc; border-radius: 8px; padding: 6px 9px; }
+    .amt { width: 60px; font: inherit; padding: 8px; border: 1px solid #ccc; border-radius: 8px; text-align: center; }
+    .hero button { font: inherit; font-size: 1.25rem; width: 44px; height: 44px; border: 1px solid #ccc; border-radius: 10px; background: #fff; cursor: pointer; }
+    .hero button:active { background: #f2f2f2; }
+    .vidbtn { font-size: 1rem !important; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <a href="/" class="apphome">←</a>
+  <div id="list"></div>
+
+  <script>
+    const FACES = {
+      'Batman': `<svg viewBox="0 0 100 100"><rect x="22" y="26" width="56" height="56" rx="16" fill="#f4c220"/><polygon points="30,8 39,30 21,30" fill="#15171a"/><polygon points="70,8 79,30 61,30" fill="#15171a"/><rect x="22" y="26" width="56" height="20" rx="10" fill="#15171a"/><path d="M22 44 q28 16 56 0 v-2 q-28 14 -56 0 Z" fill="#15171a"/><path d="M30 41 l12 -2 -2 8 -10 -2 Z" fill="#fff"/><path d="M70 41 l-12 -2 2 8 10 -2 Z" fill="#fff"/><line x1="42" y1="70" x2="58" y2="70" stroke="#7a5c00" stroke-width="3" stroke-linecap="round"/></svg>`,
+      'Hulk': `<svg viewBox="0 0 100 100"><rect x="22" y="24" width="56" height="58" rx="16" fill="#5cb000"/><line x1="30" y1="44" x2="46" y2="50" stroke="#1c3b00" stroke-width="5" stroke-linecap="round"/><line x1="70" y1="44" x2="54" y2="50" stroke="#1c3b00" stroke-width="5" stroke-linecap="round"/><circle cx="39" cy="57" r="4" fill="#15240a"/><circle cx="61" cy="57" r="4" fill="#15240a"/><rect x="36" y="67" width="28" height="9" rx="2" fill="#15240a"/><line x1="43" y1="67" x2="43" y2="76" stroke="#5cb000" stroke-width="2"/><line x1="50" y1="67" x2="50" y2="76" stroke="#5cb000" stroke-width="2"/><line x1="57" y1="67" x2="57" y2="76" stroke="#5cb000" stroke-width="2"/></svg>`,
+      'Ironman': `<svg viewBox="0 0 100 100"><rect x="22" y="24" width="56" height="58" rx="16" fill="#c1121f"/><rect x="22" y="34" width="56" height="9" fill="#f4c220"/><path d="M22 43 h56 v18 q-28 18 -56 0 Z" fill="#f4c220"/><path d="M32 49 l12 0 -2 7 -10 0 Z" fill="#bfe9ff"/><path d="M68 49 l-12 0 2 7 10 0 Z" fill="#bfe9ff"/><line x1="40" y1="68" x2="60" y2="68" stroke="#8a0b16" stroke-width="3" stroke-linecap="round"/></svg>`,
+      'Rocket Racoon': `<svg viewBox="0 0 100 100"><circle cx="30" cy="22" r="10" fill="#6b5a4a"/><circle cx="70" cy="22" r="10" fill="#6b5a4a"/><circle cx="30" cy="22" r="5" fill="#3a3026"/><circle cx="70" cy="22" r="5" fill="#3a3026"/><rect x="22" y="26" width="56" height="54" rx="16" fill="#9a9a9a"/><ellipse cx="50" cy="63" rx="22" ry="15" fill="#f0efe9"/><path d="M26 45 q24 -14 48 0 q-10 12 -24 12 q-14 0 -24 -12 Z" fill="#3a3026"/><circle cx="38" cy="49" r="4.5" fill="#fff"/><circle cx="62" cy="49" r="4.5" fill="#fff"/><circle cx="38" cy="49" r="2" fill="#000"/><circle cx="62" cy="49" r="2" fill="#000"/><path d="M45 58 h10 l-5 6 Z" fill="#1c1c1c"/></svg>`
+    };
+    const HEROES = ['Batman', 'Hulk', 'Ironman', 'Rocket Racoon'];
+    const START = 67;
+    const state = {};   // name -> { value, has_video }
+    const cards = {};
+
+    const list = document.getElementById('list');
+    for (const name of HEROES) {
+      const el = document.createElement('div');
+      el.className = 'hero';
+      el.innerHTML =
+        FACES[name] +
+        `<div class="aura">…</div>` +
+        `<div class="spacer"></div>` +
+        `<span class="boost hidden">+10%</span>` +
+        `<a class="play hidden" target="_blank" rel="noopener">▶</a>` +
+        `<input class="amt" type="number" inputmode="numeric" value="10">` +
+        `<button class="minus">−</button>` +
+        `<button class="plus">+</button>` +
+        `<button class="vidbtn">🎬</button>` +
+        `<input class="vidfile" type="file" accept="video/*" hidden>`;
+      list.appendChild(el);
+      cards[name] = el;
+
+      const amt = () => { const v = Math.trunc(Number(el.querySelector('.amt').value)); return Number.isFinite(v) && v !== 0 ? v : 10; };
+      el.querySelector('.minus').onclick = () => change(name, -Math.abs(amt()));
+      el.querySelector('.plus').onclick = () => change(name, Math.abs(amt()));
+      el.querySelector('.vidbtn').onclick = () => el.querySelector('.vidfile').click();
+      el.querySelector('.vidfile').onchange = (e) => { const f = e.target.files[0]; e.target.value = ''; if (f) uploadVideo(name, f, el.querySelector('.vidbtn')); };
+    }
+
+    async function change(name, delta) {
+      render({ [name]: { value: (state[name]?.value ?? START) + delta, has_video: state[name]?.has_video } }); // optimistic
+      const res = await fetch('/api/aura', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, delta }) });
+      apply((await res.json()).aura);
+    }
+
+    function apply(rows) {
+      if (!rows) return;
+      const map = {};
+      for (const r of rows) map[r.name] = { value: r.value, has_video: r.has_video };
+      render(map);
+    }
+
+    function render(map) {
+      for (const name of HEROES) {
+        if (!map[name]) continue;
+        state[name] = { value: map[name].value, has_video: map[name].has_video ?? state[name]?.has_video };
+        const card = cards[name];
+        const auraEl = card.querySelector('.aura');
+        auraEl.textContent = state[name].value;
+        auraEl.classList.toggle('neg', state[name].value < 0);
+        card.querySelector('.boost').classList.toggle('hidden', !state[name].has_video);
+        const play = card.querySelector('.play');
+        play.classList.toggle('hidden', !state[name].has_video);
+        if (state[name].has_video) play.href = '/api/video/get?name=' + encodeURIComponent(name);
+      }
+      [...HEROES].sort((a, b) => (state[b]?.value ?? START) - (state[a]?.value ?? START))
+        .forEach((name, i) => cards[name].style.order = i);
+    }
+
+    // ---- video upload (chunked multipart so big videos work) ----
+    const CHUNK = 90 * 1024 * 1024;
+    async function uploadVideo(name, file, btn) {
+      const label = btn.textContent;
+      try {
+        const c = await (await fetch('/api/video/create', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, contentType: file.type }) })).json();
+        if (c.error) { btn.textContent = '⚠️'; return; }
+        const parts = [];
+        let pos = 0, n = 1;
+        while (pos < file.size) {
+          const chunk = file.slice(pos, pos + CHUNK);
+          const res = await fetch(`/api/video/part?key=${encodeURIComponent(c.key)}&uploadId=${encodeURIComponent(c.uploadId)}&partNumber=${n}`, { method: 'PUT', body: chunk });
+          parts.push({ partNumber: n, etag: (await res.json()).etag });
+          pos += CHUNK; n++;
+          btn.textContent = Math.min(99, Math.round(pos / file.size * 100)) + '%';
+        }
+        await fetch('/api/video/complete', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, key: c.key, uploadId: c.uploadId, parts }) });
+        btn.textContent = label;
+        poll();
+      } catch (e) {
+        btn.textContent = '⚠️';
+      }
+    }
+
+    async function poll() { try { apply((await (await fetch('/api/aura')).json()).aura); } catch {} }
+    poll();
+    setInterval(poll, 1500);
+
+    if (window.navigator.standalone) {
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a');
+        if (a && a.host === location.host && !a.target) { e.preventDefault(); location.href = a.href; }
+      });
+    }
+  </script>
+</body>
+</html>
