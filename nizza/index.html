@@ -19,6 +19,8 @@
     a.tile:active { background: #f2f2f2; }
     .emoji { font-size: 1.6rem; margin-right: 8px; }
     .muted { color: #999; font-size: 0.85rem; margin-top: 18px; }
+    #resetAura { margin-top: 10px; align-self: center; background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 8px 16px; color: #999; font: inherit; cursor: pointer; }
+    #resetAura:active { background: #f2f2f2; }
   </style>
 </head>
 <body>
@@ -27,9 +29,19 @@
     <a class="tile" href="/aura/"><span class="emoji">✨</span>Aura</a>
     <a class="tile" href="/chooser/"><span class="emoji">🎡</span>Chooser</a>
     <a class="tile" href="/hater/"><span class="emoji">🔥</span>Hater</a>
+    <button id="resetAura">↺ Reset Aura</button>
     <p class="muted">Tipp: Teilen → „Zum Home-Bildschirm" für die App.</p>
   </div>
   <script>
+    document.getElementById('resetAura').onclick = async function () {
+      if (!confirm('Aura zurücksetzen? Alle Helden auf 67, alle Quests wieder offen.')) return;
+      const b = document.getElementById('resetAura');
+      b.disabled = true; b.textContent = 'Reset…';
+      try { await fetch('/api/reset', { method: 'POST' }); b.textContent = 'Erledigt ✓'; }
+      catch (e) { b.textContent = '⚠️ Fehler'; }
+      setTimeout(function () { b.disabled = false; b.textContent = '↺ Reset Aura'; }, 1500);
+    };
+
     if (window.navigator.standalone) {
       document.addEventListener('click', function (e) {
         var a = e.target.closest('a');

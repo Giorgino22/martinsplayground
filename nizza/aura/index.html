@@ -52,7 +52,6 @@
     .quest.completed { background: #eaf7ea; border-color: #bfe3bf; }
     .who { display: flex; align-items: center; padding: 0 4px; }
     .avt { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; margin-left: -6px; border: 2px solid #fff; }
-    #resetBtn { background: #fff; border: 1px solid #ccc; border-radius: 8px; padding: 8px 14px; color: #999; font: inherit; cursor: pointer; }
 
     /* picker overlay */
     .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: flex-end; justify-content: center; z-index: 100; }
@@ -90,7 +89,6 @@
       </div>
       <div id="questList"></div>
     </div>
-    <div style="text-align:center;margin-top:24px;"><button id="resetBtn">↺ Reset</button></div>
   </div>
 
   <!-- hero picker -->
@@ -291,6 +289,7 @@
           el.innerHTML =
             `<div class="qinfo"><b>${esc(q.title)}</b><span class="qamt">${questAmtText(q)}</span></div>` +
             whoAvatars(q) +
+            `<button class="done" data-done="${q.id}">Erledigt</button>` +
             `<button class="qdel" data-del="${q.id}">✕</button>`;
           list.appendChild(el);
         }
@@ -331,12 +330,7 @@
       document.querySelector('.tab[data-tab="heroes"]').click();   // jump to board to see the gains
     };
 
-    document.getElementById('resetBtn').onclick = async () => {
-      if (!confirm('Alles zurücksetzen? Alle Helden auf 67, alle Quests wieder offen.')) return;
-      const r = await (await fetch('/api/reset', { method: 'POST' })).json();
-      applyAura(r.aura);
-      if (r.quests) { quests = r.quests; renderQuests(); }
-    };
+    // (reset lives on the home page now)
 
     // ---------- sync ----------
     async function poll() {

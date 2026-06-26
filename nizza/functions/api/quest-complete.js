@@ -31,7 +31,12 @@ export async function onRequestPost({ env, request }) {
     }
   }
 
-  await env.DB.prepare('UPDATE quests SET completed = 1, completed_by = ? WHERE id = ?').bind(JSON.stringify(picked), id).run();
+  // Append the new people to whoever already completed it (deduped).
+  const existing = await env.DB.prepare('SELECT completed_by FROM quests WHERE id = ?').bind(id).first();
+  let prev = [];
+  try { prev = JSON.parse((existing && existing.completed_by) || '[]'); } catch (e) { /* ignore */ }
+  const merged = [...new Set([...prev, ...picked])];
+  await env.DB.prepare('UPDATE quests SET completed = 1, completed_by = ? WHERE id = ?').bind(JSON.stringify(merged), id).run();
 
   const { results } = await env.DB.prepare('SELECT name, value, has_video, bonus_pct FROM aura').all();
   return json({ aura: results });
