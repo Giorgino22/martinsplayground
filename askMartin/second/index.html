@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>askMartin</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    /* Stage holds every layer; each stage keeps the one before it visible
+       underneath so the gag builds up instead of cutting between screens. */
+    #stage { position: fixed; inset: 0; }
+
+    /* --- Layer 1: Nils' live site, shown full screen --- */
+    #nils {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #000;
+    }
+
+    /* --- Layer 2: the burn --- */
+    /* A fiery front that sweeps down over Nils' site and scorches it. */
+    #fire {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 120%, #fff6b0 0%, #ffb300 18%, #ff5a00 38%, #c40000 60%, rgba(60,0,0,0) 80%);
+      mix-blend-mode: screen;
+      will-change: opacity, transform;
+    }
+    /* Char layer darkens the frame into ash after the flames pass. Kept a
+       charcoal grey (not pure black) so the burnt "nei." stays legible on top. */
+    #char {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 40% 30%, rgba(60,40,25,0.25) 0%, rgba(26,20,16,0.92) 55%, #14100c 100%),
+        repeating-linear-gradient(115deg, rgba(0,0,0,0.35) 0 6px, rgba(50,28,10,0.35) 6px 12px);
+    }
+
+    .fireOn { animation: fireSweep 2s ease-in forwards; }
+    @keyframes fireSweep {
+      0%   { opacity: 0;   transform: translateY(40%) scale(1.2); }
+      25%  { opacity: 0.9; transform: translateY(10%) scale(1.1); }
+      70%  { opacity: 1;   transform: translateY(-10%) scale(1); }
+      100% { opacity: 0;   transform: translateY(-45%) scale(0.95); }
+    }
+    .charOn { animation: charIn 1.4s ease-out 0.6s forwards; }
+    @keyframes charIn { to { opacity: 1; } }
+
+    /* --- Layer 3: the burnt "nei." --- */
+    #nei {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28vw;
+      font-weight: 400;
+      opacity: 0;
+      /* Burnt-paper fill: ashy white at the top fading to a glowing ember at
+         the base, so the word reads as charred rather than just dark. */
+      color: #e9e2d8;
+      background: linear-gradient(#efe7db 0%, #d9c7a0 34%, #ff8a00 66%, #b21e00 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow:
+        0 0 18px rgba(255, 100, 0, 0.55),
+        0 0 40px rgba(255, 40, 0, 0.35);
+      will-change: opacity, transform, filter;
+    }
+    .neiOn { animation: neiIn 1.2s ease-out forwards; }
+    @keyframes neiIn {
+      0%   { opacity: 0; transform: scale(0.6) rotate(-3deg); filter: blur(6px); }
+      60%  { opacity: 1; transform: scale(1.05) rotate(1deg); filter: blur(0);  }
+      100% { opacity: 1; transform: scale(1) rotate(0deg);   filter: blur(0);  }
+    }
+    /* Smoulder = a slow flicker so the embers feel alive before the shark. */
+    .neiSmoulder { animation: smoulder 0.9s ease-in-out infinite alternate; }
+    /* opacity is pinned here: this animation replaces neiIn, so without it the
+       word would fall back to its base opacity:0 and disappear before the shark. */
+    @keyframes smoulder {
+      from { opacity: 1; text-shadow: 0 0 12px rgba(255,90,0,0.45), 0 0 24px rgba(255,40,0,0.25); }
+      to   { opacity: 1; text-shadow: 0 0 22px rgba(255,140,0,0.75), 0 0 44px rgba(255,60,0,0.45); }
+    }
+    /* When the shark bites, the nei is yanked off toward the shark and vanishes. */
+    .neiEaten { animation: neiEaten 0.45s ease-in forwards; }
+    @keyframes neiEaten {
+      0%   { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
+      100% { opacity: 0; transform: translateX(-12vw) scale(0.2) rotate(-25deg); }
+    }
+
+    /* --- Layer 4: the shark (inline SVG so it renders identically everywhere) --- */
+    /* The SVG already faces left (mouth on the left edge), so no flip is needed:
+       swimming left means the mouth leads and reaches the nei first. */
+    #shark {
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      width: 46vw;
+      transform: translateY(-50%);
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.5));
+      opacity: 0;
+      will-change: left, transform;
+    }
+    #shark svg { width: 100%; height: auto; display: block; }
+    .sharkSwim { animation: sharkSwim 2.6s cubic-bezier(0.3,0,0.4,1) forwards; }
+    @keyframes sharkSwim {
+      0%   { left: 108%; opacity: 0; transform: translateY(-50%) scale(1); }
+      10%  { opacity: 1; }
+      /* charges in until the open mouth reaches the nei, and chomps... */
+      42%  { left: 44%;  opacity: 1; transform: translateY(-50%) scale(1); }
+      50%  { left: 40%;  opacity: 1; transform: translateY(-50%) scale(1.06); }
+      /* ...then races off the left edge with its meal */
+      100% { left: -60%; opacity: 1; transform: translateY(-50%) scale(1); }
+    }
+
+    /* --- Layer 5: back to Ja (the original askMartin) --- */
+    #ja {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #000;
+      font-size: 50px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .jaOn { animation: jaIn 1s ease-out forwards; }
+    @keyframes jaIn { to { opacity: 1; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      #fire, #char, #shark { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="stage">
+    <!-- 1. Show his site. -->
+    <iframe id="nils" src="https://second.asknils.ch/" title="asknils" referrerpolicy="no-referrer"></iframe>
+
+    <!-- 2. Burn it. -->
+    <div id="fire"></div>
+    <div id="char"></div>
+
+    <!-- 3. It becomes a burnt "nei." -->
+    <div id="nei">nei.</div>
+
+    <!-- 4. A shark eats the nei. -->
+    <div id="shark" aria-label="shark">
+      <svg viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+        <!-- body -->
+        <path d="M20 95 C60 60 130 55 205 70 C230 40 255 28 278 26 C268 52 268 74 258 92
+                 C270 104 282 118 292 138 C262 128 236 128 214 132
+                 C150 150 70 142 30 118 C22 112 16 104 20 95 Z"
+              fill="#5b6b78"/>
+        <!-- belly -->
+        <path d="M40 112 C110 138 175 142 232 128 C204 132 150 148 92 138 C70 134 52 124 40 112 Z"
+              fill="#d7dee3"/>
+        <!-- dorsal fin -->
+        <path d="M150 60 C165 30 188 20 205 22 C196 40 190 56 188 66 C176 60 162 59 150 60 Z"
+              fill="#4a5966"/>
+        <!-- pectoral fin -->
+        <path d="M120 118 C130 148 150 160 172 162 C158 146 150 130 148 118 C138 118 128 118 120 118 Z"
+              fill="#4a5966"/>
+        <!-- tail -->
+        <path d="M258 92 C270 78 282 62 286 40 C290 70 288 96 292 138 C280 120 270 104 258 92 Z"
+              fill="#4a5966"/>
+        <!-- gills -->
+        <g stroke="#3c4854" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M92 82 C88 92 88 104 92 116"/>
+          <path d="M104 80 C100 92 100 106 104 118"/>
+          <path d="M116 80 C112 92 112 106 116 120"/>
+        </g>
+        <!-- open mouth with teeth -->
+        <path d="M20 95 C34 92 52 94 66 100 C54 110 36 116 22 118 C16 110 16 102 20 95 Z" fill="#2a333c"/>
+        <path d="M24 97 l7 7 l7 -6 l7 7 l7 -6 l7 7" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+        <path d="M26 114 l7 -6 l7 6 l7 -6 l7 6" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+        <!-- eye -->
+        <circle cx="74" cy="86" r="6" fill="#12181d"/>
+        <circle cx="76" cy="84" r="2" fill="#fff"/>
+      </svg>
+    </div>
+
+    <!-- 5. The Ja is back. -->
+    <div id="ja">Ja</div>
+  </div>
+
+  <script>
+    // Timeline (ms). Let his site do its own thing first, then take over.
+    const fire   = document.getElementById('fire');
+    const char   = document.getElementById('char');
+    const nei     = document.getElementById('nei');
+    const shark   = document.getElementById('shark');
+    const ja       = document.getElementById('ja');
+
+    const T = {
+      burn:       4500,   // give his site a few seconds to load + burn mine into "Nein"
+      charSettle: 5800,   // ashes have set
+      nei:        6200,   // burnt "nei." rises from the ashes
+      smoulder:   7600,   // it sits there smouldering
+      shark:      9000,   // shark charges in
+      bite:      10150,   // chomp — the open mouth reaches the nei and tears it away
+      ja:        11500,   // clean page, Ja restored
+    };
+
+    setTimeout(() => { fire.classList.add('fireOn'); char.classList.add('charOn'); }, T.burn);
+    setTimeout(() => { nei.classList.add('neiOn'); }, T.nei);
+    setTimeout(() => { nei.classList.add('neiSmoulder'); }, T.smoulder);
+    setTimeout(() => { shark.classList.add('sharkSwim'); }, T.shark);
+    setTimeout(() => {
+      nei.classList.remove('neiSmoulder');
+      nei.classList.add('neiEaten');
+    }, T.bite);
+    setTimeout(() => { ja.classList.add('jaOn'); }, T.ja);
+  </script>
+</body>
+</html>
