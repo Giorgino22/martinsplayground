@@ -403,7 +403,7 @@ export function feedsFor(person, env) {
   const key = 'FEEDS_' + person.name.toUpperCase().replace(/[^A-Z0-9]/g, '');
   const raw = env && env[key];
   if (raw && String(raw).trim()) {
-    return String(raw).split(/[\s,]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    return String(raw).split(/[\s,;]+/).map(function (s) { return s.trim(); }).filter(Boolean);
   }
   return person.feeds;
 }
@@ -427,14 +427,33 @@ export async function onRequest(context) {
     const info = { name: person.name, color: person.color, ok: true };
     people[i] = info;
 
-    const feeds = feedsFor(person, context.env);
-    if (!feeds.length) {
+    const entries = feedsFor(person, context.env);
+    if (!entries.length) {
       info.hidden = true;              // noch kein Kalender -> gar nicht anzeigen
       return;
     }
 
-    const results = await Promise.all(feeds.map(async function (feed) {
-      const href = feed.replace(/^webcal:\/\//i, 'https://');
+    // Offensichtlich falsche Eintraege gar nicht erst holen, sondern benennen.
+    const feeds = [];
+    const wrong = [];
+    entries.forEach(function (entry) {
+      const href = entry.replace(/^webcal:\/\//i, 'https://');
+      if (/calendar\.google\.com/.test(href) && /[?&]cid=/.test(href)) {
+        wrong.push('ein «?cid=»-Link ist eine Abo-Seite, kein Kalender-Feed');
+      } else if (!/^https?:\/\//i.test(href)) {
+        wrong.push('«' + entry.slice(0, 30) + '…» ist keine Adresse');
+      } else {
+        feeds.push(href);
+      }
+    });
+
+    if (!feeds.length) {
+      info.ok = false;
+      info.note = wrong.join(' · ');
+      return;
+    }
+
+    const results = await Promise.all(feeds.map(async function (href) {
       try {
         const res = await fetch(href, {
           cf: { cacheTtl: 300, cacheEverything: true },
@@ -448,14 +467,17 @@ export async function onRequest(context) {
     }));
 
     const failed = results.filter(function (r) { return r.error; });
+    const notes = wrong.slice();
     if (failed.length === results.length) {
       info.ok = false;
-      info.note = failed[0].error === 'HTTP 404'
+      notes.push(failed[0].error === 'HTTP 404'
         ? 'Kalender ist weder öffentlich noch als private iCal-Adresse hinterlegt'
-        : 'Kalender nicht erreichbar (' + failed[0].error + ')';
+        : 'Kalender nicht erreichbar (' + failed[0].error + ')');
+      info.note = notes.join(' · ');
       return;
     }
-    if (failed.length) info.note = failed.length + ' von ' + results.length + ' Kalendern nicht erreichbar';
+    if (failed.length) notes.push(failed.length + ' von ' + results.length + ' Kalendern nicht erreichbar');
+    if (notes.length) info.note = notes.join(' · ');
 
     results.forEach(function (r) {
       if (!r.text) return;
