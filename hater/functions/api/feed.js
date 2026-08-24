@@ -23,6 +23,21 @@ function gcal(id) {
 
    Apple/iCloud: iCloud.com → Kalender → Freigabe-Symbol neben dem Kalender →
    «Öffentlicher Kalender» → Link kopieren, webcal:// durch https:// ersetzen.
+
+   Nicht öffentlich? Google bietet unter «Kalender integrieren» auch eine
+   «Private Adresse im iCal-Format» (endet auf /private-xxxxx/basic.ics). Die
+   funktioniert ohne Anmeldung und ohne den Kalender öffentlich zu machen —
+   aber sie ist ein Passwort. Solche Adressen gehören NICHT in dieses Repo
+   (es ist öffentlich), sondern in eine Umgebungsvariable in Cloudflare:
+
+     FEEDS_MARTIN, FEEDS_PATRICK, FEEDS_MAMA, FEEDS_PAPA
+
+   Mehrere Adressen mit Komma oder Zeilenumbruch trennen. Ist die Variable
+   gesetzt, ersetzt sie die `feeds`-Liste dieser Person hier im Code.
+
+   Achtung: «Kalender teilen»-Links (calendar.google.com/calendar/u/0?cid=…)
+   sind KEINE Feeds. Das sind Seiten zum Abonnieren, die eine Anmeldung
+   verlangen — sie lassen sich hier nicht verwenden.
 ------------------------------------------------------------------- */
 export const PEOPLE = [
   {
@@ -381,6 +396,16 @@ export function toDisplay(occ, personIndex) {
    Endpunkt
 ------------------------------------------------------------------- */
 
+/** Feeds einer Person: FEEDS_<NAME> aus Cloudflare schlägt die Liste im Code. */
+export function feedsFor(person, env) {
+  const key = 'FEEDS_' + person.name.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  const raw = env && env[key];
+  if (raw && String(raw).trim()) {
+    return String(raw).split(/[\s,]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+  }
+  return person.feeds;
+}
+
 function dayMs(iso, endOfDay) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
   if (!m) return null;
@@ -400,13 +425,14 @@ export async function onRequest(context) {
     const info = { name: person.name, color: person.color, ok: true };
     people[i] = info;
 
-    if (!person.feeds.length) {
+    const feeds = feedsFor(person, context.env);
+    if (!feeds.length) {
       info.ok = false;
       info.note = 'Noch kein Kalender hinterlegt';
       return;
     }
 
-    const results = await Promise.all(person.feeds.map(async function (feed) {
+    const results = await Promise.all(feeds.map(async function (feed) {
       const href = feed.replace(/^webcal:\/\//i, 'https://');
       try {
         const res = await fetch(href, {
@@ -424,7 +450,7 @@ export async function onRequest(context) {
     if (failed.length === results.length) {
       info.ok = false;
       info.note = failed[0].error === 'HTTP 404'
-        ? 'Kalender ist nicht öffentlich freigegeben'
+        ? 'Kalender ist weder öffentlich noch als private iCal-Adresse hinterlegt'
         : 'Kalender nicht erreichbar (' + failed[0].error + ')';
       return;
     }
