@@ -43,20 +43,30 @@ root, Functions are not deployed and `/api/*` returns 405.
 backend, no bindings. It reuses the old `hater.odermatts.ch` Pages project (build output
 directory `hater`).
 
-- Tabs per person plus an **Alle** tab that overlays everyone; in *Alle* each person gets one
-  colour, in their own tab their original per-calendar colours.
-- Monat / Woche / Agenda switch, ↻ reload, last choice remembered in `localStorage`.
+**One person = one category.** All of a person's calendars (private, work, sport, …) live in
+their `srcs` array and show up together under their name; the individual calendar names are never
+shown (`showCalendars=0`).
+
+- Tabs: **Alle** (everyone overlaid, one colour per person so you can tell whose event it is)
+  plus one tab per person (their own per-calendar colours, if `colors` is set).
+- Monat / Woche / Agenda switch, ↻ reload, last choice kept in `localStorage`.
   Phones open in Agenda view.
 
-**Adding a family member:** copy the commented-out block in the `CALENDARS` array at the top of
-the `<script>`. Take the values from Google Calendar → *Settings → «Integrate calendar»*: every
-`&src=…` in the embed code becomes one entry in `srcs`, every `&color=%23xxxxxx` one entry in
-`colors` (same order). `color` is the person's colour in the *Alle* view.
+**Adding a person / a calendar:** edit the `CALENDARS` array at the top of the `<script>`;
+commented-out blocks for Mama and Papa are already there. The calendar ID is the `src=…` part of
+the Google embed code (*Settings → Calendar → «Integrate calendar»*), before `&ctz=`. Plain
+addresses (`someone@gmail.com`, `…@group.calendar.google.com`) and Google's base64 form both work.
+
+**Sharing is what makes it visible.** The page only embeds; it cannot grant access. Each calendar
+must either be public (*Settings → Access permissions → Make available to public*) — which means
+anyone who knows `hater.odermatts.ch` can read it — or shared with each family member's Google
+account, in which case they have to be signed into Google in that browser. Not-shared calendars
+render as an empty/error box for that viewer, the rest of the page still works.
 
 **Apple/iCloud calendars:** Apple has no HTML embed, only a `webcal://` .ics feed. Subscribe to it
-in Google Calendar (*Other calendars → From URL*, `webcal://` → `https://`), then paste that
-Google embed code here. Google re-polls external feeds slowly (hours, not minutes), so those
-entries are not live.
+in Google Calendar (*Other calendars → From URL*, `webcal://` → `https://`), then use the resulting
+`…@import.calendar.google.com` ID here. Google re-polls external feeds slowly (hours, not
+minutes), so those entries are not live.
 
 ## Adding a new site
 

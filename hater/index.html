@@ -76,37 +76,55 @@
 /* ------------------------------------------------------------------
    Familienkalender — reine Ansicht, keine Logik.
 
-   Neue Person hinzufügen: Block unten kopieren und ausfüllen.
-   Die `src`-Werte stehen im Google-Calendar-Einbettungscode
-   (Einstellungen → Kalender → "Kalender integrieren"):
-   jeder  &src=XXXX  → ein Eintrag in srcs, jeder &color=%23xxxxxx → colors.
+   Eine Person = eine Kategorie. Alle Kalender einer Person (Privat, Arbeit,
+   Sport, …) liegen in ihrem `srcs`-Array und erscheinen zusammen unter ihrem
+   Namen — die einzelnen Kalendernamen sind nirgends sichtbar.
 
-   Apple-Kalender: Apple bietet keinen HTML-Embed. iCloud-Kalender in
-   Google abonnieren ("Weitere Kalender → Per URL", webcal:// → https://),
-   dann den neuen Google-Embed-Code hier eintragen.
+   Neue Person hinzufügen / Kalender ergänzen: Die Kalender-ID steht im
+   Google-Einbettungscode (Einstellungen → Kalender → «Kalender integrieren»)
+   im Teil  src=...  vor dem  &ctz= . Ist sie base64-kodiert (ein langer
+   Buchstabensalat ohne @), tut es auch die Klartext-Adresse.
+
+   Apple/iCloud: Apple bietet keinen HTML-Embed, nur einen webcal://-Feed.
+   Feed in Google abonnieren («Weitere Kalender → Per URL», webcal:// → https://),
+   dann die neue Kalender-ID hier eintragen.
 ------------------------------------------------------------------- */
 var CALENDARS = [
   {
-    name: 'Patrick',
-    color: '#0088ff',            // Farbe in der "Alle"-Ansicht
+    name: 'Martin',
+    color: '#ff9500',            // Farbe in der «Alle»-Ansicht
     srcs: [
-      'cG95bGxpeDRAZ21haWwuY29t',
-      'NTRiYTZiMTQyYjFjZjEyYTk2NGZhMzY3NmUxOTdkMjEyZTZlYmI3MzBlNjQyZmYwNTlhNzQ0NGY2MzU2ODIzN0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t',
-      'MjMwNzI0NGQxODhkYmQxZDEwODFiZTQ1ZmJhMzBkOGM5ZmU2NTAyYmFiNjFiZDcyOGI2MmI3NWQyNGM5OGE0N0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t',
-      'ODQyNjE2YmRlZWYzODg2Njg2OTczYTE5NGQ3MmZiM2FlYWU0Yjc2MjVlY2JjMDA3NTBmZDI0YTZlMDMzZGE2YkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t',
-      'YTA5YjNhNzEwNTM0ZmM2MDM2NDVmMzJjNDRlNTRhYmE1Yzg2NmFhNGI0NTUwOGQ0Y2ZjMjhiMzgyNTAwNThjY0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t',
-      'ZXRjNHNydm92cG1kYnVqdXZ0OTRvMnN2azRsOHAxbWlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20',
-      'bjloZmo1MmZ0cmdlYnNmMHE5OWI5aWJ2bXFxb3NhMmlAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20',
-      'Z2JwaWZnMzVqajRkMDg5cHVpNnQ2dG84OXFjZWhmNDRAaW1wb3J0LmNhbGVuZGFyLmdvb2dsZS5jb20'
+      'v6uv4vslmaggr9ais04cdu4ssqmdrark@import.calendar.google.com'
+    ]
+  },
+  {
+    name: 'Patrick',
+    color: '#0088ff',
+    srcs: [
+      'poyllix4@gmail.com',
+      '54ba6b142b1cf12a964fa3676e197d212e6ebb730e642ff059a7444f63568237@group.calendar.google.com',
+      '2307244d188dbd1d1081be45fba30d8c9fe6502bab61bd728b62b75d24c98a47@group.calendar.google.com',
+      '842616bdeef3886686973a194d72fb3aeae4b7625ecbc00750fd24a6e033da6b@group.calendar.google.com',
+      'a09b3a710534fc603645f32c44e54aba5c866aa4b45508d4cfc28b38250058cc@group.calendar.google.com',
+      'etc4srvovpmdbujuvt94o2svk4l8p1mi@import.calendar.google.com',
+      'n9hfj52ftrgebsf0q99b9ibvmqqosa2i@import.calendar.google.com',
+      'gbpifg35jj4d089pui6t6to89qcehf44@import.calendar.google.com'
     ],
+    // Optional: eigene Farbe pro Kalender, nur in Patricks eigenem Tab sichtbar.
+    // In der «Alle»-Ansicht gilt immer die Personenfarbe oben.
     colors: ['#0088ff', '#83d754', '#ffcc00', '#cb30e0', '#ff383c', '#0088ff', '#0088ff', '#0088ff']
   }
 
+  // Mama und Papa: Kalender-IDs eintragen und die Kommentarzeichen entfernen.
   // ,{
-  //   name: 'Martin',
-  //   color: '#ff383c',
-  //   srcs: ['...'],
-  //   colors: ['#ff383c']
+  //   name: 'Mama',
+  //   color: '#cb30e0',
+  //   srcs: ['...@gmail.com']
+  // },
+  // {
+  //   name: 'Papa',
+  //   color: '#2ea043',
+  //   srcs: ['...@gmail.com']
   // }
 ];
 
