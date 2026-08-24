@@ -11,6 +11,7 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 | `askMartin/`  | `askmartin.odermatts.ch`     | A big "Ja" in the middle of the page. `/second/` loads `second.asknils.ch`, then a shark swims in and swallows his whole site ("Nei" and all), leaving a big "Ja". |
 | `askSchoggi/` | `askschoggi.odermatts.ch`    | Waits 2–3s, then screams a massive "NEI". |
 | `fottis/`     | `fottis.odermatts.ch`        | (Parked) Shared photo/video drop. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
+| `hater/`      | `hater.odermatts.ch`         | Familienkalender. Read-only view of the family's Google Calendar embeds. Static page, no bindings. |
 | `nizza/`      | `nizza.odermatts.ch`         | **The app.** Installable PWA hub: home launcher + `/aura/`, `/chooser/`, `/hater/`. Needs D1 (`DB`), Workers AI (`AI`), R2 (`BUCKET`). |
 
 ### nizza app (everything in one PWA)
@@ -27,13 +28,45 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
   app-like, full-screen experience (stays in-app because it's all one origin).
 
 Bindings on the nizza project: **`DB`** (D1), **`AI`** (Workers AI), **`BUCKET`** (R2).
-The old standalone `chooser.odermatts.ch` / `hater.odermatts.ch` projects can be deleted.
+The old standalone `chooser.odermatts.ch` project can be deleted; `hater.odermatts.ch` has been
+repurposed as the family calendar (see below).
 
 **Cloudflare config (important):** because this project uses Pages Functions in
 `nizza/functions/`, the project's **Root directory** must be set to `nizza` (Functions are
 detected relative to the Root directory). With Root directory = `nizza`, the **Build output
 directory** is `/` (assets sit at the root of `nizza`). If Root directory is left at the repo
 root, Functions are not deployed and `/api/*` returns 405.
+
+### hater (Familienkalender)
+
+`hater/index.html` is a single static page — a read-only view of the family's calendars, no
+backend, no bindings. It reuses the old `hater.odermatts.ch` Pages project (build output
+directory `hater`).
+
+**One person = one category.** All of a person's calendars (private, work, sport, …) live in
+their `srcs` array and show up together under their name; the individual calendar names are never
+shown (`showCalendars=0`).
+
+- Tabs: **Alle** (everyone overlaid, one colour per person so you can tell whose event it is)
+  plus one tab per person (their own per-calendar colours, if `colors` is set).
+- Monat / Woche / Agenda switch, ↻ reload, last choice kept in `localStorage`.
+  Phones open in Agenda view.
+
+**Adding a person / a calendar:** edit the `CALENDARS` array at the top of the `<script>`;
+commented-out blocks for Mama and Papa are already there. The calendar ID is the `src=…` part of
+the Google embed code (*Settings → Calendar → «Integrate calendar»*), before `&ctz=`. Plain
+addresses (`someone@gmail.com`, `…@group.calendar.google.com`) and Google's base64 form both work.
+
+**Sharing is what makes it visible.** The page only embeds; it cannot grant access. Each calendar
+must either be public (*Settings → Access permissions → Make available to public*) — which means
+anyone who knows `hater.odermatts.ch` can read it — or shared with each family member's Google
+account, in which case they have to be signed into Google in that browser. Not-shared calendars
+render as an empty/error box for that viewer, the rest of the page still works.
+
+**Apple/iCloud calendars:** Apple has no HTML embed, only a `webcal://` .ics feed. Subscribe to it
+in Google Calendar (*Other calendars → From URL*, `webcal://` → `https://`), then use the resulting
+`…@import.calendar.google.com` ID here. Google re-polls external feeds slowly (hours, not
+minutes), so those entries are not live.
 
 ## Adding a new site
 

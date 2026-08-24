@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Familienkalender</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Kalender">
+<meta name="theme-color" content="#ffffff">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; display: flex; flex-direction: column; background: #fff; color: #111;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  header {
+    flex: none; border-bottom: 1px solid #e5e5e5; background: #fff;
+    padding: max(10px, env(safe-area-inset-top)) 12px 10px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .row { display: flex; align-items: center; gap: 8px; }
+  .people { overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .people::-webkit-scrollbar { display: none; }
+
+  button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+
+  .chip {
+    flex: none; display: inline-flex; align-items: center; gap: 7px;
+    border: 1px solid #ddd; border-radius: 999px; padding: 7px 14px;
+    font-size: 0.95rem; font-weight: 600; white-space: nowrap; background: #fff;
+  }
+  .chip .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, #999); flex: none; }
+  .chip.on { border-color: var(--c, #111); background: color-mix(in srgb, var(--c, #111) 12%, #fff); }
+  .chip:active { background: #f2f2f2; }
+
+  .seg { display: flex; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; }
+  .seg button { padding: 6px 12px; font-size: 0.85rem; font-weight: 600; color: #666; }
+  .seg button + button { border-left: 1px solid #ddd; }
+  .seg button.on { background: #111; color: #fff; }
+
+  .spacer { flex: 1; }
+  .icon { border: 1px solid #ddd; border-radius: 10px; padding: 6px 11px; font-size: 0.9rem; color: #666; }
+  .icon:active { background: #f2f2f2; }
+
+  main { flex: 1; min-height: 0; }
+  iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+  @media (max-width: 520px) {
+    .chip { padding: 6px 12px; font-size: 0.9rem; }
+    .seg button { padding: 6px 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="row people" id="people"></div>
+  <div class="row">
+    <div class="seg" id="modes">
+      <button data-mode="MONTH">Monat</button>
+      <button data-mode="WEEK">Woche</button>
+      <button data-mode="AGENDA">Agenda</button>
+    </div>
+    <div class="spacer"></div>
+    <button class="icon" id="reload" title="Neu laden">↻</button>
+  </div>
+</header>
+
+<main><iframe id="cal" title="Kalender" frameborder="0" scrolling="no"></iframe></main>
+
+<script>
+/* ------------------------------------------------------------------
+   Familienkalender — reine Ansicht, keine Logik.
+
+   Eine Person = eine Kategorie. Alle Kalender einer Person (Privat, Arbeit,
+   Sport, …) liegen in ihrem `srcs`-Array und erscheinen zusammen unter ihrem
+   Namen — die einzelnen Kalendernamen sind nirgends sichtbar.
+
+   Neue Person hinzufügen / Kalender ergänzen: Die Kalender-ID steht im
+   Google-Einbettungscode (Einstellungen → Kalender → «Kalender integrieren»)
+   im Teil  src=...  vor dem  &ctz= . Ist sie base64-kodiert (ein langer
+   Buchstabensalat ohne @), tut es auch die Klartext-Adresse.
+
+   Apple/iCloud: Apple bietet keinen HTML-Embed, nur einen webcal://-Feed.
+   Feed in Google abonnieren («Weitere Kalender → Per URL», webcal:// → https://),
+   dann die neue Kalender-ID hier eintragen.
+------------------------------------------------------------------- */
+var CALENDARS = [
+  {
+    name: 'Martin',
+    color: '#ff9500',            // Farbe in der «Alle»-Ansicht
+    srcs: [
+      'v6uv4vslmaggr9ais04cdu4ssqmdrark@import.calendar.google.com'
+    ]
+  },
+  {
+    name: 'Patrick',
+    color: '#0088ff',
+    srcs: [
+      'poyllix4@gmail.com',
+      '54ba6b142b1cf12a964fa3676e197d212e6ebb730e642ff059a7444f63568237@group.calendar.google.com',
+      '2307244d188dbd1d1081be45fba30d8c9fe6502bab61bd728b62b75d24c98a47@group.calendar.google.com',
+      '842616bdeef3886686973a194d72fb3aeae4b7625ecbc00750fd24a6e033da6b@group.calendar.google.com',
+      'a09b3a710534fc603645f32c44e54aba5c866aa4b45508d4cfc28b38250058cc@group.calendar.google.com',
+      'etc4srvovpmdbujuvt94o2svk4l8p1mi@import.calendar.google.com',
+      'n9hfj52ftrgebsf0q99b9ibvmqqosa2i@import.calendar.google.com',
+      'gbpifg35jj4d089pui6t6to89qcehf44@import.calendar.google.com'
+    ],
+    // Optional: eigene Farbe pro Kalender, nur in Patricks eigenem Tab sichtbar.
+    // In der «Alle»-Ansicht gilt immer die Personenfarbe oben.
+    colors: ['#0088ff', '#83d754', '#ffcc00', '#cb30e0', '#ff383c', '#0088ff', '#0088ff', '#0088ff']
+  }
+
+  // Mama und Papa: Kalender-IDs eintragen und die Kommentarzeichen entfernen.
+  // ,{
+  //   name: 'Mama',
+  //   color: '#cb30e0',
+  //   srcs: ['...@gmail.com']
+  // },
+  // {
+  //   name: 'Papa',
+  //   color: '#2ea043',
+  //   srcs: ['...@gmail.com']
+  // }
+];
+
+var TZ = 'Europe/Zurich';
+var people = document.getElementById('people');
+var cal = document.getElementById('cal');
+var state = { who: 'all', mode: window.matchMedia('(max-width: 700px)').matches ? 'AGENDA' : 'MONTH' };
+var lastLoad = 0;
+
+function remember(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+
+function buildUrl() {
+  var list = state.who === 'all' ? CALENDARS : [CALENDARS[state.who]];
+  var q = [
+    'ctz=' + encodeURIComponent(TZ),
+    'wkst=2',                 // Woche beginnt am Montag
+    'mode=' + state.mode,
+    'showTitle=0', 'showPrint=0', 'showTabs=0', 'showCalendars=0', 'showTz=0',
+    'showNav=1', 'showDate=1',
+    'bgcolor=%23ffffff'
+  ];
+  list.forEach(function (p) {
+    p.srcs.forEach(function (src, i) {
+      // In der "Alle"-Ansicht bekommt jede Person eine eigene Farbe,
+      // in der Einzelansicht bleiben die Originalfarben.
+      var color = state.who === 'all' ? p.color : ((p.colors || [])[i] || p.color);
+      q.push('src=' + encodeURIComponent(src));
+      q.push('color=' + encodeURIComponent(color));
+    });
+  });
+  return 'https://calendar.google.com/calendar/embed?' + q.join('&');
+}
+
+function render() {
+  people.innerHTML = '';
+  var tabs = [{ name: 'Alle', color: '#111', key: 'all' }];
+  CALENDARS.forEach(function (p, i) { tabs.push({ name: p.name, color: p.color, key: i }); });
+
+  tabs.forEach(function (t) {
+    var b = document.createElement('button');
+    b.className = 'chip' + (String(state.who) === String(t.key) ? ' on' : '');
+    b.style.setProperty('--c', t.color);
+    b.innerHTML = '<span class="dot"></span>' + t.name;
+    b.onclick = function () {
+      state.who = t.key;
+      remember('cal.who', String(t.key));
+      render();
+    };
+    people.appendChild(b);
+  });
+
+  [].forEach.call(document.querySelectorAll('#modes button'), function (b) {
+    b.classList.toggle('on', b.dataset.mode === state.mode);
+  });
+
+  load();
+}
+
+function load() {
+  cal.src = buildUrl();
+  lastLoad = Date.now();
+}
+
+document.getElementById('modes').onclick = function (e) {
+  var b = e.target.closest('button');
+  if (!b) return;
+  state.mode = b.dataset.mode;
+  remember('cal.mode', state.mode);
+  render();
+};
+
+document.getElementById('reload').onclick = load;
+
+// Beim Zurückkommen nach längerer Pause frisch laden (Wandtablet).
+document.addEventListener('visibilitychange', function () {
+  if (document.visibilityState === 'visible' && Date.now() - lastLoad > 15 * 60 * 1000) load();
+});
+
+(function restore() {
+  var who = recall('cal.who');
+  if (who === 'all' || (who !== null && CALENDARS[who])) state.who = who === 'all' ? 'all' : Number(who);
+  var mode = recall('cal.mode');
+  if (['MONTH', 'WEEK', 'AGENDA'].indexOf(mode) !== -1) state.mode = mode;
+})();
+
+render();
+</script>
+</body>
+</html>
