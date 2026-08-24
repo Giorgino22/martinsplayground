@@ -73,7 +73,10 @@ root instead, `/api/feed` returns 405 and the page stays empty. Same trap as niz
 making the calendar public — but it is effectively a password, so it must **not** be committed to
 this repo, which is public. Put those in Cloudflare environment variables instead:
 `FEEDS_MARTIN`, `FEEDS_PATRICK`, `FEEDS_MAMA`, `FEEDS_PAPA` — several addresses separated by
-commas or newlines. When set, the variable replaces that person's `feeds` list in the code.
+commas, semicolons or newlines (any mix; trailing separators and blank lines are fine). When set,
+the variable replaces that person's `feeds` list in the code. An entry that obviously isn't a feed
+— a `?cid=` subscribe link, or anything without `http(s)://` — is skipped and named in that
+person's note rather than silently failing.
 
 All four people exist as slots in `PEOPLE`. A person with no feeds at all (in code or env) is left
 out of the response entirely, so Mama and Papa show no tab until `FEEDS_MAMA` / `FEEDS_PAPA` is
