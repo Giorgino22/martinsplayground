@@ -94,6 +94,9 @@ var CALENDARS = [
     name: 'Martin',
     color: '#ff9500',            // Farbe in der «Alle»-Ansicht
     srcs: [
+      // ACHTUNG: abonnierter Apple-Feed (@import.calendar.google.com) — den sieht nur
+      // Martin selbst, Google kann abonnierte Kalender nicht freigeben. Ersetzen durch
+      // die ID eines eigenen Google-Kalenders, sobald umgestellt (siehe README).
       'v6uv4vslmaggr9ais04cdu4ssqmdrark@import.calendar.google.com'
     ]
   },
@@ -105,14 +108,15 @@ var CALENDARS = [
       '54ba6b142b1cf12a964fa3676e197d212e6ebb730e642ff059a7444f63568237@group.calendar.google.com',
       '2307244d188dbd1d1081be45fba30d8c9fe6502bab61bd728b62b75d24c98a47@group.calendar.google.com',
       '842616bdeef3886686973a194d72fb3aeae4b7625ecbc00750fd24a6e033da6b@group.calendar.google.com',
-      'a09b3a710534fc603645f32c44e54aba5c866aa4b45508d4cfc28b38250058cc@group.calendar.google.com',
-      'etc4srvovpmdbujuvt94o2svk4l8p1mi@import.calendar.google.com',
-      'n9hfj52ftrgebsf0q99b9ibvmqqosa2i@import.calendar.google.com',
-      'gbpifg35jj4d089pui6t6to89qcehf44@import.calendar.google.com'
+      'a09b3a710534fc603645f32c44e54aba5c866aa4b45508d4cfc28b38250058cc@group.calendar.google.com'
+      // Entfernt: etc4srvovpmd…, n9hfj52ftrge…, gbpifg35jj4d… (@import.calendar.google.com).
+      // Das sind Patricks eigene abonnierte Feeds. Abonnierte Kalender lassen sich in Google
+      // nicht freigeben, also sieht sie ausser ihm niemand — sie haben nur die Fehlermeldung
+      // «Events from one or more calendars could not be shown» erzeugt.
     ],
     // Optional: eigene Farbe pro Kalender, nur in Patricks eigenem Tab sichtbar.
     // In der «Alle»-Ansicht gilt immer die Personenfarbe oben.
-    colors: ['#0088ff', '#83d754', '#ffcc00', '#cb30e0', '#ff383c', '#0088ff', '#0088ff', '#0088ff']
+    colors: ['#0088ff', '#83d754', '#ffcc00', '#cb30e0', '#ff383c']
   }
 
   // Mama und Papa: Kalender-IDs eintragen und die Kommentarzeichen entfernen.
