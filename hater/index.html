@@ -17,7 +17,8 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     font-size: 15px;
   }
-  button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
+  button, select, input { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: none; }
 
   /* ---- Kopf ---- */
   header {
@@ -38,7 +39,7 @@
   .chip.on { border-color: var(--c, #111); background: color-mix(in srgb, var(--c, #111) 12%, #fff); }
 
   .seg { display: flex; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; flex: none; }
-  .seg button { padding: 6px 12px; font-size: 0.85rem; font-weight: 600; color: #666; }
+  .seg button { padding: 6px 11px; font-size: 0.85rem; font-weight: 600; color: #666; white-space: nowrap; }
   .seg button + button { border-left: 1px solid #ddd; }
   .seg button.on { background: #111; color: #fff; }
 
@@ -47,13 +48,14 @@
   .label { font-weight: 700; font-size: 1rem; color: #111; padding: 0 8px; white-space: nowrap; }
   .spacer { flex: 1; }
   .icon.busy { opacity: 0.4; }
+  #openPlan { border-color: #111; color: #111; font-weight: 600; }
 
   .notes { font-size: 0.8rem; color: #b26b00; background: #fff8e6; border-radius: 8px; padding: 6px 10px; }
   .notes b { font-weight: 700; }
 
   /* ---- Ansicht ---- */
   main { flex: 1; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; }
-  .pad { padding: 12px; }
+  main.fit { overflow: hidden; }
   .empty, .loading { color: #999; text-align: center; padding: 40px 20px; }
 
   /* Monat */
@@ -80,8 +82,34 @@
   .ev .tt { overflow: hidden; text-overflow: ellipsis; }
   .ev.all { background: color-mix(in srgb, var(--c) 16%, #fff); font-weight: 600; }
   .ev.all .d { display: none; }
+  .who, .loc { color: #999; font-size: 0.8rem; }
 
-  /* Woche */
+  /* Woche als Zeitraster */
+  .wk { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 0 12px 10px; }
+  .wk-row { display: grid; grid-template-columns: 46px repeat(7, 1fr); }
+  .wk-head { flex: none; padding-top: 6px; }
+  .wk-dh { text-align: center; font-size: 0.75rem; font-weight: 700; color: #666; padding: 4px 0 6px; border-left: 1px solid #f2f2f2; }
+  .wk-dh.today { color: #fff; }
+  .wk-dh.today span { background: #111; border-radius: 6px; padding: 1px 6px; }
+  .wk-all { flex: none; border-top: 1px solid #eee; border-bottom: 1px solid #eee; min-height: 22px; }
+  .wk-adc { border-left: 1px solid #f2f2f2; padding: 2px; display: flex; flex-direction: column; gap: 2px; overflow: hidden; }
+  .wk-gut { font-size: 0.65rem; color: #bbb; text-align: right; padding-right: 5px; align-self: center; }
+  .wk-body { flex: 1; min-height: 0; position: relative; overflow: hidden; }
+  .wk-hours { position: relative; }
+  .wk-hours span { position: absolute; right: 5px; transform: translateY(-50%); font-size: 0.65rem; color: #bbb; font-variant-numeric: tabular-nums; }
+  .wk-line { position: absolute; left: 46px; right: 0; border-top: 1px solid #f4f4f4; z-index: 0; }
+  .wk-col { position: relative; z-index: 1; border-left: 1px solid #f2f2f2; }
+  .wk-col.today { background: #fffdf5; }
+  .wk-now { position: absolute; left: 46px; right: 0; border-top: 2px solid #ff3b30; z-index: 2; pointer-events: none; }
+  .blk {
+    position: absolute; border-radius: 4px; padding: 1px 4px; overflow: hidden; cursor: pointer;
+    background: color-mix(in srgb, var(--c) 20%, #fff); border-left: 3px solid var(--c);
+    font-size: 0.68rem; line-height: 1.2; text-align: left;
+  }
+  .blk b { font-weight: 600; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .blk i { font-style: normal; color: #666; font-variant-numeric: tabular-nums; }
+
+  /* Woche als Liste */
   .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; padding: 12px; }
   .day { border: 1px solid #eee; border-radius: 12px; padding: 8px; min-height: 120px; }
   .day.today { border-color: #111; }
@@ -91,7 +119,7 @@
   .day .ev .tt { white-space: normal; }
 
   /* Agenda */
-  .ag { padding: 4px 12px 24px; max-width: 720px; margin: 0 auto; }
+  .ag { padding: 4px 12px 24px; max-width: 720px; margin: 0 auto; width: 100%; }
   .agday { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
   .agday .when { flex: none; width: 74px; text-align: right; }
   .agday .dnum { font-size: 1.35rem; font-weight: 700; line-height: 1.1; }
@@ -100,32 +128,58 @@
   .agday .list { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
   .agday .ev { font-size: 0.92rem; white-space: normal; padding: 3px 6px; }
   .agday .ev .tt { white-space: normal; }
-  .who { color: #999; font-size: 0.8rem; }
-  .loc { color: #999; font-size: 0.8rem; }
 
-  /* Tages-Overlay */
+  /* Overlays */
   .sheet { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: flex-end; justify-content: center; z-index: 10; }
   .sheet.hidden { display: none; }
   .sheet .box {
-    background: #fff; width: 100%; max-width: 520px; border-radius: 16px 16px 0 0;
-    padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); max-height: 75vh; overflow: auto;
+    background: #fff; width: 100%; max-width: 560px; border-radius: 16px 16px 0 0;
+    padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); max-height: 86vh; overflow: auto;
   }
   .sheet h2 { margin: 0 0 12px; font-size: 1.05rem; }
   .sheet .ev { font-size: 0.95rem; white-space: normal; padding: 6px; margin-bottom: 4px; }
   .sheet .ev .tt { white-space: normal; }
   .sheet .close { display: block; width: 100%; margin-top: 12px; border: 1px solid #ddd; border-radius: 10px; padding: 10px; color: #666; }
 
+  /* Planer */
+  .fld { margin-bottom: 10px; }
+  .fld > label { display: block; font-size: 0.78rem; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+  .fld select, .fld input { width: 100%; border: 1px solid #ddd; border-radius: 9px; padding: 8px 10px; background: #fff; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .whoBox { display: flex; flex-wrap: wrap; gap: 6px; }
+  .whoBox label {
+    display: inline-flex; align-items: center; gap: 6px; border: 1px solid #ddd;
+    border-radius: 999px; padding: 6px 12px; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  }
+  .whoBox label.on { border-color: var(--c, #111); background: color-mix(in srgb, var(--c, #111) 12%, #fff); }
+  .whoBox input { display: none; }
+  .whoBox .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, #999); }
+  .check { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #444; margin-bottom: 10px; }
+  .check input { width: auto; }
+  .go { width: 100%; background: #111; color: #fff; border-radius: 10px; padding: 11px; font-weight: 700; }
+  .go:disabled { opacity: 0.5; }
+
+  .res { margin-top: 14px; }
+  .slot { border: 1px solid #eee; border-radius: 12px; padding: 10px; margin-bottom: 8px; }
+  .slot > h4 { margin: 0 0 2px; font-size: 0.95rem; }
+  .slot > .sub { font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+  .prev { border-left: 2px solid #eee; padding-left: 10px; display: flex; flex-direction: column; gap: 3px; }
+  .prev .ev { margin: 0; font-size: 0.85rem; padding: 3px 5px; }
+  .prev .new {
+    border: 1px dashed #111; border-radius: 5px; padding: 4px 6px; font-size: 0.85rem;
+    font-weight: 700; background: #f6f6f6;
+  }
+  .prev .none { font-size: 0.82rem; color: #bbb; }
+
   @media (max-width: 700px) {
-    /* Kopf umbrechen lassen, sonst schiebt er die ganze Seite seitlich raus */
     header .row { flex-wrap: wrap; }
     .spacer { flex-basis: 100%; height: 0; }
     #modes { flex: 1; }
-    #modes button { flex: 1; text-align: center; }
+    #modes button { flex: 1; text-align: center; padding: 6px 4px; font-size: 0.8rem; }
     .label { flex: 1; padding: 0 4px; font-size: 0.95rem; }
     .week { grid-template-columns: 1fr; }
-    .grid { grid-auto-rows: minmax(62px, 1fr); }
     .day { min-height: 0; }
-    /* Im Monat auf dem Handy nur farbige Punkte statt Text */
+    .grid { grid-auto-rows: minmax(62px, 1fr); }
     .grid .ev { padding: 0; gap: 3px; }
     .grid .ev .tm, .grid .ev .tt { display: none; }
     .grid .ev .d { display: block; width: 7px; height: 7px; }
@@ -133,6 +187,15 @@
     .grid .ev.all .d { display: block; }
     .grid .cell > .ev { display: inline-block; }
     .grid .more { display: none; }
+    /* Zeitraster schlank: schmale Spur, Bloecke ohne Text */
+    .wk { padding: 0 4px 6px; }
+    .wk-row { grid-template-columns: 28px repeat(7, 1fr); }
+    .wk-line, .wk-now { left: 28px; }
+    .wk-dh { font-size: 0.65rem; }
+    .wk-all .wk-gut { font-size: 0; }
+    .blk { padding: 0; border-left-width: 2px; }
+    .blk b, .blk i { display: none; }
+    .two { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -151,8 +214,10 @@
     <div class="seg" id="modes">
       <button data-mode="MONTH">Monat</button>
       <button data-mode="WEEK">Woche</button>
+      <button data-mode="LIST">Liste</button>
       <button data-mode="AGENDA">Agenda</button>
     </div>
+    <button class="icon" id="openPlan">Planen</button>
     <button class="icon" id="reload" title="Neu laden">↻</button>
   </div>
   <div class="notes" id="notes" hidden></div>
@@ -168,12 +233,53 @@
   </div>
 </div>
 
+<div class="sheet hidden" id="plan">
+  <div class="box">
+    <h2>Termin planen</h2>
+
+    <div class="fld">
+      <label for="pDur">Dauer</label>
+      <select id="pDur">
+        <option value="30">30 Minuten</option>
+        <option value="60" selected>1 Stunde</option>
+        <option value="90">1½ Stunden</option>
+        <option value="120">2 Stunden</option>
+        <option value="180">3 Stunden</option>
+        <option value="240">4 Stunden</option>
+        <option value="allday">Ganztägig</option>
+      </select>
+    </div>
+
+    <div class="fld two">
+      <div><label for="pFrom">Ab</label><input type="date" id="pFrom"></div>
+      <div><label for="pTo">Bis</label><input type="date" id="pTo"></div>
+    </div>
+
+    <div class="fld two" id="pTimeRow">
+      <div><label for="pEarly">Frühestens</label><input type="time" id="pEarly" value="08:00" step="900"></div>
+      <div><label for="pLate">Spätestens</label><input type="time" id="pLate" value="22:00" step="900"></div>
+    </div>
+
+    <div class="fld">
+      <label>Wer muss frei sein</label>
+      <div class="whoBox" id="pWho"></div>
+    </div>
+
+    <label class="check"><input type="checkbox" id="pIgnoreAll"> Ganztägige Termine nicht als besetzt zählen</label>
+
+    <button class="go" id="pGo">Freie Termine suchen</button>
+    <div class="res" id="pRes"></div>
+    <button class="close" id="planClose">Schliessen</button>
+  </div>
+</div>
+
 <script>
 /* ------------------------------------------------------------------
    Familienkalender — reine Ansicht.
 
    Die Kalender selbst stehen in functions/api/feed.js. Diese Seite holt
    von dort fertige Termine und zeichnet sie. Niemand muss sich anmelden.
+   Der Planer schlägt nur Termine vor — eingetragen wird nirgends etwas.
 ------------------------------------------------------------------- */
 
 var WD = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
@@ -200,42 +306,59 @@ function shift(k, n) {
   var p = partsOf(k), t = new Date(Date.UTC(p.y, p.m - 1, p.d + n));
   return keyOf(t.getUTCFullYear(), t.getUTCMonth() + 1, t.getUTCDate());
 }
-function dowOf(k) { var p = partsOf(k); return (new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay() + 6) % 7; } // 0 = Mo
-function todayKey() {
+function dowOf(k) { var p = partsOf(k); return (new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay() + 6) % 7; }
+function daysBetween(a, b) {
+  var pa = partsOf(a), pb = partsOf(b);
+  return Math.round((Date.UTC(pb.y, pb.m - 1, pb.d) - Date.UTC(pa.y, pa.m - 1, pa.d)) / 86400000);
+}
+function toMin(hhmm) { var a = hhmm.split(':'); return (+a[0]) * 60 + (+a[1]); }
+function fromMin(m) { return pad(Math.floor(m / 60) % 24) + ':' + pad(m % 60); }
+
+function nowInZurich() {
   try {
-    return new Intl.DateTimeFormat('en-CA', {
-      timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit'
-    }).format(new Date());
+    var f = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hour12: false
+    }).formatToParts(new Date());
+    var p = {};
+    f.forEach(function (x) { if (x.type !== 'literal') p[x.type] = x.value; });
+    if (p.hour === '24') p.hour = '00';
+    return { key: p.year + '-' + p.month + '-' + p.day, min: (+p.hour) * 60 + (+p.minute) };
   } catch (e) {
     var n = new Date();
-    return keyOf(n.getFullYear(), n.getMonth() + 1, n.getDate());
+    return { key: keyOf(n.getFullYear(), n.getMonth() + 1, n.getDate()), min: n.getHours() * 60 + n.getMinutes() };
   }
 }
+function todayKey() { return nowInZurich().key; }
 
 function remember(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+  });
+}
+
 /* ---- Daten ---- */
-function windowFor(anchor) {
-  return { from: shift(anchor, -120), to: shift(anchor, 400) };
+function indexEvents(json) {
+  DATA = json;
+  BY_DAY = {};
+  json.events.forEach(function (ev) {
+    for (var k = ev.s; ; k = shift(k, 1)) {
+      (BY_DAY[k] || (BY_DAY[k] = [])).push(ev);
+      if (k === ev.e) break;
+    }
+  });
+  lastLoad = Date.now();
 }
 
-function needsLoad() {
-  if (!DATA) return true;
-  var w = { from: shift(state.anchor, -40), to: shift(state.anchor, 60) };
-  return w.from < DATA.from || w.to > DATA.to;
-}
-
-function load(force) {
-  if (loading) return;
-  if (!force && !needsLoad()) { render(); return; }
+function fetchWindow(from, to) {
   loading = true;
   document.getElementById('reload').classList.add('busy');
-  var w = windowFor(state.anchor);
-  fetch('/api/feed?from=' + w.from + '&to=' + w.to)
+  return fetch('/api/feed?from=' + from + '&to=' + to)
     .then(function (r) {
       if (r.status === 404 || r.status === 405) {
-        // Genau das passiert, wenn die Pages-Function nicht mitdeployt wurde.
         var e = new Error('/api/feed antwortet nicht (HTTP ' + r.status + ')');
         e.hint = 'Die Function ist nicht deployt. In Cloudflare beim Projekt hater: ' +
                  'Root directory = hater, Build output directory = / (nicht hater).';
@@ -244,39 +367,66 @@ function load(force) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     })
-    .then(function (json) {
-      DATA = json;
-      BY_DAY = {};
-      json.events.forEach(function (ev) {
-        for (var k = ev.s; ; k = shift(k, 1)) {
-          (BY_DAY[k] || (BY_DAY[k] = [])).push(ev);
-          if (k === ev.e) break;
-        }
-      });
-      lastLoad = Date.now();
-      render();
-    })
+    .then(indexEvents)
+    .then(function () { loading = false; document.getElementById('reload').classList.remove('busy'); })
     .catch(function (err) {
-      document.getElementById('view').innerHTML =
-        '<div class="empty">Kalender konnten nicht geladen werden.<br>' +
-        '<small>' + esc(err.message) + '</small>' +
-        (err.hint ? '<br><br><small>' + esc(err.hint) + '</small>' : '') + '</div>';
-    })
-    .then(function () {
       loading = false;
       document.getElementById('reload').classList.remove('busy');
+      throw err;
     });
 }
 
-function eventsOn(k) {
+function windowFor(anchor) { return { from: shift(anchor, -120), to: shift(anchor, 400) }; }
+
+function needsLoad() {
+  if (!DATA) return true;
+  return shift(state.anchor, -40) < DATA.from || shift(state.anchor, 60) > DATA.to;
+}
+
+function load(force) {
+  if (loading) return;
+  if (!force && !needsLoad()) { render(); return; }
+  var w = windowFor(state.anchor);
+  fetchWindow(w.from, w.to).then(render).catch(showError);
+}
+
+/** Sorgt dafür, dass der Bereich geladen ist (für den Planer). */
+function ensureRange(from, to) {
+  if (DATA && from >= DATA.from && to <= DATA.to) return Promise.resolve();
+  var f = DATA && DATA.from < from ? DATA.from : from;
+  var t = DATA && DATA.to > to ? DATA.to : to;
+  return fetchWindow(f, t);
+}
+
+function showError(err) {
+  document.getElementById('view').innerHTML =
+    '<div class="empty">Kalender konnten nicht geladen werden.<br>' +
+    '<small>' + esc(err.message) + '</small>' +
+    (err.hint ? '<br><br><small>' + esc(err.hint) + '</small>' : '') + '</div>';
+}
+
+function eventsOn(k, who) {
   var list = BY_DAY[k] || [];
-  if (state.who !== 'all') list = list.filter(function (e) { return e.p === state.who; });
+  var w = who === undefined ? state.who : who;
+  if (w !== 'all') list = list.filter(function (e) { return e.p === w; });
   return list;
 }
 
+/** Zeitgebundene Termine eines Tages, auf diesen Tag zugeschnitten. */
+function timedOn(k) {
+  return eventsOn(k).filter(function (e) { return !e.allDay; }).map(function (e) {
+    var a = e.s === k ? toMin(e.st) : 0;
+    var b = e.e === k ? toMin(e.et) : 1440;
+    if (b <= a) b = e.s === e.e ? Math.min(1440, a + 30) : 1440;
+    return { a: a, b: b, ev: e };
+  }).sort(function (x, y) { return x.a - y.a || x.b - y.b; });
+}
+
 /* ---- Bausteine ---- */
+function personOf(ev) { return (DATA && DATA.people[ev.p]) || { color: '#999', name: '' }; }
+
 function evNode(ev, withWho) {
-  var person = DATA.people[ev.p] || { color: '#999', name: '' };
+  var person = personOf(ev);
   var el = document.createElement('div');
   el.className = 'ev' + (ev.allDay ? ' all' : '');
   el.style.setProperty('--c', person.color);
@@ -290,13 +440,7 @@ function evNode(ev, withWho) {
   return el;
 }
 
-function esc(s) {
-  return String(s).replace(/[&<>"]/g, function (c) {
-    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
-  });
-}
-
-/* ---- Ansichten ---- */
+/* ---- Monat ---- */
 function renderMonth(view) {
   var p = partsOf(state.anchor);
   var first = keyOf(p.y, p.m, 1);
@@ -330,7 +474,144 @@ function renderMonth(view) {
   view.appendChild(grid);
 }
 
-function renderWeek(view) {
+/* ---- Woche als Zeitraster ---- */
+
+/** Nebeneinanderliegende Spalten für überlappende Termine. */
+function layoutOverlaps(items) {
+  var cluster = [], clusterEnd = -1;
+  var flush = function () {
+    if (!cluster.length) return;
+    var colEnds = [];
+    cluster.forEach(function (it) {
+      var placed = false;
+      for (var i = 0; i < colEnds.length; i++) {
+        if (colEnds[i] <= it.a) { colEnds[i] = it.b; it.col = i; placed = true; break; }
+      }
+      if (!placed) { it.col = colEnds.length; colEnds.push(it.b); }
+    });
+    cluster.forEach(function (it) { it.ncols = colEnds.length; });
+    cluster = []; clusterEnd = -1;
+  };
+  items.forEach(function (it) {
+    if (cluster.length && it.a >= clusterEnd) flush();
+    cluster.push(it);
+    clusterEnd = Math.max(clusterEnd, it.b);
+  });
+  flush();
+}
+
+/** Nur die Stunden zeigen, in denen wirklich etwas liegt — dann passt alles ohne Scrollen. */
+function hourRange(days) {
+  var lo = 1440, hi = 0, any = false;
+  days.forEach(function (k) {
+    timedOn(k).forEach(function (t) { any = true; lo = Math.min(lo, t.a); hi = Math.max(hi, t.b); });
+  });
+  if (!any) { lo = 8 * 60; hi = 20 * 60; }
+  lo = Math.max(0, Math.floor((lo - 30) / 60) * 60);
+  hi = Math.min(1440, Math.ceil((hi + 30) / 60) * 60);
+  if (hi - lo < 360) {
+    hi = Math.min(1440, lo + 360);
+    lo = Math.max(0, hi - 360);
+  }
+  return { lo: lo, hi: hi };
+}
+
+function renderWeekGrid(view) {
+  var start = shift(state.anchor, -dowOf(state.anchor));
+  var days = [];
+  for (var i = 0; i < 7; i++) days.push(shift(start, i));
+  var today = todayKey();
+  var now = nowInZurich();
+  var rng = hourRange(days);
+  var span = rng.hi - rng.lo;
+  var pct = function (m) { return ((m - rng.lo) / span) * 100; };
+
+  var wk = document.createElement('div');
+  wk.className = 'wk';
+
+  // Kopfzeile
+  var head = document.createElement('div');
+  head.className = 'wk-row wk-head';
+  head.innerHTML = '<div></div>';
+  days.forEach(function (k, i) {
+    var kp = partsOf(k);
+    head.innerHTML += '<div class="wk-dh' + (k === today ? ' today' : '') + '">' +
+      '<span>' + WD[i] + ' ' + kp.d + '.</span></div>';
+  });
+  wk.appendChild(head);
+
+  // Ganztägige Termine
+  var hasAllDay = days.some(function (k) { return eventsOn(k).some(function (e) { return e.allDay; }); });
+  if (hasAllDay) {
+    var all = document.createElement('div');
+    all.className = 'wk-row wk-all';
+    all.innerHTML = '<div class="wk-gut">ganztägig</div>';
+    days.forEach(function (k) {
+      var cell = document.createElement('div');
+      cell.className = 'wk-adc';
+      eventsOn(k).filter(function (e) { return e.allDay; }).slice(0, 2).forEach(function (ev) {
+        cell.appendChild(evNode(ev, false));
+      });
+      cell.onclick = function () { openSheet(k); };
+      all.appendChild(cell);
+    });
+    wk.appendChild(all);
+  }
+
+  // Zeitraster
+  var body = document.createElement('div');
+  body.className = 'wk-row wk-body';
+
+  for (var h = rng.lo; h <= rng.hi; h += 60) {
+    var line = document.createElement('div');
+    line.className = 'wk-line';
+    line.style.top = pct(h) + '%';
+    body.appendChild(line);
+  }
+  if (days.indexOf(today) !== -1 && now.min >= rng.lo && now.min <= rng.hi) {
+    var nowLine = document.createElement('div');
+    nowLine.className = 'wk-now';
+    nowLine.style.top = pct(now.min) + '%';
+    body.appendChild(nowLine);
+  }
+
+  var hours = document.createElement('div');
+  hours.className = 'wk-hours';
+  for (var hh = rng.lo; hh < rng.hi; hh += 60) {
+    // Die oberste Beschriftung nicht nach oben schieben, sie wuerde in die Zeile darueber ragen.
+    var nudge = hh === rng.lo ? 'transform:none;' : '';
+    hours.innerHTML += '<span style="' + nudge + 'top:' + pct(hh) + '%">' + pad(hh / 60) + '</span>';
+  }
+  body.appendChild(hours);
+
+  days.forEach(function (k) {
+    var col = document.createElement('div');
+    col.className = 'wk-col' + (k === today ? ' today' : '');
+    var items = timedOn(k);
+    layoutOverlaps(items);
+    items.forEach(function (it) {
+      var person = personOf(it.ev);
+      var b = document.createElement('button');
+      b.className = 'blk';
+      b.style.setProperty('--c', person.color);
+      b.style.top = pct(it.a) + '%';
+      b.style.height = Math.max(pct(it.b) - pct(it.a), 1.2) + '%';
+      b.style.left = (it.col / it.ncols) * 100 + '%';
+      b.style.width = (100 / it.ncols) + '%';
+      b.innerHTML = '<b>' + esc(it.ev.t) + '</b>' +
+        (it.b - it.a >= 45 ? '<i>' + it.ev.st + '</i>' : '');
+      b.onclick = function (e) { e.stopPropagation(); openSheet(k); };
+      col.appendChild(b);
+    });
+    body.appendChild(col);
+  });
+
+  wk.appendChild(body);
+  view.appendChild(wk);
+}
+
+/* ---- Woche als Liste (die bisherige Ansicht) ---- */
+function renderWeekList(view) {
   var start = shift(state.anchor, -dowOf(state.anchor));
   var today = todayKey();
   var wrap = document.createElement('div');
@@ -349,6 +630,7 @@ function renderWeek(view) {
   view.appendChild(wrap);
 }
 
+/* ---- Agenda ---- */
 function renderAgenda(view) {
   var today = todayKey();
   var wrap = document.createElement('div');
@@ -365,16 +647,17 @@ function renderAgenda(view) {
     row.innerHTML =
       '<div class="when"><div class="dnum">' + kp.d + '</div>' +
       '<div class="dwd">' + WD[dowOf(k)] + ' ' + MONTHS[kp.m - 1].slice(0, 3) + '</div></div>';
-    var list_el = document.createElement('div');
-    list_el.className = 'list';
-    list.forEach(function (ev) { list_el.appendChild(evNode(ev, true)); });
-    row.appendChild(list_el);
+    var listEl = document.createElement('div');
+    listEl.className = 'list';
+    list.forEach(function (ev) { listEl.appendChild(evNode(ev, true)); });
+    row.appendChild(listEl);
     wrap.appendChild(row);
   }
   if (!shown) wrap.innerHTML = '<div class="empty">Keine Termine in den nächsten Wochen.</div>';
   view.appendChild(wrap);
 }
 
+/* ---- Tages-Overlay ---- */
 function openSheet(k) {
   var list = eventsOn(k);
   var kp = partsOf(k);
@@ -390,6 +673,178 @@ function openSheet(k) {
   });
   document.getElementById('sheet').classList.remove('hidden');
 }
+
+/* ------------------------------------------------------------------
+   Planer — sucht freie Termine. Trägt nichts ein, schlägt nur vor.
+------------------------------------------------------------------- */
+
+/** Belegte Minuten-Intervalle eines Tages für die gewählten Personen. */
+function busyOn(k, who, ignoreAllDay) {
+  var out = [];
+  (BY_DAY[k] || []).forEach(function (e) {
+    if (who.indexOf(e.p) === -1) return;
+    if (e.allDay) { if (!ignoreAllDay) out.push([0, 1440]); return; }
+    var a = e.s === k ? toMin(e.st) : 0;
+    var b = e.e === k ? toMin(e.et) : 1440;
+    if (b <= a) b = e.s === e.e ? Math.min(1440, a + 30) : 1440;
+    out.push([a, b]);
+  });
+  out.sort(function (x, y) { return x[0] - y[0]; });
+  var merged = [];
+  out.forEach(function (iv) {
+    var last = merged[merged.length - 1];
+    if (last && iv[0] <= last[1]) last[1] = Math.max(last[1], iv[1]);
+    else merged.push([iv[0], iv[1]]);
+  });
+  return merged;
+}
+
+function findSlots(o) {
+  var res = [];
+  var now = nowInZurich();
+  var total = daysBetween(o.from, o.to);
+  if (total < 0) return res;
+
+  for (var i = 0; i <= total && res.length < 10; i++) {
+    var k = shift(o.from, i);
+    if (k < now.key) continue;                       // Vergangenes überspringen
+
+    if (o.allDay) {
+      var anyEvent = (BY_DAY[k] || []).some(function (e) { return o.who.indexOf(e.p) !== -1; });
+      if (!anyEvent) res.push({ day: k, allDay: true });
+      continue;
+    }
+
+    var early = o.early;
+    if (k === now.key) early = Math.max(early, Math.ceil(now.min / 15) * 15);
+    if (early + o.dur > o.late) continue;
+
+    var busy = busyOn(k, o.who, o.ignoreAllDay);
+    var cur = early;
+    var found = null;
+    for (var j = 0; j < busy.length && found === null; j++) {
+      if (busy[j][0] - cur >= o.dur && cur + o.dur <= o.late) found = cur;
+      else cur = Math.max(cur, busy[j][1]);
+    }
+    if (found === null && cur + o.dur <= o.late) found = cur;
+    if (found !== null) res.push({ day: k, startMin: found, endMin: found + o.dur });
+  }
+  return res;
+}
+
+function renderSlots(list, o) {
+  var box = document.getElementById('pRes');
+  box.innerHTML = '';
+  if (!list.length) {
+    box.innerHTML = '<div class="empty">Kein freier Termin in diesem Zeitraum gefunden.<br>' +
+      '<small>Zeitraum verlängern, Dauer verkürzen oder weniger Personen auswählen.</small></div>';
+    return;
+  }
+  var head = document.createElement('div');
+  head.className = 'sub';
+  head.style.cssText = 'font-size:.8rem;color:#888;margin-bottom:8px';
+  head.textContent = list.length + (list.length === 10 ? ' Vorschläge (erste 10)' : ' Vorschläge');
+  box.appendChild(head);
+
+  list.forEach(function (s) {
+    var kp = partsOf(s.day);
+    var el = document.createElement('div');
+    el.className = 'slot';
+    var when = s.allDay ? 'ganztägig' : fromMin(s.startMin) + '–' + fromMin(s.endMin);
+    el.innerHTML =
+      '<h4>' + WD_LANG[dowOf(s.day)] + ', ' + kp.d + '. ' + MONTHS[kp.m - 1] + '</h4>' +
+      '<div class="sub">' + when + '</div>';
+
+    // Vorschau: was an dem Tag schon läuft, mit dem Vorschlag an seinem Platz
+    var prev = document.createElement('div');
+    prev.className = 'prev';
+    var existing = (BY_DAY[s.day] || []).filter(function (e) { return o.who.indexOf(e.p) !== -1; });
+    var rows = existing.map(function (e) {
+      return { at: e.allDay ? -1 : toMin(e.s === s.day ? e.st : '00:00'), ev: e };
+    });
+    rows.push({ at: s.allDay ? -1 : s.startMin, isNew: true });
+    rows.sort(function (a, b) { return a.at - b.at; });
+    rows.forEach(function (r) {
+      if (r.isNew) {
+        var n = document.createElement('div');
+        n.className = 'new';
+        n.textContent = '➕ ' + when + '  Neuer Termin';
+        prev.appendChild(n);
+      } else {
+        var node = evNode(r.ev, true);
+        if (!r.ev.allDay) node.querySelector('.tm').textContent = r.ev.st + '–' + r.ev.et;
+        prev.appendChild(node);
+      }
+    });
+    if (!existing.length) {
+      var none = document.createElement('div');
+      none.className = 'none';
+      none.textContent = 'Sonst nichts an diesem Tag.';
+      prev.appendChild(none);
+    }
+    el.appendChild(prev);
+    box.appendChild(el);
+  });
+}
+
+function renderWhoBox() {
+  var box = document.getElementById('pWho');
+  box.innerHTML = '';
+  if (!DATA) return;
+  DATA.people.forEach(function (p, i) {
+    var l = document.createElement('label');
+    l.className = 'on';
+    l.style.setProperty('--c', p.color);
+    l.innerHTML = '<input type="checkbox" checked value="' + i + '"><span class="dot"></span>' + esc(p.name);
+    l.querySelector('input').onchange = function () { l.classList.toggle('on', this.checked); };
+    box.appendChild(l);
+  });
+}
+
+function openPlan() {
+  var t = todayKey();
+  var f = document.getElementById('pFrom'), to = document.getElementById('pTo');
+  if (!f.value) f.value = t;
+  if (!to.value) to.value = shift(t, 30);
+  renderWhoBox();
+  document.getElementById('pRes').innerHTML = '';
+  document.getElementById('plan').classList.remove('hidden');
+}
+
+document.getElementById('pDur').onchange = function () {
+  document.getElementById('pTimeRow').style.display = this.value === 'allday' ? 'none' : '';
+};
+
+document.getElementById('pGo').onclick = function () {
+  var btn = this;
+  var durVal = document.getElementById('pDur').value;
+  var who = [].slice.call(document.querySelectorAll('#pWho input:checked')).map(function (i) { return +i.value; });
+  if (!who.length) {
+    document.getElementById('pRes').innerHTML = '<div class="empty">Mindestens eine Person auswählen.</div>';
+    return;
+  }
+  var o = {
+    allDay: durVal === 'allday',
+    dur: durVal === 'allday' ? 0 : +durVal,
+    from: document.getElementById('pFrom').value,
+    to: document.getElementById('pTo').value,
+    early: toMin(document.getElementById('pEarly').value || '08:00'),
+    late: toMin(document.getElementById('pLate').value || '22:00'),
+    who: who,
+    ignoreAllDay: document.getElementById('pIgnoreAll').checked
+  };
+  if (!o.from || !o.to || o.to < o.from) {
+    document.getElementById('pRes').innerHTML = '<div class="empty">Bitte einen gültigen Zeitraum wählen.</div>';
+    return;
+  }
+  btn.disabled = true; btn.textContent = 'Suche …';
+  ensureRange(o.from, o.to)
+    .then(function () { renderSlots(findSlots(o), o); })
+    .catch(function (err) {
+      document.getElementById('pRes').innerHTML = '<div class="empty">' + esc(err.message) + '</div>';
+    })
+    .then(function () { btn.disabled = false; btn.textContent = 'Freie Termine suchen'; });
+};
 
 /* ---- Rahmen ---- */
 function renderTabs() {
@@ -412,7 +867,7 @@ function renderLabel() {
   var p = partsOf(state.anchor), txt;
   if (state.mode === 'MONTH') {
     txt = MONTHS[p.m - 1] + ' ' + p.y;
-  } else if (state.mode === 'WEEK') {
+  } else if (state.mode === 'WEEK' || state.mode === 'LIST') {
     var a = shift(state.anchor, -dowOf(state.anchor)), b = shift(a, 6);
     var ap = partsOf(a), bp = partsOf(b);
     txt = ap.d + '.' + (ap.m === bp.m ? '' : ap.m + '.') + '–' + bp.d + '. ' + MONTHS[bp.m - 1].slice(0, 3) + ' ' + bp.y;
@@ -440,9 +895,11 @@ function render() {
   });
   var view = document.getElementById('view');
   view.innerHTML = '';
+  view.classList.toggle('fit', state.mode === 'WEEK' || state.mode === 'MONTH');
   if (!DATA) { view.innerHTML = '<div class="loading">Kalender werden geladen …</div>'; return; }
   if (state.mode === 'MONTH') renderMonth(view);
-  else if (state.mode === 'WEEK') renderWeek(view);
+  else if (state.mode === 'WEEK') renderWeekGrid(view);
+  else if (state.mode === 'LIST') renderWeekList(view);
   else renderAgenda(view);
 }
 
@@ -453,7 +910,7 @@ function step(dir) {
     while (m > 12) { m -= 12; y++; }
     while (m < 1) { m += 12; y--; }
     state.anchor = keyOf(y, m, 1);
-  } else if (state.mode === 'WEEK') {
+  } else if (state.mode === 'WEEK' || state.mode === 'LIST') {
     state.anchor = shift(state.anchor, 7 * dir);
   } else {
     state.anchor = shift(state.anchor, 30 * dir);
@@ -465,6 +922,7 @@ document.getElementById('prev').onclick = function () { step(-1); };
 document.getElementById('next').onclick = function () { step(1); };
 document.getElementById('today').onclick = function () { state.anchor = todayKey(); load(false); };
 document.getElementById('reload').onclick = function () { load(true); };
+document.getElementById('openPlan').onclick = openPlan;
 document.getElementById('modes').onclick = function (e) {
   var b = e.target.closest('button');
   if (!b) return;
@@ -478,6 +936,15 @@ document.getElementById('sheetClose').onclick = function () {
 document.getElementById('sheet').onclick = function (e) {
   if (e.target === this) this.classList.add('hidden');
 };
+document.getElementById('planClose').onclick = function () {
+  document.getElementById('plan').classList.add('hidden');
+};
+document.getElementById('plan').onclick = function (e) {
+  if (e.target === this) this.classList.add('hidden');
+};
+window.addEventListener('resize', function () {
+  if (state.mode === 'WEEK' && DATA) render();
+});
 
 // Beim Zurückkommen nach längerer Pause frisch laden (Wandtablet).
 document.addEventListener('visibilitychange', function () {
@@ -489,7 +956,7 @@ document.addEventListener('visibilitychange', function () {
   if (who === 'all') state.who = 'all';
   else if (who !== null && !isNaN(+who)) state.who = +who;
   var mode = recall('cal.mode');
-  if (['MONTH', 'WEEK', 'AGENDA'].indexOf(mode) !== -1) state.mode = mode;
+  if (['MONTH', 'WEEK', 'LIST', 'AGENDA'].indexOf(mode) !== -1) state.mode = mode;
   state.anchor = todayKey();
   load(true);
 })();

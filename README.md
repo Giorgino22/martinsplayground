@@ -46,8 +46,21 @@ for viewers.
 
 - `hater/functions/api/feed.js` — fetches every feed (the browser can't, CORS), parses iCalendar,
   expands recurring events, converts to `Europe/Zurich`, returns ready-to-draw JSON. Cached 5 min.
-- `hater/index.html` — Monat / Woche / Agenda, person tabs, ‹ › + Heute, tap a day for its
-  details. Phones open in Agenda; the month grid collapses to coloured dots there.
+- `hater/index.html` — four views, person tabs, ‹ › + Heute, tap a day for its details.
+  Phones open in Agenda; the month grid collapses to coloured dots there.
+
+Views: **Monat** (grid), **Woche** (time grid like a normal calendar), **Liste** (the seven days
+as cards), **Agenda** (flowing list). The week time grid only draws the hours that actually
+contain events, padded to the hour, so a whole week always fits the window without scrolling —
+even on a short screen. Overlapping events sit side by side, all-day events get their own row
+above the grid, and a red line marks the current time. On phones the columns stay but the blocks
+lose their text; tapping one opens that day.
+
+**Planen** looks for slots where everyone is free. Pick a duration (or *ganztägig*), a date range,
+a daily time window, and who has to be free; it returns up to 10 suggestions, one per day, each
+with a preview showing that day's events with the proposed slot in its place. It only suggests —
+nothing is ever written to anyone's calendar. Optionally all-day events can be treated as
+not-busy, for calendars where a birthday or a marker would otherwise block the whole day.
 
 **One person = one category.** All of a person's calendars (private, work, sport, …) sit in their
 `feeds` array and appear together under their name. Individual calendar names are never shown; in
