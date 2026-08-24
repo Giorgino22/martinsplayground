@@ -57,11 +57,22 @@ commented-out blocks for Mama and Papa are already there. The calendar ID is the
 the Google embed code (*Settings → Calendar → «Integrate calendar»*), before `&ctz=`. Plain
 addresses (`someone@gmail.com`, `…@group.calendar.google.com`) and Google's base64 form both work.
 
-**Sharing is what makes it visible.** The page only embeds; it cannot grant access. Each calendar
-must either be public (*Settings → Access permissions → Make available to public*) — which means
-anyone who knows `hater.odermatts.ch` can read it — or shared with each family member's Google
-account, in which case they have to be signed into Google in that browser. Not-shared calendars
-render as an empty/error box for that viewer, the rest of the page still works.
+**Sharing is what makes it visible.** The page only embeds; it cannot grant access. Every calendar
+has to be set **individually** — making a primary calendar public does *not* cascade to the other
+calendars in that account. Per calendar: *Settings → pick the calendar → Access permissions for
+events → Make available to public → See all event details*. Public means anyone who knows
+`hater.odermatts.ch` can read it; the alternative is sharing with each family member's Google
+account, which then requires them to be signed into Google in that browser.
+
+**Subscribed calendars can never work here.** A calendar whose id ends in
+`@import.calendar.google.com` was added via *Other calendars → From URL* (an Apple/iCloud feed, a
+holiday or sports feed, …). Google offers an embed code for it, but its settings have no *Access
+permissions* section at all — a subscription cannot be shared or made public, so only the account
+that subscribed ever sees it. Everyone else gets *"Events from one or more calendars could not be
+shown here because you do not have the permission to view them."* To put such a calendar on this
+page, the events must live in a Google calendar that someone **owns**: add the Google account to
+the iPhone/Mac (*Settings → Apps → Calendar → Accounts → Add Google*), write events into that
+Google calendar, make it public, and use its id here.
 
 **Apple/iCloud calendars:** Apple has no HTML embed, only a `webcal://` .ics feed. Subscribe to it
 in Google Calendar (*Other calendars → From URL*, `webcal://` → `https://`), then use the resulting
