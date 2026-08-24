@@ -15,8 +15,11 @@
   body {
     margin: 0; display: flex; flex-direction: column; background: #fff; color: #111;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
   }
+  button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
 
+  /* ---- Kopf ---- */
   header {
     flex: none; border-bottom: 1px solid #e5e5e5; background: #fff;
     padding: max(10px, env(safe-area-inset-top)) 12px 10px;
@@ -26,8 +29,6 @@
   .people { overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
   .people::-webkit-scrollbar { display: none; }
 
-  button { font: inherit; color: inherit; cursor: pointer; background: none; border: none; }
-
   .chip {
     flex: none; display: inline-flex; align-items: center; gap: 7px;
     border: 1px solid #ddd; border-radius: 999px; padding: 7px 14px;
@@ -35,23 +36,103 @@
   }
   .chip .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, #999); flex: none; }
   .chip.on { border-color: var(--c, #111); background: color-mix(in srgb, var(--c, #111) 12%, #fff); }
-  .chip:active { background: #f2f2f2; }
 
-  .seg { display: flex; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; }
+  .seg { display: flex; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; flex: none; }
   .seg button { padding: 6px 12px; font-size: 0.85rem; font-weight: 600; color: #666; }
   .seg button + button { border-left: 1px solid #ddd; }
   .seg button.on { background: #111; color: #fff; }
 
+  .nav { display: flex; align-items: center; gap: 2px; }
+  .nav button, .icon { border: 1px solid #ddd; border-radius: 10px; padding: 6px 11px; font-size: 0.9rem; color: #666; }
+  .label { font-weight: 700; font-size: 1rem; color: #111; padding: 0 8px; white-space: nowrap; }
   .spacer { flex: 1; }
-  .icon { border: 1px solid #ddd; border-radius: 10px; padding: 6px 11px; font-size: 0.9rem; color: #666; }
-  .icon:active { background: #f2f2f2; }
+  .icon.busy { opacity: 0.4; }
 
-  main { flex: 1; min-height: 0; }
-  iframe { display: block; width: 100%; height: 100%; border: 0; }
+  .notes { font-size: 0.8rem; color: #b26b00; background: #fff8e6; border-radius: 8px; padding: 6px 10px; }
+  .notes b { font-weight: 700; }
 
-  @media (max-width: 520px) {
-    .chip { padding: 6px 12px; font-size: 0.9rem; }
-    .seg button { padding: 6px 10px; }
+  /* ---- Ansicht ---- */
+  main { flex: 1; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; }
+  .pad { padding: 12px; }
+  .empty, .loading { color: #999; text-align: center; padding: 40px 20px; }
+
+  /* Monat */
+  .dows { flex: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; padding: 8px 12px 0; }
+  .dows div { font-size: 0.72rem; font-weight: 700; color: #999; text-align: center; text-transform: uppercase; letter-spacing: 0.04em; }
+  .grid { flex: 1; display: grid; grid-template-columns: repeat(7, 1fr); grid-auto-rows: minmax(92px, 1fr); gap: 4px; padding: 4px 12px 12px; }
+  .cell {
+    min-height: 0; border: 1px solid #eee; border-radius: 10px; padding: 4px;
+    display: flex; flex-direction: column; gap: 2px; overflow: hidden; text-align: left; align-items: stretch;
+  }
+  .cell.out { background: #fafafa; border-color: #f2f2f2; }
+  .cell.out .num { color: #ccc; }
+  .num { font-size: 0.78rem; font-weight: 700; color: #666; padding: 1px 3px; flex: none; }
+  .cell.today .num { background: #111; color: #fff; border-radius: 6px; align-self: flex-start; min-width: 20px; text-align: center; }
+  .more { font-size: 0.7rem; color: #999; padding-left: 3px; }
+
+  /* Termin-Chip */
+  .ev {
+    display: flex; align-items: baseline; gap: 4px; font-size: 0.75rem; line-height: 1.25;
+    padding: 2px 4px; border-radius: 5px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+  }
+  .ev .d { width: 6px; height: 6px; border-radius: 50%; background: var(--c); flex: none; align-self: center; }
+  .ev .tm { color: #777; font-variant-numeric: tabular-nums; flex: none; }
+  .ev .tt { overflow: hidden; text-overflow: ellipsis; }
+  .ev.all { background: color-mix(in srgb, var(--c) 16%, #fff); font-weight: 600; }
+  .ev.all .d { display: none; }
+
+  /* Woche */
+  .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; padding: 12px; }
+  .day { border: 1px solid #eee; border-radius: 12px; padding: 8px; min-height: 120px; }
+  .day.today { border-color: #111; }
+  .day h3 { margin: 0 0 6px; font-size: 0.8rem; color: #666; font-weight: 700; }
+  .day.today h3 { color: #111; }
+  .day .ev { font-size: 0.8rem; white-space: normal; margin-bottom: 3px; }
+  .day .ev .tt { white-space: normal; }
+
+  /* Agenda */
+  .ag { padding: 4px 12px 24px; max-width: 720px; margin: 0 auto; }
+  .agday { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+  .agday .when { flex: none; width: 74px; text-align: right; }
+  .agday .dnum { font-size: 1.35rem; font-weight: 700; line-height: 1.1; }
+  .agday .dwd { font-size: 0.75rem; color: #999; text-transform: uppercase; letter-spacing: 0.04em; }
+  .agday.today .dnum, .agday.today .dwd { color: #ff3b30; }
+  .agday .list { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+  .agday .ev { font-size: 0.92rem; white-space: normal; padding: 3px 6px; }
+  .agday .ev .tt { white-space: normal; }
+  .who { color: #999; font-size: 0.8rem; }
+  .loc { color: #999; font-size: 0.8rem; }
+
+  /* Tages-Overlay */
+  .sheet { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: flex-end; justify-content: center; z-index: 10; }
+  .sheet.hidden { display: none; }
+  .sheet .box {
+    background: #fff; width: 100%; max-width: 520px; border-radius: 16px 16px 0 0;
+    padding: 16px 16px calc(16px + env(safe-area-inset-bottom)); max-height: 75vh; overflow: auto;
+  }
+  .sheet h2 { margin: 0 0 12px; font-size: 1.05rem; }
+  .sheet .ev { font-size: 0.95rem; white-space: normal; padding: 6px; margin-bottom: 4px; }
+  .sheet .ev .tt { white-space: normal; }
+  .sheet .close { display: block; width: 100%; margin-top: 12px; border: 1px solid #ddd; border-radius: 10px; padding: 10px; color: #666; }
+
+  @media (max-width: 700px) {
+    /* Kopf umbrechen lassen, sonst schiebt er die ganze Seite seitlich raus */
+    header .row { flex-wrap: wrap; }
+    .spacer { flex-basis: 100%; height: 0; }
+    #modes { flex: 1; }
+    #modes button { flex: 1; text-align: center; }
+    .label { flex: 1; padding: 0 4px; font-size: 0.95rem; }
+    .week { grid-template-columns: 1fr; }
+    .grid { grid-auto-rows: minmax(62px, 1fr); }
+    .day { min-height: 0; }
+    /* Im Monat auf dem Handy nur farbige Punkte statt Text */
+    .grid .ev { padding: 0; gap: 3px; }
+    .grid .ev .tm, .grid .ev .tt { display: none; }
+    .grid .ev .d { display: block; width: 7px; height: 7px; }
+    .grid .ev.all { background: none; }
+    .grid .ev.all .d { display: block; }
+    .grid .cell > .ev { display: inline-block; }
+    .grid .more { display: none; }
   }
 </style>
 </head>
@@ -60,139 +141,318 @@
 <header>
   <div class="row people" id="people"></div>
   <div class="row">
+    <div class="nav">
+      <button id="prev" aria-label="zurück">‹</button>
+      <button id="today">Heute</button>
+      <button id="next" aria-label="vor">›</button>
+    </div>
+    <span class="label" id="label"></span>
+    <div class="spacer"></div>
     <div class="seg" id="modes">
       <button data-mode="MONTH">Monat</button>
       <button data-mode="WEEK">Woche</button>
       <button data-mode="AGENDA">Agenda</button>
     </div>
-    <div class="spacer"></div>
     <button class="icon" id="reload" title="Neu laden">↻</button>
   </div>
+  <div class="notes" id="notes" hidden></div>
 </header>
 
-<main><iframe id="cal" title="Kalender" frameborder="0" scrolling="no"></iframe></main>
+<main id="view"><div class="loading">Kalender werden geladen …</div></main>
+
+<div class="sheet hidden" id="sheet">
+  <div class="box">
+    <h2 id="sheetTitle"></h2>
+    <div id="sheetList"></div>
+    <button class="close" id="sheetClose">Schliessen</button>
+  </div>
+</div>
 
 <script>
 /* ------------------------------------------------------------------
-   Familienkalender — reine Ansicht, keine Logik.
+   Familienkalender — reine Ansicht.
 
-   Eine Person = eine Kategorie. Alle Kalender einer Person (Privat, Arbeit,
-   Sport, …) liegen in ihrem `srcs`-Array und erscheinen zusammen unter ihrem
-   Namen — die einzelnen Kalendernamen sind nirgends sichtbar.
-
-   Neue Person hinzufügen / Kalender ergänzen: Die Kalender-ID steht im
-   Google-Einbettungscode (Einstellungen → Kalender → «Kalender integrieren»)
-   im Teil  src=...  vor dem  &ctz= . Ist sie base64-kodiert (ein langer
-   Buchstabensalat ohne @), tut es auch die Klartext-Adresse.
-
-   Apple/iCloud: Apple bietet keinen HTML-Embed, nur einen webcal://-Feed.
-   Feed in Google abonnieren («Weitere Kalender → Per URL», webcal:// → https://),
-   dann die neue Kalender-ID hier eintragen.
+   Die Kalender selbst stehen in functions/api/feed.js. Diese Seite holt
+   von dort fertige Termine und zeichnet sie. Niemand muss sich anmelden.
 ------------------------------------------------------------------- */
-var CALENDARS = [
-  {
-    name: 'Martin',
-    color: '#ff9500',            // Farbe in der «Alle»-Ansicht
-    srcs: [
-      // ACHTUNG: abonnierter Apple-Feed (@import.calendar.google.com) — den sieht nur
-      // Martin selbst, Google kann abonnierte Kalender nicht freigeben. Ersetzen durch
-      // die ID eines eigenen Google-Kalenders, sobald umgestellt (siehe README).
-      'v6uv4vslmaggr9ais04cdu4ssqmdrark@import.calendar.google.com'
-    ]
-  },
-  {
-    name: 'Patrick',
-    color: '#0088ff',
-    srcs: [
-      'poyllix4@gmail.com',
-      '54ba6b142b1cf12a964fa3676e197d212e6ebb730e642ff059a7444f63568237@group.calendar.google.com',
-      '2307244d188dbd1d1081be45fba30d8c9fe6502bab61bd728b62b75d24c98a47@group.calendar.google.com',
-      '842616bdeef3886686973a194d72fb3aeae4b7625ecbc00750fd24a6e033da6b@group.calendar.google.com',
-      'a09b3a710534fc603645f32c44e54aba5c866aa4b45508d4cfc28b38250058cc@group.calendar.google.com'
-      // Entfernt: etc4srvovpmd…, n9hfj52ftrge…, gbpifg35jj4d… (@import.calendar.google.com).
-      // Das sind Patricks eigene abonnierte Feeds. Abonnierte Kalender lassen sich in Google
-      // nicht freigeben, also sieht sie ausser ihm niemand — sie haben nur die Fehlermeldung
-      // «Events from one or more calendars could not be shown» erzeugt.
-    ],
-    // Optional: eigene Farbe pro Kalender, nur in Patricks eigenem Tab sichtbar.
-    // In der «Alle»-Ansicht gilt immer die Personenfarbe oben.
-    colors: ['#0088ff', '#83d754', '#ffcc00', '#cb30e0', '#ff383c']
-  }
 
-  // Mama und Papa: Kalender-IDs eintragen und die Kommentarzeichen entfernen.
-  // ,{
-  //   name: 'Mama',
-  //   color: '#cb30e0',
-  //   srcs: ['...@gmail.com']
-  // },
-  // {
-  //   name: 'Papa',
-  //   color: '#2ea043',
-  //   srcs: ['...@gmail.com']
-  // }
-];
+var WD = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+var WD_LANG = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+var MONTHS = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+              'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
 
-var TZ = 'Europe/Zurich';
-var people = document.getElementById('people');
-var cal = document.getElementById('cal');
-var state = { who: 'all', mode: window.matchMedia('(max-width: 700px)').matches ? 'AGENDA' : 'MONTH' };
+var DATA = null;        // { people, events, from, to }
+var BY_DAY = {};        // 'YYYY-MM-DD' -> [event]
+var loading = false;
 var lastLoad = 0;
+
+var state = {
+  who: 'all',
+  mode: window.matchMedia('(max-width: 700px)').matches ? 'AGENDA' : 'MONTH',
+  anchor: null
+};
+
+/* ---- Datum als reiner Text, ohne Zeitzonen-Überraschungen ---- */
+function pad(n) { return (n < 10 ? '0' : '') + n; }
+function keyOf(y, m, d) { return y + '-' + pad(m) + '-' + pad(d); }
+function partsOf(k) { var a = k.split('-'); return { y: +a[0], m: +a[1], d: +a[2] }; }
+function shift(k, n) {
+  var p = partsOf(k), t = new Date(Date.UTC(p.y, p.m - 1, p.d + n));
+  return keyOf(t.getUTCFullYear(), t.getUTCMonth() + 1, t.getUTCDate());
+}
+function dowOf(k) { var p = partsOf(k); return (new Date(Date.UTC(p.y, p.m - 1, p.d)).getUTCDay() + 6) % 7; } // 0 = Mo
+function todayKey() {
+  try {
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Zurich', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(new Date());
+  } catch (e) {
+    var n = new Date();
+    return keyOf(n.getFullYear(), n.getMonth() + 1, n.getDate());
+  }
+}
 
 function remember(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 function recall(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
 
-function buildUrl() {
-  var list = state.who === 'all' ? CALENDARS : [CALENDARS[state.who]];
-  var q = [
-    'ctz=' + encodeURIComponent(TZ),
-    'wkst=2',                 // Woche beginnt am Montag
-    'mode=' + state.mode,
-    'showTitle=0', 'showPrint=0', 'showTabs=0', 'showCalendars=0', 'showTz=0',
-    'showNav=1', 'showDate=1',
-    'bgcolor=%23ffffff'
-  ];
-  list.forEach(function (p) {
-    p.srcs.forEach(function (src, i) {
-      // In der "Alle"-Ansicht bekommt jede Person eine eigene Farbe,
-      // in der Einzelansicht bleiben die Originalfarben.
-      var color = state.who === 'all' ? p.color : ((p.colors || [])[i] || p.color);
-      q.push('src=' + encodeURIComponent(src));
-      q.push('color=' + encodeURIComponent(color));
-    });
-  });
-  return 'https://calendar.google.com/calendar/embed?' + q.join('&');
+/* ---- Daten ---- */
+function windowFor(anchor) {
+  return { from: shift(anchor, -120), to: shift(anchor, 400) };
 }
 
-function render() {
-  people.innerHTML = '';
-  var tabs = [{ name: 'Alle', color: '#111', key: 'all' }];
-  CALENDARS.forEach(function (p, i) { tabs.push({ name: p.name, color: p.color, key: i }); });
+function needsLoad() {
+  if (!DATA) return true;
+  var w = { from: shift(state.anchor, -40), to: shift(state.anchor, 60) };
+  return w.from < DATA.from || w.to > DATA.to;
+}
 
+function load(force) {
+  if (loading) return;
+  if (!force && !needsLoad()) { render(); return; }
+  loading = true;
+  document.getElementById('reload').classList.add('busy');
+  var w = windowFor(state.anchor);
+  fetch('/api/feed?from=' + w.from + '&to=' + w.to)
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (json) {
+      DATA = json;
+      BY_DAY = {};
+      json.events.forEach(function (ev) {
+        for (var k = ev.s; ; k = shift(k, 1)) {
+          (BY_DAY[k] || (BY_DAY[k] = [])).push(ev);
+          if (k === ev.e) break;
+        }
+      });
+      lastLoad = Date.now();
+      render();
+    })
+    .catch(function (err) {
+      document.getElementById('view').innerHTML =
+        '<div class="empty">Kalender konnten nicht geladen werden.<br><small>' + err.message + '</small></div>';
+    })
+    .then(function () {
+      loading = false;
+      document.getElementById('reload').classList.remove('busy');
+    });
+}
+
+function eventsOn(k) {
+  var list = BY_DAY[k] || [];
+  if (state.who !== 'all') list = list.filter(function (e) { return e.p === state.who; });
+  return list;
+}
+
+/* ---- Bausteine ---- */
+function evNode(ev, withWho) {
+  var person = DATA.people[ev.p] || { color: '#999', name: '' };
+  var el = document.createElement('div');
+  el.className = 'ev' + (ev.allDay ? ' all' : '');
+  el.style.setProperty('--c', person.color);
+  var html = '<span class="d"></span>';
+  if (!ev.allDay) html += '<span class="tm">' + ev.st + '</span>';
+  html += '<span class="tt">' + esc(ev.t);
+  if (withWho && state.who === 'all') html += ' <span class="who">· ' + esc(person.name) + '</span>';
+  if (withWho && ev.loc) html += ' <span class="loc">· ' + esc(ev.loc) + '</span>';
+  html += '</span>';
+  el.innerHTML = html;
+  return el;
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+  });
+}
+
+/* ---- Ansichten ---- */
+function renderMonth(view) {
+  var p = partsOf(state.anchor);
+  var first = keyOf(p.y, p.m, 1);
+  var start = shift(first, -dowOf(first));
+  var today = todayKey();
+
+  var dows = document.createElement('div');
+  dows.className = 'dows';
+  WD.forEach(function (d) { dows.innerHTML += '<div>' + d + '</div>'; });
+  view.appendChild(dows);
+
+  var grid = document.createElement('div');
+  grid.className = 'grid';
+  for (var i = 0; i < 42; i++) {
+    var k = shift(start, i);
+    var kp = partsOf(k);
+    var cell = document.createElement('button');
+    cell.className = 'cell' + (kp.m !== p.m ? ' out' : '') + (k === today ? ' today' : '');
+    cell.innerHTML = '<span class="num">' + kp.d + '</span>';
+    var list = eventsOn(k);
+    list.slice(0, 3).forEach(function (ev) { cell.appendChild(evNode(ev, false)); });
+    if (list.length > 3) {
+      var more = document.createElement('span');
+      more.className = 'more';
+      more.textContent = '+' + (list.length - 3);
+      cell.appendChild(more);
+    }
+    cell.onclick = (function (day) { return function () { openSheet(day); }; })(k);
+    grid.appendChild(cell);
+  }
+  view.appendChild(grid);
+}
+
+function renderWeek(view) {
+  var start = shift(state.anchor, -dowOf(state.anchor));
+  var today = todayKey();
+  var wrap = document.createElement('div');
+  wrap.className = 'week';
+  for (var i = 0; i < 7; i++) {
+    var k = shift(start, i);
+    var kp = partsOf(k);
+    var day = document.createElement('div');
+    day.className = 'day' + (k === today ? ' today' : '');
+    day.innerHTML = '<h3>' + WD[i] + ' ' + kp.d + '.' + kp.m + '.</h3>';
+    var list = eventsOn(k);
+    if (!list.length) day.innerHTML += '<div class="more">–</div>';
+    list.forEach(function (ev) { day.appendChild(evNode(ev, true)); });
+    wrap.appendChild(day);
+  }
+  view.appendChild(wrap);
+}
+
+function renderAgenda(view) {
+  var today = todayKey();
+  var wrap = document.createElement('div');
+  wrap.className = 'ag';
+  var shown = 0;
+  for (var i = 0; i < 120; i++) {
+    var k = shift(state.anchor, i);
+    var list = eventsOn(k);
+    if (!list.length) continue;
+    shown++;
+    var kp = partsOf(k);
+    var row = document.createElement('div');
+    row.className = 'agday' + (k === today ? ' today' : '');
+    row.innerHTML =
+      '<div class="when"><div class="dnum">' + kp.d + '</div>' +
+      '<div class="dwd">' + WD[dowOf(k)] + ' ' + MONTHS[kp.m - 1].slice(0, 3) + '</div></div>';
+    var list_el = document.createElement('div');
+    list_el.className = 'list';
+    list.forEach(function (ev) { list_el.appendChild(evNode(ev, true)); });
+    row.appendChild(list_el);
+    wrap.appendChild(row);
+  }
+  if (!shown) wrap.innerHTML = '<div class="empty">Keine Termine in den nächsten Wochen.</div>';
+  view.appendChild(wrap);
+}
+
+function openSheet(k) {
+  var list = eventsOn(k);
+  var kp = partsOf(k);
+  document.getElementById('sheetTitle').textContent =
+    WD_LANG[dowOf(k)] + ', ' + kp.d + '. ' + MONTHS[kp.m - 1] + ' ' + kp.y;
+  var box = document.getElementById('sheetList');
+  box.innerHTML = '';
+  if (!list.length) box.innerHTML = '<div class="empty">Keine Termine.</div>';
+  list.forEach(function (ev) {
+    var n = evNode(ev, true);
+    if (!ev.allDay) n.querySelector('.tm').textContent = ev.st + '–' + ev.et;
+    box.appendChild(n);
+  });
+  document.getElementById('sheet').classList.remove('hidden');
+}
+
+/* ---- Rahmen ---- */
+function renderTabs() {
+  var people = document.getElementById('people');
+  people.innerHTML = '';
+  if (!DATA) return;
+  var tabs = [{ name: 'Alle', color: '#111', key: 'all' }];
+  DATA.people.forEach(function (p, i) { tabs.push({ name: p.name, color: p.color, key: i }); });
   tabs.forEach(function (t) {
     var b = document.createElement('button');
     b.className = 'chip' + (String(state.who) === String(t.key) ? ' on' : '');
     b.style.setProperty('--c', t.color);
-    b.innerHTML = '<span class="dot"></span>' + t.name;
-    b.onclick = function () {
-      state.who = t.key;
-      remember('cal.who', String(t.key));
-      render();
-    };
+    b.innerHTML = '<span class="dot"></span>' + esc(t.name);
+    b.onclick = function () { state.who = t.key; remember('cal.who', String(t.key)); render(); };
     people.appendChild(b);
   });
+}
 
+function renderLabel() {
+  var p = partsOf(state.anchor), txt;
+  if (state.mode === 'MONTH') {
+    txt = MONTHS[p.m - 1] + ' ' + p.y;
+  } else if (state.mode === 'WEEK') {
+    var a = shift(state.anchor, -dowOf(state.anchor)), b = shift(a, 6);
+    var ap = partsOf(a), bp = partsOf(b);
+    txt = ap.d + '.' + (ap.m === bp.m ? '' : ap.m + '.') + '–' + bp.d + '. ' + MONTHS[bp.m - 1].slice(0, 3) + ' ' + bp.y;
+  } else {
+    txt = 'ab ' + p.d + '. ' + MONTHS[p.m - 1];
+  }
+  document.getElementById('label').textContent = txt;
+}
+
+function renderNotes() {
+  var el = document.getElementById('notes');
+  if (!DATA) { el.hidden = true; return; }
+  var bad = DATA.people.filter(function (p) { return p.note; });
+  if (!bad.length) { el.hidden = true; return; }
+  el.hidden = false;
+  el.innerHTML = bad.map(function (p) { return '<b>' + esc(p.name) + ':</b> ' + esc(p.note); }).join(' · ');
+}
+
+function render() {
+  renderTabs();
+  renderNotes();
+  renderLabel();
   [].forEach.call(document.querySelectorAll('#modes button'), function (b) {
     b.classList.toggle('on', b.dataset.mode === state.mode);
   });
-
-  load();
+  var view = document.getElementById('view');
+  view.innerHTML = '';
+  if (!DATA) { view.innerHTML = '<div class="loading">Kalender werden geladen …</div>'; return; }
+  if (state.mode === 'MONTH') renderMonth(view);
+  else if (state.mode === 'WEEK') renderWeek(view);
+  else renderAgenda(view);
 }
 
-function load() {
-  cal.src = buildUrl();
-  lastLoad = Date.now();
+/* ---- Bedienung ---- */
+function step(dir) {
+  if (state.mode === 'MONTH') {
+    var p = partsOf(state.anchor), m = p.m + dir, y = p.y;
+    while (m > 12) { m -= 12; y++; }
+    while (m < 1) { m += 12; y--; }
+    state.anchor = keyOf(y, m, 1);
+  } else if (state.mode === 'WEEK') {
+    state.anchor = shift(state.anchor, 7 * dir);
+  } else {
+    state.anchor = shift(state.anchor, 30 * dir);
+  }
+  load(false);
 }
 
+document.getElementById('prev').onclick = function () { step(-1); };
+document.getElementById('next').onclick = function () { step(1); };
+document.getElementById('today').onclick = function () { state.anchor = todayKey(); load(false); };
+document.getElementById('reload').onclick = function () { load(true); };
 document.getElementById('modes').onclick = function (e) {
   var b = e.target.closest('button');
   if (!b) return;
@@ -200,22 +460,27 @@ document.getElementById('modes').onclick = function (e) {
   remember('cal.mode', state.mode);
   render();
 };
-
-document.getElementById('reload').onclick = load;
+document.getElementById('sheetClose').onclick = function () {
+  document.getElementById('sheet').classList.add('hidden');
+};
+document.getElementById('sheet').onclick = function (e) {
+  if (e.target === this) this.classList.add('hidden');
+};
 
 // Beim Zurückkommen nach längerer Pause frisch laden (Wandtablet).
 document.addEventListener('visibilitychange', function () {
-  if (document.visibilityState === 'visible' && Date.now() - lastLoad > 15 * 60 * 1000) load();
+  if (document.visibilityState === 'visible' && Date.now() - lastLoad > 15 * 60 * 1000) load(true);
 });
 
-(function restore() {
+(function start() {
   var who = recall('cal.who');
-  if (who === 'all' || (who !== null && CALENDARS[who])) state.who = who === 'all' ? 'all' : Number(who);
+  if (who === 'all') state.who = 'all';
+  else if (who !== null && !isNaN(+who)) state.who = +who;
   var mode = recall('cal.mode');
   if (['MONTH', 'WEEK', 'AGENDA'].indexOf(mode) !== -1) state.mode = mode;
+  state.anchor = todayKey();
+  load(true);
 })();
-
-render();
 </script>
 </body>
 </html>
