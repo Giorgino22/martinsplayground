@@ -59,10 +59,12 @@ export const PEOPLE = [
       gcal('842616bdeef3886686973a194d72fb3aeae4b7625ecbc00750fd24a6e033da6b@group.calendar.google.com'),
       gcal('a09b3a710534fc603645f32c44e54aba5c866aa4b45508d4cfc28b38250058cc@group.calendar.google.com')
     ]
-  }
+  },
 
-  // ,{ name: 'Mama', color: '#cb30e0', feeds: [] }
-  // ,{ name: 'Papa', color: '#2ea043', feeds: [] }
+  // Mama und Papa: erscheinen automatisch, sobald FEEDS_MAMA bzw. FEEDS_PAPA in
+  // Cloudflare gesetzt ist. Solange leer, tauchen sie gar nicht erst auf.
+  { name: 'Mama', color: '#cb30e0', feeds: [] },
+  { name: 'Papa', color: '#2ea043', feeds: [] }
 ];
 
 /* ------------------------------------------------------------------
@@ -427,8 +429,7 @@ export async function onRequest(context) {
 
     const feeds = feedsFor(person, context.env);
     if (!feeds.length) {
-      info.ok = false;
-      info.note = 'Noch kein Kalender hinterlegt';
+      info.hidden = true;              // noch kein Kalender -> gar nicht anzeigen
       return;
     }
 
@@ -470,13 +471,25 @@ export async function onRequest(context) {
 
   events.sort(function (a, b) { return a.sort - b.sort || (a.allDay === b.allDay ? 0 : a.allDay ? -1 : 1); });
 
+  // Personen ohne hinterlegten Kalender herausnehmen und die Indizes der
+  // Termine entsprechend nachziehen.
+  const shown = [];
+  const remap = [];
+  people.forEach(function (info, i) {
+    if (info.hidden) { remap[i] = -1; return; }
+    remap[i] = shown.length;
+    shown.push(info);
+  });
+  const visible = events.filter(function (e) { return remap[e.p] >= 0; });
+  visible.forEach(function (e) { e.p = remap[e.p]; });
+
   return new Response(JSON.stringify({
     tz: TZ,
     from: fmtDate(fromMs),
     to: fmtDate(toMs),
-    people: people,
-    events: events.slice(0, MAX_EVENTS),
-    truncated: events.length > MAX_EVENTS
+    people: shown,
+    events: visible.slice(0, MAX_EVENTS),
+    truncated: visible.length > MAX_EVENTS
   }), {
     headers: {
       'content-type': 'application/json; charset=utf-8',

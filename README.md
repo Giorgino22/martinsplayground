@@ -75,6 +75,11 @@ this repo, which is public. Put those in Cloudflare environment variables instea
 `FEEDS_MARTIN`, `FEEDS_PATRICK`, `FEEDS_MAMA`, `FEEDS_PAPA` — several addresses separated by
 commas or newlines. When set, the variable replaces that person's `feeds` list in the code.
 
+All four people exist as slots in `PEOPLE`. A person with no feeds at all (in code or env) is left
+out of the response entirely, so Mama and Papa show no tab until `FEEDS_MAMA` / `FEEDS_PAPA` is
+set — at which point they appear on their own, no code change needed. Secrets are per **calendar**,
+not per account: someone with five calendars contributes five addresses to their variable.
+
 **Not a feed:** `calendar.google.com/calendar/u/0?cid=…` links are *subscribe* pages that require a
 Google sign-in, not calendar data. They only wrap the calendar id, which the code already has.
 
