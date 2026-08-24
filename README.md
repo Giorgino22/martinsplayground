@@ -54,9 +54,10 @@ for viewers.
 the *Alle* view each person gets one colour.
 
 **Cloudflare (important):** because this uses Pages Functions, the project's **Root directory**
-must be set to `hater` — Functions are detected relative to it. With Root directory = `hater` the
-**Build output directory** is `/`. If Root directory is left at the repo root, `/api/feed` returns
-405 and the page stays empty. Same trap as nizza.
+must be set to `hater` — Functions are detected relative to it. The **Build output directory** is
+then `/`, *not* `hater`: it is resolved relative to the root directory, so `hater` there makes the
+build fail with `Output directory "hater/hater" not found`. If Root directory is left at the repo
+root instead, `/api/feed` returns 405 and the page stays empty. Same trap as nizza.
 
 **Adding a person / a calendar:** edit `PEOPLE` at the top of `functions/api/feed.js`.
 
@@ -66,6 +67,16 @@ must be set to `hater` — Functions are detected relative to it. With Root dire
 - *Apple/iCloud:* iCloud.com → Calendar → the share icon next to the calendar → *Public Calendar*
   → copy link, replace `webcal://` with `https://`, paste it in. No Google detour, so it is live
   rather than delayed.
+
+**Don't want a calendar public?** Google also offers a *Secret address in iCal format* under
+*Integrate calendar* (ends in `/private-xxxxx/basic.ics`). It works without sign-in and without
+making the calendar public — but it is effectively a password, so it must **not** be committed to
+this repo, which is public. Put those in Cloudflare environment variables instead:
+`FEEDS_MARTIN`, `FEEDS_PATRICK`, `FEEDS_MAMA`, `FEEDS_PAPA` — several addresses separated by
+commas or newlines. When set, the variable replaces that person's `feeds` list in the code.
+
+**Not a feed:** `calendar.google.com/calendar/u/0?cid=…` links are *subscribe* pages that require a
+Google sign-in, not calendar data. They only wrap the calendar id, which the code already has.
 
 Handled: recurring events (daily/weekly/monthly/yearly, `INTERVAL`/`COUNT`/`UNTIL`/`BYDAY`/
 `BYMONTHDAY`), `EXDATE`, moved single occurrences (`RECURRENCE-ID`), all-day and multi-day events,
