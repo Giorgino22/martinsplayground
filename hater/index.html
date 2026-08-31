@@ -49,6 +49,7 @@
   .spacer { flex: 1; }
   .icon.busy { opacity: 0.4; }
   #openPlan { border-color: #111; color: #111; font-weight: 600; }
+  .stamp { font-size: 0.72rem; color: #bbb; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
   .notes { font-size: 0.8rem; color: #b26b00; background: #fff8e6; border-radius: 8px; padding: 6px 10px; }
   .notes b { font-weight: 700; }
@@ -218,6 +219,7 @@
       <button data-mode="AGENDA">Agenda</button>
     </div>
     <button class="icon" id="openPlan">Planen</button>
+    <span class="stamp" id="stamp"></span>
     <button class="icon" id="reload" title="Neu laden">↻</button>
   </div>
   <div class="notes" id="notes" hidden></div>
@@ -351,12 +353,17 @@ function indexEvents(json) {
     }
   });
   lastLoad = Date.now();
+  var s = document.getElementById('stamp');
+  if (s) s.textContent = 'Stand ' + fromMin(nowInZurich().min);
 }
 
-function fetchWindow(from, to) {
+function fetchWindow(from, to, fresh) {
   loading = true;
   document.getElementById('reload').classList.add('busy');
-  return fetch('/api/feed?from=' + from + '&to=' + to)
+  // fresh: ↻ und die Rückkehr nach längerer Pause sollen wirklich neu holen,
+  // nicht die Kopie aus dem Browser- oder Rand-Zwischenspeicher zeigen.
+  return fetch('/api/feed?from=' + from + '&to=' + to + (fresh ? '&fresh=' + Date.now() : ''),
+               fresh ? { cache: 'no-store' } : undefined)
     .then(function (r) {
       if (r.status === 404 || r.status === 405) {
         var e = new Error('/api/feed antwortet nicht (HTTP ' + r.status + ')');
@@ -383,11 +390,11 @@ function needsLoad() {
   return shift(state.anchor, -40) < DATA.from || shift(state.anchor, 60) > DATA.to;
 }
 
-function load(force) {
+function load(force, fresh) {
   if (loading) return;
   if (!force && !needsLoad()) { render(); return; }
   var w = windowFor(state.anchor);
-  fetchWindow(w.from, w.to).then(render).catch(showError);
+  fetchWindow(w.from, w.to, fresh).then(render).catch(showError);
 }
 
 /** Sorgt dafür, dass der Bereich geladen ist (für den Planer). */
@@ -921,7 +928,7 @@ function step(dir) {
 document.getElementById('prev').onclick = function () { step(-1); };
 document.getElementById('next').onclick = function () { step(1); };
 document.getElementById('today').onclick = function () { state.anchor = todayKey(); load(false); };
-document.getElementById('reload').onclick = function () { load(true); };
+document.getElementById('reload').onclick = function () { load(true, true); };
 document.getElementById('openPlan').onclick = openPlan;
 document.getElementById('modes').onclick = function (e) {
   var b = e.target.closest('button');
@@ -948,7 +955,7 @@ window.addEventListener('resize', function () {
 
 // Beim Zurückkommen nach längerer Pause frisch laden (Wandtablet).
 document.addEventListener('visibilitychange', function () {
-  if (document.visibilityState === 'visible' && Date.now() - lastLoad > 15 * 60 * 1000) load(true);
+  if (document.visibilityState === 'visible' && Date.now() - lastLoad > 15 * 60 * 1000) load(true, true);
 });
 
 (function start() {
