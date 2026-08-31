@@ -96,6 +96,19 @@ out of the response entirely, so Mama and Papa show no tab until `FEEDS_MAMA` / 
 set — at which point they appear on their own, no code change needed. Secrets are per **calendar**,
 not per account: someone with five calendars contributes five addresses to their variable.
 Umlauts in a name become their two-letter form in the variable, so *Schöni* is `FEEDS_SCHOENI`.
+A person may also pin their variable name with an `env` field, so renaming the displayed name does
+not orphan a variable already set in Cloudflare — *Mamma* reads `FEEDS_MAMA` or `FEEDS_MAMMA`,
+*Geissepapi* reads `FEEDS_PAPA` or `FEEDS_GEISSEPAPI`.
+
+**Environment variables only take effect on a new deployment.** Cloudflare Pages binds them when a
+deployment is created, so adding or changing one in the dashboard does nothing until you redeploy
+(*Deployments → Retry deployment*, or push a commit). This is the usual reason a freshly added
+calendar does not appear.
+
+**`/api/feed?debug=1`** reports what the Function actually sees: which variable names were checked
+for each person, which were found, where the feeds came from (env or code), and per feed the HTTP
+status, size, number of `VEVENT`s and how many fall in the window. Feed addresses are truncated to
+host plus a few characters, so the tokens are not exposed.
 
 **Not a feed:** `calendar.google.com/calendar/u/0?cid=…` links are *subscribe* pages that require a
 Google sign-in, not calendar data. They only wrap the calendar id, which the code already has.
