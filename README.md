@@ -85,7 +85,7 @@ root instead, `/api/feed` returns 405 and the page stays empty. Same trap as niz
 *Integrate calendar* (ends in `/private-xxxxx/basic.ics`). It works without sign-in and without
 making the calendar public — but it is effectively a password, so it must **not** be committed to
 this repo, which is public. Put those in Cloudflare environment variables instead:
-`FEEDS_MARTIN`, `FEEDS_PATRICK`, `FEEDS_MAMA`, `FEEDS_PAPA` — several addresses separated by
+`FEEDS_MARTIN`, `FEEDS_PATRICK`, `FEEDS_MAMA`, `FEEDS_PAPA`, `FEEDS_SCHOENI` — several addresses separated by
 commas, semicolons or newlines (any mix; trailing separators and blank lines are fine). When set,
 the variable replaces that person's `feeds` list in the code. An entry that obviously isn't a feed
 — a `?cid=` subscribe link, or anything without `http(s)://` — is skipped and named in that
@@ -95,9 +95,19 @@ All four people exist as slots in `PEOPLE`. A person with no feeds at all (in co
 out of the response entirely, so Mama and Papa show no tab until `FEEDS_MAMA` / `FEEDS_PAPA` is
 set — at which point they appear on their own, no code change needed. Secrets are per **calendar**,
 not per account: someone with five calendars contributes five addresses to their variable.
+Umlauts in a name become their two-letter form in the variable, so *Schöni* is `FEEDS_SCHOENI`.
 
 **Not a feed:** `calendar.google.com/calendar/u/0?cid=…` links are *subscribe* pages that require a
 Google sign-in, not calendar data. They only wrap the calendar id, which the code already has.
+
+**How fresh is it?** Two things add delay. The source system republishes its `.ics` on its own
+schedule — that part is outside this repo and is usually the bigger share. On top of that,
+Cloudflare caches each feed for 5 minutes at the edge; the JSON response is `max-age=0` for
+browsers and `s-maxage=300` at the edge, so a reload never serves a stale copy from the browser
+itself. The ↻ button sends `?fresh=…` with `no-store`, which bypasses both the edge cache and the
+feed cache and really re-fetches. The header shows *Stand HH:MM* — the time the data was last
+fetched. The page also re-fetches on load, when navigating outside the loaded window, and on
+returning to the tab after 15+ minutes idle.
 
 Handled: recurring events (daily/weekly/monthly/yearly, `INTERVAL`/`COUNT`/`UNTIL`/`BYDAY`/
 `BYMONTHDAY`), `EXDATE`, moved single occurrences (`RECURRENCE-ID`), all-day and multi-day events,

@@ -64,7 +64,16 @@ export const PEOPLE = [
   // Mama und Papa: erscheinen automatisch, sobald FEEDS_MAMA bzw. FEEDS_PAPA in
   // Cloudflare gesetzt ist. Solange leer, tauchen sie gar nicht erst auf.
   { name: 'Mama', color: '#cb30e0', feeds: [] },
-  { name: 'Papa', color: '#2ea043', feeds: [] }
+  { name: 'Papa', color: '#2ea043', feeds: [] },
+
+  {
+    name: 'Schöni',
+    color: '#00897b',
+    feeds: [
+      // ClubDesk-Feed des Vereins. webcal:// wird beim Holen zu https://.
+      'webcal://calendar.clubdesk.com/clubdesk/ical/47195/1000665/djEtrDz5oMGoLS_mavMxV98QWeTYTqUZbfGkFEwdOip7gVA=/basic.ics'
+    ]
+  }
 ];
 
 /* ------------------------------------------------------------------
@@ -399,8 +408,15 @@ export function toDisplay(occ, personIndex) {
 ------------------------------------------------------------------- */
 
 /** Feeds einer Person: FEEDS_<NAME> aus Cloudflare schlägt die Liste im Code. */
+/** «Schöni» -> FEEDS_SCHOENI (nicht FEEDS_SCHNI). */
+export function envKeyFor(name) {
+  return 'FEEDS_' + String(name).toUpperCase()
+    .replace(/Ä/g, 'AE').replace(/Ö/g, 'OE').replace(/Ü/g, 'UE')
+    .replace(/[^A-Z0-9]/g, '');
+}
+
 export function feedsFor(person, env) {
-  const key = 'FEEDS_' + person.name.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  const key = envKeyFor(person.name);
   const raw = env && env[key];
   if (raw && String(raw).trim()) {
     return String(raw).split(/[\s,;]+/).map(function (s) { return s.trim(); }).filter(Boolean);
@@ -419,6 +435,7 @@ export async function onRequest(context) {
   const now = Date.now();
   const fromMs = dayMs(url.searchParams.get('from'), false) || now - 60 * 86400000;
   const toMs = dayMs(url.searchParams.get('to'), true) || now + 400 * 86400000;
+  const fresh = url.searchParams.has('fresh');      // ↻ umgeht jeden Zwischenspeicher
 
   const people = [];
   const events = [];
@@ -456,7 +473,7 @@ export async function onRequest(context) {
     const results = await Promise.all(feeds.map(async function (href) {
       try {
         const res = await fetch(href, {
-          cf: { cacheTtl: 300, cacheEverything: true },
+          cf: fresh ? { cacheTtl: 0 } : { cacheTtl: 300, cacheEverything: true },
           headers: { 'user-agent': 'familienkalender/1.0' }
         });
         if (!res.ok) return { error: 'HTTP ' + res.status };
@@ -515,7 +532,11 @@ export async function onRequest(context) {
   }), {
     headers: {
       'content-type': 'application/json; charset=utf-8',
-      'cache-control': 'public, max-age=300'
+      // Der Rand von Cloudflare darf 5 Minuten zwischenspeichern, der Browser nicht —
+      // sonst zeigt ein Neuladen der Seite minutenlang alte Termine.
+      'cache-control': fresh
+        ? 'no-store'
+        : 'public, max-age=0, s-maxage=300, stale-while-revalidate=600'
     }
   });
 }
