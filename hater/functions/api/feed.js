@@ -63,8 +63,11 @@ export const PEOPLE = [
 
   // Mama und Papa: erscheinen automatisch, sobald FEEDS_MAMA bzw. FEEDS_PAPA in
   // Cloudflare gesetzt ist. Solange leer, tauchen sie gar nicht erst auf.
-  { name: 'Mama', color: '#cb30e0', feeds: [] },
-  { name: 'Papa', color: '#2ea043', feeds: [] },
+  // `env` haelt den Variablennamen fest, damit ein neuer Anzeigename die schon
+  // in Cloudflare gesetzte Variable nicht verwaist. FEEDS_MAMMA bzw.
+  // FEEDS_GEISSEPAPI funktionieren zusaetzlich.
+  { name: 'Mamma', env: 'FEEDS_MAMA', color: '#cb30e0', feeds: [] },
+  { name: 'Geissepapi', env: 'FEEDS_PAPA', color: '#2ea043', feeds: [] },
 
   {
     name: 'Schöni',
@@ -415,11 +418,21 @@ export function envKeyFor(name) {
     .replace(/[^A-Z0-9]/g, '');
 }
 
+/** Beide Namen gelten: der festgelegte und der aus dem Anzeigenamen abgeleitete. */
+export function envKeysFor(person) {
+  const keys = [];
+  if (person.env) keys.push(person.env);
+  const derived = envKeyFor(person.name);
+  if (keys.indexOf(derived) === -1) keys.push(derived);
+  return keys;
+}
+
 export function feedsFor(person, env) {
-  const key = envKeyFor(person.name);
-  const raw = env && env[key];
-  if (raw && String(raw).trim()) {
-    return String(raw).split(/[\s,;]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+  const hit = envKeysFor(person).find(function (k) {
+    return env && env[k] && String(env[k]).trim();
+  });
+  if (hit) {
+    return String(env[hit]).split(/[\s,;]+/).map(function (s) { return s.trim(); }).filter(Boolean);
   }
   return person.feeds;
 }
@@ -436,15 +449,36 @@ export async function onRequest(context) {
   const fromMs = dayMs(url.searchParams.get('from'), false) || now - 60 * 86400000;
   const toMs = dayMs(url.searchParams.get('to'), true) || now + 400 * 86400000;
   const fresh = url.searchParams.has('fresh');      // ↻ umgeht jeden Zwischenspeicher
+  const debug = url.searchParams.has('debug');      // zeigt, was die Function wirklich sieht
 
   const people = [];
   const events = [];
+  const diag = [];
+
+  /** Adresse fuer die Diagnose kuerzen — das Token ist ein Passwort. */
+  function safeUrl(u) {
+    try {
+      const x = new URL(u);
+      return x.host + x.pathname.slice(0, 18) + (x.pathname.length > 18 ? '…' : '');
+    } catch (e) { return String(u).slice(0, 24) + '…'; }
+  }
 
   await Promise.all(PEOPLE.map(async function (person, i) {
     const info = { name: person.name, color: person.color, ok: true };
     people[i] = info;
 
+    const keys = envKeysFor(person);
+    const d = {
+      name: person.name,
+      envKeysChecked: keys,
+      envKeyFound: keys.filter(function (k) { return context.env && context.env[k]; }),
+      feedsInCode: person.feeds.length,
+      feeds: []
+    };
+    diag[i] = d;
+
     const entries = feedsFor(person, context.env);
+    d.source = d.envKeyFound.length ? 'env' : (person.feeds.length ? 'code' : 'keine');
     if (!entries.length) {
       info.hidden = true;              // noch kein Kalender -> gar nicht anzeigen
       return;
@@ -463,6 +497,7 @@ export async function onRequest(context) {
         feeds.push(href);
       }
     });
+    d.rejected = wrong;
 
     if (!feeds.length) {
       info.ok = false;
@@ -471,14 +506,21 @@ export async function onRequest(context) {
     }
 
     const results = await Promise.all(feeds.map(async function (href) {
+      const entry = { url: safeUrl(href) };
+      d.feeds.push(entry);
       try {
         const res = await fetch(href, {
           cf: fresh ? { cacheTtl: 0 } : { cacheTtl: 300, cacheEverything: true },
           headers: { 'user-agent': 'familienkalender/1.0' }
         });
+        entry.status = res.status;
         if (!res.ok) return { error: 'HTTP ' + res.status };
-        return { text: await res.text() };
+        const text = await res.text();
+        entry.bytes = text.length;
+        entry.vevents = (text.match(/BEGIN:VEVENT/g) || []).length;
+        return { text: text, entry: entry };
       } catch (err) {
+        entry.status = 'nicht erreichbar';
         return { error: 'nicht erreichbar' };
       }
     }));
@@ -499,10 +541,11 @@ export async function onRequest(context) {
     results.forEach(function (r) {
       if (!r.text) return;
       try {
-        expandAll(parseICS(r.text), fromMs, toMs).forEach(function (occ) {
-          events.push(toDisplay(occ, i));
-        });
+        const occs = expandAll(parseICS(r.text), fromMs, toMs);
+        if (r.entry) r.entry.inWindow = occs.length;
+        occs.forEach(function (occ) { events.push(toDisplay(occ, i)); });
       } catch (err) {
+        if (r.entry) r.entry.parseError = String(err.message || err);
         info.note = 'Kalender konnte nicht gelesen werden';
       }
     });
@@ -521,6 +564,14 @@ export async function onRequest(context) {
   });
   const visible = events.filter(function (e) { return remap[e.p] >= 0; });
   visible.forEach(function (e) { e.p = remap[e.p]; });
+
+  if (debug) {
+    return new Response(JSON.stringify({
+      now: fmtDate(now), window: [fmtDate(fromMs), fmtDate(toMs)],
+      hint: 'Umgebungsvariablen in Cloudflare Pages wirken erst nach einem neuen Deployment.',
+      people: diag
+    }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
+  }
 
   return new Response(JSON.stringify({
     tz: TZ,
