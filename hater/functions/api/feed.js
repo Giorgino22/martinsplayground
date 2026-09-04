@@ -71,7 +71,7 @@ export const PEOPLE = [
   { name: 'Mamma', env: 'FEEDS_MAMA', color: '#cb30e0', feeds: [] },
   // Gemeinsamer Familienkalender. Muss veröffentlicht sein, damit er ohne
   // Anmeldung lesbar ist — siehe README.
-  { name: 'Familie', env: 'FEEDS_FAMILIE', color: '#6c47ff', feeds: [] },
+  { name: 'Familie', env: ['FEEDS_FAMILIE', 'FEEDS_FAMILY'], color: '#6c47ff', feeds: [] },
   { name: 'Geissepapi', env: 'FEEDS_PAPA', color: '#2ea043', feeds: [] },
 
   {
@@ -426,7 +426,8 @@ export function envKeyFor(name) {
 /** Beide Namen gelten: der festgelegte und der aus dem Anzeigenamen abgeleitete. */
 export function envKeysFor(person) {
   const keys = [];
-  if (person.env) keys.push(person.env);
+  const declared = person.env ? (Array.isArray(person.env) ? person.env : [person.env]) : [];
+  declared.forEach(function (k) { if (keys.indexOf(k) === -1) keys.push(k); });
   const derived = envKeyFor(person.name);
   if (keys.indexOf(derived) === -1) keys.push(derived);
   return keys;
@@ -578,9 +579,24 @@ export async function onRequest(context) {
   visible.forEach(function (e) { e.p = remap[e.p]; });
 
   if (debug) {
+    // Welche FEEDS_-Variablen sieht die Function tatsaechlich? Nur die Namen,
+    // nie die Werte — die Adressen sind Passwoerter.
+    const known = {};
+    PEOPLE.forEach(function (p) { envKeysFor(p).forEach(function (k) { known[k] = true; }); });
+    const seen = Object.keys(context.env || {}).filter(function (k) { return /^FEEDS_/i.test(k); }).sort();
+    const unmatched = seen.filter(function (k) { return !known[k]; });
+
     return new Response(JSON.stringify({
       now: fmtDate(now), window: [fmtDate(fromMs), fmtDate(toMs)],
       hint: 'Umgebungsvariablen in Cloudflare Pages wirken erst nach einem neuen Deployment.',
+      feedVars: {
+        seen: seen,
+        unmatched: unmatched,
+        note: unmatched.length
+          ? 'Diese Variablen kommen an, gehören aber zu niemandem — vermutlich vertippt.'
+          : (seen.length ? 'Alle ankommenden FEEDS_-Variablen sind zugeordnet.'
+                         : 'Es kommt keine einzige FEEDS_-Variable an — wurde nach dem Setzen neu ausgerollt?')
+      },
       people: diag
     }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
   }

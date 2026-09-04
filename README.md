@@ -11,7 +11,7 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 | `askMartin/`  | `askmartin.odermatts.ch`     | A big "Ja" in the middle of the page. `/second/` loads `second.asknils.ch`, then a shark swims in and swallows his whole site ("Nei" and all), leaving a big "Ja". |
 | `askSchoggi/` | `askschoggi.odermatts.ch`    | Waits 2–3s, then screams a massive "NEI". |
 | `fottis/`     | `fottis.odermatts.ch`        | (Parked) Shared photo/video drop. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
-| `hater/`      | `hater.odermatts.ch`         | Familienkalender. Read-only view of the family's public `.ics` feeds. Needs Pages Functions (Root directory `hater`), no bindings. |
+| `hater/`      | `oderkalender.odermatts.ch`  | Familienkalender. Read-only view of the family's public `.ics` feeds. Needs Pages Functions (Root directory `hater`), no bindings. Folder name is historical — it reuses the old `hater` Pages project. |
 | `nizza/`      | `nizza.odermatts.ch`         | **The app.** Installable PWA hub: home launcher + `/aura/`, `/chooser/`, `/hater/`. Needs D1 (`DB`), Workers AI (`AI`), R2 (`BUCKET`). |
 
 ### nizza app (everything in one PWA)
@@ -28,8 +28,8 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
   app-like, full-screen experience (stays in-app because it's all one origin).
 
 Bindings on the nizza project: **`DB`** (D1), **`AI`** (Workers AI), **`BUCKET`** (R2).
-The old standalone `chooser.odermatts.ch` project can be deleted; `hater.odermatts.ch` has been
-repurposed as the family calendar (see below).
+The old standalone `chooser.odermatts.ch` project can be deleted; the old `hater` project has been
+repurposed as the family calendar and now serves `oderkalender.odermatts.ch` (see below).
 
 **Cloudflare config (important):** because this project uses Pages Functions in
 `nizza/functions/`, the project's **Root directory** must be set to `nizza` (Functions are
@@ -39,8 +39,11 @@ root, Functions are not deployed and `/api/*` returns 405.
 
 ### hater (Familienkalender)
 
-A read-only view of the whole family's calendars. It reuses the old `hater.odermatts.ch` Pages
-project. **Nobody logs in to look at it** — the page reads public `.ics` feeds server-side and
+A read-only view of the whole family's calendars, served at `oderkalender.odermatts.ch`. The
+folder is still called `hater/` because it reuses that old Pages project; nothing in the code
+refers to a hostname, so the custom domain can be changed freely. Two things do reset on a domain
+change: the access cookie (everyone enters the code once more) and the remembered view, since
+browsers scope both per domain. **Nobody logs in to look at it** — the page reads public `.ics` feeds server-side and
 draws the calendar itself, so there is no Google embed, no sign-in and no Google account involved
 for viewers.
 
@@ -92,15 +95,15 @@ root instead, `/api/feed` returns 405 and the page stays empty. Same trap as niz
 *Integrate calendar* (ends in `/private-xxxxx/basic.ics`). It works without sign-in and without
 making the calendar public — but it is effectively a password, so it must **not** be committed to
 this repo, which is public. Put those in Cloudflare environment variables instead:
-`FEEDS_MARTIN`, `FEEDS_PATRICK`, `FEEDS_MAMA`, `FEEDS_PAPA`, `FEEDS_SCHOENI` — several addresses separated by
+`FEEDS_MARTIN`, `FEEDS_PATRICK`, `FEEDS_MAMA`, `FEEDS_FAMILIE`, `FEEDS_PAPA`, `FEEDS_SCHOENI` — several addresses separated by
 commas, semicolons or newlines (any mix; trailing separators and blank lines are fine). When set,
 the variable replaces that person's `feeds` list in the code. An entry that obviously isn't a feed
 — a `?cid=` subscribe link, or anything without `http(s)://` — is skipped and named in that
 person's note rather than silently failing.
 
-All four people exist as slots in `PEOPLE`. A person with no feeds at all (in code or env) is left
-out of the response entirely, so Mama and Papa show no tab until `FEEDS_MAMA` / `FEEDS_PAPA` is
-set — at which point they appear on their own, no code change needed. Secrets are per **calendar**,
+All six entries exist as slots in `PEOPLE` (Martin, Patrick, Mamma, Familie, Geissepapi, Schöni).
+A person with no feeds at all (in code or env) is left out of the response entirely, so an unset
+one shows no tab — set their variable and they appear on their own, no code change needed. Secrets are per **calendar**,
 not per account: someone with five calendars contributes five addresses to their variable.
 Umlauts in a name become their two-letter form in the variable, so *Schöni* is `FEEDS_SCHOENI`.
 A person may also pin their variable name with an `env` field, so renaming the displayed name does
@@ -137,7 +140,10 @@ Honest limit: a six-digit code is a million combinations, four digits ten thousa
 that is a long grind, and it keeps out search engines, link-guessers and passers-by. It is not
 authentication and there are no per-person accounts — everyone shares one code.
 
-**`/api/feed?debug=1`** reports what the Function actually sees: which variable names were checked
+**`/api/feed?debug=1`** reports what the Function actually sees. `feedVars` lists every `FEEDS_*`
+variable that reached it and which of them match nobody — that separates "not redeployed yet"
+(nothing arrives at all) from "name mistyped" (it arrives but is unmatched). Only names are shown,
+never values. Per person it also reports: which variable names were checked
 for each person, which were found, where the feeds came from (env or code), and per feed the HTTP
 status, size, number of `VEVENT`s and how many fall in the window. Feed addresses are truncated to
 host plus a few characters, so the tokens are not exposed.
