@@ -12,8 +12,12 @@
 const COOKIE = 'fk_auth';
 const MAX_AGE = 180 * 24 * 3600;          // ein halbes Jahr, damit niemand ständig tippen muss
 
-/** Voreinstellung: Geiss, Schoggi, Chäs, Bärg. Über SITE_CODE änderbar. */
-const DEFAULT_CODE = 'goat-choc-cheese-mtn';
+/**
+ * Zahlencode wie auf dem iPhone. Diese Voreinstellung steht in einem
+ * öffentlichen Repository und ist damit kein Geheimnis — SITE_CODE in
+ * Cloudflare setzen. Beliebig viele Ziffern, üblich sind vier oder sechs.
+ */
+const DEFAULT_CODE = '112358';
 
 export function siteCode(env) {
   const c = env && env.SITE_CODE;
@@ -50,8 +54,9 @@ export function codeMatches(input, env) {
   return safeEqual(String(input || '').trim().toLowerCase(), siteCode(env).trim().toLowerCase());
 }
 
+/** Anzahl Ziffern — die Seite weiss dadurch, wann sie absenden soll. */
 export function codeLength(env) {
-  return siteCode(env).split('-').filter(Boolean).length;
+  return siteCode(env).trim().length;
 }
 
 export async function makeToken(env) {
