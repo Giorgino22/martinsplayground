@@ -130,6 +130,34 @@
   .agday .ev { font-size: 0.92rem; white-space: normal; padding: 3px 6px; }
   .agday .ev .tt { white-space: normal; }
 
+  /* Sperrbildschirm */
+  .gate {
+    position: fixed; inset: 0; z-index: 50; background: #fff;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .gate.hidden { display: none; }
+  .gbox { width: 100%; max-width: 340px; text-align: center; }
+  .gbox h1 { margin: 0 0 4px; font-size: 1.5rem; }
+  .gbox p { margin: 0 0 18px; color: #999; font-size: 0.9rem; min-height: 1.2em; }
+  .gbox p.bad { color: #ff3b30; }
+  .gdots { display: flex; gap: 9px; justify-content: center; margin-bottom: 22px; height: 12px; }
+  .gdots i { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid #ccc; }
+  .gdots i.on { background: #111; border-color: #111; }
+  .gtiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .gtiles button {
+    aspect-ratio: 1; border: 1px solid #e5e5e5; border-radius: 16px; font-size: 1.9rem;
+    display: flex; align-items: center; justify-content: center; background: #fff;
+    transition: transform .08s, background .12s;
+  }
+  .gtiles button:active { background: #f2f2f2; transform: scale(.93); }
+  .gback { margin-top: 16px; color: #bbb; font-size: 0.85rem; padding: 8px; }
+  .shake { animation: shake .4s; }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20% { transform: translateX(-9px); } 40% { transform: translateX(9px); }
+    60% { transform: translateX(-5px); } 80% { transform: translateX(5px); }
+  }
+
   /* Overlays */
   .sheet { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: flex-end; justify-content: center; z-index: 10; }
   .sheet.hidden { display: none; }
@@ -226,6 +254,16 @@
 </header>
 
 <main id="view"><div class="loading">Kalender werden geladen …</div></main>
+
+<div class="gate hidden" id="gate">
+  <div class="gbox">
+    <h1>Familiechalender</h1>
+    <p id="gmsg">Tipp de Code</p>
+    <div class="gdots" id="gdots"></div>
+    <div class="gtiles" id="gtiles"></div>
+    <button class="gback" id="gback">← Zrugg</button>
+  </div>
+</div>
 
 <div class="sheet hidden" id="sheet">
   <div class="box">
@@ -342,6 +380,93 @@ function esc(s) {
   });
 }
 
+/* ------------------------------------------------------------------
+   Sperrbildschirm. Vier Bilder statt Buchstaben — auf dem Handy antippen,
+   am Rechner klicken. Geprüft wird in /api/login, nicht hier.
+------------------------------------------------------------------- */
+var TILES = [
+  { id: 'goat', e: '🐐' }, { id: 'choc', e: '🍫' }, { id: 'cheese', e: '🧀' }, { id: 'mtn', e: '⛰️' },
+  { id: 'cow',  e: '🐄' }, { id: 'ski',  e: '🎿' }, { id: 'clock',  e: '🕐' }, { id: 'train', e: '🚂' },
+  { id: 'ball', e: '⚽' }, { id: 'wine', e: '🍷' }, { id: 'fish',   e: '🎣' }, { id: 'bread', e: '🥨' }
+];
+var codeLen = 4;
+var entered = [];
+
+function drawDots() {
+  var d = document.getElementById('gdots');
+  d.innerHTML = '';
+  for (var i = 0; i < codeLen; i++) {
+    d.innerHTML += '<i class="' + (i < entered.length ? 'on' : '') + '"></i>';
+  }
+}
+
+function gateMsg(txt, bad) {
+  var m = document.getElementById('gmsg');
+  m.textContent = txt;
+  m.classList.toggle('bad', !!bad);
+}
+
+function buildGate() {
+  var box = document.getElementById('gtiles');
+  box.innerHTML = '';
+  TILES.forEach(function (tile) {
+    var b = document.createElement('button');
+    b.textContent = tile.e;
+    b.setAttribute('aria-label', tile.id);
+    b.onclick = function () {
+      if (entered.length >= codeLen) return;
+      entered.push(tile.id);
+      drawDots();
+      if (entered.length === codeLen) submitCode();
+    };
+    box.appendChild(b);
+  });
+  drawDots();
+}
+
+function submitCode() {
+  gateMsg('Moment …');
+  fetch('/api/login', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ code: entered.join('-') })
+  }).then(function (r) {
+    if (r.ok) {
+      document.getElementById('gate').classList.add('hidden');
+      entered = [];
+      load(true, true);
+      return;
+    }
+    entered = [];
+    drawDots();
+    gateMsg('Nöd ganz. Nomol.', true);
+    var box = document.getElementById('gbox') || document.querySelector('.gbox');
+    box.classList.add('shake');
+    setTimeout(function () { box.classList.remove('shake'); }, 420);
+  }).catch(function () {
+    entered = [];
+    drawDots();
+    gateMsg('Keine Verbindig.', true);
+  });
+}
+
+function showGate() {
+  document.getElementById('view').innerHTML = '';
+  document.getElementById('gate').classList.remove('hidden');
+  entered = [];
+  gateMsg('Tipp de Code');
+  fetch('/api/login').then(function (r) { return r.json(); })
+    .then(function (j) { if (j && j.len) { codeLen = j.len; drawDots(); } })
+    .catch(function () {});
+  drawDots();
+}
+
+document.getElementById('gback').onclick = function () {
+  entered.pop();
+  drawDots();
+  gateMsg('Tipp de Code');
+};
+
 /* ---- Daten ---- */
 function indexEvents(json) {
   DATA = json;
@@ -365,6 +490,11 @@ function fetchWindow(from, to, fresh) {
   return fetch('/api/feed?from=' + from + '&to=' + to + (fresh ? '&fresh=' + Date.now() : ''),
                fresh ? { cache: 'no-store' } : undefined)
     .then(function (r) {
+      if (r.status === 401) {
+        var a = new Error('gesperrt');
+        a.locked = true;
+        throw a;
+      }
       if (r.status === 404 || r.status === 405) {
         var e = new Error('/api/feed antwortet nicht (HTTP ' + r.status + ')');
         e.hint = 'Die Function ist nicht deployt. In Cloudflare beim Projekt hater: ' +
@@ -406,6 +536,7 @@ function ensureRange(from, to) {
 }
 
 function showError(err) {
+  if (err && err.locked) { showGate(); return; }
   document.getElementById('view').innerHTML =
     '<div class="empty">Kalender konnten nicht geladen werden.<br>' +
     '<small>' + esc(err.message) + '</small>' +
@@ -965,6 +1096,7 @@ document.addEventListener('visibilitychange', function () {
   var mode = recall('cal.mode');
   if (['MONTH', 'WEEK', 'LIST', 'AGENDA'].indexOf(mode) !== -1) state.mode = mode;
   state.anchor = todayKey();
+  buildGate();
   load(true);
 })();
 </script>

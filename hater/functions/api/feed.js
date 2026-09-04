@@ -6,6 +6,8 @@
  * Niemand muss sich anmelden — die Feeds sind öffentliche .ics-Adressen.
  */
 
+import { isAuthed } from './_auth.js';
+
 const TZ = 'Europe/Zurich';
 const MAX_EVENTS = 6000;
 
@@ -67,6 +69,9 @@ export const PEOPLE = [
   // in Cloudflare gesetzte Variable nicht verwaist. FEEDS_MAMMA bzw.
   // FEEDS_GEISSEPAPI funktionieren zusaetzlich.
   { name: 'Mamma', env: 'FEEDS_MAMA', color: '#cb30e0', feeds: [] },
+  // Gemeinsamer Familienkalender. Muss veröffentlicht sein, damit er ohne
+  // Anmeldung lesbar ist — siehe README.
+  { name: 'Familie', env: 'FEEDS_FAMILIE', color: '#6c47ff', feeds: [] },
   { name: 'Geissepapi', env: 'FEEDS_PAPA', color: '#2ea043', feeds: [] },
 
   {
@@ -444,6 +449,13 @@ function dayMs(iso, endOfDay) {
 }
 
 export async function onRequest(context) {
+  if (!await isAuthed(context.request, context.env)) {
+    return new Response(JSON.stringify({ error: 'auth' }), {
+      status: 401,
+      headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }
+    });
+  }
+
   const url = new URL(context.request.url);
   const now = Date.now();
   const fromMs = dayMs(url.searchParams.get('from'), false) || now - 60 * 86400000;
@@ -583,11 +595,10 @@ export async function onRequest(context) {
   }), {
     headers: {
       'content-type': 'application/json; charset=utf-8',
-      // Der Rand von Cloudflare darf 5 Minuten zwischenspeichern, der Browser nicht —
-      // sonst zeigt ein Neuladen der Seite minutenlang alte Termine.
-      'cache-control': fresh
-        ? 'no-store'
-        : 'public, max-age=0, s-maxage=300, stale-while-revalidate=600'
+      // Nicht am gemeinsamen Rand zwischenspeichern: die Antwort haengt am
+      // Cookie, sonst bekaeme sie jemand ohne Code aus dem Zwischenspeicher.
+      // Die Last traegt weiterhin der Feed-Zwischenspeicher (cacheTtl 300).
+      'cache-control': 'private, no-store'
     }
   });
 }
