@@ -77,6 +77,13 @@ root instead, `/api/feed` returns 405 and the page stays empty. Same trap as niz
 - *Google:* make the calendar public first (*Settings → the calendar → Access permissions for
   events → Make available to public → See all event details*), then add `gcal('<calendar-id>')`.
   Every calendar has to be set individually — it is not inherited from the primary calendar.
+- *A shared iCloud family calendar* is **not** readable from here as-is: private sharing is
+  authenticated CalDAV, with no URL a server can fetch. Its **owner** has to publish it as well
+  (share icon → *Public Calendar*) and hand over that link, which then goes in `FEEDS_FAMILIE`.
+  Note the iCloud sharing pane presents *Private* and *Public* as alternatives, so check that the
+  family keeps its write access after publishing — if it does not, the calendar cannot be shown
+  here without reading iCloud over authenticated CalDAV, which would mean putting an Apple
+  app-specific password in Cloudflare.
 - *Apple/iCloud:* iCloud.com → Calendar → the share icon next to the calendar → *Public Calendar*
   → copy link, replace `webcal://` with `https://`, paste it in. No Google detour, so it is live
   rather than delayed.
@@ -104,6 +111,27 @@ not orphan a variable already set in Cloudflare — *Mamma* reads `FEEDS_MAMA` o
 deployment is created, so adding or changing one in the dashboard does nothing until you redeploy
 (*Deployments → Retry deployment*, or push a commit). This is the usual reason a freshly added
 calendar does not appear.
+
+**Access gate.** The site is behind a picture code: a grid of twelve emoji, tap four in the right
+order — same interaction with a mouse or a thumb, nothing to type. The check is **server-side** in
+`functions/api/login.js`; a correct code returns an HMAC-signed, `HttpOnly` `Secure` `SameSite=Lax`
+cookie valid for 180 days, and `/api/feed` returns `401` without it. That ordering matters: the
+page holds no calendar data of its own, so gating the API is what actually protects anything — a
+browser-only check would be bypassed by calling `/api/feed` directly. `?debug=1` is gated too.
+A wrong code costs a ~900 ms delay to slow scripted guessing.
+
+Because the response now depends on a cookie, it is `private, no-store` — caching it at the shared
+edge would hand it to someone without the cookie. The per-feed cache (`cacheTtl: 300`) is
+unaffected and still carries the load, so this costs nothing upstream.
+
+Set **`SITE_CODE`** (e.g. `goat-choc-cheese-mtn`, ids from the tile grid in `index.html`) and
+**`SESSION_SECRET`** (any long random string) in Cloudflare. Both have fallbacks so the site works
+before they are set, but a repo-visible default code is not a secret — set them. Changing
+`SESSION_SECRET` invalidates every existing session, which is how you log everyone out.
+
+Honest limit: four taps from twelve tiles is 20 736 combinations. With the delay that is hours of
+sustained guessing, and it keeps out search engines, link-guessers and passers-by. It is not
+authentication and there are no per-person accounts — everyone shares one code.
 
 **`/api/feed?debug=1`** reports what the Function actually sees: which variable names were checked
 for each person, which were found, where the feeds came from (env or code), and per feed the HTTP
