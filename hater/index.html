@@ -130,32 +130,48 @@
   .agday .ev { font-size: 0.92rem; white-space: normal; padding: 3px 6px; }
   .agday .ev .tt { white-space: normal; }
 
-  /* Sperrbildschirm */
+  /* Sperrbildschirm — Zifferblock wie auf dem iPhone */
   .gate {
     position: fixed; inset: 0; z-index: 50; background: #fff;
     display: flex; align-items: center; justify-content: center; padding: 20px;
+    /* kein Doppeltipp-Zoom und keine Textauswahl beim schnellen Tippen */
+    touch-action: manipulation;
+    -webkit-user-select: none; user-select: none;
   }
   .gate.hidden { display: none; }
-  .gbox { width: 100%; max-width: 340px; text-align: center; }
-  .gbox h1 { margin: 0 0 4px; font-size: 1.5rem; }
-  .gbox p { margin: 0 0 18px; color: #999; font-size: 0.9rem; min-height: 1.2em; }
+  .gbox { width: 100%; max-width: 268px; text-align: center; }
+  .gbox h1 { margin: 0 0 6px; font-size: 1.3rem; font-weight: 600; }
+  .gbox p { margin: 0 0 20px; color: #999; font-size: 0.88rem; min-height: 1.2em; }
   .gbox p.bad { color: #ff3b30; }
-  .gdots { display: flex; gap: 9px; justify-content: center; margin-bottom: 22px; height: 12px; }
-  .gdots i { width: 11px; height: 11px; border-radius: 50%; border: 1.5px solid #ccc; }
-  .gdots i.on { background: #111; border-color: #111; }
-  .gtiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-  .gtiles button {
-    aspect-ratio: 1; border: 1px solid #e5e5e5; border-radius: 16px; font-size: 1.9rem;
-    display: flex; align-items: center; justify-content: center; background: #fff;
-    transition: transform .08s, background .12s;
+
+  .gdots { display: flex; gap: 15px; justify-content: center; margin-bottom: 28px; height: 13px; }
+  .gdots i { width: 13px; height: 13px; border-radius: 50%; border: 1.5px solid #111; transition: background .1s; }
+  .gdots i.on { background: #111; }
+
+  .pad { display: grid; grid-template-columns: repeat(3, 76px); gap: 18px; justify-content: center; }
+  .pad button {
+    width: 76px; height: 76px; border-radius: 50%; background: #f1f1f4; border: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    line-height: 1; touch-action: manipulation; -webkit-user-select: none; user-select: none;
   }
-  .gtiles button:active { background: #f2f2f2; transform: scale(.93); }
-  .gback { margin-top: 16px; color: #bbb; font-size: 0.85rem; padding: 8px; }
+  .pad button b { font-size: 1.85rem; font-weight: 400; }
+  .pad button i { font-style: normal; font-size: 0.58rem; letter-spacing: 0.12em; color: #666; margin-top: 3px; height: 0.6rem; }
+  .pad button.press { background: #d6d6db; }
+  .pad .del { background: none; font-size: 1.4rem; }
+  .pad .del.press { background: #ececf0; }
+  .pad span { width: 76px; height: 76px; }
+
   .shake { animation: shake .4s; }
   @keyframes shake {
     0%,100% { transform: translateX(0); }
     20% { transform: translateX(-9px); } 40% { transform: translateX(9px); }
     60% { transform: translateX(-5px); } 80% { transform: translateX(5px); }
+  }
+
+  @media (max-height: 620px) {
+    .pad { grid-template-columns: repeat(3, 62px); gap: 12px; }
+    .pad button, .pad span { width: 62px; height: 62px; }
+    .pad button b { font-size: 1.5rem; }
   }
 
   /* Overlays */
@@ -204,6 +220,8 @@
     header .row { flex-wrap: wrap; }
     .spacer { flex-basis: 100%; height: 0; }
     #modes { flex: 1; }
+    /* Der Zeitstempel drueckt sonst die Modus-Tasten zusammen ("Agen…") */
+    .stamp { display: none; }
     #modes button { flex: 1; text-align: center; padding: 6px 4px; font-size: 0.8rem; }
     .label { flex: 1; padding: 0 4px; font-size: 0.95rem; }
     .week { grid-template-columns: 1fr; }
@@ -257,11 +275,10 @@
 
 <div class="gate hidden" id="gate">
   <div class="gbox">
-    <h1>Familiechalender</h1>
-    <p id="gmsg">Tipp de Code</p>
+    <h1>Familienkalender</h1>
+    <p id="gmsg">Code eingeben</p>
     <div class="gdots" id="gdots"></div>
-    <div class="gtiles" id="gtiles"></div>
-    <button class="gback" id="gback">← Zrugg</button>
+    <div class="pad" id="pad"></div>
   </div>
 </div>
 
@@ -381,23 +398,29 @@ function esc(s) {
 }
 
 /* ------------------------------------------------------------------
-   Sperrbildschirm. Vier Bilder statt Buchstaben — auf dem Handy antippen,
-   am Rechner klicken. Geprüft wird in /api/login, nicht hier.
+   Sperrbildschirm — Zifferblock wie auf dem iPhone.
+
+   Eingelesen wird auf pointerdown statt auf click: das reagiert sofort und
+   verschluckt auch bei schnellem Tippen keine Ziffer. touch-action:manipulation
+   im Stil verhindert, dass ein Doppeltipp die Seite hineinzoomt.
+   Am Rechner kann man den Code auch einfach auf der Tastatur tippen.
+
+   Geprüft wird in /api/login, nicht hier.
 ------------------------------------------------------------------- */
-var TILES = [
-  { id: 'goat', e: '🐐' }, { id: 'choc', e: '🍫' }, { id: 'cheese', e: '🧀' }, { id: 'mtn', e: '⛰️' },
-  { id: 'cow',  e: '🐄' }, { id: 'ski',  e: '🎿' }, { id: 'clock',  e: '🕐' }, { id: 'train', e: '🚂' },
-  { id: 'ball', e: '⚽' }, { id: 'wine', e: '🍷' }, { id: 'fish',   e: '🎣' }, { id: 'bread', e: '🥨' }
+var KEYS = [
+  ['1', ''], ['2', 'ABC'], ['3', 'DEF'],
+  ['4', 'GHI'], ['5', 'JKL'], ['6', 'MNO'],
+  ['7', 'PQRS'], ['8', 'TUV'], ['9', 'WXYZ']
 ];
-var codeLen = 4;
+var codeLen = 6;
 var entered = [];
+var checking = false;
 
 function drawDots() {
   var d = document.getElementById('gdots');
-  d.innerHTML = '';
-  for (var i = 0; i < codeLen; i++) {
-    d.innerHTML += '<i class="' + (i < entered.length ? 'on' : '') + '"></i>';
-  }
+  var html = '';
+  for (var i = 0; i < codeLen; i++) html += '<i class="' + (i < entered.length ? 'on' : '') + '"></i>';
+  d.innerHTML = html;
 }
 
 function gateMsg(txt, bad) {
@@ -406,31 +429,73 @@ function gateMsg(txt, bad) {
   m.classList.toggle('bad', !!bad);
 }
 
+function pressKey(k) {
+  if (checking) return;
+  if (k === 'del') {
+    entered.pop();
+    drawDots();
+    return;
+  }
+  if (entered.length >= codeLen) return;
+  entered.push(k);
+  drawDots();
+  if (entered.length === codeLen) submitCode();
+}
+
 function buildGate() {
-  var box = document.getElementById('gtiles');
-  box.innerHTML = '';
-  TILES.forEach(function (tile) {
+  var pad = document.getElementById('pad');
+  pad.innerHTML = '';
+
+  function keyButton(digit, letters, extraClass) {
     var b = document.createElement('button');
-    b.textContent = tile.e;
-    b.setAttribute('aria-label', tile.id);
-    b.onclick = function () {
-      if (entered.length >= codeLen) return;
-      entered.push(tile.id);
-      drawDots();
-      if (entered.length === codeLen) submitCode();
-    };
-    box.appendChild(b);
+    b.type = 'button';
+    b.className = extraClass || '';
+    b.dataset.k = digit;
+    b.setAttribute('aria-label', digit === 'del' ? 'Löschen' : digit);
+    b.innerHTML = digit === 'del' ? '⌫' : '<b>' + digit + '</b><i>' + letters + '</i>';
+    return b;
+  }
+
+  KEYS.forEach(function (k) { pad.appendChild(keyButton(k[0], k[1])); });
+  pad.appendChild(document.createElement('span'));      // Lücke unten links
+  pad.appendChild(keyButton('0', ''));
+  pad.appendChild(keyButton('del', '', 'del'));
+
+  // pointerdown: sofortige Reaktion, auch wenn schnell hintereinander getippt wird
+  pad.addEventListener('pointerdown', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    e.preventDefault();                                  // kein Fokus, kein Doppeltipp-Zoom
+    b.classList.add('press');
+    pressKey(b.dataset.k);
   });
+  var unpress = function () {
+    [].forEach.call(pad.querySelectorAll('.press'), function (b) { b.classList.remove('press'); });
+  };
+  pad.addEventListener('pointerup', unpress);
+  pad.addEventListener('pointercancel', unpress);
+  pad.addEventListener('pointerleave', unpress);
+
   drawDots();
 }
 
+// Am Rechner den Code einfach tippen können
+document.addEventListener('keydown', function (e) {
+  if (document.getElementById('gate').classList.contains('hidden')) return;
+  if (e.key >= '0' && e.key <= '9') { pressKey(e.key); e.preventDefault(); }
+  else if (e.key === 'Backspace') { pressKey('del'); e.preventDefault(); }
+  else if (e.key === 'Escape') { entered = []; drawDots(); }
+});
+
 function submitCode() {
-  gateMsg('Moment …');
+  checking = true;
+  gateMsg('Einen Moment …');
   fetch('/api/login', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ code: entered.join('-') })
+    body: JSON.stringify({ code: entered.join('') })
   }).then(function (r) {
+    checking = false;
     if (r.ok) {
       document.getElementById('gate').classList.add('hidden');
       entered = [];
@@ -439,14 +504,15 @@ function submitCode() {
     }
     entered = [];
     drawDots();
-    gateMsg('Nöd ganz. Nomol.', true);
-    var box = document.getElementById('gbox') || document.querySelector('.gbox');
+    gateMsg('Falscher Code', true);
+    var box = document.querySelector('.gbox');
     box.classList.add('shake');
     setTimeout(function () { box.classList.remove('shake'); }, 420);
   }).catch(function () {
+    checking = false;
     entered = [];
     drawDots();
-    gateMsg('Keine Verbindig.', true);
+    gateMsg('Keine Verbindung', true);
   });
 }
 
@@ -454,18 +520,13 @@ function showGate() {
   document.getElementById('view').innerHTML = '';
   document.getElementById('gate').classList.remove('hidden');
   entered = [];
-  gateMsg('Tipp de Code');
+  checking = false;
+  gateMsg('Code eingeben');
+  drawDots();
   fetch('/api/login').then(function (r) { return r.json(); })
     .then(function (j) { if (j && j.len) { codeLen = j.len; drawDots(); } })
     .catch(function () {});
-  drawDots();
 }
-
-document.getElementById('gback').onclick = function () {
-  entered.pop();
-  drawDots();
-  gateMsg('Tipp de Code');
-};
 
 /* ---- Daten ---- */
 function indexEvents(json) {
