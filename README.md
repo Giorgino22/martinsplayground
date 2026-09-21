@@ -141,9 +141,11 @@ that is a long grind, and it keeps out search engines, link-guessers and passers
 authentication and there are no per-person accounts — everyone shares one code.
 
 **`/api/feed?debug=1`** reports what the Function actually sees. `feedVars` lists every `FEEDS_*`
-variable that reached it and which of them match nobody — that separates "not redeployed yet"
-(nothing arrives at all) from "name mistyped" (it arrives but is unmatched). Only names are shown,
-never values. Per person it also reports: which variable names were checked
+variable that reached it, which match nobody, and which arrived **empty** — separating the three
+ways a calendar can fail to appear: not redeployed yet (nothing arrives), name mistyped (arrives
+but unmatched), value blank (arrives but has no content, which Cloudflare's write-only secret
+fields make easy). Only names are shown, never values. A variable that arrives empty also raises a
+visible note on the page rather than silently hiding that person. Per person it also reports: which variable names were checked
 for each person, which were found, where the feeds came from (env or code), and per feed the HTTP
 status, size, number of `VEVENT`s and how many fall in the window. Feed addresses are truncated to
 host plus a few characters, so the tokens are not exposed.

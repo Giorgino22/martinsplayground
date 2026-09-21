@@ -481,19 +481,36 @@ export async function onRequest(context) {
     people[i] = info;
 
     const keys = envKeysFor(person);
+    const env = context.env || {};
+    // Vorhanden und gefüllt sind zweierlei: ein leerer Wert sah bisher aus wie
+    // «Variable fehlt», obwohl sie sehr wohl ankommt.
+    const present = keys.filter(function (k) { return Object.prototype.hasOwnProperty.call(env, k); });
+    const filled = keys.filter(function (k) { return env[k] && String(env[k]).trim(); });
+    const blank = present.filter(function (k) { return filled.indexOf(k) === -1; });
     const d = {
       name: person.name,
       envKeysChecked: keys,
-      envKeyFound: keys.filter(function (k) { return context.env && context.env[k]; }),
+      envKeyFound: filled,
+      envKeysEmpty: blank,
       feedsInCode: person.feeds.length,
       feeds: []
     };
+    if (blank.length && !filled.length) {
+      d.problem = blank.join(' / ') + ' kommt an, hat aber einen leeren Wert.';
+    }
     diag[i] = d;
 
     const entries = feedsFor(person, context.env);
-    d.source = d.envKeyFound.length ? 'env' : (person.feeds.length ? 'code' : 'keine');
+    d.source = filled.length ? 'env' : (person.feeds.length ? 'code' : 'keine');
     if (!entries.length) {
-      info.hidden = true;              // noch kein Kalender -> gar nicht anzeigen
+      if (blank.length) {
+        // Jemand hat die Variable angelegt, aber keinen Wert hinterlegt —
+        // das gehoert auf die Seite, nicht stillschweigend versteckt.
+        info.ok = false;
+        info.note = blank.join(' / ') + ' ist gesetzt, aber leer — Wert in Cloudflare eintragen';
+      } else {
+        info.hidden = true;            // noch kein Kalender -> gar nicht anzeigen
+      }
       return;
     }
 
@@ -583,8 +600,10 @@ export async function onRequest(context) {
     // nie die Werte — die Adressen sind Passwoerter.
     const known = {};
     PEOPLE.forEach(function (p) { envKeysFor(p).forEach(function (k) { known[k] = true; }); });
-    const seen = Object.keys(context.env || {}).filter(function (k) { return /^FEEDS_/i.test(k); }).sort();
+    const allEnv = context.env || {};
+    const seen = Object.keys(allEnv).filter(function (k) { return /^FEEDS_/i.test(k); }).sort();
     const unmatched = seen.filter(function (k) { return !known[k]; });
+    const blankVars = seen.filter(function (k) { return !(allEnv[k] && String(allEnv[k]).trim()); });
 
     return new Response(JSON.stringify({
       now: fmtDate(now), window: [fmtDate(fromMs), fmtDate(toMs)],
@@ -592,10 +611,14 @@ export async function onRequest(context) {
       feedVars: {
         seen: seen,
         unmatched: unmatched,
-        note: unmatched.length
-          ? 'Diese Variablen kommen an, gehören aber zu niemandem — vermutlich vertippt.'
-          : (seen.length ? 'Alle ankommenden FEEDS_-Variablen sind zugeordnet.'
-                         : 'Es kommt keine einzige FEEDS_-Variable an — wurde nach dem Setzen neu ausgerollt?')
+        empty: blankVars,
+        note: blankVars.length
+          ? 'Diese Variablen kommen an, haben aber einen leeren Wert: ' + blankVars.join(', ') +
+            ' — in Cloudflare den Wert neu eintragen und neu ausrollen.'
+          : (unmatched.length
+              ? 'Diese Variablen kommen an, gehören aber zu niemandem — vermutlich vertippt.'
+              : (seen.length ? 'Alle ankommenden FEEDS_-Variablen sind zugeordnet und gefüllt.'
+                             : 'Es kommt keine einzige FEEDS_-Variable an — wurde nach dem Setzen neu ausgerollt?'))
       },
       people: diag
     }, null, 2), { headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' } });
