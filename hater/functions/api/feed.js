@@ -71,12 +71,14 @@ export const PEOPLE = [
   { name: 'Mamma', env: 'FEEDS_MAMA', color: '#cb30e0', feeds: [] },
   // Gemeinsamer Familienkalender. Muss veröffentlicht sein, damit er ohne
   // Anmeldung lesbar ist — siehe README.
-  { name: 'Familie', env: ['FEEDS_FAMILIE', 'FEEDS_FAMILY'], color: '#6c47ff', feeds: [] },
+  { name: 'Familie', env: ['FEEDS_FAMILIE', 'FEEDS_FAMILY'], color: '#e03131', feeds: [] },
   { name: 'Geissepapi', env: 'FEEDS_PAPA', color: '#2ea043', feeds: [] },
 
   {
     name: 'Schöni',
-    color: '#00897b',
+    color: '#eab308',
+    // Vereinskalender ist oft leer — dann gar keinen Reiter zeigen.
+    hideWhenEmpty: true,
     feeds: [
       // ClubDesk-Feed des Vereins. webcal:// wird beim Holen zu https://.
       'webcal://calendar.clubdesk.com/clubdesk/ical/47195/1000665/djEtrDz5oMGoLS_mavMxV98QWeTYTqUZbfGkFEwdOip7gVA=/basic.ics'
@@ -585,6 +587,16 @@ export async function onRequest(context) {
 
   // Personen ohne hinterlegten Kalender herausnehmen und die Indizes der
   // Termine entsprechend nachziehen.
+  // Wer hideWhenEmpty gesetzt hat und im Zeitraum nichts beitraegt, faellt raus.
+  const counted = {};
+  events.forEach(function (e) { counted[e.p] = (counted[e.p] || 0) + 1; });
+  PEOPLE.forEach(function (person, i) {
+    if (person.hideWhenEmpty && people[i] && !people[i].hidden && !counted[i]) {
+      people[i].hidden = true;
+      if (diag[i]) diag[i].hiddenBecauseEmpty = true;
+    }
+  });
+
   const shown = [];
   const remap = [];
   people.forEach(function (info, i) {
