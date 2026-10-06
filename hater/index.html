@@ -116,8 +116,9 @@
   .day.today { border-color: #111; }
   .day h3 { margin: 0 0 6px; font-size: 0.8rem; color: #666; font-weight: 700; }
   .day.today h3 { color: #111; }
-  .day .ev { font-size: 0.8rem; white-space: normal; margin-bottom: 3px; }
-  .day .ev .tt { white-space: normal; }
+  .day .ev { font-size: 0.8rem; white-space: normal; margin-bottom: 3px; flex-wrap: wrap; }
+  /* Mit der Zeitspanne wird die Zeile laenger — Titel lieber umbrechen als abschneiden. */
+  .day .ev .tt { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
 
   /* Agenda */
   .ag { padding: 4px 12px 24px; max-width: 720px; margin: 0 auto; width: 100%; }
@@ -128,7 +129,7 @@
   .agday.today .dnum, .agday.today .dwd { color: #ff3b30; }
   .agday .list { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
   .agday .ev { font-size: 0.92rem; white-space: normal; padding: 3px 6px; }
-  .agday .ev .tt { white-space: normal; }
+  .agday .ev .tt { white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; }
 
   /* Sperrbildschirm — Zifferblock wie auf dem iPhone */
   .gate {
@@ -624,13 +625,14 @@ function timedOn(k) {
 /* ---- Bausteine ---- */
 function personOf(ev) { return (DATA && DATA.people[ev.p]) || { color: '#999', name: '' }; }
 
-function evNode(ev, withWho) {
+/** withEnd: Zeitspanne statt nur Beginn — «14:00–15:30». */
+function evNode(ev, withWho, withEnd) {
   var person = personOf(ev);
   var el = document.createElement('div');
   el.className = 'ev' + (ev.allDay ? ' all' : '');
   el.style.setProperty('--c', person.color);
   var html = '<span class="d"></span>';
-  if (!ev.allDay) html += '<span class="tm">' + ev.st + '</span>';
+  if (!ev.allDay) html += '<span class="tm">' + (withEnd ? ev.st + '–' + ev.et : ev.st) + '</span>';
   html += '<span class="tt">' + esc(ev.t);
   if (withWho && state.who === 'all') html += ' <span class="who">· ' + esc(person.name) + '</span>';
   if (withWho && ev.loc) html += ' <span class="loc">· ' + esc(ev.loc) + '</span>';
@@ -823,7 +825,7 @@ function renderWeekList(view) {
     day.innerHTML = '<h3>' + WD[i] + ' ' + kp.d + '.' + kp.m + '.</h3>';
     var list = eventsOn(k);
     if (!list.length) day.innerHTML += '<div class="more">–</div>';
-    list.forEach(function (ev) { day.appendChild(evNode(ev, true)); });
+    list.forEach(function (ev) { day.appendChild(evNode(ev, true, true)); });
     wrap.appendChild(day);
   }
   view.appendChild(wrap);
@@ -848,7 +850,7 @@ function renderAgenda(view) {
       '<div class="dwd">' + WD[dowOf(k)] + ' ' + MONTHS[kp.m - 1].slice(0, 3) + '</div></div>';
     var listEl = document.createElement('div');
     listEl.className = 'list';
-    list.forEach(function (ev) { listEl.appendChild(evNode(ev, true)); });
+    list.forEach(function (ev) { listEl.appendChild(evNode(ev, true, true)); });
     row.appendChild(listEl);
     wrap.appendChild(row);
   }
@@ -866,9 +868,7 @@ function openSheet(k) {
   box.innerHTML = '';
   if (!list.length) box.innerHTML = '<div class="empty">Keine Termine.</div>';
   list.forEach(function (ev) {
-    var n = evNode(ev, true);
-    if (!ev.allDay) n.querySelector('.tm').textContent = ev.st + '–' + ev.et;
-    box.appendChild(n);
+    box.appendChild(evNode(ev, true, true));
   });
   document.getElementById('sheet').classList.remove('hidden');
 }
@@ -970,9 +970,7 @@ function renderSlots(list, o) {
         n.textContent = '➕ ' + when + '  Neuer Termin';
         prev.appendChild(n);
       } else {
-        var node = evNode(r.ev, true);
-        if (!r.ev.allDay) node.querySelector('.tm').textContent = r.ev.st + '–' + r.ev.et;
-        prev.appendChild(node);
+        prev.appendChild(evNode(r.ev, true, true));
       }
     });
     if (!existing.length) {

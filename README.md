@@ -53,7 +53,9 @@ for viewers.
   Phones open in Agenda; the month grid collapses to coloured dots there.
 
 Views: **Monat** (grid), **Woche** (time grid like a normal calendar), **Liste** (the seven days
-as cards), **Agenda** (flowing list). The week time grid only draws the hours that actually
+as cards), **Agenda** (flowing list). Liste and Agenda show the full time span (`14:00–15:30`), as
+the day sheet and the planner preview do; the month grid shows only the start, where space is
+tight. The week time grid only draws the hours that actually
 contain events, padded to the hour, so a whole week always fits the window without scrolling —
 even on a short screen. Overlapping events sit side by side, all-day events get their own row
 above the grid, and a red line marks the current time. On phones the columns stay but the blocks
@@ -64,6 +66,10 @@ a daily time window, and who has to be free; it returns up to 10 suggestions, on
 with a preview showing that day's events with the proposed slot in its place. It only suggests —
 nothing is ever written to anyone's calendar. Optionally all-day events can be treated as
 not-busy, for calendars where a birthday or a marker would otherwise block the whole day.
+
+A person may set `hideWhenEmpty: true` to be left out entirely when their feeds contribute no
+events in the window — used for the club calendar, which is often empty. Everyone else keeps their
+tab even with nothing in it, so a quiet week never makes someone disappear.
 
 **One person = one category.** All of a person's calendars (private, work, sport, …) sit in their
 `feeds` array and appear together under their name. Individual calendar names are never shown; in
