@@ -1,13 +1,13 @@
 {
  "version": 2,
- "generated": "2026-10-11T13:34:50+00:00",
+ "generated": "2026-10-11T13:47:17+00:00",
  "params": {
   "model": {
    "decay": 0.003,
    "shots_weight": 0.4,
    "rho": -0.05
   },
-  "devig": "shin",
+  "devig": "power",
   "combine": {
    "kind": "pool",
    "1X2": {
@@ -231,8 +231,8 @@
      6.4
     ],
     "OU": [
-     1.02,
-     1.25
+     1.44,
+     2.62
     ]
    },
    "model": {
@@ -260,31 +260,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6369,
-       "p_market": 0.6369,
+       "p": 0.6378,
+       "p_market": 0.6378,
        "p_model": 0.6798,
-       "fair": 1.5701,
-       "min_odds": 1.5858
+       "fair": 1.5678,
+       "min_odds": 1.5835
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2097,
-       "p_market": 0.2097,
+       "p": 0.2091,
+       "p_market": 0.2091,
        "p_model": 0.1859,
-       "fair": 4.7681,
-       "min_odds": 4.8158
+       "fair": 4.7821,
+       "min_odds": 4.8299
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1534,
-       "p_market": 0.1534,
+       "p": 0.153,
+       "p_market": 0.153,
        "p_model": 0.1343,
-       "fair": 6.5208,
-       "min_odds": 6.586
+       "fair": 6.5343,
+       "min_odds": 6.5996
       }
      ]
     },
@@ -297,31 +297,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8466,
-       "p_market": 0.8466,
+       "p": 0.847,
+       "p_market": 0.847,
        "p_model": 0.8657,
-       "fair": 1.1811,
-       "min_odds": 1.1929
+       "fair": 1.1807,
+       "min_odds": 1.1925
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7903,
-       "p_market": 0.7903,
+       "p": 0.7909,
+       "p_market": 0.7909,
        "p_model": 0.8141,
-       "fair": 1.2654,
-       "min_odds": 1.278
+       "fair": 1.2644,
+       "min_odds": 1.2771
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3631,
-       "p_market": 0.3631,
+       "p": 0.3622,
+       "p_market": 0.3622,
        "p_model": 0.3202,
-       "fair": 2.7542,
-       "min_odds": 2.7817
+       "fair": 2.7613,
+       "min_odds": 2.7889
       }
      ]
     },
@@ -334,21 +334,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8106,
-       "p_market": 0.8106,
+       "p": 0.8621,
+       "p_market": 0.8621,
        "p_model": 0.8506,
-       "fair": 1.2337,
-       "min_odds": 1.2707
+       "fair": 1.16,
+       "min_odds": 1.1948
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1894,
-       "p_market": 0.1894,
+       "p": 0.1379,
+       "p_market": 0.1379,
        "p_model": 0.1494,
-       "fair": 5.2797,
-       "min_odds": 5.4381
+       "fair": 7.2512,
+       "min_odds": 7.4687
       }
      ]
     },
@@ -361,21 +361,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5742,
-       "p_market": 0.5742,
+       "p": 0.6627,
+       "p_market": 0.6627,
        "p_model": 0.6491,
-       "fair": 1.7416,
-       "min_odds": 1.7764
+       "fair": 1.509,
+       "min_odds": 1.5392
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4258,
-       "p_market": 0.4258,
+       "p": 0.3373,
+       "p_market": 0.3373,
        "p_model": 0.3509,
-       "fair": 2.3485,
-       "min_odds": 2.3955
+       "fair": 2.9647,
+       "min_odds": 3.024
       }
      ]
     },
@@ -388,21 +388,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3532,
-       "p_market": 0.3532,
+       "p": 0.4427,
+       "p_market": 0.4427,
        "p_model": 0.4291,
-       "fair": 2.8316,
-       "min_odds": 2.9166
+       "fair": 2.2589,
+       "min_odds": 2.3266
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6468,
-       "p_market": 0.6468,
+       "p": 0.5573,
+       "p_market": 0.5573,
        "p_model": 0.5709,
-       "fair": 1.546,
-       "min_odds": 1.5923
+       "fair": 1.7944,
+       "min_odds": 1.8482
       }
      ]
     },
@@ -415,21 +415,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5343,
-       "p_market": 0.5343,
+       "p": 0.6067,
+       "p_market": 0.6067,
        "p_model": 0.568,
-       "fair": 1.8716,
-       "min_odds": 1.9278
+       "fair": 1.6483,
+       "min_odds": 1.6977
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4657,
-       "p_market": 0.4657,
+       "p": 0.3933,
+       "p_market": 0.3933,
        "p_model": 0.432,
-       "fair": 2.1473,
-       "min_odds": 2.2117
+       "fair": 2.5426,
+       "min_odds": 2.6189
       }
      ]
     }
@@ -553,21 +553,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8206,
-       "p_market": 0.8206,
+       "p": 0.821,
+       "p_market": 0.821,
        "p_model": 0.7347,
-       "fair": 1.2187,
-       "min_odds": 1.2552
+       "fair": 1.218,
+       "min_odds": 1.2545
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1794,
-       "p_market": 0.1794,
+       "p": 0.179,
+       "p_market": 0.179,
        "p_model": 0.2653,
-       "fair": 5.5728,
-       "min_odds": 5.74
+       "fair": 5.5878,
+       "min_odds": 5.7555
       }
      ]
     },
@@ -580,21 +580,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5929,
-       "p_market": 0.5929,
+       "p": 0.5937,
+       "p_market": 0.5937,
        "p_model": 0.4762,
-       "fair": 1.6867,
-       "min_odds": 1.7204
+       "fair": 1.6844,
+       "min_odds": 1.7181
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4071,
-       "p_market": 0.4071,
+       "p": 0.4063,
+       "p_market": 0.4063,
        "p_model": 0.5238,
-       "fair": 2.4562,
-       "min_odds": 2.5054
+       "fair": 2.4612,
+       "min_odds": 2.5104
       }
      ]
     },
@@ -607,21 +607,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3661,
-       "p_market": 0.3661,
+       "p": 0.3669,
+       "p_market": 0.3669,
        "p_model": 0.2593,
-       "fair": 2.7313,
-       "min_odds": 2.8133
+       "fair": 2.7256,
+       "min_odds": 2.8073
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6339,
-       "p_market": 0.6339,
+       "p": 0.6331,
+       "p_market": 0.6331,
        "p_model": 0.7407,
-       "fair": 1.5776,
-       "min_odds": 1.6249
+       "fair": 1.5795,
+       "min_odds": 1.6269
       }
      ]
     },
@@ -634,21 +634,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.6247,
-       "p_market": 0.6247,
+       "p": 0.6253,
+       "p_market": 0.6253,
        "p_model": 0.5308,
-       "fair": 1.6007,
-       "min_odds": 1.6487
+       "fair": 1.5992,
+       "min_odds": 1.6472
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.3753,
-       "p_market": 0.3753,
+       "p": 0.3747,
+       "p_market": 0.3747,
        "p_model": 0.4692,
-       "fair": 2.6647,
-       "min_odds": 2.7447
+       "fair": 2.6688,
+       "min_odds": 2.7489
       }
      ]
     }
@@ -698,31 +698,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6016,
-       "p_market": 0.6016,
+       "p": 0.6025,
+       "p_market": 0.6025,
        "p_model": 0.6385,
-       "fair": 1.6621,
-       "min_odds": 1.6787
+       "fair": 1.6597,
+       "min_odds": 1.6763
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2292,
-       "p_market": 0.2292,
+       "p": 0.2286,
+       "p_market": 0.2286,
        "p_model": 0.202,
-       "fair": 4.3637,
-       "min_odds": 4.4073
+       "fair": 4.3743,
+       "min_odds": 4.4181
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1692,
-       "p_market": 0.1692,
+       "p": 0.1689,
+       "p_market": 0.1689,
        "p_model": 0.1595,
-       "fair": 5.9105,
-       "min_odds": 5.9696
+       "fair": 5.921,
+       "min_odds": 5.9803
       }
      ]
     },
@@ -735,31 +735,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8308,
-       "p_market": 0.8308,
+       "p": 0.8311,
+       "p_market": 0.8311,
        "p_model": 0.8405,
-       "fair": 1.2036,
-       "min_odds": 1.2157
+       "fair": 1.2032,
+       "min_odds": 1.2152
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7708,
-       "p_market": 0.7708,
+       "p": 0.7714,
+       "p_market": 0.7714,
        "p_model": 0.798,
-       "fair": 1.2973,
-       "min_odds": 1.3103
+       "fair": 1.2964,
+       "min_odds": 1.3093
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3984,
-       "p_market": 0.3984,
+       "p": 0.3975,
+       "p_market": 0.3975,
        "p_model": 0.3615,
-       "fair": 2.5103,
-       "min_odds": 2.5354
+       "fair": 2.5158,
+       "min_odds": 2.5409
       }
      ]
     },
@@ -772,21 +772,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8131,
-       "p_market": 0.8131,
+       "p": 0.8136,
+       "p_market": 0.8136,
        "p_model": 0.8393,
-       "fair": 1.2298,
-       "min_odds": 1.2667
+       "fair": 1.2292,
+       "min_odds": 1.2661
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1869,
-       "p_market": 0.1869,
+       "p": 0.1864,
+       "p_market": 0.1864,
        "p_model": 0.1607,
-       "fair": 5.3516,
-       "min_odds": 5.5122
+       "fair": 5.3634,
+       "min_odds": 5.5243
       }
      ]
     },
@@ -799,21 +799,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5804,
-       "p_market": 0.5804,
+       "p": 0.581,
+       "p_market": 0.581,
        "p_model": 0.6299,
-       "fair": 1.7228,
-       "min_odds": 1.7573
+       "fair": 1.7211,
+       "min_odds": 1.7555
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4196,
-       "p_market": 0.4196,
+       "p": 0.419,
+       "p_market": 0.419,
        "p_model": 0.3701,
-       "fair": 2.3835,
-       "min_odds": 2.4311
+       "fair": 2.3867,
+       "min_odds": 2.4345
       }
      ]
     },
@@ -826,21 +826,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3564,
-       "p_market": 0.3564,
+       "p": 0.3571,
+       "p_market": 0.3571,
        "p_model": 0.4081,
-       "fair": 2.8055,
-       "min_odds": 2.8897
+       "fair": 2.8004,
+       "min_odds": 2.8844
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6436,
-       "p_market": 0.6436,
+       "p": 0.6429,
+       "p_market": 0.6429,
        "p_model": 0.5919,
-       "fair": 1.5539,
-       "min_odds": 1.6005
+       "fair": 1.5554,
+       "min_odds": 1.6021
       }
      ]
     },
@@ -853,21 +853,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5566,
-       "p_market": 0.5566,
+       "p": 0.5567,
+       "p_market": 0.5567,
        "p_model": 0.5773,
-       "fair": 1.7966,
-       "min_odds": 1.8505
+       "fair": 1.7962,
+       "min_odds": 1.8501
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4434,
-       "p_market": 0.4434,
+       "p": 0.4433,
+       "p_market": 0.4433,
        "p_model": 0.4227,
-       "fair": 2.2553,
-       "min_odds": 2.323
+       "fair": 2.2559,
+       "min_odds": 2.3236
       }
      ]
     }
@@ -888,8 +888,8 @@
      3.05
     ],
     "OU": [
-     1.69,
-     1.25
+     1.64,
+     2.14
     ]
    },
    "model": {
@@ -917,31 +917,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.4229,
-       "p_market": 0.4229,
+       "p": 0.4238,
+       "p_market": 0.4238,
        "p_model": 0.4356,
-       "fair": 2.3648,
-       "min_odds": 2.3885
+       "fair": 2.3599,
+       "min_odds": 2.3835
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2638,
-       "p_market": 0.2638,
+       "p": 0.2633,
+       "p_market": 0.2633,
        "p_model": 0.2629,
-       "fair": 3.7907,
-       "min_odds": 3.8286
+       "fair": 3.7979,
+       "min_odds": 3.8359
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.3133,
-       "p_market": 0.3133,
+       "p": 0.3129,
+       "p_market": 0.3129,
        "p_model": 0.3014,
-       "fair": 3.1915,
-       "min_odds": 3.2234
+       "fair": 3.1955,
+       "min_odds": 3.2274
       }
      ]
     },
@@ -954,31 +954,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.6867,
-       "p_market": 0.6867,
+       "p": 0.6871,
+       "p_market": 0.6871,
        "p_model": 0.6986,
-       "fair": 1.4563,
-       "min_odds": 1.4709
+       "fair": 1.4555,
+       "min_odds": 1.47
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7362,
-       "p_market": 0.7362,
+       "p": 0.7367,
+       "p_market": 0.7367,
        "p_model": 0.7371,
-       "fair": 1.3583,
-       "min_odds": 1.3719
+       "fair": 1.3574,
+       "min_odds": 1.371
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.5771,
-       "p_market": 0.5771,
+       "p": 0.5762,
+       "p_market": 0.5762,
        "p_model": 0.5644,
-       "fair": 1.7327,
-       "min_odds": 1.75
+       "fair": 1.7354,
+       "min_odds": 1.7527
       }
      ]
     },
@@ -991,21 +991,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.6902,
-       "p_market": 0.6902,
+       "p": 0.8103,
+       "p_market": 0.8103,
        "p_model": 0.7702,
-       "fair": 1.4488,
-       "min_odds": 1.4923
+       "fair": 1.2341,
+       "min_odds": 1.2711
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.3098,
-       "p_market": 0.3098,
+       "p": 0.1897,
+       "p_market": 0.1897,
        "p_model": 0.2298,
-       "fair": 3.2282,
-       "min_odds": 3.3251
+       "fair": 5.2717,
+       "min_odds": 5.4298
       }
      ]
     },
@@ -1018,21 +1018,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.3959,
-       "p_market": 0.3959,
+       "p": 0.5741,
+       "p_market": 0.5741,
        "p_model": 0.5241,
-       "fair": 2.5262,
-       "min_odds": 2.5767
+       "fair": 1.7419,
+       "min_odds": 1.7767
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.6041,
-       "p_market": 0.6041,
+       "p": 0.4259,
+       "p_market": 0.4259,
        "p_model": 0.4759,
-       "fair": 1.6552,
-       "min_odds": 1.6883
+       "fair": 2.3479,
+       "min_odds": 2.3948
       }
      ]
     },
@@ -1045,21 +1045,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2078,
-       "p_market": 0.2078,
+       "p": 0.3502,
+       "p_market": 0.3502,
        "p_model": 0.302,
-       "fair": 4.8115,
-       "min_odds": 4.9558
+       "fair": 2.8554,
+       "min_odds": 2.9411
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7922,
-       "p_market": 0.7922,
+       "p": 0.6498,
+       "p_market": 0.6498,
        "p_model": 0.698,
-       "fair": 1.2624,
-       "min_odds": 1.3002
+       "fair": 1.539,
+       "min_odds": 1.5851
       }
      ]
     },
@@ -1072,21 +1072,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.4833,
-       "p_market": 0.4833,
+       "p": 0.6091,
+       "p_market": 0.6091,
        "p_model": 0.563,
-       "fair": 2.0692,
-       "min_odds": 2.1312
+       "fair": 1.6417,
+       "min_odds": 1.6909
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.5167,
-       "p_market": 0.5167,
+       "p": 0.3909,
+       "p_market": 0.3909,
        "p_model": 0.437,
-       "fair": 1.9353,
-       "min_odds": 1.9934
+       "fair": 2.5584,
+       "min_odds": 2.6352
       }
      ]
     }
@@ -1107,8 +1107,8 @@
      5.2
     ],
     "OU": [
-     1.39,
-     1.25
+     1.37,
+     2.86
     ]
    },
    "model": {
@@ -1136,31 +1136,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6152,
-       "p_market": 0.6152,
+       "p": 0.6182,
+       "p_market": 0.6182,
        "p_model": 0.5524,
-       "fair": 1.6254,
-       "min_odds": 1.6417
+       "fair": 1.6176,
+       "min_odds": 1.6338
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2025,
-       "p_market": 0.2025,
+       "p": 0.2009,
+       "p_market": 0.2009,
        "p_model": 0.2271,
-       "fair": 4.9376,
-       "min_odds": 4.987
+       "fair": 4.9777,
+       "min_odds": 5.0275
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1823,
-       "p_market": 0.1823,
+       "p": 0.1809,
+       "p_market": 0.1809,
        "p_model": 0.2205,
-       "fair": 5.4869,
-       "min_odds": 5.5418
+       "fair": 5.5279,
+       "min_odds": 5.5832
       }
      ]
     },
@@ -1173,31 +1173,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8177,
-       "p_market": 0.8177,
+       "p": 0.8191,
+       "p_market": 0.8191,
        "p_model": 0.7795,
-       "fair": 1.2229,
-       "min_odds": 1.2351
+       "fair": 1.2209,
+       "min_odds": 1.2331
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7975,
-       "p_market": 0.7975,
+       "p": 0.7991,
+       "p_market": 0.7991,
        "p_model": 0.7729,
-       "fair": 1.254,
-       "min_odds": 1.2665
+       "fair": 1.2514,
+       "min_odds": 1.2639
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3848,
-       "p_market": 0.3848,
+       "p": 0.3818,
+       "p_market": 0.3818,
        "p_model": 0.4476,
-       "fair": 2.5989,
-       "min_odds": 2.6249
+       "fair": 2.6192,
+       "min_odds": 2.6454
       }
      ]
     },
@@ -1210,21 +1210,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7387,
-       "p_market": 0.7387,
+       "p": 0.8833,
+       "p_market": 0.8833,
        "p_model": 0.829,
-       "fair": 1.3538,
-       "min_odds": 1.3944
+       "fair": 1.1321,
+       "min_odds": 1.166
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2613,
-       "p_market": 0.2613,
+       "p": 0.1167,
+       "p_market": 0.1167,
        "p_model": 0.171,
-       "fair": 3.8264,
-       "min_odds": 3.9412
+       "fair": 8.5717,
+       "min_odds": 8.8289
       }
      ]
     },
@@ -1237,21 +1237,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.4603,
-       "p_market": 0.4603,
+       "p": 0.6983,
+       "p_market": 0.6983,
        "p_model": 0.6125,
-       "fair": 2.1724,
-       "min_odds": 2.2158
+       "fair": 1.432,
+       "min_odds": 1.4606
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.5397,
-       "p_market": 0.5397,
+       "p": 0.3017,
+       "p_market": 0.3017,
        "p_model": 0.3875,
-       "fair": 1.853,
-       "min_odds": 1.89
+       "fair": 3.315,
+       "min_odds": 3.3813
       }
      ]
     },
@@ -1264,21 +1264,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2589,
-       "p_market": 0.2589,
+       "p": 0.4871,
+       "p_market": 0.4871,
        "p_model": 0.3895,
-       "fair": 3.863,
-       "min_odds": 3.9789
+       "fair": 2.0529,
+       "min_odds": 2.1144
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7411,
-       "p_market": 0.7411,
+       "p": 0.5129,
+       "p_market": 0.5129,
        "p_model": 0.6105,
-       "fair": 1.3493,
-       "min_odds": 1.3898
+       "fair": 1.9498,
+       "min_odds": 2.0083
       }
      ]
     },
@@ -1291,21 +1291,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.4617,
-       "p_market": 0.4617,
+       "p": 0.652,
+       "p_market": 0.652,
        "p_model": 0.6035,
-       "fair": 2.1657,
-       "min_odds": 2.2307
+       "fair": 1.5338,
+       "min_odds": 1.5798
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.5383,
-       "p_market": 0.5383,
+       "p": 0.348,
+       "p_market": 0.348,
        "p_model": 0.3965,
-       "fair": 1.8578,
-       "min_odds": 1.9136
+       "fair": 2.8734,
+       "min_odds": 2.9596
       }
      ]
     }
@@ -1326,8 +1326,8 @@
      4.6
     ],
     "OU": [
-     1.02,
-     1.25
+     1.42,
+     2.68
     ]
    },
    "model": null,
@@ -1342,31 +1342,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.5671,
-       "p_market": 0.5671,
+       "p": 0.569,
+       "p_market": 0.569,
        "p_model": null,
-       "fair": 1.7634,
-       "min_odds": 1.781
+       "fair": 1.7575,
+       "min_odds": 1.7751
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.224,
-       "p_market": 0.224,
+       "p": 0.223,
+       "p_market": 0.223,
        "p_model": null,
-       "fair": 4.4645,
-       "min_odds": 4.5092
+       "fair": 4.4846,
+       "min_odds": 4.5294
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.2089,
-       "p_market": 0.2089,
+       "p": 0.208,
+       "p_market": 0.208,
        "p_model": null,
-       "fair": 4.7863,
-       "min_odds": 4.8341
+       "fair": 4.8068,
+       "min_odds": 4.8549
       }
      ]
     },
@@ -1379,31 +1379,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.7911,
-       "p_market": 0.7911,
+       "p": 0.792,
+       "p_market": 0.792,
        "p_model": null,
-       "fair": 1.2641,
-       "min_odds": 1.2768
+       "fair": 1.2627,
+       "min_odds": 1.2753
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.776,
-       "p_market": 0.776,
+       "p": 0.777,
+       "p_market": 0.777,
        "p_model": null,
-       "fair": 1.2886,
-       "min_odds": 1.3015
+       "fair": 1.287,
+       "min_odds": 1.2998
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.4329,
-       "p_market": 0.4329,
+       "p": 0.431,
+       "p_market": 0.431,
        "p_model": null,
-       "fair": 2.3099,
-       "min_odds": 2.333
+       "fair": 2.3201,
+       "min_odds": 2.3433
       }
      ]
     },
@@ -1416,21 +1416,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8129,
-       "p_market": 0.8129,
+       "p": 0.8686,
+       "p_market": 0.8686,
        "p_model": null,
-       "fair": 1.2302,
-       "min_odds": 1.2671
+       "fair": 1.1513,
+       "min_odds": 1.1859
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1871,
-       "p_market": 0.1871,
+       "p": 0.1314,
+       "p_market": 0.1314,
        "p_model": null,
-       "fair": 5.3438,
-       "min_odds": 5.5041
+       "fair": 7.6078,
+       "min_odds": 7.8361
       }
      ]
     },
@@ -1443,21 +1443,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5742,
-       "p_market": 0.5742,
+       "p": 0.6724,
+       "p_market": 0.6724,
        "p_model": null,
-       "fair": 1.7416,
-       "min_odds": 1.7764
+       "fair": 1.4873,
+       "min_odds": 1.517
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4258,
-       "p_market": 0.4258,
+       "p": 0.3276,
+       "p_market": 0.3276,
        "p_model": null,
-       "fair": 2.3485,
-       "min_odds": 2.3955
+       "fair": 3.0523,
+       "min_odds": 3.1134
       }
      ]
     },
@@ -1470,21 +1470,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3554,
-       "p_market": 0.3554,
+       "p": 0.4546,
+       "p_market": 0.4546,
        "p_model": null,
-       "fair": 2.8136,
-       "min_odds": 2.8981
+       "fair": 2.1996,
+       "min_odds": 2.2656
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6446,
-       "p_market": 0.6446,
+       "p": 0.5454,
+       "p_market": 0.5454,
        "p_model": null,
-       "fair": 1.5514,
-       "min_odds": 1.5979
+       "fair": 1.8336,
+       "min_odds": 1.8886
       }
      ]
     },
@@ -1497,21 +1497,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5747,
-       "p_market": 0.5747,
+       "p": 0.6492,
+       "p_market": 0.6492,
        "p_model": null,
-       "fair": 1.7401,
-       "min_odds": 1.7923
+       "fair": 1.5403,
+       "min_odds": 1.5866
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4253,
-       "p_market": 0.4253,
+       "p": 0.3508,
+       "p_market": 0.3508,
        "p_model": null,
-       "fair": 2.3512,
-       "min_odds": 2.4218
+       "fair": 2.8507,
+       "min_odds": 2.9362
       }
      ]
     }
@@ -1571,21 +1571,21 @@
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.291,
-       "p_market": 0.291,
+       "p": 0.2909,
+       "p_market": 0.2909,
        "p_model": 0.2651,
-       "fair": 3.4366,
-       "min_odds": 3.471
+       "fair": 3.4373,
+       "min_odds": 3.4717
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.3698,
-       "p_market": 0.3698,
+       "p": 0.3699,
+       "p_market": 0.3699,
        "p_model": 0.3316,
-       "fair": 2.7041,
-       "min_odds": 2.7312
+       "fair": 2.7037,
+       "min_odds": 2.7307
       }
      ]
     },
@@ -1598,21 +1598,21 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.6302,
-       "p_market": 0.6302,
+       "p": 0.6301,
+       "p_market": 0.6301,
        "p_model": 0.6684,
-       "fair": 1.5868,
-       "min_odds": 1.6027
+       "fair": 1.587,
+       "min_odds": 1.6028
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.709,
-       "p_market": 0.709,
+       "p": 0.7091,
+       "p_market": 0.7091,
        "p_model": 0.7349,
-       "fair": 1.4104,
-       "min_odds": 1.4245
+       "fair": 1.4103,
+       "min_odds": 1.4244
       },
       {
        "key": "X2",
@@ -1635,21 +1635,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7477,
-       "p_market": 0.7477,
+       "p": 0.7476,
+       "p_market": 0.7476,
        "p_model": 0.771,
-       "fair": 1.3375,
-       "min_odds": 1.3776
+       "fair": 1.3376,
+       "min_odds": 1.3777
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2523,
-       "p_market": 0.2523,
+       "p": 0.2524,
+       "p_market": 0.2524,
        "p_model": 0.229,
-       "fair": 3.9628,
-       "min_odds": 4.0817
+       "fair": 3.9625,
+       "min_odds": 4.0813
       }
      ]
     },
@@ -1665,8 +1665,8 @@
        "p": 0.486,
        "p_market": 0.486,
        "p_model": 0.5251,
-       "fair": 2.0575,
-       "min_odds": 2.0986
+       "fair": 2.0577,
+       "min_odds": 2.0989
       },
       {
        "key": "U",
@@ -1675,8 +1675,8 @@
        "p": 0.514,
        "p_market": 0.514,
        "p_model": 0.4749,
-       "fair": 1.9456,
-       "min_odds": 1.9846
+       "fair": 1.9454,
+       "min_odds": 1.9844
       }
      ]
     },
@@ -1689,18 +1689,18 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2669,
-       "p_market": 0.2669,
+       "p": 0.2668,
+       "p_market": 0.2668,
        "p_model": 0.303,
-       "fair": 3.7472,
-       "min_odds": 3.8596
+       "fair": 3.7476,
+       "min_odds": 3.86
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7331,
-       "p_market": 0.7331,
+       "p": 0.7332,
+       "p_market": 0.7332,
        "p_model": 0.697,
        "fair": 1.364,
        "min_odds": 1.4049
@@ -1719,7 +1719,7 @@
        "p": 0.544,
        "p_market": 0.544,
        "p_model": 0.5678,
-       "fair": 1.8381,
+       "fair": 1.8382,
        "min_odds": 1.8933
       },
       {
@@ -1729,8 +1729,8 @@
        "p": 0.456,
        "p_market": 0.456,
        "p_model": 0.4322,
-       "fair": 2.1931,
-       "min_odds": 2.2589
+       "fair": 2.193,
+       "min_odds": 2.2588
       }
      ]
     }
@@ -1780,31 +1780,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.2046,
-       "p_market": 0.2046,
+       "p": 0.2026,
+       "p_market": 0.2026,
        "p_model": 0.1806,
-       "fair": 4.8876,
-       "min_odds": 4.9365
+       "fair": 4.9365,
+       "min_odds": 4.9858
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.1835,
-       "p_market": 0.1835,
+       "p": 0.1818,
+       "p_market": 0.1818,
        "p_model": 0.174,
-       "fair": 5.4488,
-       "min_odds": 5.5033
+       "fair": 5.4992,
+       "min_odds": 5.5542
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.6119,
-       "p_market": 0.6119,
+       "p": 0.6156,
+       "p_market": 0.6156,
        "p_model": 0.6454,
-       "fair": 1.6343,
-       "min_odds": 1.6507
+       "fair": 1.6245,
+       "min_odds": 1.6407
       }
      ]
     },
@@ -1817,31 +1817,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.3881,
-       "p_market": 0.3881,
+       "p": 0.3844,
+       "p_market": 0.3844,
        "p_model": 0.3546,
-       "fair": 2.5765,
-       "min_odds": 2.6023
+       "fair": 2.6013,
+       "min_odds": 2.6274
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.8165,
-       "p_market": 0.8165,
+       "p": 0.8182,
+       "p_market": 0.8182,
        "p_model": 0.826,
-       "fair": 1.2248,
-       "min_odds": 1.237
+       "fair": 1.2223,
+       "min_odds": 1.2345
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.7954,
-       "p_market": 0.7954,
+       "p": 0.7974,
+       "p_market": 0.7974,
        "p_model": 0.8194,
-       "fair": 1.2572,
-       "min_odds": 1.2698
+       "fair": 1.254,
+       "min_odds": 1.2666
       }
      ]
     }
@@ -1862,8 +1862,8 @@
      3.45
     ],
     "OU": [
-     1.59,
-     1.25
+     1.51,
+     2.42
     ]
    },
    "model": {
@@ -1891,31 +1891,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.4684,
-       "p_market": 0.4684,
+       "p": 0.4695,
+       "p_market": 0.4695,
        "p_model": 0.5437,
-       "fair": 2.135,
-       "min_odds": 2.1564
+       "fair": 2.1299,
+       "min_odds": 2.1512
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2526,
-       "p_market": 0.2526,
+       "p": 0.252,
+       "p_market": 0.252,
        "p_model": 0.2327,
-       "fair": 3.9592,
-       "min_odds": 3.9988
+       "fair": 3.9678,
+       "min_odds": 4.0075
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.279,
-       "p_market": 0.279,
+       "p": 0.2785,
+       "p_market": 0.2785,
        "p_model": 0.2237,
-       "fair": 3.5836,
-       "min_odds": 3.6195
+       "fair": 3.5911,
+       "min_odds": 3.627
       }
      ]
     },
@@ -1928,31 +1928,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.721,
-       "p_market": 0.721,
+       "p": 0.7215,
+       "p_market": 0.7215,
        "p_model": 0.7763,
-       "fair": 1.3871,
-       "min_odds": 1.4009
+       "fair": 1.3859,
+       "min_odds": 1.3998
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7474,
-       "p_market": 0.7474,
+       "p": 0.748,
+       "p_market": 0.748,
        "p_model": 0.7673,
-       "fair": 1.3379,
-       "min_odds": 1.3513
+       "fair": 1.3369,
+       "min_odds": 1.3503
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.5316,
-       "p_market": 0.5316,
+       "p": 0.5305,
+       "p_market": 0.5305,
        "p_model": 0.4563,
-       "fair": 1.881,
-       "min_odds": 1.8998
+       "fair": 1.885,
+       "min_odds": 1.9039
       }
      ]
     },
@@ -1965,21 +1965,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7052,
-       "p_market": 0.7052,
+       "p": 0.8436,
+       "p_market": 0.8436,
        "p_model": 0.8161,
-       "fair": 1.4181,
-       "min_odds": 1.4607
+       "fair": 1.1854,
+       "min_odds": 1.2209
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2948,
-       "p_market": 0.2948,
+       "p": 0.1564,
+       "p_market": 0.1564,
        "p_model": 0.1839,
-       "fair": 3.3916,
-       "min_odds": 3.4933
+       "fair": 6.3945,
+       "min_odds": 6.5864
       }
      ]
     },
@@ -1992,21 +1992,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.4145,
-       "p_market": 0.4145,
+       "p": 0.6294,
+       "p_market": 0.6294,
        "p_model": 0.5921,
-       "fair": 2.4127,
-       "min_odds": 2.461
+       "fair": 1.5887,
+       "min_odds": 1.6205
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.5855,
-       "p_market": 0.5855,
+       "p": 0.3706,
+       "p_market": 0.3706,
        "p_model": 0.4079,
-       "fair": 1.7078,
-       "min_odds": 1.742
+       "fair": 2.6986,
+       "min_odds": 2.7526
       }
      ]
     },
@@ -2019,21 +2019,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2222,
-       "p_market": 0.2222,
+       "p": 0.4056,
+       "p_market": 0.4056,
        "p_model": 0.3683,
-       "fair": 4.5011,
-       "min_odds": 4.6361
+       "fair": 2.4653,
+       "min_odds": 2.5392
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7778,
-       "p_market": 0.7778,
+       "p": 0.5944,
+       "p_market": 0.5944,
        "p_model": 0.6317,
-       "fair": 1.2856,
-       "min_odds": 1.3242
+       "fair": 1.6825,
+       "min_odds": 1.7329
       }
      ]
     },
@@ -2046,21 +2046,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.4889,
-       "p_market": 0.4889,
+       "p": 0.6428,
+       "p_market": 0.6428,
        "p_model": 0.5898,
-       "fair": 2.0454,
-       "min_odds": 2.1068
+       "fair": 1.5556,
+       "min_odds": 1.6023
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.5111,
-       "p_market": 0.5111,
+       "p": 0.3572,
+       "p_market": 0.3572,
        "p_model": 0.4102,
-       "fair": 1.9566,
-       "min_odds": 2.0153
+       "fair": 2.7998,
+       "min_odds": 2.8838
       }
      ]
     }
@@ -2081,8 +2081,8 @@
      3.75
     ],
     "OU": [
-     1.5,
-     1.25
+     1.48,
+     2.51
     ]
    },
    "model": {
@@ -2110,31 +2110,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.4969,
-       "p_market": 0.4969,
+       "p": 0.4978,
+       "p_market": 0.4978,
        "p_model": 0.4401,
-       "fair": 2.0124,
-       "min_odds": 2.0325
+       "fair": 2.0087,
+       "min_odds": 2.0288
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2432,
-       "p_market": 0.2432,
+       "p": 0.2428,
+       "p_market": 0.2428,
        "p_model": 0.2285,
-       "fair": 4.111,
-       "min_odds": 4.1521
+       "fair": 4.1184,
+       "min_odds": 4.1596
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.2598,
-       "p_market": 0.2598,
+       "p": 0.2593,
+       "p_market": 0.2593,
        "p_model": 0.3313,
-       "fair": 3.8488,
-       "min_odds": 3.8872
+       "fair": 3.8558,
+       "min_odds": 3.8944
       }
      ]
     },
@@ -2147,31 +2147,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.7402,
-       "p_market": 0.7402,
+       "p": 0.7407,
+       "p_market": 0.7407,
        "p_model": 0.6687,
-       "fair": 1.351,
-       "min_odds": 1.3645
+       "fair": 1.3502,
+       "min_odds": 1.3637
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7568,
-       "p_market": 0.7568,
+       "p": 0.7572,
+       "p_market": 0.7572,
        "p_model": 0.7715,
-       "fair": 1.3214,
-       "min_odds": 1.3347
+       "fair": 1.3207,
+       "min_odds": 1.3339
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.5031,
-       "p_market": 0.5031,
+       "p": 0.5022,
+       "p_market": 0.5022,
        "p_model": 0.5599,
-       "fair": 1.9878,
-       "min_odds": 2.0077
+       "fair": 1.9914,
+       "min_odds": 2.0113
       }
      ]
     },
@@ -2184,21 +2184,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7197,
-       "p_market": 0.7197,
+       "p": 0.8526,
+       "p_market": 0.8526,
        "p_model": 0.8729,
-       "fair": 1.3895,
-       "min_odds": 1.4312
+       "fair": 1.1729,
+       "min_odds": 1.2081
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2803,
-       "p_market": 0.2803,
+       "p": 0.1474,
+       "p_market": 0.1474,
        "p_model": 0.1271,
-       "fair": 3.5672,
-       "min_odds": 3.6742
+       "fair": 6.7835,
+       "min_odds": 6.987
       }
      ]
     },
@@ -2211,21 +2211,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.4333,
-       "p_market": 0.4333,
+       "p": 0.644,
+       "p_market": 0.644,
        "p_model": 0.6866,
-       "fair": 2.3077,
-       "min_odds": 2.3538
+       "fair": 1.5527,
+       "min_odds": 1.5838
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.5667,
-       "p_market": 0.5667,
+       "p": 0.356,
+       "p_market": 0.356,
        "p_model": 0.3134,
-       "fair": 1.7647,
-       "min_odds": 1.8
+       "fair": 2.8092,
+       "min_odds": 2.8654
       }
      ]
     },
@@ -2238,21 +2238,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2369,
-       "p_market": 0.2369,
+       "p": 0.4224,
+       "p_market": 0.4224,
        "p_model": 0.4722,
-       "fair": 4.2208,
-       "min_odds": 4.3474
+       "fair": 2.3676,
+       "min_odds": 2.4386
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7631,
-       "p_market": 0.7631,
+       "p": 0.5776,
+       "p_market": 0.5776,
        "p_model": 0.5278,
-       "fair": 1.3105,
-       "min_odds": 1.3498
+       "fair": 1.7312,
+       "min_odds": 1.7831
       }
      ]
     },
@@ -2265,21 +2265,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.4957,
-       "p_market": 0.4957,
+       "p": 0.6487,
+       "p_market": 0.6487,
        "p_model": 0.6899,
-       "fair": 2.0173,
-       "min_odds": 2.0778
+       "fair": 1.5416,
+       "min_odds": 1.5879
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.5043,
-       "p_market": 0.5043,
+       "p": 0.3513,
+       "p_market": 0.3513,
        "p_model": 0.3101,
-       "fair": 1.983,
-       "min_odds": 2.0425
+       "fair": 2.8462,
+       "min_odds": 2.9316
       }
      ]
     }
@@ -2329,11 +2329,11 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.3574,
-       "p_market": 0.3574,
+       "p": 0.3575,
+       "p_market": 0.3575,
        "p_model": 0.342,
-       "fair": 2.7977,
-       "min_odds": 2.8257
+       "fair": 2.7975,
+       "min_odds": 2.8255
       },
       {
        "key": "D",
@@ -2342,8 +2342,8 @@
        "p": 0.2877,
        "p_market": 0.2877,
        "p_model": 0.2833,
-       "fair": 3.4759,
-       "min_odds": 3.5107
+       "fair": 3.4764,
+       "min_odds": 3.5111
       },
       {
        "key": "A",
@@ -2352,8 +2352,8 @@
        "p": 0.3549,
        "p_market": 0.3549,
        "p_model": 0.3747,
-       "fair": 2.8179,
-       "min_odds": 2.8461
+       "fair": 2.8178,
+       "min_odds": 2.846
       }
      ]
     },
@@ -2379,18 +2379,18 @@
        "p": 0.7123,
        "p_market": 0.7123,
        "p_model": 0.7167,
-       "fair": 1.4039,
+       "fair": 1.4038,
        "min_odds": 1.4179
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.6426,
-       "p_market": 0.6426,
+       "p": 0.6425,
+       "p_market": 0.6425,
        "p_model": 0.658,
        "fair": 1.5563,
-       "min_odds": 1.5718
+       "min_odds": 1.5719
       }
      ]
     },
@@ -2416,8 +2416,8 @@
        "p": 0.2377,
        "p_market": 0.2377,
        "p_model": 0.2828,
-       "fair": 4.2063,
-       "min_odds": 4.3325
+       "fair": 4.2065,
+       "min_odds": 4.3327
       }
      ]
     },
@@ -2443,7 +2443,7 @@
        "p": 0.4937,
        "p_market": 0.4937,
        "p_model": 0.5462,
-       "fair": 2.0254,
+       "fair": 2.0255,
        "min_odds": 2.066
       }
      ]
@@ -2460,8 +2460,8 @@
        "p": 0.2843,
        "p_market": 0.2843,
        "p_model": 0.2405,
-       "fair": 3.5178,
-       "min_odds": 3.6233
+       "fair": 3.5176,
+       "min_odds": 3.6231
       },
       {
        "key": "U35",
@@ -2487,7 +2487,7 @@
        "p": 0.5596,
        "p_market": 0.5596,
        "p_model": 0.5133,
-       "fair": 1.7871,
+       "fair": 1.787,
        "min_odds": 1.8407
       },
       {
@@ -2497,8 +2497,8 @@
        "p": 0.4404,
        "p_market": 0.4404,
        "p_model": 0.4867,
-       "fair": 2.2705,
-       "min_odds": 2.3386
+       "fair": 2.2706,
+       "min_odds": 2.3387
       }
      ]
     }
@@ -2535,31 +2535,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.2571,
-       "p_market": 0.2571,
+       "p": 0.257,
+       "p_market": 0.257,
        "p_model": null,
-       "fair": 3.8896,
-       "min_odds": 3.9285
+       "fair": 3.8914,
+       "min_odds": 3.9304
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.283,
-       "p_market": 0.283,
+       "p": 0.2829,
+       "p_market": 0.2829,
        "p_model": null,
-       "fair": 3.5334,
-       "min_odds": 3.5687
+       "fair": 3.535,
+       "min_odds": 3.5703
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.4599,
-       "p_market": 0.4599,
+       "p": 0.4601,
+       "p_market": 0.4601,
        "p_model": null,
-       "fair": 2.1744,
-       "min_odds": 2.1962
+       "fair": 2.1733,
+       "min_odds": 2.195
       }
      ]
     },
@@ -2572,31 +2572,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.5401,
-       "p_market": 0.5401,
+       "p": 0.5399,
+       "p_market": 0.5399,
        "p_model": null,
-       "fair": 1.8515,
-       "min_odds": 1.87
+       "fair": 1.8523,
+       "min_odds": 1.8709
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.717,
-       "p_market": 0.717,
+       "p": 0.7171,
+       "p_market": 0.7171,
        "p_model": null,
-       "fair": 1.3947,
-       "min_odds": 1.4087
+       "fair": 1.3945,
+       "min_odds": 1.4084
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.7429,
-       "p_market": 0.7429,
+       "p": 0.743,
+       "p_market": 0.743,
        "p_model": null,
-       "fair": 1.3461,
-       "min_odds": 1.3595
+       "fair": 1.3458,
+       "min_odds": 1.3593
       }
      ]
     },
@@ -2622,8 +2622,8 @@
        "p": 0.2588,
        "p_market": 0.2588,
        "p_model": null,
-       "fair": 3.8646,
-       "min_odds": 3.9805
+       "fair": 3.8642,
+       "min_odds": 3.9801
       }
      ]
     },
@@ -2639,8 +2639,8 @@
        "p": 0.4772,
        "p_market": 0.4772,
        "p_model": null,
-       "fair": 2.0954,
-       "min_odds": 2.1373
+       "fair": 2.0958,
+       "min_odds": 2.1377
       },
       {
        "key": "U",
@@ -2649,8 +2649,8 @@
        "p": 0.5228,
        "p_market": 0.5228,
        "p_model": null,
-       "fair": 1.9129,
-       "min_odds": 1.9511
+       "fair": 1.9126,
+       "min_odds": 1.9509
       }
      ]
     },
@@ -2666,8 +2666,8 @@
        "p": 0.2599,
        "p_market": 0.2599,
        "p_model": null,
-       "fair": 3.847,
-       "min_odds": 3.9624
+       "fair": 3.8474,
+       "min_odds": 3.9628
       },
       {
        "key": "U35",
@@ -2676,8 +2676,8 @@
        "p": 0.7401,
        "p_market": 0.7401,
        "p_model": null,
-       "fair": 1.3513,
-       "min_odds": 1.3918
+       "fair": 1.3512,
+       "min_odds": 1.3917
       }
      ]
     },
@@ -2690,21 +2690,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5247,
-       "p_market": 0.5247,
+       "p": 0.5246,
+       "p_market": 0.5246,
        "p_model": null,
-       "fair": 1.9058,
-       "min_odds": 1.963
+       "fair": 1.9061,
+       "min_odds": 1.9633
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4753,
-       "p_market": 0.4753,
+       "p": 0.4754,
+       "p_market": 0.4754,
        "p_model": null,
-       "fair": 2.104,
-       "min_odds": 2.1671
+       "fair": 2.1037,
+       "min_odds": 2.1668
       }
      ]
     }
@@ -2754,21 +2754,21 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.4146,
-       "p_market": 0.4146,
+       "p": 0.4147,
+       "p_market": 0.4147,
        "p_model": 0.3423,
-       "fair": 2.4121,
-       "min_odds": 2.4362
+       "fair": 2.4115,
+       "min_odds": 2.4357
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2648,
-       "p_market": 0.2648,
+       "p": 0.2647,
+       "p_market": 0.2647,
        "p_model": 0.2506,
-       "fair": 3.7765,
-       "min_odds": 3.8142
+       "fair": 3.7773,
+       "min_odds": 3.815
       },
       {
        "key": "A",
@@ -2777,8 +2777,8 @@
        "p": 0.3206,
        "p_market": 0.3206,
        "p_model": 0.4072,
-       "fair": 3.1189,
-       "min_odds": 3.1501
+       "fair": 3.1193,
+       "min_odds": 3.1505
       }
      ]
     },
@@ -2795,27 +2795,27 @@
        "p_market": 0.6794,
        "p_model": 0.5928,
        "fair": 1.4719,
-       "min_odds": 1.4867
+       "min_odds": 1.4866
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7352,
-       "p_market": 0.7352,
+       "p": 0.7353,
+       "p_market": 0.7353,
        "p_model": 0.7494,
-       "fair": 1.3602,
-       "min_odds": 1.3738
+       "fair": 1.3601,
+       "min_odds": 1.3737
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.5854,
-       "p_market": 0.5854,
+       "p": 0.5853,
+       "p_market": 0.5853,
        "p_model": 0.6577,
-       "fair": 1.7082,
-       "min_odds": 1.7252
+       "fair": 1.7084,
+       "min_odds": 1.7255
       }
      ]
     },
@@ -2828,21 +2828,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8085,
-       "p_market": 0.8085,
+       "p": 0.8089,
+       "p_market": 0.8089,
        "p_model": 0.815,
-       "fair": 1.2368,
-       "min_odds": 1.2739
+       "fair": 1.2362,
+       "min_odds": 1.2733
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1915,
-       "p_market": 0.1915,
+       "p": 0.1911,
+       "p_market": 0.1911,
        "p_model": 0.185,
-       "fair": 5.2226,
-       "min_odds": 5.3793
+       "fair": 5.2338,
+       "min_odds": 5.3908
       }
      ]
     },
@@ -2855,21 +2855,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5714,
-       "p_market": 0.5714,
+       "p": 0.5721,
+       "p_market": 0.5721,
        "p_model": 0.5899,
-       "fair": 1.7501,
-       "min_odds": 1.7851
+       "fair": 1.7481,
+       "min_odds": 1.783
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4286,
-       "p_market": 0.4286,
+       "p": 0.4279,
+       "p_market": 0.4279,
        "p_model": 0.4101,
-       "fair": 2.3332,
-       "min_odds": 2.3798
+       "fair": 2.3368,
+       "min_odds": 2.3835
       }
      ]
     },
@@ -2882,21 +2882,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3475,
-       "p_market": 0.3475,
+       "p": 0.3481,
+       "p_market": 0.3481,
        "p_model": 0.366,
-       "fair": 2.8779,
-       "min_odds": 2.9643
+       "fair": 2.8728,
+       "min_odds": 2.959
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6525,
-       "p_market": 0.6525,
+       "p": 0.6519,
+       "p_market": 0.6519,
        "p_model": 0.634,
-       "fair": 1.5325,
-       "min_odds": 1.5785
+       "fair": 1.534,
+       "min_odds": 1.58
       }
      ]
     },
@@ -2909,21 +2909,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.6081,
-       "p_market": 0.6081,
+       "p": 0.6085,
+       "p_market": 0.6085,
        "p_model": 0.6179,
-       "fair": 1.6445,
-       "min_odds": 1.6939
+       "fair": 1.6433,
+       "min_odds": 1.6926
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.3919,
-       "p_market": 0.3919,
+       "p": 0.3915,
+       "p_market": 0.3915,
        "p_model": 0.3821,
-       "fair": 2.5515,
-       "min_odds": 2.628
+       "fair": 2.5546,
+       "min_odds": 2.6312
       }
      ]
     }
@@ -2973,31 +2973,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6103,
-       "p_market": 0.6103,
+       "p": 0.611,
+       "p_market": 0.611,
        "p_model": 0.5737,
-       "fair": 1.6384,
-       "min_odds": 1.6548
+       "fair": 1.6368,
+       "min_odds": 1.6531
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2357,
-       "p_market": 0.2357,
+       "p": 0.2352,
+       "p_market": 0.2352,
        "p_model": 0.2318,
-       "fair": 4.2432,
-       "min_odds": 4.2856
+       "fair": 4.2513,
+       "min_odds": 4.2938
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.154,
-       "p_market": 0.154,
+       "p": 0.1538,
+       "p_market": 0.1538,
        "p_model": 0.1945,
-       "fair": 6.494,
-       "min_odds": 6.5589
+       "fair": 6.5014,
+       "min_odds": 6.5664
       }
      ]
     },
@@ -3010,31 +3010,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.846,
-       "p_market": 0.846,
+       "p": 0.8462,
+       "p_market": 0.8462,
        "p_model": 0.8055,
-       "fair": 1.182,
-       "min_odds": 1.1938
+       "fair": 1.1818,
+       "min_odds": 1.1936
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7643,
-       "p_market": 0.7643,
+       "p": 0.7648,
+       "p_market": 0.7648,
        "p_model": 0.7682,
-       "fair": 1.3083,
-       "min_odds": 1.3214
+       "fair": 1.3076,
+       "min_odds": 1.3206
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3897,
-       "p_market": 0.3897,
+       "p": 0.389,
+       "p_market": 0.389,
        "p_model": 0.4263,
-       "fair": 2.5663,
-       "min_odds": 2.592
+       "fair": 2.5705,
+       "min_odds": 2.5962
       }
      ]
     },
@@ -3047,21 +3047,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7689,
-       "p_market": 0.7689,
+       "p": 0.769,
+       "p_market": 0.769,
        "p_model": 0.7945,
-       "fair": 1.3005,
-       "min_odds": 1.3395
+       "fair": 1.3003,
+       "min_odds": 1.3393
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2311,
-       "p_market": 0.2311,
+       "p": 0.231,
+       "p_market": 0.231,
        "p_model": 0.2055,
-       "fair": 4.3279,
-       "min_odds": 4.4577
+       "fair": 4.3298,
+       "min_odds": 4.4597
       }
      ]
     },
@@ -3074,21 +3074,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5153,
-       "p_market": 0.5153,
+       "p": 0.5154,
+       "p_market": 0.5154,
        "p_model": 0.5597,
-       "fair": 1.9405,
-       "min_odds": 1.9794
+       "fair": 1.9403,
+       "min_odds": 1.9791
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4847,
-       "p_market": 0.4847,
+       "p": 0.4846,
+       "p_market": 0.4846,
        "p_model": 0.4403,
-       "fair": 2.0632,
-       "min_odds": 2.1045
+       "fair": 2.0635,
+       "min_odds": 2.1048
       }
      ]
     },
@@ -3101,21 +3101,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2948,
-       "p_market": 0.2948,
+       "p": 0.295,
+       "p_market": 0.295,
        "p_model": 0.3359,
-       "fair": 3.3916,
-       "min_odds": 3.4933
+       "fair": 3.39,
+       "min_odds": 3.4917
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7052,
-       "p_market": 0.7052,
+       "p": 0.705,
+       "p_market": 0.705,
        "p_model": 0.6641,
-       "fair": 1.4181,
-       "min_odds": 1.4607
+       "fair": 1.4184,
+       "min_odds": 1.461
       }
      ]
     },
@@ -3128,21 +3128,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.4957,
-       "p_market": 0.4957,
+       "p": 0.4955,
+       "p_market": 0.4955,
        "p_model": 0.5501,
-       "fair": 2.0173,
-       "min_odds": 2.0778
+       "fair": 2.0182,
+       "min_odds": 2.0787
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.5043,
-       "p_market": 0.5043,
+       "p": 0.5045,
+       "p_market": 0.5045,
        "p_model": 0.4499,
-       "fair": 1.983,
-       "min_odds": 2.0425
+       "fair": 1.9821,
+       "min_odds": 2.0416
       }
      ]
     }
@@ -3192,31 +3192,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.2109,
-       "p_market": 0.2109,
+       "p": 0.2108,
+       "p_market": 0.2108,
        "p_model": 0.2294,
-       "fair": 4.7411,
-       "min_odds": 4.7885
+       "fair": 4.7433,
+       "min_odds": 4.7908
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2838,
-       "p_market": 0.2838,
+       "p": 0.2836,
+       "p_market": 0.2836,
        "p_model": 0.2993,
-       "fair": 3.5241,
-       "min_odds": 3.5594
+       "fair": 3.5261,
+       "min_odds": 3.5614
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.5053,
-       "p_market": 0.5053,
+       "p": 0.5056,
+       "p_market": 0.5056,
        "p_model": 0.4713,
-       "fair": 1.9789,
-       "min_odds": 1.9987
+       "fair": 1.9779,
+       "min_odds": 1.9977
       }
      ]
     },
@@ -3229,31 +3229,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.4947,
-       "p_market": 0.4947,
+       "p": 0.4944,
+       "p_market": 0.4944,
        "p_model": 0.5287,
-       "fair": 2.0215,
-       "min_odds": 2.0417
+       "fair": 2.0226,
+       "min_odds": 2.0428
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7162,
-       "p_market": 0.7162,
+       "p": 0.7164,
+       "p_market": 0.7164,
        "p_model": 0.7007,
-       "fair": 1.3962,
-       "min_odds": 1.4101
+       "fair": 1.3959,
+       "min_odds": 1.4098
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.7891,
-       "p_market": 0.7891,
+       "p": 0.7892,
+       "p_market": 0.7892,
        "p_model": 0.7706,
-       "fair": 1.2673,
-       "min_odds": 1.28
+       "fair": 1.2671,
+       "min_odds": 1.2798
       }
      ]
     },
@@ -3266,21 +3266,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7172,
-       "p_market": 0.7172,
+       "p": 0.717,
+       "p_market": 0.717,
        "p_model": 0.6318,
-       "fair": 1.3943,
-       "min_odds": 1.4362
+       "fair": 1.3947,
+       "min_odds": 1.4366
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2828,
-       "p_market": 0.2828,
+       "p": 0.283,
+       "p_market": 0.283,
        "p_model": 0.3682,
-       "fair": 3.5359,
-       "min_odds": 3.6419
+       "fair": 3.5333,
+       "min_odds": 3.6393
       }
      ]
     },
@@ -3293,21 +3293,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.4479,
-       "p_market": 0.4479,
+       "p": 0.4476,
+       "p_market": 0.4476,
        "p_model": 0.3557,
-       "fair": 2.2324,
-       "min_odds": 2.2771
+       "fair": 2.234,
+       "min_odds": 2.2787
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.5521,
-       "p_market": 0.5521,
+       "p": 0.5524,
+       "p_market": 0.5524,
        "p_model": 0.6443,
-       "fair": 1.8114,
-       "min_odds": 1.8476
+       "fair": 1.8104,
+       "min_odds": 1.8466
       }
      ]
     },
@@ -3320,21 +3320,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2346,
-       "p_market": 0.2346,
+       "p": 0.2344,
+       "p_market": 0.2344,
        "p_model": 0.1651,
-       "fair": 4.2624,
-       "min_odds": 4.3903
+       "fair": 4.2661,
+       "min_odds": 4.3941
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7654,
-       "p_market": 0.7654,
+       "p": 0.7656,
+       "p_market": 0.7656,
        "p_model": 0.8349,
-       "fair": 1.3065,
-       "min_odds": 1.3457
+       "fair": 1.3062,
+       "min_odds": 1.3454
       }
      ]
     },
@@ -3347,21 +3347,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.4852,
-       "p_market": 0.4852,
+       "p": 0.4849,
+       "p_market": 0.4849,
        "p_model": 0.4136,
-       "fair": 2.061,
-       "min_odds": 2.1229
+       "fair": 2.0623,
+       "min_odds": 2.1241
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.5148,
-       "p_market": 0.5148,
+       "p": 0.5151,
+       "p_market": 0.5151,
        "p_model": 0.5864,
-       "fair": 1.9425,
-       "min_odds": 2.0008
+       "fair": 1.9414,
+       "min_odds": 1.9996
       }
      ]
     }
@@ -3411,31 +3411,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.4718,
-       "p_market": 0.4718,
+       "p": 0.4722,
+       "p_market": 0.4722,
        "p_model": 0.509,
-       "fair": 2.1195,
-       "min_odds": 2.1407
+       "fair": 2.1177,
+       "min_odds": 2.1389
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2463,
-       "p_market": 0.2463,
+       "p": 0.2461,
+       "p_market": 0.2461,
        "p_model": 0.2249,
-       "fair": 4.0602,
-       "min_odds": 4.1008
+       "fair": 4.0633,
+       "min_odds": 4.1039
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.2819,
-       "p_market": 0.2819,
+       "p": 0.2817,
+       "p_market": 0.2817,
        "p_model": 0.2661,
-       "fair": 3.5474,
-       "min_odds": 3.5829
+       "fair": 3.55,
+       "min_odds": 3.5855
       }
      ]
     },
@@ -3448,31 +3448,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.7181,
-       "p_market": 0.7181,
+       "p": 0.7183,
+       "p_market": 0.7183,
        "p_model": 0.7339,
-       "fair": 1.3926,
-       "min_odds": 1.4065
+       "fair": 1.3922,
+       "min_odds": 1.4061
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7537,
-       "p_market": 0.7537,
+       "p": 0.7539,
+       "p_market": 0.7539,
        "p_model": 0.7751,
-       "fair": 1.3268,
-       "min_odds": 1.34
+       "fair": 1.3264,
+       "min_odds": 1.3397
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.5282,
-       "p_market": 0.5282,
+       "p": 0.5278,
+       "p_market": 0.5278,
        "p_model": 0.491,
-       "fair": 1.8933,
-       "min_odds": 1.9122
+       "fair": 1.8947,
+       "min_odds": 1.9136
       }
      ]
     },
@@ -3485,21 +3485,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8529,
-       "p_market": 0.8529,
+       "p": 0.8536,
+       "p_market": 0.8536,
        "p_model": 0.8614,
-       "fair": 1.1725,
-       "min_odds": 1.2077
+       "fair": 1.1715,
+       "min_odds": 1.2067
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1471,
-       "p_market": 0.1471,
+       "p": 0.1464,
+       "p_market": 0.1464,
        "p_model": 0.1386,
-       "fair": 6.7968,
-       "min_odds": 7.0007
+       "fair": 6.8295,
+       "min_odds": 7.0344
       }
      ]
     },
@@ -3512,21 +3512,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.6443,
-       "p_market": 0.6443,
+       "p": 0.6456,
+       "p_market": 0.6456,
        "p_model": 0.6665,
-       "fair": 1.552,
-       "min_odds": 1.5831
+       "fair": 1.549,
+       "min_odds": 1.58
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.3557,
-       "p_market": 0.3557,
+       "p": 0.3544,
+       "p_market": 0.3544,
        "p_model": 0.3335,
-       "fair": 2.8115,
-       "min_odds": 2.8677
+       "fair": 2.8214,
+       "min_odds": 2.8779
       }
      ]
     },
@@ -3539,21 +3539,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.4227,
-       "p_market": 0.4227,
+       "p": 0.424,
+       "p_market": 0.424,
        "p_model": 0.4487,
-       "fair": 2.3657,
-       "min_odds": 2.4367
+       "fair": 2.3583,
+       "min_odds": 2.429
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.5773,
-       "p_market": 0.5773,
+       "p": 0.576,
+       "p_market": 0.576,
        "p_model": 0.5513,
-       "fair": 1.7322,
-       "min_odds": 1.7842
+       "fair": 1.7362,
+       "min_odds": 1.7883
       }
      ]
     },
@@ -3566,21 +3566,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.6549,
-       "p_market": 0.6549,
+       "p": 0.6557,
+       "p_market": 0.6557,
        "p_model": 0.6614,
-       "fair": 1.527,
-       "min_odds": 1.5728
+       "fair": 1.525,
+       "min_odds": 1.5708
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.3451,
-       "p_market": 0.3451,
+       "p": 0.3443,
+       "p_market": 0.3443,
        "p_model": 0.3386,
-       "fair": 2.8974,
-       "min_odds": 2.9843
+       "fair": 2.9047,
+       "min_odds": 2.9918
       }
      ]
     }
@@ -3630,31 +3630,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.5984,
-       "p_market": 0.5984,
+       "p": 0.5992,
+       "p_market": 0.5992,
        "p_model": 0.4802,
-       "fair": 1.6711,
-       "min_odds": 1.6878
+       "fair": 1.669,
+       "min_odds": 1.6856
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.235,
-       "p_market": 0.235,
+       "p": 0.2345,
+       "p_market": 0.2345,
        "p_model": 0.2479,
-       "fair": 4.2552,
-       "min_odds": 4.2978
+       "fair": 4.2645,
+       "min_odds": 4.3071
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1666,
-       "p_market": 0.1666,
+       "p": 0.1663,
+       "p_market": 0.1663,
        "p_model": 0.2719,
-       "fair": 6.0032,
-       "min_odds": 6.0633
+       "fair": 6.0122,
+       "min_odds": 6.0724
       }
      ]
     },
@@ -3667,31 +3667,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8334,
-       "p_market": 0.8334,
+       "p": 0.8337,
+       "p_market": 0.8337,
        "p_model": 0.7281,
-       "fair": 1.1999,
-       "min_odds": 1.2119
+       "fair": 1.1995,
+       "min_odds": 1.2115
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.765,
-       "p_market": 0.765,
+       "p": 0.7655,
+       "p_market": 0.7655,
        "p_model": 0.7521,
-       "fair": 1.3072,
-       "min_odds": 1.3203
+       "fair": 1.3063,
+       "min_odds": 1.3194
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.4016,
-       "p_market": 0.4016,
+       "p": 0.4008,
+       "p_market": 0.4008,
        "p_model": 0.5198,
-       "fair": 2.4901,
-       "min_odds": 2.515
+       "fair": 2.4949,
+       "min_odds": 2.5198
       }
      ]
     },
@@ -3704,21 +3704,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7906,
-       "p_market": 0.7906,
+       "p": 0.7909,
+       "p_market": 0.7909,
        "p_model": 0.8021,
-       "fair": 1.2648,
-       "min_odds": 1.3028
+       "fair": 1.2643,
+       "min_odds": 1.3023
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2094,
-       "p_market": 0.2094,
+       "p": 0.2091,
+       "p_market": 0.2091,
        "p_model": 0.1979,
-       "fair": 4.776,
-       "min_odds": 4.9193
+       "fair": 4.7831,
+       "min_odds": 4.9266
       }
      ]
     },
@@ -3731,21 +3731,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5463,
-       "p_market": 0.5463,
+       "p": 0.5467,
+       "p_market": 0.5467,
        "p_model": 0.5704,
-       "fair": 1.8305,
-       "min_odds": 1.8671
+       "fair": 1.8292,
+       "min_odds": 1.8658
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4537,
-       "p_market": 0.4537,
+       "p": 0.4533,
+       "p_market": 0.4533,
        "p_model": 0.4296,
-       "fair": 2.2041,
-       "min_odds": 2.2482
+       "fair": 2.206,
+       "min_odds": 2.2501
       }
      ]
     },
@@ -3758,21 +3758,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3234,
-       "p_market": 0.3234,
+       "p": 0.3238,
+       "p_market": 0.3238,
        "p_model": 0.3464,
-       "fair": 3.0923,
-       "min_odds": 3.1851
+       "fair": 3.088,
+       "min_odds": 3.1807
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6766,
-       "p_market": 0.6766,
+       "p": 0.6762,
+       "p_market": 0.6762,
        "p_model": 0.6536,
-       "fair": 1.4779,
-       "min_odds": 1.5223
+       "fair": 1.4789,
+       "min_odds": 1.5233
       }
      ]
     },
@@ -3788,8 +3788,8 @@
        "p": 0.5292,
        "p_market": 0.5292,
        "p_model": 0.5912,
-       "fair": 1.8896,
-       "min_odds": 1.9463
+       "fair": 1.8895,
+       "min_odds": 1.9462
       },
       {
        "key": "BN",
@@ -3798,7 +3798,7 @@
        "p": 0.4708,
        "p_market": 0.4708,
        "p_model": 0.4088,
-       "fair": 2.1241,
+       "fair": 2.1242,
        "min_odds": 2.1879
       }
      ]
@@ -3849,31 +3849,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6228,
-       "p_market": 0.6228,
+       "p": 0.6365,
+       "p_market": 0.6365,
        "p_model": 0.5529,
-       "fair": 1.6058,
-       "min_odds": 1.6218
+       "fair": 1.5712,
+       "min_odds": 1.5869
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.1986,
-       "p_market": 0.1986,
+       "p": 0.1913,
+       "p_market": 0.1913,
        "p_model": 0.2399,
-       "fair": 5.036,
-       "min_odds": 5.0864
+       "fair": 5.2276,
+       "min_odds": 5.2799
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1787,
-       "p_market": 0.1787,
+       "p": 0.1723,
+       "p_market": 0.1723,
        "p_model": 0.2073,
-       "fair": 5.5968,
-       "min_odds": 5.6527
+       "fair": 5.8055,
+       "min_odds": 5.8636
       }
      ]
     },
@@ -3886,31 +3886,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8213,
-       "p_market": 0.8213,
+       "p": 0.8277,
+       "p_market": 0.8277,
        "p_model": 0.7927,
-       "fair": 1.2175,
-       "min_odds": 1.2297
+       "fair": 1.2081,
+       "min_odds": 1.2202
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.8014,
-       "p_market": 0.8014,
+       "p": 0.8087,
+       "p_market": 0.8087,
        "p_model": 0.7601,
-       "fair": 1.2478,
-       "min_odds": 1.2602
+       "fair": 1.2365,
+       "min_odds": 1.2489
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3772,
-       "p_market": 0.3772,
+       "p": 0.3635,
+       "p_market": 0.3635,
        "p_model": 0.4471,
-       "fair": 2.6508,
-       "min_odds": 2.6773
+       "fair": 2.7507,
+       "min_odds": 2.7782
       }
      ]
     }
@@ -3923,11 +3923,11 @@
    "kickoff": "2026-10-11T14:30:00+00:00",
    "home": "Vaduz",
    "away": "Basel",
-   "reference": "Betfair",
+   "reference": "Marktschnitt",
    "ref_odds": {
     "1X2": [
-     1.24,
-     3.95,
+     2.51,
+     3.88,
      2.3
     ],
     "OU": [
@@ -3960,31 +3960,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6092,
-       "p_market": 0.6092,
+       "p": 0.3673,
+       "p_market": 0.3673,
        "p_model": 0.3634,
-       "fair": 1.6416,
-       "min_odds": 1.658
+       "fair": 2.7223,
+       "min_odds": 2.7495
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.1201,
-       "p_market": 0.1201,
+       "p": 0.2287,
+       "p_market": 0.2287,
        "p_model": 0.2093,
-       "fair": 8.3268,
-       "min_odds": 8.4101
+       "fair": 4.373,
+       "min_odds": 4.4167
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.2708,
-       "p_market": 0.2708,
+       "p": 0.404,
+       "p_market": 0.404,
        "p_model": 0.4274,
-       "fair": 3.6934,
-       "min_odds": 3.7303
+       "fair": 2.4754,
+       "min_odds": 2.5001
       }
      ]
     },
@@ -3997,31 +3997,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.7292,
-       "p_market": 0.7292,
+       "p": 0.596,
+       "p_market": 0.596,
        "p_model": 0.5726,
-       "fair": 1.3713,
-       "min_odds": 1.385
+       "fair": 1.6778,
+       "min_odds": 1.6946
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.8799,
-       "p_market": 0.8799,
+       "p": 0.7713,
+       "p_market": 0.7713,
        "p_model": 0.7907,
-       "fair": 1.1365,
-       "min_odds": 1.1478
+       "fair": 1.2965,
+       "min_odds": 1.3094
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3908,
-       "p_market": 0.3908,
+       "p": 0.6327,
+       "p_market": 0.6327,
        "p_model": 0.6366,
-       "fair": 2.5585,
-       "min_odds": 2.5841
+       "fair": 1.5806,
+       "min_odds": 1.5964
       }
      ]
     }
@@ -4034,16 +4034,16 @@
    "kickoff": "2026-10-11T14:45:00+00:00",
    "home": "Excelsior",
    "away": "Groningen",
-   "reference": "Betfair",
+   "reference": "Marktschnitt",
    "ref_odds": {
     "1X2": [
-     1.12,
-     3.65,
-     2.54
+     2.51,
+     3.62,
+     2.48
     ],
     "OU": [
-     1.01,
-     1.1
+     1.53,
+     2.38
     ]
    },
    "model": {
@@ -4071,31 +4071,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6639,
-       "p_market": 0.6639,
+       "p": 0.3721,
+       "p_market": 0.3721,
        "p_model": 0.3842,
-       "fair": 1.5063,
-       "min_odds": 1.5214
+       "fair": 2.6877,
+       "min_odds": 2.7146
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.1211,
-       "p_market": 0.1211,
+       "p": 0.251,
+       "p_market": 0.251,
        "p_model": 0.2607,
-       "fair": 8.2605,
-       "min_odds": 8.3431
+       "fair": 3.9833,
+       "min_odds": 4.0232
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.2151,
-       "p_market": 0.2151,
+       "p": 0.3769,
+       "p_market": 0.3769,
        "p_model": 0.3551,
-       "fair": 4.6493,
-       "min_odds": 4.6958
+       "fair": 2.6533,
+       "min_odds": 2.6798
       }
      ]
     },
@@ -4108,31 +4108,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.7849,
-       "p_market": 0.7849,
+       "p": 0.6231,
+       "p_market": 0.6231,
        "p_model": 0.6449,
-       "fair": 1.274,
-       "min_odds": 1.2868
+       "fair": 1.6049,
+       "min_odds": 1.6209
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.8789,
-       "p_market": 0.8789,
+       "p": 0.749,
+       "p_market": 0.749,
        "p_model": 0.7393,
-       "fair": 1.1377,
-       "min_odds": 1.1491
+       "fair": 1.3352,
+       "min_odds": 1.3485
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3361,
-       "p_market": 0.3361,
+       "p": 0.6279,
+       "p_market": 0.6279,
        "p_model": 0.6158,
-       "fair": 2.9749,
-       "min_odds": 3.0047
+       "fair": 1.5925,
+       "min_odds": 1.6084
       }
      ]
     },
@@ -4145,21 +4145,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7994,
-       "p_market": 0.7994,
+       "p": 0.8407,
+       "p_market": 0.8407,
        "p_model": 0.7867,
-       "fair": 1.2509,
-       "min_odds": 1.2884
+       "fair": 1.1895,
+       "min_odds": 1.2252
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2006,
-       "p_market": 0.2006,
+       "p": 0.1593,
+       "p_market": 0.1593,
        "p_model": 0.2133,
-       "fair": 4.9861,
-       "min_odds": 5.1357
+       "fair": 6.2758,
+       "min_odds": 6.464
       }
      ]
     },
@@ -4172,21 +4172,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.531,
-       "p_market": 0.531,
+       "p": 0.6212,
+       "p_market": 0.6212,
        "p_model": 0.5475,
-       "fair": 1.8831,
-       "min_odds": 1.9207
+       "fair": 1.6098,
+       "min_odds": 1.642
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.469,
-       "p_market": 0.469,
+       "p": 0.3788,
+       "p_market": 0.3788,
        "p_model": 0.4525,
-       "fair": 2.1324,
-       "min_odds": 2.1751
+       "fair": 2.6399,
+       "min_odds": 2.6927
       }
      ]
     },
@@ -4199,21 +4199,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3368,
-       "p_market": 0.3368,
+       "p": 0.4,
+       "p_market": 0.4,
        "p_model": 0.324,
-       "fair": 2.9691,
-       "min_odds": 3.0581
+       "fair": 2.5,
+       "min_odds": 2.575
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6632,
-       "p_market": 0.6632,
+       "p": 0.6,
+       "p_market": 0.6,
        "p_model": 0.676,
-       "fair": 1.5079,
-       "min_odds": 1.5531
+       "fair": 1.6666,
+       "min_odds": 1.7166
       }
      ]
     },
@@ -4226,21 +4226,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5124,
-       "p_market": 0.5124,
+       "p": 0.6492,
+       "p_market": 0.6492,
        "p_model": 0.5864,
-       "fair": 1.9517,
-       "min_odds": 2.0102
+       "fair": 1.5404,
+       "min_odds": 1.5866
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4876,
-       "p_market": 0.4876,
+       "p": 0.3508,
+       "p_market": 0.3508,
        "p_model": 0.4136,
-       "fair": 2.0508,
-       "min_odds": 2.1123
+       "fair": 2.8504,
+       "min_odds": 2.9359
       }
      ]
     }
@@ -4290,31 +4290,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6824,
-       "p_market": 0.6824,
+       "p": 0.6844,
+       "p_market": 0.6844,
        "p_model": 0.5498,
-       "fair": 1.4654,
-       "min_odds": 1.48
+       "fair": 1.4612,
+       "min_odds": 1.4758
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.1836,
-       "p_market": 0.1836,
+       "p": 0.1823,
+       "p_market": 0.1823,
        "p_model": 0.2293,
-       "fair": 5.4474,
-       "min_odds": 5.5019
+       "fair": 5.4859,
+       "min_odds": 5.5407
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.134,
-       "p_market": 0.134,
+       "p": 0.1333,
+       "p_market": 0.1333,
        "p_model": 0.2209,
-       "fair": 7.4622,
-       "min_odds": 7.5368
+       "fair": 7.4999,
+       "min_odds": 7.5749
       }
      ]
     },
@@ -4327,31 +4327,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.866,
-       "p_market": 0.866,
+       "p": 0.8667,
+       "p_market": 0.8667,
        "p_model": 0.7791,
-       "fair": 1.1547,
-       "min_odds": 1.1663
+       "fair": 1.1538,
+       "min_odds": 1.1654
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.8164,
-       "p_market": 0.8164,
+       "p": 0.8177,
+       "p_market": 0.8177,
        "p_model": 0.7707,
-       "fair": 1.2248,
-       "min_odds": 1.2371
+       "fair": 1.2229,
+       "min_odds": 1.2352
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3176,
-       "p_market": 0.3176,
+       "p": 0.3156,
+       "p_market": 0.3156,
        "p_model": 0.4502,
-       "fair": 3.1488,
-       "min_odds": 3.1803
+       "fair": 3.1684,
+       "min_odds": 3.2
       }
      ]
     },
@@ -4364,21 +4364,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.853,
-       "p_market": 0.853,
+       "p": 0.8542,
+       "p_market": 0.8542,
        "p_model": 0.8231,
-       "fair": 1.1723,
-       "min_odds": 1.2075
+       "fair": 1.1707,
+       "min_odds": 1.2059
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.147,
-       "p_market": 0.147,
+       "p": 0.1458,
+       "p_market": 0.1458,
        "p_model": 0.1769,
-       "fair": 6.8024,
-       "min_odds": 7.0065
+       "fair": 6.8565,
+       "min_odds": 7.0622
       }
      ]
     },
@@ -4391,21 +4391,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.6438,
-       "p_market": 0.6438,
+       "p": 0.6457,
+       "p_market": 0.6457,
        "p_model": 0.6032,
-       "fair": 1.5534,
-       "min_odds": 1.5844
+       "fair": 1.5487,
+       "min_odds": 1.5797
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.3562,
-       "p_market": 0.3562,
+       "p": 0.3543,
+       "p_market": 0.3543,
        "p_model": 0.3968,
-       "fair": 2.8071,
-       "min_odds": 2.8633
+       "fair": 2.8225,
+       "min_odds": 2.8789
       }
      ]
     },
@@ -4418,21 +4418,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.426,
-       "p_market": 0.426,
+       "p": 0.4282,
+       "p_market": 0.4282,
        "p_model": 0.3796,
-       "fair": 2.3474,
-       "min_odds": 2.4178
+       "fair": 2.3351,
+       "min_odds": 2.4052
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.574,
-       "p_market": 0.574,
+       "p": 0.5718,
+       "p_market": 0.5718,
        "p_model": 0.6204,
-       "fair": 1.7422,
-       "min_odds": 1.7944
+       "fair": 1.749,
+       "min_odds": 1.8015
       }
      ]
     },
@@ -4445,21 +4445,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5658,
-       "p_market": 0.5658,
+       "p": 0.5663,
+       "p_market": 0.5663,
        "p_model": 0.5967,
-       "fair": 1.7673,
-       "min_odds": 1.8203
+       "fair": 1.7658,
+       "min_odds": 1.8188
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4342,
-       "p_market": 0.4342,
+       "p": 0.4337,
+       "p_market": 0.4337,
        "p_model": 0.4033,
-       "fair": 2.3033,
-       "min_odds": 2.3724
+       "fair": 2.3057,
+       "min_odds": 2.3749
       }
      ]
     }
@@ -4496,31 +4496,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.5948,
-       "p_market": 0.5948,
+       "p": 0.5956,
+       "p_market": 0.5956,
        "p_model": null,
-       "fair": 1.6811,
-       "min_odds": 1.6979
+       "fair": 1.679,
+       "min_odds": 1.6958
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2295,
-       "p_market": 0.2295,
+       "p": 0.229,
+       "p_market": 0.229,
        "p_model": null,
-       "fair": 4.3572,
-       "min_odds": 4.4008
+       "fair": 4.3662,
+       "min_odds": 4.4099
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1757,
-       "p_market": 0.1757,
+       "p": 0.1754,
+       "p_market": 0.1754,
        "p_model": null,
-       "fair": 5.6931,
-       "min_odds": 5.75
+       "fair": 5.702,
+       "min_odds": 5.759
       }
      ]
     },
@@ -4533,31 +4533,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8243,
-       "p_market": 0.8243,
+       "p": 0.8246,
+       "p_market": 0.8246,
        "p_model": null,
-       "fair": 1.2131,
-       "min_odds": 1.2252
+       "fair": 1.2127,
+       "min_odds": 1.2248
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7705,
-       "p_market": 0.7705,
+       "p": 0.771,
+       "p_market": 0.771,
        "p_model": null,
-       "fair": 1.2979,
-       "min_odds": 1.3108
+       "fair": 1.2971,
+       "min_odds": 1.31
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.4052,
-       "p_market": 0.4052,
+       "p": 0.4044,
+       "p_market": 0.4044,
        "p_model": null,
-       "fair": 2.4682,
-       "min_odds": 2.4929
+       "fair": 2.4728,
+       "min_odds": 2.4975
       }
      ]
     },
@@ -4570,21 +4570,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8274,
-       "p_market": 0.8274,
+       "p": 0.828,
+       "p_market": 0.828,
        "p_model": null,
-       "fair": 1.2086,
-       "min_odds": 1.2448
+       "fair": 1.2077,
+       "min_odds": 1.2439
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1726,
-       "p_market": 0.1726,
+       "p": 0.172,
+       "p_market": 0.172,
        "p_model": null,
-       "fair": 5.7944,
-       "min_odds": 5.9683
+       "fair": 5.8152,
+       "min_odds": 5.9897
       }
      ]
     },
@@ -4597,21 +4597,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.6035,
-       "p_market": 0.6035,
+       "p": 0.6045,
+       "p_market": 0.6045,
        "p_model": null,
-       "fair": 1.657,
-       "min_odds": 1.6902
+       "fair": 1.6544,
+       "min_odds": 1.6875
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.3965,
-       "p_market": 0.3965,
+       "p": 0.3955,
+       "p_market": 0.3955,
        "p_model": null,
-       "fair": 2.522,
-       "min_odds": 2.5725
+       "fair": 2.5282,
+       "min_odds": 2.5788
       }
      ]
     },
@@ -4624,21 +4624,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3792,
-       "p_market": 0.3792,
+       "p": 0.3802,
+       "p_market": 0.3802,
        "p_model": null,
-       "fair": 2.6374,
-       "min_odds": 2.7165
+       "fair": 2.6303,
+       "min_odds": 2.7092
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6208,
-       "p_market": 0.6208,
+       "p": 0.6198,
+       "p_market": 0.6198,
        "p_model": null,
-       "fair": 1.6107,
-       "min_odds": 1.659
+       "fair": 1.6134,
+       "min_odds": 1.6618
       }
      ]
     },
@@ -4651,21 +4651,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.579,
-       "p_market": 0.579,
+       "p": 0.5795,
+       "p_market": 0.5795,
        "p_model": null,
-       "fair": 1.7272,
-       "min_odds": 1.779
+       "fair": 1.7257,
+       "min_odds": 1.7775
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.421,
-       "p_market": 0.421,
+       "p": 0.4205,
+       "p_market": 0.4205,
        "p_model": null,
-       "fair": 2.3752,
-       "min_odds": 2.4465
+       "fair": 2.378,
+       "min_odds": 2.4493
       }
      ]
     }
@@ -4725,21 +4725,21 @@
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2574,
-       "p_market": 0.2574,
+       "p": 0.2573,
+       "p_market": 0.2573,
        "p_model": 0.2523,
-       "fair": 3.8853,
-       "min_odds": 3.9242
+       "fair": 3.8862,
+       "min_odds": 3.9251
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.388,
-       "p_market": 0.388,
+       "p": 0.3881,
+       "p_market": 0.3881,
        "p_model": 0.4271,
-       "fair": 2.5772,
-       "min_odds": 2.603
+       "fair": 2.5768,
+       "min_odds": 2.6025
       }
      ]
     },
@@ -4752,21 +4752,21 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.612,
-       "p_market": 0.612,
+       "p": 0.6119,
+       "p_market": 0.6119,
        "p_model": 0.5729,
-       "fair": 1.634,
-       "min_odds": 1.6504
+       "fair": 1.6342,
+       "min_odds": 1.6506
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7426,
-       "p_market": 0.7426,
+       "p": 0.7427,
+       "p_market": 0.7427,
        "p_model": 0.7477,
-       "fair": 1.3466,
-       "min_odds": 1.3601
+       "fair": 1.3465,
+       "min_odds": 1.3599
       },
       {
        "key": "X2",
@@ -4789,21 +4789,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8349,
-       "p_market": 0.8349,
+       "p": 0.8352,
+       "p_market": 0.8352,
        "p_model": 0.806,
-       "fair": 1.1977,
-       "min_odds": 1.2336
+       "fair": 1.1974,
+       "min_odds": 1.2333
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1651,
-       "p_market": 0.1651,
+       "p": 0.1648,
+       "p_market": 0.1648,
        "p_model": 0.194,
-       "fair": 6.0582,
-       "min_odds": 6.2399
+       "fair": 6.0671,
+       "min_odds": 6.2491
       }
      ]
     },
@@ -4816,21 +4816,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.6133,
-       "p_market": 0.6133,
+       "p": 0.6137,
+       "p_market": 0.6137,
        "p_model": 0.5762,
-       "fair": 1.6304,
-       "min_odds": 1.6631
+       "fair": 1.6294,
+       "min_odds": 1.662
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.3867,
-       "p_market": 0.3867,
+       "p": 0.3863,
+       "p_market": 0.3863,
        "p_model": 0.4238,
-       "fair": 2.5862,
-       "min_odds": 2.6379
+       "fair": 2.5889,
+       "min_odds": 2.6407
       }
      ]
     },
@@ -4843,21 +4843,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.39,
-       "p_market": 0.39,
+       "p": 0.3904,
+       "p_market": 0.3904,
        "p_model": 0.3521,
-       "fair": 2.5641,
-       "min_odds": 2.641
+       "fair": 2.5613,
+       "min_odds": 2.6381
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.61,
-       "p_market": 0.61,
+       "p": 0.6096,
+       "p_market": 0.6096,
        "p_model": 0.6479,
-       "fair": 1.6394,
-       "min_odds": 1.6885
+       "fair": 1.6405,
+       "min_odds": 1.6897
       }
      ]
     },
@@ -4870,21 +4870,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.6418,
-       "p_market": 0.6418,
+       "p": 0.6421,
+       "p_market": 0.6421,
        "p_model": 0.6053,
-       "fair": 1.5582,
-       "min_odds": 1.6049
+       "fair": 1.5574,
+       "min_odds": 1.6042
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.3582,
-       "p_market": 0.3582,
+       "p": 0.3579,
+       "p_market": 0.3579,
        "p_model": 0.3947,
-       "fair": 2.7916,
-       "min_odds": 2.8753
+       "fair": 2.7939,
+       "min_odds": 2.8777
       }
      ]
     }
@@ -4934,31 +4934,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.2209,
-       "p_market": 0.2209,
+       "p": 0.2208,
+       "p_market": 0.2208,
        "p_model": 0.2904,
-       "fair": 4.5279,
-       "min_odds": 4.5732
+       "fair": 4.53,
+       "min_odds": 4.5753
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2518,
-       "p_market": 0.2518,
+       "p": 0.2516,
+       "p_market": 0.2516,
        "p_model": 0.2625,
-       "fair": 3.972,
-       "min_odds": 4.0118
+       "fair": 3.974,
+       "min_odds": 4.0138
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.5274,
-       "p_market": 0.5274,
+       "p": 0.5276,
+       "p_market": 0.5276,
        "p_model": 0.4471,
-       "fair": 1.8961,
-       "min_odds": 1.9151
+       "fair": 1.8953,
+       "min_odds": 1.9143
       }
      ]
     },
@@ -4971,31 +4971,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.4726,
-       "p_market": 0.4726,
+       "p": 0.4724,
+       "p_market": 0.4724,
        "p_model": 0.5529,
-       "fair": 2.1159,
-       "min_odds": 2.1371
+       "fair": 2.1169,
+       "min_odds": 2.1381
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7482,
-       "p_market": 0.7482,
+       "p": 0.7484,
+       "p_market": 0.7484,
        "p_model": 0.7375,
-       "fair": 1.3365,
-       "min_odds": 1.3498
+       "fair": 1.3362,
+       "min_odds": 1.3496
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.7791,
-       "p_market": 0.7791,
+       "p": 0.7792,
+       "p_market": 0.7792,
        "p_model": 0.7096,
-       "fair": 1.2835,
-       "min_odds": 1.2963
+       "fair": 1.2833,
+       "min_odds": 1.2961
       }
      ]
     },
@@ -5008,21 +5008,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.794,
-       "p_market": 0.794,
+       "p": 0.7943,
+       "p_market": 0.7943,
        "p_model": 0.7678,
-       "fair": 1.2594,
-       "min_odds": 1.2972
+       "fair": 1.259,
+       "min_odds": 1.2967
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.206,
-       "p_market": 0.206,
+       "p": 0.2057,
+       "p_market": 0.2057,
        "p_model": 0.2322,
-       "fair": 4.855,
-       "min_odds": 5.0007
+       "fair": 4.8614,
+       "min_odds": 5.0072
       }
      ]
     },
@@ -5035,21 +5035,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.55,
-       "p_market": 0.55,
+       "p": 0.5504,
+       "p_market": 0.5504,
        "p_model": 0.5207,
-       "fair": 1.8183,
-       "min_odds": 1.8546
+       "fair": 1.817,
+       "min_odds": 1.8533
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.45,
-       "p_market": 0.45,
+       "p": 0.4496,
+       "p_market": 0.4496,
        "p_model": 0.4793,
-       "fair": 2.2221,
-       "min_odds": 2.2665
+       "fair": 2.2241,
+       "min_odds": 2.2685
       }
      ]
     },
@@ -5062,21 +5062,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3271,
-       "p_market": 0.3271,
+       "p": 0.3275,
+       "p_market": 0.3275,
        "p_model": 0.2989,
-       "fair": 3.0568,
-       "min_odds": 3.1485
+       "fair": 3.0532,
+       "min_odds": 3.1448
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6729,
-       "p_market": 0.6729,
+       "p": 0.6725,
+       "p_market": 0.6725,
        "p_model": 0.7011,
-       "fair": 1.4862,
-       "min_odds": 1.5308
+       "fair": 1.487,
+       "min_odds": 1.5317
       }
      ]
     },
@@ -5089,21 +5089,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.565,
-       "p_market": 0.565,
+       "p": 0.5652,
+       "p_market": 0.5652,
        "p_model": 0.5583,
-       "fair": 1.77,
-       "min_odds": 1.8231
+       "fair": 1.7693,
+       "min_odds": 1.8223
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.435,
-       "p_market": 0.435,
+       "p": 0.4348,
+       "p_market": 0.4348,
        "p_model": 0.4417,
-       "fair": 2.2987,
-       "min_odds": 2.3676
+       "fair": 2.3,
+       "min_odds": 2.369
       }
      ]
     }
@@ -5153,31 +5153,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6259,
-       "p_market": 0.6259,
+       "p": 0.6266,
+       "p_market": 0.6266,
        "p_model": 0.5794,
-       "fair": 1.5976,
-       "min_odds": 1.6136
+       "fair": 1.596,
+       "min_odds": 1.612
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.22,
-       "p_market": 0.22,
+       "p": 0.2195,
+       "p_market": 0.2195,
        "p_model": 0.2315,
-       "fair": 4.5462,
-       "min_odds": 4.5917
+       "fair": 4.5553,
+       "min_odds": 4.6009
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1541,
-       "p_market": 0.1541,
+       "p": 0.1539,
+       "p_market": 0.1539,
        "p_model": 0.1892,
-       "fair": 6.4887,
-       "min_odds": 6.5536
+       "fair": 6.4973,
+       "min_odds": 6.5622
       }
      ]
     },
@@ -5190,31 +5190,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8459,
-       "p_market": 0.8459,
+       "p": 0.8461,
+       "p_market": 0.8461,
        "p_model": 0.8108,
-       "fair": 1.1822,
-       "min_odds": 1.194
+       "fair": 1.1819,
+       "min_odds": 1.1937
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.78,
-       "p_market": 0.78,
+       "p": 0.7805,
+       "p_market": 0.7805,
        "p_model": 0.7685,
-       "fair": 1.282,
-       "min_odds": 1.2948
+       "fair": 1.2813,
+       "min_odds": 1.2941
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3741,
-       "p_market": 0.3741,
+       "p": 0.3734,
+       "p_market": 0.3734,
        "p_model": 0.4206,
-       "fair": 2.6732,
-       "min_odds": 2.7
+       "fair": 2.6778,
+       "min_odds": 2.7046
       }
      ]
     },
@@ -5227,21 +5227,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7907,
-       "p_market": 0.7907,
+       "p": 0.7909,
+       "p_market": 0.7909,
        "p_model": 0.7903,
-       "fair": 1.2647,
-       "min_odds": 1.3027
+       "fair": 1.2643,
+       "min_odds": 1.3023
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2093,
-       "p_market": 0.2093,
+       "p": 0.2091,
+       "p_market": 0.2091,
        "p_model": 0.2097,
-       "fair": 4.7775,
-       "min_odds": 4.9208
+       "fair": 4.7831,
+       "min_odds": 4.9266
       }
      ]
     },
@@ -5254,21 +5254,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5448,
-       "p_market": 0.5448,
+       "p": 0.5451,
+       "p_market": 0.5451,
        "p_model": 0.5535,
-       "fair": 1.8357,
-       "min_odds": 1.8724
+       "fair": 1.8346,
+       "min_odds": 1.8713
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4552,
-       "p_market": 0.4552,
+       "p": 0.4549,
+       "p_market": 0.4549,
        "p_model": 0.4465,
-       "fair": 2.1967,
-       "min_odds": 2.2406
+       "fair": 2.1982,
+       "min_odds": 2.2421
       }
      ]
     },
@@ -5281,21 +5281,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3239,
-       "p_market": 0.3239,
+       "p": 0.3243,
+       "p_market": 0.3243,
        "p_model": 0.3299,
-       "fair": 3.0869,
-       "min_odds": 3.1795
+       "fair": 3.0835,
+       "min_odds": 3.176
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6761,
-       "p_market": 0.6761,
+       "p": 0.6757,
+       "p_market": 0.6757,
        "p_model": 0.6701,
-       "fair": 1.4792,
-       "min_odds": 1.5236
+       "fair": 1.48,
+       "min_odds": 1.5244
       }
      ]
     },
@@ -5308,21 +5308,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5145,
-       "p_market": 0.5145,
+       "p": 0.5144,
+       "p_market": 0.5144,
        "p_model": 0.5421,
-       "fair": 1.9438,
-       "min_odds": 2.0021
+       "fair": 1.944,
+       "min_odds": 2.0023
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4855,
-       "p_market": 0.4855,
+       "p": 0.4856,
+       "p_market": 0.4856,
        "p_model": 0.4579,
-       "fair": 2.0596,
-       "min_odds": 2.1214
+       "fair": 2.0594,
+       "min_odds": 2.1212
       }
      ]
     }
@@ -5359,31 +5359,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.2572,
-       "p_market": 0.2572,
+       "p": 0.2571,
+       "p_market": 0.2571,
        "p_model": null,
-       "fair": 3.8874,
-       "min_odds": 3.9263
+       "fair": 3.8898,
+       "min_odds": 3.9287
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2507,
-       "p_market": 0.2507,
+       "p": 0.2505,
+       "p_market": 0.2505,
        "p_model": null,
-       "fair": 3.9892,
-       "min_odds": 4.0291
+       "fair": 3.9917,
+       "min_odds": 4.0316
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.4921,
-       "p_market": 0.4921,
+       "p": 0.4924,
+       "p_market": 0.4924,
        "p_model": null,
-       "fair": 2.0322,
-       "min_odds": 2.0525
+       "fair": 2.0309,
+       "min_odds": 2.0512
       }
      ]
     },
@@ -5396,31 +5396,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.5079,
-       "p_market": 0.5079,
+       "p": 0.5076,
+       "p_market": 0.5076,
        "p_model": null,
-       "fair": 1.9688,
-       "min_odds": 1.9885
+       "fair": 1.97,
+       "min_odds": 1.9897
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7493,
-       "p_market": 0.7493,
+       "p": 0.7495,
+       "p_market": 0.7495,
        "p_model": null,
-       "fair": 1.3345,
-       "min_odds": 1.3479
+       "fair": 1.3343,
+       "min_odds": 1.3476
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.7428,
-       "p_market": 0.7428,
+       "p": 0.7429,
+       "p_market": 0.7429,
        "p_model": null,
-       "fair": 1.3463,
-       "min_odds": 1.3598
+       "fair": 1.346,
+       "min_odds": 1.3595
       }
      ]
     },
@@ -5433,21 +5433,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8264,
-       "p_market": 0.8264,
+       "p": 0.8272,
+       "p_market": 0.8272,
        "p_model": null,
-       "fair": 1.21,
-       "min_odds": 1.2463
+       "fair": 1.2089,
+       "min_odds": 1.2452
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1736,
-       "p_market": 0.1736,
+       "p": 0.1728,
+       "p_market": 0.1728,
        "p_model": null,
-       "fair": 5.7618,
-       "min_odds": 5.9346
+       "fair": 5.787,
+       "min_odds": 5.9606
       }
      ]
     },
@@ -5460,21 +5460,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.6001,
-       "p_market": 0.6001,
+       "p": 0.6014,
+       "p_market": 0.6014,
        "p_model": null,
-       "fair": 1.6663,
-       "min_odds": 1.6996
+       "fair": 1.6628,
+       "min_odds": 1.696
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.3999,
-       "p_market": 0.3999,
+       "p": 0.3986,
+       "p_market": 0.3986,
        "p_model": null,
-       "fair": 2.5009,
-       "min_odds": 2.5509
+       "fair": 2.5088,
+       "min_odds": 2.5589
       }
      ]
     },
@@ -5487,21 +5487,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3762,
-       "p_market": 0.3762,
+       "p": 0.3775,
+       "p_market": 0.3775,
        "p_model": null,
-       "fair": 2.6578,
-       "min_odds": 2.7376
+       "fair": 2.649,
+       "min_odds": 2.7285
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6238,
-       "p_market": 0.6238,
+       "p": 0.6225,
+       "p_market": 0.6225,
        "p_model": null,
-       "fair": 1.6032,
-       "min_odds": 1.6513
+       "fair": 1.6064,
+       "min_odds": 1.6546
       }
      ]
     },
@@ -5514,21 +5514,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.6158,
-       "p_market": 0.6158,
+       "p": 0.6167,
+       "p_market": 0.6167,
        "p_model": null,
-       "fair": 1.6238,
-       "min_odds": 1.6725
+       "fair": 1.6215,
+       "min_odds": 1.6702
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.3842,
-       "p_market": 0.3842,
+       "p": 0.3833,
+       "p_market": 0.3833,
        "p_model": null,
-       "fair": 2.603,
-       "min_odds": 2.6811
+       "fair": 2.6089,
+       "min_odds": 2.6872
       }
      ]
     }
@@ -5578,31 +5578,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.1389,
-       "p_market": 0.1389,
+       "p": 0.1387,
+       "p_market": 0.1387,
        "p_model": 0.1983,
-       "fair": 7.2003,
-       "min_odds": 7.2723
+       "fair": 7.212,
+       "min_odds": 7.2841
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2456,
-       "p_market": 0.2456,
+       "p": 0.2447,
+       "p_market": 0.2447,
        "p_model": 0.2691,
-       "fair": 4.071,
-       "min_odds": 4.1117
+       "fair": 4.0859,
+       "min_odds": 4.1268
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.6155,
-       "p_market": 0.6155,
+       "p": 0.6166,
+       "p_market": 0.6166,
        "p_model": 0.5326,
-       "fair": 1.6248,
-       "min_odds": 1.641
+       "fair": 1.6218,
+       "min_odds": 1.638
       }
      ]
     },
@@ -5615,31 +5615,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.3845,
-       "p_market": 0.3845,
+       "p": 0.3834,
+       "p_market": 0.3834,
        "p_model": 0.4674,
-       "fair": 2.6006,
-       "min_odds": 2.6266
+       "fair": 2.6082,
+       "min_odds": 2.6343
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7544,
-       "p_market": 0.7544,
+       "p": 0.7553,
+       "p_market": 0.7553,
        "p_model": 0.7309,
-       "fair": 1.3256,
-       "min_odds": 1.3389
+       "fair": 1.3241,
+       "min_odds": 1.3373
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.8611,
-       "p_market": 0.8611,
+       "p": 0.8613,
+       "p_market": 0.8613,
        "p_model": 0.8017,
-       "fair": 1.1613,
-       "min_odds": 1.1729
+       "fair": 1.161,
+       "min_odds": 1.1726
       }
      ]
     },
@@ -5656,7 +5656,7 @@
        "p_market": 0.7345,
        "p_model": 0.6923,
        "fair": 1.3614,
-       "min_odds": 1.4023
+       "min_odds": 1.4022
       },
       {
        "key": "U15",
@@ -5665,8 +5665,8 @@
        "p": 0.2655,
        "p_market": 0.2655,
        "p_model": 0.3077,
-       "fair": 3.7669,
-       "min_odds": 3.88
+       "fair": 3.7671,
+       "min_odds": 3.8801
       }
      ]
     },
@@ -5679,21 +5679,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.4707,
-       "p_market": 0.4707,
+       "p": 0.4706,
+       "p_market": 0.4706,
        "p_model": 0.424,
-       "fair": 2.1244,
-       "min_odds": 2.1669
+       "fair": 2.1251,
+       "min_odds": 2.1676
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.5293,
-       "p_market": 0.5293,
+       "p": 0.5294,
+       "p_market": 0.5294,
        "p_model": 0.576,
-       "fair": 1.8893,
-       "min_odds": 1.9271
+       "fair": 1.8888,
+       "min_odds": 1.9266
       }
      ]
     },
@@ -5709,8 +5709,8 @@
        "p": 0.2545,
        "p_market": 0.2545,
        "p_model": 0.2163,
-       "fair": 3.9295,
-       "min_odds": 4.0474
+       "fair": 3.929,
+       "min_odds": 4.0468
       },
       {
        "key": "U35",
@@ -5720,7 +5720,7 @@
        "p_market": 0.7455,
        "p_model": 0.7837,
        "fair": 1.3414,
-       "min_odds": 1.3816
+       "min_odds": 1.3817
       }
      ]
     },
@@ -5733,21 +5733,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.4511,
-       "p_market": 0.4511,
+       "p": 0.4505,
+       "p_market": 0.4505,
        "p_model": 0.4514,
-       "fair": 2.2166,
-       "min_odds": 2.2831
+       "fair": 2.2197,
+       "min_odds": 2.2863
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.5489,
-       "p_market": 0.5489,
+       "p": 0.5495,
+       "p_market": 0.5495,
        "p_model": 0.5486,
-       "fair": 1.8219,
-       "min_odds": 1.8766
+       "fair": 1.8199,
+       "min_odds": 1.8745
       }
      ]
     }
@@ -5797,31 +5797,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.4092,
-       "p_market": 0.4092,
+       "p": 0.4094,
+       "p_market": 0.4094,
        "p_model": 0.4104,
-       "fair": 2.4437,
-       "min_odds": 2.4681
+       "fair": 2.4426,
+       "min_odds": 2.4671
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2667,
-       "p_market": 0.2667,
+       "p": 0.2666,
+       "p_market": 0.2666,
        "p_model": 0.2372,
-       "fair": 3.7499,
-       "min_odds": 3.7874
+       "fair": 3.7514,
+       "min_odds": 3.7889
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.3241,
-       "p_market": 0.3241,
+       "p": 0.324,
+       "p_market": 0.324,
        "p_model": 0.3524,
-       "fair": 3.0854,
-       "min_odds": 3.1163
+       "fair": 3.0861,
+       "min_odds": 3.1169
       }
      ]
     },
@@ -5834,31 +5834,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.6759,
-       "p_market": 0.6759,
+       "p": 0.676,
+       "p_market": 0.676,
        "p_model": 0.6476,
-       "fair": 1.4795,
-       "min_odds": 1.4943
+       "fair": 1.4794,
+       "min_odds": 1.4942
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7333,
-       "p_market": 0.7333,
+       "p": 0.7334,
+       "p_market": 0.7334,
        "p_model": 0.7628,
-       "fair": 1.3636,
-       "min_odds": 1.3773
+       "fair": 1.3635,
+       "min_odds": 1.3771
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.5908,
-       "p_market": 0.5908,
+       "p": 0.5906,
+       "p_market": 0.5906,
        "p_model": 0.5896,
-       "fair": 1.6927,
-       "min_odds": 1.7096
+       "fair": 1.6932,
+       "min_odds": 1.7101
       }
      ]
     },
@@ -5871,21 +5871,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8115,
-       "p_market": 0.8115,
+       "p": 0.8119,
+       "p_market": 0.8119,
        "p_model": 0.8535,
-       "fair": 1.2323,
-       "min_odds": 1.2693
+       "fair": 1.2318,
+       "min_odds": 1.2687
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1885,
-       "p_market": 0.1885,
+       "p": 0.1881,
+       "p_market": 0.1881,
        "p_model": 0.1465,
-       "fair": 5.3049,
-       "min_odds": 5.4641
+       "fair": 5.3149,
+       "min_odds": 5.4744
       }
      ]
     },
@@ -5898,21 +5898,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5769,
-       "p_market": 0.5769,
+       "p": 0.5774,
+       "p_market": 0.5774,
        "p_model": 0.6525,
-       "fair": 1.7335,
-       "min_odds": 1.7681
+       "fair": 1.7318,
+       "min_odds": 1.7664
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4231,
-       "p_market": 0.4231,
+       "p": 0.4226,
+       "p_market": 0.4226,
        "p_model": 0.3475,
-       "fair": 2.3634,
-       "min_odds": 2.4107
+       "fair": 2.3665,
+       "min_odds": 2.4139
       }
      ]
     },
@@ -5925,21 +5925,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.352,
-       "p_market": 0.352,
+       "p": 0.3525,
+       "p_market": 0.3525,
        "p_model": 0.4329,
-       "fair": 2.8411,
-       "min_odds": 2.9263
+       "fair": 2.8367,
+       "min_odds": 2.9218
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.648,
-       "p_market": 0.648,
+       "p": 0.6475,
+       "p_market": 0.6475,
        "p_model": 0.5671,
-       "fair": 1.5432,
-       "min_odds": 1.5895
+       "fair": 1.5445,
+       "min_odds": 1.5908
       }
      ]
     },
@@ -5952,21 +5952,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.612,
-       "p_market": 0.612,
+       "p": 0.6124,
+       "p_market": 0.6124,
        "p_model": 0.666,
-       "fair": 1.634,
-       "min_odds": 1.683
+       "fair": 1.6329,
+       "min_odds": 1.6819
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.388,
-       "p_market": 0.388,
+       "p": 0.3876,
+       "p_market": 0.3876,
        "p_model": 0.334,
-       "fair": 2.5773,
-       "min_odds": 2.6546
+       "fair": 2.58,
+       "min_odds": 2.6574
       }
      ]
     }
@@ -6016,31 +6016,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.6194,
-       "p_market": 0.6194,
+       "p": 0.6206,
+       "p_market": 0.6206,
        "p_model": 0.6446,
-       "fair": 1.6144,
-       "min_odds": 1.6306
+       "fair": 1.6114,
+       "min_odds": 1.6275
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2283,
-       "p_market": 0.2283,
+       "p": 0.2275,
+       "p_market": 0.2275,
        "p_model": 0.2106,
-       "fair": 4.38,
-       "min_odds": 4.4238
+       "fair": 4.3958,
+       "min_odds": 4.4397
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.1523,
-       "p_market": 0.1523,
+       "p": 0.1519,
+       "p_market": 0.1519,
        "p_model": 0.1447,
-       "fair": 6.5671,
-       "min_odds": 6.6327
+       "fair": 6.582,
+       "min_odds": 6.6478
       }
      ]
     },
@@ -6053,31 +6053,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.8477,
-       "p_market": 0.8477,
+       "p": 0.8481,
+       "p_market": 0.8481,
        "p_model": 0.8553,
-       "fair": 1.1796,
-       "min_odds": 1.1914
+       "fair": 1.1791,
+       "min_odds": 1.1909
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7717,
-       "p_market": 0.7717,
+       "p": 0.7725,
+       "p_market": 0.7725,
        "p_model": 0.7894,
-       "fair": 1.2959,
-       "min_odds": 1.3088
+       "fair": 1.2945,
+       "min_odds": 1.3074
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.3806,
-       "p_market": 0.3806,
+       "p": 0.3794,
+       "p_market": 0.3794,
        "p_model": 0.3554,
-       "fair": 2.6275,
-       "min_odds": 2.6538
+       "fair": 2.6356,
+       "min_odds": 2.662
       }
      ]
     },
@@ -6090,21 +6090,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8343,
-       "p_market": 0.8343,
+       "p": 0.8351,
+       "p_market": 0.8351,
        "p_model": 0.7969,
-       "fair": 1.1986,
-       "min_odds": 1.2345
+       "fair": 1.1974,
+       "min_odds": 1.2333
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1657,
-       "p_market": 0.1657,
+       "p": 0.1649,
+       "p_market": 0.1649,
        "p_model": 0.2031,
-       "fair": 6.0362,
-       "min_odds": 6.2173
+       "fair": 6.0659,
+       "min_odds": 6.2479
       }
      ]
     },
@@ -6117,21 +6117,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.6176,
-       "p_market": 0.6176,
+       "p": 0.6189,
+       "p_market": 0.6189,
        "p_model": 0.5639,
-       "fair": 1.6191,
-       "min_odds": 1.6515
+       "fair": 1.6159,
+       "min_odds": 1.6482
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.3824,
-       "p_market": 0.3824,
+       "p": 0.3811,
+       "p_market": 0.3811,
        "p_model": 0.4361,
-       "fair": 2.6152,
-       "min_odds": 2.6675
+       "fair": 2.6237,
+       "min_odds": 2.6762
       }
      ]
     },
@@ -6144,21 +6144,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3913,
-       "p_market": 0.3913,
+       "p": 0.3927,
+       "p_market": 0.3927,
        "p_model": 0.34,
-       "fair": 2.5559,
-       "min_odds": 2.6326
+       "fair": 2.5467,
+       "min_odds": 2.6231
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6087,
-       "p_market": 0.6087,
+       "p": 0.6073,
+       "p_market": 0.6073,
        "p_model": 0.66,
-       "fair": 1.6427,
-       "min_odds": 1.692
+       "fair": 1.6465,
+       "min_odds": 1.6959
       }
      ]
     },
@@ -6171,21 +6171,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5748,
-       "p_market": 0.5748,
+       "p": 0.5754,
+       "p_market": 0.5754,
        "p_model": 0.5144,
-       "fair": 1.7396,
-       "min_odds": 1.7918
+       "fair": 1.7379,
+       "min_odds": 1.7901
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4252,
-       "p_market": 0.4252,
+       "p": 0.4246,
+       "p_market": 0.4246,
        "p_model": 0.4856,
-       "fair": 2.3521,
-       "min_odds": 2.4226
+       "fair": 2.3551,
+       "min_odds": 2.4258
       }
      ]
     }
@@ -6235,11 +6235,11 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.4058,
-       "p_market": 0.4058,
+       "p": 0.406,
+       "p_market": 0.406,
        "p_model": 0.3492,
-       "fair": 2.464,
-       "min_odds": 2.4887
+       "fair": 2.463,
+       "min_odds": 2.4876
       },
       {
        "key": "D",
@@ -6248,18 +6248,18 @@
        "p": 0.2993,
        "p_market": 0.2993,
        "p_model": 0.2731,
-       "fair": 3.3407,
-       "min_odds": 3.3741
+       "fair": 3.3417,
+       "min_odds": 3.3751
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.2948,
-       "p_market": 0.2948,
+       "p": 0.2947,
+       "p_market": 0.2947,
        "p_model": 0.3777,
-       "fair": 3.3918,
-       "min_odds": 3.4258
+       "fair": 3.3928,
+       "min_odds": 3.4268
       }
      ]
     },
@@ -6272,11 +6272,11 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.7052,
-       "p_market": 0.7052,
+       "p": 0.7053,
+       "p_market": 0.7053,
        "p_model": 0.6223,
-       "fair": 1.4181,
-       "min_odds": 1.4323
+       "fair": 1.4179,
+       "min_odds": 1.4321
       },
       {
        "key": "12",
@@ -6285,18 +6285,18 @@
        "p": 0.7007,
        "p_market": 0.7007,
        "p_model": 0.7269,
-       "fair": 1.4272,
-       "min_odds": 1.4415
+       "fair": 1.427,
+       "min_odds": 1.4413
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.5942,
-       "p_market": 0.5942,
+       "p": 0.594,
+       "p_market": 0.594,
        "p_model": 0.6508,
-       "fair": 1.683,
-       "min_odds": 1.6999
+       "fair": 1.6835,
+       "min_odds": 1.7004
       }
      ]
     },
@@ -6309,21 +6309,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7113,
-       "p_market": 0.7113,
+       "p": 0.711,
+       "p_market": 0.711,
        "p_model": 0.7487,
-       "fair": 1.4059,
-       "min_odds": 1.4481
+       "fair": 1.4065,
+       "min_odds": 1.4486
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2887,
-       "p_market": 0.2887,
+       "p": 0.289,
+       "p_market": 0.289,
        "p_model": 0.2513,
-       "fair": 3.4636,
-       "min_odds": 3.5675
+       "fair": 3.4603,
+       "min_odds": 3.5641
       }
      ]
     },
@@ -6336,21 +6336,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.4391,
-       "p_market": 0.4391,
+       "p": 0.4387,
+       "p_market": 0.4387,
        "p_model": 0.4946,
-       "fair": 2.2773,
-       "min_odds": 2.3228
+       "fair": 2.2794,
+       "min_odds": 2.325
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.5609,
-       "p_market": 0.5609,
+       "p": 0.5613,
+       "p_market": 0.5613,
        "p_model": 0.5054,
-       "fair": 1.7829,
-       "min_odds": 1.8186
+       "fair": 1.7816,
+       "min_odds": 1.8173
       }
      ]
     },
@@ -6363,21 +6363,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2279,
-       "p_market": 0.2279,
+       "p": 0.2277,
+       "p_market": 0.2277,
        "p_model": 0.2754,
-       "fair": 4.3871,
-       "min_odds": 4.5187
+       "fair": 4.3924,
+       "min_odds": 4.5242
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7721,
-       "p_market": 0.7721,
+       "p": 0.7723,
+       "p_market": 0.7723,
        "p_model": 0.7246,
-       "fair": 1.2952,
-       "min_odds": 1.3341
+       "fair": 1.2948,
+       "min_odds": 1.3336
       }
      ]
     },
@@ -6390,21 +6390,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5039,
-       "p_market": 0.5039,
+       "p": 0.5036,
+       "p_market": 0.5036,
        "p_model": 0.5454,
-       "fair": 1.9844,
-       "min_odds": 2.044
+       "fair": 1.9856,
+       "min_odds": 2.0451
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4961,
-       "p_market": 0.4961,
+       "p": 0.4964,
+       "p_market": 0.4964,
        "p_model": 0.4546,
-       "fair": 2.0158,
-       "min_odds": 2.0763
+       "fair": 2.0146,
+       "min_odds": 2.0751
       }
      ]
     }
@@ -6441,31 +6441,31 @@
        "key": "H",
        "short": "1",
        "name": "Heimsieg",
-       "p": 0.2743,
-       "p_market": 0.2743,
+       "p": 0.2741,
+       "p_market": 0.2741,
        "p_model": null,
-       "fair": 3.646,
-       "min_odds": 3.6825
+       "fair": 3.6482,
+       "min_odds": 3.6847
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2668,
-       "p_market": 0.2668,
+       "p": 0.2666,
+       "p_market": 0.2666,
        "p_model": null,
-       "fair": 3.7484,
-       "min_odds": 3.7858
+       "fair": 3.7506,
+       "min_odds": 3.7881
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.4589,
-       "p_market": 0.4589,
+       "p": 0.4593,
+       "p_market": 0.4593,
        "p_model": null,
-       "fair": 2.1789,
-       "min_odds": 2.2007
+       "fair": 2.1774,
+       "min_odds": 2.1991
       }
      ]
     },
@@ -6478,31 +6478,31 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.5411,
-       "p_market": 0.5411,
+       "p": 0.5407,
+       "p_market": 0.5407,
        "p_model": null,
-       "fair": 1.8482,
-       "min_odds": 1.8667
+       "fair": 1.8494,
+       "min_odds": 1.8679
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7332,
-       "p_market": 0.7332,
+       "p": 0.7334,
+       "p_market": 0.7334,
        "p_model": null,
-       "fair": 1.3639,
-       "min_odds": 1.3775
+       "fair": 1.3636,
+       "min_odds": 1.3772
       },
       {
        "key": "X2",
        "short": "X2",
        "name": "Remis oder Gast",
-       "p": 0.7257,
-       "p_market": 0.7257,
+       "p": 0.7259,
+       "p_market": 0.7259,
        "p_model": null,
-       "fair": 1.3779,
-       "min_odds": 1.3917
+       "fair": 1.3776,
+       "min_odds": 1.3914
       }
      ]
     },
@@ -6515,21 +6515,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.8114,
-       "p_market": 0.8114,
+       "p": 0.8117,
+       "p_market": 0.8117,
        "p_model": null,
-       "fair": 1.2325,
-       "min_odds": 1.2694
+       "fair": 1.232,
+       "min_odds": 1.269
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.1886,
-       "p_market": 0.1886,
+       "p": 0.1883,
+       "p_market": 0.1883,
        "p_model": null,
-       "fair": 5.3019,
-       "min_odds": 5.461
+       "fair": 5.3101,
+       "min_odds": 5.4694
       }
      ]
     },
@@ -6542,21 +6542,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.5787,
-       "p_market": 0.5787,
+       "p": 0.5792,
+       "p_market": 0.5792,
        "p_model": null,
-       "fair": 1.7279,
-       "min_odds": 1.7625
+       "fair": 1.7266,
+       "min_odds": 1.7612
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.4213,
-       "p_market": 0.4213,
+       "p": 0.4208,
+       "p_market": 0.4208,
        "p_model": null,
-       "fair": 2.3737,
-       "min_odds": 2.4212
+       "fair": 2.3762,
+       "min_odds": 2.4237
       }
      ]
     },
@@ -6569,21 +6569,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.3521,
-       "p_market": 0.3521,
+       "p": 0.3525,
+       "p_market": 0.3525,
        "p_model": null,
-       "fair": 2.8402,
-       "min_odds": 2.9254
+       "fair": 2.8367,
+       "min_odds": 2.9218
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.6479,
-       "p_market": 0.6479,
+       "p": 0.6475,
+       "p_market": 0.6475,
        "p_model": null,
-       "fair": 1.5434,
-       "min_odds": 1.5897
+       "fair": 1.5445,
+       "min_odds": 1.5908
       }
      ]
     },
@@ -6596,21 +6596,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.6041,
-       "p_market": 0.6041,
+       "p": 0.6044,
+       "p_market": 0.6044,
        "p_model": null,
-       "fair": 1.6552,
-       "min_odds": 1.7049
+       "fair": 1.6545,
+       "min_odds": 1.7041
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.3959,
-       "p_market": 0.3959,
+       "p": 0.3956,
+       "p_market": 0.3956,
        "p_model": null,
-       "fair": 2.5261,
-       "min_odds": 2.6019
+       "fair": 2.528,
+       "min_odds": 2.6038
       }
      ]
     }
@@ -6663,28 +6663,28 @@
        "p": 0.3425,
        "p_market": 0.3425,
        "p_model": 0.4277,
-       "fair": 2.9197,
-       "min_odds": 2.9489
+       "fair": 2.9196,
+       "min_odds": 2.9488
       },
       {
        "key": "D",
        "short": "X",
        "name": "Unentschieden",
-       "p": 0.2916,
-       "p_market": 0.2916,
+       "p": 0.2915,
+       "p_market": 0.2915,
        "p_model": 0.2658,
-       "fair": 3.429,
-       "min_odds": 3.4633
+       "fair": 3.4305,
+       "min_odds": 3.4648
       },
       {
        "key": "A",
        "short": "2",
        "name": "Auswärtssieg",
-       "p": 0.3659,
-       "p_market": 0.3659,
+       "p": 0.366,
+       "p_market": 0.366,
        "p_model": 0.3064,
-       "fair": 2.7333,
-       "min_odds": 2.7606
+       "fair": 2.7324,
+       "min_odds": 2.7597
       }
      ]
     },
@@ -6697,21 +6697,21 @@
        "key": "1X",
        "short": "1X",
        "name": "Heim oder Remis",
-       "p": 0.6341,
-       "p_market": 0.6341,
+       "p": 0.634,
+       "p_market": 0.634,
        "p_model": 0.6936,
-       "fair": 1.5769,
-       "min_odds": 1.5927
+       "fair": 1.5772,
+       "min_odds": 1.593
       },
       {
        "key": "12",
        "short": "12",
        "name": "Kein Remis",
-       "p": 0.7084,
-       "p_market": 0.7084,
+       "p": 0.7085,
+       "p_market": 0.7085,
        "p_model": 0.7342,
-       "fair": 1.4117,
-       "min_odds": 1.4258
+       "fair": 1.4114,
+       "min_odds": 1.4256
       },
       {
        "key": "X2",
@@ -6734,21 +6734,21 @@
        "key": "O15",
        "short": "Ü1.5",
        "name": "Über 1.5 Tore",
-       "p": 0.7329,
-       "p_market": 0.7329,
+       "p": 0.7322,
+       "p_market": 0.7322,
        "p_model": 0.7632,
-       "fair": 1.3644,
-       "min_odds": 1.4054
+       "fair": 1.3657,
+       "min_odds": 1.4067
       },
       {
        "key": "U15",
        "short": "U1.5",
        "name": "Unter 1.5 Tore",
-       "p": 0.2671,
-       "p_market": 0.2671,
+       "p": 0.2678,
+       "p_market": 0.2678,
        "p_model": 0.2368,
-       "fair": 3.7441,
-       "min_odds": 3.8564
+       "fair": 3.7343,
+       "min_odds": 3.8463
       }
      ]
     },
@@ -6761,21 +6761,21 @@
        "key": "O",
        "short": "Ü2.5",
        "name": "Über 2.5 Tore",
-       "p": 0.465,
-       "p_market": 0.465,
+       "p": 0.464,
+       "p_market": 0.464,
        "p_model": 0.5143,
-       "fair": 2.1504,
-       "min_odds": 2.1934
+       "fair": 2.1552,
+       "min_odds": 2.1983
       },
       {
        "key": "U",
        "short": "U2.5",
        "name": "Unter 2.5 Tore",
-       "p": 0.535,
-       "p_market": 0.535,
+       "p": 0.536,
+       "p_market": 0.536,
        "p_model": 0.4857,
-       "fair": 1.8693,
-       "min_odds": 1.9067
+       "fair": 1.8656,
+       "min_odds": 1.9029
       }
      ]
     },
@@ -6788,21 +6788,21 @@
        "key": "O35",
        "short": "Ü3.5",
        "name": "Über 3.5 Tore",
-       "p": 0.2503,
-       "p_market": 0.2503,
+       "p": 0.2496,
+       "p_market": 0.2496,
        "p_model": 0.2931,
-       "fair": 3.9946,
-       "min_odds": 4.1144
+       "fair": 4.0068,
+       "min_odds": 4.1271
       },
       {
        "key": "U35",
        "short": "U3.5",
        "name": "Unter 3.5 Tore",
-       "p": 0.7497,
-       "p_market": 0.7497,
+       "p": 0.7504,
+       "p_market": 0.7504,
        "p_model": 0.7069,
-       "fair": 1.3339,
-       "min_odds": 1.374
+       "fair": 1.3326,
+       "min_odds": 1.3726
       }
      ]
     },
@@ -6815,21 +6815,21 @@
        "key": "BY",
        "short": "Ja",
        "name": "Beide Teams treffen",
-       "p": 0.5291,
-       "p_market": 0.5291,
+       "p": 0.5284,
+       "p_market": 0.5284,
        "p_model": 0.5564,
-       "fair": 1.8899,
-       "min_odds": 1.9466
+       "fair": 1.8924,
+       "min_odds": 1.9492
       },
       {
        "key": "BN",
        "short": "Nein",
        "name": "Nicht beide treffen",
-       "p": 0.4709,
-       "p_market": 0.4709,
+       "p": 0.4716,
+       "p_market": 0.4716,
        "p_model": 0.4436,
-       "fair": 2.1237,
-       "min_odds": 2.1874
+       "fair": 2.1205,
+       "min_odds": 2.1841
       }
      ]
     }

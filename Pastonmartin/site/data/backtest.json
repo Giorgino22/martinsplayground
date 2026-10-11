@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-11T13:34:47+00:00",
+ "generated": "2026-10-11T13:47:16+00:00",
  "seasons": {
   "tune": "2016/17 – 2021/22",
   "test": "2022/23 – 2025/26"
@@ -11,7 +11,7 @@
    "shots_weight": 0.4,
    "rho": -0.05
   },
-  "devig": "shin",
+  "devig": "power",
   "combine": {
    "kind": "pool",
    "1X2": {
@@ -136,8 +136,8 @@
     {
      "cells": [
       "Zum Vergleich: der Markt",
-      1.65703,
-      1.66114
+      1.65695,
+      1.66109
      ],
      "chosen": false,
      "reference": true
@@ -166,26 +166,26 @@
     {
      "cells": [
       "Proportional (v1)",
-      1.65743,
-      1.66005
+      1.65736,
+      1.66004
      ],
      "chosen": false
     },
     {
      "cells": [
       "Power-Methode",
-      1.65732,
-      1.65976
+      1.65722,
+      1.6596
      ],
-     "chosen": false
+     "chosen": true
     },
     {
      "cells": [
       "Shin-Methode",
-      1.65731,
-      1.65964
+      1.65723,
+      1.65961
      ],
-     "chosen": true
+     "chosen": false
     }
    ]
   },
@@ -215,45 +215,45 @@
     {
      "cells": [
       "Nur Markt",
-      1.65731,
-      1.65964,
-      1.66544
+      1.65722,
+      1.6596,
+      1.66257
      ],
      "chosen": true
     },
     {
      "cells": [
       "Markt, kalibriert",
-      1.65758,
-      1.65946,
-      1.66553
+      1.6575,
+      1.65949,
+      1.66265
      ],
      "chosen": false
     },
     {
      "cells": [
       "Markt + Modell, linear (wie v1)",
-      1.65731,
-      1.65964,
-      1.66544
+      1.65722,
+      1.6596,
+      1.66257
      ],
      "chosen": false
     },
     {
      "cells": [
       "Markt + Modell, log-Pool, gelernt an Resultaten",
-      1.65754,
-      1.65933,
-      1.66584
+      1.65746,
+      1.65935,
+      1.66297
      ],
      "chosen": false
     },
     {
      "cells": [
       "Markt + Modell, log-Pool, gelernt an Schlussquoten",
-      1.6574,
-      1.65965,
-      1.66542
+      1.65732,
+      1.65963,
+      1.66256
      ],
      "chosen": false
     }
@@ -262,7 +262,7 @@
   {
    "title": "Wann und wo wetten",
    "metric": "Test-Saisons, alle Märkte zusammen",
-   "note": "Gleiche Prognosen, verschiedene Quoten. „Glück?“ = Wahrscheinlichkeit, dass so ein Resultat ohne echten Vorteil zustande kommt.",
+   "note": "Gleiche Prognosen, verschiedene Quoten. früh = 1–3 Tage vorher, spät = kurz vor Anpfiff. Sporttip = Schätzung (Bet365 minus 4 %), Max = jeweils die beste Quote aller Buchmacher. „Glück?“ = Wahrscheinlichkeit, dass so ein Resultat ohne echten Vorteil zustande kommt.",
    "columns": [
     {
      "label": "Strategie",
@@ -288,91 +288,91 @@
    "rows": [
     {
      "cells": [
-      "Value-Finder (nur Markt) · Früh (1–3 Tage vorher) · Sporttip-Schätzung",
-      83,
-      0.0752,
-      -0.02594,
-      0.34167
+      "Value-Finder · früh · Sporttip",
+      38,
+      0.1712,
+      0.02472,
+      0.26838
      ],
      "chosen": false
     },
     {
      "cells": [
-      "Eigenes Modell allein · Früh (1–3 Tage vorher) · Sporttip-Schätzung",
+      "Modell allein · früh · Sporttip",
       2784,
       -0.11008,
-      -0.08425,
+      -0.08414,
       1.0
      ],
      "chosen": false
     },
     {
      "cells": [
-      "Kombination · Früh (1–3 Tage vorher) · Sporttip-Schätzung",
-      83,
-      0.0752,
-      -0.02594,
-      0.34167
+      "Kombination · früh · Sporttip",
+      38,
+      0.1712,
+      0.02472,
+      0.26838
      ],
      "chosen": true
     },
     {
      "cells": [
-      "Kombination · Früh (1–3 Tage vorher) · Bet365",
-      427,
-      0.15511,
-      0.00706,
-      0.04657
+      "Kombination · früh · Bet365",
+      358,
+      0.07198,
+      0.0075,
+      0.22285
      ],
      "chosen": false
     },
     {
      "cells": [
-      "Kombination · Früh (1–3 Tage vorher) · Höchstquote aller Buchmacher",
-      4146,
-      0.04321,
-      0.02701,
-      0.03935
+      "Kombination · früh · Max",
+      4355,
+      0.02636,
+      0.02509,
+      0.11227
      ],
      "chosen": false
     },
     {
      "cells": [
-      "Kombination · Kurz vor Anpfiff · Sporttip-Schätzung",
-      137,
-      -0.13306,
-      0.06524,
-      0.85364
+      "Kombination · spät · Sporttip",
+      130,
+      -0.09103,
+      null,
+      0.75494
      ],
      "chosen": false
     },
     {
      "cells": [
-      "Kombination · Kurz vor Anpfiff · Bet365",
-      562,
-      0.02521,
-      0.04623,
-      0.35326
+      "Kombination · spät · Bet365",
+      541,
+      0.01242,
+      null,
+      0.42361
      ],
      "chosen": false
     },
     {
      "cells": [
-      "Kombination · Kurz vor Anpfiff · Höchstquote aller Buchmacher",
-      9306,
-      0.01806,
-      0.04222,
-      0.11244
+      "Kombination · spät · Max",
+      9479,
+      0.01541,
+      null,
+      0.13565
      ],
      "chosen": false
     },
     {
      "cells": [
-      "Version 1 (alt) · Früh (1–3 Tage vorher) · Sporttip-Schätzung",
-      116,
-      0.07644,
-      -0.02615,
-      0.33596
+      "Version 1 · früh · Sporttip",
+      91,
+      0.10674,
+      -0.01765,
+      0.31139
      ],
      "chosen": false
     }
@@ -412,10 +412,10 @@
     {
      "cells": [
       "Beide treffen",
-      0.68211,
+      0.6822,
       0.68568,
       0.68881,
-      0.53646,
+      0.53599,
       0.54754
      ],
      "chosen": true
@@ -423,10 +423,10 @@
     {
      "cells": [
       "Über 1.5 Tore",
-      0.52155,
+      0.5214,
       0.52636,
       0.53414,
-      0.77765,
+      0.77822,
       0.77424
      ],
      "chosen": true
@@ -434,10 +434,10 @@
     {
      "cells": [
       "Über 3.5 Tore",
-      0.59784,
+      0.59782,
       0.60331,
       0.61762,
-      0.3173,
+      0.31857,
       0.30814
      ],
      "chosen": true
@@ -468,252 +468,252 @@
      "sporttip": {
       "tune": {
        "1X2": {
-        "bets": 126,
-        "wins": 32,
-        "hit_rate": 0.25397,
-        "avg_odds": 5.32465,
-        "avg_edge": 0.04036,
-        "profit": 33.2064,
-        "roi": 0.26354,
-        "roi_stderr": 0.20445,
-        "p_luck": 0.09869,
-        "clv": -0.01621,
-        "clv_positive": 0.42857
+        "bets": 99,
+        "wins": 27,
+        "hit_rate": 0.27273,
+        "avg_odds": 5.18158,
+        "avg_edge": 0.03472,
+        "profit": 26.6064,
+        "roi": 0.26875,
+        "roi_stderr": 0.22068,
+        "p_luck": 0.11164,
+        "clv": -0.01592,
+        "clv_positive": 0.42424
        },
        "OU": {
-        "bets": 18,
+        "bets": 17,
         "wins": 6,
-        "hit_rate": 0.33333,
-        "avg_odds": 3.37013,
-        "avg_edge": 0.12261,
-        "profit": 2.256,
-        "roi": 0.12533,
-        "roi_stderr": 0.38897,
-        "p_luck": 0.37364,
-        "clv": 0.11483,
+        "hit_rate": 0.35294,
+        "avg_odds": 3.44414,
+        "avg_edge": 0.10549,
+        "profit": 3.256,
+        "roi": 0.19153,
+        "roi_stderr": 0.40655,
+        "p_luck": 0.31878,
+        "clv": 0.09859,
         "clv_positive": 0.94118
        },
        "total": {
-        "bets": 144,
-        "wins": 38,
-        "hit_rate": 0.26389,
-        "avg_odds": 5.08033,
-        "avg_edge": 0.05064,
-        "profit": 35.4624,
-        "roi": 0.24627,
-        "roi_stderr": 0.18502,
-        "p_luck": 0.09159,
-        "clv": -0.00064,
-        "clv_positive": 0.48951
+        "bets": 116,
+        "wins": 33,
+        "hit_rate": 0.28448,
+        "avg_odds": 4.92695,
+        "avg_edge": 0.04509,
+        "profit": 29.8624,
+        "roi": 0.25743,
+        "roi_stderr": 0.19697,
+        "p_luck": 0.09561,
+        "clv": 0.00086,
+        "clv_positive": 0.5
        }
       },
       "test": {
        "1X2": {
-        "bets": 39,
-        "wins": 15,
-        "hit_rate": 0.38462,
-        "avg_odds": 4.7392,
-        "avg_edge": 0.05597,
-        "profit": 11.9376,
-        "roi": 0.30609,
-        "roi_stderr": 0.31524,
-        "p_luck": 0.16578,
-        "clv": -0.01623,
-        "clv_positive": 0.46154
+        "bets": 26,
+        "wins": 12,
+        "hit_rate": 0.46154,
+        "avg_odds": 4.21403,
+        "avg_edge": 0.0464,
+        "profit": 9.4816,
+        "roi": 0.36468,
+        "roi_stderr": 0.3517,
+        "p_luck": 0.14989,
+        "clv": 0.00968,
+        "clv_positive": 0.57692
        },
        "OU": {
-        "bets": 44,
-        "wins": 15,
-        "hit_rate": 0.34091,
-        "avg_odds": 2.88916,
-        "avg_edge": 0.1736,
-        "profit": -5.696,
-        "roi": -0.12945,
-        "roi_stderr": 0.20578,
-        "p_luck": 0.73535,
-        "clv": -0.03454,
-        "clv_positive": 0.40909
+        "bets": 12,
+        "wins": 3,
+        "hit_rate": 0.25,
+        "avg_odds": 3.6744,
+        "avg_edge": 0.08094,
+        "profit": -2.976,
+        "roi": -0.248,
+        "roi_stderr": 0.43092,
+        "p_luck": 0.71753,
+        "clv": 0.0573,
+        "clv_positive": 0.83333
        },
        "total": {
-        "bets": 83,
-        "wins": 30,
-        "hit_rate": 0.36145,
-        "avg_odds": 3.75846,
-        "avg_edge": 0.11833,
-        "profit": 6.2416,
-        "roi": 0.0752,
-        "roi_stderr": 0.18436,
-        "p_luck": 0.34167,
-        "clv": -0.02594,
-        "clv_positive": 0.43373
+        "bets": 38,
+        "wins": 15,
+        "hit_rate": 0.39474,
+        "avg_odds": 4.04362,
+        "avg_edge": 0.05731,
+        "profit": 6.5056,
+        "roi": 0.1712,
+        "roi_stderr": 0.27715,
+        "p_luck": 0.26838,
+        "clv": 0.02472,
+        "clv_positive": 0.65789
        }
       }
      },
      "book": {
       "tune": {
        "1X2": {
-        "bets": 1283,
-        "wins": 338,
-        "hit_rate": 0.26345,
-        "avg_odds": 4.34055,
-        "avg_edge": 0.0288,
-        "profit": 38.74,
-        "roi": 0.03019,
-        "roi_stderr": 0.05182,
-        "p_luck": 0.28006,
-        "clv": 0.00909,
-        "clv_positive": 0.54248
+        "bets": 1152,
+        "wins": 325,
+        "hit_rate": 0.28212,
+        "avg_odds": 4.08885,
+        "avg_edge": 0.02672,
+        "profit": -4.31,
+        "roi": -0.00374,
+        "roi_stderr": 0.05119,
+        "p_luck": 0.52913,
+        "clv": 0.00696,
+        "clv_positive": 0.53906
        },
        "OU": {
-        "bets": 32,
-        "wins": 14,
-        "hit_rate": 0.4375,
-        "avg_odds": 3.13281,
-        "avg_edge": 0.11061,
-        "profit": 9.46,
-        "roi": 0.29563,
-        "roi_stderr": 0.27966,
-        "p_luck": 0.14524,
-        "clv": 0.10444,
-        "clv_positive": 0.87097
+        "bets": 30,
+        "wins": 12,
+        "hit_rate": 0.4,
+        "avg_odds": 3.07033,
+        "avg_edge": 0.09855,
+        "profit": 5.41,
+        "roi": 0.18033,
+        "roi_stderr": 0.28396,
+        "p_luck": 0.26269,
+        "clv": 0.08137,
+        "clv_positive": 0.83333
        },
        "total": {
-        "bets": 1315,
-        "wins": 352,
-        "hit_rate": 0.26768,
-        "avg_odds": 4.31116,
-        "avg_edge": 0.03079,
-        "profit": 48.2,
-        "roi": 0.03665,
-        "roi_stderr": 0.05102,
-        "p_luck": 0.23623,
-        "clv": 0.01134,
-        "clv_positive": 0.55023
+        "bets": 1182,
+        "wins": 337,
+        "hit_rate": 0.28511,
+        "avg_odds": 4.063,
+        "avg_edge": 0.02854,
+        "profit": 1.1,
+        "roi": 0.00093,
+        "roi_stderr": 0.0504,
+        "p_luck": 0.49263,
+        "clv": 0.00884,
+        "clv_positive": 0.54653
        }
       },
       "test": {
        "1X2": {
-        "bets": 374,
-        "wins": 111,
-        "hit_rate": 0.29679,
-        "avg_odds": 4.41385,
-        "avg_edge": 0.03128,
-        "profit": 65.78,
-        "roi": 0.17588,
-        "roi_stderr": 0.10133,
-        "p_luck": 0.0413,
-        "clv": 0.00598,
-        "clv_positive": 0.56952
+        "bets": 336,
+        "wins": 108,
+        "hit_rate": 0.32143,
+        "avg_odds": 4.13429,
+        "avg_edge": 0.02738,
+        "profit": 32.57,
+        "roi": 0.09693,
+        "roi_stderr": 0.09853,
+        "p_luck": 0.16259,
+        "clv": 0.00332,
+        "clv_positive": 0.56548
        },
        "OU": {
-        "bets": 53,
-        "wins": 19,
-        "hit_rate": 0.35849,
-        "avg_odds": 3.05132,
-        "avg_edge": 0.19162,
-        "profit": 0.45,
-        "roi": 0.00849,
-        "roi_stderr": 0.20737,
-        "p_luck": 0.48367,
-        "clv": 0.01465,
-        "clv_positive": 0.5283
+        "bets": 22,
+        "wins": 5,
+        "hit_rate": 0.22727,
+        "avg_odds": 3.52727,
+        "avg_edge": 0.08913,
+        "profit": -6.8,
+        "roi": -0.30909,
+        "roi_stderr": 0.30401,
+        "p_luck": 0.84536,
+        "clv": 0.07133,
+        "clv_positive": 0.86364
        },
        "total": {
-        "bets": 427,
-        "wins": 130,
-        "hit_rate": 0.30445,
-        "avg_odds": 4.24473,
-        "avg_edge": 0.05118,
-        "profit": 66.23,
-        "roi": 0.15511,
-        "roi_stderr": 0.09237,
-        "p_luck": 0.04657,
-        "clv": 0.00706,
-        "clv_positive": 0.5644
+        "bets": 358,
+        "wins": 113,
+        "hit_rate": 0.31564,
+        "avg_odds": 4.09698,
+        "avg_edge": 0.03118,
+        "profit": 25.77,
+        "roi": 0.07198,
+        "roi_stderr": 0.09439,
+        "p_luck": 0.22285,
+        "clv": 0.0075,
+        "clv_positive": 0.5838
        }
       }
      },
      "max": {
       "tune": {
        "1X2": {
-        "bets": 10753,
-        "wins": 4198,
-        "hit_rate": 0.3904,
-        "avg_odds": 3.19323,
-        "avg_edge": 0.03029,
-        "profit": 198.56,
-        "roi": 0.01847,
-        "roi_stderr": 0.01425,
-        "p_luck": 0.09758,
-        "clv": 0.02339,
-        "clv_positive": 0.65346
+        "bets": 11161,
+        "wins": 4779,
+        "hit_rate": 0.42819,
+        "avg_odds": 2.9104,
+        "avg_edge": 0.02955,
+        "profit": 210.78,
+        "roi": 0.01889,
+        "roi_stderr": 0.01306,
+        "p_luck": 0.07412,
+        "clv": 0.02409,
+        "clv_positive": 0.66296
        },
        "OU": {
-        "bets": 908,
-        "wins": 479,
-        "hit_rate": 0.52753,
-        "avg_odds": 2.12001,
-        "avg_edge": 0.03773,
-        "profit": 44.38,
-        "roi": 0.04888,
-        "roi_stderr": 0.03462,
-        "p_luck": 0.07903,
-        "clv": 0.0367,
-        "clv_positive": 0.71669
+        "bets": 963,
+        "wins": 543,
+        "hit_rate": 0.56386,
+        "avg_odds": 1.96588,
+        "avg_edge": 0.0343,
+        "profit": 60.84,
+        "roi": 0.06318,
+        "roi_stderr": 0.03143,
+        "p_luck": 0.02221,
+        "clv": 0.03546,
+        "clv_positive": 0.73333
        },
        "total": {
-        "bets": 11661,
-        "wins": 4677,
-        "hit_rate": 0.40108,
-        "avg_odds": 3.10966,
-        "avg_edge": 0.03087,
-        "profit": 242.94,
-        "roi": 0.02083,
-        "roi_stderr": 0.01342,
-        "p_luck": 0.06025,
-        "clv": 0.02428,
-        "clv_positive": 0.6577
+        "bets": 12124,
+        "wins": 5322,
+        "hit_rate": 0.43896,
+        "avg_odds": 2.83538,
+        "avg_edge": 0.02993,
+        "profit": 271.62,
+        "roi": 0.0224,
+        "roi_stderr": 0.01228,
+        "p_luck": 0.03406,
+        "clv": 0.02488,
+        "clv_positive": 0.66789
        }
       },
       "test": {
        "1X2": {
-        "bets": 3817,
-        "wins": 1346,
-        "hit_rate": 0.35263,
-        "avg_odds": 3.53489,
-        "avg_edge": 0.0301,
-        "profit": 188.17,
-        "roi": 0.0493,
-        "roi_stderr": 0.02604,
-        "p_luck": 0.02918,
-        "clv": 0.02644,
-        "clv_positive": 0.69845
+        "bets": 4075,
+        "wins": 1659,
+        "hit_rate": 0.40712,
+        "avg_odds": 3.11403,
+        "avg_edge": 0.02701,
+        "profit": 113.32,
+        "roi": 0.02781,
+        "roi_stderr": 0.02269,
+        "p_luck": 0.11019,
+        "clv": 0.02397,
+        "clv_positive": 0.69693
        },
        "OU": {
-        "bets": 329,
-        "wins": 141,
-        "hit_rate": 0.42857,
-        "avg_odds": 2.45787,
-        "avg_edge": 0.07077,
-        "profit": -9.04,
-        "roi": -0.02748,
-        "roi_stderr": 0.06776,
-        "p_luck": 0.65746,
-        "clv": 0.03363,
-        "clv_positive": 0.67173
+        "bets": 280,
+        "wins": 131,
+        "hit_rate": 0.46786,
+        "avg_odds": 2.29632,
+        "avg_edge": 0.04595,
+        "profit": 1.47,
+        "roi": 0.00525,
+        "roi_stderr": 0.06996,
+        "p_luck": 0.47009,
+        "clv": 0.04142,
+        "clv_positive": 0.74643
        },
        "total": {
-        "bets": 4146,
-        "wins": 1487,
-        "hit_rate": 0.35866,
-        "avg_odds": 3.44942,
-        "avg_edge": 0.03332,
-        "profit": 179.13,
-        "roi": 0.04321,
-        "roi_stderr": 0.02457,
-        "p_luck": 0.03935,
-        "clv": 0.02701,
-        "clv_positive": 0.69633
+        "bets": 4355,
+        "wins": 1790,
+        "hit_rate": 0.41102,
+        "avg_odds": 3.06146,
+        "avg_edge": 0.02823,
+        "profit": 114.79,
+        "roi": 0.02636,
+        "roi_stderr": 0.0217,
+        "p_luck": 0.11227,
+        "clv": 0.02509,
+        "clv_positive": 0.70011
        }
       }
      }
@@ -722,252 +722,252 @@
      "sporttip": {
       "tune": {
        "1X2": {
-        "bets": 73,
-        "wins": 11,
-        "hit_rate": 0.15068,
-        "avg_odds": 4.95176,
-        "avg_edge": 0.03554,
-        "profit": -18.184,
-        "roi": -0.2491,
-        "roi_stderr": 0.22197,
-        "p_luck": 0.86911,
-        "clv": 0.03554,
-        "clv_positive": 1.0
+        "bets": 55,
+        "wins": 8,
+        "hit_rate": 0.14545,
+        "avg_odds": 4.93353,
+        "avg_edge": 0.03781,
+        "profit": -17.5408,
+        "roi": -0.31892,
+        "roi_stderr": 0.23776,
+        "p_luck": 0.9101,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 28,
-        "wins": 10,
-        "hit_rate": 0.35714,
-        "avg_odds": 3.71726,
-        "avg_edge": 0.12324,
-        "profit": 7.0688,
-        "roi": 0.25246,
-        "roi_stderr": 0.32884,
-        "p_luck": 0.22133,
-        "clv": 0.12324,
-        "clv_positive": 1.0
+        "bets": 24,
+        "wins": 9,
+        "hit_rate": 0.375,
+        "avg_odds": 3.7508,
+        "avg_edge": 0.12191,
+        "profit": 7.4688,
+        "roi": 0.3112,
+        "roi_stderr": 0.35978,
+        "p_luck": 0.19353,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 101,
-        "wins": 21,
-        "hit_rate": 0.20792,
-        "avg_odds": 4.60952,
-        "avg_edge": 0.05985,
-        "profit": -11.1152,
-        "roi": -0.11005,
-        "roi_stderr": 0.18504,
-        "p_luck": 0.72399,
-        "clv": 0.05985,
-        "clv_positive": 1.0
+        "bets": 79,
+        "wins": 17,
+        "hit_rate": 0.21519,
+        "avg_odds": 4.57422,
+        "avg_edge": 0.06336,
+        "profit": -10.072,
+        "roi": -0.12749,
+        "roi_stderr": 0.1998,
+        "p_luck": 0.7383,
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 76,
+        "bets": 74,
         "wins": 24,
-        "hit_rate": 0.31579,
-        "avg_odds": 3.82307,
-        "avg_edge": 0.05285,
-        "profit": -2.6848,
-        "roi": -0.03533,
-        "roi_stderr": 0.18349,
-        "p_luck": 0.57634,
-        "clv": 0.05285,
-        "clv_positive": 1.0
+        "hit_rate": 0.32432,
+        "avg_odds": 3.65903,
+        "avg_edge": 0.05158,
+        "profit": -0.6848,
+        "roi": -0.00925,
+        "roi_stderr": 0.18754,
+        "p_luck": 0.51968,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 61,
+        "bets": 56,
         "wins": 17,
-        "hit_rate": 0.27869,
-        "avg_odds": 3.20609,
-        "avg_edge": 0.08067,
-        "profit": -15.544,
-        "roi": -0.25482,
-        "roi_stderr": 0.16892,
-        "p_luck": 0.93429,
-        "clv": 0.08067,
-        "clv_positive": 1.0
+        "hit_rate": 0.30357,
+        "avg_odds": 3.14383,
+        "avg_edge": 0.06893,
+        "profit": -11.1488,
+        "roi": -0.19909,
+        "roi_stderr": 0.18075,
+        "p_luck": 0.86465,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 137,
+        "bets": 130,
         "wins": 41,
-        "hit_rate": 0.29927,
-        "avg_odds": 3.54836,
-        "avg_edge": 0.06524,
-        "profit": -18.2288,
-        "roi": -0.13306,
-        "roi_stderr": 0.12646,
-        "p_luck": 0.85364,
-        "clv": 0.06524,
-        "clv_positive": 1.0
+        "hit_rate": 0.31538,
+        "avg_odds": 3.4371,
+        "avg_edge": 0.05905,
+        "profit": -11.8336,
+        "roi": -0.09103,
+        "roi_stderr": 0.1319,
+        "p_luck": 0.75494,
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
      "book": {
       "tune": {
        "1X2": {
-        "bets": 611,
-        "wins": 158,
-        "hit_rate": 0.25859,
-        "avg_odds": 4.13736,
-        "avg_edge": 0.02949,
-        "profit": -9.26,
-        "roi": -0.01516,
-        "roi_stderr": 0.07197,
-        "p_luck": 0.58339,
-        "clv": 0.02949,
-        "clv_positive": 1.0
+        "bets": 553,
+        "wins": 157,
+        "hit_rate": 0.28391,
+        "avg_odds": 3.90573,
+        "avg_edge": 0.02861,
+        "profit": -6.55,
+        "roi": -0.01184,
+        "roi_stderr": 0.07367,
+        "p_luck": 0.56387,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 60,
+        "bets": 57,
         "wins": 22,
-        "hit_rate": 0.36667,
-        "avg_odds": 3.21683,
-        "avg_edge": 0.09874,
-        "profit": 4.87,
-        "roi": 0.08117,
-        "roi_stderr": 0.19786,
-        "p_luck": 0.34082,
-        "clv": 0.09874,
-        "clv_positive": 1.0
+        "hit_rate": 0.38596,
+        "avg_odds": 3.11965,
+        "avg_edge": 0.09203,
+        "profit": 6.59,
+        "roi": 0.11561,
+        "roi_stderr": 0.20413,
+        "p_luck": 0.28557,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 671,
-        "wins": 180,
-        "hit_rate": 0.26826,
-        "avg_odds": 4.05505,
-        "avg_edge": 0.03568,
-        "profit": -4.39,
-        "roi": -0.00654,
-        "roi_stderr": 0.06785,
-        "p_luck": 0.53841,
-        "clv": 0.03568,
-        "clv_positive": 1.0
+        "bets": 610,
+        "wins": 179,
+        "hit_rate": 0.29344,
+        "avg_odds": 3.83228,
+        "avg_edge": 0.03454,
+        "profit": 0.04,
+        "roi": 7e-05,
+        "roi_stderr": 0.06942,
+        "p_luck": 0.49962,
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 397,
-        "wins": 127,
-        "hit_rate": 0.3199,
-        "avg_odds": 3.79438,
-        "avg_edge": 0.03712,
-        "profit": 12.6,
-        "roi": 0.03174,
-        "roi_stderr": 0.08438,
-        "p_luck": 0.35342,
-        "clv": 0.03712,
-        "clv_positive": 1.0
+        "bets": 394,
+        "wins": 146,
+        "hit_rate": 0.37056,
+        "avg_odds": 3.40033,
+        "avg_edge": 0.03597,
+        "profit": 13.0,
+        "roi": 0.03299,
+        "roi_stderr": 0.07947,
+        "p_luck": 0.339,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 165,
-        "wins": 67,
-        "hit_rate": 0.40606,
-        "avg_odds": 2.74545,
-        "avg_edge": 0.06815,
-        "profit": 1.57,
-        "roi": 0.00952,
-        "roi_stderr": 0.10426,
-        "p_luck": 0.46364,
-        "clv": 0.06815,
-        "clv_positive": 1.0
+        "bets": 147,
+        "wins": 60,
+        "hit_rate": 0.40816,
+        "avg_odds": 2.6483,
+        "avg_edge": 0.06468,
+        "profit": -6.28,
+        "roi": -0.04272,
+        "roi_stderr": 0.10478,
+        "p_luck": 0.65826,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 562,
-        "wins": 194,
-        "hit_rate": 0.3452,
-        "avg_odds": 3.48642,
-        "avg_edge": 0.04623,
-        "profit": 14.17,
-        "roi": 0.02521,
-        "roi_stderr": 0.06696,
-        "p_luck": 0.35326,
-        "clv": 0.04623,
-        "clv_positive": 1.0
+        "bets": 541,
+        "wins": 206,
+        "hit_rate": 0.38078,
+        "avg_odds": 3.19599,
+        "avg_edge": 0.04377,
+        "profit": 6.72,
+        "roi": 0.01242,
+        "roi_stderr": 0.06447,
+        "p_luck": 0.42361,
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
      "max": {
       "tune": {
        "1X2": {
-        "bets": 7407,
-        "wins": 2633,
-        "hit_rate": 0.35547,
-        "avg_odds": 3.43298,
-        "avg_edge": 0.04459,
-        "profit": 83.03,
-        "roi": 0.01121,
-        "roi_stderr": 0.01829,
-        "p_luck": 0.27001,
-        "clv": 0.04459,
-        "clv_positive": 1.0
+        "bets": 7571,
+        "wins": 2927,
+        "hit_rate": 0.38661,
+        "avg_odds": 3.19955,
+        "avg_edge": 0.04339,
+        "profit": 97.23,
+        "roi": 0.01284,
+        "roi_stderr": 0.01723,
+        "p_luck": 0.22802,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 3066,
-        "wins": 1557,
-        "hit_rate": 0.50783,
-        "avg_odds": 2.10438,
-        "avg_edge": 0.04245,
-        "profit": 89.39,
-        "roi": 0.02916,
-        "roi_stderr": 0.01905,
-        "p_luck": 0.06293,
-        "clv": 0.04245,
-        "clv_positive": 1.0
+        "bets": 3120,
+        "wins": 1639,
+        "hit_rate": 0.52532,
+        "avg_odds": 2.04188,
+        "avg_edge": 0.04186,
+        "profit": 109.06,
+        "roi": 0.03496,
+        "roi_stderr": 0.01833,
+        "p_luck": 0.02829,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 10473,
-        "wins": 4190,
-        "hit_rate": 0.40008,
-        "avg_odds": 3.04403,
-        "avg_edge": 0.04397,
-        "profit": 172.42,
-        "roi": 0.01646,
-        "roi_stderr": 0.01409,
-        "p_luck": 0.12128,
-        "clv": 0.04397,
-        "clv_positive": 1.0
+        "bets": 10691,
+        "wins": 4566,
+        "hit_rate": 0.42709,
+        "avg_odds": 2.8617,
+        "avg_edge": 0.04295,
+        "profit": 206.29,
+        "roi": 0.0193,
+        "roi_stderr": 0.01332,
+        "p_luck": 0.07376,
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 6681,
-        "wins": 2418,
-        "hit_rate": 0.36192,
-        "avg_odds": 3.41464,
-        "avg_edge": 0.04108,
-        "profit": 106.42,
-        "roi": 0.01593,
-        "roi_stderr": 0.01896,
-        "p_luck": 0.20047,
-        "clv": 0.04108,
-        "clv_positive": 1.0
+        "bets": 6849,
+        "wins": 2715,
+        "hit_rate": 0.39641,
+        "avg_odds": 3.17108,
+        "avg_edge": 0.039,
+        "profit": 104.89,
+        "roi": 0.01531,
+        "roi_stderr": 0.01771,
+        "p_luck": 0.19358,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 2625,
-        "wins": 1287,
-        "hit_rate": 0.49029,
-        "avg_odds": 2.18735,
-        "avg_edge": 0.04512,
-        "profit": 61.66,
-        "roi": 0.02349,
-        "roi_stderr": 0.02131,
-        "p_luck": 0.13513,
-        "clv": 0.04512,
-        "clv_positive": 1.0
+        "bets": 2630,
+        "wins": 1321,
+        "hit_rate": 0.50228,
+        "avg_odds": 2.12076,
+        "avg_edge": 0.04427,
+        "profit": 41.22,
+        "roi": 0.01567,
+        "roi_stderr": 0.02058,
+        "p_luck": 0.22319,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 9306,
-        "wins": 3705,
-        "hit_rate": 0.39813,
-        "avg_odds": 3.06845,
-        "avg_edge": 0.04222,
-        "profit": 168.08,
-        "roi": 0.01806,
-        "roi_stderr": 0.01488,
-        "p_luck": 0.11244,
-        "clv": 0.04222,
-        "clv_positive": 1.0
+        "bets": 9479,
+        "wins": 4036,
+        "hit_rate": 0.42578,
+        "avg_odds": 2.87966,
+        "avg_edge": 0.04046,
+        "profit": 146.11,
+        "roi": 0.01541,
+        "roi_stderr": 0.01401,
+        "p_luck": 0.13565,
+        "clv": null,
+        "clv_positive": null
        }
       }
      }
@@ -996,43 +996,43 @@
      "sporttip": {
       "tune": {
        "1X2": {
-        "bets": 1296,
+        "bets": 1295,
         "wins": 550,
-        "hit_rate": 0.42438,
-        "avg_odds": 2.12616,
-        "avg_edge": 0.09498,
-        "profit": -155.4912,
-        "roi": -0.11998,
-        "roi_stderr": 0.02895,
+        "hit_rate": 0.42471,
+        "avg_odds": 2.12613,
+        "avg_edge": 0.09502,
+        "profit": -154.4912,
+        "roi": -0.1193,
+        "roi_stderr": 0.02897,
         "p_luck": 0.99998,
-        "clv": -0.08665,
-        "clv_positive": 0.09336
+        "clv": -0.08529,
+        "clv_positive": 0.09807
        },
        "OU": {
-        "bets": 2677,
+        "bets": 2676,
         "wins": 1288,
-        "hit_rate": 0.48114,
-        "avg_odds": 1.9284,
-        "avg_edge": 0.09827,
-        "profit": -237.6304,
-        "roi": -0.08877,
-        "roi_stderr": 0.01863,
+        "hit_rate": 0.48132,
+        "avg_odds": 1.92833,
+        "avg_edge": 0.09822,
+        "profit": -236.6304,
+        "roi": -0.08843,
+        "roi_stderr": 0.01864,
         "p_luck": 1.0,
-        "clv": -0.0883,
-        "clv_positive": 0.09048
+        "clv": -0.08919,
+        "clv_positive": 0.09127
        },
        "total": {
-        "bets": 3973,
+        "bets": 3971,
         "wins": 1838,
-        "hit_rate": 0.46262,
-        "avg_odds": 1.9929,
-        "avg_edge": 0.09719,
-        "profit": -393.1216,
-        "roi": -0.09895,
+        "hit_rate": 0.46286,
+        "avg_odds": 1.99283,
+        "avg_edge": 0.09718,
+        "profit": -391.1216,
+        "roi": -0.09849,
         "roi_stderr": 0.01571,
         "p_luck": 1.0,
-        "clv": -0.08746,
-        "clv_positive": 0.09194
+        "clv": -0.08722,
+        "clv_positive": 0.09472
        }
       },
       "test": {
@@ -1046,8 +1046,8 @@
         "roi": -0.12397,
         "roi_stderr": 0.03283,
         "p_luck": 0.99992,
-        "clv": -0.08672,
-        "clv_positive": 0.09586
+        "clv": -0.08519,
+        "clv_positive": 0.0999
        },
        "OU": {
         "bets": 1793,
@@ -1059,8 +1059,8 @@
         "roi": -0.10241,
         "roi_stderr": 0.02256,
         "p_luck": 1.0,
-        "clv": -0.08288,
-        "clv_positive": 0.08087
+        "clv": -0.08356,
+        "clv_positive": 0.08199
        },
        "total": {
         "bets": 2784,
@@ -1072,51 +1072,51 @@
         "roi": -0.11008,
         "roi_stderr": 0.01864,
         "p_luck": 1.0,
-        "clv": -0.08425,
-        "clv_positive": 0.08621
+        "clv": -0.08414,
+        "clv_positive": 0.08836
        }
       }
      },
      "book": {
       "tune": {
        "1X2": {
-        "bets": 2113,
+        "bets": 2111,
         "wins": 932,
-        "hit_rate": 0.44108,
-        "avg_odds": 2.12849,
-        "avg_edge": 0.09968,
-        "profit": -181.34,
-        "roi": -0.08582,
-        "roi_stderr": 0.02283,
-        "p_luck": 0.99991,
-        "clv": -0.04472,
-        "clv_positive": 0.22575
+        "hit_rate": 0.4415,
+        "avg_odds": 2.12831,
+        "avg_edge": 0.09972,
+        "profit": -179.34,
+        "roi": -0.08495,
+        "roi_stderr": 0.02285,
+        "p_luck": 0.9999,
+        "clv": -0.04302,
+        "clv_positive": 0.23496
        },
        "OU": {
-        "bets": 5197,
-        "wins": 2545,
-        "hit_rate": 0.48971,
-        "avg_odds": 1.94968,
-        "avg_edge": 0.10107,
-        "profit": -324.01,
-        "roi": -0.06235,
+        "bets": 5195,
+        "wins": 2544,
+        "hit_rate": 0.4897,
+        "avg_odds": 1.9497,
+        "avg_edge": 0.10104,
+        "profit": -323.59,
+        "roi": -0.06229,
         "roi_stderr": 0.01353,
         "p_luck": 1.0,
-        "clv": -0.04752,
-        "clv_positive": 0.22327
+        "clv": -0.04797,
+        "clv_positive": 0.22799
        },
        "total": {
-        "bets": 7310,
-        "wins": 3477,
-        "hit_rate": 0.47565,
-        "avg_odds": 2.00136,
-        "avg_edge": 0.10067,
-        "profit": -505.35,
-        "roi": -0.06913,
-        "roi_stderr": 0.01166,
+        "bets": 7306,
+        "wins": 3476,
+        "hit_rate": 0.47577,
+        "avg_odds": 2.00131,
+        "avg_edge": 0.10066,
+        "profit": -502.93,
+        "roi": -0.06884,
+        "roi_stderr": 0.01167,
         "p_luck": 1.0,
-        "clv": -0.04625,
-        "clv_positive": 0.22439
+        "clv": -0.04573,
+        "clv_positive": 0.23115
        }
       },
       "test": {
@@ -1130,8 +1130,8 @@
         "roi": -0.0704,
         "roi_stderr": 0.02679,
         "p_luck": 0.9957,
-        "clv": -0.04965,
-        "clv_positive": 0.18013
+        "clv": -0.04775,
+        "clv_positive": 0.18742
        },
        "OU": {
         "bets": 3672,
@@ -1143,8 +1143,8 @@
         "roi": -0.05879,
         "roi_stderr": 0.01607,
         "p_luck": 0.99987,
-        "clv": -0.04483,
-        "clv_positive": 0.21678
+        "clv": -0.04512,
+        "clv_positive": 0.22032
        },
        "total": {
         "bets": 5182,
@@ -1156,8 +1156,8 @@
         "roi": -0.06217,
         "roi_stderr": 0.0138,
         "p_luck": 1.0,
-        "clv": -0.04623,
-        "clv_positive": 0.2061
+        "clv": -0.04589,
+        "clv_positive": 0.21073
        }
       }
      },
@@ -1173,34 +1173,34 @@
         "roi": -0.01847,
         "roi_stderr": 0.01869,
         "p_luck": 0.8385,
-        "clv": 0.00409,
-        "clv_positive": 0.50525
+        "clv": 0.00629,
+        "clv_positive": 0.51893
        },
        "OU": {
-        "bets": 8707,
-        "wins": 4401,
-        "hit_rate": 0.50546,
-        "avg_odds": 1.97967,
-        "avg_edge": 0.10852,
-        "profit": -144.64,
-        "roi": -0.01661,
-        "roi_stderr": 0.01061,
-        "p_luck": 0.94127,
-        "clv": -0.00691,
-        "clv_positive": 0.45607
+        "bets": 8700,
+        "wins": 4398,
+        "hit_rate": 0.50552,
+        "avg_odds": 1.97978,
+        "avg_edge": 0.10848,
+        "profit": -142.73,
+        "roi": -0.01641,
+        "roi_stderr": 0.01062,
+        "p_luck": 0.93887,
+        "clv": -0.00692,
+        "clv_positive": 0.46175
        },
        "total": {
-        "bets": 11850,
-        "wins": 5906,
-        "hit_rate": 0.4984,
-        "avg_odds": 2.01063,
-        "avg_edge": 0.10716,
-        "profit": -202.69,
-        "roi": -0.0171,
+        "bets": 11843,
+        "wins": 5903,
+        "hit_rate": 0.49844,
+        "avg_odds": 2.01073,
+        "avg_edge": 0.10713,
+        "profit": -200.78,
+        "roi": -0.01695,
         "roi_stderr": 0.00924,
-        "p_luck": 0.96795,
-        "clv": -0.00226,
-        "clv_positive": 0.47686
+        "p_luck": 0.9667,
+        "clv": -0.00133,
+        "clv_positive": 0.48594
        }
       },
       "test": {
@@ -1214,8 +1214,8 @@
         "roi": -0.05589,
         "roi_stderr": 0.02295,
         "p_luck": 0.99256,
-        "clv": -0.01074,
-        "clv_positive": 0.41557
+        "clv": -0.00849,
+        "clv_positive": 0.43358
        },
        "OU": {
         "bets": 5243,
@@ -1227,8 +1227,8 @@
         "roi": -0.03254,
         "roi_stderr": 0.01361,
         "p_luck": 0.99158,
-        "clv": -0.01599,
-        "clv_positive": 0.38661
+        "clv": -0.01597,
+        "clv_positive": 0.39271
        },
        "total": {
         "bets": 7298,
@@ -1240,8 +1240,8 @@
         "roi": -0.03912,
         "roi_stderr": 0.01172,
         "p_luck": 0.99958,
-        "clv": -0.01451,
-        "clv_positive": 0.39477
+        "clv": -0.01386,
+        "clv_positive": 0.40422
        }
       }
      }
@@ -1259,8 +1259,8 @@
         "roi": -0.17246,
         "roi_stderr": 0.04172,
         "p_luck": 0.99998,
-        "clv": -0.09431,
-        "clv_positive": 0.00161
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
         "bets": 1608,
@@ -1272,8 +1272,8 @@
         "roi": -0.08438,
         "roi_stderr": 0.0246,
         "p_luck": 0.9997,
-        "clv": -0.09201,
-        "clv_positive": 0.00062
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
         "bets": 2228,
@@ -1285,8 +1285,8 @@
         "roi": -0.10889,
         "roi_stderr": 0.02122,
         "p_luck": 1.0,
-        "clv": -0.09265,
-        "clv_positive": 0.0009
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
@@ -1300,34 +1300,34 @@
         "roi": -0.11093,
         "roi_stderr": 0.03257,
         "p_luck": 0.99967,
-        "clv": -0.08499,
-        "clv_positive": 0.00789
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 2272,
-        "wins": 1054,
-        "hit_rate": 0.46391,
-        "avg_odds": 1.96331,
-        "avg_edge": 0.10143,
-        "profit": -239.488,
-        "roi": -0.10541,
-        "roi_stderr": 0.02048,
+        "bets": 2271,
+        "wins": 1053,
+        "hit_rate": 0.46367,
+        "avg_odds": 1.96333,
+        "avg_edge": 0.10144,
+        "profit": -240.408,
+        "roi": -0.10586,
+        "roi_stderr": 0.02049,
         "p_luck": 1.0,
-        "clv": -0.08429,
-        "clv_positive": 0.00572
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 3286,
-        "wins": 1493,
-        "hit_rate": 0.45435,
-        "avg_odds": 2.00643,
-        "avg_edge": 0.10013,
-        "profit": -351.9712,
-        "roi": -0.10711,
-        "roi_stderr": 0.01736,
+        "bets": 3285,
+        "wins": 1492,
+        "hit_rate": 0.45419,
+        "avg_odds": 2.00645,
+        "avg_edge": 0.10014,
+        "profit": -352.8912,
+        "roi": -0.10743,
+        "roi_stderr": 0.01737,
         "p_luck": 1.0,
-        "clv": -0.08451,
-        "clv_positive": 0.00639
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
@@ -1343,8 +1343,8 @@
         "roi": -0.09979,
         "roi_stderr": 0.03415,
         "p_luck": 0.99826,
-        "clv": -0.05548,
-        "clv_positive": 0.01043
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
         "bets": 2860,
@@ -1356,8 +1356,8 @@
         "roi": -0.07687,
         "roi_stderr": 0.01871,
         "p_luck": 0.99998,
-        "clv": -0.05282,
-        "clv_positive": 0.00594
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
         "bets": 3819,
@@ -1369,8 +1369,8 @@
         "roi": -0.08263,
         "roi_stderr": 0.01643,
         "p_luck": 1.0,
-        "clv": -0.05349,
-        "clv_positive": 0.00707
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
@@ -1384,34 +1384,34 @@
         "roi": -0.0783,
         "roi_stderr": 0.02738,
         "p_luck": 0.99788,
-        "clv": -0.04528,
-        "clv_positive": 0.01806
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 4112,
-        "wins": 1968,
-        "hit_rate": 0.4786,
+        "bets": 4111,
+        "wins": 1967,
+        "hit_rate": 0.47847,
         "avg_odds": 1.9885,
         "avg_edge": 0.1071,
-        "profit": -273.12,
-        "roi": -0.06642,
+        "profit": -274.12,
+        "roi": -0.06668,
         "roi_stderr": 0.01546,
         "p_luck": 0.99999,
-        "clv": -0.04544,
-        "clv_positive": 0.01873
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 5552,
-        "wins": 2616,
-        "hit_rate": 0.47118,
-        "avg_odds": 2.01679,
-        "avg_edge": 0.10689,
-        "profit": -385.87,
-        "roi": -0.0695,
+        "bets": 5551,
+        "wins": 2615,
+        "hit_rate": 0.47109,
+        "avg_odds": 2.0168,
+        "avg_edge": 0.10688,
+        "profit": -386.87,
+        "roi": -0.06969,
         "roi_stderr": 0.01347,
         "p_luck": 1.0,
-        "clv": -0.0454,
-        "clv_positive": 0.01855
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
@@ -1427,8 +1427,8 @@
         "roi": -0.0377,
         "roi_stderr": 0.02483,
         "p_luck": 0.93552,
-        "clv": 0.00626,
-        "clv_positive": 0.50311
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
         "bets": 4747,
@@ -1440,8 +1440,8 @@
         "roi": -0.01757,
         "roi_stderr": 0.01472,
         "p_luck": 0.88367,
-        "clv": 0.00165,
-        "clv_positive": 0.45692
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
         "bets": 6516,
@@ -1453,23 +1453,23 @@
         "roi": -0.02303,
         "roi_stderr": 0.01267,
         "p_luck": 0.96551,
-        "clv": 0.0029,
-        "clv_positive": 0.46946
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 2222,
+        "bets": 2221,
         "wins": 1086,
-        "hit_rate": 0.48875,
-        "avg_odds": 2.08284,
-        "avg_edge": 0.11423,
-        "profit": -4.66,
-        "roi": -0.0021,
+        "hit_rate": 0.48897,
+        "avg_odds": 2.08304,
+        "avg_edge": 0.11426,
+        "profit": -3.66,
+        "roi": -0.00165,
         "roi_stderr": 0.02216,
-        "p_luck": 0.5377,
-        "clv": -0.00142,
-        "clv_positive": 0.38389
+        "p_luck": 0.52964,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
         "bets": 5858,
@@ -1481,21 +1481,21 @@
         "roi": -0.02543,
         "roi_stderr": 0.01312,
         "p_luck": 0.9737,
-        "clv": -0.00694,
-        "clv_positive": 0.32332
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 8080,
+        "bets": 8079,
         "wins": 3979,
-        "hit_rate": 0.49245,
-        "avg_odds": 2.0294,
-        "avg_edge": 0.11517,
-        "profit": -153.61,
-        "roi": -0.01901,
+        "hit_rate": 0.49251,
+        "avg_odds": 2.02945,
+        "avg_edge": 0.11518,
+        "profit": -152.61,
+        "roi": -0.01889,
         "roi_stderr": 0.0113,
-        "p_luck": 0.95382,
-        "clv": -0.00543,
-        "clv_positive": 0.33998
+        "p_luck": 0.95276,
+        "clv": null,
+        "clv_positive": null
        }
       }
      }
@@ -1524,252 +1524,252 @@
      "sporttip": {
       "tune": {
        "1X2": {
-        "bets": 126,
-        "wins": 32,
-        "hit_rate": 0.25397,
-        "avg_odds": 5.32465,
-        "avg_edge": 0.04036,
-        "profit": 33.2064,
-        "roi": 0.26354,
-        "roi_stderr": 0.20445,
-        "p_luck": 0.09869,
-        "clv": -0.01621,
-        "clv_positive": 0.42857
+        "bets": 99,
+        "wins": 27,
+        "hit_rate": 0.27273,
+        "avg_odds": 5.18158,
+        "avg_edge": 0.03472,
+        "profit": 26.6064,
+        "roi": 0.26875,
+        "roi_stderr": 0.22068,
+        "p_luck": 0.11164,
+        "clv": -0.01592,
+        "clv_positive": 0.42424
        },
        "OU": {
-        "bets": 18,
+        "bets": 17,
         "wins": 6,
-        "hit_rate": 0.33333,
-        "avg_odds": 3.37013,
-        "avg_edge": 0.12261,
-        "profit": 2.256,
-        "roi": 0.12533,
-        "roi_stderr": 0.38897,
-        "p_luck": 0.37364,
-        "clv": 0.11483,
+        "hit_rate": 0.35294,
+        "avg_odds": 3.44414,
+        "avg_edge": 0.10549,
+        "profit": 3.256,
+        "roi": 0.19153,
+        "roi_stderr": 0.40655,
+        "p_luck": 0.31878,
+        "clv": 0.09859,
         "clv_positive": 0.94118
        },
        "total": {
-        "bets": 144,
-        "wins": 38,
-        "hit_rate": 0.26389,
-        "avg_odds": 5.08033,
-        "avg_edge": 0.05064,
-        "profit": 35.4624,
-        "roi": 0.24627,
-        "roi_stderr": 0.18502,
-        "p_luck": 0.09159,
-        "clv": -0.00064,
-        "clv_positive": 0.48951
+        "bets": 116,
+        "wins": 33,
+        "hit_rate": 0.28448,
+        "avg_odds": 4.92695,
+        "avg_edge": 0.04509,
+        "profit": 29.8624,
+        "roi": 0.25743,
+        "roi_stderr": 0.19697,
+        "p_luck": 0.09561,
+        "clv": 0.00086,
+        "clv_positive": 0.5
        }
       },
       "test": {
        "1X2": {
-        "bets": 39,
-        "wins": 15,
-        "hit_rate": 0.38462,
-        "avg_odds": 4.7392,
-        "avg_edge": 0.05597,
-        "profit": 11.9376,
-        "roi": 0.30609,
-        "roi_stderr": 0.31524,
-        "p_luck": 0.16578,
-        "clv": -0.01623,
-        "clv_positive": 0.46154
+        "bets": 26,
+        "wins": 12,
+        "hit_rate": 0.46154,
+        "avg_odds": 4.21403,
+        "avg_edge": 0.0464,
+        "profit": 9.4816,
+        "roi": 0.36468,
+        "roi_stderr": 0.3517,
+        "p_luck": 0.14989,
+        "clv": 0.00968,
+        "clv_positive": 0.57692
        },
        "OU": {
-        "bets": 44,
-        "wins": 15,
-        "hit_rate": 0.34091,
-        "avg_odds": 2.88916,
-        "avg_edge": 0.1736,
-        "profit": -5.696,
-        "roi": -0.12945,
-        "roi_stderr": 0.20578,
-        "p_luck": 0.73535,
-        "clv": -0.03454,
-        "clv_positive": 0.40909
+        "bets": 12,
+        "wins": 3,
+        "hit_rate": 0.25,
+        "avg_odds": 3.6744,
+        "avg_edge": 0.08094,
+        "profit": -2.976,
+        "roi": -0.248,
+        "roi_stderr": 0.43092,
+        "p_luck": 0.71753,
+        "clv": 0.0573,
+        "clv_positive": 0.83333
        },
        "total": {
-        "bets": 83,
-        "wins": 30,
-        "hit_rate": 0.36145,
-        "avg_odds": 3.75846,
-        "avg_edge": 0.11833,
-        "profit": 6.2416,
-        "roi": 0.0752,
-        "roi_stderr": 0.18436,
-        "p_luck": 0.34167,
-        "clv": -0.02594,
-        "clv_positive": 0.43373
+        "bets": 38,
+        "wins": 15,
+        "hit_rate": 0.39474,
+        "avg_odds": 4.04362,
+        "avg_edge": 0.05731,
+        "profit": 6.5056,
+        "roi": 0.1712,
+        "roi_stderr": 0.27715,
+        "p_luck": 0.26838,
+        "clv": 0.02472,
+        "clv_positive": 0.65789
        }
       }
      },
      "book": {
       "tune": {
        "1X2": {
-        "bets": 1283,
-        "wins": 338,
-        "hit_rate": 0.26345,
-        "avg_odds": 4.34055,
-        "avg_edge": 0.0288,
-        "profit": 38.74,
-        "roi": 0.03019,
-        "roi_stderr": 0.05182,
-        "p_luck": 0.28006,
-        "clv": 0.00909,
-        "clv_positive": 0.54248
+        "bets": 1152,
+        "wins": 325,
+        "hit_rate": 0.28212,
+        "avg_odds": 4.08885,
+        "avg_edge": 0.02672,
+        "profit": -4.31,
+        "roi": -0.00374,
+        "roi_stderr": 0.05119,
+        "p_luck": 0.52913,
+        "clv": 0.00696,
+        "clv_positive": 0.53906
        },
        "OU": {
-        "bets": 32,
-        "wins": 14,
-        "hit_rate": 0.4375,
-        "avg_odds": 3.13281,
-        "avg_edge": 0.11061,
-        "profit": 9.46,
-        "roi": 0.29563,
-        "roi_stderr": 0.27966,
-        "p_luck": 0.14524,
-        "clv": 0.10444,
-        "clv_positive": 0.87097
+        "bets": 30,
+        "wins": 12,
+        "hit_rate": 0.4,
+        "avg_odds": 3.07033,
+        "avg_edge": 0.09855,
+        "profit": 5.41,
+        "roi": 0.18033,
+        "roi_stderr": 0.28396,
+        "p_luck": 0.26269,
+        "clv": 0.08137,
+        "clv_positive": 0.83333
        },
        "total": {
-        "bets": 1315,
-        "wins": 352,
-        "hit_rate": 0.26768,
-        "avg_odds": 4.31116,
-        "avg_edge": 0.03079,
-        "profit": 48.2,
-        "roi": 0.03665,
-        "roi_stderr": 0.05102,
-        "p_luck": 0.23623,
-        "clv": 0.01134,
-        "clv_positive": 0.55023
+        "bets": 1182,
+        "wins": 337,
+        "hit_rate": 0.28511,
+        "avg_odds": 4.063,
+        "avg_edge": 0.02854,
+        "profit": 1.1,
+        "roi": 0.00093,
+        "roi_stderr": 0.0504,
+        "p_luck": 0.49263,
+        "clv": 0.00884,
+        "clv_positive": 0.54653
        }
       },
       "test": {
        "1X2": {
-        "bets": 374,
-        "wins": 111,
-        "hit_rate": 0.29679,
-        "avg_odds": 4.41385,
-        "avg_edge": 0.03128,
-        "profit": 65.78,
-        "roi": 0.17588,
-        "roi_stderr": 0.10133,
-        "p_luck": 0.0413,
-        "clv": 0.00598,
-        "clv_positive": 0.56952
+        "bets": 336,
+        "wins": 108,
+        "hit_rate": 0.32143,
+        "avg_odds": 4.13429,
+        "avg_edge": 0.02738,
+        "profit": 32.57,
+        "roi": 0.09693,
+        "roi_stderr": 0.09853,
+        "p_luck": 0.16259,
+        "clv": 0.00332,
+        "clv_positive": 0.56548
        },
        "OU": {
-        "bets": 53,
-        "wins": 19,
-        "hit_rate": 0.35849,
-        "avg_odds": 3.05132,
-        "avg_edge": 0.19162,
-        "profit": 0.45,
-        "roi": 0.00849,
-        "roi_stderr": 0.20737,
-        "p_luck": 0.48367,
-        "clv": 0.01465,
-        "clv_positive": 0.5283
+        "bets": 22,
+        "wins": 5,
+        "hit_rate": 0.22727,
+        "avg_odds": 3.52727,
+        "avg_edge": 0.08913,
+        "profit": -6.8,
+        "roi": -0.30909,
+        "roi_stderr": 0.30401,
+        "p_luck": 0.84536,
+        "clv": 0.07133,
+        "clv_positive": 0.86364
        },
        "total": {
-        "bets": 427,
-        "wins": 130,
-        "hit_rate": 0.30445,
-        "avg_odds": 4.24473,
-        "avg_edge": 0.05118,
-        "profit": 66.23,
-        "roi": 0.15511,
-        "roi_stderr": 0.09237,
-        "p_luck": 0.04657,
-        "clv": 0.00706,
-        "clv_positive": 0.5644
+        "bets": 358,
+        "wins": 113,
+        "hit_rate": 0.31564,
+        "avg_odds": 4.09698,
+        "avg_edge": 0.03118,
+        "profit": 25.77,
+        "roi": 0.07198,
+        "roi_stderr": 0.09439,
+        "p_luck": 0.22285,
+        "clv": 0.0075,
+        "clv_positive": 0.5838
        }
       }
      },
      "max": {
       "tune": {
        "1X2": {
-        "bets": 10753,
-        "wins": 4198,
-        "hit_rate": 0.3904,
-        "avg_odds": 3.19323,
-        "avg_edge": 0.03029,
-        "profit": 198.56,
-        "roi": 0.01847,
-        "roi_stderr": 0.01425,
-        "p_luck": 0.09758,
-        "clv": 0.02339,
-        "clv_positive": 0.65346
+        "bets": 11161,
+        "wins": 4779,
+        "hit_rate": 0.42819,
+        "avg_odds": 2.9104,
+        "avg_edge": 0.02955,
+        "profit": 210.78,
+        "roi": 0.01889,
+        "roi_stderr": 0.01306,
+        "p_luck": 0.07412,
+        "clv": 0.02409,
+        "clv_positive": 0.66296
        },
        "OU": {
-        "bets": 908,
-        "wins": 479,
-        "hit_rate": 0.52753,
-        "avg_odds": 2.12001,
-        "avg_edge": 0.03773,
-        "profit": 44.38,
-        "roi": 0.04888,
-        "roi_stderr": 0.03462,
-        "p_luck": 0.07903,
-        "clv": 0.0367,
-        "clv_positive": 0.71669
+        "bets": 963,
+        "wins": 543,
+        "hit_rate": 0.56386,
+        "avg_odds": 1.96588,
+        "avg_edge": 0.0343,
+        "profit": 60.84,
+        "roi": 0.06318,
+        "roi_stderr": 0.03143,
+        "p_luck": 0.02221,
+        "clv": 0.03546,
+        "clv_positive": 0.73333
        },
        "total": {
-        "bets": 11661,
-        "wins": 4677,
-        "hit_rate": 0.40108,
-        "avg_odds": 3.10966,
-        "avg_edge": 0.03087,
-        "profit": 242.94,
-        "roi": 0.02083,
-        "roi_stderr": 0.01342,
-        "p_luck": 0.06025,
-        "clv": 0.02428,
-        "clv_positive": 0.6577
+        "bets": 12124,
+        "wins": 5322,
+        "hit_rate": 0.43896,
+        "avg_odds": 2.83538,
+        "avg_edge": 0.02993,
+        "profit": 271.62,
+        "roi": 0.0224,
+        "roi_stderr": 0.01228,
+        "p_luck": 0.03406,
+        "clv": 0.02488,
+        "clv_positive": 0.66789
        }
       },
       "test": {
        "1X2": {
-        "bets": 3817,
-        "wins": 1346,
-        "hit_rate": 0.35263,
-        "avg_odds": 3.53489,
-        "avg_edge": 0.0301,
-        "profit": 188.17,
-        "roi": 0.0493,
-        "roi_stderr": 0.02604,
-        "p_luck": 0.02918,
-        "clv": 0.02644,
-        "clv_positive": 0.69845
+        "bets": 4075,
+        "wins": 1659,
+        "hit_rate": 0.40712,
+        "avg_odds": 3.11403,
+        "avg_edge": 0.02701,
+        "profit": 113.32,
+        "roi": 0.02781,
+        "roi_stderr": 0.02269,
+        "p_luck": 0.11019,
+        "clv": 0.02397,
+        "clv_positive": 0.69693
        },
        "OU": {
-        "bets": 329,
-        "wins": 141,
-        "hit_rate": 0.42857,
-        "avg_odds": 2.45787,
-        "avg_edge": 0.07077,
-        "profit": -9.04,
-        "roi": -0.02748,
-        "roi_stderr": 0.06776,
-        "p_luck": 0.65746,
-        "clv": 0.03363,
-        "clv_positive": 0.67173
+        "bets": 280,
+        "wins": 131,
+        "hit_rate": 0.46786,
+        "avg_odds": 2.29632,
+        "avg_edge": 0.04595,
+        "profit": 1.47,
+        "roi": 0.00525,
+        "roi_stderr": 0.06996,
+        "p_luck": 0.47009,
+        "clv": 0.04142,
+        "clv_positive": 0.74643
        },
        "total": {
-        "bets": 4146,
-        "wins": 1487,
-        "hit_rate": 0.35866,
-        "avg_odds": 3.44942,
-        "avg_edge": 0.03332,
-        "profit": 179.13,
-        "roi": 0.04321,
-        "roi_stderr": 0.02457,
-        "p_luck": 0.03935,
-        "clv": 0.02701,
-        "clv_positive": 0.69633
+        "bets": 4355,
+        "wins": 1790,
+        "hit_rate": 0.41102,
+        "avg_odds": 3.06146,
+        "avg_edge": 0.02823,
+        "profit": 114.79,
+        "roi": 0.02636,
+        "roi_stderr": 0.0217,
+        "p_luck": 0.11227,
+        "clv": 0.02509,
+        "clv_positive": 0.70011
        }
       }
      }
@@ -1778,252 +1778,252 @@
      "sporttip": {
       "tune": {
        "1X2": {
-        "bets": 73,
-        "wins": 11,
-        "hit_rate": 0.15068,
-        "avg_odds": 4.95176,
-        "avg_edge": 0.03554,
-        "profit": -18.184,
-        "roi": -0.2491,
-        "roi_stderr": 0.22197,
-        "p_luck": 0.86911,
-        "clv": 0.03554,
-        "clv_positive": 1.0
+        "bets": 55,
+        "wins": 8,
+        "hit_rate": 0.14545,
+        "avg_odds": 4.93353,
+        "avg_edge": 0.03781,
+        "profit": -17.5408,
+        "roi": -0.31892,
+        "roi_stderr": 0.23776,
+        "p_luck": 0.9101,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 28,
-        "wins": 10,
-        "hit_rate": 0.35714,
-        "avg_odds": 3.71726,
-        "avg_edge": 0.12324,
-        "profit": 7.0688,
-        "roi": 0.25246,
-        "roi_stderr": 0.32884,
-        "p_luck": 0.22133,
-        "clv": 0.12324,
-        "clv_positive": 1.0
+        "bets": 24,
+        "wins": 9,
+        "hit_rate": 0.375,
+        "avg_odds": 3.7508,
+        "avg_edge": 0.12191,
+        "profit": 7.4688,
+        "roi": 0.3112,
+        "roi_stderr": 0.35978,
+        "p_luck": 0.19353,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 101,
-        "wins": 21,
-        "hit_rate": 0.20792,
-        "avg_odds": 4.60952,
-        "avg_edge": 0.05985,
-        "profit": -11.1152,
-        "roi": -0.11005,
-        "roi_stderr": 0.18504,
-        "p_luck": 0.72399,
-        "clv": 0.05985,
-        "clv_positive": 1.0
+        "bets": 79,
+        "wins": 17,
+        "hit_rate": 0.21519,
+        "avg_odds": 4.57422,
+        "avg_edge": 0.06336,
+        "profit": -10.072,
+        "roi": -0.12749,
+        "roi_stderr": 0.1998,
+        "p_luck": 0.7383,
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 76,
+        "bets": 74,
         "wins": 24,
-        "hit_rate": 0.31579,
-        "avg_odds": 3.82307,
-        "avg_edge": 0.05285,
-        "profit": -2.6848,
-        "roi": -0.03533,
-        "roi_stderr": 0.18349,
-        "p_luck": 0.57634,
-        "clv": 0.05285,
-        "clv_positive": 1.0
+        "hit_rate": 0.32432,
+        "avg_odds": 3.65903,
+        "avg_edge": 0.05158,
+        "profit": -0.6848,
+        "roi": -0.00925,
+        "roi_stderr": 0.18754,
+        "p_luck": 0.51968,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 61,
+        "bets": 56,
         "wins": 17,
-        "hit_rate": 0.27869,
-        "avg_odds": 3.20609,
-        "avg_edge": 0.08067,
-        "profit": -15.544,
-        "roi": -0.25482,
-        "roi_stderr": 0.16892,
-        "p_luck": 0.93429,
-        "clv": 0.08067,
-        "clv_positive": 1.0
+        "hit_rate": 0.30357,
+        "avg_odds": 3.14383,
+        "avg_edge": 0.06893,
+        "profit": -11.1488,
+        "roi": -0.19909,
+        "roi_stderr": 0.18075,
+        "p_luck": 0.86465,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 137,
+        "bets": 130,
         "wins": 41,
-        "hit_rate": 0.29927,
-        "avg_odds": 3.54836,
-        "avg_edge": 0.06524,
-        "profit": -18.2288,
-        "roi": -0.13306,
-        "roi_stderr": 0.12646,
-        "p_luck": 0.85364,
-        "clv": 0.06524,
-        "clv_positive": 1.0
+        "hit_rate": 0.31538,
+        "avg_odds": 3.4371,
+        "avg_edge": 0.05905,
+        "profit": -11.8336,
+        "roi": -0.09103,
+        "roi_stderr": 0.1319,
+        "p_luck": 0.75494,
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
      "book": {
       "tune": {
        "1X2": {
-        "bets": 611,
-        "wins": 158,
-        "hit_rate": 0.25859,
-        "avg_odds": 4.13736,
-        "avg_edge": 0.02949,
-        "profit": -9.26,
-        "roi": -0.01516,
-        "roi_stderr": 0.07197,
-        "p_luck": 0.58339,
-        "clv": 0.02949,
-        "clv_positive": 1.0
+        "bets": 553,
+        "wins": 157,
+        "hit_rate": 0.28391,
+        "avg_odds": 3.90573,
+        "avg_edge": 0.02861,
+        "profit": -6.55,
+        "roi": -0.01184,
+        "roi_stderr": 0.07367,
+        "p_luck": 0.56387,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 60,
+        "bets": 57,
         "wins": 22,
-        "hit_rate": 0.36667,
-        "avg_odds": 3.21683,
-        "avg_edge": 0.09874,
-        "profit": 4.87,
-        "roi": 0.08117,
-        "roi_stderr": 0.19786,
-        "p_luck": 0.34082,
-        "clv": 0.09874,
-        "clv_positive": 1.0
+        "hit_rate": 0.38596,
+        "avg_odds": 3.11965,
+        "avg_edge": 0.09203,
+        "profit": 6.59,
+        "roi": 0.11561,
+        "roi_stderr": 0.20413,
+        "p_luck": 0.28557,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 671,
-        "wins": 180,
-        "hit_rate": 0.26826,
-        "avg_odds": 4.05505,
-        "avg_edge": 0.03568,
-        "profit": -4.39,
-        "roi": -0.00654,
-        "roi_stderr": 0.06785,
-        "p_luck": 0.53841,
-        "clv": 0.03568,
-        "clv_positive": 1.0
+        "bets": 610,
+        "wins": 179,
+        "hit_rate": 0.29344,
+        "avg_odds": 3.83228,
+        "avg_edge": 0.03454,
+        "profit": 0.04,
+        "roi": 7e-05,
+        "roi_stderr": 0.06942,
+        "p_luck": 0.49962,
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 397,
-        "wins": 127,
-        "hit_rate": 0.3199,
-        "avg_odds": 3.79438,
-        "avg_edge": 0.03712,
-        "profit": 12.6,
-        "roi": 0.03174,
-        "roi_stderr": 0.08438,
-        "p_luck": 0.35342,
-        "clv": 0.03712,
-        "clv_positive": 1.0
+        "bets": 394,
+        "wins": 146,
+        "hit_rate": 0.37056,
+        "avg_odds": 3.40033,
+        "avg_edge": 0.03597,
+        "profit": 13.0,
+        "roi": 0.03299,
+        "roi_stderr": 0.07947,
+        "p_luck": 0.339,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 165,
-        "wins": 67,
-        "hit_rate": 0.40606,
-        "avg_odds": 2.74545,
-        "avg_edge": 0.06815,
-        "profit": 1.57,
-        "roi": 0.00952,
-        "roi_stderr": 0.10426,
-        "p_luck": 0.46364,
-        "clv": 0.06815,
-        "clv_positive": 1.0
+        "bets": 147,
+        "wins": 60,
+        "hit_rate": 0.40816,
+        "avg_odds": 2.6483,
+        "avg_edge": 0.06468,
+        "profit": -6.28,
+        "roi": -0.04272,
+        "roi_stderr": 0.10478,
+        "p_luck": 0.65826,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 562,
-        "wins": 194,
-        "hit_rate": 0.3452,
-        "avg_odds": 3.48642,
-        "avg_edge": 0.04623,
-        "profit": 14.17,
-        "roi": 0.02521,
-        "roi_stderr": 0.06696,
-        "p_luck": 0.35326,
-        "clv": 0.04623,
-        "clv_positive": 1.0
+        "bets": 541,
+        "wins": 206,
+        "hit_rate": 0.38078,
+        "avg_odds": 3.19599,
+        "avg_edge": 0.04377,
+        "profit": 6.72,
+        "roi": 0.01242,
+        "roi_stderr": 0.06447,
+        "p_luck": 0.42361,
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
      "max": {
       "tune": {
        "1X2": {
-        "bets": 7407,
-        "wins": 2633,
-        "hit_rate": 0.35547,
-        "avg_odds": 3.43298,
-        "avg_edge": 0.04459,
-        "profit": 83.03,
-        "roi": 0.01121,
-        "roi_stderr": 0.01829,
-        "p_luck": 0.27001,
-        "clv": 0.04459,
-        "clv_positive": 1.0
+        "bets": 7571,
+        "wins": 2927,
+        "hit_rate": 0.38661,
+        "avg_odds": 3.19955,
+        "avg_edge": 0.04339,
+        "profit": 97.23,
+        "roi": 0.01284,
+        "roi_stderr": 0.01723,
+        "p_luck": 0.22802,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 3066,
-        "wins": 1557,
-        "hit_rate": 0.50783,
-        "avg_odds": 2.10438,
-        "avg_edge": 0.04245,
-        "profit": 89.39,
-        "roi": 0.02916,
-        "roi_stderr": 0.01905,
-        "p_luck": 0.06293,
-        "clv": 0.04245,
-        "clv_positive": 1.0
+        "bets": 3120,
+        "wins": 1639,
+        "hit_rate": 0.52532,
+        "avg_odds": 2.04188,
+        "avg_edge": 0.04186,
+        "profit": 109.06,
+        "roi": 0.03496,
+        "roi_stderr": 0.01833,
+        "p_luck": 0.02829,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 10473,
-        "wins": 4190,
-        "hit_rate": 0.40008,
-        "avg_odds": 3.04403,
-        "avg_edge": 0.04397,
-        "profit": 172.42,
-        "roi": 0.01646,
-        "roi_stderr": 0.01409,
-        "p_luck": 0.12128,
-        "clv": 0.04397,
-        "clv_positive": 1.0
+        "bets": 10691,
+        "wins": 4566,
+        "hit_rate": 0.42709,
+        "avg_odds": 2.8617,
+        "avg_edge": 0.04295,
+        "profit": 206.29,
+        "roi": 0.0193,
+        "roi_stderr": 0.01332,
+        "p_luck": 0.07376,
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 6681,
-        "wins": 2418,
-        "hit_rate": 0.36192,
-        "avg_odds": 3.41464,
-        "avg_edge": 0.04108,
-        "profit": 106.42,
-        "roi": 0.01593,
-        "roi_stderr": 0.01896,
-        "p_luck": 0.20047,
-        "clv": 0.04108,
-        "clv_positive": 1.0
+        "bets": 6849,
+        "wins": 2715,
+        "hit_rate": 0.39641,
+        "avg_odds": 3.17108,
+        "avg_edge": 0.039,
+        "profit": 104.89,
+        "roi": 0.01531,
+        "roi_stderr": 0.01771,
+        "p_luck": 0.19358,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 2625,
-        "wins": 1287,
-        "hit_rate": 0.49029,
-        "avg_odds": 2.18735,
-        "avg_edge": 0.04512,
-        "profit": 61.66,
-        "roi": 0.02349,
-        "roi_stderr": 0.02131,
-        "p_luck": 0.13513,
-        "clv": 0.04512,
-        "clv_positive": 1.0
+        "bets": 2630,
+        "wins": 1321,
+        "hit_rate": 0.50228,
+        "avg_odds": 2.12076,
+        "avg_edge": 0.04427,
+        "profit": 41.22,
+        "roi": 0.01567,
+        "roi_stderr": 0.02058,
+        "p_luck": 0.22319,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 9306,
-        "wins": 3705,
-        "hit_rate": 0.39813,
-        "avg_odds": 3.06845,
-        "avg_edge": 0.04222,
-        "profit": 168.08,
-        "roi": 0.01806,
-        "roi_stderr": 0.01488,
-        "p_luck": 0.11244,
-        "clv": 0.04222,
-        "clv_positive": 1.0
+        "bets": 9479,
+        "wins": 4036,
+        "hit_rate": 0.42578,
+        "avg_odds": 2.87966,
+        "avg_edge": 0.04046,
+        "profit": 146.11,
+        "roi": 0.01541,
+        "roi_stderr": 0.01401,
+        "p_luck": 0.13565,
+        "clv": null,
+        "clv_positive": null
        }
       }
      }
@@ -2052,252 +2052,252 @@
      "sporttip": {
       "tune": {
        "1X2": {
-        "bets": 175,
-        "wins": 36,
-        "hit_rate": 0.20571,
-        "avg_odds": 5.91574,
-        "avg_edge": 0.04954,
-        "profit": 21.9344,
-        "roi": 0.12534,
-        "roi_stderr": 0.17479,
-        "p_luck": 0.23666,
-        "clv": -0.02582,
-        "clv_positive": 0.41714
+        "bets": 170,
+        "wins": 34,
+        "hit_rate": 0.2,
+        "avg_odds": 5.93924,
+        "avg_edge": 0.04523,
+        "profit": 13.9744,
+        "roi": 0.0822,
+        "roi_stderr": 0.17379,
+        "p_luck": 0.31811,
+        "clv": -0.03291,
+        "clv_positive": 0.35882
        },
        "OU": {
-        "bets": 24,
+        "bets": 23,
         "wins": 9,
-        "hit_rate": 0.375,
-        "avg_odds": 3.3736,
-        "avg_edge": 0.12217,
-        "profit": 6.096,
-        "roi": 0.254,
-        "roi_stderr": 0.34023,
-        "p_luck": 0.22766,
-        "clv": 0.09334,
-        "clv_positive": 0.82609
+        "hit_rate": 0.3913,
+        "avg_odds": 3.42845,
+        "avg_edge": 0.12176,
+        "profit": 7.096,
+        "roi": 0.30852,
+        "roi_stderr": 0.35076,
+        "p_luck": 0.18954,
+        "clv": 0.07682,
+        "clv_positive": 0.73913
        },
        "total": {
-        "bets": 199,
-        "wins": 45,
-        "hit_rate": 0.22613,
-        "avg_odds": 5.60915,
-        "avg_edge": 0.0583,
-        "profit": 28.0304,
-        "roi": 0.14086,
-        "roi_stderr": 0.15887,
-        "p_luck": 0.18764,
-        "clv": -0.01198,
-        "clv_positive": 0.46465
+        "bets": 193,
+        "wins": 43,
+        "hit_rate": 0.2228,
+        "avg_odds": 5.64002,
+        "avg_edge": 0.05435,
+        "profit": 21.0704,
+        "roi": 0.10917,
+        "roi_stderr": 0.15851,
+        "p_luck": 0.24549,
+        "clv": -0.01983,
+        "clv_positive": 0.40415
        }
       },
       "test": {
        "1X2": {
-        "bets": 67,
-        "wins": 18,
-        "hit_rate": 0.26866,
-        "avg_odds": 5.71243,
-        "avg_edge": 0.05206,
-        "profit": 14.3696,
-        "roi": 0.21447,
-        "roi_stderr": 0.2705,
-        "p_luck": 0.21392,
-        "clv": -0.028,
-        "clv_positive": 0.41791
+        "bets": 65,
+        "wins": 17,
+        "hit_rate": 0.26154,
+        "avg_odds": 5.80475,
+        "avg_edge": 0.04402,
+        "profit": 12.9136,
+        "roi": 0.19867,
+        "roi_stderr": 0.27606,
+        "p_luck": 0.23587,
+        "clv": -0.03403,
+        "clv_positive": 0.4
        },
        "OU": {
-        "bets": 49,
-        "wins": 14,
-        "hit_rate": 0.28571,
-        "avg_odds": 3.20327,
-        "avg_edge": 0.16947,
-        "profit": -5.5024,
-        "roi": -0.11229,
-        "roi_stderr": 0.21428,
-        "p_luck": 0.69988,
-        "clv": -0.02361,
-        "clv_positive": 0.44898
+        "bets": 26,
+        "wins": 6,
+        "hit_rate": 0.23077,
+        "avg_odds": 3.88726,
+        "avg_edge": 0.09816,
+        "profit": -3.2,
+        "roi": -0.12308,
+        "roi_stderr": 0.32032,
+        "p_luck": 0.6496,
+        "clv": 0.02331,
+        "clv_positive": 0.65385
        },
        "total": {
-        "bets": 116,
-        "wins": 32,
-        "hit_rate": 0.27586,
-        "avg_odds": 4.65252,
-        "avg_edge": 0.10166,
-        "profit": 8.8672,
-        "roi": 0.07644,
-        "roi_stderr": 0.18049,
-        "p_luck": 0.33596,
-        "clv": -0.02615,
-        "clv_positive": 0.43103
+        "bets": 91,
+        "wins": 23,
+        "hit_rate": 0.25275,
+        "avg_odds": 5.2569,
+        "avg_edge": 0.05949,
+        "profit": 9.7136,
+        "roi": 0.10674,
+        "roi_stderr": 0.217,
+        "p_luck": 0.31139,
+        "clv": -0.01765,
+        "clv_positive": 0.47253
        }
       }
      },
      "book": {
       "tune": {
        "1X2": {
-        "bets": 1120,
-        "wins": 239,
-        "hit_rate": 0.21339,
-        "avg_odds": 5.17548,
-        "avg_edge": 0.04363,
-        "profit": 28.66,
-        "roi": 0.02559,
-        "roi_stderr": 0.06221,
-        "p_luck": 0.34042,
-        "clv": 0.00238,
-        "clv_positive": 0.51385
+        "bets": 1114,
+        "wins": 237,
+        "hit_rate": 0.21275,
+        "avg_odds": 5.17741,
+        "avg_edge": 0.04272,
+        "profit": 21.16,
+        "roi": 0.01899,
+        "roi_stderr": 0.06209,
+        "p_luck": 0.37983,
+        "clv": -0.00377,
+        "clv_positive": 0.49506
        },
        "OU": {
-        "bets": 47,
+        "bets": 46,
         "wins": 16,
-        "hit_rate": 0.34043,
-        "avg_odds": 3.43489,
-        "avg_edge": 0.10295,
-        "profit": 4.35,
-        "roi": 0.09255,
-        "roi_stderr": 0.22902,
-        "p_luck": 0.34306,
-        "clv": 0.0693,
-        "clv_positive": 0.73913
+        "hit_rate": 0.34783,
+        "avg_odds": 3.46174,
+        "avg_edge": 0.1013,
+        "profit": 5.35,
+        "roi": 0.1163,
+        "roi_stderr": 0.23279,
+        "p_luck": 0.30868,
+        "clv": 0.05274,
+        "clv_positive": 0.67391
        },
        "total": {
-        "bets": 1167,
-        "wins": 255,
-        "hit_rate": 0.21851,
-        "avg_odds": 5.10538,
-        "avg_edge": 0.04602,
-        "profit": 33.01,
-        "roi": 0.02829,
-        "roi_stderr": 0.0604,
-        "p_luck": 0.31978,
-        "clv": 0.00503,
-        "clv_positive": 0.52275
+        "bets": 1160,
+        "wins": 253,
+        "hit_rate": 0.2181,
+        "avg_odds": 5.10938,
+        "avg_edge": 0.04504,
+        "profit": 26.51,
+        "roi": 0.02285,
+        "roi_stderr": 0.06032,
+        "p_luck": 0.3524,
+        "clv": -0.00153,
+        "clv_positive": 0.50216
        }
       },
       "test": {
        "1X2": {
-        "bets": 400,
-        "wins": 92,
-        "hit_rate": 0.23,
-        "avg_odds": 5.26772,
-        "avg_edge": 0.04436,
-        "profit": 23.43,
-        "roi": 0.05858,
-        "roi_stderr": 0.10265,
-        "p_luck": 0.28413,
-        "clv": -0.00017,
-        "clv_positive": 0.5125
+        "bets": 398,
+        "wins": 91,
+        "hit_rate": 0.22864,
+        "avg_odds": 5.28,
+        "avg_edge": 0.04273,
+        "profit": 21.83,
+        "roi": 0.05485,
+        "roi_stderr": 0.10294,
+        "p_luck": 0.29707,
+        "clv": -0.00656,
+        "clv_positive": 0.48744
        },
        "OU": {
-        "bets": 86,
-        "wins": 28,
-        "hit_rate": 0.32558,
-        "avg_odds": 3.2443,
-        "avg_edge": 0.14132,
-        "profit": 0.61,
-        "roi": 0.00709,
-        "roi_stderr": 0.16644,
-        "p_luck": 0.483,
-        "clv": -0.00362,
-        "clv_positive": 0.47674
+        "bets": 57,
+        "wins": 16,
+        "hit_rate": 0.2807,
+        "avg_odds": 3.66123,
+        "avg_edge": 0.08628,
+        "profit": 0.03,
+        "roi": 0.00053,
+        "roi_stderr": 0.21756,
+        "p_luck": 0.49903,
+        "clv": 0.01007,
+        "clv_positive": 0.49123
        },
        "total": {
-        "bets": 486,
-        "wins": 120,
-        "hit_rate": 0.24691,
-        "avg_odds": 4.90967,
-        "avg_edge": 0.06152,
-        "profit": 24.04,
-        "roi": 0.04947,
-        "roi_stderr": 0.08941,
-        "p_luck": 0.29006,
-        "clv": -0.00078,
-        "clv_positive": 0.50617
+        "bets": 455,
+        "wins": 107,
+        "hit_rate": 0.23516,
+        "avg_odds": 5.07721,
+        "avg_edge": 0.04819,
+        "profit": 21.86,
+        "roi": 0.04804,
+        "roi_stderr": 0.09401,
+        "p_luck": 0.30465,
+        "clv": -0.00448,
+        "clv_positive": 0.48791
        }
       }
      },
      "max": {
       "tune": {
        "1X2": {
-        "bets": 7110,
+        "bets": 7109,
         "wins": 2095,
-        "hit_rate": 0.29466,
-        "avg_odds": 4.0851,
+        "hit_rate": 0.2947,
+        "avg_odds": 4.08531,
         "avg_edge": 0.04324,
-        "profit": -6.9,
-        "roi": -0.00097,
-        "roi_stderr": 0.02063,
-        "p_luck": 0.51876,
-        "clv": 0.02554,
-        "clv_positive": 0.64866
+        "profit": -5.9,
+        "roi": -0.00083,
+        "roi_stderr": 0.02064,
+        "p_luck": 0.51604,
+        "clv": 0.0221,
+        "clv_positive": 0.63453
        },
        "OU": {
-        "bets": 1161,
-        "wins": 505,
-        "hit_rate": 0.43497,
-        "avg_odds": 2.73012,
-        "avg_edge": 0.04144,
-        "profit": 56.26,
-        "roi": 0.04846,
-        "roi_stderr": 0.03831,
-        "p_luck": 0.10297,
-        "clv": 0.03318,
-        "clv_positive": 0.68428
+        "bets": 1155,
+        "wins": 502,
+        "hit_rate": 0.43463,
+        "avg_odds": 2.73018,
+        "avg_edge": 0.0397,
+        "profit": 53.82,
+        "roi": 0.0466,
+        "roi_stderr": 0.03839,
+        "p_luck": 0.1124,
+        "clv": 0.0283,
+        "clv_positive": 0.66667
        },
        "total": {
-        "bets": 8271,
-        "wins": 2600,
-        "hit_rate": 0.31435,
-        "avg_odds": 3.8949,
-        "avg_edge": 0.04298,
-        "profit": 49.36,
-        "roi": 0.00597,
-        "roi_stderr": 0.01853,
-        "p_luck": 0.37373,
-        "clv": 0.02626,
-        "clv_positive": 0.65201
+        "bets": 8264,
+        "wins": 2597,
+        "hit_rate": 0.31425,
+        "avg_odds": 3.89592,
+        "avg_edge": 0.04274,
+        "profit": 47.92,
+        "roi": 0.0058,
+        "roi_stderr": 0.01855,
+        "p_luck": 0.37726,
+        "clv": 0.02268,
+        "clv_positive": 0.63755
        }
       },
       "test": {
        "1X2": {
-        "bets": 2896,
-        "wins": 741,
-        "hit_rate": 0.25587,
-        "avg_odds": 4.51879,
-        "avg_edge": 0.04419,
-        "profit": 36.71,
-        "roi": 0.01268,
-        "roi_stderr": 0.0346,
-        "p_luck": 0.35705,
-        "clv": 0.02371,
-        "clv_positive": 0.66678
+        "bets": 2891,
+        "wins": 739,
+        "hit_rate": 0.25562,
+        "avg_odds": 4.519,
+        "avg_edge": 0.04238,
+        "profit": 34.01,
+        "roi": 0.01176,
+        "roi_stderr": 0.03463,
+        "p_luck": 0.36703,
+        "clv": 0.01757,
+        "clv_positive": 0.64234
        },
        "OU": {
-        "bets": 493,
-        "wins": 189,
-        "hit_rate": 0.38337,
-        "avg_odds": 2.8441,
-        "avg_edge": 0.0634,
-        "profit": 0.72,
-        "roi": 0.00146,
-        "roi_stderr": 0.06157,
-        "p_luck": 0.49054,
-        "clv": 0.01657,
-        "clv_positive": 0.58012
+        "bets": 464,
+        "wins": 178,
+        "hit_rate": 0.38362,
+        "avg_odds": 2.87256,
+        "avg_edge": 0.04871,
+        "profit": 5.21,
+        "roi": 0.01123,
+        "roi_stderr": 0.06413,
+        "p_luck": 0.4305,
+        "clv": 0.01041,
+        "clv_positive": 0.56897
        },
        "total": {
-        "bets": 3389,
-        "wins": 930,
-        "hit_rate": 0.27442,
-        "avg_odds": 4.27518,
-        "avg_edge": 0.04698,
-        "profit": 37.43,
-        "roi": 0.01104,
-        "roi_stderr": 0.03089,
-        "p_luck": 0.36035,
-        "clv": 0.02267,
-        "clv_positive": 0.65418
+        "bets": 3355,
+        "wins": 917,
+        "hit_rate": 0.27332,
+        "avg_odds": 4.2913,
+        "avg_edge": 0.04326,
+        "profit": 39.22,
+        "roi": 0.01169,
+        "roi_stderr": 0.03113,
+        "p_luck": 0.35361,
+        "clv": 0.01658,
+        "clv_positive": 0.63219
        }
       }
      }
@@ -2315,8 +2315,8 @@
         "roi": -0.07253,
         "roi_stderr": 0.23677,
         "p_luck": 0.62032,
-        "clv": 0.02941,
-        "clv_positive": 0.90588
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
         "bets": 34,
@@ -2328,8 +2328,8 @@
         "roi": 0.22908,
         "roi_stderr": 0.29456,
         "p_luck": 0.21837,
-        "clv": 0.10242,
-        "clv_positive": 0.97059
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
         "bets": 119,
@@ -2341,8 +2341,8 @@
         "roi": 0.01365,
         "roi_stderr": 0.18867,
         "p_luck": 0.47117,
-        "clv": 0.05027,
-        "clv_positive": 0.92437
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
@@ -2356,34 +2356,34 @@
         "roi": -0.03822,
         "roi_stderr": 0.22669,
         "p_luck": 0.56694,
-        "clv": 0.0527,
-        "clv_positive": 0.9
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 74,
-        "wins": 22,
-        "hit_rate": 0.2973,
-        "avg_odds": 3.27204,
-        "avg_edge": 0.09414,
-        "profit": -9.824,
-        "roi": -0.13276,
-        "roi_stderr": 0.16819,
-        "p_luck": 0.78504,
-        "clv": 0.06668,
-        "clv_positive": 0.90541
+        "bets": 73,
+        "wins": 21,
+        "hit_rate": 0.28767,
+        "avg_odds": 3.29017,
+        "avg_edge": 0.093,
+        "profit": -10.5808,
+        "roi": -0.14494,
+        "roi_stderr": 0.17006,
+        "p_luck": 0.80298,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 144,
-        "wins": 40,
-        "hit_rate": 0.27778,
-        "avg_odds": 3.8346,
-        "avg_edge": 0.07895,
-        "profit": -12.4992,
-        "roi": -0.0868,
-        "roi_stderr": 0.13961,
-        "p_luck": 0.73295,
-        "clv": 0.05988,
-        "clv_positive": 0.90278
+        "bets": 143,
+        "wins": 39,
+        "hit_rate": 0.27273,
+        "avg_odds": 3.84779,
+        "avg_edge": 0.07827,
+        "profit": -13.256,
+        "roi": -0.0927,
+        "roi_stderr": 0.14046,
+        "p_luck": 0.74536,
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
@@ -2399,8 +2399,8 @@
         "roi": -0.07581,
         "roi_stderr": 0.08396,
         "p_luck": 0.81673,
-        "clv": 0.03113,
-        "clv_positive": 0.95059
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
         "bets": 88,
@@ -2412,8 +2412,8 @@
         "roi": -0.07136,
         "roi_stderr": 0.15772,
         "p_luck": 0.67454,
-        "clv": 0.06751,
-        "clv_positive": 0.90909
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
         "bets": 594,
@@ -2425,49 +2425,49 @@
         "roi": -0.07515,
         "roi_stderr": 0.07519,
         "p_luck": 0.84121,
-        "clv": 0.03652,
-        "clv_positive": 0.94444
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 328,
-        "wins": 89,
-        "hit_rate": 0.27134,
-        "avg_odds": 4.42363,
-        "avg_edge": 0.04997,
-        "profit": 14.0,
-        "roi": 0.04268,
-        "roi_stderr": 0.10358,
-        "p_luck": 0.34015,
-        "clv": 0.03986,
-        "clv_positive": 0.95732
+        "bets": 327,
+        "wins": 88,
+        "hit_rate": 0.26911,
+        "avg_odds": 4.42676,
+        "avg_edge": 0.05006,
+        "profit": 11.6,
+        "roi": 0.03547,
+        "roi_stderr": 0.10365,
+        "p_luck": 0.36608,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 210,
-        "wins": 71,
-        "hit_rate": 0.3381,
-        "avg_odds": 2.95686,
-        "avg_edge": 0.07166,
-        "profit": -20.82,
-        "roi": -0.09914,
-        "roi_stderr": 0.09379,
-        "p_luck": 0.85476,
-        "clv": 0.05298,
-        "clv_positive": 0.89048
+        "bets": 208,
+        "wins": 70,
+        "hit_rate": 0.33654,
+        "avg_odds": 2.96687,
+        "avg_edge": 0.071,
+        "profit": -20.65,
+        "roi": -0.09928,
+        "roi_stderr": 0.09449,
+        "p_luck": 0.8533,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 538,
-        "wins": 160,
-        "hit_rate": 0.2974,
-        "avg_odds": 3.8511,
-        "avg_edge": 0.05843,
-        "profit": -6.82,
-        "roi": -0.01268,
-        "roi_stderr": 0.073,
-        "p_luck": 0.56893,
-        "clv": 0.04498,
-        "clv_positive": 0.93123
+        "bets": 535,
+        "wins": 158,
+        "hit_rate": 0.29533,
+        "avg_odds": 3.85918,
+        "avg_edge": 0.0582,
+        "profit": -9.05,
+        "roi": -0.01692,
+        "roi_stderr": 0.07323,
+        "p_luck": 0.59134,
+        "clv": null,
+        "clv_positive": null
        }
       }
      },
@@ -2483,75 +2483,75 @@
         "roi": 0.01419,
         "roi_stderr": 0.02256,
         "p_luck": 0.26475,
-        "clv": 0.0497,
-        "clv_positive": 0.98094
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 3141,
+        "bets": 3140,
         "wins": 1497,
-        "hit_rate": 0.4766,
-        "avg_odds": 2.26029,
-        "avg_edge": 0.04377,
-        "profit": 75.67,
-        "roi": 0.02409,
+        "hit_rate": 0.47675,
+        "avg_odds": 2.26,
+        "avg_edge": 0.04358,
+        "profit": 76.67,
+        "roi": 0.02442,
         "roi_stderr": 0.02003,
-        "p_luck": 0.1145,
-        "clv": 0.04045,
-        "clv_positive": 0.98344
+        "p_luck": 0.11142,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 9174,
+        "bets": 9173,
         "wins": 3282,
-        "hit_rate": 0.35775,
-        "avg_odds": 3.41803,
-        "avg_edge": 0.05181,
-        "profit": 161.26,
-        "roi": 0.01758,
-        "roi_stderr": 0.01634,
-        "p_luck": 0.14109,
-        "clv": 0.04653,
-        "clv_positive": 0.9818
+        "hit_rate": 0.35779,
+        "avg_odds": 3.41806,
+        "avg_edge": 0.05174,
+        "profit": 162.26,
+        "roi": 0.01769,
+        "roi_stderr": 0.01635,
+        "p_luck": 0.13959,
+        "clv": null,
+        "clv_positive": null
        }
       },
       "test": {
        "1X2": {
-        "bets": 5220,
-        "wins": 1530,
-        "hit_rate": 0.2931,
-        "avg_odds": 4.06353,
-        "avg_edge": 0.05351,
-        "profit": 57.58,
-        "roi": 0.01103,
+        "bets": 5215,
+        "wins": 1528,
+        "hit_rate": 0.293,
+        "avg_odds": 4.06272,
+        "avg_edge": 0.05224,
+        "profit": 53.33,
+        "roi": 0.01023,
         "roi_stderr": 0.02411,
-        "p_luck": 0.32365,
-        "clv": 0.04658,
-        "clv_positive": 0.96954
+        "p_luck": 0.33573,
+        "clv": null,
+        "clv_positive": null
        },
        "OU": {
-        "bets": 2881,
-        "wins": 1310,
-        "hit_rate": 0.4547,
-        "avg_odds": 2.35983,
-        "avg_edge": 0.04642,
-        "profit": 29.5,
-        "roi": 0.01024,
-        "roi_stderr": 0.02172,
-        "p_luck": 0.3187,
-        "clv": 0.04082,
-        "clv_positive": 0.97154
+        "bets": 2879,
+        "wins": 1309,
+        "hit_rate": 0.45467,
+        "avg_odds": 2.3602,
+        "avg_edge": 0.0464,
+        "profit": 29.67,
+        "roi": 0.01031,
+        "roi_stderr": 0.02174,
+        "p_luck": 0.3177,
+        "clv": null,
+        "clv_positive": null
        },
        "total": {
-        "bets": 8101,
-        "wins": 2840,
-        "hit_rate": 0.35057,
-        "avg_odds": 3.45763,
-        "avg_edge": 0.05099,
-        "profit": 87.08,
-        "roi": 0.01075,
+        "bets": 8094,
+        "wins": 2837,
+        "hit_rate": 0.35051,
+        "avg_odds": 3.45714,
+        "avg_edge": 0.05016,
+        "profit": 83.0,
+        "roi": 0.01025,
         "roi_stderr": 0.01735,
-        "p_luck": 0.26777,
-        "clv": 0.04453,
-        "clv_positive": 0.97025
+        "p_luck": 0.27726,
+        "clv": null,
+        "clv_positive": null
        }
       }
      }
@@ -2564,538 +2564,917 @@
    {
     "edge": 0.01,
     "max_odds": 2.5,
-    "bets": 92,
-    "roi": -0.11946,
-    "clv": -0.00136,
-    "clv_total": -0.12478
+    "bets": 140,
+    "roi": -0.10329,
+    "clv": -0.00386,
+    "clv_total": -0.54093
    },
    {
     "edge": 0.01,
     "max_odds": 4.0,
-    "bets": 732,
-    "roi": 0.00768,
-    "clv": 0.01008,
-    "clv_total": 7.37554
+    "bets": 729,
+    "roi": 0.01056,
+    "clv": 0.00896,
+    "clv_total": 6.53533
    },
    {
     "edge": 0.01,
     "max_odds": 8.0,
-    "bets": 1283,
-    "roi": 0.03019,
-    "clv": 0.00909,
-    "clv_total": 11.65969
+    "bets": 1152,
+    "roi": -0.00374,
+    "clv": 0.00696,
+    "clv_total": 8.01352
    },
    {
     "edge": 0.02,
     "max_odds": 2.5,
-    "bets": 28,
-    "roi": -0.25607,
-    "clv": 0.0124,
-    "clv_total": 0.34721
+    "bets": 34,
+    "roi": -0.17029,
+    "clv": 0.01655,
+    "clv_total": 0.56269
    },
    {
     "edge": 0.02,
     "max_odds": 4.0,
-    "bets": 318,
-    "roi": -0.04396,
-    "clv": 0.01701,
-    "clv_total": 5.40863
+    "bets": 296,
+    "roi": -0.02348,
+    "clv": 0.01724,
+    "clv_total": 5.10262
    },
    {
     "edge": 0.02,
     "max_odds": 8.0,
-    "bets": 692,
-    "roi": -0.00805,
-    "clv": 0.01284,
-    "clv_total": 8.88471
+    "bets": 580,
+    "roi": -0.03755,
+    "clv": 0.01134,
+    "clv_total": 6.5783
    },
    {
     "edge": 0.03,
     "max_odds": 2.5,
-    "bets": 9,
-    "roi": -0.73333,
-    "clv": 0.03252,
-    "clv_total": 0.2927
+    "bets": 8,
+    "roi": -0.7,
+    "clv": 0.06019,
+    "clv_total": 0.48152
    },
    {
     "edge": 0.03,
     "max_odds": 4.0,
-    "bets": 148,
-    "roi": 0.05223,
-    "clv": 0.02558,
-    "clv_total": 3.78632
-   },
-   {
-    "edge": 0.03,
-    "max_odds": 8.0,
-    "bets": 401,
-    "roi": 0.01863,
-    "clv": 0.01338,
-    "clv_total": 5.36469
-   },
-   {
-    "edge": 0.04,
-    "max_odds": 2.5,
-    "bets": 4,
-    "roi": -1.0,
-    "clv": -0.0042,
-    "clv_total": -0.0168
-   },
-   {
-    "edge": 0.04,
-    "max_odds": 4.0,
-    "bets": 70,
-    "roi": -0.03071,
-    "clv": 0.04148,
-    "clv_total": 2.90341
-   },
-   {
-    "edge": 0.04,
-    "max_odds": 8.0,
-    "bets": 232,
-    "roi": 0.00211,
-    "clv": 0.02395,
-    "clv_total": 5.55553
-   },
-   {
-    "edge": 0.05,
-    "max_odds": 2.5,
-    "bets": 4,
-    "roi": -1.0,
-    "clv": -0.0042,
-    "clv_total": -0.0168
-   },
-   {
-    "edge": 0.05,
-    "max_odds": 4.0,
-    "bets": 37,
-    "roi": 0.26216,
-    "clv": 0.02831,
-    "clv_total": 1.04732
-   },
-   {
-    "edge": 0.05,
-    "max_odds": 8.0,
     "bets": 139,
-    "roi": 0.27043,
-    "clv": 0.02262,
-    "clv_total": 3.14449
+    "roi": -0.03827,
+    "clv": 0.02515,
+    "clv_total": 3.49623
    },
    {
-    "edge": 0.07,
-    "max_odds": 2.5,
-    "bets": 3,
-    "roi": -1.0,
-    "clv": 0.01746,
-    "clv_total": 0.05237
-   },
-   {
-    "edge": 0.07,
-    "max_odds": 4.0,
-    "bets": 10,
-    "roi": -0.31,
-    "clv": 0.041,
-    "clv_total": 0.41003
-   },
-   {
-    "edge": 0.07,
+    "edge": 0.03,
     "max_odds": 8.0,
-    "bets": 48,
-    "roi": 0.50792,
-    "clv": 0.04519,
-    "clv_total": 2.16891
+    "bets": 325,
+    "roi": -0.06332,
+    "clv": 0.01348,
+    "clv_total": 4.38041
    },
    {
-    "edge": 0.1,
+    "edge": 0.04,
     "max_odds": 2.5,
     "bets": 2,
     "roi": -1.0,
-    "clv": 0.03426,
-    "clv_total": 0.06853
+    "clv": 0.05527,
+    "clv_total": 0.11053
+   },
+   {
+    "edge": 0.04,
+    "max_odds": 4.0,
+    "bets": 60,
+    "roi": 0.00583,
+    "clv": 0.04231,
+    "clv_total": 2.53862
+   },
+   {
+    "edge": 0.04,
+    "max_odds": 8.0,
+    "bets": 176,
+    "roi": 0.11074,
+    "clv": 0.02853,
+    "clv_total": 5.02147
+   },
+   {
+    "edge": 0.05,
+    "max_odds": 2.5,
+    "bets": 2,
+    "roi": -1.0,
+    "clv": 0.05527,
+    "clv_total": 0.11053
+   },
+   {
+    "edge": 0.05,
+    "max_odds": 4.0,
+    "bets": 33,
+    "roi": 0.30152,
+    "clv": 0.03431,
+    "clv_total": 1.13216
+   },
+   {
+    "edge": 0.05,
+    "max_odds": 8.0,
+    "bets": 108,
+    "roi": 0.2763,
+    "clv": 0.02203,
+    "clv_total": 2.3795
+   },
+   {
+    "edge": 0.07,
+    "max_odds": 2.5,
+    "bets": 2,
+    "roi": -1.0,
+    "clv": 0.05527,
+    "clv_total": 0.11053
+   },
+   {
+    "edge": 0.07,
+    "max_odds": 4.0,
+    "bets": 8,
+    "roi": -0.1375,
+    "clv": 0.0857,
+    "clv_total": 0.68559
+   },
+   {
+    "edge": 0.07,
+    "max_odds": 8.0,
+    "bets": 32,
+    "roi": 0.25156,
+    "clv": 0.06225,
+    "clv_total": 1.99201
+   },
+   {
+    "edge": 0.1,
+    "max_odds": 2.5,
+    "bets": 1,
+    "roi": -1.0,
+    "clv": 0.12479,
+    "clv_total": 0.12479
    },
    {
     "edge": 0.1,
     "max_odds": 4.0,
-    "bets": 4,
-    "roi": -0.15,
-    "clv": 0.08672,
-    "clv_total": 0.34686
+    "bets": 3,
+    "roi": 0.13333,
+    "clv": 0.13412,
+    "clv_total": 0.40236
    },
    {
     "edge": 0.1,
     "max_odds": 8.0,
-    "bets": 20,
-    "roi": 0.3925,
-    "clv": 0.06253,
-    "clv_total": 1.25062
+    "bets": 16,
+    "roi": 0.27188,
+    "clv": 0.07315,
+    "clv_total": 1.17046
    }
   ],
   "OU": [
    {
     "edge": 0.01,
     "max_odds": 2.5,
-    "bets": 25,
-    "roi": -0.2788,
-    "clv": 0.00615,
-    "clv_total": 0.14771
+    "bets": 26,
+    "roi": -0.20577,
+    "clv": 0.00761,
+    "clv_total": 0.19793
    },
    {
     "edge": 0.01,
     "max_odds": 4.0,
-    "bets": 50,
-    "roi": 0.0516,
-    "clv": 0.05027,
-    "clv_total": 2.46319
+    "bets": 47,
+    "roi": 0.10638,
+    "clv": 0.04936,
+    "clv_total": 2.31978
    },
    {
     "edge": 0.01,
     "max_odds": 8.0,
-    "bets": 53,
-    "roi": -0.00792,
-    "clv": 0.06001,
-    "clv_total": 3.12037
+    "bets": 50,
+    "roi": 0.04,
+    "clv": 0.05776,
+    "clv_total": 2.8879
    },
    {
     "edge": 0.02,
     "max_odds": 2.5,
     "bets": 8,
-    "roi": 0.26375,
-    "clv": 0.02303,
-    "clv_total": 0.16124
+    "roi": -0.02375,
+    "clv": 0.00247,
+    "clv_total": 0.01977
    },
    {
     "edge": 0.02,
     "max_odds": 4.0,
-    "bets": 29,
-    "roi": 0.42966,
-    "clv": 0.09216,
-    "clv_total": 2.58042
+    "bets": 27,
+    "roi": 0.31148,
+    "clv": 0.06937,
+    "clv_total": 1.87312
    },
    {
     "edge": 0.02,
     "max_odds": 8.0,
-    "bets": 32,
-    "roi": 0.29563,
-    "clv": 0.10444,
-    "clv_total": 3.23761
+    "bets": 30,
+    "roi": 0.18033,
+    "clv": 0.08137,
+    "clv_total": 2.44125
    },
    {
     "edge": 0.03,
     "max_odds": 2.5,
     "bets": 2,
-    "roi": 0.25,
-    "clv": 0.03118,
-    "clv_total": 0.03118
+    "roi": 1.08,
+    "clv": -0.06875,
+    "clv_total": -0.13749
    },
    {
     "edge": 0.03,
-    "max_odds": 4.0,
-    "bets": 23,
-    "roi": 0.47174,
-    "clv": 0.11138,
-    "clv_total": 2.45036
-   },
-   {
-    "edge": 0.03,
-    "max_odds": 8.0,
-    "bets": 26,
-    "roi": 0.30192,
-    "clv": 0.1243,
-    "clv_total": 3.10755
-   },
-   {
-    "edge": 0.04,
-    "max_odds": 2.5,
-    "bets": 2,
-    "roi": 0.25,
-    "clv": 0.03118,
-    "clv_total": 0.03118
-   },
-   {
-    "edge": 0.04,
     "max_odds": 4.0,
     "bets": 19,
-    "roi": 0.58421,
-    "clv": 0.12492,
-    "clv_total": 2.24865
+    "roi": 0.48737,
+    "clv": 0.0883,
+    "clv_total": 1.67773
+   },
+   {
+    "edge": 0.03,
+    "max_odds": 8.0,
+    "bets": 22,
+    "roi": 0.28455,
+    "clv": 0.10208,
+    "clv_total": 2.24585
+   },
+   {
+    "edge": 0.04,
+    "max_odds": 2.5,
+    "bets": 1,
+    "roi": 1.5,
+    "clv": 0.02809,
+    "clv_total": 0.02809
+   },
+   {
+    "edge": 0.04,
+    "max_odds": 4.0,
+    "bets": 15,
+    "roi": 0.57333,
+    "clv": 0.12761,
+    "clv_total": 1.91417
    },
    {
     "edge": 0.04,
     "max_odds": 8.0,
-    "bets": 22,
-    "roi": 0.36818,
-    "clv": 0.13837,
-    "clv_total": 2.90583
-   },
-   {
-    "edge": 0.05,
-    "max_odds": 2.5,
-    "bets": 1,
-    "roi": -1.0,
-    "clv": null,
-    "clv_total": 0.0
-   },
-   {
-    "edge": 0.05,
-    "max_odds": 4.0,
-    "bets": 17,
-    "roi": 0.44706,
-    "clv": 0.13547,
-    "clv_total": 2.16754
-   },
-   {
-    "edge": 0.05,
-    "max_odds": 8.0,
-    "bets": 20,
-    "roi": 0.23,
-    "clv": 0.14867,
-    "clv_total": 2.82472
-   },
-   {
-    "edge": 0.07,
-    "max_odds": 2.5,
-    "bets": 1,
-    "roi": -1.0,
-    "clv": null,
-    "clv_total": 0.0
-   },
-   {
-    "edge": 0.07,
-    "max_odds": 4.0,
-    "bets": 15,
-    "roi": 0.40667,
-    "clv": 0.1489,
-    "clv_total": 2.0846
-   },
-   {
-    "edge": 0.07,
-    "max_odds": 8.0,
     "bets": 18,
-    "roi": 0.17222,
-    "clv": 0.16128,
-    "clv_total": 2.74178
+    "roi": 0.31111,
+    "clv": 0.13791,
+    "clv_total": 2.4823
+   },
+   {
+    "edge": 0.05,
+    "max_odds": 2.5,
+    "bets": 0,
+    "roi": null,
+    "clv": null,
+    "clv_total": 0.0
+   },
+   {
+    "edge": 0.05,
+    "max_odds": 4.0,
+    "bets": 14,
+    "roi": 0.50714,
+    "clv": 0.13472,
+    "clv_total": 1.88608
+   },
+   {
+    "edge": 0.05,
+    "max_odds": 8.0,
+    "bets": 17,
+    "roi": 0.24118,
+    "clv": 0.14437,
+    "clv_total": 2.45421
+   },
+   {
+    "edge": 0.07,
+    "max_odds": 2.5,
+    "bets": 0,
+    "roi": null,
+    "clv": null,
+    "clv_total": 0.0
+   },
+   {
+    "edge": 0.07,
+    "max_odds": 4.0,
+    "bets": 14,
+    "roi": 0.50714,
+    "clv": 0.13472,
+    "clv_total": 1.88608
+   },
+   {
+    "edge": 0.07,
+    "max_odds": 8.0,
+    "bets": 17,
+    "roi": 0.24118,
+    "clv": 0.14437,
+    "clv_total": 2.45421
    },
    {
     "edge": 0.1,
     "max_odds": 2.5,
-    "bets": 1,
-    "roi": -1.0,
+    "bets": 0,
+    "roi": null,
     "clv": null,
     "clv_total": 0.0
    },
    {
     "edge": 0.1,
     "max_odds": 4.0,
-    "bets": 13,
-    "roi": 0.62308,
-    "clv": 0.15936,
-    "clv_total": 1.91237
+    "bets": 9,
+    "roi": 0.54444,
+    "clv": 0.17396,
+    "clv_total": 1.56564
    },
    {
     "edge": 0.1,
     "max_odds": 8.0,
-    "bets": 16,
-    "roi": 0.31875,
-    "clv": 0.1713,
-    "clv_total": 2.56955
+    "bets": 12,
+    "roi": 0.15833,
+    "clv": 0.17781,
+    "clv_total": 2.13376
    }
   ]
  },
- "by_league": [
-  {
-   "league": "D1",
-   "name": "Bundesliga",
-   "bets": 11,
-   "wins": 3,
-   "hit_rate": 0.27273,
-   "avg_odds": 4.45702,
-   "avg_edge": 0.19421,
-   "profit": 2.68,
-   "roi": 0.24364,
-   "roi_stderr": 0.64789,
-   "p_luck": 0.35344,
-   "clv": 0.05594,
-   "clv_positive": 0.81818
-  },
-  {
-   "league": "D2",
-   "name": "2. Bundesliga",
-   "bets": 15,
-   "wins": 7,
-   "hit_rate": 0.46667,
-   "avg_odds": 2.5248,
-   "avg_edge": 0.17246,
-   "profit": 0.8976,
-   "roi": 0.05984,
-   "roi_stderr": 0.32211,
-   "p_luck": 0.42631,
-   "clv": -0.07258,
-   "clv_positive": 0.2
-  },
-  {
-   "league": "E0",
-   "name": "Premier League",
-   "bets": 5,
-   "wins": 2,
-   "hit_rate": 0.4,
-   "avg_odds": 4.47936,
-   "avg_edge": 0.06494,
-   "profit": 5.56,
-   "roi": 1.112,
-   "roi_stderr": 1.37115,
-   "p_luck": 0.20868,
-   "clv": 0.05057,
-   "clv_positive": 0.8
-  },
-  {
-   "league": "E1",
-   "name": "Championship",
-   "bets": 8,
-   "wins": 2,
-   "hit_rate": 0.25,
-   "avg_odds": 3.7812,
-   "avg_edge": 0.02066,
-   "profit": -0.4832,
-   "roi": -0.0604,
-   "roi_stderr": 0.6197,
-   "p_luck": 0.53882,
-   "clv": 0.00451,
-   "clv_positive": 0.625
-  },
-  {
-   "league": "F1",
-   "name": "Ligue 1",
-   "bets": 5,
-   "wins": 1,
-   "hit_rate": 0.2,
-   "avg_odds": 4.992,
-   "avg_edge": 0.03248,
-   "profit": -1.16,
-   "roi": -0.232,
-   "roi_stderr": 0.768,
-   "p_luck": 0.61871,
-   "clv": -0.04694,
-   "clv_positive": 0.6
-  },
-  {
-   "league": "I1",
-   "name": "Serie A",
-   "bets": 4,
-   "wins": 1,
-   "hit_rate": 0.25,
-   "avg_odds": 5.76,
-   "avg_edge": 0.02449,
-   "profit": 1.28,
-   "roi": 0.32,
-   "roi_stderr": 1.32,
-   "p_luck": 0.40423,
-   "clv": 0.00144,
-   "clv_positive": 0.5
-  },
-  {
-   "league": "N1",
-   "name": "Eredivisie",
-   "bets": 26,
-   "wins": 9,
-   "hit_rate": 0.34615,
-   "avg_odds": 3.37735,
-   "avg_edge": 0.15219,
-   "profit": -6.5888,
-   "roi": -0.25342,
-   "roi_stderr": 0.25999,
-   "p_luck": 0.83515,
-   "clv": -0.07516,
-   "clv_positive": 0.11538
-  },
-  {
-   "league": "SP1",
-   "name": "La Liga",
-   "bets": 2,
-   "wins": 0,
-   "hit_rate": 0.0,
-   "avg_odds": 6.96,
-   "avg_edge": 0.01115,
-   "profit": -2.0,
-   "roi": -1.0,
-   "roi_stderr": 0.0,
-   "p_luck": null,
-   "clv": -0.07667,
-   "clv_positive": 0.0
-  },
-  {
-   "league": "SWZ",
-   "name": "Super League",
-   "bets": 7,
-   "wins": 5,
-   "hit_rate": 0.71429,
-   "avg_odds": 3.23931,
-   "avg_edge": 0.0526,
-   "profit": 6.056,
-   "roi": 0.86514,
-   "roi_stderr": 0.52481,
-   "p_luck": 0.04963,
-   "clv": 0.0526,
-   "clv_positive": 1.0
-  }
- ],
- "by_season": [
-  {
-   "season": "2022/23",
-   "bets": 16,
-   "wins": 6,
-   "hit_rate": 0.375,
-   "avg_odds": 4.8216,
-   "avg_edge": 0.05213,
-   "profit": 9.872,
-   "roi": 0.617,
-   "roi_stderr": 0.57218,
-   "p_luck": 0.14044,
-   "clv": 0.0679,
-   "clv_positive": 0.8125
-  },
-  {
-   "season": "2023/24",
-   "bets": 13,
-   "wins": 3,
-   "hit_rate": 0.23077,
-   "avg_odds": 5.19951,
-   "avg_edge": 0.04599,
-   "profit": 1.7168,
-   "roi": 0.13206,
-   "roi_stderr": 0.62287,
-   "p_luck": 0.41605,
-   "clv": -0.00696,
-   "clv_positive": 0.53846
-  },
-  {
-   "season": "2024/25",
-   "bets": 10,
-   "wins": 2,
-   "hit_rate": 0.2,
-   "avg_odds": 4.43808,
-   "avg_edge": 0.16145,
-   "profit": -1.84,
-   "roi": -0.184,
-   "roi_stderr": 0.55449,
-   "p_luck": 0.62999,
-   "clv": -0.05159,
-   "clv_positive": 0.4
-  },
-  {
-   "season": "2025/26",
-   "bets": 44,
-   "wins": 19,
-   "hit_rate": 0.43182,
-   "avg_odds": 2.79164,
-   "avg_edge": 0.15397,
-   "profit": -3.5072,
-   "roi": -0.07971,
-   "roi_stderr": 0.17521,
-   "p_luck": 0.67542,
-   "clv": -0.05983,
-   "clv_positive": 0.27273
-  }
- ],
+ "by_league": {
+  "sporttip": [
+   {
+    "league": "D1",
+    "name": "Bundesliga",
+    "bets": 8,
+    "wins": 2,
+    "hit_rate": 0.25,
+    "avg_odds": 4.2084,
+    "avg_edge": 0.08053,
+    "profit": 0.88,
+    "roi": 0.11,
+    "roi_stderr": 0.73546,
+    "p_luck": 0.44055,
+    "clv": 0.09068,
+    "clv_positive": 1.0
+   },
+   {
+    "league": "D2",
+    "name": "2. Bundesliga",
+    "bets": 1,
+    "wins": 1,
+    "hit_rate": 1.0,
+    "avg_odds": 1.6608,
+    "avg_edge": 0.19439,
+    "profit": 0.6608,
+    "roi": 0.6608,
+    "roi_stderr": null,
+    "p_luck": null,
+    "clv": -0.02424,
+    "clv_positive": 0.0
+   },
+   {
+    "league": "E0",
+    "name": "Premier League",
+    "bets": 1,
+    "wins": 0,
+    "hit_rate": 0.0,
+    "avg_odds": 4.1568,
+    "avg_edge": 0.1402,
+    "profit": -1.0,
+    "roi": -1.0,
+    "roi_stderr": null,
+    "p_luck": null,
+    "clv": 0.1402,
+    "clv_positive": 1.0
+   },
+   {
+    "league": "E1",
+    "name": "Championship",
+    "bets": 7,
+    "wins": 2,
+    "hit_rate": 0.28571,
+    "avg_odds": 3.42994,
+    "avg_edge": 0.02027,
+    "profit": 0.5168,
+    "roi": 0.07383,
+    "roi_stderr": 0.69858,
+    "p_luck": 0.45792,
+    "clv": -0.01151,
+    "clv_positive": 0.57143
+   },
+   {
+    "league": "F1",
+    "name": "Ligue 1",
+    "bets": 2,
+    "wins": 1,
+    "hit_rate": 0.5,
+    "avg_odds": 5.04,
+    "avg_edge": 0.02678,
+    "profit": 1.84,
+    "roi": 0.92,
+    "roi_stderr": 1.92,
+    "p_luck": 0.31591,
+    "clv": -0.00384,
+    "clv_positive": 0.5
+   },
+   {
+    "league": "I1",
+    "name": "Serie A",
+    "bets": 2,
+    "wins": 0,
+    "hit_rate": 0.0,
+    "avg_odds": 5.28,
+    "avg_edge": 0.02461,
+    "profit": -2.0,
+    "roi": -1.0,
+    "roi_stderr": 0.0,
+    "p_luck": null,
+    "clv": 0.05676,
+    "clv_positive": 1.0
+   },
+   {
+    "league": "N1",
+    "name": "Eredivisie",
+    "bets": 10,
+    "wins": 4,
+    "hit_rate": 0.4,
+    "avg_odds": 4.6848,
+    "avg_edge": 0.05879,
+    "profit": -0.448,
+    "roi": -0.0448,
+    "roi_stderr": 0.56625,
+    "p_luck": 0.53153,
+    "clv": -0.02937,
+    "clv_positive": 0.2
+   },
+   {
+    "league": "SWZ",
+    "name": "Super League",
+    "bets": 7,
+    "wins": 5,
+    "hit_rate": 0.71429,
+    "avg_odds": 3.23931,
+    "avg_edge": 0.05235,
+    "profit": 6.056,
+    "roi": 0.86514,
+    "roi_stderr": 0.52481,
+    "p_luck": 0.04963,
+    "clv": 0.05235,
+    "clv_positive": 1.0
+   }
+  ],
+  "book": [
+   {
+    "league": "D1",
+    "name": "Bundesliga",
+    "bets": 33,
+    "wins": 11,
+    "hit_rate": 0.33333,
+    "avg_odds": 4.16667,
+    "avg_edge": 0.04735,
+    "profit": 1.9,
+    "roi": 0.05758,
+    "roi_stderr": 0.33091,
+    "p_luck": 0.43094,
+    "clv": 0.03213,
+    "clv_positive": 0.72727
+   },
+   {
+    "league": "D2",
+    "name": "2. Bundesliga",
+    "bets": 50,
+    "wins": 17,
+    "hit_rate": 0.34,
+    "avg_odds": 3.5434,
+    "avg_edge": 0.02819,
+    "profit": 4.06,
+    "roi": 0.0812,
+    "roi_stderr": 0.22497,
+    "p_luck": 0.35907,
+    "clv": -0.00653,
+    "clv_positive": 0.4
+   },
+   {
+    "league": "E0",
+    "name": "Premier League",
+    "bets": 24,
+    "wins": 6,
+    "hit_rate": 0.25,
+    "avg_odds": 4.49833,
+    "avg_edge": 0.03093,
+    "profit": 0.86,
+    "roi": 0.03583,
+    "roi_stderr": 0.40687,
+    "p_luck": 0.46491,
+    "clv": 0.02381,
+    "clv_positive": 0.58333
+   },
+   {
+    "league": "E1",
+    "name": "Championship",
+    "bets": 73,
+    "wins": 19,
+    "hit_rate": 0.26027,
+    "avg_odds": 3.78959,
+    "avg_edge": 0.02713,
+    "profit": -7.49,
+    "roi": -0.1026,
+    "roi_stderr": 0.18162,
+    "p_luck": 0.71394,
+    "clv": 0.0027,
+    "clv_positive": 0.64384
+   },
+   {
+    "league": "F1",
+    "name": "Ligue 1",
+    "bets": 22,
+    "wins": 7,
+    "hit_rate": 0.31818,
+    "avg_odds": 4.64455,
+    "avg_edge": 0.02609,
+    "profit": 11.78,
+    "roi": 0.53545,
+    "roi_stderr": 0.50924,
+    "p_luck": 0.14652,
+    "clv": -0.00532,
+    "clv_positive": 0.54545
+   },
+   {
+    "league": "I1",
+    "name": "Serie A",
+    "bets": 22,
+    "wins": 7,
+    "hit_rate": 0.31818,
+    "avg_odds": 4.85909,
+    "avg_edge": 0.02926,
+    "profit": 8.5,
+    "roi": 0.38636,
+    "roi_stderr": 0.47048,
+    "p_luck": 0.20576,
+    "clv": 0.01482,
+    "clv_positive": 0.72727
+   },
+   {
+    "league": "N1",
+    "name": "Eredivisie",
+    "bets": 85,
+    "wins": 30,
+    "hit_rate": 0.35294,
+    "avg_odds": 4.36129,
+    "avg_edge": 0.03159,
+    "profit": 13.3,
+    "roi": 0.15647,
+    "roi_stderr": 0.20739,
+    "p_luck": 0.22529,
+    "clv": -0.00333,
+    "clv_positive": 0.48235
+   },
+   {
+    "league": "SP1",
+    "name": "La Liga",
+    "bets": 33,
+    "wins": 8,
+    "hit_rate": 0.24242,
+    "avg_odds": 4.17485,
+    "avg_edge": 0.02195,
+    "profit": -12.88,
+    "roi": -0.3903,
+    "roi_stderr": 0.22713,
+    "p_luck": 0.95714,
+    "clv": 0.01265,
+    "clv_positive": 0.57576
+   },
+   {
+    "league": "SWZ",
+    "name": "Super League",
+    "bets": 16,
+    "wins": 8,
+    "hit_rate": 0.5,
+    "avg_odds": 3.11813,
+    "avg_edge": 0.05243,
+    "profit": 5.74,
+    "roi": 0.35875,
+    "roi_stderr": 0.36831,
+    "p_luck": 0.16502,
+    "clv": 0.05243,
+    "clv_positive": 1.0
+   }
+  ],
+  "max": [
+   {
+    "league": "D1",
+    "name": "Bundesliga",
+    "bets": 448,
+    "wins": 202,
+    "hit_rate": 0.45089,
+    "avg_odds": 3.04638,
+    "avg_edge": 0.02787,
+    "profit": 44.27,
+    "roi": 0.09882,
+    "roi_stderr": 0.07003,
+    "p_luck": 0.07912,
+    "clv": 0.03018,
+    "clv_positive": 0.70089
+   },
+   {
+    "league": "D2",
+    "name": "2. Bundesliga",
+    "bets": 314,
+    "wins": 109,
+    "hit_rate": 0.34713,
+    "avg_odds": 3.12385,
+    "avg_edge": 0.02691,
+    "profit": -16.6,
+    "roi": -0.05287,
+    "roi_stderr": 0.07883,
+    "p_luck": 0.74878,
+    "clv": 0.01339,
+    "clv_positive": 0.57325
+   },
+   {
+    "league": "E0",
+    "name": "Premier League",
+    "bets": 622,
+    "wins": 263,
+    "hit_rate": 0.42283,
+    "avg_odds": 3.05859,
+    "avg_edge": 0.02612,
+    "profit": -19.76,
+    "roi": -0.03177,
+    "roi_stderr": 0.05477,
+    "p_luck": 0.71906,
+    "clv": 0.02033,
+    "clv_positive": 0.63505
+   },
+   {
+    "league": "E1",
+    "name": "Championship",
+    "bets": 496,
+    "wins": 185,
+    "hit_rate": 0.37298,
+    "avg_odds": 2.96679,
+    "avg_edge": 0.02524,
+    "profit": -12.64,
+    "roi": -0.02548,
+    "roi_stderr": 0.06185,
+    "p_luck": 0.65983,
+    "clv": 0.01604,
+    "clv_positive": 0.62097
+   },
+   {
+    "league": "F1",
+    "name": "Ligue 1",
+    "bets": 522,
+    "wins": 224,
+    "hit_rate": 0.42912,
+    "avg_odds": 2.99764,
+    "avg_edge": 0.02643,
+    "profit": 32.23,
+    "roi": 0.06174,
+    "roi_stderr": 0.06392,
+    "p_luck": 0.16705,
+    "clv": 0.02351,
+    "clv_positive": 0.71264
+   },
+   {
+    "league": "I1",
+    "name": "Serie A",
+    "bets": 673,
+    "wins": 272,
+    "hit_rate": 0.40416,
+    "avg_odds": 3.1023,
+    "avg_edge": 0.02683,
+    "profit": 23.08,
+    "roi": 0.03429,
+    "roi_stderr": 0.05539,
+    "p_luck": 0.2679,
+    "clv": 0.03011,
+    "clv_positive": 0.72957
+   },
+   {
+    "league": "N1",
+    "name": "Eredivisie",
+    "bets": 291,
+    "wins": 127,
+    "hit_rate": 0.43643,
+    "avg_odds": 3.32701,
+    "avg_edge": 0.02934,
+    "profit": 31.23,
+    "roi": 0.10732,
+    "roi_stderr": 0.09335,
+    "p_luck": 0.12513,
+    "clv": 0.0152,
+    "clv_positive": 0.61856
+   },
+   {
+    "league": "SP1",
+    "name": "La Liga",
+    "bets": 635,
+    "wins": 271,
+    "hit_rate": 0.42677,
+    "avg_odds": 3.03175,
+    "avg_edge": 0.02607,
+    "profit": 32.27,
+    "roi": 0.05082,
+    "roi_stderr": 0.0562,
+    "p_luck": 0.18292,
+    "clv": 0.02792,
+    "clv_positive": 0.71654
+   },
+   {
+    "league": "SWZ",
+    "name": "Super League",
+    "bets": 354,
+    "wins": 137,
+    "hit_rate": 0.38701,
+    "avg_odds": 3.01435,
+    "avg_edge": 0.04595,
+    "profit": 0.71,
+    "roi": 0.00201,
+    "roi_stderr": 0.07607,
+    "p_luck": 0.48948,
+    "clv": 0.04595,
+    "clv_positive": 1.0
+   }
+  ]
+ },
+ "by_season": {
+  "sporttip": [
+   {
+    "season": "2022/23",
+    "bets": 10,
+    "wins": 5,
+    "hit_rate": 0.5,
+    "avg_odds": 4.66656,
+    "avg_edge": 0.05409,
+    "profit": 10.592,
+    "roi": 1.0592,
+    "roi_stderr": 0.74631,
+    "p_luck": 0.07791,
+    "clv": 0.06814,
+    "clv_positive": 0.9
+   },
+   {
+    "season": "2023/24",
+    "bets": 6,
+    "wins": 1,
+    "hit_rate": 0.16667,
+    "avg_odds": 4.7056,
+    "avg_edge": 0.04879,
+    "profit": -1.8432,
+    "roi": -0.3072,
+    "roi_stderr": 0.6928,
+    "p_luck": 0.67127,
+    "clv": 0.03967,
+    "clv_positive": 0.66667
+   },
+   {
+    "season": "2024/25",
+    "bets": 8,
+    "wins": 1,
+    "hit_rate": 0.125,
+    "avg_odds": 4.4076,
+    "avg_edge": 0.03723,
+    "profit": -4.64,
+    "roi": -0.58,
+    "roi_stderr": 0.42,
+    "p_luck": 0.91635,
+    "clv": -0.01671,
+    "clv_positive": 0.5
+   },
+   {
+    "season": "2025/26",
+    "bets": 14,
+    "wins": 8,
+    "hit_rate": 0.57143,
+    "avg_odds": 3.10697,
+    "avg_edge": 0.07474,
+    "profit": 2.3968,
+    "roi": 0.1712,
+    "roi_stderr": 0.32998,
+    "p_luck": 0.30194,
+    "clv": 0.01098,
+    "clv_positive": 0.57143
+   }
+  ],
+  "book": [
+   {
+    "season": "2022/23",
+    "bets": 110,
+    "wins": 33,
+    "hit_rate": 0.3,
+    "avg_odds": 4.32673,
+    "avg_edge": 0.02882,
+    "profit": 14.22,
+    "roi": 0.12927,
+    "roi_stderr": 0.17936,
+    "p_luck": 0.23554,
+    "clv": 0.01807,
+    "clv_positive": 0.57273
+   },
+   {
+    "season": "2023/24",
+    "bets": 104,
+    "wins": 26,
+    "hit_rate": 0.25,
+    "avg_odds": 4.34163,
+    "avg_edge": 0.02795,
+    "profit": -6.1,
+    "roi": -0.05865,
+    "roi_stderr": 0.181,
+    "p_luck": 0.62705,
+    "clv": -0.00753,
+    "clv_positive": 0.51923
+   },
+   {
+    "season": "2024/25",
+    "bets": 85,
+    "wins": 31,
+    "hit_rate": 0.36471,
+    "avg_odds": 3.94259,
+    "avg_edge": 0.02791,
+    "profit": 19.24,
+    "roi": 0.22635,
+    "roi_stderr": 0.19792,
+    "p_luck": 0.12638,
+    "clv": 0.0151,
+    "clv_positive": 0.65882
+   },
+   {
+    "season": "2025/26",
+    "bets": 59,
+    "wins": 23,
+    "hit_rate": 0.38983,
+    "avg_odds": 3.45983,
+    "avg_edge": 0.04596,
+    "profit": -1.59,
+    "roi": -0.02695,
+    "roi_stderr": 0.1854,
+    "p_luck": 0.55779,
+    "clv": 0.00334,
+    "clv_positive": 0.61017
+   }
+  ],
+  "max": [
+   {
+    "season": "2022/23",
+    "bets": 1367,
+    "wins": 520,
+    "hit_rate": 0.3804,
+    "avg_odds": 3.14587,
+    "avg_edge": 0.02807,
+    "profit": -8.32,
+    "roi": -0.00609,
+    "roi_stderr": 0.03921,
+    "p_luck": 0.56168,
+    "clv": 0.02795,
+    "clv_positive": 0.71763
+   },
+   {
+    "season": "2023/24",
+    "bets": 1382,
+    "wins": 607,
+    "hit_rate": 0.43922,
+    "avg_odds": 2.97655,
+    "avg_edge": 0.02688,
+    "profit": 77.13,
+    "roi": 0.05581,
+    "roi_stderr": 0.03803,
+    "p_luck": 0.07112,
+    "clv": 0.02358,
+    "clv_positive": 0.70478
+   },
+   {
+    "season": "2024/25",
+    "bets": 1093,
+    "wins": 460,
+    "hit_rate": 0.42086,
+    "avg_odds": 2.96151,
+    "avg_edge": 0.02748,
+    "profit": 21.82,
+    "roi": 0.01996,
+    "roi_stderr": 0.04236,
+    "p_luck": 0.31874,
+    "clv": 0.02467,
+    "clv_positive": 0.69899
+   },
+   {
+    "season": "2025/26",
+    "bets": 513,
+    "wins": 203,
+    "hit_rate": 0.39571,
+    "avg_odds": 3.27823,
+    "avg_edge": 0.03384,
+    "profit": 24.16,
+    "roi": 0.0471,
+    "roi_stderr": 0.06629,
+    "p_luck": 0.23872,
+    "clv": 0.02245,
+    "clv_positive": 0.64327
+   }
+  ]
+ },
  "curves": {
   "combo|early|sporttip": [
    [
@@ -3115,320 +3494,140 @@
     -0.16
    ],
    [
-    "2022-10-29",
-    -1.16
-   ],
-   [
     "2022-11-13",
-    -0.05
-   ],
-   [
-    "2022-11-13",
-    -1.05
+    0.95
    ],
    [
     "2023-01-08",
-    3.71
-   ],
-   [
-    "2023-02-26",
-    7.99
-   ],
-   [
-    "2023-03-04",
-    6.99
-   ],
-   [
-    "2023-03-19",
-    11.03
-   ],
-   [
-    "2023-04-10",
-    10.03
-   ],
-   [
-    "2023-04-15",
-    12.87
-   ],
-   [
-    "2023-05-13",
-    11.87
-   ],
-   [
-    "2023-05-21",
-    10.87
-   ],
-   [
-    "2023-05-27",
-    9.87
-   ],
-   [
-    "2023-08-05",
-    13.03
-   ],
-   [
-    "2023-08-20",
-    12.03
-   ],
-   [
-    "2023-08-26",
-    17.75
-   ],
-   [
-    "2023-08-28",
-    16.75
-   ],
-   [
-    "2023-11-24",
-    15.75
-   ],
-   [
-    "2023-12-04",
-    14.75
-   ],
-   [
-    "2024-03-30",
-    13.75
-   ],
-   [
-    "2024-04-03",
-    16.59
-   ],
-   [
-    "2024-05-05",
-    15.59
-   ],
-   [
-    "2024-05-11",
-    14.59
-   ],
-   [
-    "2024-05-18",
-    13.59
-   ],
-   [
-    "2024-05-18",
-    12.59
-   ],
-   [
-    "2024-05-25",
-    11.59
-   ],
-   [
-    "2024-08-25",
-    10.59
-   ],
-   [
-    "2024-10-27",
-    9.59
-   ],
-   [
-    "2024-11-02",
-    8.59
-   ],
-   [
-    "2024-11-30",
-    10.95
-   ],
-   [
-    "2024-11-30",
-    9.95
-   ],
-   [
-    "2025-01-04",
-    8.95
-   ],
-   [
-    "2025-01-11",
-    7.95
-   ],
-   [
-    "2025-03-08",
-    6.95
-   ],
-   [
-    "2025-04-21",
-    5.95
-   ],
-   [
-    "2025-05-10",
-    9.75
-   ],
-   [
-    "2025-07-26",
-    8.75
-   ],
-   [
-    "2025-08-03",
-    10.82
-   ],
-   [
-    "2025-08-22",
-    9.82
-   ],
-   [
-    "2025-08-30",
-    10.79
-   ],
-   [
-    "2025-09-13",
-    12.14
-   ],
-   [
-    "2025-09-13",
-    11.14
-   ],
-   [
-    "2025-09-27",
-    10.14
-   ],
-   [
-    "2025-09-30",
-    9.14
-   ],
-   [
-    "2025-10-03",
-    8.14
-   ],
-   [
-    "2025-10-04",
-    10.69
-   ],
-   [
-    "2025-10-19",
-    9.69
-   ],
-   [
-    "2025-11-02",
-    10.56
-   ],
-   [
-    "2025-11-02",
-    11.68
-   ],
-   [
-    "2025-11-03",
-    10.68
-   ],
-   [
-    "2026-01-04",
-    9.68
-   ],
-   [
-    "2026-01-17",
-    8.68
-   ],
-   [
-    "2026-01-18",
-    7.68
-   ],
-   [
-    "2026-01-18",
-    6.68
-   ],
-   [
-    "2026-01-24",
-    5.68
-   ],
-   [
-    "2026-01-24",
-    6.31
-   ],
-   [
-    "2026-01-25",
-    6.51
-   ],
-   [
-    "2026-01-25",
-    5.51
-   ],
-   [
-    "2026-02-15",
-    6.48
-   ],
-   [
-    "2026-02-15",
-    7.73
-   ],
-   [
-    "2026-02-22",
-    8.29
-   ],
-   [
-    "2026-03-01",
-    7.29
-   ],
-   [
-    "2026-03-15",
-    7.54
-   ],
-   [
-    "2026-03-15",
-    7.88
-   ],
-   [
-    "2026-03-15",
-    6.88
-   ],
-   [
-    "2026-03-21",
-    5.88
-   ],
-   [
-    "2026-03-22",
-    4.88
-   ],
-   [
-    "2026-04-12",
-    5.44
-   ],
-   [
-    "2026-04-19",
-    7.89
-   ],
-   [
-    "2026-04-19",
-    9.05
-   ],
-   [
-    "2026-04-19",
-    8.05
-   ],
-   [
-    "2026-05-10",
-    7.05
-   ],
-   [
-    "2026-05-10",
-    6.05
-   ],
-   [
-    "2026-05-10",
-    5.05
-   ],
-   [
-    "2026-05-17",
     5.71
    ],
    [
-    "2026-05-17",
-    4.71
+    "2023-03-19",
+    9.75
+   ],
+   [
+    "2023-04-15",
+    12.59
+   ],
+   [
+    "2023-05-13",
+    11.59
+   ],
+   [
+    "2023-05-27",
+    10.59
+   ],
+   [
+    "2023-08-05",
+    13.75
+   ],
+   [
+    "2023-08-20",
+    12.75
+   ],
+   [
+    "2023-11-24",
+    11.75
+   ],
+   [
+    "2024-05-18",
+    10.75
+   ],
+   [
+    "2024-05-18",
+    9.75
+   ],
+   [
+    "2024-05-25",
+    8.75
+   ],
+   [
+    "2024-08-25",
+    7.75
+   ],
+   [
+    "2024-10-27",
+    6.75
+   ],
+   [
+    "2024-11-02",
+    5.75
+   ],
+   [
+    "2024-11-30",
+    8.11
+   ],
+   [
+    "2025-01-04",
+    7.11
+   ],
+   [
+    "2025-01-11",
+    6.11
+   ],
+   [
+    "2025-03-08",
+    5.11
+   ],
+   [
+    "2025-04-21",
+    4.11
+   ],
+   [
+    "2025-07-26",
+    3.11
+   ],
+   [
+    "2025-08-03",
+    5.18
+   ],
+   [
+    "2025-08-30",
+    6.15
+   ],
+   [
+    "2025-09-13",
+    7.5
+   ],
+   [
+    "2025-09-13",
+    6.5
+   ],
+   [
+    "2025-09-27",
+    5.5
+   ],
+   [
+    "2025-09-30",
+    4.5
+   ],
+   [
+    "2025-10-03",
+    3.5
+   ],
+   [
+    "2025-10-04",
+    6.05
+   ],
+   [
+    "2025-11-03",
+    5.05
+   ],
+   [
+    "2026-01-25",
+    5.25
+   ],
+   [
+    "2026-03-15",
+    5.5
+   ],
+   [
+    "2026-03-15",
+    5.84
    ],
    [
     "2026-05-17",
-    3.71
-   ],
-   [
-    "2026-05-17",
-    5.48
-   ],
-   [
-    "2026-05-17",
-    4.48
-   ],
-   [
-    "2026-05-17",
-    6.24
+    6.51
    ]
   ],
   "combo|late|sporttip": [
@@ -3478,507 +3677,479 @@
    ],
    [
     "2023-04-15",
-    -3.04
-   ],
-   [
-    "2023-04-15",
-    -0.2
+    0.8
    ],
    [
     "2023-04-29",
-    -1.2
+    -0.2
    ],
    [
     "2023-05-13",
-    -2.2
+    -1.2
    ],
    [
     "2023-05-27",
-    -3.2
-   ],
-   [
-    "2023-06-04",
-    -0.05
-   ],
-   [
-    "2023-08-19",
-    -1.05
-   ],
-   [
-    "2023-09-27",
-    -2.05
-   ],
-   [
-    "2023-10-07",
-    -3.05
-   ],
-   [
-    "2024-01-14",
-    -0.4
-   ],
-   [
-    "2024-01-27",
-    2.2
-   ],
-   [
-    "2024-02-10",
-    1.2
-   ],
-   [
-    "2024-02-25",
-    0.2
-   ],
-   [
-    "2024-03-16",
-    -0.8
-   ],
-   [
-    "2024-03-30",
-    -1.8
-   ],
-   [
-    "2024-03-30",
-    -2.8
-   ],
-   [
-    "2024-05-11",
-    -3.8
-   ],
-   [
-    "2024-05-18",
-    -4.8
-   ],
-   [
-    "2024-05-18",
-    -5.8
-   ],
-   [
-    "2024-05-25",
-    -6.8
-   ],
-   [
-    "2024-08-09",
-    -7.8
-   ],
-   [
-    "2024-09-25",
-    -8.8
-   ],
-   [
-    "2024-10-26",
-    -5.96
-   ],
-   [
-    "2024-10-27",
-    -6.96
-   ],
-   [
-    "2024-11-02",
-    -4.69
-   ],
-   [
-    "2024-12-15",
-    -5.69
-   ],
-   [
-    "2025-01-04",
-    -6.69
-   ],
-   [
-    "2025-01-25",
-    -3.54
-   ],
-   [
-    "2025-02-02",
-    -0.94
-   ],
-   [
-    "2025-04-18",
-    -1.94
-   ],
-   [
-    "2025-04-26",
-    -2.94
-   ],
-   [
-    "2025-05-11",
-    -3.94
-   ],
-   [
-    "2025-05-18",
-    -4.94
-   ],
-   [
-    "2025-08-08",
-    -5.94
-   ],
-   [
-    "2025-08-09",
-    -5.11
-   ],
-   [
-    "2025-08-09",
-    -4.79
-   ],
-   [
-    "2025-08-09",
-    -3.68
-   ],
-   [
-    "2025-08-10",
-    -2.37
-   ],
-   [
-    "2025-08-16",
-    -3.37
-   ],
-   [
-    "2025-08-16",
-    -4.37
-   ],
-   [
-    "2025-08-16",
-    -5.37
-   ],
-   [
-    "2025-08-16",
-    -4.64
-   ],
-   [
-    "2025-08-17",
-    -5.64
-   ],
-   [
-    "2025-08-22",
-    -6.64
-   ],
-   [
-    "2025-08-23",
-    -5.24
-   ],
-   [
-    "2025-08-23",
-    -6.24
-   ],
-   [
-    "2025-08-23",
-    -5.13
-   ],
-   [
-    "2025-08-23",
-    -6.13
-   ],
-   [
-    "2025-08-23",
-    -7.13
-   ],
-   [
-    "2025-08-24",
-    -8.13
-   ],
-   [
-    "2025-08-24",
-    -9.13
-   ],
-   [
-    "2025-08-24",
-    -10.13
-   ],
-   [
-    "2025-08-29",
-    -7.68
-   ],
-   [
-    "2025-08-30",
-    -8.68
-   ],
-   [
-    "2025-08-30",
-    -6.51
-   ],
-   [
-    "2025-08-30",
-    -7.51
-   ],
-   [
-    "2025-08-30",
-    -5.74
-   ],
-   [
-    "2025-08-30",
-    -4.78
-   ],
-   [
-    "2025-08-30",
-    -5.78
-   ],
-   [
-    "2025-08-30",
-    -3.9
-   ],
-   [
-    "2025-08-31",
-    -4.9
-   ],
-   [
-    "2025-08-31",
-    -5.9
-   ],
-   [
-    "2025-08-31",
-    -6.9
-   ],
-   [
-    "2025-09-12",
-    -6.29
-   ],
-   [
-    "2025-09-13",
-    -2.49
-   ],
-   [
-    "2025-09-13",
-    -1.14
-   ],
-   [
-    "2025-09-13",
-    -2.14
-   ],
-   [
-    "2025-09-13",
-    -1.03
-   ],
-   [
-    "2025-09-13",
-    -2.03
-   ],
-   [
-    "2025-09-14",
-    -3.03
-   ],
-   [
-    "2025-09-14",
     -2.2
    ],
    [
-    "2025-09-15",
-    -3.2
+    "2023-06-04",
+    0.95
    ],
    [
-    "2025-09-20",
-    -4.2
+    "2023-10-07",
+    -0.05
    ],
    [
-    "2025-09-20",
+    "2024-01-14",
+    2.6
+   ],
+   [
+    "2024-01-27",
+    5.2
+   ],
+   [
+    "2024-02-10",
+    4.2
+   ],
+   [
+    "2024-02-25",
+    3.2
+   ],
+   [
+    "2024-03-16",
+    2.2
+   ],
+   [
+    "2024-03-30",
+    1.2
+   ],
+   [
+    "2024-03-30",
+    0.2
+   ],
+   [
+    "2024-05-11",
+    -0.8
+   ],
+   [
+    "2024-05-18",
+    -1.8
+   ],
+   [
+    "2024-05-18",
+    -2.8
+   ],
+   [
+    "2024-05-25",
+    -3.8
+   ],
+   [
+    "2024-05-25",
+    -4.8
+   ],
+   [
+    "2024-08-09",
+    -5.8
+   ],
+   [
+    "2024-09-25",
+    -6.8
+   ],
+   [
+    "2024-10-26",
+    -3.96
+   ],
+   [
+    "2024-10-27",
+    -4.96
+   ],
+   [
+    "2024-11-02",
+    -2.69
+   ],
+   [
+    "2024-12-15",
+    -3.69
+   ],
+   [
+    "2025-01-04",
+    -4.69
+   ],
+   [
+    "2025-01-25",
+    -1.54
+   ],
+   [
+    "2025-02-02",
+    1.06
+   ],
+   [
+    "2025-04-18",
+    0.06
+   ],
+   [
+    "2025-04-26",
+    -0.94
+   ],
+   [
+    "2025-05-11",
+    -1.94
+   ],
+   [
+    "2025-05-17",
+    -1.79
+   ],
+   [
+    "2025-05-18",
+    -2.79
+   ],
+   [
+    "2025-08-08",
+    -3.79
+   ],
+   [
+    "2025-08-09",
+    -2.96
+   ],
+   [
+    "2025-08-09",
+    -2.64
+   ],
+   [
+    "2025-08-09",
+    -1.52
+   ],
+   [
+    "2025-08-10",
+    -0.22
+   ],
+   [
+    "2025-08-16",
+    -1.22
+   ],
+   [
+    "2025-08-16",
+    -2.22
+   ],
+   [
+    "2025-08-16",
+    -3.22
+   ],
+   [
+    "2025-08-16",
+    -2.49
+   ],
+   [
+    "2025-08-17",
+    -3.49
+   ],
+   [
+    "2025-08-23",
+    -2.09
+   ],
+   [
+    "2025-08-23",
+    -3.09
+   ],
+   [
+    "2025-08-23",
+    -1.98
+   ],
+   [
+    "2025-08-23",
+    -2.98
+   ],
+   [
+    "2025-08-23",
+    -3.98
+   ],
+   [
+    "2025-08-23",
+    -4.98
+   ],
+   [
+    "2025-08-24",
+    -5.98
+   ],
+   [
+    "2025-08-24",
+    -6.98
+   ],
+   [
+    "2025-08-24",
+    -7.98
+   ],
+   [
+    "2025-08-29",
+    -5.52
+   ],
+   [
+    "2025-08-30",
+    -6.52
+   ],
+   [
+    "2025-08-30",
+    -4.36
+   ],
+   [
+    "2025-08-30",
+    -5.36
+   ],
+   [
+    "2025-08-30",
+    -3.59
+   ],
+   [
+    "2025-08-30",
+    -2.62
+   ],
+   [
+    "2025-08-30",
+    -3.62
+   ],
+   [
+    "2025-08-30",
+    -1.74
+   ],
+   [
+    "2025-08-31",
+    -2.74
+   ],
+   [
+    "2025-08-31",
+    -3.74
+   ],
+   [
+    "2025-09-12",
     -3.14
    ],
    [
-    "2025-09-20",
-    -4.14
+    "2025-09-13",
+    0.66
+   ],
+   [
+    "2025-09-13",
+    2.01
+   ],
+   [
+    "2025-09-13",
+    1.01
+   ],
+   [
+    "2025-09-13",
+    2.12
+   ],
+   [
+    "2025-09-13",
+    1.12
+   ],
+   [
+    "2025-09-14",
+    0.12
+   ],
+   [
+    "2025-09-14",
+    0.95
+   ],
+   [
+    "2025-09-15",
+    -0.05
    ],
    [
     "2025-09-20",
-    -5.14
+    -1.05
    ],
    [
     "2025-09-20",
-    -6.14
+    0.01
+   ],
+   [
+    "2025-09-20",
+    -0.99
+   ],
+   [
+    "2025-09-20",
+    -1.99
+   ],
+   [
+    "2025-09-20",
+    -2.99
    ],
    [
     "2025-09-21",
-    -7.14
+    -3.99
    ],
    [
     "2025-09-21",
-    -8.14
+    -4.99
    ],
    [
     "2025-09-21",
-    -9.14
+    -5.99
    ],
    [
     "2025-09-24",
-    -10.14
+    -6.99
    ],
    [
     "2025-09-27",
-    -11.14
+    -7.99
    ],
    [
     "2025-09-27",
-    -10.08
+    -6.92
    ],
    [
     "2025-09-27",
-    -11.08
+    -7.92
    ],
    [
     "2025-09-27",
-    -12.08
+    -8.92
    ],
    [
     "2025-09-27",
-    -11.22
+    -8.07
    ],
    [
     "2025-09-28",
-    -12.22
+    -9.07
    ],
    [
     "2025-09-28",
-    -13.22
+    -10.07
    ],
    [
     "2025-09-28",
-    -14.22
+    -11.07
    ],
    [
     "2025-10-03",
-    -15.22
+    -12.07
    ],
    [
     "2025-10-04",
-    -16.22
+    -8.75
    ],
    [
     "2025-10-04",
-    -12.9
+    -9.75
    ],
    [
     "2025-10-04",
-    -13.9
+    -7.2
    ],
    [
     "2025-10-04",
-    -11.35
-   ],
-   [
-    "2025-10-04",
-    -12.35
+    -8.2
    ],
    [
     "2025-10-05",
-    -13.35
+    -9.2
    ],
    [
     "2025-10-05",
-    -14.35
+    -10.2
    ],
    [
     "2025-10-18",
-    -15.35
-   ],
-   [
-    "2025-10-18",
-    -16.35
+    -11.2
    ],
    [
     "2025-10-19",
-    -17.35
+    -12.2
    ],
    [
     "2025-10-19",
-    -18.35
+    -13.2
    ],
    [
     "2025-10-19",
-    -19.35
+    -14.2
    ],
    [
     "2025-10-22",
-    -18.45
+    -13.3
    ],
    [
     "2025-10-24",
-    -19.45
+    -14.3
    ],
    [
     "2025-10-24",
-    -20.45
+    -15.3
    ],
    [
     "2025-10-24",
-    -21.45
+    -16.3
    ],
    [
     "2025-10-25",
-    -20.62
+    -15.47
    ],
    [
     "2025-10-25",
-    -18.55
+    -13.39
    ],
    [
     "2025-10-25",
-    -19.55
+    -14.39
    ],
    [
     "2025-10-25",
-    -20.55
+    -15.39
    ],
    [
     "2025-10-25",
-    -21.55
+    -16.39
    ],
    [
     "2025-10-25",
-    -22.55
+    -17.39
    ],
    [
     "2025-10-25",
-    -23.55
+    -18.39
    ],
    [
     "2025-10-26",
-    -24.55
+    -19.39
    ],
    [
     "2025-10-26",
-    -23.48
+    -18.33
    ],
    [
     "2025-10-26",
-    -22.66
-   ],
-   [
-    "2025-10-26",
-    -23.66
+    -17.51
    ],
    [
     "2025-11-01",
-    -24.66
+    -18.51
    ],
    [
     "2025-11-01",
-    -25.66
-   ],
-   [
-    "2025-11-02",
-    -26.66
-   ],
-   [
-    "2025-11-26",
-    -27.66
+    -19.51
    ],
    [
     "2025-12-10",
-    -28.66
+    -20.51
    ],
    [
     "2025-12-10",
-    -26.3
+    -18.15
    ],
    [
     "2025-12-10",
-    -25.54
+    -19.15
    ],
    [
     "2026-01-14",
-    -24.43
+    -18.03
    ],
    [
     "2026-02-13",
-    -18.23
+    -11.83
    ]
   ],
   "combo|early|book": [
@@ -4051,39 +4222,39 @@
     10.15
    ],
    [
-    "2022-09-05",
+    "2022-09-10",
     9.15
    ],
    [
-    "2022-09-10",
+    "2022-09-17",
     8.15
    ],
    [
-    "2022-09-10",
+    "2022-09-17",
     7.15
    ],
    [
-    "2022-09-17",
+    "2022-09-18",
     6.15
    ],
    [
-    "2022-09-17",
+    "2022-09-18",
     5.15
    ],
    [
-    "2022-09-18",
+    "2022-10-01",
     4.15
    ],
    [
-    "2022-09-18",
+    "2022-10-01",
     3.15
    ],
    [
-    "2022-10-01",
+    "2022-10-02",
     2.15
    ],
    [
-    "2022-10-01",
+    "2022-10-02",
     1.15
    ],
    [
@@ -4091,1604 +4262,1328 @@
     0.15
    ],
    [
-    "2022-10-02",
+    "2022-10-04",
     -0.85
    ],
    [
-    "2022-10-02",
-    -1.85
-   ],
-   [
-    "2022-10-04",
-    -2.85
+    "2022-10-16",
+    1.35
    ],
    [
     "2022-10-16",
-    0.9
-   ],
-   [
-    "2022-10-16",
-    3.1
-   ],
-   [
-    "2022-10-16",
-    7.35
+    5.6
    ],
    [
     "2022-10-19",
-    6.35
+    4.6
    ],
    [
     "2022-10-19",
-    5.35
+    3.6
    ],
    [
     "2022-10-22",
-    4.35
+    2.6
    ],
    [
     "2022-10-22",
-    3.35
+    1.6
    ],
    [
     "2022-10-22",
-    2.35
+    0.6
    ],
    [
     "2022-10-23",
-    9.35
-   ],
-   [
-    "2022-10-23",
-    10.55
+    1.8
    ],
    [
     "2022-10-29",
-    9.55
+    0.8
    ],
    [
     "2022-10-29",
-    8.55
+    -0.2
    ],
    [
     "2022-11-04",
-    7.55
+    -1.2
    ],
    [
     "2022-11-05",
-    6.55
+    -2.2
    ],
    [
     "2022-11-05",
-    9.15
-   ],
-   [
-    "2022-11-05",
-    8.15
+    -3.2
    ],
    [
     "2022-11-06",
-    7.15
-   ],
-   [
-    "2022-11-06",
-    6.15
+    -4.2
    ],
    [
     "2022-11-08",
-    5.15
+    -5.2
    ],
    [
     "2022-11-09",
-    4.15
+    -6.2
    ],
    [
     "2022-11-12",
-    9.65
+    -0.7
    ],
    [
     "2022-11-13",
-    10.85
+    0.5
    ],
    [
     "2022-11-13",
-    9.85
+    -0.5
    ],
    [
     "2022-12-26",
-    8.85
+    -1.5
    ],
    [
     "2023-01-04",
-    12.05
+    1.7
    ],
    [
     "2023-01-08",
-    17.05
-   ],
-   [
-    "2023-01-25",
-    16.05
+    6.7
    ],
    [
     "2023-01-28",
-    15.05
+    6.99
+   ],
+   [
+    "2023-01-28",
+    5.99
    ],
    [
     "2023-01-29",
-    14.05
+    4.99
    ],
    [
     "2023-02-01",
-    13.05
+    3.99
    ],
    [
     "2023-02-05",
-    12.05
+    2.99
    ],
    [
     "2023-02-18",
-    11.05
+    1.99
    ],
    [
     "2023-02-19",
-    10.05
-   ],
-   [
-    "2023-02-24",
-    9.05
+    0.99
    ],
    [
     "2023-02-25",
-    8.05
-   ],
-   [
-    "2023-02-25",
-    11.05
+    3.99
    ],
    [
     "2023-02-26",
-    15.55
+    8.49
    ],
    [
     "2023-02-26",
-    14.55
+    7.49
    ],
    [
     "2023-03-04",
-    13.55
+    6.49
    ],
    [
     "2023-03-04",
-    12.55
+    5.49
    ],
    [
     "2023-03-04",
-    11.55
+    4.49
    ],
    [
     "2023-03-04",
-    10.55
+    3.49
    ],
    [
     "2023-03-11",
-    9.55
+    2.49
    ],
    [
     "2023-03-11",
-    8.55
+    1.49
    ],
    [
     "2023-03-12",
-    11.05
+    3.99
    ],
    [
     "2023-03-12",
-    13.55
+    6.49
    ],
    [
     "2023-03-19",
-    17.8
+    10.74
    ],
    [
     "2023-03-19",
-    16.8
+    9.74
    ],
    [
     "2023-04-01",
-    15.8
+    8.74
    ],
    [
     "2023-04-01",
-    14.8
-   ],
-   [
-    "2023-04-01",
-    13.8
+    7.74
    ],
    [
     "2023-04-02",
-    16.3
+    10.24
    ],
    [
     "2023-04-02",
-    22.3
+    16.24
    ],
    [
     "2023-04-08",
-    21.3
+    15.24
    ],
    [
     "2023-04-08",
-    20.3
+    14.24
    ],
    [
     "2023-04-09",
-    22.7
+    16.64
    ],
    [
     "2023-04-10",
-    21.7
+    15.64
    ],
    [
     "2023-04-10",
-    20.7
+    14.64
    ],
    [
     "2023-04-10",
-    19.7
+    13.64
    ],
    [
     "2023-04-10",
-    18.7
+    12.64
+   ],
+   [
+    "2023-04-14",
+    13.44
    ],
    [
     "2023-04-15",
-    21.7
+    16.44
    ],
    [
     "2023-04-16",
-    20.7
+    15.44
    ],
    [
     "2023-04-22",
-    24.2
+    18.94
    ],
    [
     "2023-04-22",
-    23.2
-   ],
-   [
-    "2023-04-22",
-    27.7
+    17.94
    ],
    [
     "2023-04-23",
-    26.7
+    16.94
    ],
    [
     "2023-04-27",
-    25.7
+    15.94
    ],
    [
     "2023-04-30",
-    24.7
+    14.94
    ],
    [
     "2023-04-30",
-    27.0
-   ],
-   [
-    "2023-04-30",
-    26.0
+    17.24
    ],
    [
     "2023-05-04",
-    25.0
+    16.24
    ],
    [
     "2023-05-05",
-    24.0
+    15.24
    ],
    [
     "2023-05-06",
-    26.5
+    17.74
    ],
    [
     "2023-05-07",
-    25.5
+    16.74
    ],
    [
     "2023-05-07",
-    24.5
+    15.74
    ],
    [
     "2023-05-07",
-    23.5
+    14.74
    ],
    [
     "2023-05-07",
-    22.5
+    13.74
    ],
    [
     "2023-05-07",
-    21.5
+    12.74
    ],
    [
     "2023-05-08",
-    27.0
-   ],
-   [
-    "2023-05-08",
-    29.0
+    14.74
    ],
    [
     "2023-05-13",
-    28.0
+    13.74
    ],
    [
     "2023-05-20",
-    27.0
+    12.74
    ],
    [
     "2023-05-21",
-    26.0
+    11.74
    ],
    [
     "2023-05-21",
-    28.5
+    14.24
    ],
    [
     "2023-05-21",
-    27.5
+    14.53
    ],
    [
     "2023-05-21",
-    26.5
+    13.53
+   ],
+   [
+    "2023-05-21",
+    12.53
    ],
    [
     "2023-05-25",
-    27.59
+    13.62
    ],
    [
     "2023-05-27",
-    26.59
+    12.62
    ],
    [
     "2023-05-28",
-    25.59
+    11.62
    ],
    [
     "2023-05-28",
-    28.19
+    14.22
    ],
    [
     "2023-08-05",
-    31.52
+    17.55
    ],
    [
     "2023-08-12",
-    30.52
+    16.55
    ],
    [
     "2023-08-13",
-    36.02
+    22.05
    ],
    [
     "2023-08-19",
-    35.02
+    21.05
    ],
    [
     "2023-08-19",
-    34.02
+    20.05
    ],
    [
     "2023-08-19",
-    33.02
+    19.05
    ],
    [
     "2023-08-19",
-    32.02
+    18.05
    ],
    [
     "2023-08-20",
-    31.02
-   ],
-   [
-    "2023-08-20",
-    30.02
+    17.05
    ],
    [
     "2023-08-26",
-    36.02
+    23.05
    ],
    [
     "2023-08-27",
-    38.77
-   ],
-   [
-    "2023-08-27",
-    41.97
-   ],
-   [
-    "2023-08-27",
-    40.97
+    25.8
    ],
    [
     "2023-08-28",
-    39.97
-   ],
-   [
-    "2023-09-02",
-    38.97
+    24.8
    ],
    [
     "2023-09-03",
-    37.97
+    23.8
    ],
    [
     "2023-09-03",
-    40.57
+    26.4
    ],
    [
     "2023-09-03",
-    39.57
+    25.4
    ],
    [
     "2023-09-03",
-    38.57
+    24.4
    ],
    [
     "2023-09-16",
-    44.07
+    29.9
    ],
    [
     "2023-09-17",
-    43.07
+    28.9
    ],
    [
     "2023-09-17",
-    42.07
+    27.9
    ],
    [
     "2023-09-20",
-    41.07
-   ],
-   [
-    "2023-09-23",
-    40.07
+    26.9
    ],
    [
     "2023-09-24",
-    43.4
+    30.23
    ],
    [
     "2023-09-24",
-    42.4
+    29.23
    ],
    [
     "2023-09-26",
-    41.4
+    28.23
    ],
    [
     "2023-09-30",
-    40.4
+    27.23
    ],
    [
     "2023-09-30",
-    39.4
-   ],
-   [
-    "2023-10-07",
-    43.9
+    26.23
    ],
    [
     "2023-10-21",
-    42.9
+    25.23
    ],
    [
     "2023-10-22",
-    41.9
+    24.23
    ],
    [
     "2023-10-22",
-    44.8
+    27.13
    ],
    [
     "2023-10-22",
-    43.8
+    26.13
    ],
    [
     "2023-10-27",
-    42.8
+    25.13
    ],
    [
     "2023-10-28",
-    41.8
+    24.13
    ],
    [
     "2023-11-04",
-    40.8
+    23.13
    ],
    [
     "2023-11-04",
-    39.8
+    22.13
    ],
    [
     "2023-11-04",
-    38.8
+    21.13
    ],
    [
     "2023-11-05",
-    37.8
-   ],
-   [
-    "2023-11-05",
-    36.8
-   ],
-   [
-    "2023-11-05",
-    40.8
+    20.13
    ],
    [
     "2023-11-24",
-    39.8
+    19.13
    ],
    [
     "2023-12-02",
-    38.8
+    18.13
    ],
    [
     "2023-12-02",
-    37.8
-   ],
-   [
-    "2023-12-02",
-    40.4
+    20.73
    ],
    [
     "2023-12-04",
-    39.4
+    19.73
    ],
    [
     "2023-12-06",
-    43.15
+    23.48
    ],
    [
     "2023-12-10",
-    45.9
+    23.7
    ],
    [
     "2023-12-13",
-    44.9
-   ],
-   [
-    "2023-12-16",
-    43.9
+    22.7
    ],
    [
     "2023-12-18",
-    42.9
-   ],
-   [
-    "2023-12-22",
-    41.9
+    21.7
    ],
    [
     "2023-12-23",
-    40.9
+    20.7
    ],
    [
     "2023-12-26",
-    39.9
+    19.7
    ],
    [
     "2023-12-29",
-    38.9
+    18.7
    ],
    [
     "2024-01-13",
-    45.4
+    25.2
    ],
    [
     "2024-01-14",
-    44.4
+    24.2
    ],
    [
     "2024-01-14",
-    47.2
+    27.0
+   ],
+   [
+    "2024-01-20",
+    27.91
+   ],
+   [
+    "2024-01-24",
+    28.09
    ],
    [
     "2024-01-26",
-    46.2
+    27.09
    ],
    [
     "2024-01-28",
-    45.2
+    26.09
    ],
    [
     "2024-01-30",
-    44.2
+    25.09
    ],
    [
     "2024-02-04",
-    47.4
+    28.29
    ],
    [
     "2024-02-11",
-    49.8
+    30.69
    ],
    [
     "2024-02-18",
-    48.8
+    29.69
    ],
    [
     "2024-02-18",
-    47.8
+    28.69
+   ],
+   [
+    "2024-02-18",
+    28.82
    ],
    [
     "2024-02-24",
-    46.8
+    27.82
    ],
    [
     "2024-02-24",
-    50.55
+    31.02
    ],
    [
     "2024-02-24",
-    53.75
+    30.02
    ],
    [
     "2024-02-24",
-    52.75
-   ],
-   [
-    "2024-02-24",
-    51.75
+    29.02
    ],
    [
     "2024-02-25",
-    50.75
+    28.02
    ],
    [
     "2024-03-03",
-    49.75
+    27.02
    ],
    [
     "2024-03-09",
-    48.75
+    26.02
    ],
    [
     "2024-03-09",
-    51.75
+    25.02
    ],
    [
     "2024-03-09",
-    50.75
-   ],
-   [
-    "2024-03-09",
-    53.25
+    27.52
    ],
    [
     "2024-03-10",
-    52.25
-   ],
-   [
-    "2024-03-10",
-    56.0
+    26.52
    ],
    [
     "2024-03-16",
-    55.0
+    25.52
    ],
    [
     "2024-03-17",
-    54.0
+    24.52
    ],
    [
     "2024-03-17",
-    53.0
+    23.52
    ],
    [
     "2024-03-30",
-    52.0
+    22.52
    ],
    [
     "2024-03-30",
-    51.0
+    21.52
    ],
    [
     "2024-03-30",
-    50.0
+    20.52
    ],
    [
     "2024-03-31",
-    49.0
+    19.52
    ],
    [
     "2024-04-03",
-    52.0
+    22.52
    ],
    [
     "2024-04-04",
-    54.6
+    25.12
    ],
    [
     "2024-04-07",
-    53.6
+    24.12
+   ],
+   [
+    "2024-04-09",
+    23.12
    ],
    [
     "2024-04-10",
-    52.6
-   ],
-   [
-    "2024-04-12",
-    51.6
+    22.12
    ],
    [
     "2024-04-13",
-    50.6
+    21.12
    ],
    [
     "2024-04-13",
-    49.6
+    20.12
+   ],
+   [
+    "2024-04-13",
+    20.34
    ],
    [
     "2024-04-14",
-    48.6
+    19.34
+   ],
+   [
+    "2024-04-14",
+    18.34
    ],
    [
     "2024-04-20",
-    47.6
+    17.34
    ],
    [
     "2024-04-25",
-    46.6
+    16.34
    ],
    [
     "2024-04-25",
-    45.6
+    15.34
    ],
    [
     "2024-04-27",
-    44.6
+    14.34
    ],
    [
     "2024-04-28",
-    47.35
+    13.34
    ],
    [
     "2024-04-28",
-    46.35
-   ],
-   [
-    "2024-04-28",
-    45.35
+    12.34
    ],
    [
     "2024-05-03",
-    46.73
+    13.72
    ],
    [
     "2024-05-04",
-    45.73
+    12.72
    ],
    [
     "2024-05-05",
-    44.73
-   ],
-   [
-    "2024-05-05",
-    43.73
+    11.72
    ],
    [
     "2024-05-11",
-    42.73
+    10.72
    ],
    [
     "2024-05-12",
-    41.73
+    9.72
    ],
    [
     "2024-05-12",
-    40.73
+    8.72
    ],
    [
     "2024-05-18",
-    39.73
+    7.72
    ],
    [
     "2024-05-18",
-    38.73
+    6.72
    ],
    [
     "2024-05-19",
-    37.73
+    5.72
    ],
    [
     "2024-05-19",
-    39.63
+    7.62
    ],
    [
     "2024-05-19",
-    42.13
+    10.12
    ],
    [
     "2024-05-19",
-    41.13
-   ],
-   [
-    "2024-05-19",
-    40.13
+    9.12
    ],
    [
     "2024-05-25",
-    39.13
-   ],
-   [
-    "2024-08-17",
-    38.13
+    8.12
    ],
    [
     "2024-08-24",
-    40.53
-   ],
-   [
-    "2024-08-24",
-    39.53
-   ],
-   [
-    "2024-08-24",
-    38.53
+    10.52
    ],
    [
     "2024-08-25",
-    37.53
+    9.52
+   ],
+   [
+    "2024-09-01",
+    9.65
    ],
    [
     "2024-09-14",
-    36.53
+    8.65
    ],
    [
     "2024-09-14",
-    35.53
-   ],
-   [
-    "2024-09-15",
-    34.53
-   ],
-   [
-    "2024-09-17",
-    33.53
+    7.65
    ],
    [
     "2024-09-21",
-    32.53
+    6.65
    ],
    [
     "2024-09-22",
-    31.53
+    5.65
    ],
    [
     "2024-09-22",
-    30.53
+    4.65
    ],
    [
     "2024-09-22",
-    29.53
+    3.65
    ],
    [
     "2024-09-24",
-    35.53
-   ],
-   [
-    "2024-09-28",
-    34.53
-   ],
-   [
-    "2024-09-28",
-    37.28
-   ],
-   [
-    "2024-09-28",
-    43.28
+    9.65
    ],
    [
     "2024-10-06",
-    42.28
+    8.65
    ],
    [
     "2024-10-06",
-    47.53
+    13.9
    ],
    [
     "2024-10-19",
-    46.53
+    12.9
    ],
    [
     "2024-10-19",
-    45.53
+    11.9
    ],
    [
     "2024-10-21",
-    44.53
+    10.9
    ],
    [
     "2024-10-23",
-    47.03
+    13.4
    ],
    [
     "2024-10-26",
-    49.63
+    16.0
    ],
    [
     "2024-10-26",
-    48.63
-   ],
-   [
-    "2024-10-26",
-    51.38
+    15.0
    ],
    [
     "2024-10-27",
-    50.38
+    14.0
    ],
    [
     "2024-10-27",
-    52.48
+    16.1
    ],
    [
     "2024-10-27",
-    51.48
+    15.1
    ],
    [
     "2024-10-28",
-    53.58
+    17.2
    ],
    [
     "2024-11-02",
-    52.58
+    16.2
    ],
    [
     "2024-11-02",
-    51.58
+    15.2
    ],
    [
     "2024-11-03",
-    50.58
+    14.2
    ],
    [
     "2024-11-04",
-    49.58
+    13.2
    ],
    [
     "2024-11-07",
-    51.88
+    15.5
    ],
    [
     "2024-11-09",
-    50.88
+    15.75
+   ],
+   [
+    "2024-11-09",
+    14.75
    ],
    [
     "2024-11-10",
-    49.88
+    13.75
    ],
    [
     "2024-11-10",
-    48.88
+    12.75
+   ],
+   [
+    "2024-11-23",
+    12.89
    ],
    [
     "2024-11-24",
-    47.88
+    11.89
+   ],
+   [
+    "2024-11-24",
+    12.31
    ],
    [
     "2024-11-26",
-    50.28
+    14.71
    ],
    [
     "2024-11-30",
-    52.78
+    17.21
    ],
    [
     "2024-11-30",
-    51.78
+    16.21
    ],
    [
     "2024-12-01",
-    50.78
+    15.21
    ],
    [
     "2024-12-08",
-    49.78
+    14.21
    ],
    [
     "2024-12-11",
-    48.78
-   ],
-   [
-    "2024-12-15",
-    47.78
-   ],
-   [
-    "2024-12-15",
-    46.78
+    13.21
    ],
    [
     "2024-12-21",
-    45.78
+    12.21
    ],
    [
     "2024-12-22",
-    44.78
+    11.21
    ],
    [
     "2024-12-29",
-    43.78
+    10.21
    ],
    [
     "2025-01-04",
-    42.78
+    9.21
    ],
    [
     "2025-01-04",
-    45.18
+    11.61
    ],
    [
     "2025-01-05",
-    48.51
+    14.94
    ],
    [
     "2025-01-11",
-    47.51
+    13.94
    ],
    [
     "2025-01-11",
-    46.51
+    12.94
    ],
    [
     "2025-01-12",
-    45.51
+    13.27
    ],
    [
     "2025-01-17",
-    47.81
+    15.57
    ],
    [
     "2025-01-18",
-    46.81
+    14.57
    ],
    [
     "2025-01-18",
-    50.31
+    18.07
    ],
    [
     "2025-01-18",
-    53.21
+    20.97
    ],
    [
     "2025-01-19",
-    52.21
+    19.97
    ],
    [
     "2025-01-19",
-    51.21
+    18.97
    ],
    [
     "2025-01-22",
-    50.21
+    17.97
    ],
    [
     "2025-01-25",
-    49.21
+    16.97
    ],
    [
     "2025-01-25",
-    48.21
+    15.97
    ],
    [
     "2025-01-26",
-    47.21
-   ],
-   [
-    "2025-01-26",
-    52.21
+    14.97
    ],
    [
     "2025-01-27",
-    54.51
+    17.27
    ],
    [
     "2025-02-01",
-    53.51
+    16.27
    ],
    [
     "2025-02-15",
-    55.71
+    18.47
    ],
    [
     "2025-02-15",
-    54.71
-   ],
-   [
-    "2025-02-15",
-    58.46
+    17.47
    ],
    [
     "2025-02-16",
-    62.21
-   ],
-   [
-    "2025-02-22",
-    61.21
+    21.22
    ],
    [
     "2025-02-23",
-    60.21
+    20.22
    ],
    [
     "2025-02-28",
-    59.21
+    19.22
    ],
    [
     "2025-03-01",
-    58.21
+    18.22
    ],
    [
     "2025-03-02",
-    57.21
+    17.22
    ],
    [
     "2025-03-02",
-    56.21
+    16.22
    ],
    [
     "2025-03-02",
-    55.21
+    15.22
    ],
    [
     "2025-03-08",
-    54.21
+    14.22
    ],
    [
     "2025-03-08",
-    53.21
-   ],
-   [
-    "2025-03-08",
-    52.21
+    13.22
    ],
    [
     "2025-03-09",
-    51.21
-   ],
-   [
-    "2025-03-15",
-    54.01
+    12.22
    ],
    [
     "2025-03-16",
-    53.01
+    11.22
    ],
    [
     "2025-03-29",
-    52.01
+    10.22
    ],
    [
     "2025-04-05",
-    54.26
-   ],
-   [
-    "2025-04-05",
-    57.26
+    12.47
    ],
    [
     "2025-04-06",
-    59.96
+    15.17
    ],
    [
     "2025-04-12",
-    58.96
-   ],
-   [
-    "2025-04-12",
-    61.21
+    17.42
    ],
    [
     "2025-04-20",
-    65.46
+    21.67
    ],
    [
     "2025-04-21",
-    64.46
-   ],
-   [
-    "2025-04-21",
-    63.46
-   ],
-   [
-    "2025-04-21",
-    62.46
+    20.67
    ],
    [
     "2025-04-26",
-    65.36
+    23.57
    ],
    [
     "2025-04-28",
-    67.86
+    26.07
    ],
    [
     "2025-05-03",
-    69.86
-   ],
-   [
-    "2025-05-03",
-    68.86
-   ],
-   [
-    "2025-05-10",
-    72.86
-   ],
-   [
-    "2025-05-14",
-    71.86
+    28.07
    ],
    [
     "2025-05-15",
-    70.86
+    27.07
    ],
    [
     "2025-05-18",
-    71.15
+    27.36
    ],
    [
     "2025-07-26",
-    70.15
+    26.36
    ],
    [
     "2025-07-27",
-    69.15
+    25.36
    ],
    [
     "2025-07-27",
-    68.15
+    24.36
    ],
    [
     "2025-08-03",
-    70.35
+    26.56
    ],
    [
     "2025-08-22",
-    69.35
+    25.56
    ],
    [
     "2025-08-23",
-    68.35
+    24.56
    ],
    [
     "2025-08-30",
-    69.4
+    25.61
    ],
    [
     "2025-09-13",
-    68.4
+    24.61
    ],
    [
     "2025-09-13",
-    69.85
+    26.06
    ],
    [
     "2025-09-13",
-    68.85
+    25.06
    ],
    [
     "2025-09-14",
-    67.85
+    24.06
    ],
    [
     "2025-09-14",
-    66.85
+    23.06
    ],
    [
     "2025-09-15",
-    65.85
-   ],
-   [
-    "2025-09-20",
-    64.85
-   ],
-   [
-    "2025-09-20",
-    63.85
+    22.06
    ],
    [
     "2025-09-25",
-    66.1
+    24.31
    ],
    [
     "2025-09-27",
-    65.1
+    23.31
    ],
    [
     "2025-09-27",
-    64.1
+    22.31
    ],
    [
     "2025-09-30",
-    63.1
+    21.31
    ],
    [
     "2025-09-30",
-    62.1
+    20.31
    ],
    [
     "2025-09-30",
-    66.6
+    24.81
    ],
    [
     "2025-10-03",
-    65.6
+    23.81
    ],
    [
     "2025-10-04",
-    68.3
+    26.51
    ],
    [
     "2025-10-18",
-    68.5
+    26.71
    ],
    [
     "2025-10-19",
-    67.5
+    25.71
    ],
    [
     "2025-10-19",
-    66.5
+    24.71
    ],
    [
     "2025-10-24",
-    65.5
+    23.71
    ],
    [
     "2025-10-24",
-    68.6
+    26.81
    ],
    [
     "2025-10-25",
-    67.6
+    25.81
    ],
    [
     "2025-10-25",
-    68.4
+    26.71
+   ],
+   [
+    "2025-10-25",
+    27.51
    ],
    [
     "2025-11-01",
-    67.4
-   ],
-   [
-    "2025-11-02",
-    66.4
-   ],
-   [
-    "2025-11-02",
-    67.35
-   ],
-   [
-    "2025-11-02",
-    68.55
+    26.51
    ],
    [
     "2025-11-03",
-    67.55
+    25.51
    ],
    [
     "2025-11-08",
-    66.55
+    24.51
    ],
    [
     "2025-11-09",
-    65.55
+    23.51
    ],
    [
     "2025-11-24",
-    64.55
+    22.51
    ],
    [
     "2025-11-29",
-    63.55
+    21.51
    ],
    [
     "2025-11-29",
-    62.55
+    20.51
    ],
    [
     "2025-12-13",
-    65.55
+    20.64
    ],
    [
     "2025-12-20",
-    68.15
+    23.24
    ],
    [
     "2025-12-21",
-    67.15
-   ],
-   [
-    "2026-01-01",
-    66.15
+    22.24
    ],
    [
     "2026-01-04",
-    65.15
+    21.24
    ],
    [
     "2026-01-13",
-    65.9
+    21.64
    ],
    [
     "2026-01-13",
-    64.9
+    22.39
    ],
    [
-    "2026-01-17",
-    63.9
-   ],
-   [
-    "2026-01-18",
-    62.9
-   ],
-   [
-    "2026-01-18",
-    61.9
+    "2026-01-13",
+    21.39
    ],
    [
     "2026-01-24",
-    62.55
-   ],
-   [
-    "2026-01-24",
-    61.55
-   ],
-   [
-    "2026-01-24",
-    62.25
+    22.04
    ],
    [
     "2026-01-25",
-    62.5
-   ],
-   [
-    "2026-01-25",
-    61.5
+    22.29
    ],
    [
     "2026-02-07",
-    64.0
+    24.79
    ],
    [
     "2026-02-11",
-    63.0
-   ],
-   [
-    "2026-02-15",
-    64.05
-   ],
-   [
-    "2026-02-15",
-    65.4
+    23.79
    ],
    [
     "2026-02-22",
-    66.95
-   ],
-   [
-    "2026-02-22",
-    67.57
-   ],
-   [
-    "2026-03-01",
-    66.57
+    25.34
    ],
    [
     "2026-03-15",
-    66.87
+    25.64
    ],
    [
     "2026-03-15",
-    67.27
-   ],
-   [
-    "2026-03-15",
-    66.27
-   ],
-   [
-    "2026-03-21",
-    65.27
-   ],
-   [
-    "2026-03-22",
-    64.27
+    26.04
    ],
    [
     "2026-04-06",
-    66.77
+    28.54
    ],
    [
     "2026-04-12",
-    65.77
+    27.54
    ],
    [
     "2026-04-12",
-    64.77
-   ],
-   [
-    "2026-04-12",
-    65.39
+    26.54
    ],
    [
     "2026-04-18",
-    64.39
-   ],
-   [
-    "2026-04-19",
-    66.99
-   ],
-   [
-    "2026-04-19",
-    68.24
-   ],
-   [
-    "2026-04-19",
-    67.24
+    25.54
    ],
    [
     "2026-04-26",
-    66.24
-   ],
-   [
-    "2026-05-10",
-    65.24
-   ],
-   [
-    "2026-05-10",
-    64.24
-   ],
-   [
-    "2026-05-10",
-    63.24
+    24.54
    ],
    [
     "2026-05-14",
-    65.74
+    27.04
    ],
    [
     "2026-05-16",
-    64.74
+    26.04
    ],
    [
     "2026-05-17",
-    65.47
+    26.77
    ],
    [
     "2026-05-17",
-    64.47
-   ],
-   [
-    "2026-05-17",
-    63.47
-   ],
-   [
-    "2026-05-17",
-    65.35
-   ],
-   [
-    "2026-05-17",
-    64.35
-   ],
-   [
-    "2026-05-17",
-    66.23
+    25.77
    ]
   ],
   "combo|early|max": [
@@ -5697,1280 +5592,1248 @@
     1.7
    ],
    [
-    "2022-07-24",
-    1.09
+    "2022-07-29",
+    2.72
    ],
    [
     "2022-08-06",
-    3.14
+    4.56
    ],
    [
     "2022-08-07",
-    6.03
+    11.75
    ],
    [
-    "2022-08-12",
-    12.25
+    "2022-08-07",
+    18.3
    ],
    [
     "2022-08-13",
-    18.68
+    28.95
    ],
    [
     "2022-08-14",
-    31.39
+    30.88
    ],
    [
     "2022-08-16",
-    32.79
+    32.76
    ],
    [
     "2022-08-20",
-    37.14
+    36.11
    ],
    [
     "2022-08-21",
-    31.69
-   ],
-   [
-    "2022-08-26",
-    30.16
+    31.04
    ],
    [
     "2022-08-27",
-    23.12
+    25.48
+   ],
+   [
+    "2022-08-27",
+    20.2
    ],
    [
     "2022-08-28",
-    21.8
+    23.33
    ],
    [
-    "2022-08-28",
-    23.71
+    "2022-08-30",
+    22.23
    ],
    [
     "2022-08-31",
-    20.55
-   ],
-   [
-    "2022-09-02",
-    18.32
+    20.08
    ],
    [
     "2022-09-03",
-    12.67
+    17.43
+   ],
+   [
+    "2022-09-03",
+    10.42
    ],
    [
     "2022-09-04",
-    8.44
+    8.8
    ],
    [
-    "2022-09-04",
-    8.02
-   ],
-   [
-    "2022-09-09",
-    10.41
+    "2022-09-05",
+    9.25
    ],
    [
     "2022-09-10",
-    1.17
+    10.49
    ],
    [
     "2022-09-11",
-    3.7
+    10.55
    ],
    [
     "2022-09-17",
-    -7.3
+    0.02
    ],
    [
     "2022-09-17",
-    -9.54
+    -4.22
    ],
    [
     "2022-09-18",
-    -16.35
+    -7.71
    ],
    [
     "2022-10-01",
-    -23.62
-   ],
-   [
-    "2022-10-02",
-    -27.14
-   ],
-   [
-    "2022-10-02",
-    -22.27
-   ],
-   [
-    "2022-10-08",
-    -22.59
-   ],
-   [
-    "2022-10-08",
-    -15.3
-   ],
-   [
-    "2022-10-09",
-    -16.73
-   ],
-   [
-    "2022-10-10",
-    -13.22
-   ],
-   [
-    "2022-10-15",
-    -11.77
-   ],
-   [
-    "2022-10-16",
-    -5.1
-   ],
-   [
-    "2022-10-16",
-    0.1
-   ],
-   [
-    "2022-10-16",
-    3.38
-   ],
-   [
-    "2022-10-19",
-    -1.84
-   ],
-   [
-    "2022-10-21",
-    -7.44
-   ],
-   [
-    "2022-10-22",
-    -6.3
-   ],
-   [
-    "2022-10-23",
-    -17.43
-   ],
-   [
-    "2022-10-23",
-    -9.05
-   ],
-   [
-    "2022-10-29",
-    -5.28
-   ],
-   [
-    "2022-10-29",
-    -12.68
-   ],
-   [
-    "2022-10-30",
-    -4.6
-   ],
-   [
-    "2022-11-05",
-    -10.42
-   ],
-   [
-    "2022-11-05",
-    -15.88
-   ],
-   [
-    "2022-11-06",
-    -10.92
-   ],
-   [
-    "2022-11-08",
-    -9.45
-   ],
-   [
-    "2022-11-09",
-    -5.69
-   ],
-   [
-    "2022-11-11",
-    -14.13
-   ],
-   [
-    "2022-11-12",
-    -27.13
-   ],
-   [
-    "2022-11-13",
-    -22.14
-   ],
-   [
-    "2022-12-11",
     -12.01
    ],
    [
-    "2022-12-28",
-    -10.47
+    "2022-10-02",
+    -13.37
    ],
    [
-    "2023-01-01",
-    -21.49
+    "2022-10-02",
+    -9.42
+   ],
+   [
+    "2022-10-08",
+    -6.96
+   ],
+   [
+    "2022-10-08",
+    -2.55
+   ],
+   [
+    "2022-10-09",
+    -1.32
+   ],
+   [
+    "2022-10-10",
+    0.83
+   ],
+   [
+    "2022-10-15",
+    2.96
+   ],
+   [
+    "2022-10-16",
+    6.39
+   ],
+   [
+    "2022-10-16",
+    7.46
+   ],
+   [
+    "2022-10-17",
+    11.36
+   ],
+   [
+    "2022-10-19",
+    2.51
+   ],
+   [
+    "2022-10-22",
+    6.9
+   ],
+   [
+    "2022-10-23",
+    -1.44
+   ],
+   [
+    "2022-10-23",
+    -6.79
+   ],
+   [
+    "2022-10-28",
+    0.97
+   ],
+   [
+    "2022-10-29",
+    0.07
+   ],
+   [
+    "2022-10-30",
+    6.25
+   ],
+   [
+    "2022-11-05",
+    2.98
+   ],
+   [
+    "2022-11-05",
+    2.36
+   ],
+   [
+    "2022-11-06",
+    2.56
+   ],
+   [
+    "2022-11-08",
+    4.29
+   ],
+   [
+    "2022-11-09",
+    4.25
+   ],
+   [
+    "2022-11-11",
+    -5.19
+   ],
+   [
+    "2022-11-12",
+    -13.09
+   ],
+   [
+    "2022-11-13",
+    -6.62
+   ],
+   [
+    "2022-12-26",
+    -0.4
+   ],
+   [
+    "2022-12-31",
+    -4.72
    ],
    [
     "2023-01-02",
-    -18.02
+    -2.25
    ],
    [
-    "2023-01-07",
-    -19.04
+    "2023-01-05",
+    -4.79
    ],
    [
     "2023-01-11",
-    -10.83
+    0.42
    ],
    [
     "2023-01-14",
-    -19.86
+    -9.61
    ],
    [
-    "2023-01-16",
-    -15.89
+    "2023-01-20",
+    -8.22
    ],
    [
     "2023-01-21",
-    -7.77
+    -2.34
    ],
    [
     "2023-01-22",
-    -7.95
+    -0.03
    ],
    [
-    "2023-01-27",
-    -3.18
-   ],
-   [
-    "2023-01-29",
-    -2.78
+    "2023-01-28",
+    7.3
    ],
    [
     "2023-01-29",
-    -8.33
+    2.37
+   ],
+   [
+    "2023-02-01",
+    -0.33
    ],
    [
     "2023-02-04",
-    -8.61
+    -3.37
    ],
    [
     "2023-02-05",
-    -6.73
+    4.44
    ],
    [
-    "2023-02-05",
-    -7.53
-   ],
-   [
-    "2023-02-12",
-    -14.51
+    "2023-02-11",
+    -1.64
    ],
    [
     "2023-02-18",
-    -14.87
+    -7.87
    ],
    [
-    "2023-02-21",
-    -24.25
+    "2023-02-24",
+    -12.06
    ],
    [
     "2023-02-25",
-    -23.67
+    -14.13
    ],
    [
-    "2023-02-26",
-    -27.82
+    "2023-03-03",
+    -16.98
    ],
    [
     "2023-03-04",
-    -36.58
+    -22.35
    ],
    [
-    "2023-03-05",
-    -34.33
-   ],
-   [
-    "2023-03-11",
-    -39.38
+    "2023-03-06",
+    -17.54
    ],
    [
     "2023-03-12",
-    -28.81
+    -19.46
    ],
    [
-    "2023-03-18",
-    -28.35
+    "2023-03-17",
+    -10.32
    ],
    [
     "2023-03-19",
-    -25.19
+    -15.25
    ],
    [
     "2023-04-01",
-    -26.47
+    -25.77
+   ],
+   [
+    "2023-04-01",
+    -19.74
    ],
    [
     "2023-04-02",
-    -23.2
-   ],
-   [
-    "2023-04-04",
-    -22.4
+    -9.91
    ],
    [
     "2023-04-08",
-    -29.4
+    -11.76
    ],
    [
     "2023-04-10",
-    -22.72
+    -6.08
    ],
    [
     "2023-04-15",
-    -18.49
+    -9.02
    ],
    [
-    "2023-04-19",
-    -13.56
+    "2023-04-21",
+    -6.64
    ],
    [
     "2023-04-22",
-    -8.27
+    -2.35
    ],
    [
     "2023-04-23",
-    -4.1
+    -2.67
    ],
    [
-    "2023-04-25",
-    4.33
+    "2023-04-27",
+    12.26
    ],
    [
     "2023-04-29",
-    11.16
+    16.97
    ],
    [
     "2023-04-30",
-    13.55
+    10.67
    ],
    [
-    "2023-05-03",
-    4.16
-   ],
-   [
-    "2023-05-05",
-    11.56
+    "2023-05-04",
+    7.0
    ],
    [
     "2023-05-07",
-    12.24
+    12.82
    ],
    [
-    "2023-05-12",
-    15.85
+    "2023-05-08",
+    12.38
    ],
    [
     "2023-05-14",
-    15.74
+    9.82
    ],
    [
-    "2023-05-20",
-    12.48
-   ],
-   [
-    "2023-05-21",
-    11.65
+    "2023-05-19",
+    11.2
    ],
    [
     "2023-05-21",
-    11.23
+    5.17
+   ],
+   [
+    "2023-05-21",
+    5.04
+   ],
+   [
+    "2023-05-25",
+    3.2
    ],
    [
     "2023-05-27",
-    15.15
-   ],
-   [
-    "2023-05-27",
-    10.95
+    1.01
    ],
    [
     "2023-05-28",
-    2.68
+    -8.4
    ],
    [
-    "2023-05-29",
-    2.84
+    "2023-05-28",
+    -6.52
    ],
    [
-    "2023-06-04",
-    1.09
+    "2023-06-03",
+    -10.64
    ],
    [
-    "2023-07-29",
-    6.49
+    "2023-07-28",
+    -8.67
    ],
    [
     "2023-08-06",
-    4.89
+    -9.86
    ],
    [
     "2023-08-12",
-    2.79
+    -12.22
    ],
    [
     "2023-08-13",
-    13.61
+    -7.95
    ],
    [
     "2023-08-19",
-    15.36
+    -4.29
    ],
    [
     "2023-08-19",
-    13.43
+    -10.04
    ],
    [
     "2023-08-20",
-    5.8
-   ],
-   [
-    "2023-08-25",
-    -2.22
+    -15.5
    ],
    [
     "2023-08-26",
-    11.57
+    -13.15
+   ],
+   [
+    "2023-08-26",
+    -16.14
    ],
    [
     "2023-08-27",
-    15.08
+    -15.51
    ],
    [
-    "2023-09-01",
-    5.6
-   ],
-   [
-    "2023-09-03",
-    7.63
+    "2023-09-02",
+    -19.31
    ],
    [
     "2023-09-03",
-    8.12
+    -14.32
+   ],
+   [
+    "2023-09-16",
+    -13.62
    ],
    [
     "2023-09-17",
-    26.41
+    -0.9
    ],
    [
-    "2023-09-20",
-    17.37
+    "2023-09-22",
+    -10.13
    ],
    [
     "2023-09-23",
-    13.74
+    -11.32
    ],
    [
     "2023-09-24",
-    11.47
+    -16.77
    ],
    [
-    "2023-09-24",
-    16.48
+    "2023-09-26",
+    -11.31
    ],
    [
-    "2023-09-27",
-    11.21
+    "2023-09-28",
+    -12.8
    ],
    [
     "2023-09-30",
-    7.73
+    -17.57
    ],
    [
     "2023-10-01",
-    10.71
+    -16.89
    ],
    [
     "2023-10-04",
-    1.93
+    -25.12
    ],
    [
     "2023-10-07",
-    9.98
+    -23.83
    ],
    [
     "2023-10-08",
-    14.28
+    -18.36
    ],
    [
     "2023-10-21",
-    20.27
+    -15.66
    ],
    [
     "2023-10-21",
-    15.64
+    -17.19
    ],
    [
-    "2023-10-23",
-    17.22
+    "2023-10-22",
+    -18.6
    ],
    [
     "2023-10-28",
-    23.89
+    -10.07
+   ],
+   [
+    "2023-10-28",
+    -1.91
    ],
    [
     "2023-10-29",
-    30.09
-   ],
-   [
-    "2023-10-29",
-    27.67
+    -1.15
    ],
    [
     "2023-11-04",
-    38.57
+    3.06
    ],
    [
     "2023-11-05",
-    34.52
+    -2.41
+   ],
+   [
+    "2023-11-10",
+    -10.43
    ],
    [
     "2023-11-11",
-    42.04
+    -5.28
    ],
    [
     "2023-11-12",
-    37.82
+    -9.32
    ],
    [
     "2023-11-25",
-    29.9
+    -12.68
    ],
    [
     "2023-11-26",
-    33.65
+    -14.78
    ],
    [
-    "2023-11-28",
-    29.49
+    "2023-12-01",
+    -12.83
    ],
    [
     "2023-12-02",
-    25.25
+    -16.63
    ],
    [
     "2023-12-03",
-    25.82
+    -11.93
    ],
    [
-    "2023-12-03",
-    33.2
+    "2023-12-04",
+    -9.28
    ],
    [
-    "2023-12-06",
-    35.4
+    "2023-12-08",
+    -1.51
    ],
    [
     "2023-12-09",
-    46.11
+    2.41
    ],
    [
     "2023-12-10",
-    41.26
+    -1.01
    ],
    [
-    "2023-12-10",
-    42.17
-   ],
-   [
-    "2023-12-15",
-    47.12
+    "2023-12-11",
+    -0.37
    ],
    [
     "2023-12-16",
-    41.57
+    3.67
    ],
    [
     "2023-12-17",
-    43.88
+    6.78
    ],
    [
-    "2023-12-19",
-    45.44
+    "2023-12-17",
+    3.35
    ],
    [
     "2023-12-20",
-    49.17
+    6.82
    ],
    [
-    "2023-12-23",
-    54.25
+    "2023-12-21",
+    14.92
    ],
    [
-    "2023-12-28",
-    42.89
+    "2023-12-26",
+    2.98
    ],
    [
-    "2023-12-30",
-    41.09
+    "2023-12-29",
+    -2.18
    ],
    [
-    "2024-01-05",
-    38.52
+    "2024-01-01",
+    -5.05
    ],
    [
-    "2024-01-13",
-    53.36
+    "2024-01-07",
+    -1.62
    ],
    [
     "2024-01-14",
-    51.56
+    11.21
    ],
    [
-    "2024-01-23",
-    56.98
+    "2024-01-21",
+    11.27
    ],
    [
     "2024-01-27",
-    50.59
+    8.38
    ],
    [
     "2024-01-28",
-    46.88
+    3.35
    ],
    [
     "2024-01-31",
-    47.86
+    4.7
    ],
    [
     "2024-02-03",
-    46.53
+    2.63
    ],
    [
     "2024-02-04",
-    42.17
+    9.73
    ],
    [
     "2024-02-09",
-    42.39
+    12.16
    ],
    [
     "2024-02-10",
-    40.35
+    9.91
    ],
    [
-    "2024-02-13",
-    50.91
+    "2024-02-12",
+    15.5
    ],
    [
     "2024-02-17",
-    45.76
+    12.93
    ],
    [
     "2024-02-18",
-    47.12
+    14.82
+   ],
+   [
+    "2024-02-18",
+    17.95
    ],
    [
     "2024-02-24",
-    53.81
-   ],
-   [
-    "2024-02-24",
-    55.19
+    23.36
    ],
    [
     "2024-02-25",
-    59.94
+    19.74
    ],
    [
     "2024-03-02",
-    53.81
+    20.85
+   ],
+   [
+    "2024-03-02",
+    20.17
    ],
    [
     "2024-03-03",
-    59.75
+    27.53
    ],
    [
     "2024-03-09",
-    61.13
-   ],
-   [
-    "2024-03-09",
-    72.04
+    32.2
    ],
    [
     "2024-03-10",
-    74.57
+    37.92
    ],
    [
-    "2024-03-16",
-    82.04
+    "2024-03-11",
+    35.69
+   ],
+   [
+    "2024-03-17",
+    42.89
    ],
    [
     "2024-03-30",
-    84.75
+    42.89
    ],
    [
     "2024-03-30",
-    95.17
+    47.87
    ],
    [
     "2024-04-01",
-    99.13
+    55.81
    ],
    [
-    "2024-04-04",
-    102.71
+    "2024-04-05",
+    55.85
    ],
    [
     "2024-04-06",
-    103.59
+    52.47
    ],
    [
     "2024-04-07",
-    103.03
+    54.38
    ],
    [
     "2024-04-13",
-    93.68
+    46.99
    ],
    [
     "2024-04-14",
-    92.03
+    49.26
+   ],
+   [
+    "2024-04-19",
+    50.67
    ],
    [
     "2024-04-20",
-    99.37
-   ],
-   [
-    "2024-04-21",
-    97.83
+    48.79
    ],
    [
     "2024-04-22",
-    93.34
+    45.52
    ],
    [
     "2024-04-26",
-    86.94
+    39.64
    ],
    [
     "2024-04-27",
-    86.05
+    37.75
    ],
    [
     "2024-05-03",
-    90.13
+    39.56
    ],
    [
     "2024-05-05",
-    84.35
+    34.34
+   ],
+   [
+    "2024-05-10",
+    46.72
    ],
    [
     "2024-05-11",
-    93.09
+    48.15
    ],
    [
     "2024-05-12",
-    97.68
+    52.02
    ],
    [
-    "2024-05-12",
-    99.13
+    "2024-05-15",
+    55.29
    ],
    [
     "2024-05-18",
-    104.55
+    57.57
    ],
    [
     "2024-05-19",
-    96.48
+    61.33
    ],
    [
     "2024-05-19",
-    105.44
+    63.86
    ],
    [
-    "2024-05-25",
-    107.27
+    "2024-05-26",
+    62.63
    ],
    [
-    "2024-08-09",
-    122.02
+    "2024-08-10",
+    78.29
    ],
    [
     "2024-08-17",
-    123.42
+    80.87
    ],
    [
     "2024-08-18",
-    117.81
+    83.15
    ],
    [
     "2024-08-24",
-    121.04
+    81.37
    ],
    [
     "2024-08-25",
-    120.75
+    84.46
    ],
    [
     "2024-08-31",
-    125.1
+    87.43
    ],
    [
     "2024-08-31",
-    123.83
+    87.95
    ],
    [
     "2024-09-01",
-    117.36
+    83.73
    ],
    [
     "2024-09-14",
-    115.94
+    84.49
    ],
    [
-    "2024-09-16",
-    112.04
+    "2024-09-15",
+    82.3
    ],
    [
     "2024-09-21",
-    115.32
+    83.53
+   ],
+   [
+    "2024-09-21",
+    87.62
    ],
    [
     "2024-09-22",
-    120.39
-   ],
-   [
-    "2024-09-27",
-    125.9
+    84.23
    ],
    [
     "2024-09-28",
-    133.53
+    90.81
    ],
    [
-    "2024-09-30",
-    148.8
+    "2024-09-29",
+    99.24
    ],
    [
     "2024-10-05",
-    139.57
+    92.34
    ],
    [
-    "2024-10-18",
-    144.73
+    "2024-10-06",
+    82.56
    ],
    [
     "2024-10-19",
-    136.49
+    84.81
+   ],
+   [
+    "2024-10-19",
+    87.75
    ],
    [
     "2024-10-20",
-    134.26
-   ],
-   [
-    "2024-10-25",
-    131.84
+    84.11
    ],
    [
     "2024-10-26",
-    126.88
+    80.14
    ],
    [
     "2024-10-27",
-    131.02
+    80.84
    ],
    [
-    "2024-11-01",
-    134.42
+    "2024-10-27",
+    79.75
+   ],
+   [
+    "2024-11-02",
+    86.27
    ],
    [
     "2024-11-03",
-    138.27
+    88.2
    ],
    [
-    "2024-11-04",
-    128.12
+    "2024-11-06",
+    80.97
    ],
    [
     "2024-11-09",
-    125.4
+    73.22
    ],
    [
     "2024-11-10",
-    123.0
+    72.17
    ],
    [
-    "2024-11-10",
-    126.74
+    "2024-11-22",
+    75.11
    ],
    [
     "2024-11-23",
-    131.0
+    83.37
    ],
    [
     "2024-11-24",
-    125.05
+    78.88
    ],
    [
-    "2024-11-27",
-    130.92
+    "2024-11-26",
+    83.0
    ],
    [
     "2024-11-30",
-    136.65
+    91.08
    ],
    [
-    "2024-12-02",
-    138.43
+    "2024-12-01",
+    88.63
    ],
    [
-    "2024-12-08",
-    139.28
+    "2024-12-07",
+    86.29
+   ],
+   [
+    "2024-12-09",
+    83.82
    ],
    [
     "2024-12-14",
-    129.72
+    76.95
    ],
    [
     "2024-12-15",
-    132.66
+    82.7
    ],
    [
     "2024-12-21",
-    130.7
+    79.07
    ],
    [
-    "2024-12-22",
-    120.9
+    "2024-12-26",
+    69.41
    ],
    [
-    "2025-01-01",
-    138.15
+    "2025-01-04",
+    78.38
    ],
    [
-    "2025-01-05",
-    144.01
+    "2025-01-06",
+    84.69
    ],
    [
     "2025-01-11",
-    145.26
+    83.66
    ],
    [
-    "2025-01-14",
-    150.85
+    "2025-01-15",
+    91.62
    ],
    [
     "2025-01-18",
-    161.32
+    103.17
    ],
    [
     "2025-01-19",
-    164.79
+    108.26
    ],
    [
-    "2025-01-24",
-    157.47
+    "2025-01-25",
+    97.73
    ],
    [
     "2025-01-26",
-    149.8
+    92.21
    ],
    [
     "2025-02-01",
-    155.76
+    94.13
    ],
    [
     "2025-02-02",
-    150.18
+    93.18
    ],
    [
-    "2025-02-08",
-    144.37
+    "2025-02-07",
+    86.16
    ],
    [
     "2025-02-09",
-    150.16
+    93.35
    ],
    [
     "2025-02-15",
-    151.97
+    90.96
    ],
    [
     "2025-02-16",
-    153.66
+    90.1
    ],
    [
     "2025-02-22",
-    155.07
+    90.95
    ],
    [
-    "2025-02-22",
-    152.91
-   ],
-   [
-    "2025-02-26",
-    146.09
+    "2025-02-23",
+    92.05
    ],
    [
     "2025-03-01",
-    140.18
+    87.02
    ],
    [
-    "2025-03-02",
-    143.43
+    "2025-03-01",
+    79.75
    ],
    [
     "2025-03-08",
-    142.81
+    87.23
    ],
    [
-    "2025-03-10",
-    143.95
+    "2025-03-09",
+    92.95
    ],
    [
     "2025-03-15",
-    143.67
+    81.15
    ],
    [
     "2025-03-16",
-    144.0
+    89.83
    ],
    [
     "2025-03-29",
-    143.34
+    83.48
    ],
    [
-    "2025-04-03",
-    146.07
+    "2025-03-30",
+    88.48
    ],
    [
     "2025-04-05",
-    146.48
+    87.18
    ],
    [
     "2025-04-06",
-    155.91
+    95.49
    ],
    [
-    "2025-04-12",
-    152.15
+    "2025-04-11",
+    97.02
+   ],
+   [
+    "2025-04-13",
+    98.62
    ],
    [
     "2025-04-19",
-    150.69
+    88.41
    ],
    [
-    "2025-04-20",
-    148.27
+    "2025-04-21",
+    92.5
    ],
    [
-    "2025-04-23",
-    156.0
-   ],
-   [
-    "2025-04-27",
-    160.83
+    "2025-04-26",
+    93.87
    ],
    [
     "2025-05-03",
-    155.68
+    90.06
    ],
    [
     "2025-05-04",
-    162.83
+    100.8
    ],
    [
     "2025-05-10",
-    160.7
+    97.52
    ],
    [
-    "2025-05-14",
-    162.33
+    "2025-05-13",
+    92.78
    ],
    [
     "2025-05-17",
-    166.21
+    92.3
    ],
    [
     "2025-05-18",
-    169.53
+    101.5
    ],
    [
-    "2025-05-25",
-    158.36
+    "2025-05-24",
+    94.25
    ],
    [
-    "2025-08-09",
-    152.26
+    "2025-08-06",
+    85.13
    ],
    [
     "2025-08-16",
-    150.65
+    84.14
    ],
    [
     "2025-08-23",
-    153.05
+    83.25
    ],
    [
     "2025-08-30",
-    155.8
+    84.85
    ],
    [
     "2025-09-13",
-    161.2
+    88.22
    ],
    [
     "2025-09-13",
-    165.35
+    89.17
    ],
    [
-    "2025-09-14",
-    164.02
+    "2025-09-15",
+    91.59
    ],
    [
-    "2025-09-21",
-    158.64
-   ],
-   [
-    "2025-09-28",
-    150.89
+    "2025-09-27",
+    85.16
    ],
    [
     "2025-10-04",
-    158.7
+    83.29
    ],
    [
-    "2025-10-18",
-    165.67
+    "2025-10-05",
+    98.37
    ],
    [
     "2025-10-19",
-    156.79
+    88.49
    ],
    [
     "2025-10-25",
-    149.8
+    81.9
    ],
    [
     "2025-10-26",
-    150.47
+    83.47
    ],
    [
     "2025-11-01",
-    145.62
+    82.42
    ],
    [
-    "2025-11-02",
-    159.57
+    "2025-11-04",
+    94.37
    ],
    [
-    "2025-11-08",
-    160.62
+    "2025-11-09",
+    90.35
    ],
    [
-    "2025-11-22",
-    157.9
+    "2025-11-25",
+    89.56
    ],
    [
     "2025-11-29",
-    160.27
-   ],
-   [
-    "2025-11-30",
-    167.8
+    99.22
    ],
    [
     "2025-12-06",
-    167.55
+    96.32
    ],
    [
-    "2025-12-13",
-    162.05
+    "2025-12-12",
+    90.77
    ],
    [
     "2025-12-14",
-    166.51
+    98.76
    ],
    [
-    "2025-12-29",
-    180.42
+    "2025-12-30",
+    97.72
    ],
    [
     "2026-01-04",
-    179.08
+    102.08
    ],
    [
-    "2026-01-10",
-    182.53
+    "2026-01-13",
+    109.88
    ],
    [
-    "2026-01-18",
-    177.88
+    "2026-01-19",
+    104.46
    ],
    [
-    "2026-01-24",
-    173.13
+    "2026-01-26",
+    104.64
    ],
    [
-    "2026-01-31",
-    178.45
-   ],
-   [
-    "2026-02-07",
-    177.23
+    "2026-02-01",
+    107.96
    ],
    [
     "2026-02-15",
-    180.18
+    107.86
    ],
    [
-    "2026-03-01",
-    186.91
+    "2026-03-02",
+    113.26
    ],
    [
-    "2026-03-14",
-    184.44
+    "2026-03-15",
+    114.51
    ],
    [
-    "2026-03-21",
-    188.62
-   ],
-   [
-    "2026-04-05",
-    186.61
+    "2026-04-03",
+    119.41
    ],
    [
     "2026-04-12",
-    190.24
+    122.04
    ],
    [
     "2026-04-18",
-    191.83
+    123.11
    ],
    [
-    "2026-04-19",
-    191.08
+    "2026-04-22",
+    117.73
    ],
    [
-    "2026-04-26",
-    193.5
+    "2026-05-03",
+    125.15
    ],
    [
-    "2026-05-10",
-    187.48
-   ],
-   [
-    "2026-05-17",
-    182.08
+    "2026-05-16",
+    118.13
    ],
    [
     "2026-05-24",
-    179.13
+    114.79
    ]
   ],
   "value|early|sporttip": [
@@ -6991,320 +6854,140 @@
     -0.16
    ],
    [
-    "2022-10-29",
-    -1.16
-   ],
-   [
     "2022-11-13",
-    -0.05
-   ],
-   [
-    "2022-11-13",
-    -1.05
+    0.95
    ],
    [
     "2023-01-08",
-    3.71
-   ],
-   [
-    "2023-02-26",
-    7.99
-   ],
-   [
-    "2023-03-04",
-    6.99
-   ],
-   [
-    "2023-03-19",
-    11.03
-   ],
-   [
-    "2023-04-10",
-    10.03
-   ],
-   [
-    "2023-04-15",
-    12.87
-   ],
-   [
-    "2023-05-13",
-    11.87
-   ],
-   [
-    "2023-05-21",
-    10.87
-   ],
-   [
-    "2023-05-27",
-    9.87
-   ],
-   [
-    "2023-08-05",
-    13.03
-   ],
-   [
-    "2023-08-20",
-    12.03
-   ],
-   [
-    "2023-08-26",
-    17.75
-   ],
-   [
-    "2023-08-28",
-    16.75
-   ],
-   [
-    "2023-11-24",
-    15.75
-   ],
-   [
-    "2023-12-04",
-    14.75
-   ],
-   [
-    "2024-03-30",
-    13.75
-   ],
-   [
-    "2024-04-03",
-    16.59
-   ],
-   [
-    "2024-05-05",
-    15.59
-   ],
-   [
-    "2024-05-11",
-    14.59
-   ],
-   [
-    "2024-05-18",
-    13.59
-   ],
-   [
-    "2024-05-18",
-    12.59
-   ],
-   [
-    "2024-05-25",
-    11.59
-   ],
-   [
-    "2024-08-25",
-    10.59
-   ],
-   [
-    "2024-10-27",
-    9.59
-   ],
-   [
-    "2024-11-02",
-    8.59
-   ],
-   [
-    "2024-11-30",
-    10.95
-   ],
-   [
-    "2024-11-30",
-    9.95
-   ],
-   [
-    "2025-01-04",
-    8.95
-   ],
-   [
-    "2025-01-11",
-    7.95
-   ],
-   [
-    "2025-03-08",
-    6.95
-   ],
-   [
-    "2025-04-21",
-    5.95
-   ],
-   [
-    "2025-05-10",
-    9.75
-   ],
-   [
-    "2025-07-26",
-    8.75
-   ],
-   [
-    "2025-08-03",
-    10.82
-   ],
-   [
-    "2025-08-22",
-    9.82
-   ],
-   [
-    "2025-08-30",
-    10.79
-   ],
-   [
-    "2025-09-13",
-    12.14
-   ],
-   [
-    "2025-09-13",
-    11.14
-   ],
-   [
-    "2025-09-27",
-    10.14
-   ],
-   [
-    "2025-09-30",
-    9.14
-   ],
-   [
-    "2025-10-03",
-    8.14
-   ],
-   [
-    "2025-10-04",
-    10.69
-   ],
-   [
-    "2025-10-19",
-    9.69
-   ],
-   [
-    "2025-11-02",
-    10.56
-   ],
-   [
-    "2025-11-02",
-    11.68
-   ],
-   [
-    "2025-11-03",
-    10.68
-   ],
-   [
-    "2026-01-04",
-    9.68
-   ],
-   [
-    "2026-01-17",
-    8.68
-   ],
-   [
-    "2026-01-18",
-    7.68
-   ],
-   [
-    "2026-01-18",
-    6.68
-   ],
-   [
-    "2026-01-24",
-    5.68
-   ],
-   [
-    "2026-01-24",
-    6.31
-   ],
-   [
-    "2026-01-25",
-    6.51
-   ],
-   [
-    "2026-01-25",
-    5.51
-   ],
-   [
-    "2026-02-15",
-    6.48
-   ],
-   [
-    "2026-02-15",
-    7.73
-   ],
-   [
-    "2026-02-22",
-    8.29
-   ],
-   [
-    "2026-03-01",
-    7.29
-   ],
-   [
-    "2026-03-15",
-    7.54
-   ],
-   [
-    "2026-03-15",
-    7.88
-   ],
-   [
-    "2026-03-15",
-    6.88
-   ],
-   [
-    "2026-03-21",
-    5.88
-   ],
-   [
-    "2026-03-22",
-    4.88
-   ],
-   [
-    "2026-04-12",
-    5.44
-   ],
-   [
-    "2026-04-19",
-    7.89
-   ],
-   [
-    "2026-04-19",
-    9.05
-   ],
-   [
-    "2026-04-19",
-    8.05
-   ],
-   [
-    "2026-05-10",
-    7.05
-   ],
-   [
-    "2026-05-10",
-    6.05
-   ],
-   [
-    "2026-05-10",
-    5.05
-   ],
-   [
-    "2026-05-17",
     5.71
    ],
    [
-    "2026-05-17",
-    4.71
+    "2023-03-19",
+    9.75
+   ],
+   [
+    "2023-04-15",
+    12.59
+   ],
+   [
+    "2023-05-13",
+    11.59
+   ],
+   [
+    "2023-05-27",
+    10.59
+   ],
+   [
+    "2023-08-05",
+    13.75
+   ],
+   [
+    "2023-08-20",
+    12.75
+   ],
+   [
+    "2023-11-24",
+    11.75
+   ],
+   [
+    "2024-05-18",
+    10.75
+   ],
+   [
+    "2024-05-18",
+    9.75
+   ],
+   [
+    "2024-05-25",
+    8.75
+   ],
+   [
+    "2024-08-25",
+    7.75
+   ],
+   [
+    "2024-10-27",
+    6.75
+   ],
+   [
+    "2024-11-02",
+    5.75
+   ],
+   [
+    "2024-11-30",
+    8.11
+   ],
+   [
+    "2025-01-04",
+    7.11
+   ],
+   [
+    "2025-01-11",
+    6.11
+   ],
+   [
+    "2025-03-08",
+    5.11
+   ],
+   [
+    "2025-04-21",
+    4.11
+   ],
+   [
+    "2025-07-26",
+    3.11
+   ],
+   [
+    "2025-08-03",
+    5.18
+   ],
+   [
+    "2025-08-30",
+    6.15
+   ],
+   [
+    "2025-09-13",
+    7.5
+   ],
+   [
+    "2025-09-13",
+    6.5
+   ],
+   [
+    "2025-09-27",
+    5.5
+   ],
+   [
+    "2025-09-30",
+    4.5
+   ],
+   [
+    "2025-10-03",
+    3.5
+   ],
+   [
+    "2025-10-04",
+    6.05
+   ],
+   [
+    "2025-11-03",
+    5.05
+   ],
+   [
+    "2026-01-25",
+    5.25
+   ],
+   [
+    "2026-03-15",
+    5.5
+   ],
+   [
+    "2026-03-15",
+    5.84
    ],
    [
     "2026-05-17",
-    3.71
-   ],
-   [
-    "2026-05-17",
-    5.48
-   ],
-   [
-    "2026-05-17",
-    4.48
-   ],
-   [
-    "2026-05-17",
-    6.24
+    6.51
    ]
   ],
   "model|early|sporttip": [
@@ -8839,184 +8522,84 @@
     7.99
    ],
    [
-    "2025-05-10",
-    11.79
-   ],
-   [
     "2025-07-26",
-    10.79
+    6.99
    ],
    [
     "2025-08-03",
-    12.86
-   ],
-   [
-    "2025-08-22",
-    11.86
-   ],
-   [
-    "2025-08-30",
-    12.83
-   ],
-   [
-    "2025-09-13",
-    14.18
-   ],
-   [
-    "2025-09-13",
-    13.18
-   ],
-   [
-    "2025-09-27",
-    12.18
-   ],
-   [
-    "2025-09-27",
-    11.18
-   ],
-   [
-    "2025-09-30",
-    10.18
-   ],
-   [
-    "2025-09-30",
-    9.18
-   ],
-   [
-    "2025-09-30",
-    13.46
-   ],
-   [
-    "2025-10-03",
-    12.46
-   ],
-   [
-    "2025-10-04",
-    15.01
-   ],
-   [
-    "2025-10-18",
-    14.01
-   ],
-   [
-    "2025-10-19",
-    13.01
-   ],
-   [
-    "2025-11-02",
-    13.88
-   ],
-   [
-    "2025-11-02",
-    15.0
-   ],
-   [
-    "2025-11-03",
-    14.0
-   ],
-   [
-    "2025-12-13",
-    16.84
-   ],
-   [
-    "2026-01-01",
-    15.84
-   ],
-   [
-    "2026-01-04",
-    14.84
-   ],
-   [
-    "2026-01-17",
-    13.84
-   ],
-   [
-    "2026-01-18",
-    12.84
-   ],
-   [
-    "2026-01-18",
-    11.84
-   ],
-   [
-    "2026-01-25",
-    10.84
-   ],
-   [
-    "2026-02-15",
-    11.8
-   ],
-   [
-    "2026-02-15",
-    13.06
-   ],
-   [
-    "2026-02-15",
-    12.06
-   ],
-   [
-    "2026-03-01",
-    11.06
-   ],
-   [
-    "2026-03-15",
-    10.06
-   ],
-   [
-    "2026-03-21",
     9.06
    ],
    [
-    "2026-03-22",
+    "2025-08-22",
     8.06
    ],
    [
-    "2026-04-19",
-    10.52
+    "2025-08-30",
+    9.03
    ],
    [
-    "2026-04-19",
-    11.68
+    "2025-09-13",
+    10.38
    ],
    [
-    "2026-04-19",
-    10.68
+    "2025-09-13",
+    9.38
    ],
    [
-    "2026-05-10",
-    9.68
+    "2025-09-27",
+    8.38
    ],
    [
-    "2026-05-10",
-    8.68
+    "2025-09-27",
+    7.38
    ],
    [
-    "2026-05-10",
-    7.68
+    "2025-09-30",
+    6.38
+   ],
+   [
+    "2025-09-30",
+    5.38
+   ],
+   [
+    "2025-09-30",
+    9.66
+   ],
+   [
+    "2025-10-03",
+    8.66
+   ],
+   [
+    "2025-10-04",
+    11.21
+   ],
+   [
+    "2025-10-18",
+    10.21
+   ],
+   [
+    "2025-10-19",
+    9.21
+   ],
+   [
+    "2025-11-03",
+    8.21
+   ],
+   [
+    "2025-12-13",
+    11.05
+   ],
+   [
+    "2026-01-01",
+    10.05
+   ],
+   [
+    "2026-01-04",
+    9.05
    ],
    [
     "2026-05-17",
-    8.34
-   ],
-   [
-    "2026-05-17",
-    7.34
-   ],
-   [
-    "2026-05-17",
-    6.34
-   ],
-   [
-    "2026-05-17",
-    8.1
-   ],
-   [
-    "2026-05-17",
-    7.1
-   ],
-   [
-    "2026-05-17",
-    8.87
+    9.71
    ]
   ]
  },
@@ -9025,35 +8608,35 @@
    "key": "BY",
    "name": "Beide treffen",
    "games": 11738,
-   "loss_market": 0.68211,
+   "loss_market": 0.6822,
    "loss_model": 0.68568,
    "loss_base": 0.68881,
-   "predicted": 0.53646,
+   "predicted": 0.53599,
    "actual": 0.54754,
    "bins": [
     {
-     "predicted": 0.44506,
-     "actual": 0.46465,
+     "predicted": 0.44212,
+     "actual": 0.4638,
      "games": 2348
     },
     {
-     "predicted": 0.50082,
-     "actual": 0.51214,
+     "predicted": 0.4998,
+     "actual": 0.51342,
      "games": 2347
     },
     {
-     "predicted": 0.53593,
-     "actual": 0.54259,
+     "predicted": 0.53565,
+     "actual": 0.54131,
      "games": 2348
     },
     {
-     "predicted": 0.5732,
-     "actual": 0.58671,
+     "predicted": 0.57365,
+     "actual": 0.58713,
      "games": 2347
     },
     {
-     "predicted": 0.6273,
-     "actual": 0.6316,
+     "predicted": 0.62873,
+     "actual": 0.63203,
      "games": 2348
     }
    ]
@@ -9062,35 +8645,35 @@
    "key": "O15",
    "name": "Über 1.5 Tore",
    "games": 11738,
-   "loss_market": 0.52155,
+   "loss_market": 0.5214,
    "loss_model": 0.52636,
    "loss_base": 0.53414,
-   "predicted": 0.77765,
+   "predicted": 0.77822,
    "actual": 0.77424,
    "bins": [
     {
-     "predicted": 0.68705,
+     "predicted": 0.68616,
      "actual": 0.6793,
      "games": 2348
     },
     {
-     "predicted": 0.74314,
-     "actual": 0.72774,
+     "predicted": 0.74319,
+     "actual": 0.72646,
      "games": 2347
     },
     {
-     "predicted": 0.78085,
+     "predicted": 0.78143,
      "actual": 0.79131,
      "games": 2348
     },
     {
-     "predicted": 0.81397,
-     "actual": 0.81508,
+     "predicted": 0.81505,
+     "actual": 0.81423,
      "games": 2347
     },
     {
-     "predicted": 0.86324,
-     "actual": 0.85775,
+     "predicted": 0.86526,
+     "actual": 0.85988,
      "games": 2348
     }
    ]
@@ -9099,40 +8682,54 @@
    "key": "O35",
    "name": "Über 3.5 Tore",
    "games": 11738,
-   "loss_market": 0.59784,
+   "loss_market": 0.59782,
    "loss_model": 0.60331,
    "loss_base": 0.61762,
-   "predicted": 0.3173,
+   "predicted": 0.31857,
    "actual": 0.30814,
    "bins": [
     {
-     "predicted": 0.20688,
-     "actual": 0.19336,
+     "predicted": 0.20614,
+     "actual": 0.19208,
      "games": 2348
     },
     {
-     "predicted": 0.26278,
+     "predicted": 0.26287,
      "actual": 0.24798,
      "games": 2347
     },
     {
-     "predicted": 0.3095,
-     "actual": 0.29344,
+     "predicted": 0.3103,
+     "actual": 0.29429,
      "games": 2348
     },
     {
-     "predicted": 0.35753,
-     "actual": 0.35876,
+     "predicted": 0.35926,
+     "actual": 0.36046,
      "games": 2347
     },
     {
-     "predicted": 0.44981,
-     "actual": 0.44719,
+     "predicted": 0.45429,
+     "actual": 0.44591,
      "games": 2348
     }
    ]
   }
  ],
+ "margins": {
+  "1X2": {
+   "reference": 0.0328,
+   "bet365": 0.05764,
+   "sporttip": 0.10171,
+   "max": 0.01398
+  },
+  "OU": {
+   "reference": 0.03411,
+   "bet365": 0.05138,
+   "sporttip": 0.09519,
+   "max": 0.02169
+  }
+ },
  "coverage": [
   {
    "league": "D1",
@@ -9154,7 +8751,7 @@
    "pinnacle": 1.0,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.98366,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9167,7 +8764,7 @@
    "pinnacle": 0.99673,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.99673,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9268,7 +8865,7 @@
    "league": "D2",
    "season": 2016,
    "games": 306,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99673,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9284,7 +8881,7 @@
    "pinnacle": 1.0,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.99673,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9307,7 +8904,7 @@
    "league": "D2",
    "season": 2019,
    "games": 306,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99673,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9320,11 +8917,11 @@
    "league": "D2",
    "season": 2020,
    "games": 306,
-   "pinnacle": 1.0,
+   "pinnacle": 0.98693,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
-   "bet365": 1.0,
+   "bet365": 0.9902,
    "bet365_close": 1.0,
    "max": 1.0,
    "shots": 1.0
@@ -9333,7 +8930,7 @@
    "league": "D2",
    "season": 2021,
    "games": 306,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99673,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9385,7 +8982,7 @@
    "league": "D2",
    "season": 2025,
    "games": 306,
-   "pinnacle": 0.29412,
+   "pinnacle": 0.29085,
    "betfair": 0.64706,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9554,7 +9151,7 @@
    "league": "E1",
    "season": 2018,
    "games": 552,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99819,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9580,7 +9177,7 @@
    "league": "E1",
    "season": 2020,
    "games": 629,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99682,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9645,8 +9242,8 @@
    "league": "E1",
    "season": 2025,
    "games": 552,
-   "pinnacle": 0.49094,
-   "betfair": 0.44384,
+   "pinnacle": 0.47101,
+   "betfair": 0.46377,
    "reference": 1.0,
    "reference_ou": 1.0,
    "bet365": 1.0,
@@ -9658,10 +9255,10 @@
    "league": "F1",
    "season": 2016,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99474,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.99737,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9671,10 +9268,10 @@
    "league": "F1",
    "season": 2017,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99211,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.99474,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9684,7 +9281,7 @@
    "league": "F1",
    "season": 2018,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99737,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9710,11 +9307,11 @@
    "league": "F1",
    "season": 2020,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99474,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
-   "bet365": 1.0,
+   "bet365": 0.99474,
    "bet365_close": 0.99737,
    "max": 1.0,
    "shots": 1.0
@@ -9788,7 +9385,7 @@
    "league": "I1",
    "season": 2016,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99211,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9801,7 +9398,7 @@
    "league": "I1",
    "season": 2017,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99737,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -9840,11 +9437,11 @@
    "league": "I1",
    "season": 2020,
    "games": 478,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99582,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 0.99791,
-   "bet365": 1.0,
+   "bet365": 0.99582,
    "bet365_close": 1.0,
    "max": 1.0,
    "shots": 1.0
@@ -9853,13 +9450,13 @@
    "league": "I1",
    "season": 2021,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99737,
    "betfair": 0.0,
-   "reference": 1.0,
+   "reference": 0.99737,
    "reference_ou": 0.99737,
-   "bet365": 1.0,
+   "bet365": 0.99737,
    "bet365_close": 1.0,
-   "max": 1.0,
+   "max": 0.99737,
    "shots": 1.0
   },
   {
@@ -9911,17 +9508,17 @@
    "reference_ou": 1.0,
    "bet365": 1.0,
    "bet365_close": 1.0,
-   "max": 1.0,
+   "max": 0.99737,
    "shots": 1.0
   },
   {
    "league": "N1",
    "season": 2016,
    "games": 306,
-   "pinnacle": 1.0,
+   "pinnacle": 0.9902,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.99673,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9931,10 +9528,10 @@
    "league": "N1",
    "season": 2017,
    "games": 306,
-   "pinnacle": 0.9902,
+   "pinnacle": 0.94771,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.99346,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9944,10 +9541,10 @@
    "league": "N1",
    "season": 2018,
    "games": 306,
-   "pinnacle": 1.0,
+   "pinnacle": 0.98693,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.98693,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -9974,7 +9571,7 @@
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
-   "bet365": 1.0,
+   "bet365": 0.99673,
    "bet365_close": 1.0,
    "max": 1.0,
    "shots": 1.0
@@ -10036,7 +9633,7 @@
    "season": 2025,
    "games": 306,
    "pinnacle": 0.46405,
-   "betfair": 0.47712,
+   "betfair": 0.47386,
    "reference": 1.0,
    "reference_ou": 1.0,
    "bet365": 1.0,
@@ -10077,7 +9674,7 @@
    "pinnacle": 1.0,
    "betfair": 0.0,
    "reference": 1.0,
-   "reference_ou": 1.0,
+   "reference_ou": 0.99474,
    "bet365": 1.0,
    "bet365_close": 0.0,
    "max": 1.0,
@@ -10100,7 +9697,7 @@
    "league": "SP1",
    "season": 2020,
    "games": 437,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99542,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -10113,7 +9710,7 @@
    "league": "SP1",
    "season": 2021,
    "games": 380,
-   "pinnacle": 1.0,
+   "pinnacle": 0.99737,
    "betfair": 0.0,
    "reference": 1.0,
    "reference_ou": 1.0,
@@ -10262,7 +9859,7 @@
    "reference_ou": 0.0,
    "bet365": 1.0,
    "bet365_close": 0.0,
-   "max": 1.0,
+   "max": 0.99451,
    "shots": 0.0
   },
   {
@@ -10301,9 +9898,9 @@
    "reference_ou": 0.0,
    "bet365": 1.0,
    "bet365_close": 0.91667,
-   "max": 1.0,
+   "max": 0.99123,
    "shots": 0.0
   }
  ],
- "runtime_seconds": 154
+ "runtime_seconds": 97
 }
