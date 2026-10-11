@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11T12:47:31+00:00",
+ "generated": "2026-10-11T12:55:06+00:00",
  "results": [
   {
    "id": "E0:2026-08-21:Arsenal:Coventry",
@@ -9,7 +9,13 @@
    "away": "Coventry",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.81001,
+    "D": 0.13464,
+    "A": 0.05535,
+    "O": 0.61098,
+    "U": 0.38902
+   }
   },
   {
    "id": "E0:2026-08-22:Hull:Man United",
@@ -19,7 +25,13 @@
    "away": "Man United",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.10326,
+    "D": 0.18357,
+    "A": 0.71317,
+    "O": 0.61098,
+    "U": 0.38902
+   }
   },
   {
    "id": "E0:2026-08-22:Everton:Crystal Palace",
@@ -29,7 +41,13 @@
    "away": "Crystal Palace",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40882,
+    "D": 0.28677,
+    "A": 0.30441,
+    "O": 0.48241,
+    "U": 0.51759
+   }
   },
   {
    "id": "E0:2026-08-22:Ipswich:Sunderland",
@@ -39,7 +57,13 @@
    "away": "Sunderland",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33168,
+    "D": 0.29703,
+    "A": 0.37129,
+    "O": 0.43564,
+    "U": 0.56436
+   }
   },
   {
    "id": "E0:2026-08-22:Nott'm Forest:Leeds",
@@ -49,7 +73,13 @@
    "away": "Leeds",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38266,
+    "D": 0.30149,
+    "A": 0.31585,
+    "O": 0.43921,
+    "U": 0.56079
+   }
   },
   {
    "id": "E0:2026-08-22:Brentford:Tottenham",
@@ -59,7 +89,13 @@
    "away": "Tottenham",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.47247,
+    "D": 0.24805,
+    "A": 0.27949,
+    "O": 0.57702,
+    "U": 0.42298
+   }
   },
   {
    "id": "E0:2026-08-23:Brighton:Aston Villa",
@@ -69,7 +105,13 @@
    "away": "Aston Villa",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45937,
+    "D": 0.27951,
+    "A": 0.26112,
+    "O": 0.48241,
+    "U": 0.51759
+   }
   },
   {
    "id": "E0:2026-08-23:Man City:Bournemouth",
@@ -79,7 +121,13 @@
    "away": "Bournemouth",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.66147,
+    "D": 0.19585,
+    "A": 0.14269,
+    "O": 0.62588,
+    "U": 0.37412
+   }
   },
   {
    "id": "E0:2026-08-23:Newcastle:Liverpool",
@@ -89,7 +137,13 @@
    "away": "Liverpool",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.24227,
+    "D": 0.24833,
+    "A": 0.5094,
+    "O": 0.65914,
+    "U": 0.34086
+   }
   },
   {
    "id": "E0:2026-08-24:Fulham:Chelsea",
@@ -99,7 +153,13 @@
    "away": "Chelsea",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25232,
+    "D": 0.27306,
+    "A": 0.47461,
+    "O": 0.51128,
+    "U": 0.48872
+   }
   },
   {
    "id": "E0:2026-08-28:Crystal Palace:Man City",
@@ -109,7 +169,13 @@
    "away": "Man City",
    "hg": 1,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.18072,
+    "D": 0.23115,
+    "A": 0.58813,
+    "O": 0.57843,
+    "U": 0.42157
+   }
   },
   {
    "id": "E0:2026-08-29:Liverpool:Nott'm Forest",
@@ -119,7 +185,13 @@
    "away": "Nott'm Forest",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.652,
+    "D": 0.20225,
+    "A": 0.14574,
+    "O": 0.63889,
+    "U": 0.36111
+   }
   },
   {
    "id": "E0:2026-08-29:Bournemouth:Everton",
@@ -129,7 +201,13 @@
    "away": "Everton",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43205,
+    "D": 0.27992,
+    "A": 0.28803,
+    "O": 0.53865,
+    "U": 0.46135
+   }
   },
   {
    "id": "E0:2026-08-29:Coventry:Hull",
@@ -139,7 +217,13 @@
    "away": "Hull",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55636,
+    "D": 0.25212,
+    "A": 0.19152,
+    "O": 0.55224,
+    "U": 0.44776
+   }
   },
   {
    "id": "E0:2026-08-29:Tottenham:Newcastle",
@@ -149,7 +233,13 @@
    "away": "Newcastle",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44017,
+    "D": 0.25838,
+    "A": 0.30145,
+    "O": 0.59759,
+    "U": 0.40241
+   }
   },
   {
    "id": "E0:2026-08-30:Chelsea:Brighton",
@@ -159,7 +249,13 @@
    "away": "Brighton",
    "hg": 4,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51778,
+    "D": 0.24983,
+    "A": 0.2324,
+    "O": 0.60577,
+    "U": 0.39423
+   }
   },
   {
    "id": "E0:2026-08-30:Leeds:Brentford",
@@ -169,7 +265,13 @@
    "away": "Brentford",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34356,
+    "D": 0.28467,
+    "A": 0.37177,
+    "O": 0.53,
+    "U": 0.47
+   }
   },
   {
    "id": "E0:2026-08-30:Sunderland:Fulham",
@@ -179,7 +281,13 @@
    "away": "Fulham",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42811,
+    "D": 0.29212,
+    "A": 0.27978,
+    "O": 0.47368,
+    "U": 0.52632
+   }
   },
   {
    "id": "E0:2026-08-30:Man United:Ipswich",
@@ -189,7 +297,13 @@
    "away": "Ipswich",
    "hg": 5,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.71731,
+    "D": 0.17191,
+    "A": 0.11078,
+    "O": 0.68966,
+    "U": 0.31034
+   }
   },
   {
    "id": "E0:2026-08-31:Aston Villa:Arsenal",
@@ -199,7 +313,13 @@
    "away": "Arsenal",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.13437,
+    "D": 0.20715,
+    "A": 0.65849,
+    "O": 0.54863,
+    "U": 0.45137
+   }
   },
   {
    "id": "E0:2026-09-04:Ipswich:Liverpool",
@@ -209,7 +329,13 @@
    "away": "Liverpool",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.18404,
+    "D": 0.22085,
+    "A": 0.59511,
+    "O": 0.65455,
+    "U": 0.34545
+   }
   },
   {
    "id": "E0:2026-09-05:Newcastle:Bournemouth",
@@ -219,7 +345,13 @@
    "away": "Bournemouth",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45114,
+    "D": 0.26118,
+    "A": 0.28768,
+    "O": 0.59759,
+    "U": 0.40241
+   }
   },
   {
    "id": "E0:2026-09-05:Brentford:Sunderland",
@@ -229,7 +361,13 @@
    "away": "Sunderland",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56449,
+    "D": 0.25152,
+    "A": 0.18398,
+    "O": 0.53,
+    "U": 0.47
+   }
   },
   {
    "id": "E0:2026-09-05:Brighton:Leeds",
@@ -239,7 +377,13 @@
    "away": "Leeds",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48685,
+    "D": 0.26485,
+    "A": 0.2483,
+    "O": 0.53266,
+    "U": 0.46734
+   }
   },
   {
    "id": "E0:2026-09-05:Fulham:Crystal Palace",
@@ -249,7 +393,13 @@
    "away": "Crystal Palace",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44352,
+    "D": 0.28797,
+    "A": 0.26851,
+    "O": 0.515,
+    "U": 0.485
+   }
   },
   {
    "id": "E0:2026-09-05:Man City:Coventry",
@@ -259,7 +409,13 @@
    "away": "Coventry",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.82052,
+    "D": 0.12108,
+    "A": 0.0584,
+    "O": 0.68478,
+    "U": 0.31522
+   }
   },
   {
    "id": "E0:2026-09-05:Nott'm Forest:Tottenham",
@@ -269,7 +425,13 @@
    "away": "Tottenham",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35206,
+    "D": 0.28567,
+    "A": 0.36227,
+    "O": 0.51256,
+    "U": 0.48744
+   }
   },
   {
    "id": "E0:2026-09-05:Hull:Aston Villa",
@@ -279,7 +441,13 @@
    "away": "Aston Villa",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.23215,
+    "D": 0.2662,
+    "A": 0.50164,
+    "O": 0.51256,
+    "U": 0.48744
+   }
   },
   {
    "id": "E0:2026-09-06:Everton:Man United",
@@ -289,7 +457,13 @@
    "away": "Man United",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25398,
+    "D": 0.25076,
+    "A": 0.49526,
+    "O": 0.60432,
+    "U": 0.39568
+   }
   },
   {
    "id": "E0:2026-09-06:Arsenal:Chelsea",
@@ -299,7 +473,13 @@
    "away": "Chelsea",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56089,
+    "D": 0.24819,
+    "A": 0.19092,
+    "O": 0.55941,
+    "U": 0.44059
+   }
   },
   {
    "id": "E0:2026-09-12:Aston Villa:Nott'm Forest",
@@ -309,7 +489,13 @@
    "away": "Nott'm Forest",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42601,
+    "D": 0.2808,
+    "A": 0.29319,
+    "O": 0.51256,
+    "U": 0.48744
+   }
   },
   {
    "id": "E0:2026-09-12:Bournemouth:Brentford",
@@ -319,7 +505,13 @@
    "away": "Brentford",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41484,
+    "D": 0.26909,
+    "A": 0.31607,
+    "O": 0.58191,
+    "U": 0.41809
+   }
   },
   {
    "id": "E0:2026-09-12:Chelsea:Hull",
@@ -329,7 +521,13 @@
    "away": "Hull",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.80085,
+    "D": 0.13066,
+    "A": 0.06849,
+    "O": 0.67478,
+    "U": 0.32522
+   }
   },
   {
    "id": "E0:2026-09-12:Crystal Palace:Ipswich",
@@ -339,7 +537,13 @@
    "away": "Ipswich",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43971,
+    "D": 0.27226,
+    "A": 0.28804,
+    "O": 0.57143,
+    "U": 0.42857
+   }
   },
   {
    "id": "E0:2026-09-12:Liverpool:Fulham",
@@ -349,7 +553,13 @@
    "away": "Fulham",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.63913,
+    "D": 0.21078,
+    "A": 0.1501,
+    "O": 0.64989,
+    "U": 0.35011
+   }
   },
   {
    "id": "E0:2026-09-12:Tottenham:Everton",
@@ -359,7 +569,13 @@
    "away": "Everton",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.47739,
+    "D": 0.26131,
+    "A": 0.26131,
+    "O": 0.55087,
+    "U": 0.44913
+   }
   },
   {
    "id": "E0:2026-09-12:Sunderland:Arsenal",
@@ -369,7 +585,13 @@
    "away": "Arsenal",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.15054,
+    "D": 0.25806,
+    "A": 0.5914,
+    "O": 0.44059,
+    "U": 0.55941
+   }
   },
   {
    "id": "E0:2026-09-13:Coventry:Brighton",
@@ -379,7 +601,13 @@
    "away": "Brighton",
    "hg": 0,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.24779,
+    "D": 0.25414,
+    "A": 0.49807,
+    "O": 0.58881,
+    "U": 0.41119
+   }
   },
   {
    "id": "E0:2026-09-13:Man United:Man City",
@@ -389,7 +617,13 @@
    "away": "Man City",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31135,
+    "D": 0.25547,
+    "A": 0.43318,
+    "O": 0.6576,
+    "U": 0.3424
+   }
   },
   {
    "id": "E0:2026-09-14:Leeds:Newcastle",
@@ -399,7 +633,13 @@
    "away": "Newcastle",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40777,
+    "D": 0.27638,
+    "A": 0.31586,
+    "O": 0.55583,
+    "U": 0.44417
+   }
   },
   {
    "id": "E0:2026-09-18:Brentford:Chelsea",
@@ -409,7 +649,13 @@
    "away": "Chelsea",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37212,
+    "D": 0.26396,
+    "A": 0.36392,
+    "O": 0.63084,
+    "U": 0.36916
+   }
   },
   {
    "id": "E0:2026-09-19:Tottenham:Aston Villa",
@@ -419,7 +665,13 @@
    "away": "Aston Villa",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50236,
+    "D": 0.25504,
+    "A": 0.2426,
+    "O": 0.5908,
+    "U": 0.4092
+   }
   },
   {
    "id": "E0:2026-09-19:Brighton:Arsenal",
@@ -429,7 +681,13 @@
    "away": "Arsenal",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.17848,
+    "D": 0.24378,
+    "A": 0.57774,
+    "O": 0.52868,
+    "U": 0.47132
+   }
   },
   {
    "id": "E0:2026-09-19:Everton:Ipswich",
@@ -439,7 +697,13 @@
    "away": "Ipswich",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.54616,
+    "D": 0.24987,
+    "A": 0.20397,
+    "O": 0.55362,
+    "U": 0.44638
+   }
   },
   {
    "id": "E0:2026-09-19:Newcastle:Hull",
@@ -449,7 +713,13 @@
    "away": "Hull",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.60381,
+    "D": 0.2214,
+    "A": 0.17479,
+    "O": 0.61244,
+    "U": 0.38756
+   }
   },
   {
    "id": "E0:2026-09-19:Nott'm Forest:Coventry",
@@ -459,7 +729,13 @@
    "away": "Coventry",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.5918,
+    "D": 0.24249,
+    "A": 0.1657,
+    "O": 0.54364,
+    "U": 0.45636
+   }
   },
   {
    "id": "E0:2026-09-20:Bournemouth:Liverpool",
@@ -469,7 +745,13 @@
    "away": "Liverpool",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.30481,
+    "D": 0.2607,
+    "A": 0.43449,
+    "O": 0.60241,
+    "U": 0.39759
+   }
   },
   {
    "id": "E0:2026-09-20:Leeds:Crystal Palace",
@@ -479,7 +761,13 @@
    "away": "Crystal Palace",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57587,
+    "D": 0.24299,
+    "A": 0.18114,
+    "O": 0.55721,
+    "U": 0.44279
+   }
   },
   {
    "id": "E0:2026-09-20:Man City:Sunderland",
@@ -489,7 +777,13 @@
    "away": "Sunderland",
    "hg": 5,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.72749,
+    "D": 0.17358,
+    "A": 0.09894,
+    "O": 0.58881,
+    "U": 0.41119
+   }
   },
   {
    "id": "E0:2026-09-20:Fulham:Man United",
@@ -499,7 +793,13 @@
    "away": "Man United",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.2686,
+    "D": 0.25814,
+    "A": 0.47326,
+    "O": 0.60096,
+    "U": 0.39904
+   }
   },
   {
    "id": "E1:2026-08-14:Wolves:Blackburn",
@@ -509,7 +809,13 @@
    "away": "Blackburn",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.64731,
+    "D": 0.22152,
+    "A": 0.13117,
+    "O": 0.51759,
+    "U": 0.48241
+   }
   },
   {
    "id": "E1:2026-08-15:Bolton:Preston",
@@ -519,7 +825,13 @@
    "away": "Preston",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.39906,
+    "D": 0.28917,
+    "A": 0.31177,
+    "O": 0.47,
+    "U": 0.53
+   }
   },
   {
    "id": "E1:2026-08-15:Bristol City:Millwall",
@@ -529,7 +841,13 @@
    "away": "Millwall",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37947,
+    "D": 0.28006,
+    "A": 0.34048,
+    "O": 0.49495,
+    "U": 0.50505
+   }
   },
   {
    "id": "E1:2026-08-15:Charlton:Derby",
@@ -539,7 +857,13 @@
    "away": "Derby",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35455,
+    "D": 0.30546,
+    "A": 0.33998,
+    "O": 0.41667,
+    "U": 0.58333
+   }
   },
   {
    "id": "E1:2026-08-15:Middlesbrough:Lincoln",
@@ -549,7 +873,13 @@
    "away": "Lincoln",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.6488,
+    "D": 0.22059,
+    "A": 0.13061,
+    "O": 0.53865,
+    "U": 0.46135
+   }
   },
   {
    "id": "E1:2026-08-15:Norwich:West Brom",
@@ -559,7 +889,13 @@
    "away": "West Brom",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48512,
+    "D": 0.26747,
+    "A": 0.24741,
+    "O": 0.50126,
+    "U": 0.49874
+   }
   },
   {
    "id": "E1:2026-08-15:Portsmouth:QPR",
@@ -569,7 +905,13 @@
    "away": "QPR",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40326,
+    "D": 0.29613,
+    "A": 0.30061,
+    "O": 0.42015,
+    "U": 0.57985
+   }
   },
   {
    "id": "E1:2026-08-15:Stoke:Swansea",
@@ -579,7 +921,13 @@
    "away": "Swansea",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41251,
+    "D": 0.28286,
+    "A": 0.30462,
+    "O": 0.48485,
+    "U": 0.51515
+   }
   },
   {
    "id": "E1:2026-08-15:Sheffield United:Birmingham",
@@ -589,7 +937,13 @@
    "away": "Birmingham",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43598,
+    "D": 0.28401,
+    "A": 0.28001,
+    "O": 0.46366,
+    "U": 0.53634
+   }
   },
   {
    "id": "E1:2026-08-16:Watford:Southampton",
@@ -599,7 +953,13 @@
    "away": "Southampton",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25513,
+    "D": 0.26185,
+    "A": 0.48302,
+    "O": 0.55941,
+    "U": 0.44059
+   }
   },
   {
    "id": "E1:2026-08-16:Burnley:West Ham",
@@ -609,7 +969,13 @@
    "away": "West Ham",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31152,
+    "D": 0.27312,
+    "A": 0.41536,
+    "O": 0.535,
+    "U": 0.465
+   }
   },
   {
    "id": "E1:2026-08-17:Cardiff:Wrexham",
@@ -619,7 +985,13 @@
    "away": "Wrexham",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38014,
+    "D": 0.26918,
+    "A": 0.35069,
+    "O": 0.57143,
+    "U": 0.42857
+   }
   },
   {
    "id": "E1:2026-08-22:Birmingham:Bristol City",
@@ -629,7 +1001,13 @@
    "away": "Bristol City",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56639,
+    "D": 0.25237,
+    "A": 0.18124,
+    "O": 0.48241,
+    "U": 0.51759
+   }
   },
   {
    "id": "E1:2026-08-22:Lincoln:Portsmouth",
@@ -639,7 +1017,13 @@
    "away": "Portsmouth",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40851,
+    "D": 0.28479,
+    "A": 0.3067,
+    "O": 0.46633,
+    "U": 0.53367
+   }
   },
   {
    "id": "E1:2026-08-22:Millwall:Norwich",
@@ -649,7 +1033,13 @@
    "away": "Norwich",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33395,
+    "D": 0.28033,
+    "A": 0.38572,
+    "O": 0.52764,
+    "U": 0.47236
+   }
   },
   {
    "id": "E1:2026-08-22:Blackburn:Middlesbrough",
@@ -659,7 +1049,13 @@
    "away": "Middlesbrough",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.2483,
+    "D": 0.26485,
+    "A": 0.48685,
+    "O": 0.52261,
+    "U": 0.47739
+   }
   },
   {
    "id": "E1:2026-08-22:Derby:Cardiff",
@@ -669,7 +1065,13 @@
    "away": "Cardiff",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43598,
+    "D": 0.28001,
+    "A": 0.28401,
+    "O": 0.52897,
+    "U": 0.47103
+   }
   },
   {
    "id": "E1:2026-08-22:Preston:Wolves",
@@ -679,7 +1081,13 @@
    "away": "Wolves",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.24805,
+    "D": 0.27949,
+    "A": 0.47247,
+    "O": 0.48744,
+    "U": 0.51256
+   }
   },
   {
    "id": "E1:2026-08-22:QPR:Bolton",
@@ -689,7 +1097,13 @@
    "away": "Bolton",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50315,
+    "D": 0.26084,
+    "A": 0.236,
+    "O": 0.51889,
+    "U": 0.48111
+   }
   },
   {
    "id": "E1:2026-08-22:Southampton:Stoke",
@@ -699,7 +1113,13 @@
    "away": "Stoke",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.58804,
+    "D": 0.22084,
+    "A": 0.19111,
+    "O": 0.57635,
+    "U": 0.42365
+   }
   },
   {
    "id": "E1:2026-08-22:Swansea:Sheffield United",
@@ -709,7 +1129,13 @@
    "away": "Sheffield United",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35222,
+    "D": 0.2879,
+    "A": 0.35988,
+    "O": 0.48111,
+    "U": 0.51889
+   }
   },
   {
    "id": "E1:2026-08-22:West Ham:Charlton",
@@ -719,7 +1145,13 @@
    "away": "Charlton",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.68489,
+    "D": 0.19098,
+    "A": 0.12414,
+    "O": 0.60386,
+    "U": 0.39614
+   }
   },
   {
    "id": "E1:2026-08-22:Wrexham:Watford",
@@ -729,7 +1161,13 @@
    "away": "Watford",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.534,
+    "D": 0.25468,
+    "A": 0.21133,
+    "O": 0.51889,
+    "U": 0.48111
+   }
   },
   {
    "id": "E1:2026-08-23:West Brom:Burnley",
@@ -739,7 +1177,13 @@
    "away": "Burnley",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38555,
+    "D": 0.28832,
+    "A": 0.32613,
+    "O": 0.49246,
+    "U": 0.50754
+   }
   },
   {
    "id": "E1:2026-08-28:Wrexham:Birmingham",
@@ -749,7 +1193,13 @@
    "away": "Birmingham",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43324,
+    "D": 0.29745,
+    "A": 0.26931,
+    "O": 0.42857,
+    "U": 0.57143
+   }
   },
   {
    "id": "E1:2026-08-29:Derby:Swansea",
@@ -759,7 +1209,13 @@
    "away": "Swansea",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.39542,
+    "D": 0.29075,
+    "A": 0.31383,
+    "O": 0.45,
+    "U": 0.55
+   }
   },
   {
    "id": "E1:2026-08-29:Middlesbrough:West Brom",
@@ -769,7 +1225,13 @@
    "away": "West Brom",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55721,
+    "D": 0.23615,
+    "A": 0.20663,
+    "O": 0.55583,
+    "U": 0.44417
+   }
   },
   {
    "id": "E1:2026-08-29:Wolves:Stoke",
@@ -779,7 +1241,13 @@
    "away": "Stoke",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57395,
+    "D": 0.24218,
+    "A": 0.18388,
+    "O": 0.52632,
+    "U": 0.47368
+   }
   },
   {
    "id": "E1:2026-08-29:Blackburn:QPR",
@@ -789,7 +1257,13 @@
    "away": "QPR",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33294,
+    "D": 0.27949,
+    "A": 0.38757,
+    "O": 0.48872,
+    "U": 0.51128
+   }
   },
   {
    "id": "E1:2026-08-29:Bolton:Lincoln",
@@ -799,7 +1273,13 @@
    "away": "Lincoln",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38757,
+    "D": 0.27949,
+    "A": 0.33294,
+    "O": 0.50754,
+    "U": 0.49246
+   }
   },
   {
    "id": "E1:2026-08-29:Bristol City:Portsmouth",
@@ -809,7 +1289,13 @@
    "away": "Portsmouth",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44352,
+    "D": 0.26851,
+    "A": 0.28797,
+    "O": 0.50505,
+    "U": 0.49495
+   }
   },
   {
    "id": "E1:2026-08-29:Cardiff:Sheffield United",
@@ -819,7 +1305,13 @@
    "away": "Sheffield United",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34486,
+    "D": 0.25466,
+    "A": 0.40048,
+    "O": 0.61244,
+    "U": 0.38756
+   }
   },
   {
    "id": "E1:2026-08-29:Charlton:Preston",
@@ -829,7 +1321,13 @@
    "away": "Preston",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45549,
+    "D": 0.27971,
+    "A": 0.26479,
+    "O": 0.47368,
+    "U": 0.52632
+   }
   },
   {
    "id": "E1:2026-08-29:Norwich:Burnley",
@@ -839,7 +1337,13 @@
    "away": "Burnley",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.47893,
+    "D": 0.25543,
+    "A": 0.26564,
+    "O": 0.57284,
+    "U": 0.42716
+   }
   },
   {
    "id": "E1:2026-08-29:Southampton:Millwall",
@@ -849,7 +1353,13 @@
    "away": "Millwall",
    "hg": 5,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48442,
+    "D": 0.24948,
+    "A": 0.26611,
+    "O": 0.5868,
+    "U": 0.4132
+   }
   },
   {
    "id": "E1:2026-08-29:Watford:West Ham",
@@ -859,7 +1369,13 @@
    "away": "West Ham",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.21502,
+    "D": 0.23549,
+    "A": 0.54949,
+    "O": 0.61575,
+    "U": 0.38425
+   }
   },
   {
    "id": "E1:2026-09-01:Lincoln:Blackburn",
@@ -869,7 +1385,13 @@
    "away": "Blackburn",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40777,
+    "D": 0.27638,
+    "A": 0.31586,
+    "O": 0.50251,
+    "U": 0.49749
+   }
   },
   {
    "id": "E1:2026-09-01:Portsmouth:Derby",
@@ -879,7 +1401,13 @@
    "away": "Derby",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46062,
+    "D": 0.28427,
+    "A": 0.25511,
+    "O": 0.475,
+    "U": 0.525
+   }
   },
   {
    "id": "E1:2026-09-01:Preston:Bristol City",
@@ -889,7 +1417,13 @@
    "away": "Bristol City",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33759,
+    "D": 0.28358,
+    "A": 0.37883,
+    "O": 0.50754,
+    "U": 0.49246
+   }
   },
   {
    "id": "E1:2026-09-01:Sheffield United:Bolton",
@@ -899,7 +1433,13 @@
    "away": "Bolton",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57987,
+    "D": 0.23195,
+    "A": 0.18818,
+    "O": 0.54,
+    "U": 0.46
+   }
   },
   {
    "id": "E1:2026-09-01:Swansea:Watford",
@@ -909,7 +1449,13 @@
    "away": "Watford",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51632,
+    "D": 0.26224,
+    "A": 0.22144,
+    "O": 0.50251,
+    "U": 0.49749
+   }
   },
   {
    "id": "E1:2026-09-01:West Ham:Wolves",
@@ -919,7 +1465,13 @@
    "away": "Wolves",
    "hg": 4,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43175,
+    "D": 0.25793,
+    "A": 0.31032,
+    "O": 0.5868,
+    "U": 0.4132
+   }
   },
   {
    "id": "E1:2026-09-01:Birmingham:Southampton",
@@ -929,7 +1481,13 @@
    "away": "Southampton",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35202,
+    "D": 0.27197,
+    "A": 0.37602,
+    "O": 0.55,
+    "U": 0.45
+   }
   },
   {
    "id": "E1:2026-09-01:Stoke:Norwich",
@@ -939,7 +1497,13 @@
    "away": "Norwich",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.27998,
+    "D": 0.27231,
+    "A": 0.44771,
+    "O": 0.50251,
+    "U": 0.49749
+   }
   },
   {
    "id": "E1:2026-09-02:Millwall:Wrexham",
@@ -949,7 +1513,13 @@
    "away": "Wrexham",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41442,
+    "D": 0.28418,
+    "A": 0.3014,
+    "O": 0.45,
+    "U": 0.55
+   }
   },
   {
    "id": "E1:2026-09-02:QPR:Cardiff",
@@ -959,7 +1529,13 @@
    "away": "Cardiff",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48268,
+    "D": 0.24858,
+    "A": 0.26874,
+    "O": 0.63721,
+    "U": 0.36279
+   }
   },
   {
    "id": "E1:2026-09-02:West Brom:Charlton",
@@ -969,7 +1545,13 @@
    "away": "Charlton",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.58239,
+    "D": 0.2429,
+    "A": 0.17472,
+    "O": 0.50378,
+    "U": 0.49622
+   }
   },
   {
    "id": "E1:2026-09-02:Burnley:Middlesbrough",
@@ -979,7 +1561,13 @@
    "away": "Middlesbrough",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.29691,
+    "D": 0.25504,
+    "A": 0.44805,
+    "O": 0.59564,
+    "U": 0.40436
+   }
   },
   {
    "id": "E1:2026-09-05:Lincoln:Southampton",
@@ -989,7 +1577,13 @@
    "away": "Southampton",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.22652,
+    "D": 0.23179,
+    "A": 0.54169,
+    "O": 0.57843,
+    "U": 0.42157
+   }
   },
   {
    "id": "E1:2026-09-05:Preston:Blackburn",
@@ -999,7 +1593,13 @@
    "away": "Blackburn",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4105,
+    "D": 0.28383,
+    "A": 0.30567,
+    "O": 0.49246,
+    "U": 0.50754
+   }
   },
   {
    "id": "E1:2026-09-05:Stoke:Charlton",
@@ -1009,7 +1609,13 @@
    "away": "Charlton",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.47858,
+    "D": 0.28441,
+    "A": 0.23701,
+    "O": 0.42857,
+    "U": 0.57143
+   }
   },
   {
    "id": "E1:2026-09-05:Burnley:Bristol City",
@@ -1019,7 +1625,13 @@
    "away": "Bristol City",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.47975,
+    "D": 0.26355,
+    "A": 0.2567,
+    "O": 0.52393,
+    "U": 0.47607
+   }
   },
   {
    "id": "E1:2026-09-05:Millwall:Bolton",
@@ -1029,7 +1641,13 @@
    "away": "Bolton",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48806,
+    "D": 0.26909,
+    "A": 0.24284,
+    "O": 0.50882,
+    "U": 0.49118
+   }
   },
   {
    "id": "E1:2026-09-05:Portsmouth:Cardiff",
@@ -1039,7 +1657,13 @@
    "away": "Cardiff",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38604,
+    "D": 0.27287,
+    "A": 0.34109,
+    "O": 0.57985,
+    "U": 0.42015
+   }
   },
   {
    "id": "E1:2026-09-05:QPR:Middlesbrough",
@@ -1049,7 +1673,13 @@
    "away": "Middlesbrough",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32419,
+    "D": 0.26723,
+    "A": 0.40858,
+    "O": 0.5679,
+    "U": 0.4321
+   }
   },
   {
    "id": "E1:2026-09-05:Sheffield United:Norwich",
@@ -1059,7 +1689,13 @@
    "away": "Norwich",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3662,
+    "D": 0.2729,
+    "A": 0.3609,
+    "O": 0.56436,
+    "U": 0.43564
+   }
   },
   {
    "id": "E1:2026-09-05:West Brom:Watford",
@@ -1069,7 +1705,13 @@
    "away": "Watford",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55457,
+    "D": 0.25453,
+    "A": 0.1909,
+    "O": 0.52261,
+    "U": 0.47739
+   }
   },
   {
    "id": "E1:2026-09-05:West Ham:Derby",
@@ -1079,7 +1721,13 @@
    "away": "Derby",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.72311,
+    "D": 0.17507,
+    "A": 0.10183,
+    "O": 0.62736,
+    "U": 0.37264
+   }
   },
   {
    "id": "E1:2026-09-05:Swansea:Wrexham",
@@ -1089,7 +1737,13 @@
    "away": "Wrexham",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41844,
+    "D": 0.28866,
+    "A": 0.2929,
+    "O": 0.47368,
+    "U": 0.52632
+   }
   },
   {
    "id": "E1:2026-09-06:Birmingham:Wolves",
@@ -1099,7 +1753,13 @@
    "away": "Wolves",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32649,
+    "D": 0.28452,
+    "A": 0.38899,
+    "O": 0.50754,
+    "U": 0.49246
+   }
   },
   {
    "id": "E1:2026-09-08:Blackburn:Sheffield United",
@@ -1109,7 +1769,13 @@
    "away": "Sheffield United",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32018,
+    "D": 0.27959,
+    "A": 0.40023,
+    "O": 0.50378,
+    "U": 0.49622
+   }
   },
   {
    "id": "E1:2026-09-08:Cardiff:Stoke",
@@ -1119,7 +1785,13 @@
    "away": "Stoke",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45549,
+    "D": 0.26479,
+    "A": 0.27971,
+    "O": 0.57985,
+    "U": 0.42015
+   }
   },
   {
    "id": "E1:2026-09-08:Southampton:Swansea",
@@ -1129,7 +1801,13 @@
    "away": "Swansea",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.52279,
+    "D": 0.25147,
+    "A": 0.22575,
+    "O": 0.54863,
+    "U": 0.45137
+   }
   },
   {
    "id": "E1:2026-09-08:Watford:Preston",
@@ -1139,7 +1817,13 @@
    "away": "Preston",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42821,
+    "D": 0.28384,
+    "A": 0.28795,
+    "O": 0.47236,
+    "U": 0.52764
+   }
   },
   {
    "id": "E1:2026-09-08:Wrexham:Burnley",
@@ -1149,7 +1833,13 @@
    "away": "Burnley",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46062,
+    "D": 0.28427,
+    "A": 0.25511,
+    "O": 0.4335,
+    "U": 0.5665
+   }
   },
   {
    "id": "E1:2026-09-08:Bolton:West Ham",
@@ -1159,7 +1849,13 @@
    "away": "West Ham",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.19875,
+    "D": 0.23661,
+    "A": 0.56464,
+    "O": 0.60911,
+    "U": 0.39089
+   }
   },
   {
    "id": "E1:2026-09-09:Derby:West Brom",
@@ -1169,7 +1865,13 @@
    "away": "West Brom",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.27606,
+    "D": 0.28806,
+    "A": 0.43588,
+    "O": 0.46,
+    "U": 0.54
+   }
   },
   {
    "id": "E1:2026-09-09:Norwich:Birmingham",
@@ -1179,7 +1881,13 @@
    "away": "Birmingham",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49228,
+    "D": 0.26518,
+    "A": 0.24254,
+    "O": 0.53865,
+    "U": 0.46135
+   }
   },
   {
    "id": "E1:2026-09-09:Charlton:QPR",
@@ -1189,7 +1897,13 @@
    "away": "QPR",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.29082,
+    "D": 0.28661,
+    "A": 0.42257,
+    "O": 0.48241,
+    "U": 0.51759
+   }
   },
   {
    "id": "E1:2026-09-11:West Ham:Wrexham",
@@ -1199,7 +1913,13 @@
    "away": "Wrexham",
    "hg": 6,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.64195,
+    "D": 0.20729,
+    "A": 0.15076,
+    "O": 0.58881,
+    "U": 0.41119
+   }
   },
   {
    "id": "E1:2026-09-12:Bolton:Cardiff",
@@ -1209,7 +1929,13 @@
    "away": "Cardiff",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35133,
+    "D": 0.25584,
+    "A": 0.39283,
+    "O": 0.63869,
+    "U": 0.36131
+   }
   },
   {
    "id": "E1:2026-09-12:Derby:Birmingham",
@@ -1219,7 +1945,13 @@
    "away": "Birmingham",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.28108,
+    "D": 0.28509,
+    "A": 0.43383,
+    "O": 0.47739,
+    "U": 0.52261
+   }
   },
   {
    "id": "E1:2026-09-12:West Brom:QPR",
@@ -1229,7 +1961,13 @@
    "away": "QPR",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43754,
+    "D": 0.28915,
+    "A": 0.27331,
+    "O": 0.49875,
+    "U": 0.50125
+   }
   },
   {
    "id": "E1:2026-09-12:Blackburn:Millwall",
@@ -1239,7 +1977,13 @@
    "away": "Millwall",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37304,
+    "D": 0.2962,
+    "A": 0.33076,
+    "O": 0.45137,
+    "U": 0.54863
+   }
   },
   {
    "id": "E1:2026-09-12:Charlton:Portsmouth",
@@ -1249,7 +1993,13 @@
    "away": "Portsmouth",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3494,
+    "D": 0.29621,
+    "A": 0.35439,
+    "O": 0.45,
+    "U": 0.55
+   }
   },
   {
    "id": "E1:2026-09-12:Middlesbrough:Norwich",
@@ -1259,7 +2009,13 @@
    "away": "Norwich",
    "hg": 4,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51637,
+    "D": 0.24181,
+    "A": 0.24181,
+    "O": 0.61244,
+    "U": 0.38756
+   }
   },
   {
    "id": "E1:2026-09-12:Preston:Lincoln",
@@ -1269,7 +2025,13 @@
    "away": "Lincoln",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3882,
+    "D": 0.27606,
+    "A": 0.33574,
+    "O": 0.52632,
+    "U": 0.47368
+   }
   },
   {
    "id": "E1:2026-09-12:Southampton:Bristol City",
@@ -1279,7 +2041,13 @@
    "away": "Bristol City",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.5586,
+    "D": 0.23541,
+    "A": 0.20599,
+    "O": 0.61429,
+    "U": 0.38571
+   }
   },
   {
    "id": "E1:2026-09-12:Swansea:Burnley",
@@ -1289,7 +2057,13 @@
    "away": "Burnley",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46523,
+    "D": 0.27277,
+    "A": 0.262,
+    "O": 0.50505,
+    "U": 0.49495
+   }
   },
   {
    "id": "E1:2026-09-12:Watford:Stoke",
@@ -1299,7 +2073,13 @@
    "away": "Stoke",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41458,
+    "D": 0.2884,
+    "A": 0.29701,
+    "O": 0.4787,
+    "U": 0.5213
+   }
   },
   {
    "id": "E1:2026-09-13:Sheffield United:Wolves",
@@ -1309,7 +2089,13 @@
    "away": "Wolves",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.28004,
+    "D": 0.27615,
+    "A": 0.44381,
+    "O": 0.51759,
+    "U": 0.48241
+   }
   },
   {
    "id": "E1:2026-09-15:Bristol City:Lincoln",
@@ -1319,7 +2105,13 @@
    "away": "Lincoln",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51398,
+    "D": 0.26672,
+    "A": 0.2193,
+    "O": 0.48241,
+    "U": 0.51759
+   }
   },
   {
    "id": "E1:2026-09-15:Middlesbrough:Millwall",
@@ -1329,7 +2121,13 @@
    "away": "Millwall",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.68489,
+    "D": 0.19098,
+    "A": 0.12414,
+    "O": 0.63721,
+    "U": 0.36279
+   }
   },
   {
    "id": "E1:2026-09-18:Bristol City:Watford",
@@ -1339,7 +2137,13 @@
    "away": "Watford",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.54949,
+    "D": 0.23549,
+    "A": 0.21502,
+    "O": 0.55583,
+    "U": 0.44417
+   }
   },
   {
    "id": "E1:2026-09-19:Cardiff:Charlton",
@@ -1349,7 +2153,13 @@
    "away": "Charlton",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56984,
+    "D": 0.22664,
+    "A": 0.20352,
+    "O": 0.62588,
+    "U": 0.37412
+   }
   },
   {
    "id": "E1:2026-09-19:Millwall:West Ham",
@@ -1359,7 +2169,13 @@
    "away": "West Ham",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.18755,
+    "D": 0.23116,
+    "A": 0.58129,
+    "O": 0.58191,
+    "U": 0.41809
+   }
   },
   {
    "id": "E1:2026-09-19:Stoke:Sheffield United",
@@ -1369,7 +2185,13 @@
    "away": "Sheffield United",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41667,
+    "D": 0.29167,
+    "A": 0.29167,
+    "O": 0.45865,
+    "U": 0.54135
+   }
   },
   {
    "id": "E1:2026-09-19:Birmingham:Middlesbrough",
@@ -1379,7 +2201,13 @@
    "away": "Middlesbrough",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33922,
+    "D": 0.26771,
+    "A": 0.39307,
+    "O": 0.56436,
+    "U": 0.43564
+   }
   },
   {
    "id": "E1:2026-09-19:Burnley:Derby",
@@ -1389,7 +2217,13 @@
    "away": "Derby",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.52715,
+    "D": 0.25741,
+    "A": 0.21544,
+    "O": 0.52897,
+    "U": 0.47103
+   }
   },
   {
    "id": "E1:2026-09-19:Lincoln:Swansea",
@@ -1399,7 +2233,13 @@
    "away": "Swansea",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.30645,
+    "D": 0.28869,
+    "A": 0.40486,
+    "O": 0.45137,
+    "U": 0.54863
+   }
   },
   {
    "id": "E1:2026-09-19:Portsmouth:Blackburn",
@@ -1409,7 +2249,13 @@
    "away": "Blackburn",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43205,
+    "D": 0.27992,
+    "A": 0.28803,
+    "O": 0.465,
+    "U": 0.535
+   }
   },
   {
    "id": "E1:2026-09-19:QPR:Preston",
@@ -1419,7 +2265,13 @@
    "away": "Preston",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55249,
+    "D": 0.24862,
+    "A": 0.1989,
+    "O": 0.54135,
+    "U": 0.45865
+   }
   },
   {
    "id": "E1:2026-09-19:Wrexham:Southampton",
@@ -1429,7 +2281,13 @@
    "away": "Southampton",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36222,
+    "D": 0.26466,
+    "A": 0.37312,
+    "O": 0.56219,
+    "U": 0.43781
+   }
   },
   {
    "id": "E1:2026-09-20:Wolves:West Brom",
@@ -1439,7 +2297,13 @@
    "away": "West Brom",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51323,
+    "D": 0.26551,
+    "A": 0.22126,
+    "O": 0.49875,
+    "U": 0.50125
+   }
   },
   {
    "id": "E1:2026-09-20:Norwich:Bolton",
@@ -1449,7 +2313,13 @@
    "away": "Bolton",
    "hg": 3,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.68284,
+    "D": 0.18336,
+    "A": 0.1338,
+    "O": 0.67478,
+    "U": 0.32522
+   }
   },
   {
    "id": "D1:2026-08-28:Bayern Munich:Stuttgart",
@@ -1459,7 +2329,13 @@
    "away": "Stuttgart",
    "hg": 5,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.79844,
+    "D": 0.12171,
+    "A": 0.07984,
+    "O": 0.82609,
+    "U": 0.17391
+   }
   },
   {
    "id": "D1:2026-08-29:Elversberg:Leverkusen",
@@ -1469,7 +2345,13 @@
    "away": "Leverkusen",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.17415,
+    "D": 0.22059,
+    "A": 0.60527,
+    "O": 0.64352,
+    "U": 0.35648
+   }
   },
   {
    "id": "D1:2026-08-29:FC Koln:Hoffenheim",
@@ -1479,7 +2361,13 @@
    "away": "Hoffenheim",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.29611,
+    "D": 0.26105,
+    "A": 0.44284,
+    "O": 0.60766,
+    "U": 0.39234
+   }
   },
   {
    "id": "D1:2026-08-29:Mainz:Paderborn",
@@ -1489,7 +2377,13 @@
    "away": "Paderborn",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.62271,
+    "D": 0.21659,
+    "A": 0.1607,
+    "O": 0.65148,
+    "U": 0.34852
+   }
   },
   {
    "id": "D1:2026-08-29:RB Leipzig:M'gladbach",
@@ -1499,7 +2393,13 @@
    "away": "M'gladbach",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.60964,
+    "D": 0.21602,
+    "A": 0.17434,
+    "O": 0.66368,
+    "U": 0.33632
+   }
   },
   {
    "id": "D1:2026-08-29:Union Berlin:Ein Frankfurt",
@@ -1509,7 +2409,13 @@
    "away": "Ein Frankfurt",
    "hg": 3,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35786,
+    "D": 0.2653,
+    "A": 0.37684,
+    "O": 0.62085,
+    "U": 0.37915
+   }
   },
   {
    "id": "D1:2026-08-29:Dortmund:Hamburg",
@@ -1519,7 +2425,13 @@
    "away": "Hamburg",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.72158,
+    "D": 0.1747,
+    "A": 0.10373,
+    "O": 0.67478,
+    "U": 0.32522
+   }
   },
   {
    "id": "D1:2026-08-30:Freiburg:Werder Bremen",
@@ -1529,7 +2441,13 @@
    "away": "Werder Bremen",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53636,
+    "D": 0.2558,
+    "A": 0.20784,
+    "O": 0.57635,
+    "U": 0.42365
+   }
   },
   {
    "id": "D1:2026-08-30:Augsburg:Schalke 04",
@@ -1539,7 +2457,13 @@
    "away": "Schalke 04",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41781,
+    "D": 0.27622,
+    "A": 0.30597,
+    "O": 0.57143,
+    "U": 0.42857
+   }
   },
   {
    "id": "D1:2026-09-04:Stuttgart:FC Koln",
@@ -1549,7 +2473,13 @@
    "away": "FC Koln",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.67113,
+    "D": 0.18181,
+    "A": 0.14706,
+    "O": 0.72709,
+    "U": 0.27291
+   }
   },
   {
    "id": "D1:2026-09-05:Hoffenheim:Dortmund",
@@ -1559,7 +2489,13 @@
    "away": "Dortmund",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38825,
+    "D": 0.25163,
+    "A": 0.36012,
+    "O": 0.66964,
+    "U": 0.33036
+   }
   },
   {
    "id": "D1:2026-09-05:Leverkusen:Union Berlin",
@@ -1569,7 +2505,13 @@
    "away": "Union Berlin",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.70293,
+    "D": 0.17824,
+    "A": 0.11883,
+    "O": 0.68966,
+    "U": 0.31034
+   }
   },
   {
    "id": "D1:2026-09-05:M'gladbach:Elversberg",
@@ -1579,7 +2521,13 @@
    "away": "Elversberg",
    "hg": 3,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49649,
+    "D": 0.24219,
+    "A": 0.26131,
+    "O": 0.6576,
+    "U": 0.3424
+   }
   },
   {
    "id": "D1:2026-09-05:Paderborn:Freiburg",
@@ -1589,7 +2537,13 @@
    "away": "Freiburg",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25478,
+    "D": 0.24841,
+    "A": 0.49682,
+    "O": 0.61244,
+    "U": 0.38756
+   }
   },
   {
    "id": "D1:2026-09-05:Werder Bremen:RB Leipzig",
@@ -1599,7 +2553,13 @@
    "away": "RB Leipzig",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.2439,
+    "D": 0.23255,
+    "A": 0.52355,
+    "O": 0.67329,
+    "U": 0.32671
+   }
   },
   {
    "id": "D1:2026-09-05:Schalke 04:Bayern Munich",
@@ -1609,7 +2569,13 @@
    "away": "Bayern Munich",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.06636,
+    "D": 0.12442,
+    "A": 0.80923,
+    "O": 0.7799,
+    "U": 0.2201
+   }
   },
   {
    "id": "D1:2026-09-06:Hamburg:Mainz",
@@ -1619,7 +2585,13 @@
    "away": "Mainz",
    "hg": 0,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32579,
+    "D": 0.2799,
+    "A": 0.39431,
+    "O": 0.54726,
+    "U": 0.45274
+   }
   },
   {
    "id": "D1:2026-09-06:Ein Frankfurt:Augsburg",
@@ -1629,7 +2601,13 @@
    "away": "Augsburg",
    "hg": 1,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51753,
+    "D": 0.23535,
+    "A": 0.24712,
+    "O": 0.68817,
+    "U": 0.31183
+   }
   },
   {
    "id": "D1:2026-09-11:Union Berlin:Schalke 04",
@@ -1639,7 +2617,13 @@
    "away": "Schalke 04",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4105,
+    "D": 0.28383,
+    "A": 0.30567,
+    "O": 0.54135,
+    "U": 0.45865
+   }
   },
   {
    "id": "D1:2026-09-12:Augsburg:Leverkusen",
@@ -1649,7 +2633,13 @@
    "away": "Leverkusen",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25198,
+    "D": 0.24277,
+    "A": 0.50525,
+    "O": 0.70231,
+    "U": 0.29769
+   }
   },
   {
    "id": "D1:2026-09-12:Dortmund:Paderborn",
@@ -1659,7 +2649,13 @@
    "away": "Paderborn",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.76235,
+    "D": 0.14686,
+    "A": 0.09079,
+    "O": 0.72008,
+    "U": 0.27992
+   }
   },
   {
    "id": "D1:2026-09-12:Freiburg:M'gladbach",
@@ -1669,7 +2665,13 @@
    "away": "M'gladbach",
    "hg": 5,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56216,
+    "D": 0.22614,
+    "A": 0.21171,
+    "O": 0.6576,
+    "U": 0.3424
+   }
   },
   {
    "id": "D1:2026-09-12:Hoffenheim:Stuttgart",
@@ -1679,7 +2681,13 @@
    "away": "Stuttgart",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42983,
+    "D": 0.24322,
+    "A": 0.32695,
+    "O": 0.72008,
+    "U": 0.27992
+   }
   },
   {
    "id": "D1:2026-09-12:Mainz:Ein Frankfurt",
@@ -1689,7 +2697,13 @@
    "away": "Ein Frankfurt",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.54675,
+    "D": 0.23693,
+    "A": 0.21632,
+    "O": 0.6484,
+    "U": 0.3516
+   }
   },
   {
    "id": "D1:2026-09-12:FC Koln:Werder Bremen",
@@ -1699,7 +2713,13 @@
    "away": "Werder Bremen",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46293,
+    "D": 0.25402,
+    "A": 0.28305,
+    "O": 0.63721,
+    "U": 0.36279
+   }
   },
   {
    "id": "D1:2026-09-13:RB Leipzig:Hamburg",
@@ -1709,7 +2729,13 @@
    "away": "Hamburg",
    "hg": 5,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.70096,
+    "D": 0.17462,
+    "A": 0.12442,
+    "O": 0.72008,
+    "U": 0.27992
+   }
   },
   {
    "id": "D1:2026-09-13:Elversberg:Bayern Munich",
@@ -1719,7 +2745,13 @@
    "away": "Bayern Munich",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.0641,
+    "D": 0.10799,
+    "A": 0.82791,
+    "O": 0.83565,
+    "U": 0.16435
+   }
   },
   {
    "id": "D1:2026-09-18:Bayern Munich:Union Berlin",
@@ -1729,7 +2761,13 @@
    "away": "Union Berlin",
    "hg": 7,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.94528,
+    "D": 0.03817,
+    "A": 0.01654,
+    "O": 0.89636,
+    "U": 0.10364
+   }
   },
   {
    "id": "D1:2026-09-19:Ein Frankfurt:Freiburg",
@@ -1739,7 +2777,13 @@
    "away": "Freiburg",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37866,
+    "D": 0.25116,
+    "A": 0.37018,
+    "O": 0.64679,
+    "U": 0.35321
+   }
   },
   {
    "id": "D1:2026-09-19:Hamburg:FC Koln",
@@ -1749,7 +2793,13 @@
    "away": "FC Koln",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34522,
+    "D": 0.27239,
+    "A": 0.38239,
+    "O": 0.59903,
+    "U": 0.40097
+   }
   },
   {
    "id": "D1:2026-09-19:M'gladbach:Mainz",
@@ -1759,7 +2809,13 @@
    "away": "Mainz",
    "hg": 3,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.28885,
+    "D": 0.26225,
+    "A": 0.4489,
+    "O": 0.61611,
+    "U": 0.38389
+   }
   },
   {
    "id": "D1:2026-09-19:Werder Bremen:Augsburg",
@@ -1769,7 +2825,13 @@
    "away": "Augsburg",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42723,
+    "D": 0.24779,
+    "A": 0.32498,
+    "O": 0.64203,
+    "U": 0.35797
+   }
   },
   {
    "id": "D1:2026-09-19:Stuttgart:Dortmund",
@@ -1779,7 +2841,13 @@
    "away": "Dortmund",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40303,
+    "D": 0.24786,
+    "A": 0.3491,
+    "O": 0.71721,
+    "U": 0.28279
+   }
   },
   {
    "id": "D1:2026-09-20:Leverkusen:RB Leipzig",
@@ -1789,7 +2857,13 @@
    "away": "RB Leipzig",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51452,
+    "D": 0.22067,
+    "A": 0.26481,
+    "O": 0.75786,
+    "U": 0.24214
+   }
   },
   {
    "id": "D1:2026-09-20:Schalke 04:Elversberg",
@@ -1799,7 +2873,13 @@
    "away": "Elversberg",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50633,
+    "D": 0.24684,
+    "A": 0.24684,
+    "O": 0.65297,
+    "U": 0.34703
+   }
   },
   {
    "id": "D1:2026-09-20:Paderborn:Hoffenheim",
@@ -1809,7 +2889,13 @@
    "away": "Hoffenheim",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.23693,
+    "D": 0.21632,
+    "A": 0.54675,
+    "O": 0.69915,
+    "U": 0.30085
+   }
   },
   {
    "id": "D2:2026-08-14:Braunschweig:Bochum",
@@ -1819,7 +2905,13 @@
    "away": "Bochum",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36935,
+    "D": 0.27701,
+    "A": 0.35363,
+    "O": 0.56931,
+    "U": 0.43069
+   }
   },
   {
    "id": "D2:2026-08-14:Holstein Kiel:St Pauli",
@@ -1829,7 +2921,13 @@
    "away": "St Pauli",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35695,
+    "D": 0.27012,
+    "A": 0.37293,
+    "O": 0.56296,
+    "U": 0.43704
+   }
   },
   {
    "id": "D2:2026-08-15:Greuther Furth:Nurnberg",
@@ -1839,7 +2937,13 @@
    "away": "Nurnberg",
    "hg": 2,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31048,
+    "D": 0.26494,
+    "A": 0.42458,
+    "O": 0.58333,
+    "U": 0.41667
+   }
   },
   {
    "id": "D2:2026-08-15:Hertha:Heidenheim",
@@ -1849,7 +2953,13 @@
    "away": "Heidenheim",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3554,
+    "D": 0.26187,
+    "A": 0.38273,
+    "O": 0.61575,
+    "U": 0.38425
+   }
   },
   {
    "id": "D2:2026-08-15:Osnabruck:Magdeburg",
@@ -1859,7 +2969,13 @@
    "away": "Magdeburg",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.389,
+    "D": 0.25534,
+    "A": 0.35566,
+    "O": 0.61429,
+    "U": 0.38571
+   }
   },
   {
    "id": "D2:2026-08-15:Kaiserslautern:Karlsruhe",
@@ -1869,7 +2985,13 @@
    "away": "Karlsruhe",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46823,
+    "D": 0.24816,
+    "A": 0.28361,
+    "O": 0.62264,
+    "U": 0.37736
+   }
   },
   {
    "id": "D2:2026-08-16:Bielefeld:Cottbus",
@@ -1879,7 +3001,13 @@
    "away": "Cottbus",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.60381,
+    "D": 0.2214,
+    "A": 0.17479,
+    "O": 0.63721,
+    "U": 0.36279
+   }
   },
   {
    "id": "D2:2026-08-16:Dresden:Darmstadt",
@@ -1889,7 +3017,13 @@
    "away": "Darmstadt",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.47573,
+    "D": 0.2604,
+    "A": 0.26387,
+    "O": 0.5868,
+    "U": 0.4132
+   }
   },
   {
    "id": "D2:2026-08-16:Hannover:Wolfsburg",
@@ -1899,7 +3033,13 @@
    "away": "Wolfsburg",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44029,
+    "D": 0.24876,
+    "A": 0.31095,
+    "O": 0.64516,
+    "U": 0.35484
+   }
   },
   {
    "id": "D2:2026-08-28:Bochum:Osnabruck",
@@ -1909,7 +3049,13 @@
    "away": "Osnabruck",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51637,
+    "D": 0.24181,
+    "A": 0.24181,
+    "O": 0.57284,
+    "U": 0.42716
+   }
   },
   {
    "id": "D2:2026-08-28:Braunschweig:Hertha",
@@ -1919,7 +3065,13 @@
    "away": "Hertha",
    "hg": 3,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33362,
+    "D": 0.2687,
+    "A": 0.39768,
+    "O": 0.59903,
+    "U": 0.40097
+   }
   },
   {
    "id": "D2:2026-08-29:Cottbus:Greuther Furth",
@@ -1929,7 +3081,13 @@
    "away": "Greuther Furth",
    "hg": 3,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38358,
+    "D": 0.26043,
+    "A": 0.35599,
+    "O": 0.60048,
+    "U": 0.39952
+   }
   },
   {
    "id": "D2:2026-08-29:Heidenheim:Dresden",
@@ -1939,7 +3097,13 @@
    "away": "Dresden",
    "hg": 5,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43959,
+    "D": 0.25473,
+    "A": 0.30568,
+    "O": 0.61429,
+    "U": 0.38571
+   }
   },
   {
    "id": "D2:2026-08-29:Karlsruhe:Wolfsburg",
@@ -1949,7 +3113,13 @@
    "away": "Wolfsburg",
    "hg": 2,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31032,
+    "D": 0.25793,
+    "A": 0.43175,
+    "O": 0.61098,
+    "U": 0.38902
+   }
   },
   {
    "id": "D2:2026-08-29:Nurnberg:Bielefeld",
@@ -1959,7 +3129,13 @@
    "away": "Bielefeld",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40388,
+    "D": 0.26494,
+    "A": 0.33118,
+    "O": 0.59024,
+    "U": 0.40976
+   }
   },
   {
    "id": "D2:2026-08-30:Darmstadt:Hannover",
@@ -1969,7 +3145,13 @@
    "away": "Hannover",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32055,
+    "D": 0.25479,
+    "A": 0.42466,
+    "O": 0.64516,
+    "U": 0.35484
+   }
   },
   {
    "id": "D2:2026-08-30:Magdeburg:Holstein Kiel",
@@ -1979,7 +3161,13 @@
    "away": "Holstein Kiel",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43812,
+    "D": 0.24754,
+    "A": 0.31434,
+    "O": 0.66815,
+    "U": 0.33185
+   }
   },
   {
    "id": "D2:2026-08-30:St Pauli:Kaiserslautern",
@@ -1989,7 +3177,13 @@
    "away": "Kaiserslautern",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53105,
+    "D": 0.24827,
+    "A": 0.22068,
+    "O": 0.57353,
+    "U": 0.42647
+   }
   },
   {
    "id": "D2:2026-09-04:Bielefeld:St Pauli",
@@ -1999,7 +3193,13 @@
    "away": "St Pauli",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41489,
+    "D": 0.25863,
+    "A": 0.32647,
+    "O": 0.59903,
+    "U": 0.40097
+   }
   },
   {
    "id": "D2:2026-09-04:Hannover:Karlsruhe",
@@ -2009,7 +3209,13 @@
    "away": "Karlsruhe",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.64502,
+    "D": 0.19477,
+    "A": 0.16021,
+    "O": 0.73786,
+    "U": 0.26214
+   }
   },
   {
    "id": "D2:2026-09-05:Holstein Kiel:Nurnberg",
@@ -2019,7 +3225,13 @@
    "away": "Nurnberg",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45113,
+    "D": 0.24812,
+    "A": 0.30075,
+    "O": 0.64828,
+    "U": 0.35172
+   }
   },
   {
    "id": "D2:2026-09-05:Kaiserslautern:Darmstadt",
@@ -2029,7 +3241,13 @@
    "away": "Darmstadt",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43404,
+    "D": 0.27489,
+    "A": 0.29106,
+    "O": 0.55,
+    "U": 0.45
+   }
   },
   {
    "id": "D2:2026-09-05:Wolfsburg:Cottbus",
@@ -2039,7 +3257,13 @@
    "away": "Cottbus",
    "hg": 4,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.69878,
+    "D": 0.17719,
+    "A": 0.12403,
+    "O": 0.71575,
+    "U": 0.28425
+   }
   },
   {
    "id": "D2:2026-09-05:Dresden:Bochum",
@@ -2049,7 +3273,13 @@
    "away": "Bochum",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43165,
+    "D": 0.272,
+    "A": 0.29636,
+    "O": 0.53769,
+    "U": 0.46231
+   }
   },
   {
    "id": "D2:2026-09-06:Greuther Furth:Heidenheim",
@@ -2059,7 +3289,13 @@
    "away": "Heidenheim",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.29637,
+    "D": 0.24821,
+    "A": 0.45543,
+    "O": 0.66964,
+    "U": 0.33036
+   }
   },
   {
    "id": "D2:2026-09-06:Hertha:Magdeburg",
@@ -2069,7 +3305,13 @@
    "away": "Magdeburg",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4924,
+    "D": 0.23131,
+    "A": 0.27629,
+    "O": 0.72008,
+    "U": 0.27992
+   }
   },
   {
    "id": "D2:2026-09-06:Osnabruck:Braunschweig",
@@ -2079,7 +3321,13 @@
    "away": "Braunschweig",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42458,
+    "D": 0.26494,
+    "A": 0.31048,
+    "O": 0.58333,
+    "U": 0.41667
+   }
   },
   {
    "id": "D2:2026-09-11:Darmstadt:Bielefeld",
@@ -2089,7 +3337,13 @@
    "away": "Bielefeld",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.30172,
+    "D": 0.2691,
+    "A": 0.42917,
+    "O": 0.5679,
+    "U": 0.4321
+   }
   },
   {
    "id": "D2:2026-09-11:Nurnberg:Hannover",
@@ -2099,7 +3353,13 @@
    "away": "Hannover",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37714,
+    "D": 0.24284,
+    "A": 0.38002,
+    "O": 0.71134,
+    "U": 0.28866
+   }
   },
   {
    "id": "D2:2026-09-12:Bochum:Greuther Furth",
@@ -2109,7 +3369,13 @@
    "away": "Greuther Furth",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55201,
+    "D": 0.23658,
+    "A": 0.21141,
+    "O": 0.59903,
+    "U": 0.40097
+   }
   },
   {
    "id": "D2:2026-09-12:Braunschweig:Dresden",
@@ -2119,7 +3385,13 @@
    "away": "Dresden",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34597,
+    "D": 0.25548,
+    "A": 0.39855,
+    "O": 0.62588,
+    "U": 0.37412
+   }
   },
   {
    "id": "D2:2026-09-12:Magdeburg:Kaiserslautern",
@@ -2129,7 +3401,13 @@
    "away": "Kaiserslautern",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45493,
+    "D": 0.2576,
+    "A": 0.28747,
+    "O": 0.61429,
+    "U": 0.38571
+   }
   },
   {
    "id": "D2:2026-09-12:St Pauli:Wolfsburg",
@@ -2139,7 +3417,13 @@
    "away": "Wolfsburg",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37342,
+    "D": 0.26139,
+    "A": 0.36518,
+    "O": 0.59367,
+    "U": 0.40633
+   }
   },
   {
    "id": "D2:2026-09-13:Heidenheim:Holstein Kiel",
@@ -2149,7 +3433,13 @@
    "away": "Holstein Kiel",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4582,
+    "D": 0.24363,
+    "A": 0.29817,
+    "O": 0.65138,
+    "U": 0.34862
+   }
   },
   {
    "id": "D2:2026-09-13:Karlsruhe:Cottbus",
@@ -2159,7 +3449,13 @@
    "away": "Cottbus",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51197,
+    "D": 0.21592,
+    "A": 0.27211,
+    "O": 0.75926,
+    "U": 0.24074
+   }
   },
   {
    "id": "D2:2026-09-13:Osnabruck:Hertha",
@@ -2169,7 +3465,13 @@
    "away": "Hertha",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.30521,
+    "D": 0.24798,
+    "A": 0.44681,
+    "O": 0.66368,
+    "U": 0.33632
+   }
   },
   {
    "id": "D2:2026-09-18:Greuther Furth:Magdeburg",
@@ -2179,7 +3481,13 @@
    "away": "Magdeburg",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37368,
+    "D": 0.25818,
+    "A": 0.36814,
+    "O": 0.64516,
+    "U": 0.35484
+   }
   },
   {
    "id": "D2:2026-09-18:Wolfsburg:Darmstadt",
@@ -2189,7 +3497,13 @@
    "away": "Darmstadt",
    "hg": 5,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.64251,
+    "D": 0.19789,
+    "A": 0.15959,
+    "O": 0.67834,
+    "U": 0.32166
+   }
   },
   {
    "id": "D2:2026-09-19:Holstein Kiel:Osnabruck",
@@ -2199,7 +3513,13 @@
    "away": "Osnabruck",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51614,
+    "D": 0.25219,
+    "A": 0.23166,
+    "O": 0.59512,
+    "U": 0.40488
+   }
   },
   {
    "id": "D2:2026-09-19:Kaiserslautern:Braunschweig",
@@ -2209,7 +3529,13 @@
    "away": "Braunschweig",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49205,
+    "D": 0.25233,
+    "A": 0.25561,
+    "O": 0.60241,
+    "U": 0.39759
+   }
   },
   {
    "id": "D2:2026-09-19:Karlsruhe:Nurnberg",
@@ -2219,7 +3545,13 @@
    "away": "Nurnberg",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31557,
+    "D": 0.23667,
+    "A": 0.44776,
+    "O": 0.72435,
+    "U": 0.27565
+   }
   },
   {
    "id": "D2:2026-09-19:Dresden:Hertha",
@@ -2229,7 +3561,13 @@
    "away": "Hertha",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35461,
+    "D": 0.24823,
+    "A": 0.39716,
+    "O": 0.66216,
+    "U": 0.33784
+   }
   },
   {
    "id": "D2:2026-09-20:Bielefeld:Heidenheim",
@@ -2239,7 +3577,13 @@
    "away": "Heidenheim",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48512,
+    "D": 0.24741,
+    "A": 0.26747,
+    "O": 0.62736,
+    "U": 0.37264
+   }
   },
   {
    "id": "D2:2026-09-20:Cottbus:St Pauli",
@@ -2249,7 +3593,13 @@
    "away": "St Pauli",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.30581,
+    "D": 0.24241,
+    "A": 0.45177,
+    "O": 0.67627,
+    "U": 0.32373
+   }
   },
   {
    "id": "D2:2026-09-20:Hannover:Bochum",
@@ -2259,7 +3609,13 @@
    "away": "Bochum",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49682,
+    "D": 0.24841,
+    "A": 0.25478,
+    "O": 0.64516,
+    "U": 0.35484
+   }
   },
   {
    "id": "I1:2026-08-22:Inter:Monza",
@@ -2269,7 +3625,13 @@
    "away": "Monza",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.84225,
+    "D": 0.11043,
+    "A": 0.04733,
+    "O": 0.64516,
+    "U": 0.35484
+   }
   },
   {
    "id": "I1:2026-08-22:Udinese:Como",
@@ -2279,7 +3641,13 @@
    "away": "Como",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.18099,
+    "D": 0.26904,
+    "A": 0.54997,
+    "O": 0.465,
+    "U": 0.535
+   }
   },
   {
    "id": "I1:2026-08-22:Genoa:Napoli",
@@ -2289,7 +3657,13 @@
    "away": "Napoli",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.22649,
+    "D": 0.31637,
+    "A": 0.45714,
+    "O": 0.37589,
+    "U": 0.62411
+   }
   },
   {
    "id": "I1:2026-08-22:Parma:Cagliari",
@@ -2299,7 +3673,13 @@
    "away": "Cagliari",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32513,
+    "D": 0.33055,
+    "A": 0.34432,
+    "O": 0.33784,
+    "U": 0.66216
+   }
   },
   {
    "id": "I1:2026-08-23:Frosinone:Juventus",
@@ -2309,7 +3689,13 @@
    "away": "Juventus",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.12441,
+    "D": 0.20312,
+    "A": 0.67248,
+    "O": 0.60241,
+    "U": 0.39759
+   }
   },
   {
    "id": "I1:2026-08-23:Venezia:Lecce",
@@ -2319,7 +3705,13 @@
    "away": "Lecce",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.52748,
+    "D": 0.27313,
+    "A": 0.19939,
+    "O": 0.485,
+    "U": 0.515
+   }
   },
   {
    "id": "I1:2026-08-23:Atalanta:Sassuolo",
@@ -2329,7 +3721,13 @@
    "away": "Sassuolo",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.63176,
+    "D": 0.217,
+    "A": 0.15124,
+    "O": 0.57778,
+    "U": 0.42222
+   }
   },
   {
    "id": "I1:2026-08-23:Torino:Milan",
@@ -2339,7 +3737,13 @@
    "away": "Milan",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.21123,
+    "D": 0.27966,
+    "A": 0.50912,
+    "O": 0.42998,
+    "U": 0.57002
+   }
   },
   {
    "id": "I1:2026-08-24:Bologna:Lazio",
@@ -2349,7 +3753,13 @@
    "away": "Lazio",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37684,
+    "D": 0.32618,
+    "A": 0.29697,
+    "O": 0.39568,
+    "U": 0.60432
+   }
   },
   {
    "id": "I1:2026-08-24:Roma:Fiorentina",
@@ -2359,7 +3769,13 @@
    "away": "Fiorentina",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55336,
+    "D": 0.25871,
+    "A": 0.18793,
+    "O": 0.49246,
+    "U": 0.50754
+   }
   },
   {
    "id": "I1:2026-08-28:Milan:Venezia",
@@ -2369,7 +3785,13 @@
    "away": "Venezia",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.65018,
+    "D": 0.21165,
+    "A": 0.13816,
+    "O": 0.56158,
+    "U": 0.43842
+   }
   },
   {
    "id": "I1:2026-08-29:Fiorentina:Frosinone",
@@ -2379,7 +3801,13 @@
    "away": "Frosinone",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55249,
+    "D": 0.24862,
+    "A": 0.1989,
+    "O": 0.57635,
+    "U": 0.42365
+   }
   },
   {
    "id": "I1:2026-08-29:Monza:Udinese",
@@ -2389,7 +3817,13 @@
    "away": "Udinese",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32149,
+    "D": 0.30665,
+    "A": 0.37187,
+    "O": 0.37832,
+    "U": 0.62168
+   }
   },
   {
    "id": "I1:2026-08-29:Sassuolo:Torino",
@@ -2399,7 +3833,13 @@
    "away": "Torino",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42811,
+    "D": 0.29212,
+    "A": 0.27978,
+    "O": 0.47236,
+    "U": 0.52764
+   }
   },
   {
    "id": "I1:2026-08-29:Juventus:Parma",
@@ -2409,7 +3849,13 @@
    "away": "Parma",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.7891,
+    "D": 0.15065,
+    "A": 0.06026,
+    "O": 0.58049,
+    "U": 0.41951
+   }
   },
   {
    "id": "I1:2026-08-30:Napoli:Como",
@@ -2419,7 +3865,13 @@
    "away": "Como",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41379,
+    "D": 0.31034,
+    "A": 0.27586,
+    "O": 0.42506,
+    "U": 0.57494
+   }
   },
   {
    "id": "I1:2026-08-30:Cagliari:Inter",
@@ -2429,7 +3881,13 @@
    "away": "Inter",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.11567,
+    "D": 0.20301,
+    "A": 0.68133,
+    "O": 0.56436,
+    "U": 0.43564
+   }
   },
   {
    "id": "I1:2026-08-30:Lazio:Genoa",
@@ -2439,7 +3897,13 @@
    "away": "Genoa",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41693,
+    "D": 0.32534,
+    "A": 0.25774,
+    "O": 0.37089,
+    "U": 0.62911
+   }
   },
   {
    "id": "I1:2026-08-31:Lecce:Roma",
@@ -2449,7 +3913,13 @@
    "away": "Roma",
    "hg": 0,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.12117,
+    "D": 0.2208,
+    "A": 0.65802,
+    "O": 0.51256,
+    "U": 0.48744
+   }
   },
   {
    "id": "I1:2026-08-31:Atalanta:Bologna",
@@ -2459,7 +3929,13 @@
    "away": "Bologna",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50569,
+    "D": 0.27293,
+    "A": 0.22138,
+    "O": 0.48872,
+    "U": 0.51128
+   }
   },
   {
    "id": "I1:2026-09-04:Genoa:Como",
@@ -2469,7 +3945,13 @@
    "away": "Como",
    "hg": 1,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.16035,
+    "D": 0.26163,
+    "A": 0.57802,
+    "O": 0.48371,
+    "U": 0.51629
+   }
   },
   {
    "id": "I1:2026-09-05:Fiorentina:Torino",
@@ -2479,7 +3961,13 @@
    "away": "Torino",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4715,
+    "D": 0.287,
+    "A": 0.2415,
+    "O": 0.49118,
+    "U": 0.50882
+   }
   },
   {
    "id": "I1:2026-09-05:Inter:Napoli",
@@ -2489,7 +3977,13 @@
    "away": "Napoli",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.59138,
+    "D": 0.24838,
+    "A": 0.16024,
+    "O": 0.525,
+    "U": 0.475
+   }
   },
   {
    "id": "I1:2026-09-05:Roma:Atalanta",
@@ -2499,7 +3993,13 @@
    "away": "Atalanta",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57915,
+    "D": 0.24296,
+    "A": 0.17788,
+    "O": 0.55721,
+    "U": 0.44279
+   }
   },
   {
    "id": "I1:2026-09-06:Frosinone:Venezia",
@@ -2509,7 +4009,13 @@
    "away": "Venezia",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.39775,
+    "D": 0.27622,
+    "A": 0.32603,
+    "O": 0.63721,
+    "U": 0.36279
+   }
   },
   {
    "id": "I1:2026-09-06:Parma:Monza",
@@ -2519,7 +4025,13 @@
    "away": "Monza",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33408,
+    "D": 0.33185,
+    "A": 0.33408,
+    "O": 0.37089,
+    "U": 0.62911
+   }
   },
   {
    "id": "I1:2026-09-06:Bologna:Sassuolo",
@@ -2529,7 +4041,13 @@
    "away": "Sassuolo",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49155,
+    "D": 0.27204,
+    "A": 0.23641,
+    "O": 0.525,
+    "U": 0.475
+   }
   },
   {
    "id": "I1:2026-09-06:Juventus:Milan",
@@ -2539,7 +4057,13 @@
    "away": "Milan",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43175,
+    "D": 0.31032,
+    "A": 0.25793,
+    "O": 0.41606,
+    "U": 0.58394
+   }
   },
   {
    "id": "I1:2026-09-07:Cagliari:Lecce",
@@ -2549,7 +4073,13 @@
    "away": "Lecce",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42258,
+    "D": 0.32171,
+    "A": 0.25571,
+    "O": 0.39759,
+    "U": 0.60241
+   }
   },
   {
    "id": "I1:2026-09-07:Udinese:Lazio",
@@ -2559,7 +4089,13 @@
    "away": "Lazio",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32904,
+    "D": 0.31842,
+    "A": 0.35254,
+    "O": 0.43842,
+    "U": 0.56158
+   }
   },
   {
    "id": "I1:2026-09-11:Venezia:Fiorentina",
@@ -2569,7 +4105,13 @@
    "away": "Fiorentina",
    "hg": 2,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33702,
+    "D": 0.27331,
+    "A": 0.38968,
+    "O": 0.57002,
+    "U": 0.42998
+   }
   },
   {
    "id": "I1:2026-09-12:Genoa:Frosinone",
@@ -2579,7 +4121,13 @@
    "away": "Frosinone",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41463,
+    "D": 0.29268,
+    "A": 0.29268,
+    "O": 0.53865,
+    "U": 0.46135
+   }
   },
   {
    "id": "I1:2026-09-12:Lazio:Milan",
@@ -2589,7 +4137,13 @@
    "away": "Milan",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.23802,
+    "D": 0.30759,
+    "A": 0.45439,
+    "O": 0.43704,
+    "U": 0.56296
+   }
   },
   {
    "id": "I1:2026-09-12:Atalanta:Cagliari",
@@ -2599,7 +4153,13 @@
    "away": "Cagliari",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56816,
+    "D": 0.2564,
+    "A": 0.17543,
+    "O": 0.51128,
+    "U": 0.48872
+   }
   },
   {
    "id": "I1:2026-09-13:Lecce:Monza",
@@ -2609,7 +4169,13 @@
    "away": "Monza",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33068,
+    "D": 0.32001,
+    "A": 0.34931,
+    "O": 0.41809,
+    "U": 0.58191
+   }
   },
   {
    "id": "I1:2026-09-13:Napoli:Bologna",
@@ -2619,7 +4185,13 @@
    "away": "Bologna",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53208,
+    "D": 0.26892,
+    "A": 0.199,
+    "O": 0.49622,
+    "U": 0.50378
+   }
   },
   {
    "id": "I1:2026-09-13:Sassuolo:Juventus",
@@ -2629,7 +4201,13 @@
    "away": "Juventus",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.17541,
+    "D": 0.24996,
+    "A": 0.57463,
+    "O": 0.50754,
+    "U": 0.49246
+   }
   },
   {
    "id": "I1:2026-09-14:Como:Parma",
@@ -2639,7 +4217,13 @@
    "away": "Parma",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.79181,
+    "D": 0.14996,
+    "A": 0.05822,
+    "O": 0.61939,
+    "U": 0.38061
+   }
   },
   {
    "id": "I1:2026-09-14:Torino:Roma",
@@ -2649,7 +4233,13 @@
    "away": "Roma",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.14242,
+    "D": 0.22658,
+    "A": 0.63099,
+    "O": 0.53865,
+    "U": 0.46135
+   }
   },
   {
    "id": "I1:2026-09-14:Inter:Udinese",
@@ -2659,7 +4249,13 @@
    "away": "Udinese",
    "hg": 5,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.81413,
+    "D": 0.13069,
+    "A": 0.05518,
+    "O": 0.69296,
+    "U": 0.30704
+   }
   },
   {
    "id": "I1:2026-09-18:Monza:Sassuolo",
@@ -2669,7 +4265,13 @@
    "away": "Sassuolo",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33416,
+    "D": 0.28864,
+    "A": 0.3772,
+    "O": 0.5679,
+    "U": 0.4321
+   }
   },
   {
    "id": "I1:2026-09-19:Bologna:Torino",
@@ -2679,7 +4281,13 @@
    "away": "Torino",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48458,
+    "D": 0.2936,
+    "A": 0.22183,
+    "O": 0.41262,
+    "U": 0.58738
+   }
   },
   {
    "id": "I1:2026-09-19:Udinese:Cagliari",
@@ -2689,7 +4297,13 @@
    "away": "Cagliari",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42251,
+    "D": 0.3116,
+    "A": 0.2659,
+    "O": 0.42015,
+    "U": 0.57985
+   }
   },
   {
    "id": "I1:2026-09-19:Roma:Inter",
@@ -2699,7 +4313,13 @@
    "away": "Inter",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35484,
+    "D": 0.27988,
+    "A": 0.36528,
+    "O": 0.60577,
+    "U": 0.39423
+   }
   },
   {
    "id": "I1:2026-09-19:Venezia:Lazio",
@@ -2709,7 +4329,13 @@
    "away": "Lazio",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.24218,
+    "D": 0.27581,
+    "A": 0.48201,
+    "O": 0.54,
+    "U": 0.46
+   }
   },
   {
    "id": "I1:2026-09-20:Fiorentina:Napoli",
@@ -2719,7 +4345,13 @@
    "away": "Napoli",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.28866,
+    "D": 0.2929,
+    "A": 0.41844,
+    "O": 0.48241,
+    "U": 0.51759
+   }
   },
   {
    "id": "I1:2026-09-20:Frosinone:Como",
@@ -2729,7 +4361,13 @@
    "away": "Como",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.15069,
+    "D": 0.19501,
+    "A": 0.6543,
+    "O": 0.71575,
+    "U": 0.28425
+   }
   },
   {
    "id": "I1:2026-09-20:Parma:Genoa",
@@ -2739,7 +4377,13 @@
    "away": "Genoa",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.28538,
+    "D": 0.32748,
+    "A": 0.38714,
+    "O": 0.36597,
+    "U": 0.63403
+   }
   },
   {
    "id": "I1:2026-09-20:Juventus:Atalanta",
@@ -2749,7 +4393,13 @@
    "away": "Atalanta",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.59184,
+    "D": 0.23673,
+    "A": 0.17143,
+    "O": 0.525,
+    "U": 0.475
+   }
   },
   {
    "id": "I1:2026-09-20:Milan:Lecce",
@@ -2759,7 +4409,13 @@
    "away": "Lecce",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.79111,
+    "D": 0.14659,
+    "A": 0.0623,
+    "O": 0.61098,
+    "U": 0.38902
+   }
   },
   {
    "id": "SP1:2026-08-15:Alaves:Getafe",
@@ -2769,7 +4425,13 @@
    "away": "Getafe",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41788,
+    "D": 0.34533,
+    "A": 0.2368,
+    "O": 0.27565,
+    "U": 0.72435
+   }
   },
   {
    "id": "SP1:2026-08-15:Sevilla:Vallecano",
@@ -2779,7 +4441,13 @@
    "away": "Vallecano",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37339,
+    "D": 0.32564,
+    "A": 0.30097,
+    "O": 0.36427,
+    "U": 0.63573
+   }
   },
   {
    "id": "SP1:2026-08-16:Santander:Villarreal",
@@ -2789,7 +4457,13 @@
    "away": "Villarreal",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25479,
+    "D": 0.2581,
+    "A": 0.4871,
+    "O": 0.62911,
+    "U": 0.37089
+   }
   },
   {
    "id": "SP1:2026-08-16:Espanol:Levante",
@@ -2799,7 +4473,13 @@
    "away": "Levante",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45742,
+    "D": 0.29329,
+    "A": 0.24929,
+    "O": 0.44417,
+    "U": 0.55583
+   }
   },
   {
    "id": "SP1:2026-08-17:La Coruna:Elche",
@@ -2809,7 +4489,13 @@
    "away": "Elche",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43674,
+    "D": 0.31117,
+    "A": 0.25209,
+    "O": 0.41463,
+    "U": 0.58537
+   }
   },
   {
    "id": "SP1:2026-08-19:Ath Madrid:Malaga",
@@ -2819,7 +4505,13 @@
    "away": "Malaga",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.65849,
+    "D": 0.20715,
+    "A": 0.13437,
+    "O": 0.58049,
+    "U": 0.41951
+   }
   },
   {
    "id": "SP1:2026-08-20:Vallecano:Alaves",
@@ -2829,7 +4521,13 @@
    "away": "Alaves",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38807,
+    "D": 0.31538,
+    "A": 0.29655,
+    "O": 0.38902,
+    "U": 0.61098
+   }
   },
   {
    "id": "SP1:2026-08-21:Betis:Sociedad",
@@ -2839,7 +4537,13 @@
    "away": "Sociedad",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44603,
+    "D": 0.27892,
+    "A": 0.27505,
+    "O": 0.52632,
+    "U": 0.47368
+   }
   },
   {
    "id": "SP1:2026-08-22:Ath Bilbao:Sevilla",
@@ -2849,7 +4553,13 @@
    "away": "Sevilla",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.54476,
+    "D": 0.27163,
+    "A": 0.1836,
+    "O": 0.4321,
+    "U": 0.5679
+   }
   },
   {
    "id": "SP1:2026-08-22:Valencia:Celta",
@@ -2859,7 +4569,13 @@
    "away": "Celta",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37909,
+    "D": 0.31531,
+    "A": 0.3056,
+    "O": 0.40633,
+    "U": 0.59367
+   }
   },
   {
    "id": "SP1:2026-08-22:Espanol:Real Madrid",
@@ -2869,7 +4585,13 @@
    "away": "Real Madrid",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.11579,
+    "D": 0.18788,
+    "A": 0.69633,
+    "O": 0.61758,
+    "U": 0.38242
+   }
   },
   {
    "id": "SP1:2026-08-23:Ath Madrid:Villarreal",
@@ -2879,7 +4601,13 @@
    "away": "Villarreal",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53266,
+    "D": 0.25541,
+    "A": 0.21193,
+    "O": 0.57494,
+    "U": 0.42506
+   }
   },
   {
    "id": "SP1:2026-08-23:Getafe:Santander",
@@ -2889,7 +4617,13 @@
    "away": "Santander",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41781,
+    "D": 0.30597,
+    "A": 0.27622,
+    "O": 0.42998,
+    "U": 0.57002
+   }
   },
   {
    "id": "SP1:2026-08-23:Elche:Barcelona",
@@ -2899,7 +4633,13 @@
    "away": "Barcelona",
    "hg": 0,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.10839,
+    "D": 0.16901,
+    "A": 0.7226,
+    "O": 0.65455,
+    "U": 0.34545
+   }
   },
   {
    "id": "SP1:2026-08-24:Osasuna:Levante",
@@ -2909,7 +4649,13 @@
    "away": "Levante",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49971,
+    "D": 0.28412,
+    "A": 0.21618,
+    "O": 0.43564,
+    "U": 0.56436
+   }
   },
   {
    "id": "SP1:2026-08-24:Malaga:La Coruna",
@@ -2919,7 +4665,13 @@
    "away": "La Coruna",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.39873,
+    "D": 0.31646,
+    "A": 0.28481,
+    "O": 0.41119,
+    "U": 0.58881
+   }
   },
   {
    "id": "SP1:2026-08-25:Valencia:Betis",
@@ -2929,7 +4681,13 @@
    "away": "Betis",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36354,
+    "D": 0.29297,
+    "A": 0.34348,
+    "O": 0.44776,
+    "U": 0.55224
+   }
   },
   {
    "id": "SP1:2026-08-26:Real Madrid:Sociedad",
@@ -2939,7 +4697,13 @@
    "away": "Sociedad",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.81753,
+    "D": 0.11598,
+    "A": 0.06649,
+    "O": 0.73786,
+    "U": 0.26214
+   }
   },
   {
    "id": "SP1:2026-08-27:Celta:Osasuna",
@@ -2949,7 +4713,13 @@
    "away": "Osasuna",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50801,
+    "D": 0.29285,
+    "A": 0.19914,
+    "O": 0.4058,
+    "U": 0.5942
+   }
   },
   {
    "id": "SP1:2026-08-27:Barcelona:Ath Bilbao",
@@ -2959,7 +4729,13 @@
    "away": "Ath Bilbao",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.79673,
+    "D": 0.13458,
+    "A": 0.06868,
+    "O": 0.72709,
+    "U": 0.27291
+   }
   },
   {
    "id": "SP1:2026-08-28:Santander:Elche",
@@ -2969,7 +4745,13 @@
    "away": "Elche",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48685,
+    "D": 0.26485,
+    "A": 0.2483,
+    "O": 0.54863,
+    "U": 0.45137
+   }
   },
   {
    "id": "SP1:2026-08-28:Alaves:Villarreal",
@@ -2979,7 +4761,13 @@
    "away": "Villarreal",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.30584,
+    "D": 0.28,
+    "A": 0.41416,
+    "O": 0.52764,
+    "U": 0.47236
+   }
   },
   {
    "id": "SP1:2026-08-29:Levante:Betis",
@@ -2989,7 +4777,13 @@
    "away": "Betis",
    "hg": 5,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.2929,
+    "D": 0.28866,
+    "A": 0.41844,
+    "O": 0.51128,
+    "U": 0.48872
+   }
   },
   {
    "id": "SP1:2026-08-29:Sociedad:Espanol",
@@ -2999,7 +4793,13 @@
    "away": "Espanol",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.51323,
+    "D": 0.26551,
+    "A": 0.22126,
+    "O": 0.54726,
+    "U": 0.45274
+   }
   },
   {
    "id": "SP1:2026-08-29:Sevilla:Ath Madrid",
@@ -3009,7 +4809,13 @@
    "away": "Ath Madrid",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.22636,
+    "D": 0.28056,
+    "A": 0.49307,
+    "O": 0.46,
+    "U": 0.54
+   }
   },
   {
    "id": "SP1:2026-08-30:Real Madrid:Malaga",
@@ -3019,7 +4825,13 @@
    "away": "Malaga",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.89533,
+    "D": 0.07362,
+    "A": 0.03106,
+    "O": 0.80128,
+    "U": 0.19872
+   }
   },
   {
    "id": "SP1:2026-08-30:La Coruna:Valencia",
@@ -3029,7 +4841,13 @@
    "away": "Valencia",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3462,
+    "D": 0.3269,
+    "A": 0.3269,
+    "O": 0.39234,
+    "U": 0.60766
+   }
   },
   {
    "id": "SP1:2026-08-30:Celta:Ath Bilbao",
@@ -3039,7 +4857,13 @@
    "away": "Ath Bilbao",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33222,
+    "D": 0.30667,
+    "A": 0.36111,
+    "O": 0.40436,
+    "U": 0.59564
+   }
   },
   {
    "id": "SP1:2026-08-31:Osasuna:Getafe",
@@ -3049,7 +4873,13 @@
    "away": "Getafe",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44455,
+    "D": 0.33416,
+    "A": 0.22129,
+    "O": 0.30556,
+    "U": 0.69444
+   }
   },
   {
    "id": "SP1:2026-08-31:Barcelona:Vallecano",
@@ -3059,7 +4889,13 @@
    "away": "Vallecano",
    "hg": 5,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.88736,
+    "D": 0.07951,
+    "A": 0.03313,
+    "O": 0.80871,
+    "U": 0.19129
+   }
   },
   {
    "id": "SP1:2026-09-03:Sociedad:Celta",
@@ -3069,7 +4905,13 @@
    "away": "Celta",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53685,
+    "D": 0.25936,
+    "A": 0.20378,
+    "O": 0.535,
+    "U": 0.465
+   }
   },
   {
    "id": "SP1:2026-09-04:Betis:Real Madrid",
@@ -3079,7 +4921,13 @@
    "away": "Real Madrid",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.15048,
+    "D": 0.18739,
+    "A": 0.66212,
+    "O": 0.68966,
+    "U": 0.31034
+   }
   },
   {
    "id": "SP1:2026-09-05:Ath Bilbao:Ath Madrid",
@@ -3089,7 +4937,13 @@
    "away": "Ath Madrid",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34559,
+    "D": 0.28849,
+    "A": 0.36592,
+    "O": 0.50251,
+    "U": 0.49749
+   }
   },
   {
    "id": "SP1:2026-09-05:Vallecano:Santander",
@@ -3099,7 +4953,13 @@
    "away": "Santander",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48685,
+    "D": 0.26485,
+    "A": 0.2483,
+    "O": 0.58881,
+    "U": 0.41119
+   }
   },
   {
    "id": "SP1:2026-09-05:Villarreal:La Coruna",
@@ -3109,7 +4969,13 @@
    "away": "La Coruna",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.66956,
+    "D": 0.19562,
+    "A": 0.13482,
+    "O": 0.58191,
+    "U": 0.41809
+   }
   },
   {
    "id": "SP1:2026-09-06:Valencia:Barcelona",
@@ -3119,7 +4985,13 @@
    "away": "Barcelona",
    "hg": 0,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.07982,
+    "D": 0.14673,
+    "A": 0.77345,
+    "O": 0.71575,
+    "U": 0.28425
+   }
   },
   {
    "id": "SP1:2026-09-06:Alaves:Osasuna",
@@ -3129,7 +5001,13 @@
    "away": "Osasuna",
    "hg": 5,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43175,
+    "D": 0.31032,
+    "A": 0.25793,
+    "O": 0.39234,
+    "U": 0.60766
+   }
   },
   {
    "id": "SP1:2026-09-06:Malaga:Levante",
@@ -3139,7 +5017,13 @@
    "away": "Levante",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38977,
+    "D": 0.29347,
+    "A": 0.31676,
+    "O": 0.49749,
+    "U": 0.50251
+   }
   },
   {
    "id": "SP1:2026-09-06:Espanol:Sevilla",
@@ -3149,7 +5033,13 @@
    "away": "Sevilla",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4105,
+    "D": 0.30567,
+    "A": 0.28383,
+    "O": 0.42506,
+    "U": 0.57494
+   }
   },
   {
    "id": "SP1:2026-09-07:Getafe:Celta",
@@ -3159,7 +5049,13 @@
    "away": "Celta",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33259,
+    "D": 0.36708,
+    "A": 0.30034,
+    "O": 0.26877,
+    "U": 0.73123
+   }
   },
   {
    "id": "SP1:2026-09-07:Elche:Sociedad",
@@ -3169,7 +5065,13 @@
    "away": "Sociedad",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.2972,
+    "D": 0.28447,
+    "A": 0.41833,
+    "O": 0.53865,
+    "U": 0.46135
+   }
   },
   {
    "id": "SP1:2026-09-11:Sevilla:Valencia",
@@ -3179,7 +5081,13 @@
    "away": "Valencia",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53085,
+    "D": 0.27722,
+    "A": 0.19192,
+    "O": 0.44059,
+    "U": 0.55941
+   }
   },
   {
    "id": "SP1:2026-09-12:Santander:Alaves",
@@ -3189,7 +5097,13 @@
    "away": "Alaves",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.35065,
+    "D": 0.28052,
+    "A": 0.36883,
+    "O": 0.55583,
+    "U": 0.44417
+   }
   },
   {
    "id": "SP1:2026-09-12:Osasuna:Espanol",
@@ -3199,7 +5113,13 @@
    "away": "Espanol",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42509,
+    "D": 0.30607,
+    "A": 0.26884,
+    "O": 0.44913,
+    "U": 0.55087
+   }
   },
   {
    "id": "SP1:2026-09-12:Ath Bilbao:Elche",
@@ -3209,7 +5129,13 @@
    "away": "Elche",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.6974,
+    "D": 0.19179,
+    "A": 0.11081,
+    "O": 0.57843,
+    "U": 0.42157
+   }
   },
   {
    "id": "SP1:2026-09-12:Real Madrid:Vallecano",
@@ -3219,7 +5145,13 @@
    "away": "Vallecano",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.85099,
+    "D": 0.1016,
+    "A": 0.04741,
+    "O": 0.76364,
+    "U": 0.23636
+   }
   },
   {
    "id": "SP1:2026-09-13:Celta:Malaga",
@@ -3229,7 +5161,13 @@
    "away": "Malaga",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56466,
+    "D": 0.26301,
+    "A": 0.17232,
+    "O": 0.46,
+    "U": 0.54
+   }
   },
   {
    "id": "SP1:2026-09-13:Levante:Barcelona",
@@ -3239,7 +5177,13 @@
    "away": "Barcelona",
    "hg": 2,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.06207,
+    "D": 0.11034,
+    "A": 0.82759,
+    "O": 0.80128,
+    "U": 0.19872
+   }
   },
   {
    "id": "SP1:2026-09-13:Getafe:La Coruna",
@@ -3249,7 +5193,13 @@
    "away": "La Coruna",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36618,
+    "D": 0.332,
+    "A": 0.30182,
+    "O": 0.35484,
+    "U": 0.64516
+   }
   },
   {
    "id": "SP1:2026-09-13:Sociedad:Ath Madrid",
@@ -3259,7 +5209,13 @@
    "away": "Ath Madrid",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.2769,
+    "D": 0.26583,
+    "A": 0.45727,
+    "O": 0.55446,
+    "U": 0.44554
+   }
   },
   {
    "id": "SP1:2026-09-14:Villarreal:Betis",
@@ -3269,7 +5225,13 @@
    "away": "Betis",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49053,
+    "D": 0.24167,
+    "A": 0.2678,
+    "O": 0.67478,
+    "U": 0.32522
+   }
   },
   {
    "id": "SP1:2026-09-15:Vallecano:Espanol",
@@ -3279,7 +5241,13 @@
    "away": "Espanol",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42389,
+    "D": 0.30058,
+    "A": 0.27553,
+    "O": 0.475,
+    "U": 0.525
+   }
   },
   {
    "id": "SP1:2026-09-15:Alaves:Valencia",
@@ -3289,7 +5257,13 @@
    "away": "Valencia",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55585,
+    "D": 0.2726,
+    "A": 0.17155,
+    "O": 0.44913,
+    "U": 0.55087
+   }
   },
   {
    "id": "SP1:2026-09-15:Elche:Real Madrid",
@@ -3299,7 +5273,13 @@
    "away": "Real Madrid",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.06435,
+    "D": 0.12469,
+    "A": 0.81096,
+    "O": 0.73529,
+    "U": 0.26471
+   }
   },
   {
    "id": "SP1:2026-09-16:Ath Madrid:Osasuna",
@@ -3309,7 +5289,13 @@
    "away": "Osasuna",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.74066,
+    "D": 0.17239,
+    "A": 0.08695,
+    "O": 0.59903,
+    "U": 0.40097
+   }
   },
   {
    "id": "SP1:2026-09-16:La Coruna:Sevilla",
@@ -3319,7 +5305,13 @@
    "away": "Sevilla",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34713,
+    "D": 0.31738,
+    "A": 0.33549,
+    "O": 0.43564,
+    "U": 0.56436
+   }
   },
   {
    "id": "SP1:2026-09-16:Barcelona:Santander",
@@ -3329,7 +5321,13 @@
    "away": "Santander",
    "hg": 7,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.91851,
+    "D": 0.05669,
+    "A": 0.0248,
+    "O": 0.88933,
+    "U": 0.11067
+   }
   },
   {
    "id": "SP1:2026-09-17:Betis:Getafe",
@@ -3339,7 +5337,13 @@
    "away": "Getafe",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.64341,
+    "D": 0.23193,
+    "A": 0.12466,
+    "O": 0.47739,
+    "U": 0.52261
+   }
   },
   {
    "id": "SP1:2026-09-17:Malaga:Villarreal",
@@ -3349,7 +5353,13 @@
    "away": "Villarreal",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.27299,
+    "D": 0.26571,
+    "A": 0.4613,
+    "O": 0.55941,
+    "U": 0.44059
+   }
   },
   {
    "id": "SP1:2026-09-18:Espanol:Elche",
@@ -3359,7 +5369,13 @@
    "away": "Elche",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.54173,
+    "D": 0.25891,
+    "A": 0.19936,
+    "O": 0.53904,
+    "U": 0.46096
+   }
   },
   {
    "id": "SP1:2026-09-19:Osasuna:Vallecano",
@@ -3369,7 +5385,13 @@
    "away": "Vallecano",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34889,
+    "D": 0.30703,
+    "A": 0.34408,
+    "O": 0.44776,
+    "U": 0.55224
+   }
   },
   {
    "id": "SP1:2026-09-19:Ath Bilbao:Alaves",
@@ -3379,7 +5401,13 @@
    "away": "Alaves",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.59672,
+    "D": 0.25229,
+    "A": 0.15099,
+    "O": 0.46,
+    "U": 0.54
+   }
   },
   {
    "id": "SP1:2026-09-19:Celta:Santander",
@@ -3389,7 +5417,13 @@
    "away": "Santander",
    "hg": 5,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53193,
+    "D": 0.25183,
+    "A": 0.21624,
+    "O": 0.56436,
+    "U": 0.43564
+   }
   },
   {
    "id": "SP1:2026-09-19:Sevilla:Barcelona",
@@ -3399,7 +5433,13 @@
    "away": "Barcelona",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.09881,
+    "D": 0.14115,
+    "A": 0.76004,
+    "O": 0.75786,
+    "U": 0.24214
+   }
   },
   {
    "id": "SP1:2026-09-20:Getafe:Malaga",
@@ -3409,7 +5449,13 @@
    "away": "Malaga",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50453,
+    "D": 0.29669,
+    "A": 0.19878,
+    "O": 0.38902,
+    "U": 0.61098
+   }
   },
   {
    "id": "SP1:2026-09-20:Ath Madrid:Real Madrid",
@@ -3419,7 +5465,13 @@
    "away": "Real Madrid",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.26527,
+    "D": 0.25184,
+    "A": 0.48289,
+    "O": 0.62911,
+    "U": 0.37089
+   }
   },
   {
    "id": "SP1:2026-09-20:La Coruna:Betis",
@@ -3429,7 +5481,13 @@
    "away": "Betis",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.24858,
+    "D": 0.26874,
+    "A": 0.48268,
+    "O": 0.5213,
+    "U": 0.4787
+   }
   },
   {
    "id": "SP1:2026-09-20:Villarreal:Levante",
@@ -3439,7 +5497,13 @@
    "away": "Levante",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.62371,
+    "D": 0.211,
+    "A": 0.16528,
+    "O": 0.62588,
+    "U": 0.37412
+   }
   },
   {
    "id": "SP1:2026-09-20:Valencia:Sociedad",
@@ -3449,7 +5513,13 @@
    "away": "Sociedad",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32061,
+    "D": 0.28809,
+    "A": 0.3913,
+    "O": 0.49373,
+    "U": 0.50627
+   }
   },
   {
    "id": "F1:2026-08-21:Marseille:Strasbourg",
@@ -3459,7 +5529,13 @@
    "away": "Strasbourg",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.55339,
+    "D": 0.23585,
+    "A": 0.21076,
+    "O": 0.63403,
+    "U": 0.36597
+   }
   },
   {
    "id": "F1:2026-08-22:Lens:Auxerre",
@@ -3469,7 +5545,13 @@
    "away": "Auxerre",
    "hg": 5,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.66522,
+    "D": 0.21089,
+    "A": 0.1239,
+    "O": 0.56576,
+    "U": 0.43424
+   }
   },
   {
    "id": "F1:2026-08-22:Le Mans:Brest",
@@ -3479,7 +5561,13 @@
    "away": "Brest",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37527,
+    "D": 0.2852,
+    "A": 0.33953,
+    "O": 0.49118,
+    "U": 0.50882
+   }
   },
   {
    "id": "F1:2026-08-22:Nice:Lorient",
@@ -3489,7 +5577,13 @@
    "away": "Lorient",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.39754,
+    "D": 0.29667,
+    "A": 0.3058,
+    "O": 0.455,
+    "U": 0.545
+   }
   },
   {
    "id": "F1:2026-08-22:Toulouse:Lyon",
@@ -3499,7 +5593,13 @@
    "away": "Lyon",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42223,
+    "D": 0.2847,
+    "A": 0.29307,
+    "O": 0.50251,
+    "U": 0.49749
+   }
   },
   {
    "id": "F1:2026-08-22:Troyes:Paris FC",
@@ -3509,7 +5609,13 @@
    "away": "Paris FC",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.27604,
+    "D": 0.27226,
+    "A": 0.4517,
+    "O": 0.53634,
+    "U": 0.46366
+   }
   },
   {
    "id": "F1:2026-08-23:Angers:Lille",
@@ -3519,7 +5625,13 @@
    "away": "Lille",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.19194,
+    "D": 0.26266,
+    "A": 0.5454,
+    "O": 0.46269,
+    "U": 0.53731
+   }
   },
   {
    "id": "F1:2026-08-23:Le Havre:Monaco",
@@ -3529,7 +5641,13 @@
    "away": "Monaco",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.23105,
+    "D": 0.27219,
+    "A": 0.49676,
+    "O": 0.50125,
+    "U": 0.49875
+   }
   },
   {
    "id": "F1:2026-08-23:Rennes:Paris SG",
@@ -3539,7 +5657,13 @@
    "away": "Paris SG",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.14633,
+    "D": 0.19901,
+    "A": 0.65465,
+    "O": 0.66815,
+    "U": 0.33185
+   }
   },
   {
    "id": "F1:2026-08-28:Lille:Paris SG",
@@ -3549,7 +5673,13 @@
    "away": "Paris SG",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.19576,
+    "D": 0.24959,
+    "A": 0.55465,
+    "O": 0.57002,
+    "U": 0.42998
+   }
   },
   {
    "id": "F1:2026-08-29:Strasbourg:Lens",
@@ -3559,7 +5689,13 @@
    "away": "Lens",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.23775,
+    "D": 0.25279,
+    "A": 0.50946,
+    "O": 0.61758,
+    "U": 0.38242
+   }
   },
   {
    "id": "F1:2026-08-29:Auxerre:Angers",
@@ -3569,7 +5705,13 @@
    "away": "Angers",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43344,
+    "D": 0.29947,
+    "A": 0.26709,
+    "O": 0.45137,
+    "U": 0.54863
+   }
   },
   {
    "id": "F1:2026-08-29:Brest:Toulouse",
@@ -3579,7 +5721,13 @@
    "away": "Toulouse",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38392,
+    "D": 0.29133,
+    "A": 0.32476,
+    "O": 0.4899,
+    "U": 0.5101
+   }
   },
   {
    "id": "F1:2026-08-29:Lorient:Troyes",
@@ -3589,7 +5737,13 @@
    "away": "Troyes",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49307,
+    "D": 0.28056,
+    "A": 0.22636,
+    "O": 0.43069,
+    "U": 0.56931
+   }
   },
   {
    "id": "F1:2026-08-29:Lyon:Le Havre",
@@ -3599,7 +5753,13 @@
    "away": "Le Havre",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.68222,
+    "D": 0.19921,
+    "A": 0.11858,
+    "O": 0.57284,
+    "U": 0.42716
+   }
   },
   {
    "id": "F1:2026-08-30:Paris FC:Nice",
@@ -3609,7 +5769,13 @@
    "away": "Nice",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48343,
+    "D": 0.28177,
+    "A": 0.23481,
+    "O": 0.48111,
+    "U": 0.51889
+   }
   },
   {
    "id": "F1:2026-08-30:Rennes:Le Mans",
@@ -3619,7 +5785,13 @@
    "away": "Le Mans",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.70917,
+    "D": 0.18052,
+    "A": 0.11032,
+    "O": 0.63721,
+    "U": 0.36279
+   }
   },
   {
    "id": "F1:2026-08-30:Monaco:Marseille",
@@ -3629,7 +5801,13 @@
    "away": "Marseille",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42978,
+    "D": 0.27697,
+    "A": 0.29326,
+    "O": 0.55224,
+    "U": 0.44776
+   }
   },
   {
    "id": "F1:2026-09-03:Toulouse:Lille",
@@ -3639,7 +5817,13 @@
    "away": "Lille",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.24816,
+    "D": 0.28361,
+    "A": 0.46823,
+    "O": 0.49622,
+    "U": 0.50378
+   }
   },
   {
    "id": "F1:2026-09-04:Lyon:Auxerre",
@@ -3649,7 +5833,13 @@
    "away": "Auxerre",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.68489,
+    "D": 0.19098,
+    "A": 0.12414,
+    "O": 0.65455,
+    "U": 0.34545
+   }
   },
   {
    "id": "F1:2026-09-04:Paris SG:Monaco",
@@ -3659,7 +5849,13 @@
    "away": "Monaco",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.72108,
+    "D": 0.16585,
+    "A": 0.11308,
+    "O": 0.70686,
+    "U": 0.29314
+   }
   },
   {
    "id": "F1:2026-09-05:Lens:Lorient",
@@ -3669,7 +5865,13 @@
    "away": "Lorient",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.63176,
+    "D": 0.217,
+    "A": 0.15124,
+    "O": 0.59024,
+    "U": 0.40976
+   }
   },
   {
    "id": "F1:2026-09-05:Le Havre:Brest",
@@ -3679,7 +5881,13 @@
    "away": "Brest",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32564,
+    "D": 0.30097,
+    "A": 0.37339,
+    "O": 0.46135,
+    "U": 0.53865
+   }
   },
   {
    "id": "F1:2026-09-05:Nice:Le Mans",
@@ -3689,7 +5897,13 @@
    "away": "Le Mans",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57729,
+    "D": 0.24218,
+    "A": 0.18053,
+    "O": 0.56296,
+    "U": 0.43704
+   }
   },
   {
    "id": "F1:2026-09-06:Troyes:Strasbourg",
@@ -3699,7 +5913,13 @@
    "away": "Strasbourg",
    "hg": 2,
    "ag": 6,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33743,
+    "D": 0.28135,
+    "A": 0.38122,
+    "O": 0.53865,
+    "U": 0.46135
+   }
   },
   {
    "id": "F1:2026-09-06:Angers:Rennes",
@@ -3709,7 +5929,13 @@
    "away": "Rennes",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.20327,
+    "D": 0.23715,
+    "A": 0.55957,
+    "O": 0.62085,
+    "U": 0.37915
+   }
   },
   {
    "id": "F1:2026-09-06:Marseille:Paris FC",
@@ -3719,7 +5945,13 @@
    "away": "Paris FC",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50236,
+    "D": 0.25504,
+    "A": 0.2426,
+    "O": 0.58049,
+    "U": 0.41951
+   }
   },
   {
    "id": "F1:2026-09-11:Rennes:Marseille",
@@ -3729,7 +5961,13 @@
    "away": "Marseille",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4785,
+    "D": 0.24882,
+    "A": 0.27268,
+    "O": 0.64679,
+    "U": 0.35321
+   }
   },
   {
    "id": "F1:2026-09-12:Strasbourg:Monaco",
@@ -3739,7 +5977,13 @@
    "away": "Monaco",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3049,
+    "D": 0.26425,
+    "A": 0.43084,
+    "O": 0.59903,
+    "U": 0.40097
+   }
   },
   {
    "id": "F1:2026-09-12:Auxerre:Nice",
@@ -3749,7 +5993,13 @@
    "away": "Nice",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3216,
+    "D": 0.28897,
+    "A": 0.38943,
+    "O": 0.50378,
+    "U": 0.49622
+   }
   },
   {
    "id": "F1:2026-09-12:Le Havre:Angers",
@@ -3759,7 +6009,13 @@
    "away": "Angers",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36395,
+    "D": 0.28492,
+    "A": 0.35113,
+    "O": 0.52632,
+    "U": 0.47368
+   }
   },
   {
    "id": "F1:2026-09-12:Lorient:Toulouse",
@@ -3769,7 +6025,13 @@
    "away": "Toulouse",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40291,
+    "D": 0.28963,
+    "A": 0.30745,
+    "O": 0.51759,
+    "U": 0.48241
+   }
   },
   {
    "id": "F1:2026-09-12:Paris FC:Lyon",
@@ -3779,7 +6041,13 @@
    "away": "Lyon",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37834,
+    "D": 0.26995,
+    "A": 0.3517,
+    "O": 0.57635,
+    "U": 0.42365
+   }
   },
   {
    "id": "F1:2026-09-13:Lille:Troyes",
@@ -3789,7 +6057,13 @@
    "away": "Troyes",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.65048,
+    "D": 0.20734,
+    "A": 0.14218,
+    "O": 0.61391,
+    "U": 0.38609
+   }
   },
   {
    "id": "F1:2026-09-13:Le Mans:Lens",
@@ -3799,7 +6073,13 @@
    "away": "Lens",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.18659,
+    "D": 0.22476,
+    "A": 0.58865,
+    "O": 0.65914,
+    "U": 0.34086
+   }
   },
   {
    "id": "F1:2026-09-13:Brest:Paris SG",
@@ -3809,7 +6089,13 @@
    "away": "Paris SG",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.07121,
+    "D": 0.13118,
+    "A": 0.7976,
+    "O": 0.74181,
+    "U": 0.25819
+   }
   },
   {
    "id": "F1:2026-09-18:Monaco:Lens",
@@ -3819,7 +6105,13 @@
    "away": "Lens",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.52038,
+    "D": 0.24848,
+    "A": 0.23114,
+    "O": 0.63403,
+    "U": 0.36597
+   }
   },
   {
    "id": "F1:2026-09-19:Paris FC:Strasbourg",
@@ -3829,7 +6121,13 @@
    "away": "Strasbourg",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53193,
+    "D": 0.25183,
+    "A": 0.21624,
+    "O": 0.60577,
+    "U": 0.39423
+   }
   },
   {
    "id": "F1:2026-09-19:Angers:Troyes",
@@ -3839,7 +6137,13 @@
    "away": "Troyes",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45709,
+    "D": 0.28069,
+    "A": 0.26222,
+    "O": 0.54364,
+    "U": 0.45636
+   }
   },
   {
    "id": "F1:2026-09-19:Le Mans:Lorient",
@@ -3849,7 +6153,13 @@
    "away": "Lorient",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.32117,
+    "D": 0.3017,
+    "A": 0.37713,
+    "O": 0.46867,
+    "U": 0.53133
+   }
   },
   {
    "id": "F1:2026-09-19:Lyon:Rennes",
@@ -3859,7 +6169,13 @@
    "away": "Rennes",
    "hg": 4,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.4489,
+    "D": 0.26225,
+    "A": 0.28885,
+    "O": 0.61429,
+    "U": 0.38571
+   }
   },
   {
    "id": "F1:2026-09-19:Toulouse:Le Havre",
@@ -3869,7 +6185,13 @@
    "away": "Le Havre",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57668,
+    "D": 0.23617,
+    "A": 0.18715,
+    "O": 0.57494,
+    "U": 0.42506
+   }
   },
   {
    "id": "F1:2026-09-20:Auxerre:Brest",
@@ -3879,7 +6201,13 @@
    "away": "Brest",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31706,
+    "D": 0.27363,
+    "A": 0.40932,
+    "O": 0.5665,
+    "U": 0.4335
+   }
   },
   {
    "id": "F1:2026-09-20:Nice:Lille",
@@ -3889,7 +6217,13 @@
    "away": "Lille",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.27612,
+    "D": 0.27612,
+    "A": 0.44776,
+    "O": 0.54863,
+    "U": 0.45137
+   }
   },
   {
    "id": "F1:2026-09-20:Marseille:Paris SG",
@@ -3899,7 +6233,13 @@
    "away": "Paris SG",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.12782,
+    "D": 0.18462,
+    "A": 0.68756,
+    "O": 0.69444,
+    "U": 0.30556
+   }
   },
   {
    "id": "N1:2026-08-14:Telstar:Sparta Rotterdam",
@@ -3909,7 +6249,13 @@
    "away": "Sparta Rotterdam",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45225,
+    "D": 0.25512,
+    "A": 0.29263,
+    "O": 0.62411,
+    "U": 0.37589
+   }
   },
   {
    "id": "N1:2026-08-15:Willem II:Nijmegen",
@@ -3919,7 +6265,13 @@
    "away": "Nijmegen",
    "hg": 1,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.1881,
+    "D": 0.2077,
+    "A": 0.6042,
+    "O": 0.65914,
+    "U": 0.34086
+   }
   },
   {
    "id": "N1:2026-08-15:Utrecht:AZ Alkmaar",
@@ -3929,7 +6281,13 @@
    "away": "AZ Alkmaar",
    "hg": 1,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31607,
+    "D": 0.26909,
+    "A": 0.41484,
+    "O": 0.5679,
+    "U": 0.4321
+   }
   },
   {
    "id": "N1:2026-08-15:Excelsior:PSV Eindhoven",
@@ -3939,7 +6297,13 @@
    "away": "PSV Eindhoven",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.13425,
+    "D": 0.18062,
+    "A": 0.68513,
+    "O": 0.7393,
+    "U": 0.2607
+   }
   },
   {
    "id": "N1:2026-08-15:For Sittard:Cambuur",
@@ -3949,7 +6313,13 @@
    "away": "Cambuur",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.59511,
+    "D": 0.22085,
+    "A": 0.18404,
+    "O": 0.63889,
+    "U": 0.36111
+   }
   },
   {
    "id": "N1:2026-08-16:Den Haag:Groningen",
@@ -3959,7 +6329,13 @@
    "away": "Groningen",
    "hg": 1,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37967,
+    "D": 0.27253,
+    "A": 0.34781,
+    "O": 0.55583,
+    "U": 0.44417
+   }
   },
   {
    "id": "N1:2026-08-16:Feyenoord:Go Ahead Eagles",
@@ -3969,7 +6345,13 @@
    "away": "Go Ahead Eagles",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.77575,
+    "D": 0.13791,
+    "A": 0.08634,
+    "O": 0.74324,
+    "U": 0.25676
+   }
   },
   {
    "id": "N1:2026-08-16:Twente:Zwolle",
@@ -3979,7 +6361,13 @@
    "away": "Zwolle",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.76812,
+    "D": 0.14572,
+    "A": 0.08616,
+    "O": 0.69915,
+    "U": 0.30085
+   }
   },
   {
    "id": "N1:2026-08-16:Ajax:Heerenveen",
@@ -3989,7 +6377,13 @@
    "away": "Heerenveen",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.66661,
+    "D": 0.2027,
+    "A": 0.13069,
+    "O": 0.67627,
+    "U": 0.32373
+   }
   },
   {
    "id": "N1:2026-08-22:For Sittard:AZ Alkmaar",
@@ -3999,7 +6393,13 @@
    "away": "AZ Alkmaar",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.17671,
+    "D": 0.2199,
+    "A": 0.60339,
+    "O": 0.65604,
+    "U": 0.34396
+   }
   },
   {
    "id": "N1:2026-08-22:Sparta Rotterdam:Utrecht",
@@ -4009,7 +6409,13 @@
    "away": "Utrecht",
    "hg": 3,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36792,
+    "D": 0.27216,
+    "A": 0.35992,
+    "O": 0.56079,
+    "U": 0.43921
+   }
   },
   {
    "id": "N1:2026-08-22:Heerenveen:Zwolle",
@@ -4019,7 +6425,13 @@
    "away": "Zwolle",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.64914,
+    "D": 0.20136,
+    "A": 0.1495,
+    "O": 0.66964,
+    "U": 0.33036
+   }
   },
   {
    "id": "N1:2026-08-23:Go Ahead Eagles:Den Haag",
@@ -4029,7 +6441,13 @@
    "away": "Den Haag",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57266,
+    "D": 0.22516,
+    "A": 0.20218,
+    "O": 0.66964,
+    "U": 0.33036
+   }
   },
   {
    "id": "N1:2026-08-23:PSV Eindhoven:Groningen",
@@ -4039,7 +6457,13 @@
    "away": "Groningen",
    "hg": 5,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.76046,
+    "D": 0.14538,
+    "A": 0.09415,
+    "O": 0.77465,
+    "U": 0.22535
+   }
   },
   {
    "id": "N1:2026-08-23:Cambuur:Feyenoord",
@@ -4049,7 +6473,13 @@
    "away": "Feyenoord",
    "hg": 2,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.07096,
+    "D": 0.13425,
+    "A": 0.79478,
+    "O": 0.72854,
+    "U": 0.27146
+   }
   },
   {
    "id": "N1:2026-08-28:Groningen:For Sittard",
@@ -4059,7 +6489,13 @@
    "away": "For Sittard",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.63001,
+    "D": 0.21045,
+    "A": 0.15954,
+    "O": 0.64037,
+    "U": 0.35963
+   }
   },
   {
    "id": "N1:2026-08-29:Excelsior:Sparta Rotterdam",
@@ -4069,7 +6505,13 @@
    "away": "Sparta Rotterdam",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43868,
+    "D": 0.2609,
+    "A": 0.30043,
+    "O": 0.59709,
+    "U": 0.40291
+   }
   },
   {
    "id": "N1:2026-08-29:AZ Alkmaar:Go Ahead Eagles",
@@ -4079,7 +6521,13 @@
    "away": "Go Ahead Eagles",
    "hg": 5,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.71999,
+    "D": 0.17431,
+    "A": 0.1057,
+    "O": 0.72154,
+    "U": 0.27846
+   }
   },
   {
    "id": "N1:2026-08-29:Zwolle:Nijmegen",
@@ -4089,7 +6537,13 @@
    "away": "Nijmegen",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.27891,
+    "D": 0.23574,
+    "A": 0.48535,
+    "O": 0.69915,
+    "U": 0.30085
+   }
   },
   {
    "id": "N1:2026-08-30:Utrecht:PSV Eindhoven",
@@ -4099,7 +6553,13 @@
    "away": "PSV Eindhoven",
    "hg": 1,
    "ag": 6,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.15431,
+    "D": 0.18289,
+    "A": 0.66281,
+    "O": 0.76786,
+    "U": 0.23214
+   }
   },
   {
    "id": "N1:2026-08-30:Feyenoord:Den Haag",
@@ -4109,7 +6569,13 @@
    "away": "Den Haag",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.8249,
+    "D": 0.1151,
+    "A": 0.05999,
+    "O": 0.77465,
+    "U": 0.22535
+   }
   },
   {
    "id": "N1:2026-08-30:Willem II:Heerenveen",
@@ -4119,7 +6585,13 @@
    "away": "Heerenveen",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.22518,
+    "D": 0.23042,
+    "A": 0.5444,
+    "O": 0.66216,
+    "U": 0.33784
+   }
   },
   {
    "id": "N1:2026-08-30:Telstar:Ajax",
@@ -4129,7 +6601,13 @@
    "away": "Ajax",
    "hg": 0,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.16027,
+    "D": 0.20278,
+    "A": 0.63695,
+    "O": 0.70064,
+    "U": 0.29936
+   }
   },
   {
    "id": "N1:2026-08-30:Cambuur:Twente",
@@ -4139,7 +6617,13 @@
    "away": "Twente",
    "hg": 1,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.09925,
+    "D": 0.16008,
+    "A": 0.74067,
+    "O": 0.73386,
+    "U": 0.26614
+   }
   },
   {
    "id": "N1:2026-09-04:Sparta Rotterdam:Zwolle",
@@ -4149,7 +6633,13 @@
    "away": "Zwolle",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.47152,
+    "D": 0.25719,
+    "A": 0.27129,
+    "O": 0.60911,
+    "U": 0.39089
+   }
   },
   {
    "id": "N1:2026-09-05:Nijmegen:Feyenoord",
@@ -4159,7 +6649,13 @@
    "away": "Feyenoord",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.34597,
+    "D": 0.25225,
+    "A": 0.40177,
+    "O": 0.64516,
+    "U": 0.35484
+   }
   },
   {
    "id": "N1:2026-09-05:Ajax:PSV Eindhoven",
@@ -4169,7 +6665,13 @@
    "away": "PSV Eindhoven",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36463,
+    "D": 0.24795,
+    "A": 0.38742,
+    "O": 0.7457,
+    "U": 0.2543
+   }
   },
   {
    "id": "N1:2026-09-05:Willem II:Excelsior",
@@ -4179,7 +6681,13 @@
    "away": "Excelsior",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.30145,
+    "D": 0.25838,
+    "A": 0.44017,
+    "O": 0.60577,
+    "U": 0.39423
+   }
   },
   {
    "id": "N1:2026-09-06:Groningen:Twente",
@@ -4189,7 +6697,13 @@
    "away": "Twente",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25504,
+    "D": 0.2426,
+    "A": 0.50236,
+    "O": 0.68627,
+    "U": 0.31373
+   }
   },
   {
    "id": "N1:2026-09-06:Heerenveen:AZ Alkmaar",
@@ -4199,7 +6713,13 @@
    "away": "AZ Alkmaar",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.25152,
+    "D": 0.23104,
+    "A": 0.51744,
+    "O": 0.67478,
+    "U": 0.32522
+   }
   },
   {
    "id": "N1:2026-09-06:Telstar:Cambuur",
@@ -4209,7 +6729,13 @@
    "away": "Cambuur",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56604,
+    "D": 0.22642,
+    "A": 0.20755,
+    "O": 0.66815,
+    "U": 0.33185
+   }
   },
   {
    "id": "N1:2026-09-06:Den Haag:For Sittard",
@@ -4219,7 +6745,13 @@
    "away": "For Sittard",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48091,
+    "D": 0.24767,
+    "A": 0.27142,
+    "O": 0.63573,
+    "U": 0.36427
+   }
   },
   {
    "id": "N1:2026-09-08:Utrecht:Go Ahead Eagles",
@@ -4229,7 +6761,13 @@
    "away": "Go Ahead Eagles",
    "hg": 3,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.45114,
+    "D": 0.26118,
+    "A": 0.28768,
+    "O": 0.61722,
+    "U": 0.38278
+   }
   },
   {
    "id": "N1:2026-09-08:Nijmegen:Excelsior",
@@ -4239,7 +6777,13 @@
    "away": "Excelsior",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48533,
+    "D": 0.26402,
+    "A": 0.25065,
+    "O": 0.60577,
+    "U": 0.39423
+   }
   },
   {
    "id": "N1:2026-09-09:Twente:Telstar",
@@ -4249,7 +6793,13 @@
    "away": "Telstar",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.78281,
+    "D": 0.13435,
+    "A": 0.08285,
+    "O": 0.76923,
+    "U": 0.23077
+   }
   },
   {
    "id": "N1:2026-09-11:AZ Alkmaar:Willem II",
@@ -4259,7 +6809,13 @@
    "away": "Willem II",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.8538,
+    "D": 0.09904,
+    "A": 0.04716,
+    "O": 0.76923,
+    "U": 0.23077
+   }
   },
   {
    "id": "N1:2026-09-12:Twente:Den Haag",
@@ -4269,7 +6825,13 @@
    "away": "Den Haag",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.78248,
+    "D": 0.13802,
+    "A": 0.0795,
+    "O": 0.73123,
+    "U": 0.26877
+   }
   },
   {
    "id": "N1:2026-09-12:Go Ahead Eagles:Groningen",
@@ -4279,7 +6841,13 @@
    "away": "Groningen",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41646,
+    "D": 0.24175,
+    "A": 0.34179,
+    "O": 0.71429,
+    "U": 0.28571
+   }
   },
   {
    "id": "N1:2026-09-12:For Sittard:Ajax",
@@ -4289,7 +6857,13 @@
    "away": "Ajax",
    "hg": 1,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.13056,
+    "D": 0.1804,
+    "A": 0.68904,
+    "O": 0.71281,
+    "U": 0.28719
+   }
   },
   {
    "id": "N1:2026-09-12:Cambuur:Nijmegen",
@@ -4299,7 +6873,13 @@
    "away": "Nijmegen",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.18377,
+    "D": 0.21114,
+    "A": 0.60509,
+    "O": 0.68132,
+    "U": 0.31868
+   }
   },
   {
    "id": "N1:2026-09-13:Excelsior:Utrecht",
@@ -4309,7 +6889,13 @@
    "away": "Utrecht",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.41975,
+    "D": 0.26069,
+    "A": 0.31956,
+    "O": 0.62588,
+    "U": 0.37412
+   }
   },
   {
    "id": "N1:2026-09-13:Heerenveen:Telstar",
@@ -4319,7 +6905,13 @@
    "away": "Telstar",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.59154,
+    "D": 0.21476,
+    "A": 0.1937,
+    "O": 0.68627,
+    "U": 0.31373
+   }
   },
   {
    "id": "N1:2026-09-13:Zwolle:Feyenoord",
@@ -4329,7 +6921,13 @@
    "away": "Feyenoord",
    "hg": 0,
    "ag": 7,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.12751,
+    "D": 0.19127,
+    "A": 0.68122,
+    "O": 0.66964,
+    "U": 0.33036
+   }
   },
   {
    "id": "N1:2026-09-13:PSV Eindhoven:Sparta Rotterdam",
@@ -4339,7 +6937,13 @@
    "away": "Sparta Rotterdam",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.82415,
+    "D": 0.10521,
+    "A": 0.07064,
+    "O": 0.82353,
+    "U": 0.17647
+   }
   },
   {
    "id": "N1:2026-09-15:Ajax:Willem II",
@@ -4349,7 +6953,13 @@
    "away": "Willem II",
    "hg": 5,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.88443,
+    "D": 0.08255,
+    "A": 0.03302,
+    "O": 0.79805,
+    "U": 0.20195
+   }
   },
   {
    "id": "N1:2026-09-18:Groningen:Zwolle",
@@ -4359,7 +6969,13 @@
    "away": "Zwolle",
    "hg": 3,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.61294,
+    "D": 0.21586,
+    "A": 0.1712,
+    "O": 0.69915,
+    "U": 0.30085
+   }
   },
   {
    "id": "N1:2026-09-19:Den Haag:Cambuur",
@@ -4369,7 +6985,13 @@
    "away": "Cambuur",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49102,
+    "D": 0.24796,
+    "A": 0.26102,
+    "O": 0.64828,
+    "U": 0.35172
+   }
   },
   {
    "id": "N1:2026-09-19:Sparta Rotterdam:Heerenveen",
@@ -4379,7 +7001,13 @@
    "away": "Heerenveen",
    "hg": 0,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38052,
+    "D": 0.25563,
+    "A": 0.36385,
+    "O": 0.67329,
+    "U": 0.32671
+   }
   },
   {
    "id": "N1:2026-09-19:Ajax:Excelsior",
@@ -4389,7 +7017,13 @@
    "away": "Excelsior",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.79084,
+    "D": 0.13007,
+    "A": 0.07908,
+    "O": 0.75188,
+    "U": 0.24812
+   }
   },
   {
    "id": "N1:2026-09-19:Willem II:For Sittard",
@@ -4399,7 +7033,13 @@
    "away": "For Sittard",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38176,
+    "D": 0.2612,
+    "A": 0.35704,
+    "O": 0.61283,
+    "U": 0.38717
+   }
   },
   {
    "id": "N1:2026-09-20:Feyenoord:Utrecht",
@@ -4409,7 +7049,13 @@
    "away": "Utrecht",
    "hg": 5,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.74067,
+    "D": 0.16008,
+    "A": 0.09925,
+    "O": 0.71575,
+    "U": 0.28425
+   }
   },
   {
    "id": "N1:2026-09-20:AZ Alkmaar:Telstar",
@@ -4419,7 +7065,13 @@
    "away": "Telstar",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.76474,
+    "D": 0.14947,
+    "A": 0.08578,
+    "O": 0.73267,
+    "U": 0.26733
+   }
   },
   {
    "id": "N1:2026-09-20:Twente:PSV Eindhoven",
@@ -4429,7 +7081,13 @@
    "away": "PSV Eindhoven",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33002,
+    "D": 0.23573,
+    "A": 0.43424,
+    "O": 0.7533,
+    "U": 0.2467
+   }
   },
   {
    "id": "N1:2026-09-20:Nijmegen:Go Ahead Eagles",
@@ -4439,7 +7097,13 @@
    "away": "Go Ahead Eagles",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42283,
+    "D": 0.24736,
+    "A": 0.32981,
+    "O": 0.69444,
+    "U": 0.30556
+   }
   },
   {
    "id": "SWZ:2026-08-22:Luzern:Lausanne",
@@ -4449,7 +7113,11 @@
    "away": "Lausanne",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48546,
+    "D": 0.25393,
+    "A": 0.26061
+   }
   },
   {
    "id": "SWZ:2026-08-22:Zurich:Basel",
@@ -4459,7 +7127,11 @@
    "away": "Basel",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.33769,
+    "D": 0.26833,
+    "A": 0.39398
+   }
   },
   {
    "id": "SWZ:2026-08-23:Young Boys:Vaduz",
@@ -4469,7 +7141,11 @@
    "away": "Vaduz",
    "hg": 4,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.74924,
+    "D": 0.14985,
+    "A": 0.10092
+   }
   },
   {
    "id": "SWZ:2026-08-29:Lausanne:Zurich",
@@ -4479,7 +7155,11 @@
    "away": "Zurich",
    "hg": 2,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46831,
+    "D": 0.26944,
+    "A": 0.26225
+   }
   },
   {
    "id": "SWZ:2026-08-29:Servette:Luzern",
@@ -4489,7 +7169,11 @@
    "away": "Luzern",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.50761,
+    "D": 0.24619,
+    "A": 0.24619
+   }
   },
   {
    "id": "SWZ:2026-08-29:Young Boys:Basel",
@@ -4499,7 +7183,11 @@
    "away": "Basel",
    "hg": 3,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.64893,
+    "D": 0.19093,
+    "A": 0.16014
+   }
   },
   {
    "id": "SWZ:2026-08-30:Sion:Lugano",
@@ -4509,7 +7197,11 @@
    "away": "Lugano",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.40314,
+    "D": 0.27171,
+    "A": 0.32516
+   }
   },
   {
    "id": "SWZ:2026-08-30:St. Gallen:Thun",
@@ -4519,7 +7211,11 @@
    "away": "Thun",
    "hg": 3,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.5706,
+    "D": 0.21937,
+    "A": 0.21003
+   }
   },
   {
    "id": "SWZ:2026-08-30:Vaduz:Grasshoppers",
@@ -4529,7 +7225,11 @@
    "away": "Grasshoppers",
    "hg": 5,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46631,
+    "D": 0.24714,
+    "A": 0.28654
+   }
   },
   {
    "id": "SWZ:2026-09-01:Zurich:Young Boys",
@@ -4539,7 +7239,11 @@
    "away": "Young Boys",
    "hg": 2,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.19799,
+    "D": 0.20203,
+    "A": 0.59998
+   }
   },
   {
    "id": "SWZ:2026-09-02:Grasshoppers:St. Gallen",
@@ -4549,7 +7253,11 @@
    "away": "St. Gallen",
    "hg": 2,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.18727,
+    "D": 0.21118,
+    "A": 0.60155
+   }
   },
   {
    "id": "SWZ:2026-09-02:Luzern:Vaduz",
@@ -4559,7 +7267,11 @@
    "away": "Vaduz",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.49585,
+    "D": 0.23612,
+    "A": 0.26803
+   }
   },
   {
    "id": "SWZ:2026-09-02:Thun:Lausanne",
@@ -4569,7 +7281,11 @@
    "away": "Lausanne",
    "hg": 0,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.48872,
+    "D": 0.25564,
+    "A": 0.25564
+   }
   },
   {
    "id": "SWZ:2026-09-03:Basel:Sion",
@@ -4579,7 +7295,11 @@
    "away": "Sion",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.39983,
+    "D": 0.25103,
+    "A": 0.34914
+   }
   },
   {
    "id": "SWZ:2026-09-03:Lugano:Servette",
@@ -4589,7 +7309,11 @@
    "away": "Servette",
    "hg": 1,
    "ag": 0,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38059,
+    "D": 0.27319,
+    "A": 0.34623
+   }
   },
   {
    "id": "SWZ:2026-09-05:Vaduz:Lausanne",
@@ -4599,7 +7323,11 @@
    "away": "Lausanne",
    "hg": 3,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44469,
+    "D": 0.2468,
+    "A": 0.3085
+   }
   },
   {
    "id": "SWZ:2026-09-05:Young Boys:Luzern",
@@ -4609,7 +7337,11 @@
    "away": "Luzern",
    "hg": 3,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.6659,
+    "D": 0.17407,
+    "A": 0.16003
+   }
   },
   {
    "id": "SWZ:2026-09-05:Grasshoppers:Zurich",
@@ -4619,7 +7351,11 @@
    "away": "Zurich",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.36965,
+    "D": 0.27141,
+    "A": 0.35894
+   }
   },
   {
    "id": "SWZ:2026-09-06:Servette:St. Gallen",
@@ -4629,7 +7365,11 @@
    "away": "St. Gallen",
    "hg": 0,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42183,
+    "D": 0.25976,
+    "A": 0.31841
+   }
   },
   {
    "id": "SWZ:2026-09-06:Basel:Lugano",
@@ -4639,7 +7379,11 @@
    "away": "Lugano",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.31499,
+    "D": 0.26459,
+    "A": 0.42043
+   }
   },
   {
    "id": "SWZ:2026-09-06:Sion:Thun",
@@ -4649,7 +7393,11 @@
    "away": "Thun",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.57266,
+    "D": 0.22516,
+    "A": 0.20218
+   }
   },
   {
    "id": "SWZ:2026-09-12:St. Gallen:Sion",
@@ -4659,7 +7407,11 @@
    "away": "Sion",
    "hg": 0,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42151,
+    "D": 0.24971,
+    "A": 0.32878
+   }
   },
   {
    "id": "SWZ:2026-09-12:Thun:Grasshoppers",
@@ -4669,7 +7421,11 @@
    "away": "Grasshoppers",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.53294,
+    "D": 0.22529,
+    "A": 0.24177
+   }
   },
   {
    "id": "SWZ:2026-09-12:Lugano:Young Boys",
@@ -4679,7 +7435,11 @@
    "away": "Young Boys",
    "hg": 2,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.46126,
+    "D": 0.23502,
+    "A": 0.30372
+   }
   },
   {
    "id": "SWZ:2026-09-13:Zurich:Vaduz",
@@ -4689,7 +7449,11 @@
    "away": "Vaduz",
    "hg": 2,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.37026,
+    "D": 0.24808,
+    "A": 0.38166
+   }
   },
   {
    "id": "SWZ:2026-09-13:Lausanne:Servette",
@@ -4699,7 +7463,11 @@
    "away": "Servette",
    "hg": 0,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.26817,
+    "D": 0.26817,
+    "A": 0.46366
+   }
   },
   {
    "id": "SWZ:2026-09-13:Luzern:Basel",
@@ -4709,7 +7477,11 @@
    "away": "Basel",
    "hg": 2,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.44519,
+    "D": 0.24105,
+    "A": 0.31375
+   }
   },
   {
    "id": "SWZ:2026-09-15:Grasshoppers:Sion",
@@ -4719,7 +7491,11 @@
    "away": "Sion",
    "hg": 2,
    "ag": 5,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.22933,
+    "D": 0.24051,
+    "A": 0.53016
+   }
   },
   {
    "id": "SWZ:2026-09-16:Lugano:St. Gallen",
@@ -4729,7 +7505,11 @@
    "away": "St. Gallen",
    "hg": 4,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.42963,
+    "D": 0.25666,
+    "A": 0.3137
+   }
   },
   {
    "id": "SWZ:2026-09-16:Thun:Servette",
@@ -4739,7 +7519,11 @@
    "away": "Servette",
    "hg": 2,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.43175,
+    "D": 0.25793,
+    "A": 0.31032
+   }
   },
   {
    "id": "SWZ:2026-09-19:Luzern:Grasshoppers",
@@ -4749,7 +7533,11 @@
    "away": "Grasshoppers",
    "hg": 5,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.56919,
+    "D": 0.21072,
+    "A": 0.22009
+   }
   },
   {
    "id": "SWZ:2026-09-19:Sion:Zurich",
@@ -4759,7 +7547,11 @@
    "away": "Zurich",
    "hg": 1,
    "ag": 1,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.68408,
+    "D": 0.1791,
+    "A": 0.13682
+   }
   },
   {
    "id": "SWZ:2026-09-19:Young Boys:Servette",
@@ -4769,7 +7561,11 @@
    "away": "Servette",
    "hg": 3,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.61473,
+    "D": 0.20198,
+    "A": 0.18328
+   }
   },
   {
    "id": "SWZ:2026-09-20:Vaduz:Thun",
@@ -4779,7 +7575,11 @@
    "away": "Thun",
    "hg": 1,
    "ag": 2,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.38462,
+    "D": 0.23077,
+    "A": 0.38462
+   }
   },
   {
    "id": "SWZ:2026-09-20:Basel:St. Gallen",
@@ -4789,7 +7589,11 @@
    "away": "St. Gallen",
    "hg": 1,
    "ag": 3,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.3703,
+    "D": 0.24205,
+    "A": 0.38765
+   }
   },
   {
    "id": "SWZ:2026-09-20:Lausanne:Lugano",
@@ -4799,7 +7603,11 @@
    "away": "Lugano",
    "hg": 0,
    "ag": 4,
-   "closing_fair": {}
+   "closing_fair": {
+    "H": 0.24916,
+    "D": 0.26228,
+    "A": 0.48856
+   }
   }
  ]
 }
