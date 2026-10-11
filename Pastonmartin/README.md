@@ -17,7 +17,9 @@ Darum rechnet die App die faire Quote aus deren Quoten aus. Wichtig ist dann, wo
 - Bei einem Buchmacher mit ca. 10 % Marge (unsere Sporttip-Schätzung) gibt es nur noch
   ca. 10 bis 20 Value-Wetten pro Saison über alle 9 Ligen.
 
-Wie gut Sporttip wirklich ist, misst das Tagebuch („Gemessene Sporttip-Marge“).
+**Gemessen (Oktober 2026, Bundesliga, 18 Spiele):** Sporttip hat bei 1X2 nur ca. **6 % Marge**
+(5.8–6.3 %), bei Über/Unter ca. 7.5 %. Das ist etwa Bet365-Niveau, also deutlich besser als die
+10 %-Schätzung. Laufend misst es das Tagebuch („Gemessene Sporttip-Marge“), bei jedem Scan automatisch.
 Das eigene Modell (Tore, Schüsse aufs Tor, Dixon-Coles) ist deutlich besser geworden,
 schlägt den Markt aber nicht und bekommt darum 0 % Gewicht. Die Ergebnisse aller
 Experimente stehen auf der Website unter „Backtest“.
@@ -34,7 +36,7 @@ Experimente stehen auf der Website unter „Backtest“.
                                                                                  │
                                            Mindestquote = (1 + Mindest-Value) / Chance
                                                                                  │
-              Website: Sporttip-Quote eintragen ─► Value? Einsatz? ─► Tagebuch / Kombi
+   Website: Sporttip scannen (oder Quote eintippen) ─► Value? Einsatz? ─► Tagebuch / Kombi
 ```
 
 1. **Faire Marktchance:** Pro Spiel die erste vollständige und plausible Quotengruppe
@@ -92,6 +94,8 @@ The Odds API kennt (Tennis, Eishockey, Basketball, …), nur mit Live-Marktquote
 | `site/data/` | Von GitHub Actions erzeugt: `tips.json`, `backtest.json`, `results.json` |
 | `functions/api/odds.js` | Live-Quoten von The Odds API (5 Minuten zwischengespeichert) |
 | `functions/api/bets.js` | Wett-Tagebuch in Cloudflare D1 |
+| `functions/api/sporttip.js` | Sporttip-Quoten holen (nur auf Knopfdruck, 5 Minuten zwischengespeichert) |
+| `site/js/sporttip.js` | Sporttip-Spiele unseren Spielen zuordnen, Liga-Pfade |
 | `functions/_middleware.js`, `functions/_auth.js` | Passwortschutz für die ganze App |
 | `../.github/workflows/pastonmartin.yml` | Der Zeitplan |
 
@@ -102,7 +106,19 @@ Cloudflare Pages kann nichts regelmässig laufen lassen, GitHub Actions schon (g
 - **Täglich 2×:** neue Resultate laden, Modell neu lernen, Tipps schreiben.
 - **Montags und bei jeder Änderung an `engine/`:** ganzer Backtest (ca. 2 Minuten).
 - **Von Hand:** GitHub → Actions → Pastonmartin → *Run workflow*.
-- **Live-Quoten:** auf der Website per Knopfdruck (Cloudflare-Function, nicht GitHub).
+- **Live-Quoten** und **Sporttip scannen:** auf der Website per Knopfdruck (Cloudflare-Function, nicht GitHub).
+
+### Sporttip scannen
+
+Swisslos hat erlaubt, die Quoten für den privaten Gebrauch abzurufen. Die Swisslos-Seite holt ihre
+Quoten über eine WebSocket-Verbindung von Admiral (`wss://ws.ch.admiral.at/`); jede Nachricht ist
+JSON, komprimiert mit `deflate-raw`. `functions/api/sporttip.js` macht dasselbe: eine Verbindung,
+pro Liga eine Anfrage `RetrieveSportsbookPage` mit dem Pfad (z.B. `/fussball/deutschland/bundesliga`),
+dann werden Spiele, Märkte und Quoten zusammengesetzt. Bewusst zurückhaltend: nur auf Knopfdruck,
+jede Liga 5 Minuten zwischengespeichert, nichts wird gespeichert oder ins Repo geschrieben.
+Gescannt werden Sieger (1X2) und Über/Unter 1.5/2.5/3.5. Doppelte Chance und Beide treffen trägst du
+weiterhin von Hand ein. Findet der Scan eine Liga nicht, stimmt ihr Pfad nicht: unter
+„Sporttip-Ligen einstellen“ den richtigen Pfad aus der Adresszeile von swisslos.ch eintragen.
 
 Der Roboter committet die neuen JSON-Dateien. Cloudflare Pages veröffentlicht sie dann automatisch.
 

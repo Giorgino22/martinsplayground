@@ -33,11 +33,20 @@
       <div class="toolbar">
         <label class="field">Budget CHF <input id="bankroll" type="number" inputmode="decimal" min="0" step="10" style="width:90px"></label>
         <button class="ghost" id="live-button">↻ Live-Quoten</button>
+        <button class="primary" id="scan-button">Sporttip scannen</button>
       </div>
       <p class="small muted" id="live-status"></p>
+      <p class="small muted" id="scan-status"></p>
+      <div id="value-list"></div>
       <div class="toolbar" id="group-filter"></div>
       <div class="toolbar" id="league-filter"></div>
       <div id="tips-list"></div>
+      <details class="card small" id="scan-paths">
+        <summary>Sporttip-Ligen einstellen</summary>
+        <p class="muted">Pfad der Liga auf swisslos.ch: Liga auf der Sporttip-Seite öffnen und aus der Adresszeile den Teil
+          nach <code>/sportwetten</code> kopieren, z.B. <code>/fussball/deutschland/bundesliga</code>.</p>
+        <div id="scan-path-fields"></div>
+      </details>
     </section>
 
     <!-- Andere Sportarten -->
@@ -64,6 +73,8 @@
       <div class="card">
         <ol>
           <li>Am Automaten oder vor dem Programm: <b>↻ Live-Quoten</b> tippen. Dann sind die fairen Quoten aktuell.</li>
+          <li><b>Sporttip scannen</b> tippen: Die App holt alle Sporttip-Quoten (Sieger und Tore) und zeigt oben die
+            Liste der Value-Wetten mit Einsatz. Andere Wetten kannst du weiterhin von Hand eintragen.</li>
           <li>Wette antippen und die <b>Sporttip-Quote</b> eintragen. Grün = Value, die App zeigt den Einsatz.</li>
           <li><b>Ins Tagebuch</b>: Das Tagebuch rechnet nach dem Spiel selbst ab und misst den CLV.</li>
           <li>Mehrere grüne Tipps aus verschiedenen Spielen kannst du zur <b>Kombi</b> verbinden: Der Value multipliziert sich,

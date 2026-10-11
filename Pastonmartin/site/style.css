@@ -225,3 +225,16 @@ tr.chosen td { font-weight: 700; }
 tr.reference td { color: var(--text-3); font-style: italic; }
 ul.plain { margin: 6px 0; padding-left: 18px; }
 ul.legs { margin: 4px 0 0; padding-left: 0; list-style: none; }
+
+/* Sporttip scannen: Liste der Value-Wetten */
+.value-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%;
+  margin-top: 8px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px;
+  background: var(--good-soft); color: var(--text); font: inherit; text-align: left; cursor: pointer;
+}
+.value-edge { color: var(--good); font-weight: 700; text-align: right; white-space: nowrap; }
+#scan-paths { margin-top: 16px; }
+#scan-paths summary { cursor: pointer; }
+#scan-path-fields label.field { justify-content: space-between; margin-top: 6px; }
+#scan-path-fields input { flex: 1; max-width: 300px; min-width: 0; font: inherit; padding: 6px 8px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); }
