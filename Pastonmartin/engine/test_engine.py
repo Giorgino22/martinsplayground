@@ -170,6 +170,14 @@ class DataTest(unittest.TestCase):
         self.assertEqual(df["ref_name"].tolist(), ["Pinnacle", "Betfair", "Marktschnitt"])
         self.assertEqual(df["ref_h"].tolist(), [2.0, 2.1, 1.9])
 
+    def test_implausible_odds_are_rejected(self):
+        # Wettbörse ohne Umsatz: 1.02 und 1.25 ergäbe 178 % -> unbrauchbar, Marktschnitt nehmen
+        text = "Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,BFE>2.5,BFE<2.5,Avg>2.5,Avg<2.5\n" \
+               "E0,11/10/2026,Utrecht,Willem II,0,0,1.02,1.25,1.55,2.45\n"
+        df = data.normalize(data.read_csv(text.encode()), "E0")
+        self.assertEqual(df["ref_over"].iloc[0], 1.55)
+        self.assertEqual(df["ref_under"].iloc[0], 2.45)
+
     def test_extra_league_uses_closing_odds(self):
         text = "Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,AvgCH,AvgCD,AvgCA\nSwitzerland,Super League,2023/2024,22/07/2023,18:00,Basel,Zurich,1,1,D,2.1,3.4,3.3,2.0,3.3,3.2\n"
         df = data.normalize(data.read_csv(text.encode()), "SWZ")
@@ -304,6 +312,120 @@ class FairJsTest(unittest.TestCase):
         for case, got in zip(cases, json.loads(result.stdout)):
             for key, expected in case["expected"].items():
                 self.assertAlmostEqual(got[key], expected, places=5, msg=key)
+
+
+FUNCTIONS = Path(__file__).resolve().parent.parent / "functions" / "api"
+
+# Node-Skript: lädt eine Cloudflare-Function mit nachgebauter Umgebung und ruft sie auf
+FUNCTION_RUNNER = """
+const [file, scenario] = process.argv.slice(2);
+const stored = new Map();
+globalThis.caches = { default: {
+  match: async key => stored.get(key.url),
+  put: async (key, response) => stored.set(key.url, response),
+} };
+const calls = [];
+globalThis.fetch = async url => {
+  calls.push(url);
+  const events = [
+    { home_team: 'Arsenal', away_team: 'Chelsea', commence_time: '2026-10-17T14:00:00Z', bookmakers: [
+      { key: 'betfair_ex_eu', markets: [{ key: 'h2h', outcomes: [
+        { name: 'Arsenal', price: 2.1 }, { name: 'Draw', price: 3.5 }, { name: 'Chelsea', price: 3.9 }] }] },
+      { key: 'pinnacle', markets: [
+        { key: 'h2h', outcomes: [{ name: 'Arsenal', price: 2.05 }, { name: 'Draw', price: 3.6 }, { name: 'Chelsea', price: 3.8 }] },
+        { key: 'totals', outcomes: [{ name: 'Over', price: 1.6, point: 2.25 }, { name: 'Under', price: 2.4, point: 2.25 },
+                                    { name: 'Over', price: 1.95, point: 2.5 }, { name: 'Under', price: 1.93, point: 2.5 }] }] }] },
+    { home_team: 'Sinner', away_team: 'Alcaraz', commence_time: '2026-10-17T16:00:00Z', bookmakers: [
+      { key: 'pinnacle', markets: [{ key: 'totals', outcomes: [] }] },
+      { key: 'betfair_ex_eu', markets: [{ key: 'h2h', outcomes: [{ name: 'Sinner', price: 1.8 }, { name: 'Alcaraz', price: 2.1 }] }] }] },
+    { home_team: 'X', away_team: 'Y', commence_time: '2026-10-17T16:00:00Z', bookmakers: [] },
+  ];
+  const body = url.includes('/odds?') ? events : [{ key: 'soccer_epl', group: 'Soccer', title: 'EPL', active: true, has_outrights: false }];
+  return new Response(JSON.stringify(body), { headers: { 'x-requests-remaining': '480' } });
+};
+const rows = new Map();
+const db = {
+  exec: async () => {},
+  prepare: sql => ({ bind: (...args) => ({
+    run: async () => {
+      if (sql.startsWith('INSERT')) rows.set(args[0], { created: args[1], data: args[2] });
+      if (sql.startsWith('DELETE')) rows.delete(args[0]);
+    },
+  }), all: async () => ({ results: [...rows.values()].sort((a, b) => b.created.localeCompare(a.created)) }) }),
+};
+const { onRequest, onRequestGet } = await import(file);
+const handler = onRequestGet || onRequest;
+const call = async (url, env, init = {}) => {
+  const response = await handler({ request: new Request(url, init), env, waitUntil: p => p });
+  return { status: response.status, body: await response.json() };
+};
+const out = {};
+if (scenario === 'odds') {
+  out.noKey = await call('https://x/api/odds?sport=soccer_epl', {});
+  out.locked = await call('https://x/api/odds?sport=soccer_epl', { ODDS_API_KEY: 'k', JOURNAL_KEY: 's' });
+  out.bad = await call('https://x/api/odds?sport=../etc', { ODDS_API_KEY: 'k' });
+  out.ok = await call('https://x/api/odds?sport=soccer_epl', { ODDS_API_KEY: 'k' });
+  out.again = await call('https://x/api/odds?sport=soccer_epl', { ODDS_API_KEY: 'k' });
+  out.list = await call('https://x/api/odds?list=1', { ODDS_API_KEY: 'k' });
+  out.calls = calls.length;
+} else {
+  const env = { DB: db, JOURNAL_KEY: 's' };
+  const headers = { 'x-journal-key': 's', 'content-type': 'application/json' };
+  out.locked = await call('https://x/api/bets', env);
+  out.saved = await call('https://x/api/bets', env, { method: 'PUT', headers,
+    body: JSON.stringify({ id: 'a', created: '2026-10-11T10:00:00Z', odds: 2.1, stake: 5 }) });
+  out.invalid = await call('https://x/api/bets', env, { method: 'PUT', headers, body: JSON.stringify({ id: 'b', odds: 0.5, stake: 5 }) });
+  out.listed = await call('https://x/api/bets', env, { headers });
+  out.deleted = await call('https://x/api/bets?id=a', env, { method: 'DELETE', headers });
+  out.after = await call('https://x/api/bets', env, { headers });
+  out.noDb = await call('https://x/api/bets', {});
+}
+process.stdout.write(JSON.stringify(out));
+"""
+
+
+@unittest.skipUnless(shutil.which("node"), "Node.js fehlt")
+class FunctionsTest(unittest.TestCase):
+    """Die Cloudflare-Functions (Live-Quoten, Tagebuch) mit nachgebauter Umgebung."""
+
+    def run_function(self, name, scenario):
+        with tempfile.TemporaryDirectory() as tmp:
+            # als .mjs kopieren, damit Node sie sicher als ES-Modul liest
+            module = Path(tmp) / f"{name}.mjs"
+            module.write_text((FUNCTIONS / f"{name}.js").read_text())
+            runner = Path(tmp) / "runner.mjs"
+            runner.write_text(FUNCTION_RUNNER)
+            result = subprocess.run(["node", str(runner), module.as_uri(), scenario],
+                                    capture_output=True, text=True, timeout=60)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return json.loads(result.stdout)
+
+    def test_live_odds(self):
+        out = self.run_function("odds", "odds")
+        self.assertEqual(out["noKey"]["status"], 503)
+        self.assertEqual(out["locked"]["status"], 401)
+        self.assertEqual(out["bad"]["status"], 400)
+        events = out["ok"]["body"]["events"]
+        self.assertEqual(len(events), 2)                       # Spiel ohne Buchmacher fällt weg
+        football, tennis = events
+        self.assertEqual(football["source"], "Pinnacle")      # Pinnacle hat Vorrang
+        self.assertEqual(football["h2h"], [2.05, 3.6, 3.8])
+        self.assertEqual(football["totals"][0]["point"], 2.5)  # ausgeglichenste Linie zuerst
+        self.assertEqual(tennis["source"], "Betfair")          # Pinnacle ohne Siegerquote -> Betfair
+        self.assertEqual(tennis["h2h"], [1.8, 2.1])
+        self.assertEqual(out["ok"]["body"]["remaining"], "480")
+        self.assertEqual(out["again"]["body"], out["ok"]["body"])
+        self.assertEqual(out["calls"], 2)                      # zweite Abfrage kam aus dem Zwischenspeicher
+        self.assertEqual(out["list"]["body"]["sports"][0]["key"], "soccer_epl")
+
+    def test_journal(self):
+        out = self.run_function("bets", "bets")
+        self.assertEqual(out["locked"]["status"], 401)
+        self.assertEqual(out["saved"]["status"], 200)
+        self.assertEqual(out["invalid"]["status"], 400)
+        self.assertEqual([b["id"] for b in out["listed"]["body"]["bets"]], ["a"])
+        self.assertEqual(out["after"]["body"]["bets"], [])
+        self.assertEqual(out["noDb"]["status"], 503)
 
 
 # --- Erfundene Daten -----------------------------------------------------------------

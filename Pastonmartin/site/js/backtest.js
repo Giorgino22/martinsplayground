@@ -1,131 +1,145 @@
-// Ansicht "Backtest": was das System in alten Saisons gemacht hätte.
+// Ansicht "Backtest": was das System in alten Saisons gemacht hätte, und was getestet wurde.
 import { pct, signedPct, num, esc, formatStamp } from './util.js';
 
 const view = document.getElementById('view-backtest');
-const MARKET_NAMES = { '1X2': '1X2', OU: 'Tore' };
-const COLORS = { value: 'var(--series-1)', model: 'var(--series-2)', combo: 'var(--series-3)' };
+const MARKET_NAMES = { '1X2': 'Sieger', OU: 'Tore 2.5', total: 'Alle' };
+// Linien im Diagramm: gleiche Prognosen, aber Quoten von verschiedenen Orten
+const LINES = [
+  { key: 'combo|early|sporttip', name: 'Sporttip-Schätzung', color: 'var(--series-1)' },
+  { key: 'combo|early|book', name: 'Bet365', color: 'var(--series-2)' },
+  { key: 'combo|early|max', name: 'Höchstquote (Max)', color: 'var(--series-3)' },
+];
 let data = null;
 let scenario = 'sporttip';
+let timing = 'early';
 let period = 'test';
 
 export function initBacktest(backtest) {
   data = backtest;
-  if (!data) {
-    view.innerHTML = `<div class="empty">Noch kein Backtest vorhanden.<br><span class="small">Er läuft automatisch, sobald der GitHub-Roboter das erste Mal startet.</span></div>`;
+  if (!data || data.version !== 2) {
+    view.innerHTML = `<div class="empty">Noch kein Backtest vorhanden.<br><span class="small">Er läuft automatisch, sobald der GitHub-Roboter das nächste Mal startet.</span></div>`;
     return;
   }
   view.addEventListener('click', e => {
-    const chip = e.target.closest('[data-scenario],[data-period]');
+    const chip = e.target.closest('[data-scenario],[data-timing],[data-period]');
     if (!chip) return;
     if (chip.dataset.scenario) scenario = chip.dataset.scenario;
+    if (chip.dataset.timing) timing = chip.dataset.timing;
     if (chip.dataset.period) period = chip.dataset.period;
     render();
   });
   render();
 }
 
-const cls = x => x == null ? '' : x > 0 ? 'pos' : x < 0 ? 'neg' : '';
-const luck = p => p == null ? '–' : p < 0.01 ? '< 1 %' : pct(p, 0);
+const cls = x => (x == null ? '' : x > 0 ? 'pos' : x < 0 ? 'neg' : '');
+const luck = p => (p == null ? '–' : p < 0.01 ? '< 1 %' : pct(p, 0));
+const total = (key, t, s) => data.strategies.find(x => x.key === key).results[t][s].test.total;
 
-// Ein Satz, der das wichtigste Resultat ehrlich zusammenfasst
-function verdict(total) {
-  if (!total || !total.bets) {
-    return ['bad', 'Im Test hätte die Kombination keine einzige Wette gefunden.',
-      'Die Sporttip-Schätzung ist zu weit von den fairen Quoten weg. Echte Sporttip-Quoten im Tagebuch zeigen, ob es in Wirklichkeit besser aussieht.'];
+// Die ehrliche Zusammenfassung oben
+function verdict() {
+  const s = total('combo', 'early', 'sporttip'), b = total('combo', 'early', 'book'), m = total('combo', 'early', 'max');
+  const line = (name, r) => `${name}: ${r.bets || 0} Wetten, ROI ${r.bets ? signedPct(r.roi) : '–'}, CLV ${signedPct(r.clv)}`;
+  const detail = [line('Sporttip-Schätzung', s), line('Bet365', b), line('Höchstquote', m)].join(' · ');
+  if (s.bets && s.clv > 0 && s.p_luck < 0.05) {
+    return ['good', 'Vielversprechend, sogar mit Sporttip-Quoten.', detail];
   }
-  const head = `${total.bets} Test-Wetten, Rendite ${signedPct(total.roi)}, Ø CLV ${signedPct(total.clv)}.`;
-  if (total.roi > 0 && total.p_luck < 0.05) {
-    return ['good', `Vielversprechend: ${head}`, 'Das Resultat ist kaum mit purem Glück zu erklären. Trotzdem klein anfangen und im Tagebuch mitzählen.'];
+  if ((b.clv || 0) > 0 || (m.clv || 0) > 0) {
+    return ['neutral', 'Das System findet echten Value, aber nur, wenn die Quoten gut genug sind.',
+      `${detail}. Ob Sporttip gut genug ist, zeigt die gemessene Sporttip-Marge im Tagebuch.`];
   }
-  if (total.roi > 0) {
-    const clvText = total.clv > 0
-      ? 'Der CLV ist positiv, das spricht für echten Vorsprung.'
-      : 'Der CLV ist nicht positiv, das spricht eher für Glück.';
-    return ['neutral', `Im Plus, aber nicht bewiesen: ${head}`,
-      `Mit ${luck(total.p_luck)} Wahrscheinlichkeit wäre so ein Plus auch reines Glück. ${clvText}`];
-  }
-  return ['bad', `Im Test kein Gewinn: ${head}`,
-    'Mit diesen Einstellungen schlägt das System die Sporttip-Schätzung nicht. Das ist ein wichtiges, ehrliches Resultat, kein Fehler.'];
+  return ['bad', 'Im Test kein Vorteil.', detail];
 }
 
 function render() {
-  const combo = data.strategies.find(s => s.key === 'combo');
-  const [tone, title, text] = verdict(combo.test_total);
+  const [tone, title, text] = verdict();
   const p = data.params;
-
+  const months = Math.round(Math.log(2) / p.model.decay / 30.4);
   view.innerHTML = `
     <p class="small muted">Stand ${esc(formatStamp(data.generated))} · Anpassen: ${esc(data.seasons.tune)} · Test: ${esc(data.seasons.test)}</p>
     <div class="card ${tone === 'neutral' ? 'note' : `verdict-${tone}`}"><b>${esc(title)}</b><br><span class="small">${esc(text)}</span></div>
 
     <div class="card small">
-      <b>Vom Backtest gewählt:</b> Eigenes Modell zählt bei 1X2 <b>${pct(p.w_1x2, 0)}</b>, bei Toren <b>${pct(p.w_ou, 0)}</b>
-      (der Rest ist der Markt). Gewettet wird ab <b>${signedPct(p.edge_1x2, 0)}</b> (1X2) bzw. <b>${signedPct(p.edge_ou, 0)}</b> (Tore) Value.
-      Ein Spiel zählt nach ${Math.round(Math.log(2) / p.decay / 30)} Monaten nur noch halb so viel.
-      <br><span class="muted">Sporttip-Schätzung = Bet365-Quote minus ${pct(p.haircut, 0)}.</span>
+      <b>Gewählt (nur mit den Anpassungs-Saisons):</b>
+      <ul class="plain">
+        <li>Marge herausrechnen: <b>${esc({ proportional: 'proportional', power: 'Power-Methode', shin: 'Shin-Methode' }[p.devig])}</b></li>
+        <li>Kombination: <b>${esc(p.combine_name)}</b> (Modellgewicht Sieger ${pct(p.model_share['1X2'], 0)}, Tore ${pct(p.model_share.OU, 0)})</li>
+        <li>Eigenes Modell: Spiele zählen nach ${months} Monaten halb, Schüsse aufs Tor ${pct(p.model.shots_weight, 0)}, Dixon-Coles ${p.model.rho}</li>
+        <li>Wetten ab ${signedPct(p.edge['1X2'], 0)} Value (Sieger, Doppelte Chance), ${signedPct(p.edge.OU, 0)} (Tore 2.5),
+          ${signedPct(p.edge.OU + p.derived_extra_edge, 0)} (Nebenmärkte); höchstens Quote ${num(p.max_odds['1X2'], 1)}</li>
+      </ul>
+      <span class="muted">Sporttip-Schätzung = Bet365-Quote minus ${pct(p.haircut, 0)}.</span>
     </div>
 
+    <h2>Was getestet wurde</h2>
+    <p class="small muted">Gewählt wird immer nur im Anpassungs-Zeitraum, sonst wäre der Test geschönt. Die fett markierte Zeile ist die gewählte.</p>
+    ${data.experiments.map(experimentTable).join('')}
+
     <h2>Strategien im Vergleich</h2>
-    <div class="toolbar">
-      ${Object.entries(data.scenarios).map(([key, name]) => `<button class="chip" data-scenario="${key}" aria-pressed="${key === scenario}">${esc(name)}</button>`).join('')}
-    </div>
-    <div class="toolbar">
-      <button class="chip" data-period="test" aria-pressed="${period === 'test'}">Test (ehrlich)</button>
-      <button class="chip" data-period="tune" aria-pressed="${period === 'tune'}">Anpassung (geschönt)</button>
-    </div>
+    <div class="toolbar">${Object.entries(data.scenarios).map(([k, n]) => chip('scenario', k, n, scenario)).join('')}</div>
+    <div class="toolbar">${Object.entries(data.timings).map(([k, n]) => chip('timing', k, n, timing)).join('')}</div>
+    <div class="toolbar">${chip('period', 'test', 'Test (ehrlich)', period)}${chip('period', 'tune', 'Anpassung (geschönt)', period)}</div>
     <div class="card">${strategyTable()}</div>
-    <p class="small muted">ROI = Gewinn pro gesetztem Franken. „Glück?“ = Wahrscheinlichkeit, so ein Resultat (oder besser) ganz ohne echten Vorteil zu erzielen. Tief ist gut.</p>
+    <p class="small muted">ROI = Gewinn pro gesetztem Franken. CLV = wie viel besser deine Quote als die faire Schlussquote war (kurz vor Anpfiff nicht messbar). „Glück?“ = Wahrscheinlichkeit, so ein Resultat ohne echten Vorteil zu erzielen.</p>
 
     <h2>Gewinnverlauf im Test</h2>
     <div class="card">${chartHtml()}</div>
-    <p class="small muted">Einsatz 1 Einheit pro Wette, Sporttip-Schätzung. Hover oder tippen zeigt die Werte.</p>
+    <p class="small muted">Gleiche Prognosen, gleiche Regeln, nur andere Quoten. 1 Einheit pro Wette.</p>
 
-    <h2>Wie gut sind die Wahrscheinlichkeiten?</h2>
-    <div class="card">${logLossTable()}</div>
-    <p class="small muted">Log-Loss: tiefer = bessere Vorhersage. Ist „Kombi“ tiefer als „Markt“, bringt das eigene Modell echte Zusatzinformation.</p>
+    <h2>Nach Liga und Saison</h2>
+    <p class="small muted">Kombination, früh gewettet, Test-Saisons, ${esc(data.scenarios[scenario])}.</p>
+    <div class="card">${breakdownTable(data.by_league[scenario], 'name', 'Liga')}</div>
+    <div class="card">${breakdownTable(data.by_season[scenario], 'season', 'Saison')}</div>
 
-    <h2>Kombination nach Liga (Test)</h2>
-    <div class="card">${breakdownTable(data.by_league, 'name', 'Liga')}</div>
-    <h2>Kombination nach Saison (Test)</h2>
-    <div class="card">${breakdownTable(data.by_season, 'season', 'Saison')}</div>
+    <h2>Margen der Buchmacher</h2>
+    <div class="card">${marginTable()}</div>
 
-    <h2>Mindest-Value anpassen</h2>
-    <div class="card">${tuningTable()}</div>
-    <p class="small muted">So hätte die Kombination im Anpassungs-Zeitraum mit verschiedenen Mindest-Values abgeschnitten.
-      Wenn die Zahlen hier stark springen, ist viel Zufall dabei.</p>
-
+    <details class="card small"><summary>Mindest-Value: alle Einstellungen</summary>${tuningTable()}</details>
+    <details class="card small"><summary>Nebenmärkte: Kalibrierung</summary>${calibrationTable()}</details>
     <details class="card small"><summary>Datenabdeckung</summary>${coverageTable()}</details>`;
-
   attachChart();
+}
+
+function chip(kind, value, label, current) {
+  return `<button class="chip" data-${kind}="${value}" aria-pressed="${value === current}">${esc(label)}</button>`;
+}
+
+function format(kind, value) {
+  if (value == null) return '–';
+  if (kind === 'loss') return num(value, 4);
+  if (kind === 'int') return String(value);
+  if (kind === 'signed') return signedPct(value);
+  if (kind === 'luck') return luck(value);
+  if (kind === 'pct') return pct(value);
+  return esc(value);
+}
+
+function experimentTable(table) {
+  const head = table.columns.map(c => `<th>${esc(c.label)}</th>`).join('');
+  const rows = table.rows.map(row => `<tr class="${row.chosen ? 'chosen' : ''}${row.reference ? ' reference' : ''}">${row.cells.map((value, i) => {
+    const kind = table.columns[i].kind;
+    const tone = kind === 'signed' ? ` class="${cls(value)}"` : '';
+    return `<td${tone}>${format(kind, value)}</td>`;
+  }).join('')}</tr>`).join('');
+  return `<div class="card"><h3>${esc(table.title)}</h3>
+    <p class="small muted">${esc(table.note)} <i>${esc(table.metric)}</i></p>
+    <div class="table-wrap"><table class="wrap-first"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div></div>`;
 }
 
 function strategyTable() {
   let rows = '';
   for (const s of data.strategies) {
     rows += `<tr class="group"><td colspan="5">${esc(s.name)}</td></tr>`;
-    for (const market of Object.keys(MARKET_NAMES)) {
-      const r = s.results[scenario]?.[period]?.[market];
-      if (!r) continue;
-      rows += `<tr><td>${MARKET_NAMES[market]} <span class="small muted">ab ${signedPct(s.edges[market], 0)}</span></td>
-        <td>${r.bets}</td>
-        <td class="${cls(r.roi)}">${r.bets ? signedPct(r.roi) : '–'}</td>
+    for (const market of ['1X2', 'OU']) {
+      const r = s.results[timing][scenario][period][market];
+      const t = s.thresholds[market];
+      rows += `<tr><td>${MARKET_NAMES[market]} <span class="small muted">ab ${signedPct(t.edge, 0)}, bis ${num(t.max_odds, 1)}</span></td>
+        <td>${r.bets}</td><td class="${cls(r.roi)}">${r.bets ? signedPct(r.roi) : '–'}</td>
         <td class="${cls(r.clv)}">${signedPct(r.clv)}</td><td>${luck(r.p_luck)}</td></tr>`;
     }
   }
-  return `<div class="table-wrap"><table><thead><tr><th>Markt</th><th>Wetten</th><th>ROI</th><th>CLV</th><th>Glück?</th></tr></thead><tbody>${rows}</tbody></table></div>`;
-}
-
-function logLossTable() {
-  let rows = '';
-  for (const [market, periods] of Object.entries(data.log_loss)) {
-    for (const [name, key] of [['Anpassung', 'tune'], ['Test', 'test']]) {
-      const r = periods[key];
-      if (!r || !r.games) continue;
-      const best = Math.min(r.model, r.market, r.blend);
-      const cell = v => `<td${v === best ? ' style="font-weight:700"' : ''}>${num(v, 4)}</td>`;
-      rows += `<tr><td>${MARKET_NAMES[market]} · ${name}</td>${cell(r.model)}${cell(r.market)}${cell(r.blend)}</tr>`;
-    }
-  }
-  return `<div class="table-wrap"><table><thead><tr><th></th><th>Modell</th><th>Markt</th><th>Kombi</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  const note = data.params.combine_name === 'Nur Markt'
+    ? '<p class="small muted">Die Kombination ist hier gleich wie der Value-Finder: Das eigene Modell bekam 0 % Gewicht.</p>' : '';
+  return `<div class="table-wrap"><table><thead><tr><th>Markt</th><th>Wetten</th><th>ROI</th><th>CLV</th><th>Glück?</th></tr></thead><tbody>${rows}</tbody></table></div>${note}`;
 }
 
 function breakdownTable(list, key, label) {
@@ -135,40 +149,59 @@ function breakdownTable(list, key, label) {
   return `<div class="table-wrap"><table><thead><tr><th>${label}</th><th>Wetten</th><th>ROI</th><th>CLV</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
+function marginTable() {
+  const names = { reference: 'Pinnacle / Betfair', bet365: 'Bet365', sporttip: 'Sporttip-Schätzung', max: 'Höchstquote aller Buchmacher' };
+  const rows = Object.entries(names).map(([key, name]) => `<tr><td>${name}</td>
+    <td>${pct(data.margins['1X2'][key])}</td><td>${pct(data.margins.OU[key])}</td></tr>`).join('');
+  return `<div class="table-wrap"><table><thead><tr><th>Quelle</th><th>Sieger</th><th>Tore 2.5</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <p class="small muted">Marge = um wie viel die Quoten unter fair liegen. Negativ heisst: Wer überall die beste Quote nimmt, liegt sogar über fair.
+      Deine echte Sporttip-Marge misst das Tagebuch.</p>`;
+}
+
 function tuningTable() {
   let rows = '';
   for (const [market, grid] of Object.entries(data.tuning_grid)) {
-    const chosen = data.params[market === '1X2' ? 'edge_1x2' : 'edge_ou'];
-    for (const g of grid) {
-      const mark = g.edge === chosen ? ' ← gewählt' : '';
-      rows += `<tr><td>${MARKET_NAMES[market]} ab ${signedPct(g.edge, 0)}${mark}</td><td>${g.bets}</td>
-        <td class="${cls(g.roi)}">${g.bets ? signedPct(g.roi) : '–'}</td></tr>`;
+    const chosen = data.params.edge[market], chosenMax = data.params.max_odds[market];
+    for (const g of grid.filter(x => x.bets >= 10)) {
+      const mark = g.edge === chosen && g.max_odds === chosenMax ? ' class="chosen"' : '';
+      rows += `<tr${mark}><td>${MARKET_NAMES[market]} ab ${signedPct(g.edge, 0)}, bis ${num(g.max_odds, 1)}</td><td>${g.bets}</td>
+        <td class="${cls(g.clv)}">${signedPct(g.clv)}</td><td class="${cls(g.roi)}">${signedPct(g.roi)}</td></tr>`;
     }
   }
-  return `<div class="table-wrap"><table><thead><tr><th>Einstellung</th><th>Wetten</th><th>ROI</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  return `<p class="muted">Anpassungs-Zeitraum, Bet365-Quoten. Gewählt wird der grösste Gesamt-CLV (mit genug Wetten).</p>
+    <div class="table-wrap"><table><thead><tr><th>Einstellung</th><th>Wetten</th><th>CLV</th><th>ROI</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function calibrationTable() {
+  return data.derived.map(d => `<h3>${esc(d.name)}</h3>
+    <div class="table-wrap"><table><thead><tr><th>Erwartet</th><th>Eingetroffen</th><th>Spiele</th></tr></thead><tbody>
+    ${d.bins.map(b => `<tr><td>${pct(b.predicted)}</td><td>${pct(b.actual)}</td><td>${b.games}</td></tr>`).join('')}
+    </tbody></table></div>`).join('') + '<p class="muted">Liegen „Erwartet“ und „Eingetroffen“ nahe beieinander, stimmen die fairen Quoten der Nebenmärkte.</p>';
 }
 
 function coverageTable() {
+  const columns = [['pinnacle', 'Pinnacle'], ['betfair', 'Betfair'], ['bet365', 'Bet365'], ['bet365_close', 'B365 Schluss'],
+    ['max', 'Max'], ['reference_ou', 'Tore'], ['shots', 'Schüsse']];
   const rows = (data.coverage || []).map(c => `<tr><td>${esc(c.league)} ${c.season}</td><td>${c.games}</td>
-    <td>${pct(c.pinnacle, 0)}</td><td>${pct(c.betfair, 0)}</td><td>${pct(c.reference, 0)}</td>
-    <td>${pct(c.bet365, 0)}</td><td>${pct(c.reference_ou, 0)}</td></tr>`).join('');
-  return `<p class="muted">Anteil Spiele mit Quoten. „Markt“ = Pinnacle, sonst Betfair, sonst Marktschnitt.</p>
-    <div class="table-wrap"><table><thead><tr><th>Liga</th><th>Spiele</th><th>Pinnacle</th><th>Betfair</th><th>Markt</th><th>Bet365</th><th>Tore</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    ${columns.map(([key]) => `<td>${pct(c[key], 0)}</td>`).join('')}</tr>`).join('');
+  return `<p class="muted">Anteil Spiele mit diesen Daten.</p><div class="table-wrap"><table><thead><tr><th>Liga</th><th>Spiele</th>
+    ${columns.map(([, label]) => `<th>${label}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
 // --- Liniendiagramm (selbst gezeichnet als SVG) --------------------------------
 // Breite passend zum Bildschirm, damit die Schrift auf dem Handy nicht winzig wird.
 let W = 640, H = 260;
-const PAD = { left: 40, right: 44, top: 12, bottom: 24 };
+const PAD = { left: 40, right: 48, top: 12, bottom: 24 };
+let chartGeometry = null;
 
 function chartHtml() {
-  const series = data.strategies.filter(s => data.curves[s.key]?.length);
+  const series = LINES.filter(line => data.curves[line.key]?.length);
   if (!series.length) return '<div class="empty small">Keine Wetten im Test.</div>';
   W = Math.round(Math.min(640, Math.max(300, window.innerWidth - 62)));
   H = Math.round(W * 0.55);
 
   // Alle Kurven teilen sich eine Zeitachse und eine y-Achse
-  const all = series.flatMap(s => data.curves[s.key]);
+  const all = series.flatMap(line => data.curves[line.key]);
   const times = all.map(([d]) => Date.parse(d));
   const values = all.map(([, v]) => v).concat(0);
   const t0 = Math.min(...times), t1 = Math.max(...times);
@@ -176,28 +209,23 @@ function chartHtml() {
   const x = t => PAD.left + (t1 === t0 ? 0 : (t - t0) / (t1 - t0)) * (W - PAD.left - PAD.right);
   const y = v => PAD.top + (v1 === v0 ? 0.5 : (v1 - v) / (v1 - v0)) * (H - PAD.top - PAD.bottom);
 
-  const ticks = niceTicks(v0, v1, 4);
-  let svg = ticks.map(t => `<line class="${t === 0 ? 'zero' : 'grid'}" x1="${PAD.left}" x2="${W - PAD.right}" y1="${y(t)}" y2="${y(t)}"/>
+  let svg = niceTicks(v0, v1, 4).map(t => `<line class="${t === 0 ? 'zero' : 'grid'}" x1="${PAD.left}" x2="${W - PAD.right}" y1="${y(t)}" y2="${y(t)}"/>
     <text class="axis" x="${PAD.left - 6}" y="${y(t) + 4}" text-anchor="end">${t}</text>`).join('');
-  const years = [];
-  for (let year = new Date(t0).getUTCFullYear() + 1; year <= new Date(t1).getUTCFullYear(); year++) years.push(year);
-  svg += years.map(year => `<text class="axis" x="${x(Date.UTC(year, 0, 1))}" y="${H - 6}" text-anchor="middle">${year}</text>`).join('');
-
-  for (const s of series) {
-    const points = data.curves[s.key];
+  for (let year = new Date(t0).getUTCFullYear() + 1; year <= new Date(t1).getUTCFullYear(); year++) {
+    svg += `<text class="axis" x="${x(Date.UTC(year, 0, 1))}" y="${H - 6}" text-anchor="middle">${year}</text>`;
+  }
+  for (const line of series) {
+    const points = data.curves[line.key];
     const d = points.map(([date, v], i) => `${i ? 'L' : 'M'}${x(Date.parse(date)).toFixed(1)},${y(v).toFixed(1)}`).join('');
     const [lastDate, lastValue] = points[points.length - 1];
-    svg += `<path class="series" d="${d}" stroke="${COLORS[s.key]}"/>`;
-    svg += `<text class="end-label" x="${x(Date.parse(lastDate)) + 6}" y="${y(lastValue) + 4}">${lastValue > 0 ? '+' : ''}${num(lastValue, 1)}</text>`;
+    svg += `<path class="series" d="${d}" stroke="${line.color}"/>`;
+    svg += `<text class="end-label" x="${x(Date.parse(lastDate)) + 6}" y="${y(lastValue) + 4}">${lastValue > 0 ? '+' : ''}${num(lastValue, 0)}</text>`;
   }
   svg += `<line class="cursor hidden" y1="${PAD.top}" y2="${H - PAD.bottom}"/>`;
-
-  const legend = series.map(s => `<span><i style="background:${COLORS[s.key]}"></i>${esc(s.name)}</span>`).join('');
   chartGeometry = { series, x, t0, t1 };
-  return `<div class="legend">${legend}</div><div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gewinnverlauf der drei Strategien im Test">${svg}</svg><div class="tooltip hidden"></div></div>`;
+  const legend = series.map(line => `<span><i style="background:${line.color}"></i>${esc(line.name)}</span>`).join('');
+  return `<div class="legend">${legend}</div><div class="chart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Gewinnverlauf im Test nach Quellen der Quoten">${svg}</svg><div class="tooltip hidden"></div></div>`;
 }
-
-let chartGeometry = null;
 
 // Fadenkreuz + Tooltip: zeigt beim Darüberfahren den Stand jeder Kurve an diesem Datum
 function attachChart() {
@@ -211,12 +239,10 @@ function attachChart() {
     const px = (event.clientX - box.left) / box.width * W;
     const t = t0 + (px - PAD.left) / (W - PAD.left - PAD.right) * (t1 - t0);
     if (t < t0 || t > t1) { hide(); return; }
-    const lines = series.map(s => {
-      // letzter Punkt der Kurve vor dem Datum t
-      const points = data.curves[s.key];
-      let value = 0;
-      for (const [date, v] of points) { if (Date.parse(date) <= t) value = v; else break; }
-      return `<div><span style="color:${COLORS[s.key]}">●</span> ${esc(s.name)}: <b>${value > 0 ? '+' : ''}${num(value, 1)}</b></div>`;
+    const lines = series.map(line => {
+      let value = 0;   // letzter Punkt der Kurve vor dem Datum t
+      for (const [date, v] of data.curves[line.key]) { if (Date.parse(date) <= t) value = v; else break; }
+      return `<div><span style="color:${line.color}">●</span> ${esc(line.name)}: <b>${value > 0 ? '+' : ''}${num(value, 1)}</b></div>`;
     });
     cursor.setAttribute('x1', x(t)); cursor.setAttribute('x2', x(t));
     cursor.classList.remove('hidden');

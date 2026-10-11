@@ -495,8 +495,10 @@ def run():
                 for period, rows in [("tune", in_tune), ("test", in_test)]:
                     per_market, together = {}, []
                     for market in MARKETS:
+                        # Kurz vor Anpfiff IST die Referenz die Schlussquote: CLV sagt dann nichts aus
+                        close = p_close[market] if timing == "early" else np.full_like(p_close[market], np.nan)
                         bets = simulate(df, rows, strategy_probs[key][timing][market],
-                                        quotes_for(timing, scenario, market), p_close[market],
+                                        quotes_for(timing, scenario, market), close,
                                         outcome[market], thresholds[market]["edge"],
                                         thresholds[market]["max_odds"])
                         per_market[market] = summarize(bets)
@@ -521,11 +523,14 @@ def run():
                                   ("v1", "early", "sporttip")]:
         curves[f"{key}|{timing}|{scenario}"] = equity_curve(all_bets[(key, timing, scenario)])
 
-    combo_bets = all_bets[("combo", "early", "sporttip")]
-    by_league = [{"league": code, "name": config.LEAGUES[code]["name"], **summarize(group)}
-                 for code, group in combo_bets.groupby("league")]
-    by_season = [{"season": config.season_label(int(season)), **summarize(group)}
-                 for season, group in combo_bets.groupby("season")]
+    # Aufschlüsselung nach Liga und Saison (Kombination, früh, Test) für jedes Szenario
+    by_league, by_season = {}, {}
+    for scenario in SCENARIOS:
+        combo_bets = all_bets[("combo", "early", scenario)]
+        by_league[scenario] = [{"league": code, "name": config.LEAGUES[code]["name"], **summarize(group)}
+                               for code, group in combo_bets.groupby("league")]
+        by_season[scenario] = [{"season": config.season_label(int(season)), **summarize(group)}
+                               for season, group in combo_bets.groupby("season")]
 
     # 4. Nebenmärkte
     print("Prüfe Nebenmärkte …")
@@ -536,6 +541,17 @@ def run():
     for d in derived:
         print(f"  {d['name']}: Markt {d['loss_market']:.4f}, Modell {d['loss_model']}, "
               f"Schnitt {d['loss_base']:.4f}, erwartet {d['predicted']:.3f}, eingetroffen {d['actual']:.3f}")
+
+    # Durchschnittliche Margen zum Vergleich mit Sporttip (Test-Saisons)
+    margins = {}
+    for market in MARKETS:
+        margins[market] = {}
+        for name, source, haircut in [("reference", "ref", 0.0), ("bet365", "book", 0.0),
+                                      ("sporttip", "book", config.SPORTTIP_HAIRCUT), ("max", "max", 0.0)]:
+            quotes = odds_matrix(df, source, market)[in_test] * (1 - haircut)
+            ok = has(quotes)
+            margins[market][name] = float((1 / quotes[ok]).sum(axis=1).mean() - 1) if ok.any() else None
+    print(f"Margen: {margins}")
 
     # 5. Ergebnis für Website und Tipps
     combo = next(s for s in strategies if s["key"] == "combo")
@@ -573,6 +589,7 @@ def run():
         "by_season": by_season,
         "curves": curves,
         "derived": derived,
+        "margins": margins,
         "coverage": cov.to_dict(orient="records"),
         "runtime_seconds": round(time.time() - started),
     }
@@ -600,6 +617,8 @@ def experiments_tables(model_table, best_model, market_loss, devig_table, method
 
     method_names = {"proportional": "Proportional (v1)", "power": "Power-Methode", "shin": "Shin-Methode"}
 
+    short = {"value": "Value-Finder", "model": "Modell allein", "combo": "Kombination", "v1": "Version 1",
+             "early": "früh", "late": "spät", "sporttip": "Sporttip", "book": "Bet365", "max": "Max"}
     strategy_rows = []
     for s in strategies:
         for timing in TIMINGS:
@@ -608,7 +627,7 @@ def experiments_tables(model_table, best_model, market_loss, devig_table, method
                     continue
                 r = s["results"][timing][scenario]["test"]["total"]
                 strategy_rows.append({
-                    "cells": [f"{s['name']} · {TIMINGS[timing]['name']} · {SCENARIOS[scenario]['name']}",
+                    "cells": [f"{short[s['key']]} · {short[timing]} · {short[scenario]}",
                               r.get("bets", 0), r.get("roi"), r.get("clv"), r.get("p_luck")],
                     "chosen": s["key"] == "combo" and timing == "early" and scenario == "sporttip"})
 
@@ -631,8 +650,9 @@ def experiments_tables(model_table, best_model, market_loss, devig_table, method
          "rows": [{"cells": [COMBINATIONS[k], c["tune"], c["test"], c["test_close"]], "chosen": k == combo_kind}
                   for k, c in combos.items()]},
         {"title": "Wann und wo wetten", "metric": "Test-Saisons, alle Märkte zusammen",
-         "note": "Gleiche Prognosen, verschiedene Quoten. „Glück?“ = Wahrscheinlichkeit, dass so ein "
-                 "Resultat ohne echten Vorteil zustande kommt.",
+         "note": "Gleiche Prognosen, verschiedene Quoten. früh = 1–3 Tage vorher, spät = kurz vor Anpfiff. "
+                 "Sporttip = Schätzung (Bet365 minus 4 %), Max = jeweils die beste Quote aller Buchmacher. "
+                 "„Glück?“ = Wahrscheinlichkeit, dass so ein Resultat ohne echten Vorteil zustande kommt.",
          "columns": [{"label": "Strategie", "kind": "text"}, {"label": "Wetten", "kind": "int"},
                      {"label": "ROI", "kind": "signed"}, {"label": "CLV", "kind": "signed"},
                      {"label": "Glück?", "kind": "luck"}],

@@ -33,47 +33,65 @@ import config
 
 BASE_URL = "https://www.football-data.co.uk"
 
-# Unser Spaltenname -> mögliche Namen in den CSVs. Der erste Name mit einem Wert gewinnt,
-# die weiteren füllen Lücken (z.B. wenn eine Saison ab Januar keine Pinnacle-Quoten mehr hat).
-ODDS_COLUMNS = {
-    "ref_h": ["PSH", "BFEH", "AvgH", "BbAvH"], "ref_d": ["PSD", "BFED", "AvgD", "BbAvD"],
-    "ref_a": ["PSA", "BFEA", "AvgA", "BbAvA"],
-    "ref_over": ["P>2.5", "BFE>2.5", "Avg>2.5", "BbAv>2.5"],
-    "ref_under": ["P<2.5", "BFE<2.5", "Avg<2.5", "BbAv<2.5"],
-    "avg_h": ["AvgH", "BbAvH"], "avg_d": ["AvgD", "BbAvD"], "avg_a": ["AvgA", "BbAvA"],
-    "avg_over": ["Avg>2.5", "BbAv>2.5"], "avg_under": ["Avg<2.5", "BbAv<2.5"],
-    "book_h": ["B365H"], "book_d": ["B365D"], "book_a": ["B365A"],
-    "book_over": ["B365>2.5", "Avg>2.5", "BbAv>2.5"], "book_under": ["B365<2.5", "Avg<2.5", "BbAv<2.5"],
-    "max_h": ["MaxH", "BbMxH"], "max_d": ["MaxD", "BbMxD"], "max_a": ["MaxA", "BbMxA"],
-    "max_over": ["Max>2.5", "BbMx>2.5"], "max_under": ["Max<2.5", "BbMx<2.5"],
-    # Schlussquoten
-    "refc_h": ["PSCH", "BFECH", "AvgCH"], "refc_d": ["PSCD", "BFECD", "AvgCD"],
-    "refc_a": ["PSCA", "BFECA", "AvgCA"],
-    "refc_over": ["PC>2.5", "BFEC>2.5", "AvgC>2.5"], "refc_under": ["PC<2.5", "BFEC<2.5", "AvgC<2.5"],
-    "bookc_h": ["B365CH"], "bookc_d": ["B365CD"], "bookc_a": ["B365CA"],
-    "bookc_over": ["B365C>2.5"], "bookc_under": ["B365C<2.5"],
-    "maxc_h": ["MaxCH"], "maxc_d": ["MaxCD"], "maxc_a": ["MaxCA"],
-    "maxc_over": ["MaxC>2.5"], "maxc_under": ["MaxC<2.5"],
+# Quoten kommen immer als Gruppe: (Heim, Remis, Gast) oder (Über 2.5, Unter 2.5).
+# Pro Spiel nehmen wir die ERSTE Gruppe, deren Quoten vollständig und plausibel sind.
+# So mischen wir nie Quoten verschiedener Buchmacher, und kaputte Quoten (z.B. von einer
+# Wettbörse ohne Umsatz: 1.02 und 1.25) fliegen raus.
+WINNER = ("h", "d", "a")
+GOALS = ("over", "under")
+
+
+def _trio(prefix):
+    return (f"{prefix}H", f"{prefix}D", f"{prefix}A")
+
+
+def _duo(prefix):
+    return (f"{prefix}>2.5", f"{prefix}<2.5")
+
+
+ODDS_GROUPS = {
+    # (unser Präfix, Ausgänge): Kandidaten in der Reihenfolge, in der sie bevorzugt werden
+    ("ref", WINNER): [_trio("PS"), _trio("BFE"), _trio("Avg"), _trio("BbAv")],
+    ("ref", GOALS): [_duo("P"), _duo("BFE"), _duo("Avg"), _duo("BbAv")],
+    ("avg", WINNER): [_trio("Avg"), _trio("BbAv")],
+    ("avg", GOALS): [_duo("Avg"), _duo("BbAv")],
+    ("book", WINNER): [_trio("B365")],
+    ("book", GOALS): [_duo("B365"), _duo("Avg"), _duo("BbAv")],
+    ("max", WINNER): [_trio("Max"), _trio("BbMx")],
+    ("max", GOALS): [_duo("Max"), _duo("BbMx")],
+    # Schlussquoten (kurz vor Anpfiff)
+    ("refc", WINNER): [_trio("PSC"), _trio("BFEC"), _trio("AvgC")],
+    ("refc", GOALS): [_duo("PC"), _duo("BFEC"), _duo("AvgC")],
+    ("bookc", WINNER): [_trio("B365C")],
+    ("bookc", GOALS): [_duo("B365C")],
+    ("maxc", WINNER): [_trio("MaxC")],
+    ("maxc", GOALS): [_duo("MaxC")],
 }
-
-# Spielstatistik (nicht in allen Ligen vorhanden)
-STAT_COLUMNS = {"shots_h": ["HS"], "shots_a": ["AS"], "sot_h": ["HST"], "sot_a": ["AST"]}
-
-# Welche Quelle steckt in ref_h? (für die Anzeige auf der Website)
-REFERENCE_SOURCES = [("Pinnacle", ["PSH", "PSCH"]), ("Betfair", ["BFEH", "BFECH"]),
-                     ("Marktschnitt", ["AvgH", "BbAvH", "AvgCH"])]
 
 # Die Extra-Ligen (z.B. Schweiz) haben nur Schlussquoten. Dann nehmen wir diese
 # auch als "Quote vor dem Spiel". Das ist weniger realistisch, aber besser als nichts.
 CLOSING_FALLBACK = {
-    "ref_h": ["PSCH", "BFECH", "AvgCH"], "ref_d": ["PSCD", "BFECD", "AvgCD"], "ref_a": ["PSCA", "BFECA", "AvgCA"],
-    "avg_h": ["AvgCH"], "avg_d": ["AvgCD"], "avg_a": ["AvgCA"],
-    "book_h": ["B365CH", "AvgCH"], "book_d": ["B365CD", "AvgCD"], "book_a": ["B365CA", "AvgCA"],
-    "max_h": ["MaxCH"], "max_d": ["MaxCD"], "max_a": ["MaxCA"],
+    ("ref", WINNER): [_trio("PSC"), _trio("BFEC"), _trio("AvgC")],
+    ("avg", WINNER): [_trio("AvgC")],
+    ("book", WINNER): [_trio("B365C"), _trio("AvgC")],
+    ("max", WINNER): [_trio("MaxC")],
 }
 
+# Plausible Summe der Wahrscheinlichkeiten (1/Quote). Höchstquoten aus vielen Buchmachern
+# dürfen unter 100 % liegen, ein einzelner Buchmacher kaum.
+PLAUSIBLE = {"max": (0.85, 1.15), "maxc": (0.85, 1.15)}
+PLAUSIBLE_DEFAULT = (0.97, 1.25)
+
+# Welche Quelle steckt in der Referenz? (für die Anzeige auf der Website)
+REFERENCE_NAMES = {"PS": "Pinnacle", "PSC": "Pinnacle", "BFE": "Betfair", "BFEC": "Betfair",
+                   "Avg": "Marktschnitt", "AvgC": "Marktschnitt", "BbAv": "Marktschnitt"}
+
+# Spielstatistik (nicht in allen Ligen vorhanden)
+STAT_COLUMNS = {"shots_h": ["HS"], "shots_a": ["AS"], "sot_h": ["HST"], "sot_a": ["AST"]}
+
+ODDS_COLUMNS = [f"{prefix}_{suffix}" for prefix, suffixes in ODDS_GROUPS for suffix in suffixes]
 COLUMNS = (["league", "season", "date", "time", "home", "away", "hg", "ag"]
-           + list(STAT_COLUMNS) + list(ODDS_COLUMNS) + ["ref_name"])
+           + list(STAT_COLUMNS) + ODDS_COLUMNS + ["ref_name"])
 
 
 # --- Herunterladen mit Cache -------------------------------------------------
@@ -134,14 +152,24 @@ def _pick(df, names):
     return result
 
 
-def _pick_odds(df, names):
-    """Wie _pick, aber Quoten <= 1 sind Fehler in den Daten (z.B. 0) und zählen nicht."""
-    result = pd.Series(np.nan, index=df.index)
-    for name in names:
-        if name in df.columns:
-            values = pd.to_numeric(df[name], errors="coerce")
-            result = result.fillna(values.where(values > 1.0))
-    return result
+def _pick_group(raw, candidates, bounds):
+    """Pro Spiel die erste Spaltengruppe, deren Quoten vollständig und plausibel sind.
+
+    Gibt (Quoten-Tabelle, Name der gewählten Gruppe pro Spiel) zurück.
+    """
+    width = len(candidates[0])
+    quotes = np.full((len(raw), width), np.nan)
+    chosen = np.full(len(raw), None, dtype=object)
+    for columns in candidates:
+        if not all(c in raw.columns for c in columns):
+            continue
+        values = np.column_stack([pd.to_numeric(raw[c], errors="coerce").to_numpy(dtype=float) for c in columns])
+        with np.errstate(divide="ignore", invalid="ignore"):
+            total = (1.0 / np.where(values > 1.0, values, np.nan)).sum(axis=1)   # NaN, wenn eine Quote fehlt
+        usable = (total >= bounds[0]) & (total <= bounds[1]) & np.isnan(quotes[:, 0])
+        quotes[usable] = values[usable]
+        chosen[usable] = columns[0]
+    return quotes, chosen
 
 
 def normalize(raw, league):
@@ -164,14 +192,16 @@ def normalize(raw, league):
     for column, names in STAT_COLUMNS.items():
         df[column] = _pick(raw, names)
 
-    for column, names in ODDS_COLUMNS.items():
-        df[column] = _pick_odds(raw, names)
-        if column in CLOSING_FALLBACK:
-            df[column] = df[column].fillna(_pick_odds(raw, CLOSING_FALLBACK[column]))
-
-    df["ref_name"] = None
-    for source, names in reversed(REFERENCE_SOURCES):    # bester zuletzt -> überschreibt
-        df.loc[_pick_odds(raw, names).notna(), "ref_name"] = source
+    is_extra = "HomeTeam" not in raw.columns
+    for (prefix, suffixes), candidates in ODDS_GROUPS.items():
+        if is_extra:
+            candidates = candidates + CLOSING_FALLBACK.get((prefix, suffixes), [])
+        quotes, chosen = _pick_group(raw, candidates, PLAUSIBLE.get(prefix, PLAUSIBLE_DEFAULT))
+        for i, suffix in enumerate(suffixes):
+            df[f"{prefix}_{suffix}"] = quotes[:, i]
+        if (prefix, suffixes) == ("ref", WINNER):
+            # "PSH" -> "PS" -> "Pinnacle"
+            df["ref_name"] = [REFERENCE_NAMES.get(c[:-1]) if c else None for c in chosen]
 
     df = df.dropna(subset=["date"])
     df = df[(df["home"] != "nan") & (df["away"] != "nan")]

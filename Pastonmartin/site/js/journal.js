@@ -3,15 +3,17 @@
 // Gespeichert wird in Cloudflare D1 (über /api/bets), damit Handy und Computer
 // dasselbe Tagebuch sehen. Ist D1 nicht eingerichtet, landet alles im Browser
 // (localStorage) und ist dann nur auf diesem Gerät.
-import { signedPct, num, chf, parseOdds, esc, store } from './util.js';
+import { pct, signedPct, num, chf, parseOdds, esc, store } from './util.js';
 
 const view = document.getElementById('view-journal');
 let mode = null;          // 'cloud' | 'local' | 'locked'
 let bets = [];
-let results = {};         // match_id -> Resultat (aus results.json)
+const results = {};       // match_id -> Resultat (aus results.json)
+let benchmarks = null;    // Durchschnittsmargen aus dem Backtest (zum Vergleich mit Sporttip)
 
-export async function initJournal(resultsData) {
+export async function initJournal(resultsData, backtest) {
   for (const r of resultsData?.results || []) results[r.id] = r;
+  benchmarks = backtest?.margins?.['1X2'] || null;
   view.addEventListener('click', onClick);
   view.addEventListener('submit', onSubmit);
   await loadBets();
@@ -59,7 +61,7 @@ async function remove(id) {
 
 const newId = () => (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
 
-// Wird von der Tipps-Ansicht aufgerufen
+// Wird von den Tipps, "Mehr Sport" und dem Kombi-Schein aufgerufen
 export async function addBet(bet) {
   if (!mode) await loadBets();
   if (mode === 'locked') throw new Error('Tagebuch ist gesperrt, zuerst Schlüssel eingeben');
@@ -68,20 +70,45 @@ export async function addBet(bet) {
 }
 
 // --- Abrechnen -----------------------------------------------------------------
+// Hat diese Wette mit diesem Resultat gewonnen?
 function didWin(selection, r) {
   const goals = r.hg + r.ag;
-  return { H: r.hg > r.ag, D: r.hg === r.ag, A: r.hg < r.ag, O: goals >= 3, U: goals <= 2 }[selection];
+  return {
+    H: r.hg > r.ag, D: r.hg === r.ag, A: r.hg < r.ag,
+    '1X': r.hg >= r.ag, '12': r.hg !== r.ag, X2: r.hg <= r.ag,
+    O15: goals >= 2, U15: goals <= 1, O: goals >= 3, U: goals <= 2, O35: goals >= 4, U35: goals <= 3,
+    BY: r.hg > 0 && r.ag > 0, BN: r.hg === 0 || r.ag === 0,
+  }[selection];
 }
 
-// Offene Wetten, deren Spiel in results.json steht, automatisch abrechnen und speichern.
+// Status und CLV einer Wette, sobald die Resultate bekannt sind (oder null)
+function settlement(bet) {
+  const legs = bet.legs || [{ match_id: bet.match_id, selection: bet.selection, odds: bet.odds }];
+  const known = legs.map(leg => results[leg.match_id]);
+  const outcomes = legs.map((leg, i) => (known[i] ? didWin(leg.selection, known[i]) : null));
+  if (outcomes.includes(false)) return { status: 'lost' };               // ein Fehler reicht
+  if (outcomes.some(o => o === null)) return null;                          // noch offen
+  const settled = { status: 'won' };
+  if (!bet.legs) settled.score = `${known[0].hg}:${known[0].ag}`;
+  // CLV: deine Quote(n) gegen die faire Schlussquote des Marktes
+  const fair = legs.map((leg, i) => known[i].closing_fair?.[leg.selection]);
+  if (fair.every(Boolean)) settled.clv = legs.reduce((x, leg, i) => x * leg.odds * fair[i], 1) - 1;
+  return settled;
+}
+
+// Offene Wetten abrechnen, deren Spiele in results.json stehen, und speichern
 async function settleFinished() {
-  for (const bet of bets.filter(b => b.status === 'open' && results[b.match_id])) {
-    const r = results[bet.match_id];
-    const settled = { ...bet, status: didWin(bet.selection, r) ? 'won' : 'lost', score: `${r.hg}:${r.ag}` };
-    const fairClose = r.closing_fair?.[bet.selection];
-    // CLV: Quote, die du bekommen hast, gegen die faire Schlussquote des Marktes
-    if (fairClose) settled.clv = bet.odds * fairClose - 1;
-    try { await save(settled); } catch (error) { console.error(error); }
+  for (const bet of bets.filter(b => b.status === 'open')) {
+    const result = settlement(bet);
+    if (!result) continue;
+    if (result.status === 'lost' && !bet.legs) {
+      // auch bei Verlust den CLV festhalten
+      const r = results[bet.match_id];
+      result.score = `${r.hg}:${r.ag}`;
+      const fair = r.closing_fair?.[bet.selection];
+      if (fair) result.clv = bet.odds * fair - 1;
+    }
+    try { await save({ ...bet, ...result }); } catch (error) { console.error(error); }
   }
 }
 
@@ -95,7 +122,7 @@ function profitOf(bet) {
 function render() {
   if (mode === 'locked') {
     view.innerHTML = `<div class="card">
-      <p>Das Tagebuch ist mit einem Schlüssel geschützt.</p>
+      <p>Das Tagebuch ist mit einem Schlüssel geschützt (derselbe Schlüssel öffnet die Live-Quoten).</p>
       <form id="key-form" class="toolbar"><input name="key" type="password" placeholder="Schlüssel" autocomplete="current-password">
       <button class="primary">Öffnen</button></form></div>`;
     return;
@@ -106,8 +133,9 @@ function render() {
   const profit = done.reduce((s, b) => s + profitOf(b), 0);
   const withClv = bets.filter(b => b.clv != null);
   const withFair = bets.filter(b => b.fair);
-  const avg = (list, f) => list.length ? list.reduce((s, b) => s + f(b), 0) / list.length : null;
+  const avg = (list, f) => (list.length ? list.reduce((s, b) => s + f(b), 0) / list.length : null);
   const openCount = bets.length - done.length;
+  const margins = Object.values(store.get('sporttipMargins', {})).map(m => m.margin);
 
   const tiles = [
     ['Wetten', `${done.length}${openCount ? ` <span class="small muted">+${openCount} offen</span>` : ''}`],
@@ -123,6 +151,7 @@ function render() {
       ? 'Gespeichert in der Cloud: auf allen Geräten gleich.'
       : 'Gespeichert nur in diesem Browser (Cloudflare D1 ist noch nicht eingerichtet).'}</p>
     <div class="tiles">${tiles.map(([label, value]) => `<div class="tile"><div class="label">${label}</div><div class="value">${value}</div></div>`).join('')}</div>
+    ${marginCard(margins)}
     <div class="card note small">
       <b>CLV</b> (Closing Line Value) vergleicht deine Quote mit der fairen Marktquote kurz vor Anpfiff.
       Ist er über viele Wetten positiv, hast du wahrscheinlich echten Vorsprung, auch wenn der Gewinn gerade schwankt.
@@ -139,21 +168,52 @@ function render() {
         <button class="primary full">Speichern</button>
       </form>
     </details>
+    <details class="card">
+      <summary>Schlüssel für Tagebuch und Live-Quoten</summary>
+      <form id="key-form" class="toolbar" style="margin-top:10px"><input name="key" type="password" placeholder="Schlüssel" autocomplete="current-password" value="${esc(store.get('journalKey', ''))}">
+        <button class="primary">Speichern</button></form>
+      <p class="small muted">Nur nötig, wenn in Cloudflare die Variable JOURNAL_KEY gesetzt ist.</p>
+    </details>
     <div class="card">${bets.length ? bets.map(betRow).join('') : '<div class="empty">Noch keine Wetten. Bei einem Tipp mit Value auf „Ins Tagebuch“ tippen.</div>'}</div>`;
+}
+
+// Die wichtigste Zahl: Wie viel Marge nimmt Sporttip wirklich?
+function marginCard(margins) {
+  const average = margins.length ? margins.reduce((a, b) => a + b, 0) / margins.length : null;
+  const compare = benchmarks
+    ? `Zum Vergleich (Sieger-Wetten): Pinnacle/Betfair Ø ${pct(benchmarks.reference)}, Bet365 Ø ${pct(benchmarks.bet365)}, Sporttip-Schätzung im Backtest Ø ${pct(benchmarks.sporttip)}.`
+    : '';
+  let verdict = 'Trag bei ein paar Spielen alle Sporttip-Quoten eines Marktes ein (z.B. 1, X und 2). Dann misst die App die echte Sporttip-Marge.';
+  if (average != null && benchmarks) {
+    verdict = average <= benchmarks.bet365 + 0.01
+      ? 'Sporttip liegt etwa auf Bet365-Niveau: Im Backtest gab es dort kleinen, echten Value.'
+      : average <= benchmarks.sporttip + 0.01
+        ? 'Sporttip liegt zwischen Bet365 und unserer Schätzung: Value ist selten. Nur klare Fälle wetten.'
+        : 'Sporttip ist teurer als unsere Schätzung: Value wird sehr selten sein.';
+  }
+  return `<div class="card small">
+    <b>Gemessene Sporttip-Marge:</b> ${average != null ? `<b>${pct(average)}</b> (aus ${margins.length} Märkten)` : 'noch keine Messung'}<br>
+    ${esc(verdict)}<br><span class="muted">${compare}</span></div>`;
 }
 
 function betRow(bet) {
   const statusText = { open: 'offen', won: 'gewonnen', lost: 'verloren', void: 'storniert' }[bet.status];
   const date = new Date(bet.kickoff || bet.created).toLocaleDateString('de-CH', { day: 'numeric', month: 'short', timeZone: 'Europe/Zurich' });
   const p = profitOf(bet);
-  // Von Hand abrechnen geht nur bei Wetten ohne automatisches Resultat
-  const manual = bet.status === 'open' && !results[bet.match_id]
+  // Von Hand abrechnen, solange die Resultate nicht automatisch kommen
+  const manual = bet.status === 'open'
     ? `<button data-status="won" data-id="${esc(bet.id)}">✓ gewonnen</button><button data-status="lost" data-id="${esc(bet.id)}">✗ verloren</button><button data-status="void" data-id="${esc(bet.id)}">storniert</button>`
     : '';
+  const legs = bet.legs
+    ? `<ul class="legs small">${bet.legs.map(leg => {
+      const r = results[leg.match_id];
+      const state = r ? (didWin(leg.selection, r) ? '✓' : '✗') : '·';
+      return `<li>${state} ${esc(leg.match)}: ${esc(leg.label)} @ ${num(leg.odds)}${r ? ` <span class="muted">(${r.hg}:${r.ag})</span>` : ''}</li>`;
+    }).join('')}</ul>` : '';
   return `<div class="bet">
     <div><b>${esc(bet.match)}</b>${bet.score ? ` <span class="muted">${esc(bet.score)}</span>` : ''}<br>
-      <span class="small">${esc(bet.label)} @ ${num(bet.odds)} · ${chf(bet.stake)} · ${date}</span>
-      ${bet.clv != null ? `<br><span class="small muted">CLV ${signedPct(bet.clv)}</span>` : ''}</div>
+      <span class="small">${bet.legs ? 'Gesamtquote' : esc(bet.label)} @ ${num(bet.odds)} · ${chf(bet.stake)} · ${date}</span>
+      ${bet.clv != null ? `<br><span class="small muted">CLV ${signedPct(bet.clv)}</span>` : ''}${legs}</div>
     <div style="text-align:right"><span class="status-${bet.status === 'void' ? 'open' : bet.status}">${statusText}</span>
       ${bet.status === 'won' || bet.status === 'lost' ? `<br><span class="small">${p >= 0 ? '+' : '−'}${chf(Math.abs(p))}</span>` : ''}</div>
     <div class="bet-actions" style="grid-column:1/-1">${manual}<button data-delete="${esc(bet.id)}">Löschen</button></div>
