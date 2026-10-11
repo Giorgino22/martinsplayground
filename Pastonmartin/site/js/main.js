@@ -3,6 +3,7 @@ import { loadJson, formatStamp } from './util.js';
 import { initSlip } from './slip.js';
 import { initTips } from './tips.js';
 import { initSports } from './sports.js';
+import { initScan } from './scan.js';
 import { initBacktest } from './backtest.js';
 import { initJournal } from './journal.js';
 
@@ -32,5 +33,6 @@ if (tips) {
 initSlip(tips);
 initTips(tips);
 initSports(tips);
+initScan(tips, document.getElementById('all-scan'));
 initBacktest(backtest);
 await initJournal(results, backtest);

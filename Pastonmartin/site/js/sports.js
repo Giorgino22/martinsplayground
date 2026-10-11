@@ -1,4 +1,5 @@
-// Ansicht "Mehr Sport": Value-Finder für jede Sportart (Tennis, Eishockey, Basketball, …).
+// Ansicht "Sport": oben der Scan über alle Sportarten (scan.js), darunter der Value-Finder
+// für eine Sportart von Hand (Tennis, Eishockey, Basketball, …).
 //
 // Hier gibt es kein eigenes Modell und keinen Backtest: Die faire Quote kommt direkt aus
 // den scharfen Marktquoten (Pinnacle, sonst Betfair), die Marge wird herausgerechnet.
@@ -8,7 +9,7 @@ import { devig } from './fair.js';
 import { addBet } from './journal.js';
 import { cellHtml, panelHtml, resultHtml, marginText } from './bet.js';
 import { stakeFor, addToSlip } from './slip.js';
-import { fetchOdds } from './tips.js';
+import { fetchOdds } from './api.js';
 
 const view = document.getElementById('view-sports');
 let params = null;               // Einstellungen aus dem Backtest (Margen-Methode, Schwellen)
@@ -18,6 +19,9 @@ let active = null;               // die angetippte Wette: { id, key }
 export function initSports(tips) {
   params = tips?.params || null;
   view.innerHTML = `
+    <h2 class="first">Alle Sportarten</h2>
+    <div id="all-scan"></div>
+    <h2>Eine Sportart von Hand</h2>
     <div class="card note small">Für jede Sportart, ganz ohne eigenes Modell: Die App holt die scharfen
       Marktquoten (Pinnacle, sonst Betfair), rechnet die Marge heraus und zeigt die <b>Mindestquote</b>.
       Jede Sportart kostet 2 der 500 Gratis-Abfragen pro Monat (5 Minuten zwischengespeichert).</div>

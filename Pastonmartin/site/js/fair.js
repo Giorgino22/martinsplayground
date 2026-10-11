@@ -67,8 +67,9 @@ export function scoreGrid(goalsHome, goalsAway, rho = 0) {
 }
 
 // Resultat-Tabelle -> Wahrscheinlichkeit jeder Wette
-export function fromGoals(goalsHome, goalsAway, rho = 0) {
-  const grid = scoreGrid(goalsHome, goalsAway, rho);
+export const fromGoals = (goalsHome, goalsAway, rho = 0) => fromGrid(scoreGrid(goalsHome, goalsAway, rho));
+
+export function fromGrid(grid) {
   let H = 0, D = 0, A = 0, O15 = 0, O = 0, O35 = 0, BY = 0;
   grid.forEach((row, i) => row.forEach((p, j) => {
     if (i > j) H += p; else if (i === j) D += p; else A += p;
@@ -81,11 +82,28 @@ export function fromGoals(goalsHome, goalsAway, rho = 0) {
     O35, U35: 1 - O35, BY, BN: 1 - BY };
 }
 
-// Welche erwarteten Tore passen zu 1X2 (und Über 2.5)? Gauss-Newton wie in markets.py
-export function impliedGoals(pHome, pDraw, pAway, pOver, rho = 0) {
-  const keys = pOver == null ? ['H', 'D', 'A'] : ['H', 'D', 'A', 'O'];
+// Chance auf mehr Tore als "line" (z.B. line 2.5 -> 3 oder mehr Tore)
+export function overProbability(grid, line) {
+  let over = 0;
+  grid.forEach((row, i) => row.forEach((p, j) => { if (i + j > line) over += p; }));
+  return over;
+}
+
+// Chance, dass beide Teams mindestens ein Tor schiessen
+export function bothScore(grid) {
+  let both = 0;
+  grid.forEach((row, i) => row.forEach((p, j) => { if (i > 0 && j > 0) both += p; }));
+  return both;
+}
+
+// Welche erwarteten Tore passen zu 1X2 (und Über "line", meist 2.5)? Gauss-Newton wie in markets.py
+export function impliedGoals(pHome, pDraw, pAway, pOver, rho = 0, line = 2.5) {
   const target = pOver == null ? [pHome, pDraw, pAway] : [pHome, pDraw, pAway, pOver];
-  const model = x => { const p = fromGoals(Math.exp(x[0]), Math.exp(x[1]), rho); return keys.map(k => p[k]); };
+  const model = x => {
+    const grid = scoreGrid(Math.exp(x[0]), Math.exp(x[1]), rho);
+    const p = fromGrid(grid);
+    return pOver == null ? [p.H, p.D, p.A] : [p.H, p.D, p.A, overProbability(grid, line)];
+  };
   let x = [Math.log(1.45), Math.log(1.15)];
   const h = 1e-4, low = Math.log(0.05), high = Math.log(6);
   for (let iteration = 0; iteration < 40; iteration++) {

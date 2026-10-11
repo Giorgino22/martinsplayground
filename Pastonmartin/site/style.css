@@ -238,3 +238,16 @@ ul.legs { margin: 4px 0 0; padding-left: 0; list-style: none; }
 #scan-path-fields label.field { justify-content: space-between; margin-top: 6px; }
 #scan-path-fields input { flex: 1; max-width: 300px; min-width: 0; font: inherit; padding: 6px 8px;
   border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--text); }
+
+/* Alle Sportarten scannen */
+h2.first { margin-top: 0; }
+.value-row.static { cursor: default; }
+.value-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 6px; }
+.value-actions button { font-size: 0.8rem; padding: 4px 9px; }
+label.stack { display: flex; flex-direction: column; gap: 4px; color: var(--text-2); }
+textarea { font: 0.85rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 9px; padding: 7px 9px; width: 100%; resize: vertical; }
+#probe-result .table-wrap { margin: 8px 0; }
+.link-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 4px 0;
+  border-top: 1px solid var(--line); }
+.link-row button { font-size: 0.8rem; padding: 3px 8px; }

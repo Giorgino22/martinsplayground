@@ -1,12 +1,13 @@
 // Live-Quoten von The Odds API: die scharfen Quoten (Pinnacle, sonst Betfair) einer Liga.
 //
-//   GET /api/odds?sport=soccer_epl   Spiele mit Sieger- und Über/Unter-Quoten
-//   GET /api/odds?list=1             alle Sportarten, die gerade laufen (kostet nichts)
+//   GET /api/odds?sport=soccer_epl    Spiele mit Sieger- und Über/Unter-Quoten (kostet 2 Abfragen)
+//   GET /api/odds?events=soccer_epl   nur die Spiele, ohne Quoten (kostet nichts)
+//   GET /api/odds?list=1              alle Sportarten, die gerade laufen (kostet nichts)
 //
 // Einrichten in Cloudflare Pages: Variable ODDS_API_KEY (gratis bei the-odds-api.com).
 // Ist JOURNAL_KEY gesetzt, braucht es denselben Schlüssel wie fürs Tagebuch, damit
 // niemand Fremdes die Abfragen (500 gratis pro Monat) aufbraucht.
-// Jede Liga wird 5 Minuten zwischengespeichert: mehrfaches Tippen kostet nichts extra.
+// Jede Liga wird 5 Minuten zwischengespeichert (Spiellisten 15 Minuten): mehrfaches Tippen kostet nichts extra.
 
 const BOOKMAKERS = ['pinnacle', 'betfair_ex_eu'];      // in dieser Reihenfolge bevorzugt
 const NAMES = { pinnacle: 'Pinnacle', betfair_ex_eu: 'Betfair' };
@@ -24,30 +25,33 @@ export async function onRequestGet({ request, env, waitUntil }) {
     return json({ error: 'Falscher Schlüssel' }, 401);
   }
   const params = new URL(request.url).searchParams;
-  const sport = params.get('sport') || '';
-  const listing = params.has('list');
-  if (!listing && !/^[a-z0-9_]{3,60}$/.test(sport)) return json({ error: 'Unbekannte Sportart' }, 400);
+  const mode = params.has('list') ? 'list' : params.has('events') ? 'events' : 'odds';
+  const sport = params.get(mode === 'events' ? 'events' : 'sport') || '';
+  if (mode !== 'list' && !/^[a-z0-9_]{3,60}$/.test(sport)) return json({ error: 'Unbekannte Sportart' }, 400);
 
   // Zwischenspeicher von Cloudflare: gleiche Abfrage innert kurzer Zeit -> keine neue Abfrage
-  const cacheKey = new Request(new URL(`/__cache/odds/${listing ? 'list' : sport}`, request.url));
+  const cacheKey = new Request(new URL(`/__cache/odds/${mode}/${sport}`, request.url));
   const cached = await caches.default.match(cacheKey);
   if (cached) return json(await cached.text());
 
-  const url = listing
-    ? `${API}?apiKey=${env.ODDS_API_KEY}`
-    : `${API}/${sport}/odds?apiKey=${env.ODDS_API_KEY}&bookmakers=${BOOKMAKERS.join(',')}`
-      + '&markets=h2h,totals&oddsFormat=decimal';
+  const key = `apiKey=${env.ODDS_API_KEY}`;
+  const url = {
+    list: `${API}?${key}`,
+    events: `${API}/${sport}/events?${key}`,
+    odds: `${API}/${sport}/odds?${key}&bookmakers=${BOOKMAKERS.join(',')}&markets=h2h,totals&oddsFormat=decimal`,
+  }[mode];
   const response = await fetch(url);
   if (!response.ok) return json({ error: `Odds API antwortet mit ${response.status}` }, 502);
   const data = await response.json();
 
-  const body = JSON.stringify(listing
-    ? { sports: data.filter(s => s.active && !s.has_outrights).map(s => ({ key: s.key, group: s.group, title: s.title })) }
-    : { fetched: new Date().toISOString(), remaining: response.headers.get('x-requests-remaining'),
-        events: data.map(simplify).filter(Boolean) });
-  waitUntil(caches.default.put(cacheKey, new Response(body, {
-    headers: { 'cache-control': `public, max-age=${listing ? 43200 : 300}` },
-  })));
+  const body = JSON.stringify({
+    list: () => ({ sports: data.filter(s => s.active && !s.has_outrights).map(s => ({ key: s.key, group: s.group, title: s.title })) }),
+    events: () => ({ events: data.map(e => ({ id: e.id, home: e.home_team, away: e.away_team, kickoff: e.commence_time })) }),
+    odds: () => ({ fetched: new Date().toISOString(), remaining: response.headers.get('x-requests-remaining'),
+      events: data.map(simplify).filter(Boolean) }),
+  }[mode]());
+  const seconds = { list: 43200, events: 900, odds: 300 }[mode];
+  waitUntil(caches.default.put(cacheKey, new Response(body, { headers: { 'cache-control': `public, max-age=${seconds}` } })));
   return json(body);
 }
 
@@ -65,6 +69,7 @@ function simplify(event) {
       : [price(event.home_team), price(event.away_team)];
     if (!winner.every(Boolean)) continue;
     return {
+      id: event.id,
       home: event.home_team,
       away: event.away_team,
       kickoff: event.commence_time,

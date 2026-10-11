@@ -317,17 +317,31 @@ class FairJsTest(unittest.TestCase):
 FUNCTIONS = Path(__file__).resolve().parent.parent / "functions" / "api"
 
 # Node-Skript: lädt eine Cloudflare-Function mit nachgebauter Umgebung und ruft sie auf
+def run_node(script, data=None):
+    """Führt ein kleines ES-Modul mit Node aus. INPUT = data, OUTPUT(x) gibt x als JSON zurück."""
+    with tempfile.TemporaryDirectory() as tmp:
+        file = Path(tmp) / "runner.mjs"
+        file.write_text("import { readFileSync } from 'node:fs';\n"
+                        "const INPUT = readFileSync(0, 'utf8');\n"
+                        "const OUTPUT = x => process.stdout.write(JSON.stringify(x));\n" + script)
+        result = subprocess.run(["node", str(file)], input=data or "", capture_output=True, text=True, timeout=60)
+    if result.returncode != 0:
+        raise AssertionError(result.stderr)
+    return json.loads(result.stdout)
+
+
 @unittest.skipUnless(shutil.which("node"), "Node.js fehlt")
 class SporttipJsTest(unittest.TestCase):
     """Ordnet site/js/sporttip.js die Sporttip-Spiele den richtigen Spielen zu?"""
 
     def test_matching_and_markets(self):
-        runner = (f"import {{ matchEvents, oddsByMarket }} from '{(SITE_JS / 'sporttip.js').as_uri()}';\n"
+        runner = (f"import {{ matchEvents, footballOdds }} from '{(SITE_JS / 'sporttip.js').as_uri()}';\n"
                   "const ev = (home, away, kickoff, markets = []) => ({ home, away, kickoff, markets });\n"
                   "const events = [\n"
                   "  ev('FC Bayern München', 'Borussia Dortmund', '2026-10-17T16:30:00Z'),\n"
                   "  ev('SC Freiburg', 'Schalke 04', '2026-10-17T13:30:00Z', [\n"
                   "    { type: 1, line: null, odds: { 1: 1.85, 2: 4.1, 3: 3.6 } },\n"
+                  "    { type: 1, line: null, odds: { 1: 9, 2: 9, 3: 9 } },\n"
                   "    { type: 18, line: 2.5, odds: { 12: 1.9, 13: 1.8 } },\n"
                   "    { type: 18, line: 4.5, odds: { 12: 3.3, 13: 1.3 } },\n"
                   "    { type: 18, line: 3.5, odds: { 12: 2.1 } }]),\n"
@@ -341,7 +355,7 @@ class SporttipJsTest(unittest.TestCase):
                   "];\n"
                   "const pairs = matchEvents(events, matches);\n"
                   "const out = Object.fromEntries([...pairs].map(([id, e]) => [id, e.home]));\n"
-                  "process.stdout.write(JSON.stringify({ pairs: out, odds: oddsByMarket(events[1]) }));\n")
+                  "process.stdout.write(JSON.stringify({ pairs: out, odds: footballOdds(events[1]) }));\n")
         with tempfile.TemporaryDirectory() as tmp:
             file = Path(tmp) / "runner.mjs"
             file.write_text(runner)
@@ -351,6 +365,81 @@ class SporttipJsTest(unittest.TestCase):
         # Mainz spielt bei Sporttip an einem anderen Tag, Union-Hoffenheim fehlt ganz
         self.assertEqual(out["pairs"], {"a": "FC Bayern München", "b": "SC Freiburg"})
         self.assertEqual(out["odds"], {"1X2": {"H": 1.85, "D": 4.1, "A": 3.6}, "OU": {"O": 1.9, "U": 1.8}})
+
+
+@unittest.skipUnless(shutil.which("node"), "Node.js fehlt")
+class ScanJsTest(unittest.TestCase):
+    """Scan über alle Sportarten (site/js/scan.js) mit nachgebautem Sporttip und The Odds API."""
+
+    def test_scan_finds_value_and_ignores_wrong_markets(self):
+        script = (
+            "globalThis.document = { getElementById: () => null, addEventListener: () => {} };\n"
+            "const soon = minutes => new Date(Date.now() + 86400e3 + minutes * 60e3).toISOString();\n"
+            "const item = (type, entity) => ({ kind: 0, type, entity });\n"
+            "const sel = (urn, type, odds) => item('Selection', { urn, type: `asw:selectiontype:${type}`, odds, state: 1 });\n"
+            "const market = (urn, type, selections, total) => item('Market', { urn, type: `asw:markettype:${type}`, state: 1,\n"
+            "  properties: total ? { total, mode: 'prematch' } : { mode: 'prematch' }, selections });\n"
+            "const page = (path, items) => [JSON.stringify({ path, found: true }), JSON.stringify({ payload: JSON.stringify(\n"
+            "  [{ type: 'SportsbookSnapshotUpdated', body: { snapshotUpdate: { snapshotUpdateItems: items } } }]) })].join('\\n');\n"
+            "const tennis = [\n"
+            "  item('Event', { urn: 't', name: 'Alcaraz C. : Sinner J.', startTime: soon(5), sport: 'asw:sport:5', markets: ['tw', 'tt', 'tx'] }),\n"
+            "  market('tw', 186, ['t1', 't2']), sel('t1', 4, 2.25), sel('t2', 5, 1.75),\n"            # Alcaraz zu hoch: Value
+            "  market('tt', 189, ['t3', 't4'], 38.5), sel('t3', 12, 1.85), sel('t4', 13, 1.85),\n"   # normal: kein Value
+            "  market('tx', 225, ['t5', 't6'], 38.5), sel('t5', 12, 1.25), sel('t6', 13, 3.8),\n"    # passt nicht: ignoriert
+            "];\n"
+            "const soccer = [\n"
+            "  item('Event', { urn: 'f', name: 'Alpha : Beta Utd', startTime: soon(60), sport: 'asw:sport:1', markets: ['fw', 'ft', 'fb'] }),\n"
+            "  market('fw', 1, ['f1', 'f2', 'f3']), sel('f1', 1, 2.15), sel('f2', 2, 3.4), sel('f3', 3, 3.7),\n"
+            "  market('ft', 18, ['f4', 'f5'], 2.5), sel('f4', 12, 1.9), sel('f5', 13, 1.9),\n"
+            "  market('fb', 29, ['f6', 'f7']), sel('f6', 74, 1.7), sel('f7', 76, 2.05),\n"
+            "];\n"
+            "const api = {\n"
+            "  'list=1': { sports: [{ key: 'tennis_atp', group: 'Tennis', title: 'ATP' }, { key: 'soccer_x', group: 'Soccer', title: 'Liga X' },\n"
+            "    { key: 'icehockey_x', group: 'Ice Hockey', title: 'Hockey' }] },\n"
+            "  'events=tennis_atp': { events: [{ id: 't1', home: 'Jannik Sinner', away: 'Carlos Alcaraz', kickoff: soon(0) }] },\n"
+            "  'events=soccer_x': { events: [{ id: 'f1', home: 'Alpha FC', away: 'Beta United', kickoff: soon(60) }] },\n"
+            "  'sport=tennis_atp': { remaining: '470', events: [{ id: 't1', home: 'Jannik Sinner', away: 'Carlos Alcaraz',\n"
+            "    source: 'Pinnacle', h2h: [1.8, 2.1], totals: [{ point: 38.5, over: 1.9, under: 1.9 }] }] },\n"
+            "  'sport=soccer_x': { remaining: '468', events: [{ id: 'f1', home: 'Alpha FC', away: 'Beta United',\n"
+            "    source: 'Pinnacle', h2h: [2.0, 3.6, 4.0], totals: [{ point: 2.5, over: 1.95, under: 1.95 }] }] },\n"
+            "};\n"
+            "const asked = [];\n"
+            "globalThis.fetch = async url => {\n"
+            "  const query = url.split('?')[1];\n"
+            "  asked.push(decodeURIComponent(query));\n"
+            "  if (url.startsWith('/api/sporttip')) {\n"
+            "    const paths = new URLSearchParams(query).get('paths').split(',');\n"
+            "    const text = paths.map(p => page(p, p === '/tennis' ? tennis : p === '/fussball' ? soccer : [])).join('\\n');\n"
+            "    return new Response(text, { headers: { 'content-type': 'text/plain; charset=utf-8' } });\n"
+            "  }\n"
+            "  return new Response(JSON.stringify(api[query] ?? { error: 'unbekannt' }),\n"
+            "    { status: api[query] ? 200 : 404, headers: { 'content-type': 'application/json' } });\n"
+            "};\n"
+            f"const {{ scan }} = await import('{(SITE_JS / 'scan.js').as_uri()}');\n"
+            "const params = { devig: 'power', edge: { '1X2': 0.01, OU: 0.02 }, max_odds: { '1X2': 8, OU: 8 },\n"
+            "  derived_extra_edge: 0.01, derived_rho: 0 };\n"
+            "const r = await scan(() => {}, params);\n"
+            "OUTPUT({ values: r.values.map(v => ({ label: v.label, odds: v.odds, edge: v.edge, group: v.event.group })),\n"
+            "  rejected: r.rejected, compared: r.compared, pairs: r.pairs, margins: r.margins, emptyPages: r.emptyPages,\n"
+            "  remaining: r.remaining, asked });\n")
+        out = run_node(script)
+        values = {v["label"]: v for v in out["values"]}
+        self.assertEqual(set(values), {"Sieg Alcaraz C.", "Sieg Alpha"})
+        # Tennis: Sporttip nennt Alcaraz zuerst, Pinnacle Sinner -> vertauscht zugeordnet
+        self.assertEqual(values["Sieg Alcaraz C."]["group"], "Tennis")
+        self.assertAlmostEqual(values["Sieg Alcaraz C."]["edge"], 0.04, delta=0.01)
+        self.assertGreater(values["Sieg Alpha"]["edge"], 0.03)
+        self.assertEqual(out["rejected"], 1)                     # Total 225 passt nicht zur fairen Chance
+        self.assertEqual(out["pairs"], 2)
+        self.assertEqual(out["compared"], 6)                     # 3 Tennis- und 3 Fussball-Wettarten
+        margins = {m["label"]: m["margin"] for m in out["margins"]}
+        self.assertAlmostEqual(margins["Tennis · Sieger"], 1 / 2.25 + 1 / 1.75 - 1)
+        self.assertAlmostEqual(margins["Fussball · Sieger"], 1 / 2.15 + 1 / 3.4 + 1 / 3.7 - 1)
+        self.assertIn("/eishockey", out["emptyPages"])
+        self.assertIn(out["remaining"], ("470", "468"))
+        # Eishockey hatte keine Sporttip-Spiele: keine Abfrage dafür. Quoten nur für die zwei Ligen.
+        self.assertNotIn("events=icehockey_x", out["asked"])
+        self.assertEqual(sorted(q for q in out["asked"] if q.startswith("sport=")), ["sport=soccer_x", "sport=tennis_atp"])
 
 
 FUNCTION_RUNNER = """
@@ -364,7 +453,7 @@ const calls = [];
 globalThis.fetch = async url => {
   calls.push(url);
   const events = [
-    { home_team: 'Arsenal', away_team: 'Chelsea', commence_time: '2026-10-17T14:00:00Z', bookmakers: [
+    { id: 'a1', home_team: 'Arsenal', away_team: 'Chelsea', commence_time: '2026-10-17T14:00:00Z', bookmakers: [
       { key: 'betfair_ex_eu', markets: [{ key: 'h2h', outcomes: [
         { name: 'Arsenal', price: 2.1 }, { name: 'Draw', price: 3.5 }, { name: 'Chelsea', price: 3.9 }] }] },
       { key: 'pinnacle', markets: [
@@ -376,7 +465,8 @@ globalThis.fetch = async url => {
       { key: 'betfair_ex_eu', markets: [{ key: 'h2h', outcomes: [{ name: 'Sinner', price: 1.8 }, { name: 'Alcaraz', price: 2.1 }] }] }] },
     { home_team: 'X', away_team: 'Y', commence_time: '2026-10-17T16:00:00Z', bookmakers: [] },
   ];
-  const body = url.includes('/odds?') ? events : [{ key: 'soccer_epl', group: 'Soccer', title: 'EPL', active: true, has_outrights: false }];
+  const body = url.includes('/odds?') || url.includes('/events?') ? events
+    : [{ key: 'soccer_epl', group: 'Soccer', title: 'EPL', active: true, has_outrights: false }];
   return new Response(JSON.stringify(body), { headers: { 'x-requests-remaining': '480' } });
 };
 const rows = new Map();
@@ -419,54 +509,86 @@ if (scenario === 'middleware') {
 const handler = onRequestGet || onRequest;
 const call = async (url, env, init = {}) => {
   const response = await handler({ request: new Request(url, init), env, waitUntil: p => p });
-  return { status: response.status, body: await response.json() };
+  const type = response.headers.get('content-type') || '';
+  return { status: response.status, type, body: type.includes('json') ? await response.json() : await response.text() };
 };
 const out = {};
 if (scenario === 'sporttip') {
-  // Nachgebauter Sporttip-Server: antwortet auf "RetrieveSportsbookPage" wie der echte (erfundene Spiele)
+  // Nachgebauter Sporttip-Server: antwortet wie der echte auf Seite, Markt-Umschalter und Kategorien (erfundene Spiele)
   const zlib = await import('node:zlib');
   const pack = message => { const b = zlib.deflateRawSync(JSON.stringify(message)); return b.buffer.slice(b.byteOffset, b.byteOffset + b.length); };
   const item = (type, entity) => ({ kind: 0, type, entity });
-  const snapshot = [
-    item('Event', { urn: 'e1', name: 'Alpha FC : Beta United', startTime: '2026-10-17T14:00:00Z', sport: 'asw:sport:1', markets: ['m1', 'm2', 'm3', 'm4'] }),
+  const snapshot = items => pack({ payload: JSON.stringify([{ type: 'SportsbookSnapshotUpdated', body: { snapshotUpdate: { snapshotUpdateItems: items } } }]) });
+  const selections = list => list.map(([urn, type, odds, state = 1]) => item('Selection', { urn, type: `asw:selectiontype:${type}`, odds, state }));
+  const events = [
+    item('Event', { urn: 'e1', name: 'Alpha FC : Beta United', startTime: '2026-10-17T14:00:00Z', sport: 'asw:sport:1', markets: ['m1', 'm2', 'm3', 'm4', 'm6'] }),
     item('Event', { urn: 'e2', name: 'Gamma : Delta', startTime: '2026-10-17T16:00:00Z', markets: ['m5'] }),
-    item('Market', { urn: 'm1', type: 'asw:markettype:1', state: 1, selections: ['s1', 's2', 's3'] }),
+  ];
+  const mainMarkets = [
+    item('Market', { urn: 'm1', type: 'asw:markettype:1', state: 1, properties: { IsMainMarket: true, mode: 'prematch' }, selections: ['s1', 's2', 's3'] }),
     item('Market', { urn: 'm2', type: 'asw:markettype:18', state: 1, properties: { total: 2.5 }, selections: ['s4', 's5'] }),
     item('Market', { urn: 'm3', type: 'asw:markettype:18', state: 2, properties: { total: 3.5 }, selections: ['s6', 's7'] }),
     item('Market', { urn: 'm4', type: 'asw:markettype:18', state: 1, properties: { total: 1.5 }, selections: ['s8', 's9'] }),
     item('Market', { urn: 'm5', type: 'asw:markettype:1', state: 1, selections: ['s10'] }),
-    ...[['s1', 1, 1.85], ['s2', 2, 4.1], ['s3', 3, 3.6], ['s4', 12, 1.9], ['s5', 13, 1.8], ['s6', 12, 3], ['s7', 13, 1.3],
-        ['s8', 12, 1.2], ['s10', 1, 2]].map(([urn, type, odds]) => item('Selection', { urn, type: `asw:selectiontype:${type}`, odds, state: 1 })),
-    item('Selection', { urn: 's9', type: 'asw:selectiontype:13', odds: 4, state: 2 }),   // gesperrt
+    ...selections([['s1', 1, 1.85], ['s2', 2, 4.1], ['s3', 3, 3.6], ['s4', 12, 1.9], ['s5', 13, 1.8], ['s6', 12, 3], ['s7', 13, 1.3],
+      ['s8', 12, 1.2], ['s9', 13, 4, 2], ['s10', 1, 2]]),        // s9 gesperrt
   ];
+  const doubleChance = [   // kommt erst, wenn der Markt-Umschalter Gruppe 3 zeigt
+    item('Market', { urn: 'm6', type: 'asw:markettype:10', state: 1, selections: ['s11', 's12', 's13'] }),
+    ...selections([['s11', 9, 1.25], ['s12', 10, 1.3], ['s13', 11, 1.95]]),
+  ];
+  const grid = { type: 'SportsGridViewNode', id: 'Grid1',
+    availableMarketSwitcher: [1, 2, 3, 4, 5].map(n => `asw:marketconfig:${n}`),
+    selectedMarketSwitcher: [{ marketConfigUrn: 'asw:marketconfig:1' }, { marketConfigUrn: 'asw:marketconfig:2' }],
+    viewNode: { viewNodes: [{ type: 'EventViewNode', eventUrn: 'e1' }, { type: 'EventViewNode', eventUrn: 'e2' }] } };
   out.connections = 0;
   out.sent = [];
+  out.switched = [];
+  out.categories = [];
   globalThis.fetch = async (url, init) => {
     out.connections++;
     out.origin = init.headers.Origin;
     const listeners = [];
-    const emit = data => listeners.forEach(f => f({ data }));
+    const emit = (...frames) => setTimeout(() => frames.forEach(data => listeners.forEach(f => f({ data }))), 20);
     return { status: 101, webSocket: {
       accept() {},
       close() {},
-      addEventListener: (name, f) => listeners.push(f),
+      addEventListener: (name, f) => { if (name === 'message') listeners.push(f); },
       send(buffer) {
         const message = JSON.parse(zlib.inflateRawSync(Buffer.from(buffer)).toString());
-        out.sent.push(message.payload ? message.payload[0].type : Object.keys(message)[0]);
         const request = message.payload?.[0];
-        if (request?.body?.urlPart !== '/fussball/test/liga') return;
-        setTimeout(() => {
-          emit(pack({ ping: {} }));
-          emit(pack({ payload: JSON.stringify([{ type: 'SportsbookPageRetrieved', requestId: request.requestId,
-            body: { viewNode: { viewNodes: [{ viewNode: { viewNodes: [{ eventUrn: 'e1' }, { eventUrn: 'e2' }] } }] } } }]) }));
-          emit(pack({ payload: JSON.stringify([{ type: 'SportsbookSnapshotUpdated', body: { snapshotUpdate: { snapshotUpdateItems: snapshot } } }]) }));
-        }, 50);
+        out.sent.push(request ? request.type : Object.keys(message)[0]);
+        if (request?.type === 'RetrieveSportsbookPage') {
+          const answer = request.body.urlPart === '/fussball/test/liga'
+            ? { viewNode: { type: 'CollectionViewNode', viewNodes: [grid] }, categoryPath: { categories: ['asw:category:1', 'asw:category:2'] } }
+            : { viewNode: { type: 'CollectionViewNode', viewNodes: [] } };
+          emit(pack({ ping: {} }), snapshot(events),
+            pack({ payload: JSON.stringify([{ type: 'SportsbookPageRetrieved', requestId: request.requestId, body: answer }]) }),
+            snapshot(mainMarkets));
+        } else if (request?.type === 'UpdateSportsbookPage') {
+          const configs = JSON.parse(request.body.commandProperties[1].value);
+          out.switched.push([request.body.sportsGridViewNodeId, configs]);
+          emit(snapshot(configs.includes('asw:marketconfig:3') ? doubleChance : []));
+        } else if (request?.type === 'RetrieveCategoryChildren') {
+          out.categories.push(request.body.category);
+          emit(pack({ payload: [{ type: 'CategoryChildrenRetrieved', body: { children: [{ name: 'Liga 2', urlPart: '/fussball/test/liga2' }] } }] }));
+        }
       },
     } };
   };
   out.bad = await call('https://x/api/sporttip?paths=../geheim', {});
-  out.ok = await call('https://x/api/sporttip?paths=/fussball/test/liga', {});
-  out.again = await call('https://x/api/sporttip?paths=/fussball/test/liga', {});
+  out.tooMany = await call('https://x/api/sporttip?paths=/a,/b,/c,/d,/e', {});
+  out.ok = await call('https://x/api/sporttip?paths=/fussball/test/liga,/fussball/leer&all=1&tree=1', {});
+  out.again = await call('https://x/api/sporttip?paths=/fussball/test/liga,/fussball/leer&all=1&tree=1', {});
+  // Sporttip lehnt ab, oder schliesst die Verbindung gleich wieder
+  globalThis.fetch = async () => ({ status: 403 });
+  out.refused = await call('https://x/api/sporttip?paths=/fussball/a', {});
+  globalThis.fetch = async () => {
+    const closers = [];
+    return { status: 101, webSocket: { accept() { setTimeout(() => closers.forEach(f => f()), 10); }, close() {}, send() {},
+      addEventListener: (name, f) => { if (name === 'close') closers.push(f); } } };
+  };
+  out.closed = await call('https://x/api/sporttip?paths=/fussball/b', {});
 } else if (scenario === 'odds') {
   out.noKey = await call('https://x/api/odds?sport=soccer_epl', {});
   out.locked = await call('https://x/api/odds?sport=soccer_epl', { ODDS_API_KEY: 'k', JOURNAL_KEY: 's' });
@@ -474,6 +596,8 @@ if (scenario === 'sporttip') {
   out.ok = await call('https://x/api/odds?sport=soccer_epl', { ODDS_API_KEY: 'k' });
   out.again = await call('https://x/api/odds?sport=soccer_epl', { ODDS_API_KEY: 'k' });
   out.list = await call('https://x/api/odds?list=1', { ODDS_API_KEY: 'k' });
+  out.events = await call('https://x/api/odds?events=soccer_epl', { ODDS_API_KEY: 'k' });
+  out.eventsUrl = calls[calls.length - 1];
   out.calls = calls.length;
 } else {
   const env = { DB: db, JOURNAL_KEY: 's' };
@@ -523,26 +647,58 @@ class FunctionsTest(unittest.TestCase):
         self.assertEqual(tennis["source"], "Betfair")          # Pinnacle ohne Siegerquote -> Betfair
         self.assertEqual(tennis["h2h"], [1.8, 2.1])
         self.assertEqual(out["ok"]["body"]["remaining"], "480")
+        self.assertEqual(football["id"], "a1")                 # die ID verbindet Spielliste und Quoten
         self.assertEqual(out["again"]["body"], out["ok"]["body"])
-        self.assertEqual(out["calls"], 2)                      # zweite Abfrage kam aus dem Zwischenspeicher
+        self.assertEqual(out["calls"], 3)                      # zweite Abfrage kam aus dem Zwischenspeicher
         self.assertEqual(out["list"]["body"]["sports"][0]["key"], "soccer_epl")
+        # Spielliste ohne Quoten (kostet bei The Odds API nichts)
+        self.assertIn("/soccer_epl/events?", out["eventsUrl"])
+        self.assertEqual(out["events"]["body"]["events"][0],
+                         {"id": "a1", "home": "Arsenal", "away": "Chelsea", "kickoff": "2026-10-17T14:00:00Z"})
 
     def test_sporttip(self):
         out = self.run_function("sporttip", "sporttip")
         self.assertEqual(out["bad"]["status"], 400)
+        self.assertEqual(out["tooMany"]["status"], 400)
         self.assertEqual(out["origin"], "https://www.swisslos.ch")
-        self.assertEqual(out["sent"], ["connect", "RetrieveSportsbookPage"])
-        page = out["ok"]["body"]["pages"]["/fussball/test/liga"]
-        self.assertTrue(page["found"])
-        [event] = page["events"]                               # Gamma–Delta: kein vollständiger Markt
-        self.assertEqual((event["home"], event["away"]), ("Alpha FC", "Beta United"))
+        # Seite, dann Markt-Umschalter (Gruppen 3+4, dann 5), dann Kategorien; zweite Seite ohne Raster
+        self.assertEqual(out["sent"], ["connect", "RetrieveSportsbookPage", "UpdateSportsbookPage", "UpdateSportsbookPage",
+                                       "RetrieveCategoryChildren", "RetrieveCategoryChildren", "RetrieveSportsbookPage"])
+        self.assertEqual(out["switched"], [["Grid1", ["asw:marketconfig:3", "asw:marketconfig:4"]],
+                                           ["Grid1", ["asw:marketconfig:5"]]])
+        self.assertEqual(out["categories"], ["asw:category:1", "asw:category:2"])
+        self.assertIn("text/plain", out["ok"]["type"])
+        lines = out["ok"]["body"].split("\n")
+        self.assertEqual(json.loads(lines[0])["path"], "/fussball/test/liga")
+        self.assertTrue(json.loads(lines[0])["found"])
+        self.assertEqual(out["again"]["body"], out["ok"]["body"])
+        self.assertEqual(out["connections"], 1)                # zweite Abfrage aus dem Zwischenspeicher
+        self.assertEqual(out["refused"]["status"], 502)
+        self.assertIn("403", out["refused"]["body"]["error"])
+        self.assertEqual(out["closed"]["status"], 502)
+        self.assertIn("geschlossen", out["closed"]["body"]["error"])
+
+        # Der Browser setzt daraus die Spiele zusammen (site/js/feed.js)
+        parsed = run_node(
+            f"import {{ parseFeed, summarize }} from '{(SITE_JS / 'feed.js').as_uri()}';\n"
+            f"import {{ footballOdds }} from '{(SITE_JS / 'sporttip.js').as_uri()}';\n"
+            "const pages = parseFeed(INPUT);\n"
+            "OUTPUT({ pages: pages.map(p => ({ path: p.path, found: p.found, events: p.events })),\n"
+            "  links: summarize(pages[0]).links, odds: footballOdds(pages[0].events[0]) });\n",
+            out["ok"]["body"])
+        first, empty = parsed["pages"]
+        self.assertEqual((empty["path"], empty["found"], empty["events"]), ("/fussball/leer", True, []))
+        [event] = first["events"]                               # Gamma–Delta: kein vollständiger Markt
+        self.assertEqual((event["home"], event["away"], event["sport"]), ("Alpha FC", "Beta United", 1))
         markets = {(m["type"], m["line"]): m["odds"] for m in event["markets"]}
         self.assertEqual(markets[(1, None)], {"1": 1.85, "2": 4.1, "3": 3.6})
         self.assertEqual(markets[(18, 2.5)], {"12": 1.9, "13": 1.8})
+        self.assertEqual(markets[(10, None)], {"9": 1.25, "10": 1.3, "11": 1.95})   # über den Markt-Umschalter
         self.assertNotIn((18, 3.5), markets)                   # geschlossener Markt
         self.assertNotIn((18, 1.5), markets)                   # ein Tipp gesperrt -> unvollständig
-        self.assertEqual(out["again"]["body"], out["ok"]["body"])
-        self.assertEqual(out["connections"], 1)                # zweite Abfrage aus dem Zwischenspeicher
+        self.assertEqual(parsed["links"], [{"path": "/fussball/test/liga2", "name": "Liga 2"}])
+        self.assertEqual(parsed["odds"], {"1X2": {"H": 1.85, "D": 4.1, "A": 3.6}, "OU": {"O": 1.9, "U": 1.8},
+                                          "DC": {"1X": 1.25, "12": 1.3, "X2": 1.95}})
 
     def test_login_protects_everything(self):
         out = self.run_function("_middleware", "middleware")

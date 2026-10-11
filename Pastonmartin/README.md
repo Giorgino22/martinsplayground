@@ -65,8 +65,8 @@ Experimente stehen auf der Website unter „Backtest“.
 
 Premier League, Championship, Bundesliga, 2. Bundesliga, Serie A, La Liga, Ligue 1,
 Eredivisie und die Schweizer Super League (dort nur Schlussquoten, darum weniger aussagekräftig).
-Unter **„Sport“** auf der Website gibt es zusätzlich einen Value-Finder für jede Sportart, die
-The Odds API kennt (Tennis, Eishockey, Basketball, …), nur mit Live-Marktquoten.
+Unter **„Sport“** scannt die App zusätzlich **alle Sportarten** bei Sporttip (Tennis, Eishockey,
+Basketball, alle Fussball-Ligen, …) und vergleicht sie mit Pinnacle, siehe „Sporttip scannen“.
 
 ### Ehrliche Grenzen
 
@@ -94,8 +94,11 @@ The Odds API kennt (Tennis, Eishockey, Basketball, …), nur mit Live-Marktquote
 | `site/data/` | Von GitHub Actions erzeugt: `tips.json`, `backtest.json`, `results.json` |
 | `functions/api/odds.js` | Live-Quoten von The Odds API (5 Minuten zwischengespeichert) |
 | `functions/api/bets.js` | Wett-Tagebuch in Cloudflare D1 |
-| `functions/api/sporttip.js` | Sporttip-Quoten holen (nur auf Knopfdruck, 5 Minuten zwischengespeichert) |
-| `site/js/sporttip.js` | Sporttip-Spiele unseren Spielen zuordnen, Liga-Pfade |
+| `functions/api/sporttip.js` | Sporttip-Quoten holen (Briefträger, nur auf Knopfdruck, 5 Minuten zwischengespeichert) |
+| `site/js/feed.js` | Sporttip-Nachrichten zu Spielen mit Quoten zusammensetzen, „Pfad testen“ |
+| `site/js/sporttip.js` | Sporttip-Wettarten, Sicherheitsprüfung, Spiele zuordnen, Liga-Pfade |
+| `site/js/scan.js` | „Alle Sportarten scannen“: Sporttip gegen Pinnacle, Value-Liste, Margen pro Sportart |
+| `site/js/api.js` | Abfragen an The Odds API (über `functions/api/odds.js`) |
 | `functions/_middleware.js`, `functions/_auth.js` | Passwortschutz für die ganze App |
 | `../.github/workflows/pastonmartin.yml` | Der Zeitplan |
 
@@ -108,19 +111,31 @@ Cloudflare Pages kann nichts regelmässig laufen lassen, GitHub Actions schon (g
 - **Von Hand:** GitHub → Actions → Pastonmartin → *Run workflow*.
 - **Live-Quoten** und **Sporttip scannen:** auf der Website per Knopfdruck (Cloudflare-Function, nicht GitHub).
 
+Der Roboter committet die neuen JSON-Dateien. Cloudflare Pages veröffentlicht sie dann automatisch.
+
 ### Sporttip scannen
 
 Swisslos hat erlaubt, die Quoten für den privaten Gebrauch abzurufen. Die Swisslos-Seite holt ihre
 Quoten über eine WebSocket-Verbindung von Admiral (`wss://ws.ch.admiral.at/`); jede Nachricht ist
-JSON, komprimiert mit `deflate-raw`. `functions/api/sporttip.js` macht dasselbe: eine Verbindung,
-pro Liga eine Anfrage `RetrieveSportsbookPage` mit dem Pfad (z.B. `/fussball/deutschland/bundesliga`),
-dann werden Spiele, Märkte und Quoten zusammengesetzt. Bewusst zurückhaltend: nur auf Knopfdruck,
-jede Liga 5 Minuten zwischengespeichert, nichts wird gespeichert oder ins Repo geschrieben.
-Gescannt werden Sieger (1X2) und Über/Unter 1.5/2.5/3.5. Doppelte Chance und Beide treffen trägst du
-weiterhin von Hand ein. Findet der Scan eine Liga nicht, stimmt ihr Pfad nicht: unter
-„Sporttip-Ligen einstellen“ den richtigen Pfad aus der Adresszeile von swisslos.ch eintragen.
+JSON, komprimiert mit `deflate-raw`. `functions/api/sporttip.js` stellt dieselben Fragen wie die
+Swisslos-Seite (`RetrieveSportsbookPage` mit dem Pfad, z.B. `/tennis`; `UpdateSportsbookPage` wie der
+Markt-Umschalter, für alle Wettarten) und gibt die entpackten Antworten weiter. Das Zusammensetzen
+macht der Browser (`site/js/feed.js`), weil Cloudflare gratis nur 10 ms Rechenzeit pro Aufruf erlaubt.
+Bewusst zurückhaltend: nur auf Knopfdruck, eine Verbindung pro Aufruf, 5 Minuten zwischengespeichert,
+nichts wird gespeichert oder ins Repo geschrieben.
 
-Der Roboter committet die neuen JSON-Dateien. Cloudflare Pages veröffentlicht sie dann automatisch.
+- **Fussball-Tab:** trägt für unsere 9 Ligen die Sporttip-Quoten ein (Sieger, Doppelte Chance,
+  Über/Unter 1.5/2.5/3.5, Beide treffen) und zeigt oben die Value-Liste.
+- **Sport-Tab, „Alle Sportarten scannen“:** holt ganze Sportarten (`/fussball`, `/tennis`,
+  `/eishockey`, …), sucht dasselbe Spiel bei The Odds API (Spielliste kostenlos), holt nur für Ligen
+  mit Treffern die Pinnacle-Quoten (2 Abfragen pro Liga, Budget einstellbar) und vergleicht. Im Fussball
+  rechnet er auch Doppelte Chance, Unentschieden-keine-Wette, Beide treffen und alle Torlinien über die
+  erwarteten Tore. Andere Sportarten: Sieger und Total, Mindest-Value 2 %, Höchstquote 5.
+- **Sicherheitsprüfung (`plausible`):** Die Nummern der Wettarten folgen dem Sportradar-Format; geprüft
+  sind 1 (1X2) und 18 (Über/Unter). Passt eine Wettart nicht zur fairen Chance (mehr als 8 Prozentpunkte
+  daneben oder über 25 % Value), wird sie ignoriert statt als Value angezeigt.
+- **Pfad testen:** zeigt, was Sporttip auf einer Seite schickt (Spiele, Wettarten, Unterseiten), mit
+  einer Zusammenfassung zum Kopieren. Damit lassen sich neue Sportarten und Wettarten schnell einbauen.
 
 ## Einrichten
 
@@ -142,7 +157,9 @@ Der Roboter committet die neuen JSON-Dateien. Cloudflare Pages veröffentlicht s
    speichert die Seite im Browser, dann ist das Tagebuch nur auf diesem einen Gerät.
 3. **Live-Quoten (sehr empfohlen):** Gratis-Schlüssel bei [the-odds-api.com](https://the-odds-api.com)
    holen und im Pages-Projekt als Variable **`ODDS_API_KEY`** speichern (als Secret).
-   Jede Liga kostet pro Abfrage 2 der 500 Gratis-Abfragen pro Monat.
+   Jede Liga kostet pro Abfrage 2 der 500 Gratis-Abfragen pro Monat. „Alle Sportarten scannen“ holt
+   höchstens so viele Ligen, wie das Budget erlaubt (Standard 20 Abfragen = 10 Ligen). Wer mehrmals
+   täglich alle Sportarten scannen will, braucht einen bezahlten Plan von The Odds API.
    Optional zusätzlich als GitHub-Secret `ODDS_API_KEY`: dann holt auch der Roboter am
    Nachmittag Pinnacle-Quoten (ca. 18 Abfragen pro Lauf).
 4. **Tipp:** Bei den anderen Pages-Projekten unter *Build watch paths* nur ihren eigenen

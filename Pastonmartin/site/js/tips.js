@@ -8,7 +8,8 @@ import { addBet } from './journal.js';
 import { cellHtml, panelHtml, resultHtml, marginText, isValue } from './bet.js';
 import { stakeFor, stakeText, addToSlip } from './slip.js';
 import { sameMatch } from './teams.js';
-import { pathsFor, oddsByMarket, matchEvents, fetchSporttip } from './sporttip.js';
+import { pathsFor, footballOdds, matchEvents, fetchSporttip, plausible } from './sporttip.js';
+import { fetchOdds } from './api.js';
 
 const GROUPS = [
   { id: 'win', name: 'Sieger', markets: ['1X2'] },
@@ -294,27 +295,38 @@ async function scanSporttip() {
   const leagues = [...new Set(tips.matches.map(m => m.league))].filter(code => !hiddenLeagues.includes(code) && paths[code]);
   if (!leagues.length) { scanStatus.textContent = 'Keine Liga ausgewählt.'; return; }
   button.disabled = true;
-  scanStatus.textContent = 'Frage Sporttip … (bis 20 Sekunden)';
+  scanStatus.textContent = 'Frage Sporttip …';
   try {
-    const pages = await fetchSporttip(leagues.map(code => paths[code]));
+    // alle Wettarten (all: true), damit auch Doppelte Chance und Beide treffen dabei sind
+    const pages = await fetchSporttip(leagues.map(code => paths[code]), { all: true },
+      (done, total) => { scanStatus.textContent = `Frage Sporttip … ${done} von ${total} Ligen`; });
+    const byPath = Object.fromEntries(pages.map(page => [page.path, page]));
     const values = inputs();
-    let found = 0;
+    let found = 0, filled = 0, rejected = 0;
     const missing = [];
     for (const code of leagues) {
-      const page = pages[paths[code]];
-      if (!page || !page.found || !page.events.length) { missing.push(tips.leagues[code] || code); continue; }
+      const page = byPath[paths[code]];
+      if (!page || !page.events.length) { missing.push(tips.leagues[code] || code); continue; }
       const pairs = matchEvents(page.events, tips.matches.filter(m => m.league === code), tips.team_aliases);
       for (const [id, event] of pairs) {
         found++;
-        for (const [market, odds] of Object.entries(oddsByMarket(event))) {
-          for (const [key, value] of Object.entries(odds)) values[`${id}|${key}`] = String(value);
-          marginText(`${id}|${market}`, Object.values(odds));       // Marge merken
+        const match = matchById(id);
+        for (const [market, odds] of Object.entries(footballOdds(event))) {
+          const keys = Object.keys(odds);
+          const bets = keys.map(key => findBet(match, key));
+          if (bets.some(bet => !bet)) continue;                       // diese Wettart rechnen wir nicht
+          // Sicherheitsprüfung: Passen die Quoten überhaupt zu den fairen Chancen?
+          if (!plausible(bets.map(bet => bet.p), keys.map(key => odds[key]))) { rejected++; continue; }
+          for (const key of keys) values[`${id}|${key}`] = String(odds[key]);
+          filled += keys.length;
+          if (market !== 'DC') marginText(`${id}|${market}`, Object.values(odds));   // Marge merken
         }
       }
     }
     store.set('inputs', values);
     store.set('scanned', new Date().toISOString());
-    scanStatus.textContent = `${found} Spiele mit Sporttip-Quoten (${formatTime(new Date().toISOString())})`
+    scanStatus.textContent = `${found} Spiele, ${filled} Sporttip-Quoten eingetragen (${formatTime(new Date().toISOString())})`
+      + (rejected ? ` · ${rejected} Wettarten passten nicht und wurden ignoriert` : '')
       + (missing.length ? ` · nicht gefunden: ${missing.join(', ')} (Pfad unten prüfen)` : '');
   } catch (error) {
     scanStatus.textContent = error.message;
@@ -337,23 +349,6 @@ function initPathFields() {
     own[code] = e.target.value.trim().replace(/\/$/, '');
     store.set('sporttipPaths', own);
   });
-}
-
-// Holt Live-Quoten über unsere Cloudflare-Function (functions/api/odds.js)
-export async function fetchOdds(query) {
-  let response;
-  try {
-    response = await fetch(`/api/odds?${query}`, { headers: { 'x-journal-key': store.get('journalKey', '') } });
-  } catch {
-    throw new Error('Keine Verbindung.');
-  }
-  if (!(response.headers.get('content-type') || '').includes('json')) {
-    throw new Error('Live-Quoten gibt es nur auf der echten Website (Cloudflare).');
-  }
-  const body = await response.json();
-  if (response.status === 401) throw new Error('Schlüssel nötig: im Tagebuch eingeben.');
-  if (!response.ok) throw new Error(body.error || `Fehler ${response.status}`);
-  return body;
 }
 
 // Gleiche Struktur wie engine/tips.py (market_entries)
