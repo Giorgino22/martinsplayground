@@ -1,0 +1,2638 @@
+{
+ "generated": "2026-10-11T12:55:06+00:00",
+ "params": {
+  "decay": 0.003,
+  "w_1x2": 0.0,
+  "w_ou": 0.0,
+  "edge_1x2": 0.02,
+  "edge_ou": 0.02,
+  "haircut": 0.04,
+  "max_odds": 8.0,
+  "min_bets_for_tuning": 150
+ },
+ "kelly_fraction": 0.25,
+ "max_stake": 0.02,
+ "leagues": {
+  "E0": "Premier League",
+  "E1": "Championship",
+  "D1": "Bundesliga",
+  "D2": "2. Bundesliga",
+  "I1": "Serie A",
+  "SP1": "La Liga",
+  "F1": "Ligue 1",
+  "N1": "Eredivisie",
+  "SWZ": "Super League"
+ },
+ "odds_api": false,
+ "matches": [
+  {
+   "id": "N1:2026-10-11:Utrecht:Willem II",
+   "league": "N1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T10:15:00+00:00",
+   "home": "Utrecht",
+   "away": "Willem II",
+   "expected_goals": [
+    2.5,
+    0.94
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.71273,
+       "p_market": 0.63465,
+       "p": 0.63465,
+       "fair": 1.57566,
+       "min_odds": 1.60718,
+       "bet365": 1.5
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.16536,
+       "p_market": 0.21065,
+       "p": 0.21065,
+       "fair": 4.7472,
+       "min_odds": 4.84214,
+       "bet365": 4.33
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.12191,
+       "p_market": 0.1547,
+       "p": 0.1547,
+       "fair": 6.46427,
+       "min_odds": 6.59355,
+       "bet365": 6.0
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.66839,
+       "p_market": 0.55066,
+       "p": 0.55066,
+       "fair": 1.816,
+       "min_odds": 1.85232,
+       "bet365": 1.48
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.33161,
+       "p_market": 0.44934,
+       "p": 0.44934,
+       "fair": 2.22549,
+       "min_odds": 2.27,
+       "bet365": 2.6
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-11:Como:Roma",
+   "league": "I1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T10:30:00+00:00",
+   "home": "Como",
+   "away": "Roma",
+   "expected_goals": [
+    1.16,
+    1.31
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.32852,
+       "p_market": 0.36489,
+       "p": 0.36489,
+       "fair": 2.74054,
+       "min_odds": 2.79535,
+       "bet365": 2.6
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.27085,
+       "p_market": 0.27022,
+       "p": 0.27022,
+       "fair": 3.70073,
+       "min_odds": 3.77474,
+       "bet365": 3.5
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.40063,
+       "p_market": 0.36489,
+       "p": 0.36489,
+       "fair": 2.74054,
+       "min_odds": 2.79535,
+       "bet365": 2.6
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.44915,
+       "p_market": 0.59113,
+       "p": 0.59113,
+       "fair": 1.69167,
+       "min_odds": 1.7255,
+       "bet365": 1.67
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.55085,
+       "p_market": 0.40887,
+       "p": 0.40887,
+       "fair": 2.44578,
+       "min_odds": 2.4947,
+       "bet365": 2.2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "E1:2026-10-11:Southampton:Portsmouth",
+   "league": "E1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T11:00:00+00:00",
+   "home": "Southampton",
+   "away": "Portsmouth",
+   "expected_goals": [
+    2.46,
+    1.0
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.69433,
+       "p_market": 0.59945,
+       "p": 0.59945,
+       "fair": 1.6682,
+       "min_odds": 1.70157,
+       "bet365": 1.53
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.1712,
+       "p_market": 0.23002,
+       "p": 0.23002,
+       "fair": 4.34744,
+       "min_odds": 4.43439,
+       "bet365": 4.0
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.13447,
+       "p_market": 0.17053,
+       "p": 0.17053,
+       "fair": 5.86399,
+       "min_odds": 5.98127,
+       "bet365": 5.5
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.67228,
+       "p_market": 0.57921,
+       "p": 0.57921,
+       "fair": 1.7265,
+       "min_odds": 1.76103,
+       "bet365": 1.67
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.32772,
+       "p_market": 0.42079,
+       "p": 0.42079,
+       "fair": 2.37647,
+       "min_odds": 2.424,
+       "bet365": 2.2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "D2:2026-10-11:Bochum:Bielefeld",
+   "league": "D2",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T11:30:00+00:00",
+   "home": "Bochum",
+   "away": "Bielefeld",
+   "expected_goals": [
+    1.52,
+    1.21
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.44338,
+       "p_market": 0.42001,
+       "p": 0.42001,
+       "fair": 2.38087,
+       "min_odds": 2.42849,
+       "bet365": 2.2
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.2528,
+       "p_market": 0.26601,
+       "p": 0.26601,
+       "fair": 3.75928,
+       "min_odds": 3.83446,
+       "bet365": 3.5
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.30381,
+       "p_market": 0.31398,
+       "p": 0.31398,
+       "fair": 3.18494,
+       "min_odds": 3.24864,
+       "bet365": 2.9
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.515,
+       "p_market": 0.42517,
+       "p": 0.42517,
+       "fair": 2.352,
+       "min_odds": 2.39904,
+       "bet365": 1.67
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.485,
+       "p_market": 0.57483,
+       "p": 0.57483,
+       "fair": 1.73964,
+       "min_odds": 1.77444,
+       "bet365": 2.15
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "D2:2026-10-11:Hertha:Greuther Furth",
+   "league": "D2",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T11:30:00+00:00",
+   "home": "Hertha",
+   "away": "Greuther Furth",
+   "expected_goals": [
+    2.15,
+    1.16
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.60076,
+       "p_market": 0.60825,
+       "p": 0.60825,
+       "fair": 1.64407,
+       "min_odds": 1.67695,
+       "bet365": 1.57
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.2026,
+       "p_market": 0.20577,
+       "p": 0.20577,
+       "fair": 4.85982,
+       "min_odds": 4.95702,
+       "bet365": 4.1
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.19664,
+       "p_market": 0.18598,
+       "p": 0.18598,
+       "fair": 5.37682,
+       "min_odds": 5.48436,
+       "bet365": 5.0
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.64216,
+       "p_market": 0.47348,
+       "p": 0.47348,
+       "fair": 2.112,
+       "min_odds": 2.15424,
+       "bet365": 1.4
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.35784,
+       "p_market": 0.52652,
+       "p": 0.52652,
+       "fair": 1.89928,
+       "min_odds": 1.93727,
+       "bet365": 2.88
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "D2:2026-10-11:St Pauli:Karlsruhe",
+   "league": "D2",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T11:30:00+00:00",
+   "home": "St Pauli",
+   "away": "Karlsruhe",
+   "expected_goals": null,
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": null,
+       "p_market": 0.5623,
+       "p": 0.5623,
+       "fair": 1.77841,
+       "min_odds": 1.81398,
+       "bet365": 1.7
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": null,
+       "p_market": 0.22623,
+       "p": 0.22623,
+       "fair": 4.42033,
+       "min_odds": 4.50874,
+       "bet365": 4.0
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": null,
+       "p_market": 0.21147,
+       "p": 0.21147,
+       "fair": 4.72873,
+       "min_odds": 4.8233,
+       "bet365": 4.1
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.55066,
+       "p": 0.55066,
+       "fair": 1.816,
+       "min_odds": 1.85232,
+       "bet365": 1.44
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.44934,
+       "p": 0.44934,
+       "fair": 2.22549,
+       "min_odds": 2.27,
+       "bet365": 2.7
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SP1:2026-10-11:Elche:Celta",
+   "league": "SP1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T12:00:00+00:00",
+   "home": "Elche",
+   "away": "Celta",
+   "expected_goals": [
+    1.48,
+    1.4
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.39504,
+       "p_market": 0.33917,
+       "p": 0.33917,
+       "fair": 2.94838,
+       "min_odds": 3.00734,
+       "bet365": 2.8
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.24859,
+       "p_market": 0.29129,
+       "p": 0.29129,
+       "fair": 3.43304,
+       "min_odds": 3.5017,
+       "bet365": 3.2
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.35637,
+       "p_market": 0.36954,
+       "p": 0.36954,
+       "fair": 2.70604,
+       "min_odds": 2.76016,
+       "bet365": 2.63
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.54889,
+       "p_market": 0.48615,
+       "p": 0.48615,
+       "fair": 2.05699,
+       "min_odds": 2.09813,
+       "bet365": 2.0
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.45111,
+       "p_market": 0.51385,
+       "p": 0.51385,
+       "fair": 1.94608,
+       "min_odds": 1.985,
+       "bet365": 1.8
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SWZ:2026-10-11:Grasshoppers:Young Boys",
+   "league": "SWZ",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T12:00:00+00:00",
+   "home": "Grasshoppers",
+   "away": "Young Boys",
+   "expected_goals": [
+    1.46,
+    2.76
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.18359,
+       "p_market": 0.20855,
+       "p": 0.20855,
+       "fair": 4.79504,
+       "min_odds": 4.89094,
+       "bet365": 4.75
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.1681,
+       "p_market": 0.1881,
+       "p": 0.1881,
+       "fair": 5.31624,
+       "min_odds": 5.42257,
+       "bet365": 4.5
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.64831,
+       "p_market": 0.60335,
+       "p": 0.60335,
+       "fair": 1.65742,
+       "min_odds": 1.69057,
+       "bet365": 1.53
+      }
+     ]
+    },
+    "OU": {
+     "bettable": false,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.79328,
+       "p_market": null,
+       "p": null,
+       "fair": null,
+       "min_odds": null,
+       "bet365": null
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.20672,
+       "p_market": null,
+       "p": null,
+       "fair": null,
+       "min_odds": null,
+       "bet365": null
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "N1:2026-10-11:Telstar:Den Haag",
+   "league": "N1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T12:30:00+00:00",
+   "home": "Telstar",
+   "away": "Den Haag",
+   "expected_goals": [
+    1.86,
+    0.98
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.57992,
+       "p_market": 0.46506,
+       "p": 0.46506,
+       "fair": 2.15027,
+       "min_odds": 2.19327,
+       "bet365": 2.0
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.22418,
+       "p_market": 0.25456,
+       "p": 0.25456,
+       "fair": 3.92837,
+       "min_odds": 4.00694,
+       "bet365": 3.8
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.19591,
+       "p_market": 0.28038,
+       "p": 0.28038,
+       "fair": 3.56655,
+       "min_odds": 3.63788,
+       "bet365": 3.3
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.54191,
+       "p_market": 0.44014,
+       "p": 0.44014,
+       "fair": 2.272,
+       "min_odds": 2.31744,
+       "bet365": 1.53
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.45809,
+       "p_market": 0.55986,
+       "p": 0.55986,
+       "fair": 1.78616,
+       "min_odds": 1.82189,
+       "bet365": 2.4
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "N1:2026-10-11:Zwolle:Cambuur",
+   "league": "N1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T12:30:00+00:00",
+   "home": "Zwolle",
+   "away": "Cambuur",
+   "expected_goals": [
+    2.17,
+    1.76
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.47711,
+       "p_market": 0.49432,
+       "p": 0.49432,
+       "fair": 2.023,
+       "min_odds": 2.06346,
+       "bet365": 1.95
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.20524,
+       "p_market": 0.24469,
+       "p": 0.24469,
+       "fair": 4.08687,
+       "min_odds": 4.16861,
+       "bet365": 3.75
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.31765,
+       "p_market": 0.261,
+       "p": 0.261,
+       "fair": 3.83144,
+       "min_odds": 3.90807,
+       "bet365": 3.5
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.75099,
+       "p_market": 0.45455,
+       "p": 0.45455,
+       "fair": 2.2,
+       "min_odds": 2.244,
+       "bet365": 1.53
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.24901,
+       "p_market": 0.54545,
+       "p": 0.54545,
+       "fair": 1.83333,
+       "min_odds": 1.87,
+       "bet365": 2.4
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "E0:2026-10-11:Crystal Palace:Nott'm Forest",
+   "league": "E0",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T13:00:00+00:00",
+   "home": "Crystal Palace",
+   "away": "Nott'm Forest",
+   "expected_goals": [
+    1.14,
+    1.28
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.32978,
+       "p_market": 0.35731,
+       "p": 0.35731,
+       "fair": 2.79865,
+       "min_odds": 2.85463,
+       "bet365": 2.7
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.27449,
+       "p_market": 0.28792,
+       "p": 0.28792,
+       "fair": 3.47315,
+       "min_odds": 3.54261,
+       "bet365": 3.2
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.39572,
+       "p_market": 0.35476,
+       "p": 0.35476,
+       "fair": 2.81879,
+       "min_odds": 2.87516,
+       "bet365": 2.7
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.43541,
+       "p_market": 0.50627,
+       "p": 0.50627,
+       "fair": 1.97525,
+       "min_odds": 2.01475,
+       "bet365": 1.91
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.56459,
+       "p_market": 0.49373,
+       "p": 0.49373,
+       "fair": 2.02538,
+       "min_odds": 2.06589,
+       "bet365": 1.91
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "E0:2026-10-11:Hull:Everton",
+   "league": "E0",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T13:00:00+00:00",
+   "home": "Hull",
+   "away": "Everton",
+   "expected_goals": null,
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": null,
+       "p_market": 0.25757,
+       "p": 0.25757,
+       "fair": 3.88241,
+       "min_odds": 3.96006,
+       "bet365": 3.7
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": null,
+       "p_market": 0.28333,
+       "p": 0.28333,
+       "fair": 3.52946,
+       "min_odds": 3.60005,
+       "bet365": 3.4
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": null,
+       "p_market": 0.4591,
+       "p": 0.4591,
+       "fair": 2.17818,
+       "min_odds": 2.22175,
+       "bet365": 2.05
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.47739,
+       "p": 0.47739,
+       "fair": 2.09474,
+       "min_odds": 2.13663,
+       "bet365": 2.0
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.52261,
+       "p": 0.52261,
+       "fair": 1.91346,
+       "min_odds": 1.95173,
+       "bet365": 1.85
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "F1:2026-10-11:Nice:Strasbourg",
+   "league": "F1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T13:00:00+00:00",
+   "home": "Nice",
+   "away": "Strasbourg",
+   "expected_goals": [
+    1.34,
+    1.67
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.30859,
+       "p_market": 0.41422,
+       "p": 0.41422,
+       "fair": 2.41419,
+       "min_odds": 2.46248,
+       "bet365": 2.35
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.23879,
+       "p_market": 0.2651,
+       "p": 0.2651,
+       "fair": 3.77218,
+       "min_odds": 3.84762,
+       "bet365": 3.6
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.45262,
+       "p_market": 0.32068,
+       "p": 0.32068,
+       "fair": 3.11833,
+       "min_odds": 3.1807,
+       "bet365": 3.0
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.58017,
+       "p_market": 0.57,
+       "p": 0.57,
+       "fair": 1.75439,
+       "min_odds": 1.78947,
+       "bet365": 1.67
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.41983,
+       "p_market": 0.43,
+       "p": 0.43,
+       "fair": 2.32558,
+       "min_odds": 2.37209,
+       "bet365": 2.2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-11:Lazio:Monza",
+   "league": "I1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T13:00:00+00:00",
+   "home": "Lazio",
+   "away": "Monza",
+   "expected_goals": [
+    2.03,
+    0.91
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.63425,
+       "p_market": 0.60872,
+       "p": 0.60872,
+       "fair": 1.64278,
+       "min_odds": 1.67564,
+       "bet365": 1.57
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.20582,
+       "p_market": 0.23624,
+       "p": 0.23624,
+       "fair": 4.23294,
+       "min_odds": 4.3176,
+       "bet365": 4.0
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.15993,
+       "p_market": 0.15503,
+       "p": 0.15503,
+       "fair": 6.45019,
+       "min_odds": 6.57919,
+       "bet365": 6.0
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.56337,
+       "p_market": 0.51515,
+       "p": 0.51515,
+       "fair": 1.94118,
+       "min_odds": 1.98,
+       "bet365": 1.85
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.43663,
+       "p_market": 0.48485,
+       "p": 0.48485,
+       "fair": 2.0625,
+       "min_odds": 2.10375,
+       "bet365": 2.0
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-11:Lecce:Bologna",
+   "league": "I1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T13:00:00+00:00",
+   "home": "Lecce",
+   "away": "Bologna",
+   "expected_goals": [
+    0.83,
+    1.31
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.23482,
+       "p_market": 0.21148,
+       "p": 0.21148,
+       "fair": 4.72864,
+       "min_odds": 4.82322,
+       "bet365": 4.2
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.28444,
+       "p_market": 0.28398,
+       "p": 0.28398,
+       "fair": 3.52133,
+       "min_odds": 3.59176,
+       "bet365": 3.3
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.48074,
+       "p_market": 0.50454,
+       "p": 0.50454,
+       "fair": 1.98201,
+       "min_odds": 2.02165,
+       "bet365": 1.85
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.36123,
+       "p_market": 0.44862,
+       "p": 0.44862,
+       "fair": 2.22905,
+       "min_odds": 2.27363,
+       "bet365": 2.1
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.63877,
+       "p_market": 0.55138,
+       "p": 0.55138,
+       "fair": 1.81364,
+       "min_odds": 1.84991,
+       "bet365": 1.73
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "D1:2026-10-11:FC Koln:M'gladbach",
+   "league": "D1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T13:30:00+00:00",
+   "home": "FC Koln",
+   "away": "M'gladbach",
+   "expected_goals": [
+    1.82,
+    1.49
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.45482,
+       "p_market": 0.47059,
+       "p": 0.47059,
+       "fair": 2.125,
+       "min_odds": 2.1675,
+       "bet365": 2.0
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.2269,
+       "p_market": 0.24706,
+       "p": 0.24706,
+       "fair": 4.04762,
+       "min_odds": 4.12857,
+       "bet365": 3.9
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.31828,
+       "p_market": 0.28235,
+       "p": 0.28235,
+       "fair": 3.54167,
+       "min_odds": 3.6125,
+       "bet365": 3.3
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.64214,
+       "p_market": 0.64169,
+       "p": 0.64169,
+       "fair": 1.55839,
+       "min_odds": 1.58956,
+       "bet365": 1.5
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.35786,
+       "p_market": 0.35831,
+       "p": 0.35831,
+       "fair": 2.79085,
+       "min_odds": 2.84667,
+       "bet365": 2.63
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SP1:2026-10-11:Sociedad:La Coruna",
+   "league": "SP1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T14:15:00+00:00",
+   "home": "Sociedad",
+   "away": "La Coruna",
+   "expected_goals": [
+    1.62,
+    1.33
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.44245,
+       "p_market": 0.59645,
+       "p": 0.59645,
+       "fair": 1.67659,
+       "min_odds": 1.71013,
+       "bet365": 1.62
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.2428,
+       "p_market": 0.23574,
+       "p": 0.23574,
+       "fair": 4.24198,
+       "min_odds": 4.32682,
+       "bet365": 3.9
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.31475,
+       "p_market": 0.16781,
+       "p": 0.16781,
+       "fair": 5.95898,
+       "min_odds": 6.07816,
+       "bet365": 5.5
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.56433,
+       "p_market": 0.54545,
+       "p": 0.54545,
+       "fair": 1.83333,
+       "min_odds": 1.87,
+       "bet365": 1.73
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.43567,
+       "p_market": 0.45455,
+       "p": 0.45455,
+       "fair": 2.2,
+       "min_odds": 2.244,
+       "bet365": 2.1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SWZ:2026-10-11:St. Gallen:Lausanne",
+   "league": "SWZ",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T14:30:00+00:00",
+   "home": "St. Gallen",
+   "away": "Lausanne",
+   "expected_goals": [
+    1.82,
+    1.03
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.55828,
+       "p_market": 0.59733,
+       "p": 0.59733,
+       "fair": 1.67412,
+       "min_odds": 1.7076,
+       "bet365": 1.53
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.22902,
+       "p_market": 0.21049,
+       "p": 0.21049,
+       "fair": 4.75088,
+       "min_odds": 4.8459,
+       "bet365": 3.9
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.21269,
+       "p_market": 0.19218,
+       "p": 0.19218,
+       "fair": 5.20335,
+       "min_odds": 5.30741,
+       "bet365": 5.75
+      }
+     ]
+    },
+    "OU": {
+     "bettable": false,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.54305,
+       "p_market": null,
+       "p": null,
+       "fair": null,
+       "min_odds": null,
+       "bet365": null
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.45695,
+       "p_market": null,
+       "p": null,
+       "fair": null,
+       "min_odds": null,
+       "bet365": null
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SWZ:2026-10-11:Vaduz:Basel",
+   "league": "SWZ",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T14:30:00+00:00",
+   "home": "Vaduz",
+   "away": "Basel",
+   "expected_goals": [
+    1.99,
+    2.16
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.36676,
+       "p_market": 0.53965,
+       "p": 0.53965,
+       "fair": 1.85305,
+       "min_odds": 1.89012,
+       "bet365": 2.55
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.20246,
+       "p_market": 0.16941,
+       "p": 0.16941,
+       "fair": 5.90288,
+       "min_odds": 6.02093,
+       "bet365": 3.8
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.43078,
+       "p_market": 0.29094,
+       "p": 0.29094,
+       "fair": 3.43712,
+       "min_odds": 3.50586,
+       "bet365": 2.32
+      }
+     ]
+    },
+    "OU": {
+     "bettable": false,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.78218,
+       "p_market": null,
+       "p": null,
+       "fair": null,
+       "min_odds": null,
+       "bet365": null
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.21782,
+       "p_market": null,
+       "p": null,
+       "fair": null,
+       "min_odds": null,
+       "bet365": null
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "N1:2026-10-11:Excelsior:Groningen",
+   "league": "N1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T14:45:00+00:00",
+   "home": "Excelsior",
+   "away": "Groningen",
+   "expected_goals": [
+    1.54,
+    1.31
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.42761,
+       "p_market": 0.57215,
+       "p": 0.57215,
+       "fair": 1.74779,
+       "min_odds": 1.78275,
+       "bet365": 2.55
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.24852,
+       "p_market": 0.17556,
+       "p": 0.17556,
+       "fair": 5.69594,
+       "min_odds": 5.80986,
+       "bet365": 3.6
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.32387,
+       "p_market": 0.25229,
+       "p": 0.25229,
+       "fair": 3.96375,
+       "min_odds": 4.04302,
+       "bet365": 2.55
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.54171,
+       "p_market": 0.52133,
+       "p": 0.52133,
+       "fair": 1.91818,
+       "min_odds": 1.95655,
+       "bet365": 1.53
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.45829,
+       "p_market": 0.47867,
+       "p": 0.47867,
+       "fair": 2.08911,
+       "min_odds": 2.13089,
+       "bet365": 2.4
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "F1:2026-10-11:Rennes:Auxerre",
+   "league": "F1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T15:15:00+00:00",
+   "home": "Rennes",
+   "away": "Auxerre",
+   "expected_goals": [
+    1.96,
+    1.18
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.55622,
+       "p_market": 0.67798,
+       "p": 0.67798,
+       "fair": 1.47497,
+       "min_odds": 1.50447,
+       "bet365": 1.44
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.21828,
+       "p_market": 0.18548,
+       "p": 0.18548,
+       "fair": 5.39128,
+       "min_odds": 5.49911,
+       "bet365": 4.75
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.2255,
+       "p_market": 0.13654,
+       "p": 0.13654,
+       "fair": 7.32401,
+       "min_odds": 7.47049,
+       "bet365": 7.0
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.60726,
+       "p_market": 0.63981,
+       "p": 0.63981,
+       "fair": 1.56296,
+       "min_odds": 1.59422,
+       "bet365": 1.5
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.39274,
+       "p_market": 0.36019,
+       "p": 0.36019,
+       "fair": 2.77632,
+       "min_odds": 2.83184,
+       "bet365": 2.63
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "D1:2026-10-11:Freiburg:Schalke 04",
+   "league": "D1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T15:30:00+00:00",
+   "home": "Freiburg",
+   "away": "Schalke 04",
+   "expected_goals": null,
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": null,
+       "p_market": 0.59291,
+       "p": 0.59291,
+       "fair": 1.68659,
+       "min_odds": 1.72032,
+       "bet365": 1.65
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": null,
+       "p_market": 0.23027,
+       "p": 0.23027,
+       "fair": 4.34271,
+       "min_odds": 4.42956,
+       "bet365": 4.0
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": null,
+       "p_market": 0.17682,
+       "p": 0.17682,
+       "fair": 5.65562,
+       "min_odds": 5.76873,
+       "bet365": 5.25
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.60147,
+       "p": 0.60147,
+       "fair": 1.6626,
+       "min_odds": 1.69585,
+       "bet365": 1.62
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.39853,
+       "p": 0.39853,
+       "fair": 2.5092,
+       "min_odds": 2.55939,
+       "bet365": 2.3
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "E0:2026-10-11:Liverpool:Man City",
+   "league": "E0",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T15:30:00+00:00",
+   "home": "Liverpool",
+   "away": "Man City",
+   "expected_goals": [
+    1.36,
+    1.67
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.3134,
+       "p_market": 0.35448,
+       "p": 0.35448,
+       "fair": 2.82102,
+       "min_odds": 2.87744,
+       "bet365": 2.7
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.23825,
+       "p_market": 0.2578,
+       "p": 0.2578,
+       "fair": 3.87891,
+       "min_odds": 3.95648,
+       "bet365": 3.6
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.44835,
+       "p_market": 0.38771,
+       "p": 0.38771,
+       "fair": 2.57922,
+       "min_odds": 2.63081,
+       "bet365": 2.45
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.58494,
+       "p_market": 0.61244,
+       "p": 0.61244,
+       "fair": 1.63281,
+       "min_odds": 1.66547,
+       "bet365": 1.57
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.41506,
+       "p_market": 0.38756,
+       "p": 0.38756,
+       "fair": 2.58025,
+       "min_odds": 2.63185,
+       "bet365": 2.38
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-11:Sassuolo:Milan",
+   "league": "I1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T16:00:00+00:00",
+   "home": "Sassuolo",
+   "away": "Milan",
+   "expected_goals": [
+    1.12,
+    1.57
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.26974,
+       "p_market": 0.22123,
+       "p": 0.22123,
+       "fair": 4.52019,
+       "min_odds": 4.6106,
+       "bet365": 4.33
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.2509,
+       "p_market": 0.25203,
+       "p": 0.25203,
+       "fair": 3.96772,
+       "min_odds": 4.04708,
+       "bet365": 3.6
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.47937,
+       "p_market": 0.52674,
+       "p": 0.52674,
+       "fair": 1.89848,
+       "min_odds": 1.93645,
+       "bet365": 1.75
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.50395,
+       "p_market": 0.54912,
+       "p": 0.54912,
+       "fair": 1.8211,
+       "min_odds": 1.85752,
+       "bet365": 1.73
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.49605,
+       "p_market": 0.45088,
+       "p": 0.45088,
+       "fair": 2.21788,
+       "min_odds": 2.26223,
+       "bet365": 2.1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SP1:2026-10-11:Betis:Osasuna",
+   "league": "SP1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T16:30:00+00:00",
+   "home": "Betis",
+   "away": "Osasuna",
+   "expected_goals": [
+    1.88,
+    0.88
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.60847,
+       "p_market": 0.62431,
+       "p": 0.62431,
+       "fair": 1.60177,
+       "min_odds": 1.63381,
+       "bet365": 1.57
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.22045,
+       "p_market": 0.22059,
+       "p": 0.22059,
+       "fair": 4.53331,
+       "min_odds": 4.62398,
+       "bet365": 4.0
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.17108,
+       "p_market": 0.1551,
+       "p": 0.1551,
+       "fair": 6.44738,
+       "min_odds": 6.57633,
+       "bet365": 6.0
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.52011,
+       "p_market": 0.54408,
+       "p": 0.54408,
+       "fair": 1.83796,
+       "min_odds": 1.87472,
+       "bet365": 1.73
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.47989,
+       "p_market": 0.45592,
+       "p": 0.45592,
+       "fair": 2.19337,
+       "min_odds": 2.23724,
+       "bet365": 2.1
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "F1:2026-10-11:Troyes:Marseille",
+   "league": "F1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T18:45:00+00:00",
+   "home": "Troyes",
+   "away": "Marseille",
+   "expected_goals": null,
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": null,
+       "p_market": 0.25769,
+       "p": 0.25769,
+       "fair": 3.88062,
+       "min_odds": 3.95824,
+       "bet365": 3.75
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": null,
+       "p_market": 0.25117,
+       "p": 0.25117,
+       "fair": 3.98142,
+       "min_odds": 4.06105,
+       "bet365": 3.75
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": null,
+       "p_market": 0.49114,
+       "p": 0.49114,
+       "fair": 2.03607,
+       "min_odds": 2.07679,
+       "bet365": 1.91
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.59753,
+       "p": 0.59753,
+       "fair": 1.67355,
+       "min_odds": 1.70702,
+       "bet365": 1.57
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.40247,
+       "p": 0.40247,
+       "fair": 2.48466,
+       "min_odds": 2.53436,
+       "bet365": 2.38
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-11:Cagliari:Juventus",
+   "league": "I1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T18:45:00+00:00",
+   "home": "Cagliari",
+   "away": "Juventus",
+   "expected_goals": [
+    0.81,
+    1.45
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.21029,
+       "p_market": 0.14089,
+       "p": 0.14089,
+       "fair": 7.09783,
+       "min_odds": 7.23978,
+       "bet365": 7.0
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.26777,
+       "p_market": 0.24655,
+       "p": 0.24655,
+       "fair": 4.0559,
+       "min_odds": 4.13702,
+       "bet365": 3.75
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.52194,
+       "p_market": 0.61256,
+       "p": 0.61256,
+       "fair": 1.6325,
+       "min_odds": 1.66515,
+       "bet365": 1.55
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.39444,
+       "p_market": 0.47103,
+       "p": 0.47103,
+       "fair": 2.12299,
+       "min_odds": 2.16545,
+       "bet365": 2.0
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.60556,
+       "p_market": 0.52897,
+       "p": 0.52897,
+       "fair": 1.89048,
+       "min_odds": 1.92829,
+       "bet365": 1.85
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SP1:2026-10-11:Santander:Valencia",
+   "league": "SP1",
+   "date": "2026-10-11",
+   "kickoff": "2026-10-11T19:00:00+00:00",
+   "home": "Santander",
+   "away": "Valencia",
+   "expected_goals": [
+    1.95,
+    1.79
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.42592,
+       "p_market": 0.40858,
+       "p": 0.40858,
+       "fair": 2.4475,
+       "min_odds": 2.49645,
+       "bet365": 2.3
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.21415,
+       "p_market": 0.26723,
+       "p": 0.26723,
+       "fair": 3.74204,
+       "min_odds": 3.81688,
+       "bet365": 3.6
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.35993,
+       "p_market": 0.32419,
+       "p": 0.32419,
+       "fair": 3.08465,
+       "min_odds": 3.14635,
+       "bet365": 3.0
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.721,
+       "p_market": 0.57568,
+       "p": 0.57568,
+       "fair": 1.73707,
+       "min_odds": 1.77181,
+       "bet365": 1.67
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.279,
+       "p_market": 0.42432,
+       "p": 0.42432,
+       "fair": 2.35673,
+       "min_odds": 2.40386,
+       "bet365": 2.2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-12:Atalanta:Venezia",
+   "league": "I1",
+   "date": "2026-10-12",
+   "kickoff": "2026-10-12T16:30:00+00:00",
+   "home": "Atalanta",
+   "away": "Venezia",
+   "expected_goals": [
+    2.2,
+    0.71
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.71405,
+       "p_market": 0.61649,
+       "p": 0.61649,
+       "fair": 1.62209,
+       "min_odds": 1.65453,
+       "bet365": 1.57
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.17943,
+       "p_market": 0.22939,
+       "p": 0.22939,
+       "fair": 4.35938,
+       "min_odds": 4.44656,
+       "bet365": 4.2
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.10652,
+       "p_market": 0.15412,
+       "p": 0.15412,
+       "fair": 6.48837,
+       "min_odds": 6.61814,
+       "bet365": 5.75
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.55682,
+       "p_market": 0.61501,
+       "p": 0.61501,
+       "fair": 1.62598,
+       "min_odds": 1.6585,
+       "bet365": 1.57
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.44318,
+       "p_market": 0.38499,
+       "p": 0.38499,
+       "fair": 2.59748,
+       "min_odds": 2.64943,
+       "bet365": 2.38
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-12:Torino:Udinese",
+   "league": "I1",
+   "date": "2026-10-12",
+   "kickoff": "2026-10-12T18:45:00+00:00",
+   "home": "Torino",
+   "away": "Udinese",
+   "expected_goals": [
+    1.31,
+    1.4
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.34952,
+       "p_market": 0.40523,
+       "p": 0.40523,
+       "fair": 2.46775,
+       "min_odds": 2.51711,
+       "bet365": 2.3
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.25713,
+       "p_market": 0.29962,
+       "p": 0.29962,
+       "fair": 3.33753,
+       "min_odds": 3.40428,
+       "bet365": 3.2
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.39335,
+       "p_market": 0.29515,
+       "p": 0.29515,
+       "fair": 3.3881,
+       "min_odds": 3.45586,
+       "bet365": 3.3
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.50951,
+       "p_market": 0.44,
+       "p": 0.44,
+       "fair": 2.27273,
+       "min_odds": 2.31818,
+       "bet365": 2.1
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.49049,
+       "p_market": 0.56,
+       "p": 0.56,
+       "fair": 1.78571,
+       "min_odds": 1.82143,
+       "bet365": 1.73
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "E0:2026-10-12:Coventry:Newcastle",
+   "league": "E0",
+   "date": "2026-10-12",
+   "kickoff": "2026-10-12T19:00:00+00:00",
+   "home": "Coventry",
+   "away": "Newcastle",
+   "expected_goals": null,
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": null,
+       "p_market": 0.27475,
+       "p": 0.27475,
+       "fair": 3.63964,
+       "min_odds": 3.71243,
+       "bet365": 3.3
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": null,
+       "p_market": 0.26733,
+       "p": 0.26733,
+       "fair": 3.74074,
+       "min_odds": 3.81556,
+       "bet365": 3.7
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": null,
+       "p_market": 0.45792,
+       "p": 0.45792,
+       "fair": 2.18378,
+       "min_odds": 2.22746,
+       "bet365": 2.1
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.57778,
+       "p": 0.57778,
+       "fair": 1.73077,
+       "min_odds": 1.76538,
+       "bet365": 1.67
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": null,
+       "p_market": 0.42222,
+       "p": 0.42222,
+       "fair": 2.36842,
+       "min_odds": 2.41579,
+       "bet365": 2.2
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "SP1:2026-10-12:Levante:Sevilla",
+   "league": "SP1",
+   "date": "2026-10-12",
+   "kickoff": "2026-10-12T19:00:00+00:00",
+   "home": "Levante",
+   "away": "Sevilla",
+   "expected_goals": [
+    1.61,
+    1.23
+   ],
+   "reference": "Betfair",
+   "markets": {
+    "1X2": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p_model": 0.46173,
+       "p_market": 0.34236,
+       "p": 0.34236,
+       "fair": 2.9209,
+       "min_odds": 2.97931,
+       "bet365": 2.75
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p_model": 0.24579,
+       "p_market": 0.29228,
+       "p": 0.29228,
+       "fair": 3.42133,
+       "min_odds": 3.48976,
+       "bet365": 3.25
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p_model": 0.29248,
+       "p_market": 0.36536,
+       "p": 0.36536,
+       "fair": 2.73706,
+       "min_odds": 2.7918,
+       "bet365": 2.63
+      }
+     ]
+    },
+    "OU": {
+     "bettable": true,
+     "edge": 0.02,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p_model": 0.53988,
+       "p_market": 0.46702,
+       "p": 0.46702,
+       "fair": 2.14124,
+       "min_odds": 2.18407,
+       "bet365": 2.0
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p_model": 0.46012,
+       "p_market": 0.53298,
+       "p": 0.53298,
+       "fair": 1.87624,
+       "min_odds": 1.91376,
+       "bet365": 1.8
+      }
+     ]
+    }
+   }
+  }
+ ]
+}

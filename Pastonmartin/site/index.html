@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pastonmartin</title>
+  <meta name="theme-color" content="#121211">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Pastonmartin</h1>
+      <p id="stand">Value-Wetten für Sporttip</p>
+    </header>
+
+    <nav role="tablist">
+      <button role="tab" data-view="tips" aria-selected="true">Tipps</button>
+      <button role="tab" data-view="backtest" aria-selected="false">Backtest</button>
+      <button role="tab" data-view="journal" aria-selected="false">Tagebuch</button>
+      <button role="tab" data-view="info" aria-selected="false">Info</button>
+    </nav>
+
+    <!-- Tipps -->
+    <section id="view-tips">
+      <div class="card note small">
+        Trag die <b>Sporttip-Quote</b> ein. Ist sie mindestens so hoch wie die <b>Mindestquote</b>,
+        hat die Wette Value, und die App sagt dir, wie viel du setzen sollst.
+      </div>
+      <div class="toolbar">
+        <label class="field">Budget CHF <input id="bankroll" type="number" inputmode="decimal" min="0" step="10" style="width:90px"></label>
+        <button class="chip" id="market-1x2" aria-pressed="true">1X2</button>
+        <button class="chip" id="market-ou" aria-pressed="true">Tore</button>
+      </div>
+      <div class="toolbar" id="league-filter"></div>
+      <div id="tips-list"></div>
+    </section>
+
+    <!-- Backtest -->
+    <section id="view-backtest" class="hidden"></section>
+
+    <!-- Tagebuch -->
+    <section id="view-journal" class="hidden"></section>
+
+    <!-- Info -->
+    <section id="view-info" class="hidden">
+      <h2>So funktioniert Pastonmartin</h2>
+      <div class="card">
+        <ol>
+          <li><b>Eigenes Modell:</b> Aus den Resultaten der letzten drei Jahre lernt ein Poisson-Modell,
+            wie stark jedes Team angreift und verteidigt. Daraus folgen Wahrscheinlichkeiten für 1/X/2
+            und über/unter 2.5 Tore.</li>
+          <li><b>Value-Finder:</b> Aus den Quoten von Pinnacle (dem genausten Buchmacher der Welt)
+            wird die Marge herausgerechnet. Das ergibt die faire Wahrscheinlichkeit des Marktes.
+            Fehlt Pinnacle, nehmen wir Betfair Exchange oder den Durchschnitt aller Buchmacher.</li>
+          <li><b>Kombination:</b> Beide werden gemischt. Wie stark das eigene Modell zählt, hat der
+            Backtest bestimmt.</li>
+          <li><b>Mindestquote:</b> (1 + Mindest-Value) ÷ Wahrscheinlichkeit. Erst ab dieser
+            Sporttip-Quote lohnt sich die Wette.</li>
+          <li><b>Einsatz:</b> ¼-Kelly, höchstens 2 % vom Budget. Kleine Einsätze, damit eine
+            Pechsträhne das Budget nicht auffrisst.</li>
+        </ol>
+      </div>
+      <h2>Der Ablauf im Hintergrund</h2>
+      <div class="card">
+        <p>Die Seite selbst rechnet nichts. Ein GitHub-Roboter lädt täglich die neusten Resultate und
+          Quoten von football-data.co.uk, rechnet alles in Python durch und legt fertige Dateien hier ab.
+          Einmal pro Woche läuft der ganze Backtest neu.</p>
+      </div>
+      <h2>Wichtig</h2>
+      <div class="card">
+        <p>Ein positiver Backtest ist keine Garantie. Auch ein gutes System hat lange Verlustphasen.
+          Setz nur ein festes Budget, das du verlieren kannst, und schiess nie Geld nach.</p>
+        <p class="small muted">Wenn Wetten aufhört, Spass zu machen: <a href="https://www.suchtschweiz.ch" target="_blank" rel="noopener">Sucht Schweiz</a> hilft anonym.</p>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
