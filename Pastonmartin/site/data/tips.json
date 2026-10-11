@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-11T13:28:36+00:00",
+ "generated": "2026-10-11T13:34:50+00:00",
  "params": {
   "model": {
    "decay": 0.003,
@@ -35,12 +35,12 @@
    }
   },
   "edge": {
-   "1X2": 0.03,
-   "OU": 0.1
+   "1X2": 0.01,
+   "OU": 0.02
   },
   "max_odds": {
    "1X2": 8.0,
-   "OU": 2.5
+   "OU": 8.0
   },
   "derived_extra_edge": 0.01,
   "derived_rho": -0.1,
@@ -49,7 +49,8 @@
    "1X2": 0.0,
    "OU": 0.0
   },
-  "haircut": 0.04
+  "haircut": 0.04,
+  "tuning_scenario": "book"
  },
  "kelly_fraction": 0.25,
  "max_stake": 0.02,
@@ -99,13 +100,119 @@
   "Inter Milan": "Inter",
   "AC Milan": "Milan"
  },
- "market_names": {
-  "1X2": "Sieger",
-  "DC": "Doppelte Chance",
-  "OU15": "Tore 1.5",
-  "OU": "Tore 2.5",
-  "OU35": "Tore 3.5",
-  "BTTS": "Beide treffen"
+ "market_defs": {
+  "1X2": {
+   "name": "Sieger",
+   "base": "1X2",
+   "derived": false,
+   "selections": [
+    [
+     "H",
+     "1",
+     "Heimsieg"
+    ],
+    [
+     "D",
+     "X",
+     "Unentschieden"
+    ],
+    [
+     "A",
+     "2",
+     "Auswärtssieg"
+    ]
+   ]
+  },
+  "DC": {
+   "name": "Doppelte Chance",
+   "base": "1X2",
+   "derived": false,
+   "selections": [
+    [
+     "1X",
+     "1X",
+     "Heim oder Remis"
+    ],
+    [
+     "12",
+     "12",
+     "Kein Remis"
+    ],
+    [
+     "X2",
+     "X2",
+     "Remis oder Gast"
+    ]
+   ]
+  },
+  "OU15": {
+   "name": "Tore 1.5",
+   "base": "OU",
+   "derived": true,
+   "selections": [
+    [
+     "O15",
+     "Ü1.5",
+     "Über 1.5 Tore"
+    ],
+    [
+     "U15",
+     "U1.5",
+     "Unter 1.5 Tore"
+    ]
+   ]
+  },
+  "OU": {
+   "name": "Tore 2.5",
+   "base": "OU",
+   "derived": false,
+   "selections": [
+    [
+     "O",
+     "Ü2.5",
+     "Über 2.5 Tore"
+    ],
+    [
+     "U",
+     "U2.5",
+     "Unter 2.5 Tore"
+    ]
+   ]
+  },
+  "OU35": {
+   "name": "Tore 3.5",
+   "base": "OU",
+   "derived": true,
+   "selections": [
+    [
+     "O35",
+     "Ü3.5",
+     "Über 3.5 Tore"
+    ],
+    [
+     "U35",
+     "U3.5",
+     "Unter 3.5 Tore"
+    ]
+   ]
+  },
+  "BTTS": {
+   "name": "Beide treffen",
+   "base": "OU",
+   "derived": true,
+   "selections": [
+    [
+     "BY",
+     "Ja",
+     "Beide Teams treffen"
+    ],
+    [
+     "BN",
+     "Nein",
+     "Nicht beide treffen"
+    ]
+   ]
+  }
  },
  "odds_api": false,
  "matches": [
@@ -145,7 +252,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -157,7 +264,7 @@
        "p_market": 0.6369,
        "p_model": 0.6798,
        "fair": 1.5701,
-       "min_odds": 1.6172
+       "min_odds": 1.5858
       },
       {
        "key": "D",
@@ -167,7 +274,7 @@
        "p_market": 0.2097,
        "p_model": 0.1859,
        "fair": 4.7681,
-       "min_odds": 4.9112
+       "min_odds": 4.8158
       },
       {
        "key": "A",
@@ -177,12 +284,12 @@
        "p_market": 0.1534,
        "p_model": 0.1343,
        "fair": 6.5208,
-       "min_odds": 6.7164
+       "min_odds": 6.586
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -194,7 +301,7 @@
        "p_market": 0.8466,
        "p_model": 0.8657,
        "fair": 1.1811,
-       "min_odds": 1.2166
+       "min_odds": 1.1929
       },
       {
        "key": "12",
@@ -204,7 +311,7 @@
        "p_market": 0.7903,
        "p_model": 0.8141,
        "fair": 1.2654,
-       "min_odds": 1.3033
+       "min_odds": 1.278
       },
       {
        "key": "X2",
@@ -214,13 +321,13 @@
        "p_market": 0.3631,
        "p_model": 0.3202,
        "fair": 2.7542,
-       "min_odds": 2.8368
+       "min_odds": 2.7817
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -231,7 +338,7 @@
        "p_market": 0.8106,
        "p_model": 0.8506,
        "fair": 1.2337,
-       "min_odds": 1.3694
+       "min_odds": 1.2707
       },
       {
        "key": "U15",
@@ -241,13 +348,13 @@
        "p_market": 0.1894,
        "p_model": 0.1494,
        "fair": 5.2797,
-       "min_odds": 5.8605
+       "min_odds": 5.4381
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -258,7 +365,7 @@
        "p_market": 0.5742,
        "p_model": 0.6491,
        "fair": 1.7416,
-       "min_odds": 1.9157
+       "min_odds": 1.7764
       },
       {
        "key": "U",
@@ -268,13 +375,13 @@
        "p_market": 0.4258,
        "p_model": 0.3509,
        "fair": 2.3485,
-       "min_odds": 2.5833
+       "min_odds": 2.3955
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -285,7 +392,7 @@
        "p_market": 0.3532,
        "p_model": 0.4291,
        "fair": 2.8316,
-       "min_odds": 3.1431
+       "min_odds": 2.9166
       },
       {
        "key": "U35",
@@ -295,13 +402,13 @@
        "p_market": 0.6468,
        "p_model": 0.5709,
        "fair": 1.546,
-       "min_odds": 1.716
+       "min_odds": 1.5923
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -312,7 +419,7 @@
        "p_market": 0.5343,
        "p_model": 0.568,
        "fair": 1.8716,
-       "min_odds": 2.0775
+       "min_odds": 1.9278
       },
       {
        "key": "BN",
@@ -322,7 +429,7 @@
        "p_market": 0.4657,
        "p_model": 0.432,
        "fair": 2.1473,
-       "min_odds": 2.3835
+       "min_odds": 2.2117
       }
      ]
     }
@@ -364,7 +471,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -376,7 +483,7 @@
        "p_market": 0.3649,
        "p_model": 0.3791,
        "fair": 2.7405,
-       "min_odds": 2.8227
+       "min_odds": 2.7679
       },
       {
        "key": "D",
@@ -386,7 +493,7 @@
        "p_market": 0.2702,
        "p_model": 0.2776,
        "fair": 3.7009,
-       "min_odds": 3.8119
+       "min_odds": 3.7379
       },
       {
        "key": "A",
@@ -396,12 +503,12 @@
        "p_market": 0.3649,
        "p_model": 0.3433,
        "fair": 2.7405,
-       "min_odds": 2.8227
+       "min_odds": 2.7679
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -413,7 +520,7 @@
        "p_market": 0.6351,
        "p_model": 0.6567,
        "fair": 1.5745,
-       "min_odds": 1.6218
+       "min_odds": 1.5903
       },
       {
        "key": "12",
@@ -423,7 +530,7 @@
        "p_market": 0.7298,
        "p_model": 0.7224,
        "fair": 1.3703,
-       "min_odds": 1.4114
+       "min_odds": 1.384
       },
       {
        "key": "X2",
@@ -433,13 +540,13 @@
        "p_market": 0.6351,
        "p_model": 0.6209,
        "fair": 1.5745,
-       "min_odds": 1.6218
+       "min_odds": 1.5903
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -450,7 +557,7 @@
        "p_market": 0.8206,
        "p_model": 0.7347,
        "fair": 1.2187,
-       "min_odds": 1.3527
+       "min_odds": 1.2552
       },
       {
        "key": "U15",
@@ -460,13 +567,13 @@
        "p_market": 0.1794,
        "p_model": 0.2653,
        "fair": 5.5728,
-       "min_odds": 6.1858
+       "min_odds": 5.74
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -477,7 +584,7 @@
        "p_market": 0.5929,
        "p_model": 0.4762,
        "fair": 1.6867,
-       "min_odds": 1.8554
+       "min_odds": 1.7204
       },
       {
        "key": "U",
@@ -487,13 +594,13 @@
        "p_market": 0.4071,
        "p_model": 0.5238,
        "fair": 2.4562,
-       "min_odds": 2.7018
+       "min_odds": 2.5054
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -504,7 +611,7 @@
        "p_market": 0.3661,
        "p_model": 0.2593,
        "fair": 2.7313,
-       "min_odds": 3.0318
+       "min_odds": 2.8133
       },
       {
        "key": "U35",
@@ -514,13 +621,13 @@
        "p_market": 0.6339,
        "p_model": 0.7407,
        "fair": 1.5776,
-       "min_odds": 1.7511
+       "min_odds": 1.6249
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -531,7 +638,7 @@
        "p_market": 0.6247,
        "p_model": 0.5308,
        "fair": 1.6007,
-       "min_odds": 1.7768
+       "min_odds": 1.6487
       },
       {
        "key": "BN",
@@ -541,7 +648,7 @@
        "p_market": 0.3753,
        "p_model": 0.4692,
        "fair": 2.6647,
-       "min_odds": 2.9579
+       "min_odds": 2.7447
       }
      ]
     }
@@ -583,7 +690,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -595,7 +702,7 @@
        "p_market": 0.6016,
        "p_model": 0.6385,
        "fair": 1.6621,
-       "min_odds": 1.712
+       "min_odds": 1.6787
       },
       {
        "key": "D",
@@ -605,7 +712,7 @@
        "p_market": 0.2292,
        "p_model": 0.202,
        "fair": 4.3637,
-       "min_odds": 4.4946
+       "min_odds": 4.4073
       },
       {
        "key": "A",
@@ -615,12 +722,12 @@
        "p_market": 0.1692,
        "p_model": 0.1595,
        "fair": 5.9105,
-       "min_odds": 6.0878
+       "min_odds": 5.9696
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -632,7 +739,7 @@
        "p_market": 0.8308,
        "p_model": 0.8405,
        "fair": 1.2036,
-       "min_odds": 1.2398
+       "min_odds": 1.2157
       },
       {
        "key": "12",
@@ -642,7 +749,7 @@
        "p_market": 0.7708,
        "p_model": 0.798,
        "fair": 1.2973,
-       "min_odds": 1.3362
+       "min_odds": 1.3103
       },
       {
        "key": "X2",
@@ -652,13 +759,13 @@
        "p_market": 0.3984,
        "p_model": 0.3615,
        "fair": 2.5103,
-       "min_odds": 2.5856
+       "min_odds": 2.5354
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -669,7 +776,7 @@
        "p_market": 0.8131,
        "p_model": 0.8393,
        "fair": 1.2298,
-       "min_odds": 1.3651
+       "min_odds": 1.2667
       },
       {
        "key": "U15",
@@ -679,13 +786,13 @@
        "p_market": 0.1869,
        "p_model": 0.1607,
        "fair": 5.3516,
-       "min_odds": 5.9403
+       "min_odds": 5.5122
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -696,7 +803,7 @@
        "p_market": 0.5804,
        "p_model": 0.6299,
        "fair": 1.7228,
-       "min_odds": 1.8951
+       "min_odds": 1.7573
       },
       {
        "key": "U",
@@ -706,13 +813,13 @@
        "p_market": 0.4196,
        "p_model": 0.3701,
        "fair": 2.3835,
-       "min_odds": 2.6218
+       "min_odds": 2.4311
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -723,7 +830,7 @@
        "p_market": 0.3564,
        "p_model": 0.4081,
        "fair": 2.8055,
-       "min_odds": 3.1141
+       "min_odds": 2.8897
       },
       {
        "key": "U35",
@@ -733,13 +840,13 @@
        "p_market": 0.6436,
        "p_model": 0.5919,
        "fair": 1.5539,
-       "min_odds": 1.7248
+       "min_odds": 1.6005
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -750,7 +857,7 @@
        "p_market": 0.5566,
        "p_model": 0.5773,
        "fair": 1.7966,
-       "min_odds": 1.9942
+       "min_odds": 1.8505
       },
       {
        "key": "BN",
@@ -760,7 +867,7 @@
        "p_market": 0.4434,
        "p_model": 0.4227,
        "fair": 2.2553,
-       "min_odds": 2.5034
+       "min_odds": 2.323
       }
      ]
     }
@@ -802,7 +909,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -814,7 +921,7 @@
        "p_market": 0.4229,
        "p_model": 0.4356,
        "fair": 2.3648,
-       "min_odds": 2.4358
+       "min_odds": 2.3885
       },
       {
        "key": "D",
@@ -824,7 +931,7 @@
        "p_market": 0.2638,
        "p_model": 0.2629,
        "fair": 3.7907,
-       "min_odds": 3.9045
+       "min_odds": 3.8286
       },
       {
        "key": "A",
@@ -834,12 +941,12 @@
        "p_market": 0.3133,
        "p_model": 0.3014,
        "fair": 3.1915,
-       "min_odds": 3.2872
+       "min_odds": 3.2234
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -851,7 +958,7 @@
        "p_market": 0.6867,
        "p_model": 0.6986,
        "fair": 1.4563,
-       "min_odds": 1.5
+       "min_odds": 1.4709
       },
       {
        "key": "12",
@@ -861,7 +968,7 @@
        "p_market": 0.7362,
        "p_model": 0.7371,
        "fair": 1.3583,
-       "min_odds": 1.3991
+       "min_odds": 1.3719
       },
       {
        "key": "X2",
@@ -871,13 +978,13 @@
        "p_market": 0.5771,
        "p_model": 0.5644,
        "fair": 1.7327,
-       "min_odds": 1.7847
+       "min_odds": 1.75
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -888,7 +995,7 @@
        "p_market": 0.6902,
        "p_model": 0.7702,
        "fair": 1.4488,
-       "min_odds": 1.6082
+       "min_odds": 1.4923
       },
       {
        "key": "U15",
@@ -898,13 +1005,13 @@
        "p_market": 0.3098,
        "p_model": 0.2298,
        "fair": 3.2282,
-       "min_odds": 3.5833
+       "min_odds": 3.3251
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -915,7 +1022,7 @@
        "p_market": 0.3959,
        "p_model": 0.5241,
        "fair": 2.5262,
-       "min_odds": 2.7788
+       "min_odds": 2.5767
       },
       {
        "key": "U",
@@ -925,13 +1032,13 @@
        "p_market": 0.6041,
        "p_model": 0.4759,
        "fair": 1.6552,
-       "min_odds": 1.8208
+       "min_odds": 1.6883
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -942,7 +1049,7 @@
        "p_market": 0.2078,
        "p_model": 0.302,
        "fair": 4.8115,
-       "min_odds": 5.3407
+       "min_odds": 4.9558
       },
       {
        "key": "U35",
@@ -952,13 +1059,13 @@
        "p_market": 0.7922,
        "p_model": 0.698,
        "fair": 1.2624,
-       "min_odds": 1.4012
+       "min_odds": 1.3002
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -969,7 +1076,7 @@
        "p_market": 0.4833,
        "p_model": 0.563,
        "fair": 2.0692,
-       "min_odds": 2.2968
+       "min_odds": 2.1312
       },
       {
        "key": "BN",
@@ -979,7 +1086,7 @@
        "p_market": 0.5167,
        "p_model": 0.437,
        "fair": 1.9353,
-       "min_odds": 2.1482
+       "min_odds": 1.9934
       }
      ]
     }
@@ -1021,7 +1128,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1033,7 +1140,7 @@
        "p_market": 0.6152,
        "p_model": 0.5524,
        "fair": 1.6254,
-       "min_odds": 1.6742
+       "min_odds": 1.6417
       },
       {
        "key": "D",
@@ -1043,7 +1150,7 @@
        "p_market": 0.2025,
        "p_model": 0.2271,
        "fair": 4.9376,
-       "min_odds": 5.0857
+       "min_odds": 4.987
       },
       {
        "key": "A",
@@ -1053,12 +1160,12 @@
        "p_market": 0.1823,
        "p_model": 0.2205,
        "fair": 5.4869,
-       "min_odds": 5.6515
+       "min_odds": 5.5418
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1070,7 +1177,7 @@
        "p_market": 0.8177,
        "p_model": 0.7795,
        "fair": 1.2229,
-       "min_odds": 1.2596
+       "min_odds": 1.2351
       },
       {
        "key": "12",
@@ -1080,7 +1187,7 @@
        "p_market": 0.7975,
        "p_model": 0.7729,
        "fair": 1.254,
-       "min_odds": 1.2916
+       "min_odds": 1.2665
       },
       {
        "key": "X2",
@@ -1090,13 +1197,13 @@
        "p_market": 0.3848,
        "p_model": 0.4476,
        "fair": 2.5989,
-       "min_odds": 2.6769
+       "min_odds": 2.6249
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1107,7 +1214,7 @@
        "p_market": 0.7387,
        "p_model": 0.829,
        "fair": 1.3538,
-       "min_odds": 1.5027
+       "min_odds": 1.3944
       },
       {
        "key": "U15",
@@ -1117,13 +1224,13 @@
        "p_market": 0.2613,
        "p_model": 0.171,
        "fair": 3.8264,
-       "min_odds": 4.2473
+       "min_odds": 3.9412
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -1134,7 +1241,7 @@
        "p_market": 0.4603,
        "p_model": 0.6125,
        "fair": 2.1724,
-       "min_odds": 2.3896
+       "min_odds": 2.2158
       },
       {
        "key": "U",
@@ -1144,13 +1251,13 @@
        "p_market": 0.5397,
        "p_model": 0.3875,
        "fair": 1.853,
-       "min_odds": 2.0383
+       "min_odds": 1.89
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1161,7 +1268,7 @@
        "p_market": 0.2589,
        "p_model": 0.3895,
        "fair": 3.863,
-       "min_odds": 4.2879
+       "min_odds": 3.9789
       },
       {
        "key": "U35",
@@ -1171,13 +1278,13 @@
        "p_market": 0.7411,
        "p_model": 0.6105,
        "fair": 1.3493,
-       "min_odds": 1.4977
+       "min_odds": 1.3898
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1188,7 +1295,7 @@
        "p_market": 0.4617,
        "p_model": 0.6035,
        "fair": 2.1657,
-       "min_odds": 2.4039
+       "min_odds": 2.2307
       },
       {
        "key": "BN",
@@ -1198,7 +1305,7 @@
        "p_market": 0.5383,
        "p_model": 0.3965,
        "fair": 1.8578,
-       "min_odds": 2.0622
+       "min_odds": 1.9136
       }
      ]
     }
@@ -1227,7 +1334,7 @@
    "expected_goals": null,
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1239,7 +1346,7 @@
        "p_market": 0.5671,
        "p_model": null,
        "fair": 1.7634,
-       "min_odds": 1.8163
+       "min_odds": 1.781
       },
       {
        "key": "D",
@@ -1249,7 +1356,7 @@
        "p_market": 0.224,
        "p_model": null,
        "fair": 4.4645,
-       "min_odds": 4.5985
+       "min_odds": 4.5092
       },
       {
        "key": "A",
@@ -1259,12 +1366,12 @@
        "p_market": 0.2089,
        "p_model": null,
        "fair": 4.7863,
-       "min_odds": 4.9299
+       "min_odds": 4.8341
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1276,7 +1383,7 @@
        "p_market": 0.7911,
        "p_model": null,
        "fair": 1.2641,
-       "min_odds": 1.302
+       "min_odds": 1.2768
       },
       {
        "key": "12",
@@ -1286,7 +1393,7 @@
        "p_market": 0.776,
        "p_model": null,
        "fair": 1.2886,
-       "min_odds": 1.3273
+       "min_odds": 1.3015
       },
       {
        "key": "X2",
@@ -1296,13 +1403,13 @@
        "p_market": 0.4329,
        "p_model": null,
        "fair": 2.3099,
-       "min_odds": 2.3792
+       "min_odds": 2.333
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1313,7 +1420,7 @@
        "p_market": 0.8129,
        "p_model": null,
        "fair": 1.2302,
-       "min_odds": 1.3655
+       "min_odds": 1.2671
       },
       {
        "key": "U15",
@@ -1323,13 +1430,13 @@
        "p_market": 0.1871,
        "p_model": null,
        "fair": 5.3438,
-       "min_odds": 5.9316
+       "min_odds": 5.5041
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -1340,7 +1447,7 @@
        "p_market": 0.5742,
        "p_model": null,
        "fair": 1.7416,
-       "min_odds": 1.9157
+       "min_odds": 1.7764
       },
       {
        "key": "U",
@@ -1350,13 +1457,13 @@
        "p_market": 0.4258,
        "p_model": null,
        "fair": 2.3485,
-       "min_odds": 2.5833
+       "min_odds": 2.3955
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1367,7 +1474,7 @@
        "p_market": 0.3554,
        "p_model": null,
        "fair": 2.8136,
-       "min_odds": 3.1231
+       "min_odds": 2.8981
       },
       {
        "key": "U35",
@@ -1377,13 +1484,13 @@
        "p_market": 0.6446,
        "p_model": null,
        "fair": 1.5514,
-       "min_odds": 1.722
+       "min_odds": 1.5979
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1394,7 +1501,7 @@
        "p_market": 0.5747,
        "p_model": null,
        "fair": 1.7401,
-       "min_odds": 1.9315
+       "min_odds": 1.7923
       },
       {
        "key": "BN",
@@ -1404,7 +1511,7 @@
        "p_market": 0.4253,
        "p_model": null,
        "fair": 2.3512,
-       "min_odds": 2.6099
+       "min_odds": 2.4218
       }
      ]
     }
@@ -1446,7 +1553,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1458,7 +1565,7 @@
        "p_market": 0.3392,
        "p_model": 0.4033,
        "fair": 2.948,
-       "min_odds": 3.0364
+       "min_odds": 2.9775
       },
       {
        "key": "D",
@@ -1468,7 +1575,7 @@
        "p_market": 0.291,
        "p_model": 0.2651,
        "fair": 3.4366,
-       "min_odds": 3.5397
+       "min_odds": 3.471
       },
       {
        "key": "A",
@@ -1478,12 +1585,12 @@
        "p_market": 0.3698,
        "p_model": 0.3316,
        "fair": 2.7041,
-       "min_odds": 2.7852
+       "min_odds": 2.7312
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1495,7 +1602,7 @@
        "p_market": 0.6302,
        "p_model": 0.6684,
        "fair": 1.5868,
-       "min_odds": 1.6344
+       "min_odds": 1.6027
       },
       {
        "key": "12",
@@ -1505,7 +1612,7 @@
        "p_market": 0.709,
        "p_model": 0.7349,
        "fair": 1.4104,
-       "min_odds": 1.4527
+       "min_odds": 1.4245
       },
       {
        "key": "X2",
@@ -1515,13 +1622,13 @@
        "p_market": 0.6608,
        "p_model": 0.5967,
        "fair": 1.5133,
-       "min_odds": 1.5587
+       "min_odds": 1.5285
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1532,7 +1639,7 @@
        "p_market": 0.7477,
        "p_model": 0.771,
        "fair": 1.3375,
-       "min_odds": 1.4846
+       "min_odds": 1.3776
       },
       {
        "key": "U15",
@@ -1542,13 +1649,13 @@
        "p_market": 0.2523,
        "p_model": 0.229,
        "fair": 3.9628,
-       "min_odds": 4.3987
+       "min_odds": 4.0817
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -1559,7 +1666,7 @@
        "p_market": 0.486,
        "p_model": 0.5251,
        "fair": 2.0575,
-       "min_odds": 2.2632
+       "min_odds": 2.0986
       },
       {
        "key": "U",
@@ -1569,13 +1676,13 @@
        "p_market": 0.514,
        "p_model": 0.4749,
        "fair": 1.9456,
-       "min_odds": 2.1402
+       "min_odds": 1.9846
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1586,7 +1693,7 @@
        "p_market": 0.2669,
        "p_model": 0.303,
        "fair": 3.7472,
-       "min_odds": 4.1594
+       "min_odds": 3.8596
       },
       {
        "key": "U35",
@@ -1596,13 +1703,13 @@
        "p_market": 0.7331,
        "p_model": 0.697,
        "fair": 1.364,
-       "min_odds": 1.514
+       "min_odds": 1.4049
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1613,7 +1720,7 @@
        "p_market": 0.544,
        "p_model": 0.5678,
        "fair": 1.8381,
-       "min_odds": 2.0403
+       "min_odds": 1.8933
       },
       {
        "key": "BN",
@@ -1623,7 +1730,7 @@
        "p_market": 0.456,
        "p_model": 0.4322,
        "fair": 2.1931,
-       "min_odds": 2.4344
+       "min_odds": 2.2589
       }
      ]
     }
@@ -1665,7 +1772,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1677,7 +1784,7 @@
        "p_market": 0.2046,
        "p_model": 0.1806,
        "fair": 4.8876,
-       "min_odds": 5.0343
+       "min_odds": 4.9365
       },
       {
        "key": "D",
@@ -1687,7 +1794,7 @@
        "p_market": 0.1835,
        "p_model": 0.174,
        "fair": 5.4488,
-       "min_odds": 5.6123
+       "min_odds": 5.5033
       },
       {
        "key": "A",
@@ -1697,12 +1804,12 @@
        "p_market": 0.6119,
        "p_model": 0.6454,
        "fair": 1.6343,
-       "min_odds": 1.6833
+       "min_odds": 1.6507
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1714,7 +1821,7 @@
        "p_market": 0.3881,
        "p_model": 0.3546,
        "fair": 2.5765,
-       "min_odds": 2.6538
+       "min_odds": 2.6023
       },
       {
        "key": "12",
@@ -1724,7 +1831,7 @@
        "p_market": 0.8165,
        "p_model": 0.826,
        "fair": 1.2248,
-       "min_odds": 1.2615
+       "min_odds": 1.237
       },
       {
        "key": "X2",
@@ -1734,7 +1841,7 @@
        "p_market": 0.7954,
        "p_model": 0.8194,
        "fair": 1.2572,
-       "min_odds": 1.2949
+       "min_odds": 1.2698
       }
      ]
     }
@@ -1776,7 +1883,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1788,7 +1895,7 @@
        "p_market": 0.4684,
        "p_model": 0.5437,
        "fair": 2.135,
-       "min_odds": 2.1991
+       "min_odds": 2.1564
       },
       {
        "key": "D",
@@ -1798,7 +1905,7 @@
        "p_market": 0.2526,
        "p_model": 0.2327,
        "fair": 3.9592,
-       "min_odds": 4.0779
+       "min_odds": 3.9988
       },
       {
        "key": "A",
@@ -1808,12 +1915,12 @@
        "p_market": 0.279,
        "p_model": 0.2237,
        "fair": 3.5836,
-       "min_odds": 3.6911
+       "min_odds": 3.6195
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -1825,7 +1932,7 @@
        "p_market": 0.721,
        "p_model": 0.7763,
        "fair": 1.3871,
-       "min_odds": 1.4287
+       "min_odds": 1.4009
       },
       {
        "key": "12",
@@ -1835,7 +1942,7 @@
        "p_market": 0.7474,
        "p_model": 0.7673,
        "fair": 1.3379,
-       "min_odds": 1.3781
+       "min_odds": 1.3513
       },
       {
        "key": "X2",
@@ -1845,13 +1952,13 @@
        "p_market": 0.5316,
        "p_model": 0.4563,
        "fair": 1.881,
-       "min_odds": 1.9375
+       "min_odds": 1.8998
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1862,7 +1969,7 @@
        "p_market": 0.7052,
        "p_model": 0.8161,
        "fair": 1.4181,
-       "min_odds": 1.5741
+       "min_odds": 1.4607
       },
       {
        "key": "U15",
@@ -1872,13 +1979,13 @@
        "p_market": 0.2948,
        "p_model": 0.1839,
        "fair": 3.3916,
-       "min_odds": 3.7646
+       "min_odds": 3.4933
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -1889,7 +1996,7 @@
        "p_market": 0.4145,
        "p_model": 0.5921,
        "fair": 2.4127,
-       "min_odds": 2.654
+       "min_odds": 2.461
       },
       {
        "key": "U",
@@ -1899,13 +2006,13 @@
        "p_market": 0.5855,
        "p_model": 0.4079,
        "fair": 1.7078,
-       "min_odds": 1.8786
+       "min_odds": 1.742
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1916,7 +2023,7 @@
        "p_market": 0.2222,
        "p_model": 0.3683,
        "fair": 4.5011,
-       "min_odds": 4.9962
+       "min_odds": 4.6361
       },
       {
        "key": "U35",
@@ -1926,13 +2033,13 @@
        "p_market": 0.7778,
        "p_model": 0.6317,
        "fair": 1.2856,
-       "min_odds": 1.427
+       "min_odds": 1.3242
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -1943,7 +2050,7 @@
        "p_market": 0.4889,
        "p_model": 0.5898,
        "fair": 2.0454,
-       "min_odds": 2.2704
+       "min_odds": 2.1068
       },
       {
        "key": "BN",
@@ -1953,7 +2060,7 @@
        "p_market": 0.5111,
        "p_model": 0.4102,
        "fair": 1.9566,
-       "min_odds": 2.1718
+       "min_odds": 2.0153
       }
      ]
     }
@@ -1995,7 +2102,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2007,7 +2114,7 @@
        "p_market": 0.4969,
        "p_model": 0.4401,
        "fair": 2.0124,
-       "min_odds": 2.0727
+       "min_odds": 2.0325
       },
       {
        "key": "D",
@@ -2017,7 +2124,7 @@
        "p_market": 0.2432,
        "p_model": 0.2285,
        "fair": 4.111,
-       "min_odds": 4.2343
+       "min_odds": 4.1521
       },
       {
        "key": "A",
@@ -2027,12 +2134,12 @@
        "p_market": 0.2598,
        "p_model": 0.3313,
        "fair": 3.8488,
-       "min_odds": 3.9642
+       "min_odds": 3.8872
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2044,7 +2151,7 @@
        "p_market": 0.7402,
        "p_model": 0.6687,
        "fair": 1.351,
-       "min_odds": 1.3916
+       "min_odds": 1.3645
       },
       {
        "key": "12",
@@ -2054,7 +2161,7 @@
        "p_market": 0.7568,
        "p_model": 0.7715,
        "fair": 1.3214,
-       "min_odds": 1.3611
+       "min_odds": 1.3347
       },
       {
        "key": "X2",
@@ -2064,13 +2171,13 @@
        "p_market": 0.5031,
        "p_model": 0.5599,
        "fair": 1.9878,
-       "min_odds": 2.0474
+       "min_odds": 2.0077
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2081,7 +2188,7 @@
        "p_market": 0.7197,
        "p_model": 0.8729,
        "fair": 1.3895,
-       "min_odds": 1.5424
+       "min_odds": 1.4312
       },
       {
        "key": "U15",
@@ -2091,13 +2198,13 @@
        "p_market": 0.2803,
        "p_model": 0.1271,
        "fair": 3.5672,
-       "min_odds": 3.9596
+       "min_odds": 3.6742
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -2108,7 +2215,7 @@
        "p_market": 0.4333,
        "p_model": 0.6866,
        "fair": 2.3077,
-       "min_odds": 2.5385
+       "min_odds": 2.3538
       },
       {
        "key": "U",
@@ -2118,13 +2225,13 @@
        "p_market": 0.5667,
        "p_model": 0.3134,
        "fair": 1.7647,
-       "min_odds": 1.9412
+       "min_odds": 1.8
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2135,7 +2242,7 @@
        "p_market": 0.2369,
        "p_model": 0.4722,
        "fair": 4.2208,
-       "min_odds": 4.6851
+       "min_odds": 4.3474
       },
       {
        "key": "U35",
@@ -2145,13 +2252,13 @@
        "p_market": 0.7631,
        "p_model": 0.5278,
        "fair": 1.3105,
-       "min_odds": 1.4546
+       "min_odds": 1.3498
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2162,7 +2269,7 @@
        "p_market": 0.4957,
        "p_model": 0.6899,
        "fair": 2.0173,
-       "min_odds": 2.2392
+       "min_odds": 2.0778
       },
       {
        "key": "BN",
@@ -2172,7 +2279,7 @@
        "p_market": 0.5043,
        "p_model": 0.3101,
        "fair": 1.983,
-       "min_odds": 2.2011
+       "min_odds": 2.0425
       }
      ]
     }
@@ -2214,7 +2321,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2226,7 +2333,7 @@
        "p_market": 0.3574,
        "p_model": 0.342,
        "fair": 2.7977,
-       "min_odds": 2.8816
+       "min_odds": 2.8257
       },
       {
        "key": "D",
@@ -2236,7 +2343,7 @@
        "p_market": 0.2877,
        "p_model": 0.2833,
        "fair": 3.4759,
-       "min_odds": 3.5802
+       "min_odds": 3.5107
       },
       {
        "key": "A",
@@ -2246,12 +2353,12 @@
        "p_market": 0.3549,
        "p_model": 0.3747,
        "fair": 2.8179,
-       "min_odds": 2.9025
+       "min_odds": 2.8461
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2263,7 +2370,7 @@
        "p_market": 0.6451,
        "p_model": 0.6253,
        "fair": 1.5501,
-       "min_odds": 1.5966
+       "min_odds": 1.5656
       },
       {
        "key": "12",
@@ -2273,7 +2380,7 @@
        "p_market": 0.7123,
        "p_model": 0.7167,
        "fair": 1.4039,
-       "min_odds": 1.446
+       "min_odds": 1.4179
       },
       {
        "key": "X2",
@@ -2283,13 +2390,13 @@
        "p_market": 0.6426,
        "p_model": 0.658,
        "fair": 1.5563,
-       "min_odds": 1.603
+       "min_odds": 1.5718
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2300,7 +2407,7 @@
        "p_market": 0.7623,
        "p_model": 0.7172,
        "fair": 1.3119,
-       "min_odds": 1.4562
+       "min_odds": 1.3512
       },
       {
        "key": "U15",
@@ -2310,13 +2417,13 @@
        "p_market": 0.2377,
        "p_model": 0.2828,
        "fair": 4.2063,
-       "min_odds": 4.669
+       "min_odds": 4.3325
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -2327,7 +2434,7 @@
        "p_market": 0.5063,
        "p_model": 0.4538,
        "fair": 1.9752,
-       "min_odds": 2.1727
+       "min_odds": 2.0147
       },
       {
        "key": "U",
@@ -2337,13 +2444,13 @@
        "p_market": 0.4937,
        "p_model": 0.5462,
        "fair": 2.0254,
-       "min_odds": 2.228
+       "min_odds": 2.066
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2354,7 +2461,7 @@
        "p_market": 0.2843,
        "p_model": 0.2405,
        "fair": 3.5178,
-       "min_odds": 3.9047
+       "min_odds": 3.6233
       },
       {
        "key": "U35",
@@ -2364,13 +2471,13 @@
        "p_market": 0.7157,
        "p_model": 0.7595,
        "fair": 1.3972,
-       "min_odds": 1.5509
+       "min_odds": 1.4391
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2381,7 +2488,7 @@
        "p_market": 0.5596,
        "p_model": 0.5133,
        "fair": 1.7871,
-       "min_odds": 1.9837
+       "min_odds": 1.8407
       },
       {
        "key": "BN",
@@ -2391,7 +2498,7 @@
        "p_market": 0.4404,
        "p_model": 0.4867,
        "fair": 2.2705,
-       "min_odds": 2.5202
+       "min_odds": 2.3386
       }
      ]
     }
@@ -2420,7 +2527,7 @@
    "expected_goals": null,
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2432,7 +2539,7 @@
        "p_market": 0.2571,
        "p_model": null,
        "fair": 3.8896,
-       "min_odds": 4.0063
+       "min_odds": 3.9285
       },
       {
        "key": "D",
@@ -2442,7 +2549,7 @@
        "p_market": 0.283,
        "p_model": null,
        "fair": 3.5334,
-       "min_odds": 3.6394
+       "min_odds": 3.5687
       },
       {
        "key": "A",
@@ -2452,12 +2559,12 @@
        "p_market": 0.4599,
        "p_model": null,
        "fair": 2.1744,
-       "min_odds": 2.2397
+       "min_odds": 2.1962
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2469,7 +2576,7 @@
        "p_market": 0.5401,
        "p_model": null,
        "fair": 1.8515,
-       "min_odds": 1.907
+       "min_odds": 1.87
       },
       {
        "key": "12",
@@ -2479,7 +2586,7 @@
        "p_market": 0.717,
        "p_model": null,
        "fair": 1.3947,
-       "min_odds": 1.4366
+       "min_odds": 1.4087
       },
       {
        "key": "X2",
@@ -2489,13 +2596,13 @@
        "p_market": 0.7429,
        "p_model": null,
        "fair": 1.3461,
-       "min_odds": 1.3864
+       "min_odds": 1.3595
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2506,7 +2613,7 @@
        "p_market": 0.7412,
        "p_model": null,
        "fair": 1.3491,
-       "min_odds": 1.4975
+       "min_odds": 1.3896
       },
       {
        "key": "U15",
@@ -2516,13 +2623,13 @@
        "p_market": 0.2588,
        "p_model": null,
        "fair": 3.8646,
-       "min_odds": 4.2897
+       "min_odds": 3.9805
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -2533,7 +2640,7 @@
        "p_market": 0.4772,
        "p_model": null,
        "fair": 2.0954,
-       "min_odds": 2.305
+       "min_odds": 2.1373
       },
       {
        "key": "U",
@@ -2543,13 +2650,13 @@
        "p_market": 0.5228,
        "p_model": null,
        "fair": 1.9129,
-       "min_odds": 2.1042
+       "min_odds": 1.9511
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2560,7 +2667,7 @@
        "p_market": 0.2599,
        "p_model": null,
        "fair": 3.847,
-       "min_odds": 4.2701
+       "min_odds": 3.9624
       },
       {
        "key": "U35",
@@ -2570,13 +2677,13 @@
        "p_market": 0.7401,
        "p_model": null,
        "fair": 1.3513,
-       "min_odds": 1.4999
+       "min_odds": 1.3918
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2587,7 +2694,7 @@
        "p_market": 0.5247,
        "p_model": null,
        "fair": 1.9058,
-       "min_odds": 2.1154
+       "min_odds": 1.963
       },
       {
        "key": "BN",
@@ -2597,7 +2704,7 @@
        "p_market": 0.4753,
        "p_model": null,
        "fair": 2.104,
-       "min_odds": 2.3355
+       "min_odds": 2.1671
       }
      ]
     }
@@ -2639,7 +2746,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2651,7 +2758,7 @@
        "p_market": 0.4146,
        "p_model": 0.3423,
        "fair": 2.4121,
-       "min_odds": 2.4845
+       "min_odds": 2.4362
       },
       {
        "key": "D",
@@ -2661,7 +2768,7 @@
        "p_market": 0.2648,
        "p_model": 0.2506,
        "fair": 3.7765,
-       "min_odds": 3.8898
+       "min_odds": 3.8142
       },
       {
        "key": "A",
@@ -2671,12 +2778,12 @@
        "p_market": 0.3206,
        "p_model": 0.4072,
        "fair": 3.1189,
-       "min_odds": 3.2124
+       "min_odds": 3.1501
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2688,7 +2795,7 @@
        "p_market": 0.6794,
        "p_model": 0.5928,
        "fair": 1.4719,
-       "min_odds": 1.5161
+       "min_odds": 1.4867
       },
       {
        "key": "12",
@@ -2698,7 +2805,7 @@
        "p_market": 0.7352,
        "p_model": 0.7494,
        "fair": 1.3602,
-       "min_odds": 1.401
+       "min_odds": 1.3738
       },
       {
        "key": "X2",
@@ -2708,13 +2815,13 @@
        "p_market": 0.5854,
        "p_model": 0.6577,
        "fair": 1.7082,
-       "min_odds": 1.7594
+       "min_odds": 1.7252
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2725,7 +2832,7 @@
        "p_market": 0.8085,
        "p_model": 0.815,
        "fair": 1.2368,
-       "min_odds": 1.3729
+       "min_odds": 1.2739
       },
       {
        "key": "U15",
@@ -2735,13 +2842,13 @@
        "p_market": 0.1915,
        "p_model": 0.185,
        "fair": 5.2226,
-       "min_odds": 5.7971
+       "min_odds": 5.3793
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -2752,7 +2859,7 @@
        "p_market": 0.5714,
        "p_model": 0.5899,
        "fair": 1.7501,
-       "min_odds": 1.9251
+       "min_odds": 1.7851
       },
       {
        "key": "U",
@@ -2762,13 +2869,13 @@
        "p_market": 0.4286,
        "p_model": 0.4101,
        "fair": 2.3332,
-       "min_odds": 2.5665
+       "min_odds": 2.3798
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2779,7 +2886,7 @@
        "p_market": 0.3475,
        "p_model": 0.366,
        "fair": 2.8779,
-       "min_odds": 3.1945
+       "min_odds": 2.9643
       },
       {
        "key": "U35",
@@ -2789,13 +2896,13 @@
        "p_market": 0.6525,
        "p_model": 0.634,
        "fair": 1.5325,
-       "min_odds": 1.7011
+       "min_odds": 1.5785
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2806,7 +2913,7 @@
        "p_market": 0.6081,
        "p_model": 0.6179,
        "fair": 1.6445,
-       "min_odds": 1.8254
+       "min_odds": 1.6939
       },
       {
        "key": "BN",
@@ -2816,7 +2923,7 @@
        "p_market": 0.3919,
        "p_model": 0.3821,
        "fair": 2.5515,
-       "min_odds": 2.8322
+       "min_odds": 2.628
       }
      ]
     }
@@ -2858,7 +2965,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2870,7 +2977,7 @@
        "p_market": 0.6103,
        "p_model": 0.5737,
        "fair": 1.6384,
-       "min_odds": 1.6876
+       "min_odds": 1.6548
       },
       {
        "key": "D",
@@ -2880,7 +2987,7 @@
        "p_market": 0.2357,
        "p_model": 0.2318,
        "fair": 4.2432,
-       "min_odds": 4.3705
+       "min_odds": 4.2856
       },
       {
        "key": "A",
@@ -2890,12 +2997,12 @@
        "p_market": 0.154,
        "p_model": 0.1945,
        "fair": 6.494,
-       "min_odds": 6.6888
+       "min_odds": 6.5589
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -2907,7 +3014,7 @@
        "p_market": 0.846,
        "p_model": 0.8055,
        "fair": 1.182,
-       "min_odds": 1.2175
+       "min_odds": 1.1938
       },
       {
        "key": "12",
@@ -2917,7 +3024,7 @@
        "p_market": 0.7643,
        "p_model": 0.7682,
        "fair": 1.3083,
-       "min_odds": 1.3476
+       "min_odds": 1.3214
       },
       {
        "key": "X2",
@@ -2927,13 +3034,13 @@
        "p_market": 0.3897,
        "p_model": 0.4263,
        "fair": 2.5663,
-       "min_odds": 2.6433
+       "min_odds": 2.592
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2944,7 +3051,7 @@
        "p_market": 0.7689,
        "p_model": 0.7945,
        "fair": 1.3005,
-       "min_odds": 1.4435
+       "min_odds": 1.3395
       },
       {
        "key": "U15",
@@ -2954,13 +3061,13 @@
        "p_market": 0.2311,
        "p_model": 0.2055,
        "fair": 4.3279,
-       "min_odds": 4.804
+       "min_odds": 4.4577
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -2971,7 +3078,7 @@
        "p_market": 0.5153,
        "p_model": 0.5597,
        "fair": 1.9405,
-       "min_odds": 2.1346
+       "min_odds": 1.9794
       },
       {
        "key": "U",
@@ -2981,13 +3088,13 @@
        "p_market": 0.4847,
        "p_model": 0.4403,
        "fair": 2.0632,
-       "min_odds": 2.2695
+       "min_odds": 2.1045
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -2998,7 +3105,7 @@
        "p_market": 0.2948,
        "p_model": 0.3359,
        "fair": 3.3916,
-       "min_odds": 3.7647
+       "min_odds": 3.4933
       },
       {
        "key": "U35",
@@ -3008,13 +3115,13 @@
        "p_market": 0.7052,
        "p_model": 0.6641,
        "fair": 1.4181,
-       "min_odds": 1.5741
+       "min_odds": 1.4607
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3025,7 +3132,7 @@
        "p_market": 0.4957,
        "p_model": 0.5501,
        "fair": 2.0173,
-       "min_odds": 2.2392
+       "min_odds": 2.0778
       },
       {
        "key": "BN",
@@ -3035,7 +3142,7 @@
        "p_market": 0.5043,
        "p_model": 0.4499,
        "fair": 1.983,
-       "min_odds": 2.2011
+       "min_odds": 2.0425
       }
      ]
     }
@@ -3077,7 +3184,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3089,7 +3196,7 @@
        "p_market": 0.2109,
        "p_model": 0.2294,
        "fair": 4.7411,
-       "min_odds": 4.8833
+       "min_odds": 4.7885
       },
       {
        "key": "D",
@@ -3099,7 +3206,7 @@
        "p_market": 0.2838,
        "p_model": 0.2993,
        "fair": 3.5241,
-       "min_odds": 3.6299
+       "min_odds": 3.5594
       },
       {
        "key": "A",
@@ -3109,12 +3216,12 @@
        "p_market": 0.5053,
        "p_model": 0.4713,
        "fair": 1.9789,
-       "min_odds": 2.0383
+       "min_odds": 1.9987
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3126,7 +3233,7 @@
        "p_market": 0.4947,
        "p_model": 0.5287,
        "fair": 2.0215,
-       "min_odds": 2.0822
+       "min_odds": 2.0417
       },
       {
        "key": "12",
@@ -3136,7 +3243,7 @@
        "p_market": 0.7162,
        "p_model": 0.7007,
        "fair": 1.3962,
-       "min_odds": 1.4381
+       "min_odds": 1.4101
       },
       {
        "key": "X2",
@@ -3146,13 +3253,13 @@
        "p_market": 0.7891,
        "p_model": 0.7706,
        "fair": 1.2673,
-       "min_odds": 1.3053
+       "min_odds": 1.28
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3163,7 +3270,7 @@
        "p_market": 0.7172,
        "p_model": 0.6318,
        "fair": 1.3943,
-       "min_odds": 1.5477
+       "min_odds": 1.4362
       },
       {
        "key": "U15",
@@ -3173,13 +3280,13 @@
        "p_market": 0.2828,
        "p_model": 0.3682,
        "fair": 3.5359,
-       "min_odds": 3.9248
+       "min_odds": 3.6419
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -3190,7 +3297,7 @@
        "p_market": 0.4479,
        "p_model": 0.3557,
        "fair": 2.2324,
-       "min_odds": 2.4557
+       "min_odds": 2.2771
       },
       {
        "key": "U",
@@ -3200,13 +3307,13 @@
        "p_market": 0.5521,
        "p_model": 0.6443,
        "fair": 1.8114,
-       "min_odds": 1.9925
+       "min_odds": 1.8476
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3217,7 +3324,7 @@
        "p_market": 0.2346,
        "p_model": 0.1651,
        "fair": 4.2624,
-       "min_odds": 4.7313
+       "min_odds": 4.3903
       },
       {
        "key": "U35",
@@ -3227,13 +3334,13 @@
        "p_market": 0.7654,
        "p_model": 0.8349,
        "fair": 1.3065,
-       "min_odds": 1.4502
+       "min_odds": 1.3457
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3244,7 +3351,7 @@
        "p_market": 0.4852,
        "p_model": 0.4136,
        "fair": 2.061,
-       "min_odds": 2.2877
+       "min_odds": 2.1229
       },
       {
        "key": "BN",
@@ -3254,7 +3361,7 @@
        "p_market": 0.5148,
        "p_model": 0.5864,
        "fair": 1.9425,
-       "min_odds": 2.1561
+       "min_odds": 2.0008
       }
      ]
     }
@@ -3296,7 +3403,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3308,7 +3415,7 @@
        "p_market": 0.4718,
        "p_model": 0.509,
        "fair": 2.1195,
-       "min_odds": 2.1831
+       "min_odds": 2.1407
       },
       {
        "key": "D",
@@ -3318,7 +3425,7 @@
        "p_market": 0.2463,
        "p_model": 0.2249,
        "fair": 4.0602,
-       "min_odds": 4.182
+       "min_odds": 4.1008
       },
       {
        "key": "A",
@@ -3328,12 +3435,12 @@
        "p_market": 0.2819,
        "p_model": 0.2661,
        "fair": 3.5474,
-       "min_odds": 3.6538
+       "min_odds": 3.5829
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3345,7 +3452,7 @@
        "p_market": 0.7181,
        "p_model": 0.7339,
        "fair": 1.3926,
-       "min_odds": 1.4343
+       "min_odds": 1.4065
       },
       {
        "key": "12",
@@ -3355,7 +3462,7 @@
        "p_market": 0.7537,
        "p_model": 0.7751,
        "fair": 1.3268,
-       "min_odds": 1.3666
+       "min_odds": 1.34
       },
       {
        "key": "X2",
@@ -3365,13 +3472,13 @@
        "p_market": 0.5282,
        "p_model": 0.491,
        "fair": 1.8933,
-       "min_odds": 1.9501
+       "min_odds": 1.9122
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3382,7 +3489,7 @@
        "p_market": 0.8529,
        "p_model": 0.8614,
        "fair": 1.1725,
-       "min_odds": 1.3015
+       "min_odds": 1.2077
       },
       {
        "key": "U15",
@@ -3392,13 +3499,13 @@
        "p_market": 0.1471,
        "p_model": 0.1386,
        "fair": 6.7968,
-       "min_odds": 7.5445
+       "min_odds": 7.0007
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -3409,7 +3516,7 @@
        "p_market": 0.6443,
        "p_model": 0.6665,
        "fair": 1.552,
-       "min_odds": 1.7072
+       "min_odds": 1.5831
       },
       {
        "key": "U",
@@ -3419,13 +3526,13 @@
        "p_market": 0.3557,
        "p_model": 0.3335,
        "fair": 2.8115,
-       "min_odds": 3.0926
+       "min_odds": 2.8677
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3436,7 +3543,7 @@
        "p_market": 0.4227,
        "p_model": 0.4487,
        "fair": 2.3657,
-       "min_odds": 2.6259
+       "min_odds": 2.4367
       },
       {
        "key": "U35",
@@ -3446,13 +3553,13 @@
        "p_market": 0.5773,
        "p_model": 0.5513,
        "fair": 1.7322,
-       "min_odds": 1.9228
+       "min_odds": 1.7842
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3463,7 +3570,7 @@
        "p_market": 0.6549,
        "p_model": 0.6614,
        "fair": 1.527,
-       "min_odds": 1.695
+       "min_odds": 1.5728
       },
       {
        "key": "BN",
@@ -3473,7 +3580,7 @@
        "p_market": 0.3451,
        "p_model": 0.3386,
        "fair": 2.8974,
-       "min_odds": 3.2161
+       "min_odds": 2.9843
       }
      ]
     }
@@ -3515,7 +3622,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3527,7 +3634,7 @@
        "p_market": 0.5984,
        "p_model": 0.4802,
        "fair": 1.6711,
-       "min_odds": 1.7212
+       "min_odds": 1.6878
       },
       {
        "key": "D",
@@ -3537,7 +3644,7 @@
        "p_market": 0.235,
        "p_model": 0.2479,
        "fair": 4.2552,
-       "min_odds": 4.3829
+       "min_odds": 4.2978
       },
       {
        "key": "A",
@@ -3547,12 +3654,12 @@
        "p_market": 0.1666,
        "p_model": 0.2719,
        "fair": 6.0032,
-       "min_odds": 6.1833
+       "min_odds": 6.0633
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3564,7 +3671,7 @@
        "p_market": 0.8334,
        "p_model": 0.7281,
        "fair": 1.1999,
-       "min_odds": 1.2359
+       "min_odds": 1.2119
       },
       {
        "key": "12",
@@ -3574,7 +3681,7 @@
        "p_market": 0.765,
        "p_model": 0.7521,
        "fair": 1.3072,
-       "min_odds": 1.3464
+       "min_odds": 1.3203
       },
       {
        "key": "X2",
@@ -3584,13 +3691,13 @@
        "p_market": 0.4016,
        "p_model": 0.5198,
        "fair": 2.4901,
-       "min_odds": 2.5648
+       "min_odds": 2.515
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3601,7 +3708,7 @@
        "p_market": 0.7906,
        "p_model": 0.8021,
        "fair": 1.2648,
-       "min_odds": 1.404
+       "min_odds": 1.3028
       },
       {
        "key": "U15",
@@ -3611,13 +3718,13 @@
        "p_market": 0.2094,
        "p_model": 0.1979,
        "fair": 4.776,
-       "min_odds": 5.3014
+       "min_odds": 4.9193
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -3628,7 +3735,7 @@
        "p_market": 0.5463,
        "p_model": 0.5704,
        "fair": 1.8305,
-       "min_odds": 2.0136
+       "min_odds": 1.8671
       },
       {
        "key": "U",
@@ -3638,13 +3745,13 @@
        "p_market": 0.4537,
        "p_model": 0.4296,
        "fair": 2.2041,
-       "min_odds": 2.4245
+       "min_odds": 2.2482
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3655,7 +3762,7 @@
        "p_market": 0.3234,
        "p_model": 0.3464,
        "fair": 3.0923,
-       "min_odds": 3.4324
+       "min_odds": 3.1851
       },
       {
        "key": "U35",
@@ -3665,13 +3772,13 @@
        "p_market": 0.6766,
        "p_model": 0.6536,
        "fair": 1.4779,
-       "min_odds": 1.6405
+       "min_odds": 1.5223
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -3682,7 +3789,7 @@
        "p_market": 0.5292,
        "p_model": 0.5912,
        "fair": 1.8896,
-       "min_odds": 2.0974
+       "min_odds": 1.9463
       },
       {
        "key": "BN",
@@ -3692,7 +3799,7 @@
        "p_market": 0.4708,
        "p_model": 0.4088,
        "fair": 2.1241,
-       "min_odds": 2.3578
+       "min_odds": 2.1879
       }
      ]
     }
@@ -3734,7 +3841,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3746,7 +3853,7 @@
        "p_market": 0.6228,
        "p_model": 0.5529,
        "fair": 1.6058,
-       "min_odds": 1.6539
+       "min_odds": 1.6218
       },
       {
        "key": "D",
@@ -3756,7 +3863,7 @@
        "p_market": 0.1986,
        "p_model": 0.2399,
        "fair": 5.036,
-       "min_odds": 5.1871
+       "min_odds": 5.0864
       },
       {
        "key": "A",
@@ -3766,12 +3873,12 @@
        "p_market": 0.1787,
        "p_model": 0.2073,
        "fair": 5.5968,
-       "min_odds": 5.7647
+       "min_odds": 5.6527
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3783,7 +3890,7 @@
        "p_market": 0.8213,
        "p_model": 0.7927,
        "fair": 1.2175,
-       "min_odds": 1.2541
+       "min_odds": 1.2297
       },
       {
        "key": "12",
@@ -3793,7 +3900,7 @@
        "p_market": 0.8014,
        "p_model": 0.7601,
        "fair": 1.2478,
-       "min_odds": 1.2852
+       "min_odds": 1.2602
       },
       {
        "key": "X2",
@@ -3803,7 +3910,7 @@
        "p_market": 0.3772,
        "p_model": 0.4471,
        "fair": 2.6508,
-       "min_odds": 2.7303
+       "min_odds": 2.6773
       }
      ]
     }
@@ -3845,7 +3952,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3857,7 +3964,7 @@
        "p_market": 0.6092,
        "p_model": 0.3634,
        "fair": 1.6416,
-       "min_odds": 1.6909
+       "min_odds": 1.658
       },
       {
        "key": "D",
@@ -3867,7 +3974,7 @@
        "p_market": 0.1201,
        "p_model": 0.2093,
        "fair": 8.3268,
-       "min_odds": 8.5766
+       "min_odds": 8.4101
       },
       {
        "key": "A",
@@ -3877,12 +3984,12 @@
        "p_market": 0.2708,
        "p_model": 0.4274,
        "fair": 3.6934,
-       "min_odds": 3.8042
+       "min_odds": 3.7303
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3894,7 +4001,7 @@
        "p_market": 0.7292,
        "p_model": 0.5726,
        "fair": 1.3713,
-       "min_odds": 1.4124
+       "min_odds": 1.385
       },
       {
        "key": "12",
@@ -3904,7 +4011,7 @@
        "p_market": 0.8799,
        "p_model": 0.7907,
        "fair": 1.1365,
-       "min_odds": 1.1706
+       "min_odds": 1.1478
       },
       {
        "key": "X2",
@@ -3914,7 +4021,7 @@
        "p_market": 0.3908,
        "p_model": 0.6366,
        "fair": 2.5585,
-       "min_odds": 2.6353
+       "min_odds": 2.5841
       }
      ]
     }
@@ -3956,7 +4063,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -3968,7 +4075,7 @@
        "p_market": 0.6639,
        "p_model": 0.3842,
        "fair": 1.5063,
-       "min_odds": 1.5515
+       "min_odds": 1.5214
       },
       {
        "key": "D",
@@ -3978,7 +4085,7 @@
        "p_market": 0.1211,
        "p_model": 0.2607,
        "fair": 8.2605,
-       "min_odds": 8.5083
+       "min_odds": 8.3431
       },
       {
        "key": "A",
@@ -3988,12 +4095,12 @@
        "p_market": 0.2151,
        "p_model": 0.3551,
        "fair": 4.6493,
-       "min_odds": 4.7888
+       "min_odds": 4.6958
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4005,7 +4112,7 @@
        "p_market": 0.7849,
        "p_model": 0.6449,
        "fair": 1.274,
-       "min_odds": 1.3122
+       "min_odds": 1.2868
       },
       {
        "key": "12",
@@ -4015,7 +4122,7 @@
        "p_market": 0.8789,
        "p_model": 0.7393,
        "fair": 1.1377,
-       "min_odds": 1.1719
+       "min_odds": 1.1491
       },
       {
        "key": "X2",
@@ -4025,13 +4132,13 @@
        "p_market": 0.3361,
        "p_model": 0.6158,
        "fair": 2.9749,
-       "min_odds": 3.0642
+       "min_odds": 3.0047
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4042,7 +4149,7 @@
        "p_market": 0.7994,
        "p_model": 0.7867,
        "fair": 1.2509,
-       "min_odds": 1.3885
+       "min_odds": 1.2884
       },
       {
        "key": "U15",
@@ -4052,13 +4159,13 @@
        "p_market": 0.2006,
        "p_model": 0.2133,
        "fair": 4.9861,
-       "min_odds": 5.5346
+       "min_odds": 5.1357
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -4069,7 +4176,7 @@
        "p_market": 0.531,
        "p_model": 0.5475,
        "fair": 1.8831,
-       "min_odds": 2.0714
+       "min_odds": 1.9207
       },
       {
        "key": "U",
@@ -4079,13 +4186,13 @@
        "p_market": 0.469,
        "p_model": 0.4525,
        "fair": 2.1324,
-       "min_odds": 2.3457
+       "min_odds": 2.1751
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4096,7 +4203,7 @@
        "p_market": 0.3368,
        "p_model": 0.324,
        "fair": 2.9691,
-       "min_odds": 3.2957
+       "min_odds": 3.0581
       },
       {
        "key": "U35",
@@ -4106,13 +4213,13 @@
        "p_market": 0.6632,
        "p_model": 0.676,
        "fair": 1.5079,
-       "min_odds": 1.6737
+       "min_odds": 1.5531
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4123,7 +4230,7 @@
        "p_market": 0.5124,
        "p_model": 0.5864,
        "fair": 1.9517,
-       "min_odds": 2.1663
+       "min_odds": 2.0102
       },
       {
        "key": "BN",
@@ -4133,7 +4240,7 @@
        "p_market": 0.4876,
        "p_model": 0.4136,
        "fair": 2.0508,
-       "min_odds": 2.2764
+       "min_odds": 2.1123
       }
      ]
     }
@@ -4175,7 +4282,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4187,7 +4294,7 @@
        "p_market": 0.6824,
        "p_model": 0.5498,
        "fair": 1.4654,
-       "min_odds": 1.5093
+       "min_odds": 1.48
       },
       {
        "key": "D",
@@ -4197,7 +4304,7 @@
        "p_market": 0.1836,
        "p_model": 0.2293,
        "fair": 5.4474,
-       "min_odds": 5.6108
+       "min_odds": 5.5019
       },
       {
        "key": "A",
@@ -4207,12 +4314,12 @@
        "p_market": 0.134,
        "p_model": 0.2209,
        "fair": 7.4622,
-       "min_odds": 7.686
+       "min_odds": 7.5368
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4224,7 +4331,7 @@
        "p_market": 0.866,
        "p_model": 0.7791,
        "fair": 1.1547,
-       "min_odds": 1.1894
+       "min_odds": 1.1663
       },
       {
        "key": "12",
@@ -4234,7 +4341,7 @@
        "p_market": 0.8164,
        "p_model": 0.7707,
        "fair": 1.2248,
-       "min_odds": 1.2616
+       "min_odds": 1.2371
       },
       {
        "key": "X2",
@@ -4244,13 +4351,13 @@
        "p_market": 0.3176,
        "p_model": 0.4502,
        "fair": 3.1488,
-       "min_odds": 3.2433
+       "min_odds": 3.1803
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4261,7 +4368,7 @@
        "p_market": 0.853,
        "p_model": 0.8231,
        "fair": 1.1723,
-       "min_odds": 1.3013
+       "min_odds": 1.2075
       },
       {
        "key": "U15",
@@ -4271,13 +4378,13 @@
        "p_market": 0.147,
        "p_model": 0.1769,
        "fair": 6.8024,
-       "min_odds": 7.5507
+       "min_odds": 7.0065
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -4288,7 +4395,7 @@
        "p_market": 0.6438,
        "p_model": 0.6032,
        "fair": 1.5534,
-       "min_odds": 1.7087
+       "min_odds": 1.5844
       },
       {
        "key": "U",
@@ -4298,13 +4405,13 @@
        "p_market": 0.3562,
        "p_model": 0.3968,
        "fair": 2.8071,
-       "min_odds": 3.0878
+       "min_odds": 2.8633
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4315,7 +4422,7 @@
        "p_market": 0.426,
        "p_model": 0.3796,
        "fair": 2.3474,
-       "min_odds": 2.6056
+       "min_odds": 2.4178
       },
       {
        "key": "U35",
@@ -4325,13 +4432,13 @@
        "p_market": 0.574,
        "p_model": 0.6204,
        "fair": 1.7422,
-       "min_odds": 1.9338
+       "min_odds": 1.7944
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4342,7 +4449,7 @@
        "p_market": 0.5658,
        "p_model": 0.5967,
        "fair": 1.7673,
-       "min_odds": 1.9617
+       "min_odds": 1.8203
       },
       {
        "key": "BN",
@@ -4352,7 +4459,7 @@
        "p_market": 0.4342,
        "p_model": 0.4033,
        "fair": 2.3033,
-       "min_odds": 2.5566
+       "min_odds": 2.3724
       }
      ]
     }
@@ -4381,7 +4488,7 @@
    "expected_goals": null,
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4393,7 +4500,7 @@
        "p_market": 0.5948,
        "p_model": null,
        "fair": 1.6811,
-       "min_odds": 1.7315
+       "min_odds": 1.6979
       },
       {
        "key": "D",
@@ -4403,7 +4510,7 @@
        "p_market": 0.2295,
        "p_model": null,
        "fair": 4.3572,
-       "min_odds": 4.488
+       "min_odds": 4.4008
       },
       {
        "key": "A",
@@ -4413,12 +4520,12 @@
        "p_market": 0.1757,
        "p_model": null,
        "fair": 5.6931,
-       "min_odds": 5.8638
+       "min_odds": 5.75
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4430,7 +4537,7 @@
        "p_market": 0.8243,
        "p_model": null,
        "fair": 1.2131,
-       "min_odds": 1.2495
+       "min_odds": 1.2252
       },
       {
        "key": "12",
@@ -4440,7 +4547,7 @@
        "p_market": 0.7705,
        "p_model": null,
        "fair": 1.2979,
-       "min_odds": 1.3368
+       "min_odds": 1.3108
       },
       {
        "key": "X2",
@@ -4450,13 +4557,13 @@
        "p_market": 0.4052,
        "p_model": null,
        "fair": 2.4682,
-       "min_odds": 2.5422
+       "min_odds": 2.4929
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4467,7 +4574,7 @@
        "p_market": 0.8274,
        "p_model": null,
        "fair": 1.2086,
-       "min_odds": 1.3415
+       "min_odds": 1.2448
       },
       {
        "key": "U15",
@@ -4477,13 +4584,13 @@
        "p_market": 0.1726,
        "p_model": null,
        "fair": 5.7944,
-       "min_odds": 6.4318
+       "min_odds": 5.9683
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -4494,7 +4601,7 @@
        "p_market": 0.6035,
        "p_model": null,
        "fair": 1.657,
-       "min_odds": 1.8227
+       "min_odds": 1.6902
       },
       {
        "key": "U",
@@ -4504,13 +4611,13 @@
        "p_market": 0.3965,
        "p_model": null,
        "fair": 2.522,
-       "min_odds": 2.7742
+       "min_odds": 2.5725
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4521,7 +4628,7 @@
        "p_market": 0.3792,
        "p_model": null,
        "fair": 2.6374,
-       "min_odds": 2.9275
+       "min_odds": 2.7165
       },
       {
        "key": "U35",
@@ -4531,13 +4638,13 @@
        "p_market": 0.6208,
        "p_model": null,
        "fair": 1.6107,
-       "min_odds": 1.7879
+       "min_odds": 1.659
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4548,7 +4655,7 @@
        "p_market": 0.579,
        "p_model": null,
        "fair": 1.7272,
-       "min_odds": 1.9171
+       "min_odds": 1.779
       },
       {
        "key": "BN",
@@ -4558,7 +4665,7 @@
        "p_market": 0.421,
        "p_model": null,
        "fair": 2.3752,
-       "min_odds": 2.6365
+       "min_odds": 2.4465
       }
      ]
     }
@@ -4600,7 +4707,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4612,7 +4719,7 @@
        "p_market": 0.3546,
        "p_model": 0.3205,
        "fair": 2.8201,
-       "min_odds": 2.9047
+       "min_odds": 2.8483
       },
       {
        "key": "D",
@@ -4622,7 +4729,7 @@
        "p_market": 0.2574,
        "p_model": 0.2523,
        "fair": 3.8853,
-       "min_odds": 4.0019
+       "min_odds": 3.9242
       },
       {
        "key": "A",
@@ -4632,12 +4739,12 @@
        "p_market": 0.388,
        "p_model": 0.4271,
        "fair": 2.5772,
-       "min_odds": 2.6545
+       "min_odds": 2.603
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4649,7 +4756,7 @@
        "p_market": 0.612,
        "p_model": 0.5729,
        "fair": 1.634,
-       "min_odds": 1.6831
+       "min_odds": 1.6504
       },
       {
        "key": "12",
@@ -4659,7 +4766,7 @@
        "p_market": 0.7426,
        "p_model": 0.7477,
        "fair": 1.3466,
-       "min_odds": 1.387
+       "min_odds": 1.3601
       },
       {
        "key": "X2",
@@ -4669,13 +4776,13 @@
        "p_market": 0.6454,
        "p_model": 0.6795,
        "fair": 1.5494,
-       "min_odds": 1.5959
+       "min_odds": 1.5649
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4686,7 +4793,7 @@
        "p_market": 0.8349,
        "p_model": 0.806,
        "fair": 1.1977,
-       "min_odds": 1.3294
+       "min_odds": 1.2336
       },
       {
        "key": "U15",
@@ -4696,13 +4803,13 @@
        "p_market": 0.1651,
        "p_model": 0.194,
        "fair": 6.0582,
-       "min_odds": 6.7246
+       "min_odds": 6.2399
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -4713,7 +4820,7 @@
        "p_market": 0.6133,
        "p_model": 0.5762,
        "fair": 1.6304,
-       "min_odds": 1.7935
+       "min_odds": 1.6631
       },
       {
        "key": "U",
@@ -4723,13 +4830,13 @@
        "p_market": 0.3867,
        "p_model": 0.4238,
        "fair": 2.5862,
-       "min_odds": 2.8448
+       "min_odds": 2.6379
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4740,7 +4847,7 @@
        "p_market": 0.39,
        "p_model": 0.3521,
        "fair": 2.5641,
-       "min_odds": 2.8461
+       "min_odds": 2.641
       },
       {
        "key": "U35",
@@ -4750,13 +4857,13 @@
        "p_market": 0.61,
        "p_model": 0.6479,
        "fair": 1.6394,
-       "min_odds": 1.8197
+       "min_odds": 1.6885
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4767,7 +4874,7 @@
        "p_market": 0.6418,
        "p_model": 0.6053,
        "fair": 1.5582,
-       "min_odds": 1.7296
+       "min_odds": 1.6049
       },
       {
        "key": "BN",
@@ -4777,7 +4884,7 @@
        "p_market": 0.3582,
        "p_model": 0.3947,
        "fair": 2.7916,
-       "min_odds": 3.0987
+       "min_odds": 2.8753
       }
      ]
     }
@@ -4819,7 +4926,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4831,7 +4938,7 @@
        "p_market": 0.2209,
        "p_model": 0.2904,
        "fair": 4.5279,
-       "min_odds": 4.6637
+       "min_odds": 4.5732
       },
       {
        "key": "D",
@@ -4841,7 +4948,7 @@
        "p_market": 0.2518,
        "p_model": 0.2625,
        "fair": 3.972,
-       "min_odds": 4.0912
+       "min_odds": 4.0118
       },
       {
        "key": "A",
@@ -4851,12 +4958,12 @@
        "p_market": 0.5274,
        "p_model": 0.4471,
        "fair": 1.8961,
-       "min_odds": 1.953
+       "min_odds": 1.9151
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -4868,7 +4975,7 @@
        "p_market": 0.4726,
        "p_model": 0.5529,
        "fair": 2.1159,
-       "min_odds": 2.1794
+       "min_odds": 2.1371
       },
       {
        "key": "12",
@@ -4878,7 +4985,7 @@
        "p_market": 0.7482,
        "p_model": 0.7375,
        "fair": 1.3365,
-       "min_odds": 1.3766
+       "min_odds": 1.3498
       },
       {
        "key": "X2",
@@ -4888,13 +4995,13 @@
        "p_market": 0.7791,
        "p_model": 0.7096,
        "fair": 1.2835,
-       "min_odds": 1.322
+       "min_odds": 1.2963
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4905,7 +5012,7 @@
        "p_market": 0.794,
        "p_model": 0.7678,
        "fair": 1.2594,
-       "min_odds": 1.3979
+       "min_odds": 1.2972
       },
       {
        "key": "U15",
@@ -4915,13 +5022,13 @@
        "p_market": 0.206,
        "p_model": 0.2322,
        "fair": 4.855,
-       "min_odds": 5.3891
+       "min_odds": 5.0007
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -4932,7 +5039,7 @@
        "p_market": 0.55,
        "p_model": 0.5207,
        "fair": 1.8183,
-       "min_odds": 2.0001
+       "min_odds": 1.8546
       },
       {
        "key": "U",
@@ -4942,13 +5049,13 @@
        "p_market": 0.45,
        "p_model": 0.4793,
        "fair": 2.2221,
-       "min_odds": 2.4443
+       "min_odds": 2.2665
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4959,7 +5066,7 @@
        "p_market": 0.3271,
        "p_model": 0.2989,
        "fair": 3.0568,
-       "min_odds": 3.393
+       "min_odds": 3.1485
       },
       {
        "key": "U35",
@@ -4969,13 +5076,13 @@
        "p_market": 0.6729,
        "p_model": 0.7011,
        "fair": 1.4862,
-       "min_odds": 1.6497
+       "min_odds": 1.5308
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -4986,7 +5093,7 @@
        "p_market": 0.565,
        "p_model": 0.5583,
        "fair": 1.77,
-       "min_odds": 1.9647
+       "min_odds": 1.8231
       },
       {
        "key": "BN",
@@ -4996,7 +5103,7 @@
        "p_market": 0.435,
        "p_model": 0.4417,
        "fair": 2.2987,
-       "min_odds": 2.5515
+       "min_odds": 2.3676
       }
      ]
     }
@@ -5038,7 +5145,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5050,7 +5157,7 @@
        "p_market": 0.6259,
        "p_model": 0.5794,
        "fair": 1.5976,
-       "min_odds": 1.6456
+       "min_odds": 1.6136
       },
       {
        "key": "D",
@@ -5060,7 +5167,7 @@
        "p_market": 0.22,
        "p_model": 0.2315,
        "fair": 4.5462,
-       "min_odds": 4.6826
+       "min_odds": 4.5917
       },
       {
        "key": "A",
@@ -5070,12 +5177,12 @@
        "p_market": 0.1541,
        "p_model": 0.1892,
        "fair": 6.4887,
-       "min_odds": 6.6833
+       "min_odds": 6.5536
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5087,7 +5194,7 @@
        "p_market": 0.8459,
        "p_model": 0.8108,
        "fair": 1.1822,
-       "min_odds": 1.2177
+       "min_odds": 1.194
       },
       {
        "key": "12",
@@ -5097,7 +5204,7 @@
        "p_market": 0.78,
        "p_model": 0.7685,
        "fair": 1.282,
-       "min_odds": 1.3204
+       "min_odds": 1.2948
       },
       {
        "key": "X2",
@@ -5107,13 +5214,13 @@
        "p_market": 0.3741,
        "p_model": 0.4206,
        "fair": 2.6732,
-       "min_odds": 2.7534
+       "min_odds": 2.7
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5124,7 +5231,7 @@
        "p_market": 0.7907,
        "p_model": 0.7903,
        "fair": 1.2647,
-       "min_odds": 1.4038
+       "min_odds": 1.3027
       },
       {
        "key": "U15",
@@ -5134,13 +5241,13 @@
        "p_market": 0.2093,
        "p_model": 0.2097,
        "fair": 4.7775,
-       "min_odds": 5.303
+       "min_odds": 4.9208
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -5151,7 +5258,7 @@
        "p_market": 0.5448,
        "p_model": 0.5535,
        "fair": 1.8357,
-       "min_odds": 2.0192
+       "min_odds": 1.8724
       },
       {
        "key": "U",
@@ -5161,13 +5268,13 @@
        "p_market": 0.4552,
        "p_model": 0.4465,
        "fair": 2.1967,
-       "min_odds": 2.4163
+       "min_odds": 2.2406
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5178,7 +5285,7 @@
        "p_market": 0.3239,
        "p_model": 0.3299,
        "fair": 3.0869,
-       "min_odds": 3.4265
+       "min_odds": 3.1795
       },
       {
        "key": "U35",
@@ -5188,13 +5295,13 @@
        "p_market": 0.6761,
        "p_model": 0.6701,
        "fair": 1.4792,
-       "min_odds": 1.6419
+       "min_odds": 1.5236
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5205,7 +5312,7 @@
        "p_market": 0.5145,
        "p_model": 0.5421,
        "fair": 1.9438,
-       "min_odds": 2.1576
+       "min_odds": 2.0021
       },
       {
        "key": "BN",
@@ -5215,7 +5322,7 @@
        "p_market": 0.4855,
        "p_model": 0.4579,
        "fair": 2.0596,
-       "min_odds": 2.2862
+       "min_odds": 2.1214
       }
      ]
     }
@@ -5244,7 +5351,7 @@
    "expected_goals": null,
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5256,7 +5363,7 @@
        "p_market": 0.2572,
        "p_model": null,
        "fair": 3.8874,
-       "min_odds": 4.004
+       "min_odds": 3.9263
       },
       {
        "key": "D",
@@ -5266,7 +5373,7 @@
        "p_market": 0.2507,
        "p_model": null,
        "fair": 3.9892,
-       "min_odds": 4.1089
+       "min_odds": 4.0291
       },
       {
        "key": "A",
@@ -5276,12 +5383,12 @@
        "p_market": 0.4921,
        "p_model": null,
        "fair": 2.0322,
-       "min_odds": 2.0931
+       "min_odds": 2.0525
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5293,7 +5400,7 @@
        "p_market": 0.5079,
        "p_model": null,
        "fair": 1.9688,
-       "min_odds": 2.0279
+       "min_odds": 1.9885
       },
       {
        "key": "12",
@@ -5303,7 +5410,7 @@
        "p_market": 0.7493,
        "p_model": null,
        "fair": 1.3345,
-       "min_odds": 1.3746
+       "min_odds": 1.3479
       },
       {
        "key": "X2",
@@ -5313,13 +5420,13 @@
        "p_market": 0.7428,
        "p_model": null,
        "fair": 1.3463,
-       "min_odds": 1.3867
+       "min_odds": 1.3598
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5330,7 +5437,7 @@
        "p_market": 0.8264,
        "p_model": null,
        "fair": 1.21,
-       "min_odds": 1.3431
+       "min_odds": 1.2463
       },
       {
        "key": "U15",
@@ -5340,13 +5447,13 @@
        "p_market": 0.1736,
        "p_model": null,
        "fair": 5.7618,
-       "min_odds": 6.3956
+       "min_odds": 5.9346
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -5357,7 +5464,7 @@
        "p_market": 0.6001,
        "p_model": null,
        "fair": 1.6663,
-       "min_odds": 1.8329
+       "min_odds": 1.6996
       },
       {
        "key": "U",
@@ -5367,13 +5474,13 @@
        "p_market": 0.3999,
        "p_model": null,
        "fair": 2.5009,
-       "min_odds": 2.7509
+       "min_odds": 2.5509
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5384,7 +5491,7 @@
        "p_market": 0.3762,
        "p_model": null,
        "fair": 2.6578,
-       "min_odds": 2.9502
+       "min_odds": 2.7376
       },
       {
        "key": "U35",
@@ -5394,13 +5501,13 @@
        "p_market": 0.6238,
        "p_model": null,
        "fair": 1.6032,
-       "min_odds": 1.7795
+       "min_odds": 1.6513
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5411,7 +5518,7 @@
        "p_market": 0.6158,
        "p_model": null,
        "fair": 1.6238,
-       "min_odds": 1.8024
+       "min_odds": 1.6725
       },
       {
        "key": "BN",
@@ -5421,7 +5528,7 @@
        "p_market": 0.3842,
        "p_model": null,
        "fair": 2.603,
-       "min_odds": 2.8894
+       "min_odds": 2.6811
       }
      ]
     }
@@ -5463,7 +5570,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5475,7 +5582,7 @@
        "p_market": 0.1389,
        "p_model": 0.1983,
        "fair": 7.2003,
-       "min_odds": 7.4163
+       "min_odds": 7.2723
       },
       {
        "key": "D",
@@ -5485,7 +5592,7 @@
        "p_market": 0.2456,
        "p_model": 0.2691,
        "fair": 4.071,
-       "min_odds": 4.1931
+       "min_odds": 4.1117
       },
       {
        "key": "A",
@@ -5495,12 +5602,12 @@
        "p_market": 0.6155,
        "p_model": 0.5326,
        "fair": 1.6248,
-       "min_odds": 1.6735
+       "min_odds": 1.641
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5512,7 +5619,7 @@
        "p_market": 0.3845,
        "p_model": 0.4674,
        "fair": 2.6006,
-       "min_odds": 2.6786
+       "min_odds": 2.6266
       },
       {
        "key": "12",
@@ -5522,7 +5629,7 @@
        "p_market": 0.7544,
        "p_model": 0.7309,
        "fair": 1.3256,
-       "min_odds": 1.3654
+       "min_odds": 1.3389
       },
       {
        "key": "X2",
@@ -5532,13 +5639,13 @@
        "p_market": 0.8611,
        "p_model": 0.8017,
        "fair": 1.1613,
-       "min_odds": 1.1961
+       "min_odds": 1.1729
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5549,7 +5656,7 @@
        "p_market": 0.7345,
        "p_model": 0.6923,
        "fair": 1.3614,
-       "min_odds": 1.5112
+       "min_odds": 1.4023
       },
       {
        "key": "U15",
@@ -5559,13 +5666,13 @@
        "p_market": 0.2655,
        "p_model": 0.3077,
        "fair": 3.7669,
-       "min_odds": 4.1813
+       "min_odds": 3.88
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -5576,7 +5683,7 @@
        "p_market": 0.4707,
        "p_model": 0.424,
        "fair": 2.1244,
-       "min_odds": 2.3369
+       "min_odds": 2.1669
       },
       {
        "key": "U",
@@ -5586,13 +5693,13 @@
        "p_market": 0.5293,
        "p_model": 0.576,
        "fair": 1.8893,
-       "min_odds": 2.0783
+       "min_odds": 1.9271
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5603,7 +5710,7 @@
        "p_market": 0.2545,
        "p_model": 0.2163,
        "fair": 3.9295,
-       "min_odds": 4.3617
+       "min_odds": 4.0474
       },
       {
        "key": "U35",
@@ -5613,13 +5720,13 @@
        "p_market": 0.7455,
        "p_model": 0.7837,
        "fair": 1.3414,
-       "min_odds": 1.4889
+       "min_odds": 1.3816
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5630,7 +5737,7 @@
        "p_market": 0.4511,
        "p_model": 0.4514,
        "fair": 2.2166,
-       "min_odds": 2.4605
+       "min_odds": 2.2831
       },
       {
        "key": "BN",
@@ -5640,7 +5747,7 @@
        "p_market": 0.5489,
        "p_model": 0.5486,
        "fair": 1.8219,
-       "min_odds": 2.0224
+       "min_odds": 1.8766
       }
      ]
     }
@@ -5682,7 +5789,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5694,7 +5801,7 @@
        "p_market": 0.4092,
        "p_model": 0.4104,
        "fair": 2.4437,
-       "min_odds": 2.517
+       "min_odds": 2.4681
       },
       {
        "key": "D",
@@ -5704,7 +5811,7 @@
        "p_market": 0.2667,
        "p_model": 0.2372,
        "fair": 3.7499,
-       "min_odds": 3.8624
+       "min_odds": 3.7874
       },
       {
        "key": "A",
@@ -5714,12 +5821,12 @@
        "p_market": 0.3241,
        "p_model": 0.3524,
        "fair": 3.0854,
-       "min_odds": 3.178
+       "min_odds": 3.1163
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5731,7 +5838,7 @@
        "p_market": 0.6759,
        "p_model": 0.6476,
        "fair": 1.4795,
-       "min_odds": 1.5239
+       "min_odds": 1.4943
       },
       {
        "key": "12",
@@ -5741,7 +5848,7 @@
        "p_market": 0.7333,
        "p_model": 0.7628,
        "fair": 1.3636,
-       "min_odds": 1.4046
+       "min_odds": 1.3773
       },
       {
        "key": "X2",
@@ -5751,13 +5858,13 @@
        "p_market": 0.5908,
        "p_model": 0.5896,
        "fair": 1.6927,
-       "min_odds": 1.7435
+       "min_odds": 1.7096
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5768,7 +5875,7 @@
        "p_market": 0.8115,
        "p_model": 0.8535,
        "fair": 1.2323,
-       "min_odds": 1.3678
+       "min_odds": 1.2693
       },
       {
        "key": "U15",
@@ -5778,13 +5885,13 @@
        "p_market": 0.1885,
        "p_model": 0.1465,
        "fair": 5.3049,
-       "min_odds": 5.8885
+       "min_odds": 5.4641
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -5795,7 +5902,7 @@
        "p_market": 0.5769,
        "p_model": 0.6525,
        "fair": 1.7335,
-       "min_odds": 1.9068
+       "min_odds": 1.7681
       },
       {
        "key": "U",
@@ -5805,13 +5912,13 @@
        "p_market": 0.4231,
        "p_model": 0.3475,
        "fair": 2.3634,
-       "min_odds": 2.5997
+       "min_odds": 2.4107
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5822,7 +5929,7 @@
        "p_market": 0.352,
        "p_model": 0.4329,
        "fair": 2.8411,
-       "min_odds": 3.1536
+       "min_odds": 2.9263
       },
       {
        "key": "U35",
@@ -5832,13 +5939,13 @@
        "p_market": 0.648,
        "p_model": 0.5671,
        "fair": 1.5432,
-       "min_odds": 1.7129
+       "min_odds": 1.5895
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5849,7 +5956,7 @@
        "p_market": 0.612,
        "p_model": 0.666,
        "fair": 1.634,
-       "min_odds": 1.8137
+       "min_odds": 1.683
       },
       {
        "key": "BN",
@@ -5859,7 +5966,7 @@
        "p_market": 0.388,
        "p_model": 0.334,
        "fair": 2.5773,
-       "min_odds": 2.8608
+       "min_odds": 2.6546
       }
      ]
     }
@@ -5901,7 +6008,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5913,7 +6020,7 @@
        "p_market": 0.6194,
        "p_model": 0.6446,
        "fair": 1.6144,
-       "min_odds": 1.6629
+       "min_odds": 1.6306
       },
       {
        "key": "D",
@@ -5923,7 +6030,7 @@
        "p_market": 0.2283,
        "p_model": 0.2106,
        "fair": 4.38,
-       "min_odds": 4.5114
+       "min_odds": 4.4238
       },
       {
        "key": "A",
@@ -5933,12 +6040,12 @@
        "p_market": 0.1523,
        "p_model": 0.1447,
        "fair": 6.5671,
-       "min_odds": 6.7641
+       "min_odds": 6.6327
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -5950,7 +6057,7 @@
        "p_market": 0.8477,
        "p_model": 0.8553,
        "fair": 1.1796,
-       "min_odds": 1.215
+       "min_odds": 1.1914
       },
       {
        "key": "12",
@@ -5960,7 +6067,7 @@
        "p_market": 0.7717,
        "p_model": 0.7894,
        "fair": 1.2959,
-       "min_odds": 1.3347
+       "min_odds": 1.3088
       },
       {
        "key": "X2",
@@ -5970,13 +6077,13 @@
        "p_market": 0.3806,
        "p_model": 0.3554,
        "fair": 2.6275,
-       "min_odds": 2.7063
+       "min_odds": 2.6538
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -5987,7 +6094,7 @@
        "p_market": 0.8343,
        "p_model": 0.7969,
        "fair": 1.1986,
-       "min_odds": 1.3304
+       "min_odds": 1.2345
       },
       {
        "key": "U15",
@@ -5997,13 +6104,13 @@
        "p_market": 0.1657,
        "p_model": 0.2031,
        "fair": 6.0362,
-       "min_odds": 6.7002
+       "min_odds": 6.2173
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -6014,7 +6121,7 @@
        "p_market": 0.6176,
        "p_model": 0.5639,
        "fair": 1.6191,
-       "min_odds": 1.781
+       "min_odds": 1.6515
       },
       {
        "key": "U",
@@ -6024,13 +6131,13 @@
        "p_market": 0.3824,
        "p_model": 0.4361,
        "fair": 2.6152,
-       "min_odds": 2.8767
+       "min_odds": 2.6675
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6041,7 +6148,7 @@
        "p_market": 0.3913,
        "p_model": 0.34,
        "fair": 2.5559,
-       "min_odds": 2.837
+       "min_odds": 2.6326
       },
       {
        "key": "U35",
@@ -6051,13 +6158,13 @@
        "p_market": 0.6087,
        "p_model": 0.66,
        "fair": 1.6427,
-       "min_odds": 1.8234
+       "min_odds": 1.692
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6068,7 +6175,7 @@
        "p_market": 0.5748,
        "p_model": 0.5144,
        "fair": 1.7396,
-       "min_odds": 1.931
+       "min_odds": 1.7918
       },
       {
        "key": "BN",
@@ -6078,7 +6185,7 @@
        "p_market": 0.4252,
        "p_model": 0.4856,
        "fair": 2.3521,
-       "min_odds": 2.6108
+       "min_odds": 2.4226
       }
      ]
     }
@@ -6120,7 +6227,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -6132,7 +6239,7 @@
        "p_market": 0.4058,
        "p_model": 0.3492,
        "fair": 2.464,
-       "min_odds": 2.538
+       "min_odds": 2.4887
       },
       {
        "key": "D",
@@ -6142,7 +6249,7 @@
        "p_market": 0.2993,
        "p_model": 0.2731,
        "fair": 3.3407,
-       "min_odds": 3.441
+       "min_odds": 3.3741
       },
       {
        "key": "A",
@@ -6152,12 +6259,12 @@
        "p_market": 0.2948,
        "p_model": 0.3777,
        "fair": 3.3918,
-       "min_odds": 3.4936
+       "min_odds": 3.4258
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -6169,7 +6276,7 @@
        "p_market": 0.7052,
        "p_model": 0.6223,
        "fair": 1.4181,
-       "min_odds": 1.4606
+       "min_odds": 1.4323
       },
       {
        "key": "12",
@@ -6179,7 +6286,7 @@
        "p_market": 0.7007,
        "p_model": 0.7269,
        "fair": 1.4272,
-       "min_odds": 1.47
+       "min_odds": 1.4415
       },
       {
        "key": "X2",
@@ -6189,13 +6296,13 @@
        "p_market": 0.5942,
        "p_model": 0.6508,
        "fair": 1.683,
-       "min_odds": 1.7335
+       "min_odds": 1.6999
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6206,7 +6313,7 @@
        "p_market": 0.7113,
        "p_model": 0.7487,
        "fair": 1.4059,
-       "min_odds": 1.5606
+       "min_odds": 1.4481
       },
       {
        "key": "U15",
@@ -6216,13 +6323,13 @@
        "p_market": 0.2887,
        "p_model": 0.2513,
        "fair": 3.4636,
-       "min_odds": 3.8446
+       "min_odds": 3.5675
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -6233,7 +6340,7 @@
        "p_market": 0.4391,
        "p_model": 0.4946,
        "fair": 2.2773,
-       "min_odds": 2.505
+       "min_odds": 2.3228
       },
       {
        "key": "U",
@@ -6243,13 +6350,13 @@
        "p_market": 0.5609,
        "p_model": 0.5054,
        "fair": 1.7829,
-       "min_odds": 1.9612
+       "min_odds": 1.8186
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6260,7 +6367,7 @@
        "p_market": 0.2279,
        "p_model": 0.2754,
        "fair": 4.3871,
-       "min_odds": 4.8697
+       "min_odds": 4.5187
       },
       {
        "key": "U35",
@@ -6270,13 +6377,13 @@
        "p_market": 0.7721,
        "p_model": 0.7246,
        "fair": 1.2952,
-       "min_odds": 1.4377
+       "min_odds": 1.3341
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6287,7 +6394,7 @@
        "p_market": 0.5039,
        "p_model": 0.5454,
        "fair": 1.9844,
-       "min_odds": 2.2027
+       "min_odds": 2.044
       },
       {
        "key": "BN",
@@ -6297,7 +6404,7 @@
        "p_market": 0.4961,
        "p_model": 0.4546,
        "fair": 2.0158,
-       "min_odds": 2.2376
+       "min_odds": 2.0763
       }
      ]
     }
@@ -6326,7 +6433,7 @@
    "expected_goals": null,
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -6338,7 +6445,7 @@
        "p_market": 0.2743,
        "p_model": null,
        "fair": 3.646,
-       "min_odds": 3.7554
+       "min_odds": 3.6825
       },
       {
        "key": "D",
@@ -6348,7 +6455,7 @@
        "p_market": 0.2668,
        "p_model": null,
        "fair": 3.7484,
-       "min_odds": 3.8608
+       "min_odds": 3.7858
       },
       {
        "key": "A",
@@ -6358,12 +6465,12 @@
        "p_market": 0.4589,
        "p_model": null,
        "fair": 2.1789,
-       "min_odds": 2.2443
+       "min_odds": 2.2007
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -6375,7 +6482,7 @@
        "p_market": 0.5411,
        "p_model": null,
        "fair": 1.8482,
-       "min_odds": 1.9037
+       "min_odds": 1.8667
       },
       {
        "key": "12",
@@ -6385,7 +6492,7 @@
        "p_market": 0.7332,
        "p_model": null,
        "fair": 1.3639,
-       "min_odds": 1.4048
+       "min_odds": 1.3775
       },
       {
        "key": "X2",
@@ -6395,13 +6502,13 @@
        "p_market": 0.7257,
        "p_model": null,
        "fair": 1.3779,
-       "min_odds": 1.4193
+       "min_odds": 1.3917
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6412,7 +6519,7 @@
        "p_market": 0.8114,
        "p_model": null,
        "fair": 1.2325,
-       "min_odds": 1.368
+       "min_odds": 1.2694
       },
       {
        "key": "U15",
@@ -6422,13 +6529,13 @@
        "p_market": 0.1886,
        "p_model": null,
        "fair": 5.3019,
-       "min_odds": 5.8851
+       "min_odds": 5.461
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -6439,7 +6546,7 @@
        "p_market": 0.5787,
        "p_model": null,
        "fair": 1.7279,
-       "min_odds": 1.9007
+       "min_odds": 1.7625
       },
       {
        "key": "U",
@@ -6449,13 +6556,13 @@
        "p_market": 0.4213,
        "p_model": null,
        "fair": 2.3737,
-       "min_odds": 2.6111
+       "min_odds": 2.4212
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6466,7 +6573,7 @@
        "p_market": 0.3521,
        "p_model": null,
        "fair": 2.8402,
-       "min_odds": 3.1527
+       "min_odds": 2.9254
       },
       {
        "key": "U35",
@@ -6476,13 +6583,13 @@
        "p_market": 0.6479,
        "p_model": null,
        "fair": 1.5434,
-       "min_odds": 1.7132
+       "min_odds": 1.5897
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6493,7 +6600,7 @@
        "p_market": 0.6041,
        "p_model": null,
        "fair": 1.6552,
-       "min_odds": 1.8373
+       "min_odds": 1.7049
       },
       {
        "key": "BN",
@@ -6503,7 +6610,7 @@
        "p_market": 0.3959,
        "p_model": null,
        "fair": 2.5261,
-       "min_odds": 2.804
+       "min_odds": 2.6019
       }
      ]
     }
@@ -6545,7 +6652,7 @@
    ],
    "markets": {
     "1X2": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -6557,7 +6664,7 @@
        "p_market": 0.3425,
        "p_model": 0.4277,
        "fair": 2.9197,
-       "min_odds": 3.0073
+       "min_odds": 2.9489
       },
       {
        "key": "D",
@@ -6567,7 +6674,7 @@
        "p_market": 0.2916,
        "p_model": 0.2658,
        "fair": 3.429,
-       "min_odds": 3.5318
+       "min_odds": 3.4633
       },
       {
        "key": "A",
@@ -6577,12 +6684,12 @@
        "p_market": 0.3659,
        "p_model": 0.3064,
        "fair": 2.7333,
-       "min_odds": 2.8153
+       "min_odds": 2.7606
       }
      ]
     },
     "DC": {
-     "edge": 0.03,
+     "edge": 0.01,
      "max_odds": 8.0,
      "derived": false,
      "selections": [
@@ -6594,7 +6701,7 @@
        "p_market": 0.6341,
        "p_model": 0.6936,
        "fair": 1.5769,
-       "min_odds": 1.6243
+       "min_odds": 1.5927
       },
       {
        "key": "12",
@@ -6604,7 +6711,7 @@
        "p_market": 0.7084,
        "p_model": 0.7342,
        "fair": 1.4117,
-       "min_odds": 1.454
+       "min_odds": 1.4258
       },
       {
        "key": "X2",
@@ -6614,13 +6721,13 @@
        "p_market": 0.6575,
        "p_model": 0.5723,
        "fair": 1.5209,
-       "min_odds": 1.5665
+       "min_odds": 1.5361
       }
      ]
     },
     "OU15": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6631,7 +6738,7 @@
        "p_market": 0.7329,
        "p_model": 0.7632,
        "fair": 1.3644,
-       "min_odds": 1.5145
+       "min_odds": 1.4054
       },
       {
        "key": "U15",
@@ -6641,13 +6748,13 @@
        "p_market": 0.2671,
        "p_model": 0.2368,
        "fair": 3.7441,
-       "min_odds": 4.156
+       "min_odds": 3.8564
       }
      ]
     },
     "OU": {
-     "edge": 0.1,
-     "max_odds": 2.5,
+     "edge": 0.02,
+     "max_odds": 8.0,
      "derived": false,
      "selections": [
       {
@@ -6658,7 +6765,7 @@
        "p_market": 0.465,
        "p_model": 0.5143,
        "fair": 2.1504,
-       "min_odds": 2.3654
+       "min_odds": 2.1934
       },
       {
        "key": "U",
@@ -6668,13 +6775,13 @@
        "p_market": 0.535,
        "p_model": 0.4857,
        "fair": 1.8693,
-       "min_odds": 2.0562
+       "min_odds": 1.9067
       }
      ]
     },
     "OU35": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6685,7 +6792,7 @@
        "p_market": 0.2503,
        "p_model": 0.2931,
        "fair": 3.9946,
-       "min_odds": 4.434
+       "min_odds": 4.1144
       },
       {
        "key": "U35",
@@ -6695,13 +6802,13 @@
        "p_market": 0.7497,
        "p_model": 0.7069,
        "fair": 1.3339,
-       "min_odds": 1.4807
+       "min_odds": 1.374
       }
      ]
     },
     "BTTS": {
-     "edge": 0.11,
-     "max_odds": 2.5,
+     "edge": 0.03,
+     "max_odds": 8.0,
      "derived": true,
      "selections": [
       {
@@ -6712,7 +6819,7 @@
        "p_market": 0.5291,
        "p_model": 0.5564,
        "fair": 1.8899,
-       "min_odds": 2.0978
+       "min_odds": 1.9466
       },
       {
        "key": "BN",
@@ -6722,7 +6829,7 @@
        "p_market": 0.4709,
        "p_model": 0.4436,
        "fair": 2.1237,
-       "min_odds": 2.3573
+       "min_odds": 2.1874
       }
      ]
     }
