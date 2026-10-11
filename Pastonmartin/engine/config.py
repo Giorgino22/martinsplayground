@@ -32,28 +32,42 @@ TUNE_SEASONS = range(2016, 2022)    # 2016/17 – 2021/22: hier darf das System 
 TEST_SEASONS = range(2022, 2026)    # 2022/23 – 2025/26: nur EINMAL prüfen, nicht mehr daran drehen
 
 # --- Modell ----------------------------------------------------------------
-DECAY_GRID = [0.0015, 0.003, 0.006]  # wie schnell alte Spiele an Gewicht verlieren (pro Tag)
+# Der Backtest probiert alle Kombinationen und wählt die beste (im Anpassungs-Zeitraum).
+DECAY_GRID = [0.002, 0.003, 0.005]   # wie schnell alte Spiele an Gewicht verlieren (pro Tag)
+SHOTS_GRID = [0.0, 0.4, 0.7]         # wie stark Schüsse aufs Tor statt Tore zählen
+RHO_GRID = [0.0, -0.05, -0.1]        # Dixon-Coles-Korrektur für 0:0 und 1:1
 RIDGE = 1.0                          # bremst extreme Teamstärken (wichtig bei wenig Daten)
 HISTORY_DAYS = 3 * 365               # nur die letzten 3 Jahre anschauen
 MIN_TEAM_MATCHES = 6.0               # so viele (gewichtete) Spiele braucht ein Team, sonst keine Prognose
 MAX_GOALS = 10                       # Tore pro Team, die wir durchrechnen
 
 # --- Wetten ----------------------------------------------------------------
-BLEND_GRID = [i / 20 for i in range(21)]        # Gewicht des eigenen Modells: 0.00, 0.05 … 1.00
-EDGE_GRID = [0.02, 0.03, 0.04, 0.05, 0.07, 0.10]  # Mindest-Value, ab dem gewettet wird
-MIN_BETS_FOR_TUNING = 150           # weniger Wetten = Zufall, solche Einstellungen nehmen wir nicht
-MAX_ODDS = 8.0                      # keine Wetten auf Riesen-Aussenseiter (zu viel Zufall)
+BLEND_GRID = [i / 20 for i in range(21)]        # nur für die alte, lineare Mischung (v1)
+EDGE_GRID = [0.01, 0.02, 0.03, 0.04, 0.05, 0.07, 0.10]   # Mindest-Value, ab dem gewettet wird
+MAX_ODDS_GRID = [2.5, 4.0, 8.0]     # höchste Quote, auf die gewettet wird
+MIN_BETS_FOR_TUNING = {"1X2": 150, "OU": 75}   # weniger Wetten = zu viel Zufall
+DERIVED_EXTRA_EDGE = 0.01           # Nebenmärkte (aus erwarteten Toren berechnet): 1 % mehr Value verlangen
 
-# Sporttip-Quoten gibt es nicht historisch. Im Backtest nehmen wir den Marktdurchschnitt
-# und ziehen zusätzlich so viel ab. Das ist eine Schätzung, die das Wett-Tagebuch
-# mit echten Sporttip-Quoten überprüft ("Sporttip vs. fair").
+# Sporttip-Quoten gibt es nicht historisch. Im Backtest nehmen wir Bet365
+# und ziehen zusätzlich so viel ab. Das ist eine Schätzung, die die Website mit
+# echten Sporttip-Quoten überprüft (Anzeige "Sporttip-Marge").
 SPORTTIP_HAIRCUT = 0.04
 
 KELLY_FRACTION = 0.25               # Einsatz = ¼ des Kelly-Einsatzes
 MAX_STAKE = 0.02                    # nie mehr als 2 % des Budgets auf eine Wette
 
 # Fallback-Werte, falls noch kein Backtest gelaufen ist.
-DEFAULT_PARAMS = {"decay": 0.003, "w_1x2": 0.2, "w_ou": 0.2, "edge_1x2": 0.05, "edge_ou": 0.05}
+DEFAULT_PARAMS = {
+    "model": {"decay": 0.003, "shots_weight": 0.0, "rho": 0.0},
+    "devig": "power",
+    "combine": {"kind": "pool",
+                "1X2": {"full": None, "ref_only": {"bias": [0, 0, 0], "w_market": 1.0, "w_model": 0.0}},
+                "OU": {"full": None, "ref_only": {"bias": [0, 0], "w_market": 1.0, "w_model": 0.0}}},
+    "edge": {"1X2": 0.03, "OU": 0.03},
+    "max_odds": {"1X2": 4.0, "OU": 4.0},
+    "derived_extra_edge": DERIVED_EXTRA_EDGE,
+    "derived_rho": 0.0,
+}
 
 
 # --- Hilfsfunktionen für Saisons -------------------------------------------

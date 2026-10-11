@@ -1,4 +1,4 @@
-"""Das Analysemodell: Poisson-Modell mit Angriffs- und Abwehrstärke pro Team.
+"""Das eigene Analysemodell: Poisson-Modell mit Angriffs- und Abwehrstärke pro Team.
 
 Idee: Tore sind seltene, zufällige Ereignisse und folgen ziemlich gut einer
 Poisson-Verteilung. Wir brauchen also nur die *erwarteten* Tore jedes Teams:
@@ -6,19 +6,22 @@ Poisson-Verteilung. Wir brauchen also nur die *erwarteten* Tore jedes Teams:
     erwartete Heimtore = exp(basis + heimvorteil + angriff[heim] - abwehr[gast])
     erwartete Gasttore = exp(basis +               angriff[gast] - abwehr[heim])
 
-Die Stärken lernen wir aus alten Resultaten. Neuere Spiele zählen mehr als alte
+Die Stärken lernen wir aus alten Spielen. Neuere Spiele zählen mehr als alte
 ("decay"): Gewicht = exp(-decay * Tage_her).
 
-Aus den erwarteten Toren rechnen wir dann jede Tor-Kombination (0:0, 1:0, …)
-durch und zählen zusammen, wie wahrscheinlich Heimsieg, Remis, Auswärtssieg,
-über 2.5 und unter 2.5 Tore sind.
+Tore sind aber sehr zufällig. Schüsse aufs Tor zeigen besser, wie gefährlich ein
+Team wirklich war. Mit shots_weight > 0 lernt das Modell darum aus einer Mischung:
+
+    Ziel = (1 - shots_weight) * Tore + shots_weight * Schüsse_aufs_Tor * Trefferquote
+
+(Trefferquote = wie viele Schüsse aufs Tor in dieser Liga im Schnitt ein Tor werden.)
 """
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
-from scipy.stats import poisson
 
 import config
+import markets
 
 
 class TeamModel:
@@ -38,36 +41,28 @@ class TeamModel:
         return i is not None and self.experience[i] >= config.MIN_TEAM_MATCHES
 
     def expected_goals(self, home, away):
+        """(Heimtore, Gasttore) oder None, wenn ein Team zu unbekannt ist."""
+        if not (self.knows(home) and self.knows(away)):
+            return None
         h, a = self.index[home], self.index[away]
         goals_home = np.exp(self.base + self.home_adv + self.attack[h] - self.defence[a])
         goals_away = np.exp(self.base + self.attack[a] - self.defence[h])
-        return goals_home, goals_away
+        return float(goals_home), float(goals_away)
 
-    def predict(self, home, away):
-        """Wahrscheinlichkeiten für ein Spiel, oder None wenn ein Team zu unbekannt ist."""
-        if not (self.knows(home) and self.knows(away)):
+    def predict(self, home, away, rho=0.0):
+        """Wahrscheinlichkeiten aller Wetten für ein Spiel, oder None."""
+        goals = self.expected_goals(home, away)
+        if goals is None:
             return None
-        return outcome_probs(*self.expected_goals(home, away))
+        return {key: float(p[0]) for key, p in markets.from_goals(*goals, rho).items()}
 
 
-def outcome_probs(goals_home, goals_away, max_goals=config.MAX_GOALS):
-    """Erwartete Tore -> Wahrscheinlichkeiten für 1/X/2 und über/unter 2.5."""
-    goals = np.arange(max_goals + 1)
-    # grid[i, j] = Wahrscheinlichkeit, dass es i:j ausgeht
-    grid = np.outer(poisson.pmf(goals, goals_home), poisson.pmf(goals, goals_away))
-    grid /= grid.sum()  # die paar Prozent für >10 Tore wieder verteilen
-
-    total_goals = goals[:, None] + goals[None, :]
-    return {
-        "H": float(np.tril(grid, -1).sum()),   # unter der Diagonale: Heim schiesst mehr
-        "D": float(np.trace(grid)),            # Diagonale: gleich viele Tore
-        "A": float(np.triu(grid, 1).sum()),    # über der Diagonale: Gast schiesst mehr
-        "O": float(grid[total_goals >= 3].sum()),
-        "U": float(grid[total_goals <= 2].sum()),
-    }
+def outcome_probs(goals_home, goals_away, rho=0.0):
+    """Erwartete Tore -> Wahrscheinlichkeiten (für ein einzelnes Spiel)."""
+    return {key: float(p[0]) for key, p in markets.from_goals(goals_home, goals_away, rho).items()}
 
 
-def fit(matches, as_of, decay, ridge=config.RIDGE):
+def fit(matches, as_of, decay, shots_weight=0.0, ridge=config.RIDGE):
     """Lernt die Teamstärken aus allen Spielen VOR `as_of`.
 
     Wichtig für den Backtest: das Modell darf nie Spiele sehen, die am Tag der
@@ -84,13 +79,16 @@ def fit(matches, as_of, decay, ridge=config.RIDGE):
     n = len(teams)
     h = past["home"].map(index).to_numpy()
     a = past["away"].map(index).to_numpy()
-    goals_h = past["hg"].to_numpy(dtype=float)
-    goals_a = past["ag"].to_numpy(dtype=float)
+    target_h = past["hg"].to_numpy(dtype=float)
+    target_a = past["ag"].to_numpy(dtype=float)
     days_ago = (as_of - past["date"]).dt.days.to_numpy()
     weight = np.exp(-decay * days_ago)
 
+    if shots_weight > 0 and "sot_h" in past:
+        target_h, target_a = _mix_in_shots(past, target_h, target_a, shots_weight)
+
     def loss_and_gradient(params):
-        """Wie schlecht passen die Parameter zu den Resultaten? (+ Richtung zum Verbessern)
+        """Wie schlecht passen die Parameter zu den Spielen? (+ Richtung zum Verbessern)
 
         Das ist die negative Poisson-Log-Likelihood. scipy sucht die Parameter,
         bei denen sie am kleinsten ist. Den Gradienten (die Ableitung) geben wir
@@ -102,13 +100,13 @@ def fit(matches, as_of, decay, ridge=config.RIDGE):
         log_a = base + attack[a] - defence[h]
         exp_h, exp_a = np.exp(log_h), np.exp(log_a)
 
-        loss = (np.sum(weight * (exp_h - goals_h * log_h))
-                + np.sum(weight * (exp_a - goals_a * log_a))
+        loss = (np.sum(weight * (exp_h - target_h * log_h))
+                + np.sum(weight * (exp_a - target_a * log_a))
                 + ridge * (attack @ attack + defence @ defence))
 
         # Ableitungen: (erwartet - tatsächlich), auf die beteiligten Teams verteilt
-        res_h = weight * (exp_h - goals_h)
-        res_a = weight * (exp_a - goals_a)
+        res_h = weight * (exp_h - target_h)
+        res_a = weight * (exp_a - target_a)
         grad = np.empty_like(params)
         grad[:n] = np.bincount(h, res_h, n) + np.bincount(a, res_a, n) + 2 * ridge * attack
         grad[n:2 * n] = -np.bincount(a, res_h, n) - np.bincount(h, res_a, n) + 2 * ridge * defence
@@ -117,9 +115,22 @@ def fit(matches, as_of, decay, ridge=config.RIDGE):
         return loss, grad
 
     start_params = np.zeros(2 * n + 2)
-    start_params[2 * n + 1] = np.log(max(0.5, (goals_h.mean() + goals_a.mean()) / 2))
+    start_params[2 * n + 1] = np.log(max(0.5, (target_h.mean() + target_a.mean()) / 2))
     result = minimize(loss_and_gradient, start_params, jac=True, method="L-BFGS-B")
     p = result.x
 
     experience = np.bincount(h, weight, n) + np.bincount(a, weight, n)
     return TeamModel(teams, p[:n], p[n:2 * n], p[2 * n], p[2 * n + 1], experience)
+
+
+def _mix_in_shots(past, goals_h, goals_a, shots_weight):
+    """Ziel = Mischung aus Toren und (Schüsse aufs Tor × Trefferquote der Liga)."""
+    sot_h = past["sot_h"].to_numpy(dtype=float)
+    sot_a = past["sot_a"].to_numpy(dtype=float)
+    have = ~np.isnan(sot_h) & ~np.isnan(sot_a)
+    if have.sum() < 50:
+        return goals_h, goals_a
+    conversion = (goals_h[have].sum() + goals_a[have].sum()) / max(1.0, sot_h[have].sum() + sot_a[have].sum())
+    mixed_h = np.where(have, (1 - shots_weight) * goals_h + shots_weight * conversion * np.nan_to_num(sot_h), goals_h)
+    mixed_a = np.where(have, (1 - shots_weight) * goals_a + shots_weight * conversion * np.nan_to_num(sot_a), goals_a)
+    return mixed_h, mixed_a

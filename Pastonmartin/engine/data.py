@@ -4,10 +4,12 @@ Jede Liga/Saison ist dort eine CSV-Datei. Leider heissen die Spalten nicht in
 allen Jahren gleich, deshalb übersetzen wir alles in unsere eigenen Spaltennamen:
 
     league, season, date, time, home, away, hg, ag            (Spiel + Resultat)
+    shots_h, shots_a, sot_h, sot_a                            (Schüsse / Schüsse aufs Tor)
     ref_h, ref_d, ref_a, ref_over, ref_under                  (Referenzquote vor dem Spiel, siehe unten)
-    avg_h, avg_d, avg_a, avg_over, avg_under                  (Marktdurchschnitt vor dem Spiel)
-    book_h, book_d, book_a, book_over, book_under             (ein einzelner Buchmacher: Bet365)
-    refc_h, refc_d, refc_a, refc_over, refc_under             (Referenz-Schlussquote)
+    avg_*                                                     (Marktdurchschnitt vor dem Spiel)
+    book_*                                                    (ein einzelner Buchmacher: Bet365)
+    max_*                                                     (höchste Quote aller Buchmacher)
+    refc_*, bookc_*, maxc_*                                   (dasselbe als Schlussquote kurz vor Anpfiff)
     ref_name                                                  (woher die Referenz kommt)
 
 Referenz = die genaueste Quote, die es gibt: Pinnacle. Seit Anfang 2026 liefert
@@ -42,10 +44,20 @@ ODDS_COLUMNS = {
     "avg_over": ["Avg>2.5", "BbAv>2.5"], "avg_under": ["Avg<2.5", "BbAv<2.5"],
     "book_h": ["B365H"], "book_d": ["B365D"], "book_a": ["B365A"],
     "book_over": ["B365>2.5", "Avg>2.5", "BbAv>2.5"], "book_under": ["B365<2.5", "Avg<2.5", "BbAv<2.5"],
+    "max_h": ["MaxH", "BbMxH"], "max_d": ["MaxD", "BbMxD"], "max_a": ["MaxA", "BbMxA"],
+    "max_over": ["Max>2.5", "BbMx>2.5"], "max_under": ["Max<2.5", "BbMx<2.5"],
+    # Schlussquoten
     "refc_h": ["PSCH", "BFECH", "AvgCH"], "refc_d": ["PSCD", "BFECD", "AvgCD"],
     "refc_a": ["PSCA", "BFECA", "AvgCA"],
     "refc_over": ["PC>2.5", "BFEC>2.5", "AvgC>2.5"], "refc_under": ["PC<2.5", "BFEC<2.5", "AvgC<2.5"],
+    "bookc_h": ["B365CH"], "bookc_d": ["B365CD"], "bookc_a": ["B365CA"],
+    "bookc_over": ["B365C>2.5"], "bookc_under": ["B365C<2.5"],
+    "maxc_h": ["MaxCH"], "maxc_d": ["MaxCD"], "maxc_a": ["MaxCA"],
+    "maxc_over": ["MaxC>2.5"], "maxc_under": ["MaxC<2.5"],
 }
+
+# Spielstatistik (nicht in allen Ligen vorhanden)
+STAT_COLUMNS = {"shots_h": ["HS"], "shots_a": ["AS"], "sot_h": ["HST"], "sot_a": ["AST"]}
 
 # Welche Quelle steckt in ref_h? (für die Anzeige auf der Website)
 REFERENCE_SOURCES = [("Pinnacle", ["PSH", "PSCH"]), ("Betfair", ["BFEH", "BFECH"]),
@@ -57,9 +69,11 @@ CLOSING_FALLBACK = {
     "ref_h": ["PSCH", "BFECH", "AvgCH"], "ref_d": ["PSCD", "BFECD", "AvgCD"], "ref_a": ["PSCA", "BFECA", "AvgCA"],
     "avg_h": ["AvgCH"], "avg_d": ["AvgCD"], "avg_a": ["AvgCA"],
     "book_h": ["B365CH", "AvgCH"], "book_d": ["B365CD", "AvgCD"], "book_a": ["B365CA", "AvgCA"],
+    "max_h": ["MaxCH"], "max_d": ["MaxCD"], "max_a": ["MaxCA"],
 }
 
-COLUMNS = ["league", "season", "date", "time", "home", "away", "hg", "ag"] + list(ODDS_COLUMNS) + ["ref_name"]
+COLUMNS = (["league", "season", "date", "time", "home", "away", "hg", "ag"]
+           + list(STAT_COLUMNS) + list(ODDS_COLUMNS) + ["ref_name"])
 
 
 # --- Herunterladen mit Cache -------------------------------------------------
@@ -147,6 +161,8 @@ def normalize(raw, league):
     df["away"] = raw[away_col].astype(str).str.strip()
     df["hg"] = _pick(raw, ["FTHG", "HG"])
     df["ag"] = _pick(raw, ["FTAG", "AG"])
+    for column, names in STAT_COLUMNS.items():
+        df[column] = _pick(raw, names)
 
     for column, names in ODDS_COLUMNS.items():
         df[column] = _pick_odds(raw, names)

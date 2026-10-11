@@ -1,8 +1,16 @@
 """Tipps für die kommenden Spiele + die letzten Resultate fürs Wett-Tagebuch.
 
 Schreibt zwei Dateien für die Website:
-  site/data/tips.json     kommende Spiele mit Wahrscheinlichkeiten und Mindestquoten
+  site/data/tips.json     kommende Spiele: faire Quoten und Mindestquoten für viele Wettarten
   site/data/results.json  Resultate der letzten 60 Tage (zum Abrechnen der Wetten)
+
+Rechenweg pro Spiel (genau wie im Backtest):
+  1. Marktquote (Pinnacle/Betfair/Schnitt) -> Marge herausrechnen -> faire Marktchance
+  2. Eigenes Modell -> Modellchance
+  3. Beide kombinieren (mit den Gewichten aus dem Backtest)
+  4. Aus 1X2 + Über/Unter 2.5 die erwarteten Tore bestimmen -> Nebenmärkte
+     (Doppelte Chance, Über/Unter 1.5/3.5, Beide treffen)
+  5. Mindestquote = (1 + Mindest-Value) / Chance
 """
 import json
 import os
@@ -14,25 +22,25 @@ import pandas as pd
 
 import config
 import data
+import markets
 import model
 import oddsapi
-from backtest import clean
-from odds import fair_probs, min_odds
+import odds
+from backtest import MARKETS, apply_combination, clean, odds_matrix
 
-SELECTIONS = {
-    "1X2": [("H", "1", "Heimsieg"), ("D", "X", "Unentschieden"), ("A", "2", "Auswärtssieg")],
-    "OU": [("O", "Ü2.5", "Über 2.5 Tore"), ("U", "U2.5", "Unter 2.5 Tore")],
-}
-REF = {"H": "ref_h", "D": "ref_d", "A": "ref_a", "O": "ref_over", "U": "ref_under"}
-BOOK = {"H": "book_h", "D": "book_d", "A": "book_a", "O": "book_over", "U": "book_under"}
-CLOSE = {"H": "refc_h", "D": "refc_d", "A": "refc_a", "O": "refc_over", "U": "refc_under"}
+# Welche Schwellen gelten für welchen Markt? Nebenmärkte verlangen etwas mehr Value,
+# weil sie nicht direkt aus einer Marktquote kommen, sondern berechnet sind.
+MARKET_RULES = {"1X2": ("1X2", False), "DC": ("1X2", False), "OU": ("OU", False),
+                "OU15": ("OU", True), "OU35": ("OU", True), "BTTS": ("OU", True)}
 
 
 def load_params():
     """Die Einstellungen, die der letzte Backtest gewählt hat."""
     path = config.OUT_DIR / "backtest.json"
     if path.exists():
-        return {**config.DEFAULT_PARAMS, **json.loads(path.read_text())["params"]}
+        saved = json.loads(path.read_text())
+        if saved.get("version") == 2:
+            return {**config.DEFAULT_PARAMS, **saved["params"]}
     return dict(config.DEFAULT_PARAMS)
 
 
@@ -47,40 +55,68 @@ def kickoff_utc(day, time_text):
 
 
 def number(value):
-    return None if value is None or pd.isna(value) else float(value)
+    return None if value is None or pd.isna(value) else round(float(value), 4)
 
 
-def market_tips(row, prediction, market, w, edge_needed):
-    """Wahrscheinlichkeiten und Mindestquoten für einen Markt eines Spiels.
+def probabilities(params, ref_odds, model_goals):
+    """Faire Chancen aller Wettarten für viele Spiele auf einmal.
 
-    Ohne Marktquote gibt es keine Mindestquote: Das eigene Modell allein hat im
-    Backtest klar verloren, darauf soll man nicht wetten.
+    ref_odds:    {"1X2": Tabelle (Spiele x 3), "OU": Tabelle (Spiele x 2)} Marktquoten
+    model_goals: Tabelle (Spiele x 2) erwartete Tore des eigenen Modells (NaN = unbekannt)
+    Gibt {"final": {Schlüssel: Array}, "market": {…}, "model": {…}} zurück.
     """
-    keys = [key for key, _, _ in SELECTIONS[market]]
-    ref_odds = [number(getattr(row, REF[k], None)) for k in keys]
-    market_p = fair_probs(*ref_odds) if all(ref_odds) else None
-    model_p = [prediction[k] for k in keys] if prediction else None
-    if market_p is None and model_p is None:
-        return None
+    rho = params.get("derived_rho", 0.0)          # für die Nebenmärkte
+    p_ref = {m: odds.devig(ref_odds[m], params["devig"]) for m in MARKETS}
+    with np.errstate(invalid="ignore"):
+        model_all = markets.from_goals(model_goals[:, 0], model_goals[:, 1], params["model"]["rho"])
+    p_model = {m: np.column_stack([model_all[s] for s in sel]) for m, sel in MARKETS.items()}
+    kind = params["combine"]["kind"]
+    final = {m: apply_combination(kind, params["combine"][m], p_ref[m], p_model[m]) for m in MARKETS}
 
-    entries = []
-    for i, (key, short, name) in enumerate(SELECTIONS[market]):
-        p_market = float(market_p[i]) if market_p is not None else None
-        p_model = model_p[i] if model_p is not None else None
-        if p_market is None:
-            p = None                                   # nicht wettbar
-        elif p_model is None:
-            p = p_market                               # Modell kennt ein Team nicht
-        else:
-            p = w * p_model + (1 - w) * p_market       # die Kombination
-        entries.append({
-            "key": key, "short": short, "name": name,
-            "p_model": p_model, "p_market": p_market, "p": p,
-            "fair": 1 / p if p else None,
-            "min_odds": min_odds(p, edge_needed) if p else None,
-            "bet365": number(getattr(row, BOOK[key], None)),
-        })
-    return {"bettable": market_p is not None, "edge": edge_needed, "selections": entries}
+    def expand(p1x2, pou):
+        """1X2 + Über/Unter 2.5 -> alle Wettarten (Nebenmärkte über die erwarteten Tore)."""
+        result = {"H": p1x2[:, 0], "D": p1x2[:, 1], "A": p1x2[:, 2],
+                  "1X": p1x2[:, 0] + p1x2[:, 1], "12": p1x2[:, 0] + p1x2[:, 2],
+                  "X2": p1x2[:, 1] + p1x2[:, 2], "O": pou[:, 0], "U": pou[:, 1]}
+        with_both = ~np.isnan(p1x2).any(axis=1) & ~np.isnan(pou).any(axis=1)
+        derived = {k: np.full(len(p1x2), np.nan) for k in ("O15", "U15", "O35", "U35", "BY", "BN")}
+        if with_both.any():
+            goals_home, goals_away = markets.implied_goals(
+                p1x2[with_both, 0], p1x2[with_both, 1], p1x2[with_both, 2], pou[with_both, 0], rho)
+            implied = markets.from_goals(goals_home, goals_away, rho)
+            for key in derived:
+                derived[key][with_both] = implied[key]
+        return {**result, **derived}
+
+    return {"final": expand(final["1X2"], final["OU"]),
+            "market": expand(p_ref["1X2"], p_ref["OU"]),
+            "model": model_all}
+
+
+def market_entries(params, probs, i):
+    """Alle Wettarten eines Spiels mit fairer Quote und Mindestquote."""
+    entries = {}
+    for market, info in markets.MARKETS.items():
+        base, derived = MARKET_RULES[market]
+        edge_needed = params["edge"][base] + (params["derived_extra_edge"] if derived else 0.0)
+        max_odds = params["max_odds"][base]
+        selections = []
+        for key, (short, name) in info["selections"].items():
+            p = probs["final"][key][i]
+            p_market = probs["market"][key][i]
+            p_model = probs["model"][key][i]
+            if np.isnan(p):
+                selections = None
+                break
+            selections.append({
+                "key": key, "short": short, "name": name,
+                "p": number(p), "p_market": number(p_market), "p_model": number(p_model),
+                "fair": number(1 / p), "min_odds": number(odds.min_odds(p, edge_needed)),
+            })
+        if selections:
+            entries[market] = {"edge": edge_needed, "max_odds": max_odds, "derived": derived,
+                               "selections": selections}
+    return entries
 
 
 def run():
@@ -93,7 +129,8 @@ def run():
     histories, models = {}, {}
     for code in config.LEAGUES:
         histories[code] = data.load_league(code, current - 2, current)
-        models[code] = model.fit(histories[code], today + pd.Timedelta(days=1), params["decay"])
+        models[code] = model.fit(histories[code], today + pd.Timedelta(days=1),
+                                 params["model"]["decay"], params["model"]["shots_weight"])
         print(f"  {code}: {len(histories[code])} Spiele, Modell {'ok' if models[code] else 'fehlt'}")
 
     # 2. Kommende Spiele + Quoten
@@ -106,39 +143,51 @@ def run():
         api_leagues = {k: v for k, v in config.LEAGUES.items() if v.get("odds_api")}
         fixtures = oddsapi.merge(fixtures, api_leagues, known, api_key)
     fixtures = fixtures[fixtures["date"] >= today].sort_values(["date", "kickoff", "league"], na_position="last")
+    fixtures = fixtures.reset_index(drop=True)
 
-    # 3. Tipps berechnen
-    matches = []
-    for row in fixtures.itertuples():
+    # 3. Chancen für alle Spiele auf einmal
+    model_goals = np.full((len(fixtures), 2), np.nan)
+    for i, row in enumerate(fixtures.itertuples()):
         fitted = models.get(row.league)
-        prediction = fitted.predict(row.home, row.away) if fitted else None
-        markets = {
-            "1X2": market_tips(row, prediction, "1X2", params["w_1x2"], params["edge_1x2"]),
-            "OU": market_tips(row, prediction, "OU", params["w_ou"], params["edge_ou"]),
-        }
-        markets = {k: v for k, v in markets.items() if v}
-        if not markets:
+        expected = fitted.expected_goals(row.home, row.away) if fitted else None
+        if expected:
+            model_goals[i] = expected
+    ref_odds = {m: odds_matrix(fixtures, "ref", m) for m in MARKETS}
+    probs = probabilities(params, ref_odds, model_goals)
+
+    matches = []
+    for i, row in enumerate(fixtures.itertuples()):
+        entries = market_entries(params, probs, i)
+        has_model = not np.isnan(model_goals[i, 0])
+        if not entries and not has_model:
             continue
-        expected = fitted.expected_goals(row.home, row.away) if prediction else None
         matches.append({
             "id": data.match_id(row.league, row.date, row.home, row.away),
             "league": row.league,
             "date": f"{row.date:%Y-%m-%d}",
             "kickoff": row.kickoff if isinstance(row.kickoff, str) else None,
             "home": row.home, "away": row.away,
-            "expected_goals": [round(float(g), 2) for g in expected] if expected else None,
             # Woher die Marktquote kommt: Pinnacle, Betfair, Marktschnitt (oder keine)
             "reference": ("Pinnacle live" if row.ref_source == "odds-api"
                           else (row.ref_name if isinstance(row.ref_name, str) else None)),
-            "markets": markets,
+            # Rohdaten, damit die Website mit frischen Quoten alles neu rechnen kann
+            "ref_odds": {m: [number(x) for x in ref_odds[m][i]] for m in MARKETS},
+            "model": {m: [number(probs["model"][s][i]) for s in MARKETS[m]] for m in MARKETS}
+                     if has_model else None,
+            "expected_goals": [round(float(g), 2) for g in model_goals[i]] if has_model else None,
+            "markets": entries,
         })
 
     tips = {
+        "version": 2,
         "generated": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "params": params,
         "kelly_fraction": config.KELLY_FRACTION,
         "max_stake": config.MAX_STAKE,
         "leagues": {code: cfg["name"] for code, cfg in config.LEAGUES.items()},
+        "odds_api_sports": {code: cfg["odds_api"] for code, cfg in config.LEAGUES.items() if cfg.get("odds_api")},
+        "team_aliases": oddsapi.ALIASES,
+        "market_names": {k: v["name"] for k, v in markets.MARKETS.items()},
         "odds_api": bool(api_key),
         "matches": matches,
     }
@@ -146,23 +195,28 @@ def run():
     (config.OUT_DIR / "tips.json").write_text(json.dumps(clean(tips), indent=1, ensure_ascii=False))
     print(f"{len(matches)} kommende Spiele -> tips.json")
 
-    # 4. Resultate der letzten 60 Tage, mit fairen Schlussquoten (für den CLV im Tagebuch)
+    write_results(params, histories, today)
+
+
+def write_results(params, histories, today):
+    """Resultate der letzten 60 Tage mit fairen Schlussquoten (für den CLV im Tagebuch)."""
     recent = pd.concat(histories.values(), ignore_index=True)
-    recent = recent[recent["date"] >= today - pd.Timedelta(days=60)]
+    recent = recent[recent["date"] >= today - pd.Timedelta(days=60)].reset_index(drop=True)
+    # Schlussquoten genau wie Tipps behandeln, nur ohne Modell (CLV misst gegen den Markt)
+    market_only = {**params, "combine": {"kind": "pool", **{m: {"full": None, "ref_only": {
+        "bias": [0.0] * len(MARKETS[m]), "w_market": 1.0, "w_model": 0.0}} for m in MARKETS}}}
+    closing = probabilities(market_only, {m: odds_matrix(recent, "refc", m) for m in MARKETS},
+                            np.full((len(recent), 2), np.nan))["final"]
     results = []
-    for row in recent.itertuples():
-        closing = {}
-        for market in SELECTIONS.values():
-            keys = [k for k, _, _ in market]
-            closing_odds = [number(getattr(row, CLOSE[k])) for k in keys]
-            if all(closing_odds):
-                closing.update(zip(keys, (float(p) for p in fair_probs(*closing_odds))))
+    for i, row in enumerate(recent.itertuples()):
         results.append({
             "id": data.match_id(row.league, row.date, row.home, row.away),
             "league": row.league, "date": f"{row.date:%Y-%m-%d}",
             "home": row.home, "away": row.away, "hg": int(row.hg), "ag": int(row.ag),
-            "closing_fair": closing,
+            "closing_fair": {key: number(p[i]) for key, p in closing.items() if not np.isnan(p[i])},
         })
+    generated = datetime.now(timezone.utc).isoformat(timespec="seconds")
     (config.OUT_DIR / "results.json").write_text(json.dumps(clean(
-        {"generated": tips["generated"], "results": results}), indent=1, ensure_ascii=False))
+        {"generated": generated, "results": results}), indent=1, ensure_ascii=False))
     print(f"{len(results)} Resultate -> results.json")
+
