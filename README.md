@@ -13,6 +13,7 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 | `fottis/`     | `fottis.odermatts.ch`        | (Parked) Shared photo/video drop. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
 | `hater/`      | `oderkalender.odermatts.ch`  | Familienkalender. Read-only view of the family's public `.ics` feeds. Needs Pages Functions (Root directory `hater`), no bindings. Folder name is historical — it reuses the old `hater` Pages project. |
 | `nizza/`      | `nizza.odermatts.ch`         | **The app.** Installable PWA hub: home launcher + `/aura/`, `/chooser/`, `/hater/`. Needs D1 (`DB`), Workers AI (`AI`), R2 (`BUCKET`). |
+| `Pastonmartin/` | – (noch nicht deployed)  | Konzeptphase: Sportwetten-Analyse (Value Bets aus historischen Daten). |
 
 ### nizza app (everything in one PWA)
 
