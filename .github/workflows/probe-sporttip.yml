@@ -8,28 +8,31 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - name: robots.txt
-        run: |
-          for host in www.swisslos.ch www.sporttip.ch; do
-            echo "=== $host/robots.txt"; curl -sSL -m 30 -A "Mozilla/5.0" "https://$host/robots.txt" | head -80 || true
-          done
-      - name: Startseite und Links zu rechtlichen Seiten
-        run: |
-          curl -sSL -m 30 -A "Mozilla/5.0" -o home.html -w "%{http_code} %{url_effective}\n" "https://www.swisslos.ch/de/sporttip/home.html" || true
-          curl -sSL -m 30 -A "Mozilla/5.0" -o home2.html -w "%{http_code} %{url_effective}\n" "https://www.swisslos.ch/de/home.html" || true
-          cat home.html home2.html > all.html
-          echo "=== Links (rechtlich)"
-          grep -oiE 'href="[^"]*(recht|agb|nutzung|bedingung|teilnahme|impressum|disclaimer|legal)[^"]*"' all.html | sort -u | head -40
-          echo "=== Skripte"
-          grep -oiE '<script[^>]+src="[^"]+"' all.html | sort -u | head -40
-          echo "=== API/JSON-Hinweise"
-          grep -oiE '(https?:)?//[a-z0-9.-]*(api|odds|sport|feed|bet)[a-z0-9./_-]*' all.html | sort -u | head -60
-          echo "=== Grösse"; wc -c home.html home2.html
-      - name: Rechtliche Seiten durchsuchen
-        run: |
-          for path in $(grep -oiE 'href="[^"]*(recht|agb|nutzung|bedingung|teilnahme|disclaimer|legal)[^"]*"' all.html 2>/dev/null | sed -E 's/href="([^"]*)"/\1/' | sort -u | head -15); do
-            case "$path" in http*) url="$path";; /*) url="https://www.swisslos.ch$path";; *) continue;; esac
-            echo "=================== $url"
-            curl -sSL -m 30 -A "Mozilla/5.0" "$url" | sed -e 's/<[^>]*>/ /g' | tr -s ' \n' | grep -oiE '.{0,300}(automat|robot|crawler|scrap|bot[ s]|maschinell|kommerziell|vervielf|systematisch|herunterlad|data mining).{0,300}' | head -12 || true
-          done
+      - name: Bedingungen (PDFs und Seiten)
         continue-on-error: true
+        run: |
+          sudo apt-get install -y -qq poppler-utils > /dev/null 2>&1 || true
+          UA="Mozilla/5.0"
+          for page in /de/meta/teilnahmebedingungen/teilnahmebedingungen.html /de/meta/impressum/impressum.html /de/informationen/ueber-swisslos/rechtlicher-rahmen/rechtlicher-rahmen.html; do
+            echo "########## $page"
+            curl -sSL -m 30 -A "$UA" "https://www.swisslos.ch$page" -o page.html
+            grep -oiE 'href="[^"]*\.pdf[^"]*"' page.html | sort -u | head -30
+            sed -e 's/<[^>]*>/ /g' page.html | tr -s ' \n' | grep -oiE '.{0,200}(nutzungsbedingung|automat|robot|crawler|scrap|maschinell|kommerziell|systematisch|urheber|vervielf).{0,250}' | head -10
+          done
+          for pdf in $(curl -sSL -m 30 -A "$UA" "https://www.swisslos.ch/de/meta/teilnahmebedingungen/teilnahmebedingungen.html" | grep -oiE 'href="[^"]*\.pdf' | sed -E 's/href="//' | sort -u | grep -iE 'sport|allgemein|online|internet|nutzung|teilnahme' | head -8); do
+            case "$pdf" in http*) url="$pdf";; *) url="https://www.swisslos.ch$pdf";; esac
+            echo "========== PDF $url"
+            curl -sSL -m 60 -A "$UA" "$url" -o doc.pdf && pdftotext -q doc.pdf doc.txt && wc -w doc.txt
+            tr -s ' \n' ' ' < doc.txt | grep -oiE '.{0,250}(automat|robot|crawler|scrap|software|maschinell|kommerziell|systematisch|technische hilfsmittel|programm|missbrauch).{0,300}' | head -12
+          done
+      - name: Admiral-Schnittstelle
+        continue-on-error: true
+        run: |
+          UA="Mozilla/5.0"
+          echo "=== sitemap"; curl -sSL -m 30 -A "$UA" "https://api.ch.admiral.at/api/sports/integration/sitemap/sitemap-ch-sl.xml" | head -c 1500; echo
+          curl -sSL -m 30 -A "$UA" "https://static.ch.admiral.at/mfo/asw.b2b.sports.ui.widget/bootstrap.js" -o boot.js; wc -c boot.js
+          echo "=== URLs im Widget"; grep -oE 'https?://[a-zA-Z0-9.-]*admiral[a-zA-Z0-9./_-]*' boot.js | sort -u | head -40
+          grep -oE '"/api/[a-zA-Z0-9/_.{}-]*"' boot.js | sort -u | head -60
+          curl -sSL -m 30 -A "$UA" "https://www.swisslos.ch/media/tech/admiral/asw-web/script.umd.js?v=107" -o asw.js; wc -c asw.js
+          echo "=== URLs in asw-web"; grep -oE 'https?://[a-zA-Z0-9.-]*admiral[a-zA-Z0-9./_-]*' asw.js | sort -u | head -40
+          grep -oE '["'"'"'`]/api/[a-zA-Z0-9/_.{}$-]*' asw.js | sort -u | head -60
