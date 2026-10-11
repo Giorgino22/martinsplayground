@@ -75,8 +75,9 @@
       <h2>Wie gerechnet wird</h2>
       <div class="card">
         <ol>
-          <li><b>Faire Quote:</b> Aus den Quoten von Pinnacle (sonst Betfair Exchange) wird die Marge mit der Methode von Shin
-            herausgerechnet. Die gibt Aussenseitern weniger Chance als die einfache Methode und war im Backtest genauer.</li>
+          <li><b>Faire Quote:</b> Aus den Quoten von Pinnacle (sonst Betfair Exchange) wird die Marge herausgerechnet, und zwar
+            mit der Methode, die im Backtest am genausten war (Power- oder Shin-Methode). Beide geben Aussenseitern weniger
+            Chance als die einfache Methode, weil Buchmacher ihre Marge vor allem dort verstecken.</li>
           <li><b>Eigenes Modell:</b> Poisson-Modell mit Angriffs- und Abwehrstärke, gelernt aus Toren und Schüssen aufs Tor.
             Es wird mit dem Markt kombiniert, so stark wie es der Backtest erlaubt (das Gewicht steht im Backtest).</li>
           <li><b>Nebenmärkte:</b> Aus Sieger- und Torquoten werden die erwarteten Tore bestimmt. Daraus folgen Doppelte Chance,
