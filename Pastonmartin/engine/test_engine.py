@@ -354,6 +354,32 @@ const db = {
   }), all: async () => ({ results: [...rows.values()].sort((a, b) => b.created.localeCompare(a.created)) }) }),
 };
 const { onRequest, onRequestGet } = await import(file);
+if (scenario === 'middleware') {
+  const next = async () => new Response('APP', { headers: { 'cache-control': 'public, max-age=60' } });
+  const env = { SITE_PASSWORD: 'geheim', SESSION_SECRET: 'abc' };
+  const go = async (url, environment, init = {}) => {
+    const r = await onRequest({ request: new Request(url, init), env: environment, next });
+    return { status: r.status, location: r.headers.get('location'), cookie: r.headers.get('set-cookie'),
+      cache: r.headers.get('cache-control'), text: await r.text() };
+  };
+  const login = password => go('https://x/login', env, { method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ password }) });
+  const out = {};
+  out.noPassword = await go('https://x/', {});
+  out.home = await go('https://x/', env);
+  out.api = await go('https://x/api/bets', env);
+  out.data = await go('https://x/data/tips.json', env);
+  out.loginPage = await go('https://x/login', env);
+  out.wrong = await login('falsch');
+  out.right = await login('geheim');
+  const cookie = out.right.cookie.split(';')[0];
+  out.authed = await go('https://x/data/tips.json', env, { headers: { cookie } });
+  out.forged = await go('https://x/', env, { headers: { cookie: cookie.slice(0, -3) + 'xyz' } });
+  out.otherSecret = await go('https://x/', { ...env, SESSION_SECRET: 'neu' }, { headers: { cookie } });
+  out.logout = await go('https://x/logout', env, { headers: { cookie } });
+  process.stdout.write(JSON.stringify(out));
+  process.exit(0);
+}
 const handler = onRequestGet || onRequest;
 const call = async (url, env, init = {}) => {
   const response = await handler({ request: new Request(url, init), env, waitUntil: p => p });
@@ -390,9 +416,11 @@ class FunctionsTest(unittest.TestCase):
 
     def run_function(self, name, scenario):
         with tempfile.TemporaryDirectory() as tmp:
-            # als .mjs kopieren, damit Node sie sicher als ES-Modul liest
-            module = Path(tmp) / f"{name}.mjs"
-            module.write_text((FUNCTIONS / f"{name}.js").read_text())
+            # alle Functions in einen Ordner kopieren, den Node sicher als ES-Module liest
+            (Path(tmp) / "package.json").write_text('{"type": "module"}')
+            for source in list(FUNCTIONS.glob("*.js")) + list(FUNCTIONS.parent.glob("*.js")):
+                (Path(tmp) / source.name).write_text(source.read_text())
+            module = Path(tmp) / f"{name}.js"
             runner = Path(tmp) / "runner.mjs"
             runner.write_text(FUNCTION_RUNNER)
             result = subprocess.run(["node", str(runner), module.as_uri(), scenario],
@@ -417,6 +445,23 @@ class FunctionsTest(unittest.TestCase):
         self.assertEqual(out["again"]["body"], out["ok"]["body"])
         self.assertEqual(out["calls"], 2)                      # zweite Abfrage kam aus dem Zwischenspeicher
         self.assertEqual(out["list"]["body"]["sports"][0]["key"], "soccer_epl")
+
+    def test_login_protects_everything(self):
+        out = self.run_function("_middleware", "middleware")
+        self.assertEqual(out["noPassword"]["status"], 503)        # ohne Passwort bleibt alles zu
+        self.assertEqual((out["home"]["status"], out["home"]["location"]), (303, "/login"))
+        self.assertEqual(out["api"]["status"], 401)
+        self.assertEqual(out["data"]["status"], 401)               # auch die Daten-Dateien
+        self.assertEqual(out["loginPage"]["status"], 200)
+        self.assertEqual(out["wrong"]["status"], 401)
+        self.assertIsNone(out["wrong"]["cookie"])
+        self.assertEqual(out["right"]["status"], 303)
+        self.assertIn("HttpOnly", out["right"]["cookie"])
+        self.assertEqual((out["authed"]["status"], out["authed"]["text"]), (200, "APP"))
+        self.assertEqual(out["authed"]["cache"], "private, no-store")
+        self.assertEqual(out["forged"]["status"], 303)             # gefälschtes Cookie
+        self.assertEqual(out["otherSecret"]["status"], 303)        # neues SESSION_SECRET meldet alle ab
+        self.assertIn("Max-Age=0", out["logout"]["cookie"])
 
     def test_journal(self):
         out = self.run_function("bets", "bets")

@@ -92,6 +92,7 @@ The Odds API kennt (Tennis, Eishockey, Basketball, …), nur mit Live-Marktquote
 | `site/data/` | Von GitHub Actions erzeugt: `tips.json`, `backtest.json`, `results.json` |
 | `functions/api/odds.js` | Live-Quoten von The Odds API (5 Minuten zwischengespeichert) |
 | `functions/api/bets.js` | Wett-Tagebuch in Cloudflare D1 |
+| `functions/_middleware.js`, `functions/_auth.js` | Passwortschutz für die ganze App |
 | `../.github/workflows/pastonmartin.yml` | Der Zeitplan |
 
 ### Wann läuft was?
@@ -107,6 +108,12 @@ Der Roboter committet die neuen JSON-Dateien. Cloudflare Pages veröffentlicht s
 
 ## Einrichten
 
+0. **Nur für dich (Passwort):** Die ganze App ist durch `functions/_middleware.js` geschützt.
+   In Cloudflare die Variablen **`SITE_PASSWORD`** (dein Passwort) und **`SESSION_SECRET`**
+   (lange Zufallsfolge) als Secret setzen. Ohne `SITE_PASSWORD` bleibt die App komplett gesperrt.
+   Anmeldung gilt 180 Tage pro Gerät; ein neues `SESSION_SECRET` meldet alle Geräte ab.
+   Hinweis: Das GitHub-Repo ist öffentlich. Darin liegen Code und die berechneten fairen Quoten,
+   aber keine Sporttip-Quoten und kein Tagebuch. Wer auch das nicht will, stellt das Repo auf privat.
 1. **Cloudflare Pages:** neues Projekt aus diesem Repo.
    - Root directory: `Pastonmartin`
    - Build output directory: `site` (relativ zum Root directory, also *nicht* `Pastonmartin/site`)
