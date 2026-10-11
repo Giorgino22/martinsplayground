@@ -134,7 +134,8 @@ Der Roboter committet die neuen JSON-Dateien. Cloudflare Pages veröffentlicht s
    - Root directory: `Pastonmartin`
    - Build output directory: `site` (relativ zum Root directory, also *nicht* `Pastonmartin/site`)
    - Kein Build-Befehl
-   - Domain `pastonmartin.odermatts.ch` + CNAME bei Hostpoint
+   - Build watch paths: `Pastonmartin/*` (oder `*`), sonst baut Cloudflare bei neuen Commits nicht
+   - Domain `chooser.odermatts.ch` (das frühere Chooser-Projekt wurde dafür umgebaut)
 2. **Tagebuch in der Cloud (empfohlen):** D1-Datenbank erstellen und im Pages-Projekt als
    Binding **`DB`** verbinden. Zusätzlich eine Variable **`JOURNAL_KEY`** setzen (beliebiges
    Passwort), sonst kann jeder mit dem Link dein Tagebuch lesen und ändern. Ohne D1
