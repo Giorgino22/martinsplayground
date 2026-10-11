@@ -78,13 +78,25 @@ class DataTest(unittest.TestCase):
             self.assertEqual(df["date"].iloc[0], pd.Timestamp(year, 8, 13))
             self.assertEqual(df["season"].iloc[0], year)
             self.assertEqual(df["avg_h"].iloc[0], 1.9)
-            self.assertEqual(df["pin_a"].iloc[0], 4.0)
+            self.assertEqual(df["ref_a"].iloc[0], 4.0)
+            self.assertEqual(df["ref_name"].iloc[0], "Pinnacle")
+        # 0 Tore sind gültig (Quoten von 0 dagegen nicht)
+        self.assertEqual(data.normalize(data.read_csv(new.encode()), "E0")["hg"].iloc[0], 0)
+
+    def test_reference_falls_back_when_pinnacle_is_missing(self):
+        text = "Div,Date,HomeTeam,AwayTeam,FTHG,FTAG,PSH,PSD,PSA,BFEH,BFED,BFEA,AvgH,AvgD,AvgA\n" \
+               "E0,10/01/2026,A,B,1,0,2.0,3.5,4.0,2.1,3.6,4.1,1.9,3.4,3.9\n" \
+               "E0,17/01/2026,C,D,1,1,,,,2.1,3.6,4.1,1.9,3.4,3.9\n" \
+               "E0,24/01/2026,E,F,0,2,0,0,0,,,,1.9,3.4,3.9\n"
+        df = data.normalize(data.read_csv(text.encode()), "E0")
+        self.assertEqual(df["ref_name"].tolist(), ["Pinnacle", "Betfair", "Marktschnitt"])
+        self.assertEqual(df["ref_h"].tolist(), [2.0, 2.1, 1.9])
 
     def test_extra_league_uses_closing_odds(self):
         text = "Country,League,Season,Date,Time,Home,Away,HG,AG,Res,PSCH,PSCD,PSCA,AvgCH,AvgCD,AvgCA\nSwitzerland,Super League,2023/2024,22/07/2023,18:00,Basel,Zurich,1,1,D,2.1,3.4,3.3,2.0,3.3,3.2\n"
         df = data.normalize(data.read_csv(text.encode()), "SWZ")
         self.assertEqual(df["home"].iloc[0], "Basel")
-        self.assertEqual(df["pin_h"].iloc[0], 2.1)
+        self.assertEqual(df["ref_h"].iloc[0], 2.1)
         self.assertEqual(df["book_h"].iloc[0], 2.0)
 
 
@@ -103,11 +115,11 @@ class SimulateTest(unittest.TestCase):
         df = pd.DataFrame({
             "date": pd.to_datetime(["2023-01-01", "2023-01-02"]), "league": "E0", "season": 2022,
             "hg": [2, 0], "ag": [0, 0],
-            "pin_h": [2.0, 2.0], "pin_d": [3.6, 3.6], "pin_a": [3.9, 3.9],
+            "ref_h": [2.0, 2.0], "ref_d": [3.6, 3.6], "ref_a": [3.9, 3.9],
             "book_h": [2.3, 1.9], "book_d": [3.4, 3.4], "book_a": [3.7, 3.7],
-            "pinc_h": 2.0, "pinc_d": 3.6, "pinc_a": 3.9,
-            "pin_over": np.nan, "pin_under": np.nan, "book_over": np.nan, "book_under": np.nan,
-            "pinc_over": np.nan, "pinc_under": np.nan,
+            "refc_h": 2.0, "refc_d": 3.6, "refc_a": 3.9,
+            "ref_over": np.nan, "ref_under": np.nan, "book_over": np.nan, "book_under": np.nan,
+            "refc_over": np.nan, "refc_under": np.nan,
             "m_H": np.nan, "m_D": np.nan, "m_A": np.nan, "m_O": np.nan, "m_U": np.nan,
         })
         df = backtest.add_market_probs(df)
@@ -175,14 +187,15 @@ def fake_league(seasons, seed, teams=10, with_odds=False):
                        "time": "15:00", "home": f"Team {h}", "away": f"Team {a}",
                        "hg": rng.poisson(lam_h), "ag": rng.poisson(lam_a)}
                 if with_odds:
+                    row["ref_name"] = "Pinnacle"
                     p = model.outcome_probs(lam_h, lam_a)
                     noise = rng.normal(0, 0.06, 5)
-                    for k, (pin_col, book_col, close_col) in {
-                        "H": ("pin_h", "book_h", "pinc_h"), "D": ("pin_d", "book_d", "pinc_d"),
-                        "A": ("pin_a", "book_a", "pinc_a"), "O": ("pin_over", "book_over", "pinc_over"),
-                        "U": ("pin_under", "book_under", "pinc_under"),
+                    for k, (ref_col, book_col, close_col) in {
+                        "H": ("ref_h", "book_h", "refc_h"), "D": ("ref_d", "book_d", "refc_d"),
+                        "A": ("ref_a", "book_a", "refc_a"), "O": ("ref_over", "book_over", "refc_over"),
+                        "U": ("ref_under", "book_under", "refc_under"),
                     }.items():
-                        row[pin_col] = row[close_col] = round(1 / (p[k] * 1.03), 2)
+                        row[ref_col] = row[close_col] = round(1 / (p[k] * 1.03), 2)
                         row[book_col] = round(1 / (p[k] * 1.06) * np.exp(noise["HDAOU".index(k)]), 2)
                 rows.append(row)
     return pd.DataFrame(rows)
@@ -191,11 +204,11 @@ def fake_league(seasons, seed, teams=10, with_odds=False):
 def to_csv(df):
     """Unser Format zurück ins football-data-Format (wie die echten Dateien)."""
     names = {"home": "HomeTeam", "away": "AwayTeam", "hg": "FTHG", "ag": "FTAG", "time": "Time",
-             "pin_h": "PSH", "pin_d": "PSD", "pin_a": "PSA", "pin_over": "P>2.5", "pin_under": "P<2.5",
+             "ref_h": "PSH", "ref_d": "PSD", "ref_a": "PSA", "ref_over": "P>2.5", "ref_under": "P<2.5",
              "book_h": "B365H", "book_d": "B365D", "book_a": "B365A",
              "book_over": "B365>2.5", "book_under": "B365<2.5",
-             "pinc_h": "PSCH", "pinc_d": "PSCD", "pinc_a": "PSCA",
-             "pinc_over": "PC>2.5", "pinc_under": "PC<2.5"}
+             "refc_h": "PSCH", "refc_d": "PSCD", "refc_a": "PSCA",
+             "refc_over": "PC>2.5", "refc_under": "PC<2.5"}
     out = df.rename(columns=names)
     out["Div"] = "E0"
     out["Date"] = df["date"].dt.strftime("%d/%m/%Y")

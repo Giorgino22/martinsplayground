@@ -79,7 +79,7 @@ async function settleFinished() {
     const r = results[bet.match_id];
     const settled = { ...bet, status: didWin(bet.selection, r) ? 'won' : 'lost', score: `${r.hg}:${r.ag}` };
     const fairClose = r.closing_fair?.[bet.selection];
-    // CLV: Quote, die du bekommen hast, gegen die faire Pinnacle-Schlussquote
+    // CLV: Quote, die du bekommen hast, gegen die faire Schlussquote des Marktes
     if (fairClose) settled.clv = bet.odds * fairClose - 1;
     try { await save(settled); } catch (error) { console.error(error); }
   }
@@ -124,7 +124,7 @@ function render() {
       : 'Gespeichert nur in diesem Browser (Cloudflare D1 ist noch nicht eingerichtet).'}</p>
     <div class="tiles">${tiles.map(([label, value]) => `<div class="tile"><div class="label">${label}</div><div class="value">${value}</div></div>`).join('')}</div>
     <div class="card note small">
-      <b>CLV</b> (Closing Line Value) vergleicht deine Quote mit der fairen Pinnacle-Quote kurz vor Anpfiff.
+      <b>CLV</b> (Closing Line Value) vergleicht deine Quote mit der fairen Marktquote kurz vor Anpfiff.
       Ist er über viele Wetten positiv, hast du wahrscheinlich echten Vorsprung, auch wenn der Gewinn gerade schwankt.
       ${done.length < 300 ? `Aussagekräftig wird es ab etwa 300 Wetten (bisher ${done.length}).` : ''}
     </div>

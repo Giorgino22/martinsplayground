@@ -56,7 +56,7 @@ function render() {
 
     <div class="card small">
       <b>Vom Backtest gewählt:</b> Eigenes Modell zählt bei 1X2 <b>${pct(p.w_1x2, 0)}</b>, bei Toren <b>${pct(p.w_ou, 0)}</b>
-      (der Rest ist Pinnacle). Gewettet wird ab <b>${signedPct(p.edge_1x2, 0)}</b> (1X2) bzw. <b>${signedPct(p.edge_ou, 0)}</b> (Tore) Value.
+      (der Rest ist der Markt). Gewettet wird ab <b>${signedPct(p.edge_1x2, 0)}</b> (1X2) bzw. <b>${signedPct(p.edge_ou, 0)}</b> (Tore) Value.
       Ein Spiel zählt nach ${Math.round(Math.log(2) / p.decay / 30)} Monaten nur noch halb so viel.
       <br><span class="muted">Sporttip-Schätzung = Bet365-Quote minus ${pct(p.haircut, 0)}.</span>
     </div>
@@ -78,7 +78,7 @@ function render() {
 
     <h2>Wie gut sind die Wahrscheinlichkeiten?</h2>
     <div class="card">${logLossTable()}</div>
-    <p class="small muted">Log-Loss: tiefer = bessere Vorhersage. Ist „Kombination“ tiefer als „Pinnacle“, bringt das eigene Modell echte Zusatzinformation.</p>
+    <p class="small muted">Log-Loss: tiefer = bessere Vorhersage. Ist „Kombi“ tiefer als „Markt“, bringt das eigene Modell echte Zusatzinformation.</p>
 
     <h2>Kombination nach Liga (Test)</h2>
     <div class="card">${breakdownTable(data.by_league, 'name', 'Liga')}</div>
@@ -122,7 +122,7 @@ function logLossTable() {
       rows += `<tr><td>${MARKET_NAMES[market]} · ${name}</td>${cell(r.model)}${cell(r.market)}${cell(r.blend)}</tr>`;
     }
   }
-  return `<div class="table-wrap"><table><thead><tr><th></th><th>Modell</th><th>Pinnacle</th><th>Kombi</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  return `<div class="table-wrap"><table><thead><tr><th></th><th>Modell</th><th>Markt</th><th>Kombi</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
 function breakdownTable(list, key, label) {
@@ -147,8 +147,10 @@ function tuningTable() {
 
 function coverageTable() {
   const rows = (data.coverage || []).map(c => `<tr><td>${esc(c.league)} ${c.season}</td><td>${c.games}</td>
-    <td>${pct(c.pinnacle, 0)}</td><td>${pct(c.bet365, 0)}</td><td>${pct(c.pinnacle_ou, 0)}</td><td>${pct(c.closing, 0)}</td></tr>`).join('');
-  return `<div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>Liga</th><th>Spiele</th><th>Pinnacle</th><th>Bet365</th><th>Pin. Tore</th><th>Schluss</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    <td>${pct(c.pinnacle, 0)}</td><td>${pct(c.betfair, 0)}</td><td>${pct(c.reference, 0)}</td>
+    <td>${pct(c.bet365, 0)}</td><td>${pct(c.reference_ou, 0)}</td></tr>`).join('');
+  return `<p class="muted">Anteil Spiele mit Quoten. „Markt“ = Pinnacle, sonst Betfair, sonst Marktschnitt.</p>
+    <div class="table-wrap"><table><thead><tr><th>Liga</th><th>Spiele</th><th>Pinnacle</th><th>Betfair</th><th>Markt</th><th>Bet365</th><th>Tore</th></tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
 // --- Liniendiagramm (selbst gezeichnet als SVG) --------------------------------

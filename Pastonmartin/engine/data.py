@@ -4,10 +4,15 @@ Jede Liga/Saison ist dort eine CSV-Datei. Leider heissen die Spalten nicht in
 allen Jahren gleich, deshalb übersetzen wir alles in unsere eigenen Spaltennamen:
 
     league, season, date, time, home, away, hg, ag            (Spiel + Resultat)
-    pin_h, pin_d, pin_a, pin_over, pin_under                  (Pinnacle vor dem Spiel)
+    ref_h, ref_d, ref_a, ref_over, ref_under                  (Referenzquote vor dem Spiel, siehe unten)
     avg_h, avg_d, avg_a, avg_over, avg_under                  (Marktdurchschnitt vor dem Spiel)
     book_h, book_d, book_a, book_over, book_under             (ein einzelner Buchmacher: Bet365)
-    pinc_h, pinc_d, pinc_a, pinc_over, pinc_under             (Pinnacle Schlussquote)
+    refc_h, refc_d, refc_a, refc_over, refc_under             (Referenz-Schlussquote)
+    ref_name                                                  (woher die Referenz kommt)
+
+Referenz = die genaueste Quote, die es gibt: Pinnacle. Seit Anfang 2026 liefert
+football-data.co.uk keine Pinnacle-Quoten mehr, dann nehmen wir Betfair Exchange
+(eine Wettbörse, fast ohne Marge) und sonst den Durchschnitt aller Buchmacher.
 
 Warum Bet365? Sporttip-Quoten gibt es nicht historisch. Ein einzelner Buchmacher
 weicht (wie Sporttip) mal nach oben, mal nach unten vom Markt ab, ein Durchschnitt
@@ -26,27 +31,35 @@ import config
 
 BASE_URL = "https://www.football-data.co.uk"
 
-# Unser Spaltenname -> mögliche Namen in den CSVs (der erste vorhandene gewinnt).
+# Unser Spaltenname -> mögliche Namen in den CSVs. Der erste Name mit einem Wert gewinnt,
+# die weiteren füllen Lücken (z.B. wenn eine Saison ab Januar keine Pinnacle-Quoten mehr hat).
 ODDS_COLUMNS = {
-    "pin_h": ["PSH"], "pin_d": ["PSD"], "pin_a": ["PSA"],
-    "pin_over": ["P>2.5"], "pin_under": ["P<2.5"],
+    "ref_h": ["PSH", "BFEH", "AvgH", "BbAvH"], "ref_d": ["PSD", "BFED", "AvgD", "BbAvD"],
+    "ref_a": ["PSA", "BFEA", "AvgA", "BbAvA"],
+    "ref_over": ["P>2.5", "BFE>2.5", "Avg>2.5", "BbAv>2.5"],
+    "ref_under": ["P<2.5", "BFE<2.5", "Avg<2.5", "BbAv<2.5"],
     "avg_h": ["AvgH", "BbAvH"], "avg_d": ["AvgD", "BbAvD"], "avg_a": ["AvgA", "BbAvA"],
     "avg_over": ["Avg>2.5", "BbAv>2.5"], "avg_under": ["Avg<2.5", "BbAv<2.5"],
     "book_h": ["B365H"], "book_d": ["B365D"], "book_a": ["B365A"],
     "book_over": ["B365>2.5", "Avg>2.5", "BbAv>2.5"], "book_under": ["B365<2.5", "Avg<2.5", "BbAv<2.5"],
-    "pinc_h": ["PSCH"], "pinc_d": ["PSCD"], "pinc_a": ["PSCA"],
-    "pinc_over": ["PC>2.5"], "pinc_under": ["PC<2.5"],
+    "refc_h": ["PSCH", "BFECH", "AvgCH"], "refc_d": ["PSCD", "BFECD", "AvgCD"],
+    "refc_a": ["PSCA", "BFECA", "AvgCA"],
+    "refc_over": ["PC>2.5", "BFEC>2.5", "AvgC>2.5"], "refc_under": ["PC<2.5", "BFEC<2.5", "AvgC<2.5"],
 }
+
+# Welche Quelle steckt in ref_h? (für die Anzeige auf der Website)
+REFERENCE_SOURCES = [("Pinnacle", ["PSH", "PSCH"]), ("Betfair", ["BFEH", "BFECH"]),
+                     ("Marktschnitt", ["AvgH", "BbAvH", "AvgCH"])]
 
 # Die Extra-Ligen (z.B. Schweiz) haben nur Schlussquoten. Dann nehmen wir diese
 # auch als "Quote vor dem Spiel". Das ist weniger realistisch, aber besser als nichts.
 CLOSING_FALLBACK = {
-    "pin_h": ["PSCH"], "pin_d": ["PSCD"], "pin_a": ["PSCA"],
+    "ref_h": ["PSCH", "BFECH", "AvgCH"], "ref_d": ["PSCD", "BFECD", "AvgCD"], "ref_a": ["PSCA", "BFECA", "AvgCA"],
     "avg_h": ["AvgCH"], "avg_d": ["AvgCD"], "avg_a": ["AvgCA"],
     "book_h": ["B365CH", "AvgCH"], "book_d": ["B365CD", "AvgCD"], "book_a": ["B365CA", "AvgCA"],
 }
 
-COLUMNS = ["league", "season", "date", "time", "home", "away", "hg", "ag"] + list(ODDS_COLUMNS)
+COLUMNS = ["league", "season", "date", "time", "home", "away", "hg", "ag"] + list(ODDS_COLUMNS) + ["ref_name"]
 
 
 # --- Herunterladen mit Cache -------------------------------------------------
@@ -99,11 +112,22 @@ def read_csv(content):
 
 # --- Vereinheitlichen ----------------------------------------------------------
 def _pick(df, names):
-    """Erste vorhandene Spalte aus `names` als Zahlen, sonst eine leere Spalte."""
+    """Werte aus der ersten Spalte von `names`, Lücken gefüllt aus den nächsten."""
+    result = pd.Series(np.nan, index=df.index)
     for name in names:
         if name in df.columns:
-            return pd.to_numeric(df[name], errors="coerce")
-    return pd.Series(np.nan, index=df.index)
+            result = result.fillna(pd.to_numeric(df[name], errors="coerce"))
+    return result
+
+
+def _pick_odds(df, names):
+    """Wie _pick, aber Quoten <= 1 sind Fehler in den Daten (z.B. 0) und zählen nicht."""
+    result = pd.Series(np.nan, index=df.index)
+    for name in names:
+        if name in df.columns:
+            values = pd.to_numeric(df[name], errors="coerce")
+            result = result.fillna(values.where(values > 1.0))
+    return result
 
 
 def normalize(raw, league):
@@ -125,9 +149,13 @@ def normalize(raw, league):
     df["ag"] = _pick(raw, ["FTAG", "AG"])
 
     for column, names in ODDS_COLUMNS.items():
-        df[column] = _pick(raw, names)
+        df[column] = _pick_odds(raw, names)
         if column in CLOSING_FALLBACK:
-            df[column] = df[column].fillna(_pick(raw, CLOSING_FALLBACK[column]))
+            df[column] = df[column].fillna(_pick_odds(raw, CLOSING_FALLBACK[column]))
+
+    df["ref_name"] = None
+    for source, names in reversed(REFERENCE_SOURCES):    # bester zuletzt -> überschreibt
+        df.loc[_pick_odds(raw, names).notna(), "ref_name"] = source
 
     df = df.dropna(subset=["date"])
     df = df[(df["home"] != "nan") & (df["away"] != "nan")]

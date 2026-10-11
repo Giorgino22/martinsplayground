@@ -23,9 +23,9 @@ SELECTIONS = {
     "1X2": [("H", "1", "Heimsieg"), ("D", "X", "Unentschieden"), ("A", "2", "Auswärtssieg")],
     "OU": [("O", "Ü2.5", "Über 2.5 Tore"), ("U", "U2.5", "Unter 2.5 Tore")],
 }
-PIN = {"H": "pin_h", "D": "pin_d", "A": "pin_a", "O": "pin_over", "U": "pin_under"}
+REF = {"H": "ref_h", "D": "ref_d", "A": "ref_a", "O": "ref_over", "U": "ref_under"}
 BOOK = {"H": "book_h", "D": "book_d", "A": "book_a", "O": "book_over", "U": "book_under"}
-CLOSE = {"H": "pinc_h", "D": "pinc_d", "A": "pinc_a", "O": "pinc_over", "U": "pinc_under"}
+CLOSE = {"H": "refc_h", "D": "refc_d", "A": "refc_a", "O": "refc_over", "U": "refc_under"}
 
 
 def load_params():
@@ -51,34 +51,36 @@ def number(value):
 
 
 def market_tips(row, prediction, market, w, edge_needed):
-    """Wahrscheinlichkeiten und Mindestquoten für einen Markt eines Spiels."""
+    """Wahrscheinlichkeiten und Mindestquoten für einen Markt eines Spiels.
+
+    Ohne Marktquote gibt es keine Mindestquote: Das eigene Modell allein hat im
+    Backtest klar verloren, darauf soll man nicht wetten.
+    """
     keys = [key for key, _, _ in SELECTIONS[market]]
-    pin_odds = [number(getattr(row, PIN[k], None)) for k in keys]
-    pin = fair_probs(*pin_odds) if all(pin_odds) else None
-    mod = [prediction[k] for k in keys] if prediction else None
-    if pin is None and mod is None:
+    ref_odds = [number(getattr(row, REF[k], None)) for k in keys]
+    market_p = fair_probs(*ref_odds) if all(ref_odds) else None
+    model_p = [prediction[k] for k in keys] if prediction else None
+    if market_p is None and model_p is None:
         return None
 
     entries = []
     for i, (key, short, name) in enumerate(SELECTIONS[market]):
-        p_pin = float(pin[i]) if pin is not None else None
-        p_mod = mod[i] if mod is not None else None
-        if p_pin is not None and p_mod is not None:
-            p = w * p_mod + (1 - w) * p_pin
+        p_market = float(market_p[i]) if market_p is not None else None
+        p_model = model_p[i] if model_p is not None else None
+        if p_market is None:
+            p = None                                   # nicht wettbar
+        elif p_model is None:
+            p = p_market                               # Modell kennt ein Team nicht
         else:
-            p = p_pin if p_pin is not None else p_mod
+            p = w * p_model + (1 - w) * p_market       # die Kombination
         entries.append({
             "key": key, "short": short, "name": name,
-            "p_model": p_mod, "p_market": p_pin, "p": p,
-            "fair": 1 / p, "min_odds": min_odds(p, edge_needed),
+            "p_model": p_model, "p_market": p_market, "p": p,
+            "fair": 1 / p if p else None,
+            "min_odds": min_odds(p, edge_needed) if p else None,
             "bet365": number(getattr(row, BOOK[key], None)),
         })
-    return {
-        "source": "kombiniert" if pin is not None and mod is not None
-                  else ("nur Pinnacle" if pin is not None else "nur Modell"),
-        "edge": edge_needed,
-        "selections": entries,
-    }
+    return {"bettable": market_p is not None, "edge": edge_needed, "selections": entries}
 
 
 def run():
@@ -97,7 +99,7 @@ def run():
     # 2. Kommende Spiele + Quoten
     fixtures = data.load_fixtures()
     fixtures["kickoff"] = [kickoff_utc(d, t) for d, t in zip(fixtures["date"], fixtures["time"])]
-    fixtures["pin_source"] = "football-data"
+    fixtures["ref_source"] = "football-data"
     api_key = os.environ.get("ODDS_API_KEY", "").strip()
     if api_key:
         known = {code: set(df["home"]) | set(df["away"]) for code, df in histories.items()}
@@ -125,7 +127,9 @@ def run():
             "kickoff": row.kickoff if isinstance(row.kickoff, str) else None,
             "home": row.home, "away": row.away,
             "expected_goals": [round(float(g), 2) for g in expected] if expected else None,
-            "odds_source": row.pin_source,
+            # Woher die Marktquote kommt: Pinnacle, Betfair, Marktschnitt (oder keine)
+            "reference": ("Pinnacle live" if row.ref_source == "odds-api"
+                          else (row.ref_name if isinstance(row.ref_name, str) else None)),
             "markets": markets,
         })
 

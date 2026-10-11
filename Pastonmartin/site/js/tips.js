@@ -89,18 +89,22 @@ function matchCard(match, hiddenMarkets) {
   const xg = match.expected_goals ? `Erwartete Tore ${num(match.expected_goals[0], 1)} : ${num(match.expected_goals[1], 1)}` : '';
   let html = `<div class="card">
     <div class="match-head"><span>${esc(tips.leagues[match.league] || match.league)} · ${esc(formatTime(match.kickoff))}</span>
-      <span>${match.odds_source === 'odds-api' ? '<span class="badge">Quoten live</span>' : ''}</span></div>
+      <span>${match.reference ? `<span class="badge">Markt: ${esc(match.reference)}</span>` : ''}</span></div>
     <div class="match-title">${esc(match.home)} – ${esc(match.away)}</div>
     <div class="sel-sub">${xg}</div>`;
 
   for (const [market, info] of Object.entries(match.markets)) {
     if (hiddenMarkets.includes(market)) continue;
-    const warn = info.source === 'nur Modell'
-      ? ' <span class="badge warn">ohne Marktvergleich, vorsichtig</span>' : '';
-    html += `<div class="market-title">${MARKET_NAMES[market]}${warn}</div>`;
+    if (!info.bettable) {
+      // Ohne Marktquote zeigen wir nur das Modell, aber nichts zum Wetten
+      html += `<div class="market-title">${MARKET_NAMES[market]} <span class="badge warn">keine Marktquote: nicht wetten</span></div>
+        <div class="sel-sub">Modell: ${info.selections.map(s => `${esc(s.short)} ${pct(s.p_model, 0)}`).join(' · ')}</div>`;
+      continue;
+    }
+    html += `<div class="market-title">${MARKET_NAMES[market]}</div>`;
     for (const s of info.selections) {
       const parts = [`Chance ${pct(s.p)}`];
-      if (s.p_model != null && s.p_market != null) parts.push(`Modell ${pct(s.p_model, 0)} · Markt ${pct(s.p_market, 0)}`);
+      if (s.p_model != null) parts.push(`Modell ${pct(s.p_model, 0)} · Markt ${pct(s.p_market, 0)}`);
       html += `<div class="sel" data-match="${esc(match.id)}" data-market="${market}" data-key="${s.key}">
         <div class="sel-name"><b>${esc(s.short)}</b> ${esc(s.name)}<div class="sel-sub">${parts.join(' · ')}</div></div>
         <div class="sel-min">Mindestquote<strong>${num(s.min_odds)}</strong></div>

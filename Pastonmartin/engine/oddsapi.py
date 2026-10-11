@@ -84,10 +84,10 @@ def fetch_pinnacle(sport, api_key):
         for market in pinnacle["markets"]:
             for outcome in market["outcomes"]:
                 if market["key"] == "h2h":
-                    key = {event["home_team"]: "pin_h", event["away_team"]: "pin_a"}.get(outcome["name"], "pin_d")
+                    key = {event["home_team"]: "ref_h", event["away_team"]: "ref_a"}.get(outcome["name"], "ref_d")
                     game[key] = outcome["price"]
                 elif market["key"] == "totals" and outcome.get("point") == 2.5:
-                    game["pin_over" if outcome["name"] == "Over" else "pin_under"] = outcome["price"]
+                    game["ref_over" if outcome["name"] == "Over" else "ref_under"] = outcome["price"]
         games.append(game)
     return games, int(remaining) if remaining is not None else None
 
@@ -95,7 +95,7 @@ def fetch_pinnacle(sport, api_key):
 def merge(fixtures, leagues, known_teams, api_key):
     """Ersetzt die Pinnacle-Quoten in `fixtures` durch frische und ergänzt fehlende Spiele."""
     fixtures = fixtures.copy()
-    fixtures["pin_source"] = "football-data"
+    fixtures["ref_source"] = "football-data"
     new_rows = []
     for code, cfg in leagues.items():
         try:
@@ -114,15 +114,17 @@ def merge(fixtures, leagues, known_teams, api_key):
             day = game["kickoff"].tz_convert(ZoneInfo("Europe/London")).normalize().tz_localize(None)
             same = ((fixtures["league"] == code) & (fixtures["home"] == home)
                     & (fixtures["away"] == away) & ((fixtures["date"] - day).abs() <= pd.Timedelta(days=1)))
-            odds = {k: v for k, v in game.items() if k.startswith("pin_")}
+            odds = {k: v for k, v in game.items() if k.startswith("ref_")}
             if same.any():
                 for key, value in odds.items():
                     fixtures.loc[same, key] = value
-                fixtures.loc[same, "pin_source"] = "odds-api"
+                fixtures.loc[same, "ref_source"] = "odds-api"
+                fixtures.loc[same, "ref_name"] = "Pinnacle"
                 fixtures.loc[same, "kickoff"] = game["kickoff"].isoformat()
             else:
                 new_rows.append({"league": code, "date": day, "home": home, "away": away,
-                                 "kickoff": game["kickoff"].isoformat(), "pin_source": "odds-api", **odds})
+                                 "kickoff": game["kickoff"].isoformat(), "ref_source": "odds-api",
+                                 "ref_name": "Pinnacle", **odds})
         print(f"  Odds API {code}: {len(games)} Spiele, {len(unmatched)} nicht zugeordnet"
               f"{' (' + '; '.join(unmatched[:5]) + ')' if unmatched else ''}, noch {remaining} Abfragen")
         if remaining is not None and remaining < STOP_BELOW:

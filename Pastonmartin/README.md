@@ -8,7 +8,7 @@ noch die Sporttip-Quote mit der **Mindestquote** in der App.
 
 ```
  football-data.co.uk ──► Resultate ──► [1] Poisson-Modell ──► Wahrscheinlichkeit A
-                    └──► Pinnacle-Quoten ──► [2] Value-Finder ──► Wahrscheinlichkeit B
+                    └──► Marktquoten ──► [2] Value-Finder ──► Wahrscheinlichkeit B
                                                                         │
                                                  P = w·A + (1−w)·B   (Kombination)
                                                                         │
@@ -20,8 +20,10 @@ noch die Sporttip-Quote mit der **Mindestquote** in der App.
 1. **Modell:** Jedes Team hat eine Angriffs- und eine Abwehrstärke, gelernt aus den
    letzten drei Jahren (neuere Spiele zählen mehr). Daraus folgen die erwarteten Tore
    und mit der Poisson-Verteilung die Chancen für 1/X/2 und über/unter 2.5.
-2. **Value-Finder:** Aus den Pinnacle-Quoten wird die Marge herausgerechnet. Pinnacle
-   ist der schärfste Buchmacher, seine fairen Quoten sind die beste Schätzung des Marktes.
+2. **Value-Finder:** Aus den Marktquoten wird die Marge herausgerechnet. Am besten ist
+   Pinnacle (der schärfste Buchmacher). Fehlt Pinnacle, nimmt das System Betfair Exchange
+   und sonst den Durchschnitt aller Buchmacher. Ohne Marktquote zeigt die App keine
+   Mindestquote, denn das Modell allein hat im Backtest klar verloren.
 3. **Kombination + Backtest:** Wie stark das eigene Modell zählt (`w`), ab wie viel Value
    gewettet wird und wie schnell alte Spiele vergessen werden, sucht der Backtest in den
    Saisons 2016/17–2021/22. Geprüft wird danach **einmal** auf 2022/23–2025/26. Nur dieses
@@ -40,6 +42,9 @@ Die Super League ist dabei, weil Sporttip sie besonders gut abdeckt. Allerdings 
 dort nur Schlussquoten, daher ist ihr Backtest weniger aussagekräftig.
 
 ### Ehrliche Grenzen
+
+- **football-data.co.uk liefert seit ca. Januar 2026 keine Pinnacle-Quoten mehr.** Für
+  frische Pinnacle-Quoten braucht es darum den Odds-API-Schlüssel (siehe Einrichten).
 
 - Historische **Sporttip-Quoten gibt es nicht**. Der Backtest nimmt Bet365 minus 4 % als
   Ersatz (`SPORTTIP_HAIRCUT` in `engine/config.py`). Die App zeigt die echte Sporttip-Marge
@@ -80,7 +85,7 @@ Der Roboter committet die neuen JSON-Dateien. Cloudflare Pages veröffentlicht s
    Binding **`DB`** verbinden. Zusätzlich eine Variable **`JOURNAL_KEY`** setzen (beliebiges
    Passwort), sonst kann jeder mit dem Link dein Tagebuch lesen und ändern. Ohne D1
    speichert die Seite im Browser, dann ist das Tagebuch nur auf diesem einen Gerät.
-3. **Frische Quoten (optional):** Gratis-Schlüssel bei [the-odds-api.com](https://the-odds-api.com)
+3. **Pinnacle-Quoten (sehr empfohlen):** Gratis-Schlüssel bei [the-odds-api.com](https://the-odds-api.com)
    holen und auf GitHub unter *Settings → Secrets and variables → Actions* als
    **`ODDS_API_KEY`** speichern. Ein Lauf braucht ca. 18 der 500 Gratis-Abfragen pro Monat.
 4. **Tipp:** Bei den anderen Pages-Projekten unter *Build watch paths* nur ihren eigenen

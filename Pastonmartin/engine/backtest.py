@@ -5,7 +5,7 @@ Ablauf:
      (das Modell wird jede Woche neu gelernt = "walk-forward").
   2. In den Anpassungs-Saisons (TUNE) die Einstellungen suchen:
        - decay:  wie schnell alte Spiele vergessen werden
-       - w:      wie stark das eigene Modell vs. Pinnacle zählt
+       - w:      wie stark das eigene Modell vs. der Markt (Referenzquote) zählt
        - edge:   ab wie viel Value gewettet wird
   3. Mit genau diesen Einstellungen EINMAL die Test-Saisons (TEST) durchspielen.
      Nur dieses Resultat ist ehrlich, weil das System diese Saisons nie gesehen hat.
@@ -24,12 +24,12 @@ import odds
 
 MARKETS = {"1X2": ["H", "D", "A"], "OU": ["O", "U"]}
 COLUMN = {
-    "pin":   {"H": "pin_h", "D": "pin_d", "A": "pin_a", "O": "pin_over", "U": "pin_under"},
+    "ref":   {"H": "ref_h", "D": "ref_d", "A": "ref_a", "O": "ref_over", "U": "ref_under"},
     "book":  {"H": "book_h", "D": "book_d", "A": "book_a", "O": "book_over", "U": "book_under"},
-    "close": {"H": "pinc_h", "D": "pinc_d", "A": "pinc_a", "O": "pinc_over", "U": "pinc_under"},
+    "close": {"H": "refc_h", "D": "refc_d", "A": "refc_a", "O": "refc_over", "U": "refc_under"},
 }
 STRATEGIES = [
-    {"key": "value", "name": "Value-Finder (nur Pinnacle)", "w": "zero"},
+    {"key": "value", "name": "Value-Finder (nur Markt)", "w": "zero"},
     {"key": "model", "name": "Eigenes Modell allein", "w": "one"},
     {"key": "combo", "name": "Kombination", "w": "tuned"},
 ]
@@ -62,8 +62,8 @@ def walk_forward(matches, decay, first_season):
 
 
 def add_market_probs(df):
-    """Faire Wahrscheinlichkeiten aus den Pinnacle-Quoten (vor dem Spiel + Schluss)."""
-    for source, prefix in [("pin", "pin_fair_"), ("close", "close_fair_")]:
+    """Faire Wahrscheinlichkeiten aus den Referenzquoten (vor dem Spiel + Schluss)."""
+    for source, prefix in [("ref", "ref_fair_"), ("close", "close_fair_")]:
         for selections in MARKETS.values():
             cols = [df[COLUMN[source][s]] for s in selections]
             for s, p in zip(selections, odds.fair_probs(*cols)):
@@ -79,8 +79,8 @@ def probs(df, prefix, market):
 
 
 def blended(df, market, w):
-    """w * Modell + (1-w) * Pinnacle. Fehlt das Modell, zählt nur Pinnacle."""
-    m, pin = probs(df, "m_", market), probs(df, "pin_fair_", market)
+    """w * Modell + (1-w) * Markt. Fehlt das Modell, zählt nur der Markt."""
+    m, pin = probs(df, "m_", market), probs(df, "ref_fair_", market)
     if w == 0:
         return pin
     if w == 1:
@@ -91,8 +91,8 @@ def blended(df, market, w):
 
 # --- 2. Gütemass ----------------------------------------------------------------------
 def compare_log_loss(df, market, w):
-    """Log-Loss von Modell, Pinnacle und Mischung auf denselben Spielen."""
-    m, pin = probs(df, "m_", market), probs(df, "pin_fair_", market)
+    """Log-Loss von Modell, Markt und Mischung auf denselben Spielen."""
+    m, pin = probs(df, "m_", market), probs(df, "ref_fair_", market)
     ok = ~np.isnan(m).any(axis=1) & ~np.isnan(pin).any(axis=1)
     outcome = df["res_" + market].to_numpy()[ok]
     return {
@@ -105,7 +105,7 @@ def compare_log_loss(df, market, w):
 
 def best_blend_weight(df, market):
     """Das w, bei dem die Mischung im Anpassungs-Zeitraum am besten vorhersagt."""
-    m, pin = probs(df, "m_", market), probs(df, "pin_fair_", market)
+    m, pin = probs(df, "m_", market), probs(df, "ref_fair_", market)
     ok = ~np.isnan(m).any(axis=1) & ~np.isnan(pin).any(axis=1)
     if not ok.any():
         return config.DEFAULT_PARAMS["w_1x2"]
@@ -201,10 +201,12 @@ def coverage(df):
     """Wie viele Spiele pro Liga und Saison haben welche Quoten? (zum Prüfen der Daten)"""
     table = df.groupby(["league", "season"]).agg(
         games=("home", "size"),
-        pinnacle=("pin_h", lambda s: s.notna().mean()),
+        pinnacle=("ref_name", lambda s: (s == "Pinnacle").mean()),
+        betfair=("ref_name", lambda s: (s == "Betfair").mean()),
+        reference=("ref_h", lambda s: s.notna().mean()),
         bet365=("book_h", lambda s: s.notna().mean()),
-        pinnacle_ou=("pin_over", lambda s: s.notna().mean()),
-        closing=("pinc_h", lambda s: s.notna().mean()),
+        reference_ou=("ref_over", lambda s: s.notna().mean()),
+        closing=("refc_h", lambda s: s.notna().mean()),
     ).reset_index()
     return table
 

@@ -13,7 +13,10 @@ def fair_probs(*odds):
       1/Quote:  0.500 + 0.278 + 0.256 = 1.034  (3.4 % Marge)
       geteilt:  0.484,  0.269,  0.248           (zusammen genau 1)
     """
-    implied = [1.0 / np.asarray(o, dtype=float) for o in odds]
+    implied = []
+    for o in odds:
+        o = np.asarray(o, dtype=float)
+        implied.append(1.0 / np.where(o > 1, o, np.nan))   # Quote <= 1 ist ungültig -> NaN
     total = sum(implied)
     return tuple(p / total for p in implied)
 
