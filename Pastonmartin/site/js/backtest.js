@@ -38,8 +38,11 @@ function verdict(total) {
     return ['good', `Vielversprechend: ${head}`, 'Das Resultat ist kaum mit purem Glück zu erklären. Trotzdem klein anfangen und im Tagebuch mitzählen.'];
   }
   if (total.roi > 0) {
-    return ['good', `Im Plus, aber noch nicht bewiesen: ${head}`,
-      `Mit ${luck(total.p_luck)} Wahrscheinlichkeit wäre so ein Plus auch reines Glück. Der CLV ist der ehrlichere Hinweis.`];
+    const clvText = total.clv > 0
+      ? 'Der CLV ist positiv, das spricht für echten Vorsprung.'
+      : 'Der CLV ist nicht positiv, das spricht eher für Glück.';
+    return ['neutral', `Im Plus, aber nicht bewiesen: ${head}`,
+      `Mit ${luck(total.p_luck)} Wahrscheinlichkeit wäre so ein Plus auch reines Glück. ${clvText}`];
   }
   return ['bad', `Im Test kein Gewinn: ${head}`,
     'Mit diesen Einstellungen schlägt das System die Sporttip-Schätzung nicht. Das ist ein wichtiges, ehrliches Resultat, kein Fehler.'];
@@ -52,7 +55,7 @@ function render() {
 
   view.innerHTML = `
     <p class="small muted">Stand ${esc(formatStamp(data.generated))} · Anpassen: ${esc(data.seasons.tune)} · Test: ${esc(data.seasons.test)}</p>
-    <div class="card verdict-${tone}"><b>${esc(title)}</b><br><span class="small">${esc(text)}</span></div>
+    <div class="card ${tone === 'neutral' ? 'note' : `verdict-${tone}`}"><b>${esc(title)}</b><br><span class="small">${esc(text)}</span></div>
 
     <div class="card small">
       <b>Vom Backtest gewählt:</b> Eigenes Modell zählt bei 1X2 <b>${pct(p.w_1x2, 0)}</b>, bei Toren <b>${pct(p.w_ou, 0)}</b>

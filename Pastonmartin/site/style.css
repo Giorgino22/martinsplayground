@@ -131,6 +131,10 @@ table { border-collapse: collapse; width: 100%; font-size: 0.86rem; }
 th, td { padding: 6px 6px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
 th:first-child, td:first-child { text-align: left; }
 th { color: var(--text-3); font-weight: 600; font-size: 0.78rem; }
+@media (max-width: 420px) {
+  table { font-size: 0.8rem; }
+  th, td { padding: 6px 4px; }
+}
 td.pos { color: var(--good); }
 td.neg { color: var(--bad); }
 tr.group td { padding-top: 12px; font-weight: 700; border-bottom: 0; }
