@@ -2,12 +2,13 @@
 //
 // Am Automaten: Wette antippen, Sporttip-Quote eintragen. Grün = Value.
 // "Live-Quoten" holt frische Marktquoten und rechnet alles neu (mit fair.js).
-import { num, parseOdds, esc, formatDay, formatTime, store } from './util.js';
+import { num, parseOdds, esc, formatDay, formatTime, store, signedPct } from './util.js';
 import { matchProbabilities, fromGoals } from './fair.js';
 import { addBet } from './journal.js';
-import { cellHtml, panelHtml, resultHtml, marginText } from './bet.js';
-import { stakeFor, addToSlip } from './slip.js';
+import { cellHtml, panelHtml, resultHtml, marginText, isValue } from './bet.js';
+import { stakeFor, stakeText, addToSlip } from './slip.js';
 import { sameMatch } from './teams.js';
+import { pathsFor, oddsByMarket, matchEvents, fetchSporttip } from './sporttip.js';
 
 const GROUPS = [
   { id: 'win', name: 'Sieger', markets: ['1X2'] },
@@ -17,6 +18,8 @@ const GROUPS = [
 ];
 const list = document.getElementById('tips-list');
 const liveStatus = document.getElementById('live-status');
+const scanStatus = document.getElementById('scan-status');
+const valueList = document.getElementById('value-list');
 let tips = null;
 let active = null;               // die angetippte Wette: { id, key }
 const live = {};                 // Spiel-ID -> { markets, reference, fetched }
@@ -55,6 +58,9 @@ export function initTips(data) {
   }
 
   document.getElementById('live-button').addEventListener('click', loadLiveOdds);
+  document.getElementById('scan-button').addEventListener('click', scanSporttip);
+  valueList.addEventListener('click', onValueClick);
+  initPathFields();
   document.addEventListener('bankroll-changed', refreshPanel);
   list.addEventListener('click', onListClick);
   list.addEventListener('input', e => { if (e.target.id === 'odds-input') onOddsInput(e.target); });
@@ -83,13 +89,18 @@ const inputs = () => store.get('inputs', {});
 const enteredOdds = (id, key) => parseOdds(inputs()[`${id}|${key}`]);
 
 // --- Anzeige -----------------------------------------------------------------------
-function render() {
+// begonnene Spiele ausblenden (da kann man nicht mehr wetten), ausgeblendete Ligen auch
+function visibleMatches() {
   const hiddenLeagues = store.get('hiddenLeagues', []);
-  const hiddenGroups = store.get('hiddenGroups', []);
-  const cutoff = Date.now();                // begonnene Spiele ausblenden (da kann man nicht mehr wetten)
-  const matches = tips.matches.filter(m =>
-    !hiddenLeagues.includes(m.league) && (!m.kickoff || new Date(m.kickoff) > cutoff));
+  const now = Date.now();
+  return tips.matches.filter(m => !hiddenLeagues.includes(m.league) && (!m.kickoff || new Date(m.kickoff) > now));
+}
 
+function render() {
+  const hiddenGroups = store.get('hiddenGroups', []);
+  const matches = visibleMatches();
+
+  renderValueList();
   if (!matches.length) {
     list.innerHTML = `<div class="empty">Keine kommenden Spiele in den Daten.<br><span class="small">Vielleicht Länderspielpause, oder die Ligen sind ausgeblendet.</span></div>`;
     return;
@@ -152,6 +163,41 @@ function updateResult(match, bet) {
     bet.market === 'DC' ? '' : marginText(`${match.id}|${bet.market}`, siblings);
 }
 
+// Alle Wetten mit eingetragener Quote, die Value haben (gescannt oder von Hand), beste zuerst
+function renderValueList() {
+  const found = [];
+  for (const match of visibleMatches()) {
+    for (const info of Object.values(entriesOf(match))) {
+      for (const s of info.selections) {
+        const odds = enteredOdds(match.id, s.key);
+        const bet = odds && findBet(match, s.key);
+        if (bet && isValue(bet, odds)) found.push({ match, bet, odds, edge: bet.p * odds - 1 });
+      }
+    }
+  }
+  if (!found.length) {
+    valueList.innerHTML = store.get('scanned', null)
+      ? '<div class="card small muted">Im Moment keine Value-Wette bei Sporttip. Das ist normal: Value ist selten.</div>' : '';
+    return;
+  }
+  found.sort((a, b) => b.edge - a.edge);
+  valueList.innerHTML = `<div class="card"><b>Value bei Sporttip (${found.length})</b>
+    ${found.map(({ match, bet, odds, edge }) => `
+      <button class="value-row" data-id="${esc(match.id)}" data-key="${esc(bet.key)}">
+        <span>${esc(match.home)} – ${esc(match.away)}<br><span class="small muted">${esc(formatTime(match.kickoff))} · ${esc(bet.name)} @ ${num(odds)}</span></span>
+        <span class="value-edge">${signedPct(edge)}<br><span class="small">${stakeText(stakeFor(bet.p, odds))}</span></span>
+      </button>`).join('')}</div>`;
+}
+
+// Antippen in der Value-Liste öffnet die Wette im Spiel darunter
+function onValueClick(event) {
+  const row = event.target.closest('.value-row');
+  if (!row) return;
+  active = { id: row.dataset.id, key: row.dataset.key };
+  render();
+  document.getElementById('panel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
 function onOddsInput(input) {
   const values = inputs();
   const key = `${active.id}|${active.key}`;
@@ -167,6 +213,7 @@ function onOddsInput(input) {
   // die Zelle im Raster neu einfärben, ohne alles neu zu zeichnen (sonst springt der Cursor)
   const cell = list.querySelector(`.cell[data-id="${CSS.escape(match.id)}"][data-key="${CSS.escape(bet.key)}"]`);
   if (cell) cell.outerHTML = cellHtml(match.id, bet, enteredOdds(match.id, bet.key), true);
+  renderValueList();
 }
 
 async function onListClick(event) {
@@ -235,6 +282,61 @@ async function loadLiveOdds() {
   liveStatus.textContent = problem && !updated ? problem
     : `${updated} Spiele mit Live-Quoten aktualisiert${remaining ? ` · noch ${remaining} Abfragen diesen Monat` : ''}${problem ? ` · ${problem}` : ''}`;
   render();
+}
+
+// --- Sporttip scannen ---------------------------------------------------------------------
+// Holt die echten Sporttip-Quoten und trägt sie ein, wie wenn du sie getippt hättest.
+// Nebenbei misst es die Sporttip-Marge jedes Marktes (fürs Tagebuch).
+async function scanSporttip() {
+  const button = document.getElementById('scan-button');
+  const hiddenLeagues = store.get('hiddenLeagues', []);
+  const paths = pathsFor();
+  const leagues = [...new Set(tips.matches.map(m => m.league))].filter(code => !hiddenLeagues.includes(code) && paths[code]);
+  if (!leagues.length) { scanStatus.textContent = 'Keine Liga ausgewählt.'; return; }
+  button.disabled = true;
+  scanStatus.textContent = 'Frage Sporttip … (bis 20 Sekunden)';
+  try {
+    const pages = await fetchSporttip(leagues.map(code => paths[code]));
+    const values = inputs();
+    let found = 0;
+    const missing = [];
+    for (const code of leagues) {
+      const page = pages[paths[code]];
+      if (!page || !page.found || !page.events.length) { missing.push(tips.leagues[code] || code); continue; }
+      const pairs = matchEvents(page.events, tips.matches.filter(m => m.league === code), tips.team_aliases);
+      for (const [id, event] of pairs) {
+        found++;
+        for (const [market, odds] of Object.entries(oddsByMarket(event))) {
+          for (const [key, value] of Object.entries(odds)) values[`${id}|${key}`] = String(value);
+          marginText(`${id}|${market}`, Object.values(odds));       // Marge merken
+        }
+      }
+    }
+    store.set('inputs', values);
+    store.set('scanned', new Date().toISOString());
+    scanStatus.textContent = `${found} Spiele mit Sporttip-Quoten (${formatTime(new Date().toISOString())})`
+      + (missing.length ? ` · nicht gefunden: ${missing.join(', ')} (Pfad unten prüfen)` : '');
+  } catch (error) {
+    scanStatus.textContent = error.message;
+  }
+  button.disabled = false;
+  render();
+}
+
+// Eingabefelder für die Liga-Pfade (falls ein geratener Pfad nicht stimmt)
+function initPathFields() {
+  const box = document.getElementById('scan-path-fields');
+  const paths = pathsFor();
+  box.innerHTML = Object.keys(tips.leagues).map(code => `
+    <label class="field">${esc(tips.leagues[code])}
+      <input data-league="${esc(code)}" value="${esc(paths[code] || '')}" autocomplete="off" spellcheck="false"></label>`).join('');
+  box.addEventListener('change', e => {
+    const code = e.target.dataset.league;
+    if (!code) return;
+    const own = store.get('sporttipPaths', {});
+    own[code] = e.target.value.trim().replace(/\/$/, '');
+    store.set('sporttipPaths', own);
+  });
 }
 
 // Holt Live-Quoten über unsere Cloudflare-Function (functions/api/odds.js)

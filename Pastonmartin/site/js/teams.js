@@ -22,6 +22,14 @@ function similarity(a, b) {
   return (2 * common) / (x.size + y.size);
 }
 
+// Wie ähnlich sind zwei Teamnamen? 1 = gleich, 0 = nichts gemeinsam
+export function teamScore(a, b, aliases = {}) {
+  if (a === b || aliases[a] === b) return 1;
+  const x = simplify(a), y = simplify(b);
+  if (x === y || x.includes(y) || y.includes(x)) return 1;
+  return similarity(x, y);
+}
+
 export function sameTeam(apiName, ourName, aliases = {}) {
   if (apiName === ourName || aliases[apiName] === ourName) return true;
   const a = simplify(apiName), b = simplify(ourName);
