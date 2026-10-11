@@ -187,7 +187,10 @@ def run():
         "leagues": {code: cfg["name"] for code, cfg in config.LEAGUES.items()},
         "odds_api_sports": {code: cfg["odds_api"] for code, cfg in config.LEAGUES.items() if cfg.get("odds_api")},
         "team_aliases": oddsapi.ALIASES,
-        "market_names": {k: v["name"] for k, v in markets.MARKETS.items()},
+        # Beschreibung aller Wettarten, damit die Website mit Live-Quoten neu rechnen kann
+        "market_defs": {m: {"name": info["name"], "base": MARKET_RULES[m][0], "derived": MARKET_RULES[m][1],
+                            "selections": [[k, short, name] for k, (short, name) in info["selections"].items()]}
+                        for m, info in markets.MARKETS.items()},
         "odds_api": bool(api_key),
         "matches": matches,
     }

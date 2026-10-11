@@ -46,6 +46,9 @@ BLEND_GRID = [i / 20 for i in range(21)]        # nur für die alte, lineare Mis
 EDGE_GRID = [0.01, 0.02, 0.03, 0.04, 0.05, 0.07, 0.10]   # Mindest-Value, ab dem gewettet wird
 MAX_ODDS_GRID = [2.5, 4.0, 8.0]     # höchste Quote, auf die gewettet wird
 MIN_BETS_FOR_TUNING = {"1X2": 150, "OU": 75}   # weniger Wetten = zu viel Zufall
+# Die Schwellen hängen davon ab, wie genau unsere fairen Quoten sind, nicht vom Buchmacher.
+# Darum wählen wir sie mit Bet365 (viele Wetten) statt mit der Sporttip-Schätzung (sehr wenige).
+TUNING_SCENARIO = "book"
 DERIVED_EXTRA_EDGE = 0.01           # Nebenmärkte (aus erwarteten Toren berechnet): 1 % mehr Value verlangen
 
 # Sporttip-Quoten gibt es nicht historisch. Im Backtest nehmen wir Bet365

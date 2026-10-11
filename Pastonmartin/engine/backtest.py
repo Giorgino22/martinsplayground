@@ -462,7 +462,7 @@ def run():
     strategy_names = {"value": "Value-Finder (nur Markt)", "model": "Eigenes Modell allein",
                       "combo": "Kombination", "v1": "Version 1 (alt)"}
 
-    # 3. Schwellen wählen (früh, Sporttip-Schätzung, Anpassungs-Zeitraum) und alles simulieren
+    # 3. Schwellen wählen (früh, Bet365, Anpassungs-Zeitraum) und alles simulieren
     def quotes_for(timing, scenario, market):
         source = TIMINGS[timing][SCENARIOS[scenario]["source"]]
         return odds_matrix(df, source, market) * (1 - SCENARIOS[scenario]["haircut"])
@@ -478,7 +478,7 @@ def run():
 
             def simulate_with(edge_min, max_odds, market=market, key=key):
                 return simulate(df, in_tune, strategy_probs[key]["early"][market],
-                                quotes_for("early", "sporttip", market), p_close[market],
+                                quotes_for("early", config.TUNING_SCENARIO, market), p_close[market],
                                 outcome[market], edge_min, max_odds)
 
             chosen, grid, ok = tune_thresholds(simulate_with, market)
@@ -553,6 +553,7 @@ def run():
         "derived_extra_edge": config.DERIVED_EXTRA_EDGE,
         "derived_rho": derived_rho,
         "haircut": config.SPORTTIP_HAIRCUT,
+        "tuning_scenario": config.TUNING_SCENARIO,
     }
     result = {
         "version": 2,
