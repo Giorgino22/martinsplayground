@@ -1,0 +1,4805 @@
+{
+ "generated": "2026-10-11T12:47:31+00:00",
+ "results": [
+  {
+   "id": "E0:2026-08-21:Arsenal:Coventry",
+   "league": "E0",
+   "date": "2026-08-21",
+   "home": "Arsenal",
+   "away": "Coventry",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-22:Hull:Man United",
+   "league": "E0",
+   "date": "2026-08-22",
+   "home": "Hull",
+   "away": "Man United",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-22:Everton:Crystal Palace",
+   "league": "E0",
+   "date": "2026-08-22",
+   "home": "Everton",
+   "away": "Crystal Palace",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-22:Ipswich:Sunderland",
+   "league": "E0",
+   "date": "2026-08-22",
+   "home": "Ipswich",
+   "away": "Sunderland",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-22:Nott'm Forest:Leeds",
+   "league": "E0",
+   "date": "2026-08-22",
+   "home": "Nott'm Forest",
+   "away": "Leeds",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-22:Brentford:Tottenham",
+   "league": "E0",
+   "date": "2026-08-22",
+   "home": "Brentford",
+   "away": "Tottenham",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-23:Brighton:Aston Villa",
+   "league": "E0",
+   "date": "2026-08-23",
+   "home": "Brighton",
+   "away": "Aston Villa",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-23:Man City:Bournemouth",
+   "league": "E0",
+   "date": "2026-08-23",
+   "home": "Man City",
+   "away": "Bournemouth",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-23:Newcastle:Liverpool",
+   "league": "E0",
+   "date": "2026-08-23",
+   "home": "Newcastle",
+   "away": "Liverpool",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-24:Fulham:Chelsea",
+   "league": "E0",
+   "date": "2026-08-24",
+   "home": "Fulham",
+   "away": "Chelsea",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-28:Crystal Palace:Man City",
+   "league": "E0",
+   "date": "2026-08-28",
+   "home": "Crystal Palace",
+   "away": "Man City",
+   "hg": 1,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-29:Liverpool:Nott'm Forest",
+   "league": "E0",
+   "date": "2026-08-29",
+   "home": "Liverpool",
+   "away": "Nott'm Forest",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-29:Bournemouth:Everton",
+   "league": "E0",
+   "date": "2026-08-29",
+   "home": "Bournemouth",
+   "away": "Everton",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-29:Coventry:Hull",
+   "league": "E0",
+   "date": "2026-08-29",
+   "home": "Coventry",
+   "away": "Hull",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-29:Tottenham:Newcastle",
+   "league": "E0",
+   "date": "2026-08-29",
+   "home": "Tottenham",
+   "away": "Newcastle",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-30:Chelsea:Brighton",
+   "league": "E0",
+   "date": "2026-08-30",
+   "home": "Chelsea",
+   "away": "Brighton",
+   "hg": 4,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-30:Leeds:Brentford",
+   "league": "E0",
+   "date": "2026-08-30",
+   "home": "Leeds",
+   "away": "Brentford",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-30:Sunderland:Fulham",
+   "league": "E0",
+   "date": "2026-08-30",
+   "home": "Sunderland",
+   "away": "Fulham",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-30:Man United:Ipswich",
+   "league": "E0",
+   "date": "2026-08-30",
+   "home": "Man United",
+   "away": "Ipswich",
+   "hg": 5,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-08-31:Aston Villa:Arsenal",
+   "league": "E0",
+   "date": "2026-08-31",
+   "home": "Aston Villa",
+   "away": "Arsenal",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-04:Ipswich:Liverpool",
+   "league": "E0",
+   "date": "2026-09-04",
+   "home": "Ipswich",
+   "away": "Liverpool",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-05:Newcastle:Bournemouth",
+   "league": "E0",
+   "date": "2026-09-05",
+   "home": "Newcastle",
+   "away": "Bournemouth",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-05:Brentford:Sunderland",
+   "league": "E0",
+   "date": "2026-09-05",
+   "home": "Brentford",
+   "away": "Sunderland",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-05:Brighton:Leeds",
+   "league": "E0",
+   "date": "2026-09-05",
+   "home": "Brighton",
+   "away": "Leeds",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-05:Fulham:Crystal Palace",
+   "league": "E0",
+   "date": "2026-09-05",
+   "home": "Fulham",
+   "away": "Crystal Palace",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-05:Man City:Coventry",
+   "league": "E0",
+   "date": "2026-09-05",
+   "home": "Man City",
+   "away": "Coventry",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-05:Nott'm Forest:Tottenham",
+   "league": "E0",
+   "date": "2026-09-05",
+   "home": "Nott'm Forest",
+   "away": "Tottenham",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-05:Hull:Aston Villa",
+   "league": "E0",
+   "date": "2026-09-05",
+   "home": "Hull",
+   "away": "Aston Villa",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-06:Everton:Man United",
+   "league": "E0",
+   "date": "2026-09-06",
+   "home": "Everton",
+   "away": "Man United",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-06:Arsenal:Chelsea",
+   "league": "E0",
+   "date": "2026-09-06",
+   "home": "Arsenal",
+   "away": "Chelsea",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-12:Aston Villa:Nott'm Forest",
+   "league": "E0",
+   "date": "2026-09-12",
+   "home": "Aston Villa",
+   "away": "Nott'm Forest",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-12:Bournemouth:Brentford",
+   "league": "E0",
+   "date": "2026-09-12",
+   "home": "Bournemouth",
+   "away": "Brentford",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-12:Chelsea:Hull",
+   "league": "E0",
+   "date": "2026-09-12",
+   "home": "Chelsea",
+   "away": "Hull",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-12:Crystal Palace:Ipswich",
+   "league": "E0",
+   "date": "2026-09-12",
+   "home": "Crystal Palace",
+   "away": "Ipswich",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-12:Liverpool:Fulham",
+   "league": "E0",
+   "date": "2026-09-12",
+   "home": "Liverpool",
+   "away": "Fulham",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-12:Tottenham:Everton",
+   "league": "E0",
+   "date": "2026-09-12",
+   "home": "Tottenham",
+   "away": "Everton",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-12:Sunderland:Arsenal",
+   "league": "E0",
+   "date": "2026-09-12",
+   "home": "Sunderland",
+   "away": "Arsenal",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-13:Coventry:Brighton",
+   "league": "E0",
+   "date": "2026-09-13",
+   "home": "Coventry",
+   "away": "Brighton",
+   "hg": 0,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-13:Man United:Man City",
+   "league": "E0",
+   "date": "2026-09-13",
+   "home": "Man United",
+   "away": "Man City",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-14:Leeds:Newcastle",
+   "league": "E0",
+   "date": "2026-09-14",
+   "home": "Leeds",
+   "away": "Newcastle",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-18:Brentford:Chelsea",
+   "league": "E0",
+   "date": "2026-09-18",
+   "home": "Brentford",
+   "away": "Chelsea",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-19:Tottenham:Aston Villa",
+   "league": "E0",
+   "date": "2026-09-19",
+   "home": "Tottenham",
+   "away": "Aston Villa",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-19:Brighton:Arsenal",
+   "league": "E0",
+   "date": "2026-09-19",
+   "home": "Brighton",
+   "away": "Arsenal",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-19:Everton:Ipswich",
+   "league": "E0",
+   "date": "2026-09-19",
+   "home": "Everton",
+   "away": "Ipswich",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-19:Newcastle:Hull",
+   "league": "E0",
+   "date": "2026-09-19",
+   "home": "Newcastle",
+   "away": "Hull",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-19:Nott'm Forest:Coventry",
+   "league": "E0",
+   "date": "2026-09-19",
+   "home": "Nott'm Forest",
+   "away": "Coventry",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-20:Bournemouth:Liverpool",
+   "league": "E0",
+   "date": "2026-09-20",
+   "home": "Bournemouth",
+   "away": "Liverpool",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-20:Leeds:Crystal Palace",
+   "league": "E0",
+   "date": "2026-09-20",
+   "home": "Leeds",
+   "away": "Crystal Palace",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-20:Man City:Sunderland",
+   "league": "E0",
+   "date": "2026-09-20",
+   "home": "Man City",
+   "away": "Sunderland",
+   "hg": 5,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E0:2026-09-20:Fulham:Man United",
+   "league": "E0",
+   "date": "2026-09-20",
+   "home": "Fulham",
+   "away": "Man United",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-14:Wolves:Blackburn",
+   "league": "E1",
+   "date": "2026-08-14",
+   "home": "Wolves",
+   "away": "Blackburn",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Bolton:Preston",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Bolton",
+   "away": "Preston",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Bristol City:Millwall",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Bristol City",
+   "away": "Millwall",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Charlton:Derby",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Charlton",
+   "away": "Derby",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Middlesbrough:Lincoln",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Middlesbrough",
+   "away": "Lincoln",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Norwich:West Brom",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Norwich",
+   "away": "West Brom",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Portsmouth:QPR",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Portsmouth",
+   "away": "QPR",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Stoke:Swansea",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Stoke",
+   "away": "Swansea",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-15:Sheffield United:Birmingham",
+   "league": "E1",
+   "date": "2026-08-15",
+   "home": "Sheffield United",
+   "away": "Birmingham",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-16:Watford:Southampton",
+   "league": "E1",
+   "date": "2026-08-16",
+   "home": "Watford",
+   "away": "Southampton",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-16:Burnley:West Ham",
+   "league": "E1",
+   "date": "2026-08-16",
+   "home": "Burnley",
+   "away": "West Ham",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-17:Cardiff:Wrexham",
+   "league": "E1",
+   "date": "2026-08-17",
+   "home": "Cardiff",
+   "away": "Wrexham",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Birmingham:Bristol City",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Birmingham",
+   "away": "Bristol City",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Lincoln:Portsmouth",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Lincoln",
+   "away": "Portsmouth",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Millwall:Norwich",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Millwall",
+   "away": "Norwich",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Blackburn:Middlesbrough",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Blackburn",
+   "away": "Middlesbrough",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Derby:Cardiff",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Derby",
+   "away": "Cardiff",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Preston:Wolves",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Preston",
+   "away": "Wolves",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:QPR:Bolton",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "QPR",
+   "away": "Bolton",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Southampton:Stoke",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Southampton",
+   "away": "Stoke",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Swansea:Sheffield United",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Swansea",
+   "away": "Sheffield United",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:West Ham:Charlton",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "West Ham",
+   "away": "Charlton",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-22:Wrexham:Watford",
+   "league": "E1",
+   "date": "2026-08-22",
+   "home": "Wrexham",
+   "away": "Watford",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-23:West Brom:Burnley",
+   "league": "E1",
+   "date": "2026-08-23",
+   "home": "West Brom",
+   "away": "Burnley",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-28:Wrexham:Birmingham",
+   "league": "E1",
+   "date": "2026-08-28",
+   "home": "Wrexham",
+   "away": "Birmingham",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Derby:Swansea",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Derby",
+   "away": "Swansea",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Middlesbrough:West Brom",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Middlesbrough",
+   "away": "West Brom",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Wolves:Stoke",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Wolves",
+   "away": "Stoke",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Blackburn:QPR",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Blackburn",
+   "away": "QPR",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Bolton:Lincoln",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Bolton",
+   "away": "Lincoln",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Bristol City:Portsmouth",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Bristol City",
+   "away": "Portsmouth",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Cardiff:Sheffield United",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Cardiff",
+   "away": "Sheffield United",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Charlton:Preston",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Charlton",
+   "away": "Preston",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Norwich:Burnley",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Norwich",
+   "away": "Burnley",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Southampton:Millwall",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Southampton",
+   "away": "Millwall",
+   "hg": 5,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-08-29:Watford:West Ham",
+   "league": "E1",
+   "date": "2026-08-29",
+   "home": "Watford",
+   "away": "West Ham",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:Lincoln:Blackburn",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "Lincoln",
+   "away": "Blackburn",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:Portsmouth:Derby",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "Portsmouth",
+   "away": "Derby",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:Preston:Bristol City",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "Preston",
+   "away": "Bristol City",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:Sheffield United:Bolton",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "Sheffield United",
+   "away": "Bolton",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:Swansea:Watford",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "Swansea",
+   "away": "Watford",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:West Ham:Wolves",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "West Ham",
+   "away": "Wolves",
+   "hg": 4,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:Birmingham:Southampton",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "Birmingham",
+   "away": "Southampton",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-01:Stoke:Norwich",
+   "league": "E1",
+   "date": "2026-09-01",
+   "home": "Stoke",
+   "away": "Norwich",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-02:Millwall:Wrexham",
+   "league": "E1",
+   "date": "2026-09-02",
+   "home": "Millwall",
+   "away": "Wrexham",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-02:QPR:Cardiff",
+   "league": "E1",
+   "date": "2026-09-02",
+   "home": "QPR",
+   "away": "Cardiff",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-02:West Brom:Charlton",
+   "league": "E1",
+   "date": "2026-09-02",
+   "home": "West Brom",
+   "away": "Charlton",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-02:Burnley:Middlesbrough",
+   "league": "E1",
+   "date": "2026-09-02",
+   "home": "Burnley",
+   "away": "Middlesbrough",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Lincoln:Southampton",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Lincoln",
+   "away": "Southampton",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Preston:Blackburn",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Preston",
+   "away": "Blackburn",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Stoke:Charlton",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Stoke",
+   "away": "Charlton",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Burnley:Bristol City",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Burnley",
+   "away": "Bristol City",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Millwall:Bolton",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Millwall",
+   "away": "Bolton",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Portsmouth:Cardiff",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Portsmouth",
+   "away": "Cardiff",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:QPR:Middlesbrough",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "QPR",
+   "away": "Middlesbrough",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Sheffield United:Norwich",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Sheffield United",
+   "away": "Norwich",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:West Brom:Watford",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "West Brom",
+   "away": "Watford",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:West Ham:Derby",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "West Ham",
+   "away": "Derby",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-05:Swansea:Wrexham",
+   "league": "E1",
+   "date": "2026-09-05",
+   "home": "Swansea",
+   "away": "Wrexham",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-06:Birmingham:Wolves",
+   "league": "E1",
+   "date": "2026-09-06",
+   "home": "Birmingham",
+   "away": "Wolves",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-08:Blackburn:Sheffield United",
+   "league": "E1",
+   "date": "2026-09-08",
+   "home": "Blackburn",
+   "away": "Sheffield United",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-08:Cardiff:Stoke",
+   "league": "E1",
+   "date": "2026-09-08",
+   "home": "Cardiff",
+   "away": "Stoke",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-08:Southampton:Swansea",
+   "league": "E1",
+   "date": "2026-09-08",
+   "home": "Southampton",
+   "away": "Swansea",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-08:Watford:Preston",
+   "league": "E1",
+   "date": "2026-09-08",
+   "home": "Watford",
+   "away": "Preston",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-08:Wrexham:Burnley",
+   "league": "E1",
+   "date": "2026-09-08",
+   "home": "Wrexham",
+   "away": "Burnley",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-08:Bolton:West Ham",
+   "league": "E1",
+   "date": "2026-09-08",
+   "home": "Bolton",
+   "away": "West Ham",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-09:Derby:West Brom",
+   "league": "E1",
+   "date": "2026-09-09",
+   "home": "Derby",
+   "away": "West Brom",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-09:Norwich:Birmingham",
+   "league": "E1",
+   "date": "2026-09-09",
+   "home": "Norwich",
+   "away": "Birmingham",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-09:Charlton:QPR",
+   "league": "E1",
+   "date": "2026-09-09",
+   "home": "Charlton",
+   "away": "QPR",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-11:West Ham:Wrexham",
+   "league": "E1",
+   "date": "2026-09-11",
+   "home": "West Ham",
+   "away": "Wrexham",
+   "hg": 6,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Bolton:Cardiff",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Bolton",
+   "away": "Cardiff",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Derby:Birmingham",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Derby",
+   "away": "Birmingham",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:West Brom:QPR",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "West Brom",
+   "away": "QPR",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Blackburn:Millwall",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Blackburn",
+   "away": "Millwall",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Charlton:Portsmouth",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Charlton",
+   "away": "Portsmouth",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Middlesbrough:Norwich",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Middlesbrough",
+   "away": "Norwich",
+   "hg": 4,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Preston:Lincoln",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Preston",
+   "away": "Lincoln",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Southampton:Bristol City",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Southampton",
+   "away": "Bristol City",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Swansea:Burnley",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Swansea",
+   "away": "Burnley",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-12:Watford:Stoke",
+   "league": "E1",
+   "date": "2026-09-12",
+   "home": "Watford",
+   "away": "Stoke",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-13:Sheffield United:Wolves",
+   "league": "E1",
+   "date": "2026-09-13",
+   "home": "Sheffield United",
+   "away": "Wolves",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-15:Bristol City:Lincoln",
+   "league": "E1",
+   "date": "2026-09-15",
+   "home": "Bristol City",
+   "away": "Lincoln",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-15:Middlesbrough:Millwall",
+   "league": "E1",
+   "date": "2026-09-15",
+   "home": "Middlesbrough",
+   "away": "Millwall",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-18:Bristol City:Watford",
+   "league": "E1",
+   "date": "2026-09-18",
+   "home": "Bristol City",
+   "away": "Watford",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Cardiff:Charlton",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Cardiff",
+   "away": "Charlton",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Millwall:West Ham",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Millwall",
+   "away": "West Ham",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Stoke:Sheffield United",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Stoke",
+   "away": "Sheffield United",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Birmingham:Middlesbrough",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Birmingham",
+   "away": "Middlesbrough",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Burnley:Derby",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Burnley",
+   "away": "Derby",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Lincoln:Swansea",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Lincoln",
+   "away": "Swansea",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Portsmouth:Blackburn",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Portsmouth",
+   "away": "Blackburn",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:QPR:Preston",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "QPR",
+   "away": "Preston",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-19:Wrexham:Southampton",
+   "league": "E1",
+   "date": "2026-09-19",
+   "home": "Wrexham",
+   "away": "Southampton",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-20:Wolves:West Brom",
+   "league": "E1",
+   "date": "2026-09-20",
+   "home": "Wolves",
+   "away": "West Brom",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "E1:2026-09-20:Norwich:Bolton",
+   "league": "E1",
+   "date": "2026-09-20",
+   "home": "Norwich",
+   "away": "Bolton",
+   "hg": 3,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-28:Bayern Munich:Stuttgart",
+   "league": "D1",
+   "date": "2026-08-28",
+   "home": "Bayern Munich",
+   "away": "Stuttgart",
+   "hg": 5,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-29:Elversberg:Leverkusen",
+   "league": "D1",
+   "date": "2026-08-29",
+   "home": "Elversberg",
+   "away": "Leverkusen",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-29:FC Koln:Hoffenheim",
+   "league": "D1",
+   "date": "2026-08-29",
+   "home": "FC Koln",
+   "away": "Hoffenheim",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-29:Mainz:Paderborn",
+   "league": "D1",
+   "date": "2026-08-29",
+   "home": "Mainz",
+   "away": "Paderborn",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-29:RB Leipzig:M'gladbach",
+   "league": "D1",
+   "date": "2026-08-29",
+   "home": "RB Leipzig",
+   "away": "M'gladbach",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-29:Union Berlin:Ein Frankfurt",
+   "league": "D1",
+   "date": "2026-08-29",
+   "home": "Union Berlin",
+   "away": "Ein Frankfurt",
+   "hg": 3,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-29:Dortmund:Hamburg",
+   "league": "D1",
+   "date": "2026-08-29",
+   "home": "Dortmund",
+   "away": "Hamburg",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-30:Freiburg:Werder Bremen",
+   "league": "D1",
+   "date": "2026-08-30",
+   "home": "Freiburg",
+   "away": "Werder Bremen",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-08-30:Augsburg:Schalke 04",
+   "league": "D1",
+   "date": "2026-08-30",
+   "home": "Augsburg",
+   "away": "Schalke 04",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-04:Stuttgart:FC Koln",
+   "league": "D1",
+   "date": "2026-09-04",
+   "home": "Stuttgart",
+   "away": "FC Koln",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-05:Hoffenheim:Dortmund",
+   "league": "D1",
+   "date": "2026-09-05",
+   "home": "Hoffenheim",
+   "away": "Dortmund",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-05:Leverkusen:Union Berlin",
+   "league": "D1",
+   "date": "2026-09-05",
+   "home": "Leverkusen",
+   "away": "Union Berlin",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-05:M'gladbach:Elversberg",
+   "league": "D1",
+   "date": "2026-09-05",
+   "home": "M'gladbach",
+   "away": "Elversberg",
+   "hg": 3,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-05:Paderborn:Freiburg",
+   "league": "D1",
+   "date": "2026-09-05",
+   "home": "Paderborn",
+   "away": "Freiburg",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-05:Werder Bremen:RB Leipzig",
+   "league": "D1",
+   "date": "2026-09-05",
+   "home": "Werder Bremen",
+   "away": "RB Leipzig",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-05:Schalke 04:Bayern Munich",
+   "league": "D1",
+   "date": "2026-09-05",
+   "home": "Schalke 04",
+   "away": "Bayern Munich",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-06:Hamburg:Mainz",
+   "league": "D1",
+   "date": "2026-09-06",
+   "home": "Hamburg",
+   "away": "Mainz",
+   "hg": 0,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-06:Ein Frankfurt:Augsburg",
+   "league": "D1",
+   "date": "2026-09-06",
+   "home": "Ein Frankfurt",
+   "away": "Augsburg",
+   "hg": 1,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-11:Union Berlin:Schalke 04",
+   "league": "D1",
+   "date": "2026-09-11",
+   "home": "Union Berlin",
+   "away": "Schalke 04",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-12:Augsburg:Leverkusen",
+   "league": "D1",
+   "date": "2026-09-12",
+   "home": "Augsburg",
+   "away": "Leverkusen",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-12:Dortmund:Paderborn",
+   "league": "D1",
+   "date": "2026-09-12",
+   "home": "Dortmund",
+   "away": "Paderborn",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-12:Freiburg:M'gladbach",
+   "league": "D1",
+   "date": "2026-09-12",
+   "home": "Freiburg",
+   "away": "M'gladbach",
+   "hg": 5,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-12:Hoffenheim:Stuttgart",
+   "league": "D1",
+   "date": "2026-09-12",
+   "home": "Hoffenheim",
+   "away": "Stuttgart",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-12:Mainz:Ein Frankfurt",
+   "league": "D1",
+   "date": "2026-09-12",
+   "home": "Mainz",
+   "away": "Ein Frankfurt",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-12:FC Koln:Werder Bremen",
+   "league": "D1",
+   "date": "2026-09-12",
+   "home": "FC Koln",
+   "away": "Werder Bremen",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-13:RB Leipzig:Hamburg",
+   "league": "D1",
+   "date": "2026-09-13",
+   "home": "RB Leipzig",
+   "away": "Hamburg",
+   "hg": 5,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-13:Elversberg:Bayern Munich",
+   "league": "D1",
+   "date": "2026-09-13",
+   "home": "Elversberg",
+   "away": "Bayern Munich",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-18:Bayern Munich:Union Berlin",
+   "league": "D1",
+   "date": "2026-09-18",
+   "home": "Bayern Munich",
+   "away": "Union Berlin",
+   "hg": 7,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-19:Ein Frankfurt:Freiburg",
+   "league": "D1",
+   "date": "2026-09-19",
+   "home": "Ein Frankfurt",
+   "away": "Freiburg",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-19:Hamburg:FC Koln",
+   "league": "D1",
+   "date": "2026-09-19",
+   "home": "Hamburg",
+   "away": "FC Koln",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-19:M'gladbach:Mainz",
+   "league": "D1",
+   "date": "2026-09-19",
+   "home": "M'gladbach",
+   "away": "Mainz",
+   "hg": 3,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-19:Werder Bremen:Augsburg",
+   "league": "D1",
+   "date": "2026-09-19",
+   "home": "Werder Bremen",
+   "away": "Augsburg",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-19:Stuttgart:Dortmund",
+   "league": "D1",
+   "date": "2026-09-19",
+   "home": "Stuttgart",
+   "away": "Dortmund",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-20:Leverkusen:RB Leipzig",
+   "league": "D1",
+   "date": "2026-09-20",
+   "home": "Leverkusen",
+   "away": "RB Leipzig",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-20:Schalke 04:Elversberg",
+   "league": "D1",
+   "date": "2026-09-20",
+   "home": "Schalke 04",
+   "away": "Elversberg",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D1:2026-09-20:Paderborn:Hoffenheim",
+   "league": "D1",
+   "date": "2026-09-20",
+   "home": "Paderborn",
+   "away": "Hoffenheim",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-14:Braunschweig:Bochum",
+   "league": "D2",
+   "date": "2026-08-14",
+   "home": "Braunschweig",
+   "away": "Bochum",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-14:Holstein Kiel:St Pauli",
+   "league": "D2",
+   "date": "2026-08-14",
+   "home": "Holstein Kiel",
+   "away": "St Pauli",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-15:Greuther Furth:Nurnberg",
+   "league": "D2",
+   "date": "2026-08-15",
+   "home": "Greuther Furth",
+   "away": "Nurnberg",
+   "hg": 2,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-15:Hertha:Heidenheim",
+   "league": "D2",
+   "date": "2026-08-15",
+   "home": "Hertha",
+   "away": "Heidenheim",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-15:Osnabruck:Magdeburg",
+   "league": "D2",
+   "date": "2026-08-15",
+   "home": "Osnabruck",
+   "away": "Magdeburg",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-15:Kaiserslautern:Karlsruhe",
+   "league": "D2",
+   "date": "2026-08-15",
+   "home": "Kaiserslautern",
+   "away": "Karlsruhe",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-16:Bielefeld:Cottbus",
+   "league": "D2",
+   "date": "2026-08-16",
+   "home": "Bielefeld",
+   "away": "Cottbus",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-16:Dresden:Darmstadt",
+   "league": "D2",
+   "date": "2026-08-16",
+   "home": "Dresden",
+   "away": "Darmstadt",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-16:Hannover:Wolfsburg",
+   "league": "D2",
+   "date": "2026-08-16",
+   "home": "Hannover",
+   "away": "Wolfsburg",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-28:Bochum:Osnabruck",
+   "league": "D2",
+   "date": "2026-08-28",
+   "home": "Bochum",
+   "away": "Osnabruck",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-28:Braunschweig:Hertha",
+   "league": "D2",
+   "date": "2026-08-28",
+   "home": "Braunschweig",
+   "away": "Hertha",
+   "hg": 3,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-29:Cottbus:Greuther Furth",
+   "league": "D2",
+   "date": "2026-08-29",
+   "home": "Cottbus",
+   "away": "Greuther Furth",
+   "hg": 3,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-29:Heidenheim:Dresden",
+   "league": "D2",
+   "date": "2026-08-29",
+   "home": "Heidenheim",
+   "away": "Dresden",
+   "hg": 5,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-29:Karlsruhe:Wolfsburg",
+   "league": "D2",
+   "date": "2026-08-29",
+   "home": "Karlsruhe",
+   "away": "Wolfsburg",
+   "hg": 2,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-29:Nurnberg:Bielefeld",
+   "league": "D2",
+   "date": "2026-08-29",
+   "home": "Nurnberg",
+   "away": "Bielefeld",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-30:Darmstadt:Hannover",
+   "league": "D2",
+   "date": "2026-08-30",
+   "home": "Darmstadt",
+   "away": "Hannover",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-30:Magdeburg:Holstein Kiel",
+   "league": "D2",
+   "date": "2026-08-30",
+   "home": "Magdeburg",
+   "away": "Holstein Kiel",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-08-30:St Pauli:Kaiserslautern",
+   "league": "D2",
+   "date": "2026-08-30",
+   "home": "St Pauli",
+   "away": "Kaiserslautern",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-04:Bielefeld:St Pauli",
+   "league": "D2",
+   "date": "2026-09-04",
+   "home": "Bielefeld",
+   "away": "St Pauli",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-04:Hannover:Karlsruhe",
+   "league": "D2",
+   "date": "2026-09-04",
+   "home": "Hannover",
+   "away": "Karlsruhe",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-05:Holstein Kiel:Nurnberg",
+   "league": "D2",
+   "date": "2026-09-05",
+   "home": "Holstein Kiel",
+   "away": "Nurnberg",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-05:Kaiserslautern:Darmstadt",
+   "league": "D2",
+   "date": "2026-09-05",
+   "home": "Kaiserslautern",
+   "away": "Darmstadt",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-05:Wolfsburg:Cottbus",
+   "league": "D2",
+   "date": "2026-09-05",
+   "home": "Wolfsburg",
+   "away": "Cottbus",
+   "hg": 4,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-05:Dresden:Bochum",
+   "league": "D2",
+   "date": "2026-09-05",
+   "home": "Dresden",
+   "away": "Bochum",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-06:Greuther Furth:Heidenheim",
+   "league": "D2",
+   "date": "2026-09-06",
+   "home": "Greuther Furth",
+   "away": "Heidenheim",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-06:Hertha:Magdeburg",
+   "league": "D2",
+   "date": "2026-09-06",
+   "home": "Hertha",
+   "away": "Magdeburg",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-06:Osnabruck:Braunschweig",
+   "league": "D2",
+   "date": "2026-09-06",
+   "home": "Osnabruck",
+   "away": "Braunschweig",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-11:Darmstadt:Bielefeld",
+   "league": "D2",
+   "date": "2026-09-11",
+   "home": "Darmstadt",
+   "away": "Bielefeld",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-11:Nurnberg:Hannover",
+   "league": "D2",
+   "date": "2026-09-11",
+   "home": "Nurnberg",
+   "away": "Hannover",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-12:Bochum:Greuther Furth",
+   "league": "D2",
+   "date": "2026-09-12",
+   "home": "Bochum",
+   "away": "Greuther Furth",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-12:Braunschweig:Dresden",
+   "league": "D2",
+   "date": "2026-09-12",
+   "home": "Braunschweig",
+   "away": "Dresden",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-12:Magdeburg:Kaiserslautern",
+   "league": "D2",
+   "date": "2026-09-12",
+   "home": "Magdeburg",
+   "away": "Kaiserslautern",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-12:St Pauli:Wolfsburg",
+   "league": "D2",
+   "date": "2026-09-12",
+   "home": "St Pauli",
+   "away": "Wolfsburg",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-13:Heidenheim:Holstein Kiel",
+   "league": "D2",
+   "date": "2026-09-13",
+   "home": "Heidenheim",
+   "away": "Holstein Kiel",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-13:Karlsruhe:Cottbus",
+   "league": "D2",
+   "date": "2026-09-13",
+   "home": "Karlsruhe",
+   "away": "Cottbus",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-13:Osnabruck:Hertha",
+   "league": "D2",
+   "date": "2026-09-13",
+   "home": "Osnabruck",
+   "away": "Hertha",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-18:Greuther Furth:Magdeburg",
+   "league": "D2",
+   "date": "2026-09-18",
+   "home": "Greuther Furth",
+   "away": "Magdeburg",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-18:Wolfsburg:Darmstadt",
+   "league": "D2",
+   "date": "2026-09-18",
+   "home": "Wolfsburg",
+   "away": "Darmstadt",
+   "hg": 5,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-19:Holstein Kiel:Osnabruck",
+   "league": "D2",
+   "date": "2026-09-19",
+   "home": "Holstein Kiel",
+   "away": "Osnabruck",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-19:Kaiserslautern:Braunschweig",
+   "league": "D2",
+   "date": "2026-09-19",
+   "home": "Kaiserslautern",
+   "away": "Braunschweig",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-19:Karlsruhe:Nurnberg",
+   "league": "D2",
+   "date": "2026-09-19",
+   "home": "Karlsruhe",
+   "away": "Nurnberg",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-19:Dresden:Hertha",
+   "league": "D2",
+   "date": "2026-09-19",
+   "home": "Dresden",
+   "away": "Hertha",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-20:Bielefeld:Heidenheim",
+   "league": "D2",
+   "date": "2026-09-20",
+   "home": "Bielefeld",
+   "away": "Heidenheim",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-20:Cottbus:St Pauli",
+   "league": "D2",
+   "date": "2026-09-20",
+   "home": "Cottbus",
+   "away": "St Pauli",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "D2:2026-09-20:Hannover:Bochum",
+   "league": "D2",
+   "date": "2026-09-20",
+   "home": "Hannover",
+   "away": "Bochum",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-22:Inter:Monza",
+   "league": "I1",
+   "date": "2026-08-22",
+   "home": "Inter",
+   "away": "Monza",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-22:Udinese:Como",
+   "league": "I1",
+   "date": "2026-08-22",
+   "home": "Udinese",
+   "away": "Como",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-22:Genoa:Napoli",
+   "league": "I1",
+   "date": "2026-08-22",
+   "home": "Genoa",
+   "away": "Napoli",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-22:Parma:Cagliari",
+   "league": "I1",
+   "date": "2026-08-22",
+   "home": "Parma",
+   "away": "Cagliari",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-23:Frosinone:Juventus",
+   "league": "I1",
+   "date": "2026-08-23",
+   "home": "Frosinone",
+   "away": "Juventus",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-23:Venezia:Lecce",
+   "league": "I1",
+   "date": "2026-08-23",
+   "home": "Venezia",
+   "away": "Lecce",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-23:Atalanta:Sassuolo",
+   "league": "I1",
+   "date": "2026-08-23",
+   "home": "Atalanta",
+   "away": "Sassuolo",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-23:Torino:Milan",
+   "league": "I1",
+   "date": "2026-08-23",
+   "home": "Torino",
+   "away": "Milan",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-24:Bologna:Lazio",
+   "league": "I1",
+   "date": "2026-08-24",
+   "home": "Bologna",
+   "away": "Lazio",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-24:Roma:Fiorentina",
+   "league": "I1",
+   "date": "2026-08-24",
+   "home": "Roma",
+   "away": "Fiorentina",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-28:Milan:Venezia",
+   "league": "I1",
+   "date": "2026-08-28",
+   "home": "Milan",
+   "away": "Venezia",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-29:Fiorentina:Frosinone",
+   "league": "I1",
+   "date": "2026-08-29",
+   "home": "Fiorentina",
+   "away": "Frosinone",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-29:Monza:Udinese",
+   "league": "I1",
+   "date": "2026-08-29",
+   "home": "Monza",
+   "away": "Udinese",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-29:Sassuolo:Torino",
+   "league": "I1",
+   "date": "2026-08-29",
+   "home": "Sassuolo",
+   "away": "Torino",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-29:Juventus:Parma",
+   "league": "I1",
+   "date": "2026-08-29",
+   "home": "Juventus",
+   "away": "Parma",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-30:Napoli:Como",
+   "league": "I1",
+   "date": "2026-08-30",
+   "home": "Napoli",
+   "away": "Como",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-30:Cagliari:Inter",
+   "league": "I1",
+   "date": "2026-08-30",
+   "home": "Cagliari",
+   "away": "Inter",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-30:Lazio:Genoa",
+   "league": "I1",
+   "date": "2026-08-30",
+   "home": "Lazio",
+   "away": "Genoa",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-31:Lecce:Roma",
+   "league": "I1",
+   "date": "2026-08-31",
+   "home": "Lecce",
+   "away": "Roma",
+   "hg": 0,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-08-31:Atalanta:Bologna",
+   "league": "I1",
+   "date": "2026-08-31",
+   "home": "Atalanta",
+   "away": "Bologna",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-04:Genoa:Como",
+   "league": "I1",
+   "date": "2026-09-04",
+   "home": "Genoa",
+   "away": "Como",
+   "hg": 1,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-05:Fiorentina:Torino",
+   "league": "I1",
+   "date": "2026-09-05",
+   "home": "Fiorentina",
+   "away": "Torino",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-05:Inter:Napoli",
+   "league": "I1",
+   "date": "2026-09-05",
+   "home": "Inter",
+   "away": "Napoli",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-05:Roma:Atalanta",
+   "league": "I1",
+   "date": "2026-09-05",
+   "home": "Roma",
+   "away": "Atalanta",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-06:Frosinone:Venezia",
+   "league": "I1",
+   "date": "2026-09-06",
+   "home": "Frosinone",
+   "away": "Venezia",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-06:Parma:Monza",
+   "league": "I1",
+   "date": "2026-09-06",
+   "home": "Parma",
+   "away": "Monza",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-06:Bologna:Sassuolo",
+   "league": "I1",
+   "date": "2026-09-06",
+   "home": "Bologna",
+   "away": "Sassuolo",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-06:Juventus:Milan",
+   "league": "I1",
+   "date": "2026-09-06",
+   "home": "Juventus",
+   "away": "Milan",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-07:Cagliari:Lecce",
+   "league": "I1",
+   "date": "2026-09-07",
+   "home": "Cagliari",
+   "away": "Lecce",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-07:Udinese:Lazio",
+   "league": "I1",
+   "date": "2026-09-07",
+   "home": "Udinese",
+   "away": "Lazio",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-11:Venezia:Fiorentina",
+   "league": "I1",
+   "date": "2026-09-11",
+   "home": "Venezia",
+   "away": "Fiorentina",
+   "hg": 2,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-12:Genoa:Frosinone",
+   "league": "I1",
+   "date": "2026-09-12",
+   "home": "Genoa",
+   "away": "Frosinone",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-12:Lazio:Milan",
+   "league": "I1",
+   "date": "2026-09-12",
+   "home": "Lazio",
+   "away": "Milan",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-12:Atalanta:Cagliari",
+   "league": "I1",
+   "date": "2026-09-12",
+   "home": "Atalanta",
+   "away": "Cagliari",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-13:Lecce:Monza",
+   "league": "I1",
+   "date": "2026-09-13",
+   "home": "Lecce",
+   "away": "Monza",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-13:Napoli:Bologna",
+   "league": "I1",
+   "date": "2026-09-13",
+   "home": "Napoli",
+   "away": "Bologna",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-13:Sassuolo:Juventus",
+   "league": "I1",
+   "date": "2026-09-13",
+   "home": "Sassuolo",
+   "away": "Juventus",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-14:Como:Parma",
+   "league": "I1",
+   "date": "2026-09-14",
+   "home": "Como",
+   "away": "Parma",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-14:Torino:Roma",
+   "league": "I1",
+   "date": "2026-09-14",
+   "home": "Torino",
+   "away": "Roma",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-14:Inter:Udinese",
+   "league": "I1",
+   "date": "2026-09-14",
+   "home": "Inter",
+   "away": "Udinese",
+   "hg": 5,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-18:Monza:Sassuolo",
+   "league": "I1",
+   "date": "2026-09-18",
+   "home": "Monza",
+   "away": "Sassuolo",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-19:Bologna:Torino",
+   "league": "I1",
+   "date": "2026-09-19",
+   "home": "Bologna",
+   "away": "Torino",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-19:Udinese:Cagliari",
+   "league": "I1",
+   "date": "2026-09-19",
+   "home": "Udinese",
+   "away": "Cagliari",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-19:Roma:Inter",
+   "league": "I1",
+   "date": "2026-09-19",
+   "home": "Roma",
+   "away": "Inter",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-19:Venezia:Lazio",
+   "league": "I1",
+   "date": "2026-09-19",
+   "home": "Venezia",
+   "away": "Lazio",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-20:Fiorentina:Napoli",
+   "league": "I1",
+   "date": "2026-09-20",
+   "home": "Fiorentina",
+   "away": "Napoli",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-20:Frosinone:Como",
+   "league": "I1",
+   "date": "2026-09-20",
+   "home": "Frosinone",
+   "away": "Como",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-20:Parma:Genoa",
+   "league": "I1",
+   "date": "2026-09-20",
+   "home": "Parma",
+   "away": "Genoa",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-20:Juventus:Atalanta",
+   "league": "I1",
+   "date": "2026-09-20",
+   "home": "Juventus",
+   "away": "Atalanta",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "I1:2026-09-20:Milan:Lecce",
+   "league": "I1",
+   "date": "2026-09-20",
+   "home": "Milan",
+   "away": "Lecce",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-15:Alaves:Getafe",
+   "league": "SP1",
+   "date": "2026-08-15",
+   "home": "Alaves",
+   "away": "Getafe",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-15:Sevilla:Vallecano",
+   "league": "SP1",
+   "date": "2026-08-15",
+   "home": "Sevilla",
+   "away": "Vallecano",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-16:Santander:Villarreal",
+   "league": "SP1",
+   "date": "2026-08-16",
+   "home": "Santander",
+   "away": "Villarreal",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-16:Espanol:Levante",
+   "league": "SP1",
+   "date": "2026-08-16",
+   "home": "Espanol",
+   "away": "Levante",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-17:La Coruna:Elche",
+   "league": "SP1",
+   "date": "2026-08-17",
+   "home": "La Coruna",
+   "away": "Elche",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-19:Ath Madrid:Malaga",
+   "league": "SP1",
+   "date": "2026-08-19",
+   "home": "Ath Madrid",
+   "away": "Malaga",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-20:Vallecano:Alaves",
+   "league": "SP1",
+   "date": "2026-08-20",
+   "home": "Vallecano",
+   "away": "Alaves",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-21:Betis:Sociedad",
+   "league": "SP1",
+   "date": "2026-08-21",
+   "home": "Betis",
+   "away": "Sociedad",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-22:Ath Bilbao:Sevilla",
+   "league": "SP1",
+   "date": "2026-08-22",
+   "home": "Ath Bilbao",
+   "away": "Sevilla",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-22:Valencia:Celta",
+   "league": "SP1",
+   "date": "2026-08-22",
+   "home": "Valencia",
+   "away": "Celta",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-22:Espanol:Real Madrid",
+   "league": "SP1",
+   "date": "2026-08-22",
+   "home": "Espanol",
+   "away": "Real Madrid",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-23:Ath Madrid:Villarreal",
+   "league": "SP1",
+   "date": "2026-08-23",
+   "home": "Ath Madrid",
+   "away": "Villarreal",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-23:Getafe:Santander",
+   "league": "SP1",
+   "date": "2026-08-23",
+   "home": "Getafe",
+   "away": "Santander",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-23:Elche:Barcelona",
+   "league": "SP1",
+   "date": "2026-08-23",
+   "home": "Elche",
+   "away": "Barcelona",
+   "hg": 0,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-24:Osasuna:Levante",
+   "league": "SP1",
+   "date": "2026-08-24",
+   "home": "Osasuna",
+   "away": "Levante",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-24:Malaga:La Coruna",
+   "league": "SP1",
+   "date": "2026-08-24",
+   "home": "Malaga",
+   "away": "La Coruna",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-25:Valencia:Betis",
+   "league": "SP1",
+   "date": "2026-08-25",
+   "home": "Valencia",
+   "away": "Betis",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-26:Real Madrid:Sociedad",
+   "league": "SP1",
+   "date": "2026-08-26",
+   "home": "Real Madrid",
+   "away": "Sociedad",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-27:Celta:Osasuna",
+   "league": "SP1",
+   "date": "2026-08-27",
+   "home": "Celta",
+   "away": "Osasuna",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-27:Barcelona:Ath Bilbao",
+   "league": "SP1",
+   "date": "2026-08-27",
+   "home": "Barcelona",
+   "away": "Ath Bilbao",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-28:Santander:Elche",
+   "league": "SP1",
+   "date": "2026-08-28",
+   "home": "Santander",
+   "away": "Elche",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-28:Alaves:Villarreal",
+   "league": "SP1",
+   "date": "2026-08-28",
+   "home": "Alaves",
+   "away": "Villarreal",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-29:Levante:Betis",
+   "league": "SP1",
+   "date": "2026-08-29",
+   "home": "Levante",
+   "away": "Betis",
+   "hg": 5,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-29:Sociedad:Espanol",
+   "league": "SP1",
+   "date": "2026-08-29",
+   "home": "Sociedad",
+   "away": "Espanol",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-29:Sevilla:Ath Madrid",
+   "league": "SP1",
+   "date": "2026-08-29",
+   "home": "Sevilla",
+   "away": "Ath Madrid",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-30:Real Madrid:Malaga",
+   "league": "SP1",
+   "date": "2026-08-30",
+   "home": "Real Madrid",
+   "away": "Malaga",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-30:La Coruna:Valencia",
+   "league": "SP1",
+   "date": "2026-08-30",
+   "home": "La Coruna",
+   "away": "Valencia",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-30:Celta:Ath Bilbao",
+   "league": "SP1",
+   "date": "2026-08-30",
+   "home": "Celta",
+   "away": "Ath Bilbao",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-31:Osasuna:Getafe",
+   "league": "SP1",
+   "date": "2026-08-31",
+   "home": "Osasuna",
+   "away": "Getafe",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-08-31:Barcelona:Vallecano",
+   "league": "SP1",
+   "date": "2026-08-31",
+   "home": "Barcelona",
+   "away": "Vallecano",
+   "hg": 5,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-03:Sociedad:Celta",
+   "league": "SP1",
+   "date": "2026-09-03",
+   "home": "Sociedad",
+   "away": "Celta",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-04:Betis:Real Madrid",
+   "league": "SP1",
+   "date": "2026-09-04",
+   "home": "Betis",
+   "away": "Real Madrid",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-05:Ath Bilbao:Ath Madrid",
+   "league": "SP1",
+   "date": "2026-09-05",
+   "home": "Ath Bilbao",
+   "away": "Ath Madrid",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-05:Vallecano:Santander",
+   "league": "SP1",
+   "date": "2026-09-05",
+   "home": "Vallecano",
+   "away": "Santander",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-05:Villarreal:La Coruna",
+   "league": "SP1",
+   "date": "2026-09-05",
+   "home": "Villarreal",
+   "away": "La Coruna",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-06:Valencia:Barcelona",
+   "league": "SP1",
+   "date": "2026-09-06",
+   "home": "Valencia",
+   "away": "Barcelona",
+   "hg": 0,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-06:Alaves:Osasuna",
+   "league": "SP1",
+   "date": "2026-09-06",
+   "home": "Alaves",
+   "away": "Osasuna",
+   "hg": 5,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-06:Malaga:Levante",
+   "league": "SP1",
+   "date": "2026-09-06",
+   "home": "Malaga",
+   "away": "Levante",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-06:Espanol:Sevilla",
+   "league": "SP1",
+   "date": "2026-09-06",
+   "home": "Espanol",
+   "away": "Sevilla",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-07:Getafe:Celta",
+   "league": "SP1",
+   "date": "2026-09-07",
+   "home": "Getafe",
+   "away": "Celta",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-07:Elche:Sociedad",
+   "league": "SP1",
+   "date": "2026-09-07",
+   "home": "Elche",
+   "away": "Sociedad",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-11:Sevilla:Valencia",
+   "league": "SP1",
+   "date": "2026-09-11",
+   "home": "Sevilla",
+   "away": "Valencia",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-12:Santander:Alaves",
+   "league": "SP1",
+   "date": "2026-09-12",
+   "home": "Santander",
+   "away": "Alaves",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-12:Osasuna:Espanol",
+   "league": "SP1",
+   "date": "2026-09-12",
+   "home": "Osasuna",
+   "away": "Espanol",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-12:Ath Bilbao:Elche",
+   "league": "SP1",
+   "date": "2026-09-12",
+   "home": "Ath Bilbao",
+   "away": "Elche",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-12:Real Madrid:Vallecano",
+   "league": "SP1",
+   "date": "2026-09-12",
+   "home": "Real Madrid",
+   "away": "Vallecano",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-13:Celta:Malaga",
+   "league": "SP1",
+   "date": "2026-09-13",
+   "home": "Celta",
+   "away": "Malaga",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-13:Levante:Barcelona",
+   "league": "SP1",
+   "date": "2026-09-13",
+   "home": "Levante",
+   "away": "Barcelona",
+   "hg": 2,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-13:Getafe:La Coruna",
+   "league": "SP1",
+   "date": "2026-09-13",
+   "home": "Getafe",
+   "away": "La Coruna",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-13:Sociedad:Ath Madrid",
+   "league": "SP1",
+   "date": "2026-09-13",
+   "home": "Sociedad",
+   "away": "Ath Madrid",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-14:Villarreal:Betis",
+   "league": "SP1",
+   "date": "2026-09-14",
+   "home": "Villarreal",
+   "away": "Betis",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-15:Vallecano:Espanol",
+   "league": "SP1",
+   "date": "2026-09-15",
+   "home": "Vallecano",
+   "away": "Espanol",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-15:Alaves:Valencia",
+   "league": "SP1",
+   "date": "2026-09-15",
+   "home": "Alaves",
+   "away": "Valencia",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-15:Elche:Real Madrid",
+   "league": "SP1",
+   "date": "2026-09-15",
+   "home": "Elche",
+   "away": "Real Madrid",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-16:Ath Madrid:Osasuna",
+   "league": "SP1",
+   "date": "2026-09-16",
+   "home": "Ath Madrid",
+   "away": "Osasuna",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-16:La Coruna:Sevilla",
+   "league": "SP1",
+   "date": "2026-09-16",
+   "home": "La Coruna",
+   "away": "Sevilla",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-16:Barcelona:Santander",
+   "league": "SP1",
+   "date": "2026-09-16",
+   "home": "Barcelona",
+   "away": "Santander",
+   "hg": 7,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-17:Betis:Getafe",
+   "league": "SP1",
+   "date": "2026-09-17",
+   "home": "Betis",
+   "away": "Getafe",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-17:Malaga:Villarreal",
+   "league": "SP1",
+   "date": "2026-09-17",
+   "home": "Malaga",
+   "away": "Villarreal",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-18:Espanol:Elche",
+   "league": "SP1",
+   "date": "2026-09-18",
+   "home": "Espanol",
+   "away": "Elche",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-19:Osasuna:Vallecano",
+   "league": "SP1",
+   "date": "2026-09-19",
+   "home": "Osasuna",
+   "away": "Vallecano",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-19:Ath Bilbao:Alaves",
+   "league": "SP1",
+   "date": "2026-09-19",
+   "home": "Ath Bilbao",
+   "away": "Alaves",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-19:Celta:Santander",
+   "league": "SP1",
+   "date": "2026-09-19",
+   "home": "Celta",
+   "away": "Santander",
+   "hg": 5,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-19:Sevilla:Barcelona",
+   "league": "SP1",
+   "date": "2026-09-19",
+   "home": "Sevilla",
+   "away": "Barcelona",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-20:Getafe:Malaga",
+   "league": "SP1",
+   "date": "2026-09-20",
+   "home": "Getafe",
+   "away": "Malaga",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-20:Ath Madrid:Real Madrid",
+   "league": "SP1",
+   "date": "2026-09-20",
+   "home": "Ath Madrid",
+   "away": "Real Madrid",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-20:La Coruna:Betis",
+   "league": "SP1",
+   "date": "2026-09-20",
+   "home": "La Coruna",
+   "away": "Betis",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-20:Villarreal:Levante",
+   "league": "SP1",
+   "date": "2026-09-20",
+   "home": "Villarreal",
+   "away": "Levante",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SP1:2026-09-20:Valencia:Sociedad",
+   "league": "SP1",
+   "date": "2026-09-20",
+   "home": "Valencia",
+   "away": "Sociedad",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-21:Marseille:Strasbourg",
+   "league": "F1",
+   "date": "2026-08-21",
+   "home": "Marseille",
+   "away": "Strasbourg",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-22:Lens:Auxerre",
+   "league": "F1",
+   "date": "2026-08-22",
+   "home": "Lens",
+   "away": "Auxerre",
+   "hg": 5,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-22:Le Mans:Brest",
+   "league": "F1",
+   "date": "2026-08-22",
+   "home": "Le Mans",
+   "away": "Brest",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-22:Nice:Lorient",
+   "league": "F1",
+   "date": "2026-08-22",
+   "home": "Nice",
+   "away": "Lorient",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-22:Toulouse:Lyon",
+   "league": "F1",
+   "date": "2026-08-22",
+   "home": "Toulouse",
+   "away": "Lyon",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-22:Troyes:Paris FC",
+   "league": "F1",
+   "date": "2026-08-22",
+   "home": "Troyes",
+   "away": "Paris FC",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-23:Angers:Lille",
+   "league": "F1",
+   "date": "2026-08-23",
+   "home": "Angers",
+   "away": "Lille",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-23:Le Havre:Monaco",
+   "league": "F1",
+   "date": "2026-08-23",
+   "home": "Le Havre",
+   "away": "Monaco",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-23:Rennes:Paris SG",
+   "league": "F1",
+   "date": "2026-08-23",
+   "home": "Rennes",
+   "away": "Paris SG",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-28:Lille:Paris SG",
+   "league": "F1",
+   "date": "2026-08-28",
+   "home": "Lille",
+   "away": "Paris SG",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-29:Strasbourg:Lens",
+   "league": "F1",
+   "date": "2026-08-29",
+   "home": "Strasbourg",
+   "away": "Lens",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-29:Auxerre:Angers",
+   "league": "F1",
+   "date": "2026-08-29",
+   "home": "Auxerre",
+   "away": "Angers",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-29:Brest:Toulouse",
+   "league": "F1",
+   "date": "2026-08-29",
+   "home": "Brest",
+   "away": "Toulouse",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-29:Lorient:Troyes",
+   "league": "F1",
+   "date": "2026-08-29",
+   "home": "Lorient",
+   "away": "Troyes",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-29:Lyon:Le Havre",
+   "league": "F1",
+   "date": "2026-08-29",
+   "home": "Lyon",
+   "away": "Le Havre",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-30:Paris FC:Nice",
+   "league": "F1",
+   "date": "2026-08-30",
+   "home": "Paris FC",
+   "away": "Nice",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-30:Rennes:Le Mans",
+   "league": "F1",
+   "date": "2026-08-30",
+   "home": "Rennes",
+   "away": "Le Mans",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-08-30:Monaco:Marseille",
+   "league": "F1",
+   "date": "2026-08-30",
+   "home": "Monaco",
+   "away": "Marseille",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-03:Toulouse:Lille",
+   "league": "F1",
+   "date": "2026-09-03",
+   "home": "Toulouse",
+   "away": "Lille",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-04:Lyon:Auxerre",
+   "league": "F1",
+   "date": "2026-09-04",
+   "home": "Lyon",
+   "away": "Auxerre",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-04:Paris SG:Monaco",
+   "league": "F1",
+   "date": "2026-09-04",
+   "home": "Paris SG",
+   "away": "Monaco",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-05:Lens:Lorient",
+   "league": "F1",
+   "date": "2026-09-05",
+   "home": "Lens",
+   "away": "Lorient",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-05:Le Havre:Brest",
+   "league": "F1",
+   "date": "2026-09-05",
+   "home": "Le Havre",
+   "away": "Brest",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-05:Nice:Le Mans",
+   "league": "F1",
+   "date": "2026-09-05",
+   "home": "Nice",
+   "away": "Le Mans",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-06:Troyes:Strasbourg",
+   "league": "F1",
+   "date": "2026-09-06",
+   "home": "Troyes",
+   "away": "Strasbourg",
+   "hg": 2,
+   "ag": 6,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-06:Angers:Rennes",
+   "league": "F1",
+   "date": "2026-09-06",
+   "home": "Angers",
+   "away": "Rennes",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-06:Marseille:Paris FC",
+   "league": "F1",
+   "date": "2026-09-06",
+   "home": "Marseille",
+   "away": "Paris FC",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-11:Rennes:Marseille",
+   "league": "F1",
+   "date": "2026-09-11",
+   "home": "Rennes",
+   "away": "Marseille",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-12:Strasbourg:Monaco",
+   "league": "F1",
+   "date": "2026-09-12",
+   "home": "Strasbourg",
+   "away": "Monaco",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-12:Auxerre:Nice",
+   "league": "F1",
+   "date": "2026-09-12",
+   "home": "Auxerre",
+   "away": "Nice",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-12:Le Havre:Angers",
+   "league": "F1",
+   "date": "2026-09-12",
+   "home": "Le Havre",
+   "away": "Angers",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-12:Lorient:Toulouse",
+   "league": "F1",
+   "date": "2026-09-12",
+   "home": "Lorient",
+   "away": "Toulouse",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-12:Paris FC:Lyon",
+   "league": "F1",
+   "date": "2026-09-12",
+   "home": "Paris FC",
+   "away": "Lyon",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-13:Lille:Troyes",
+   "league": "F1",
+   "date": "2026-09-13",
+   "home": "Lille",
+   "away": "Troyes",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-13:Le Mans:Lens",
+   "league": "F1",
+   "date": "2026-09-13",
+   "home": "Le Mans",
+   "away": "Lens",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-13:Brest:Paris SG",
+   "league": "F1",
+   "date": "2026-09-13",
+   "home": "Brest",
+   "away": "Paris SG",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-18:Monaco:Lens",
+   "league": "F1",
+   "date": "2026-09-18",
+   "home": "Monaco",
+   "away": "Lens",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-19:Paris FC:Strasbourg",
+   "league": "F1",
+   "date": "2026-09-19",
+   "home": "Paris FC",
+   "away": "Strasbourg",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-19:Angers:Troyes",
+   "league": "F1",
+   "date": "2026-09-19",
+   "home": "Angers",
+   "away": "Troyes",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-19:Le Mans:Lorient",
+   "league": "F1",
+   "date": "2026-09-19",
+   "home": "Le Mans",
+   "away": "Lorient",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-19:Lyon:Rennes",
+   "league": "F1",
+   "date": "2026-09-19",
+   "home": "Lyon",
+   "away": "Rennes",
+   "hg": 4,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-19:Toulouse:Le Havre",
+   "league": "F1",
+   "date": "2026-09-19",
+   "home": "Toulouse",
+   "away": "Le Havre",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-20:Auxerre:Brest",
+   "league": "F1",
+   "date": "2026-09-20",
+   "home": "Auxerre",
+   "away": "Brest",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-20:Nice:Lille",
+   "league": "F1",
+   "date": "2026-09-20",
+   "home": "Nice",
+   "away": "Lille",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "F1:2026-09-20:Marseille:Paris SG",
+   "league": "F1",
+   "date": "2026-09-20",
+   "home": "Marseille",
+   "away": "Paris SG",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-14:Telstar:Sparta Rotterdam",
+   "league": "N1",
+   "date": "2026-08-14",
+   "home": "Telstar",
+   "away": "Sparta Rotterdam",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-15:Willem II:Nijmegen",
+   "league": "N1",
+   "date": "2026-08-15",
+   "home": "Willem II",
+   "away": "Nijmegen",
+   "hg": 1,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-15:Utrecht:AZ Alkmaar",
+   "league": "N1",
+   "date": "2026-08-15",
+   "home": "Utrecht",
+   "away": "AZ Alkmaar",
+   "hg": 1,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-15:Excelsior:PSV Eindhoven",
+   "league": "N1",
+   "date": "2026-08-15",
+   "home": "Excelsior",
+   "away": "PSV Eindhoven",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-15:For Sittard:Cambuur",
+   "league": "N1",
+   "date": "2026-08-15",
+   "home": "For Sittard",
+   "away": "Cambuur",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-16:Den Haag:Groningen",
+   "league": "N1",
+   "date": "2026-08-16",
+   "home": "Den Haag",
+   "away": "Groningen",
+   "hg": 1,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-16:Feyenoord:Go Ahead Eagles",
+   "league": "N1",
+   "date": "2026-08-16",
+   "home": "Feyenoord",
+   "away": "Go Ahead Eagles",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-16:Twente:Zwolle",
+   "league": "N1",
+   "date": "2026-08-16",
+   "home": "Twente",
+   "away": "Zwolle",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-16:Ajax:Heerenveen",
+   "league": "N1",
+   "date": "2026-08-16",
+   "home": "Ajax",
+   "away": "Heerenveen",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-22:For Sittard:AZ Alkmaar",
+   "league": "N1",
+   "date": "2026-08-22",
+   "home": "For Sittard",
+   "away": "AZ Alkmaar",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-22:Sparta Rotterdam:Utrecht",
+   "league": "N1",
+   "date": "2026-08-22",
+   "home": "Sparta Rotterdam",
+   "away": "Utrecht",
+   "hg": 3,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-22:Heerenveen:Zwolle",
+   "league": "N1",
+   "date": "2026-08-22",
+   "home": "Heerenveen",
+   "away": "Zwolle",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-23:Go Ahead Eagles:Den Haag",
+   "league": "N1",
+   "date": "2026-08-23",
+   "home": "Go Ahead Eagles",
+   "away": "Den Haag",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-23:PSV Eindhoven:Groningen",
+   "league": "N1",
+   "date": "2026-08-23",
+   "home": "PSV Eindhoven",
+   "away": "Groningen",
+   "hg": 5,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-23:Cambuur:Feyenoord",
+   "league": "N1",
+   "date": "2026-08-23",
+   "home": "Cambuur",
+   "away": "Feyenoord",
+   "hg": 2,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-28:Groningen:For Sittard",
+   "league": "N1",
+   "date": "2026-08-28",
+   "home": "Groningen",
+   "away": "For Sittard",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-29:Excelsior:Sparta Rotterdam",
+   "league": "N1",
+   "date": "2026-08-29",
+   "home": "Excelsior",
+   "away": "Sparta Rotterdam",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-29:AZ Alkmaar:Go Ahead Eagles",
+   "league": "N1",
+   "date": "2026-08-29",
+   "home": "AZ Alkmaar",
+   "away": "Go Ahead Eagles",
+   "hg": 5,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-29:Zwolle:Nijmegen",
+   "league": "N1",
+   "date": "2026-08-29",
+   "home": "Zwolle",
+   "away": "Nijmegen",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-30:Utrecht:PSV Eindhoven",
+   "league": "N1",
+   "date": "2026-08-30",
+   "home": "Utrecht",
+   "away": "PSV Eindhoven",
+   "hg": 1,
+   "ag": 6,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-30:Feyenoord:Den Haag",
+   "league": "N1",
+   "date": "2026-08-30",
+   "home": "Feyenoord",
+   "away": "Den Haag",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-30:Willem II:Heerenveen",
+   "league": "N1",
+   "date": "2026-08-30",
+   "home": "Willem II",
+   "away": "Heerenveen",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-30:Telstar:Ajax",
+   "league": "N1",
+   "date": "2026-08-30",
+   "home": "Telstar",
+   "away": "Ajax",
+   "hg": 0,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-08-30:Cambuur:Twente",
+   "league": "N1",
+   "date": "2026-08-30",
+   "home": "Cambuur",
+   "away": "Twente",
+   "hg": 1,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-04:Sparta Rotterdam:Zwolle",
+   "league": "N1",
+   "date": "2026-09-04",
+   "home": "Sparta Rotterdam",
+   "away": "Zwolle",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-05:Nijmegen:Feyenoord",
+   "league": "N1",
+   "date": "2026-09-05",
+   "home": "Nijmegen",
+   "away": "Feyenoord",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-05:Ajax:PSV Eindhoven",
+   "league": "N1",
+   "date": "2026-09-05",
+   "home": "Ajax",
+   "away": "PSV Eindhoven",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-05:Willem II:Excelsior",
+   "league": "N1",
+   "date": "2026-09-05",
+   "home": "Willem II",
+   "away": "Excelsior",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-06:Groningen:Twente",
+   "league": "N1",
+   "date": "2026-09-06",
+   "home": "Groningen",
+   "away": "Twente",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-06:Heerenveen:AZ Alkmaar",
+   "league": "N1",
+   "date": "2026-09-06",
+   "home": "Heerenveen",
+   "away": "AZ Alkmaar",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-06:Telstar:Cambuur",
+   "league": "N1",
+   "date": "2026-09-06",
+   "home": "Telstar",
+   "away": "Cambuur",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-06:Den Haag:For Sittard",
+   "league": "N1",
+   "date": "2026-09-06",
+   "home": "Den Haag",
+   "away": "For Sittard",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-08:Utrecht:Go Ahead Eagles",
+   "league": "N1",
+   "date": "2026-09-08",
+   "home": "Utrecht",
+   "away": "Go Ahead Eagles",
+   "hg": 3,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-08:Nijmegen:Excelsior",
+   "league": "N1",
+   "date": "2026-09-08",
+   "home": "Nijmegen",
+   "away": "Excelsior",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-09:Twente:Telstar",
+   "league": "N1",
+   "date": "2026-09-09",
+   "home": "Twente",
+   "away": "Telstar",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-11:AZ Alkmaar:Willem II",
+   "league": "N1",
+   "date": "2026-09-11",
+   "home": "AZ Alkmaar",
+   "away": "Willem II",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-12:Twente:Den Haag",
+   "league": "N1",
+   "date": "2026-09-12",
+   "home": "Twente",
+   "away": "Den Haag",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-12:Go Ahead Eagles:Groningen",
+   "league": "N1",
+   "date": "2026-09-12",
+   "home": "Go Ahead Eagles",
+   "away": "Groningen",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-12:For Sittard:Ajax",
+   "league": "N1",
+   "date": "2026-09-12",
+   "home": "For Sittard",
+   "away": "Ajax",
+   "hg": 1,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-12:Cambuur:Nijmegen",
+   "league": "N1",
+   "date": "2026-09-12",
+   "home": "Cambuur",
+   "away": "Nijmegen",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-13:Excelsior:Utrecht",
+   "league": "N1",
+   "date": "2026-09-13",
+   "home": "Excelsior",
+   "away": "Utrecht",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-13:Heerenveen:Telstar",
+   "league": "N1",
+   "date": "2026-09-13",
+   "home": "Heerenveen",
+   "away": "Telstar",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-13:Zwolle:Feyenoord",
+   "league": "N1",
+   "date": "2026-09-13",
+   "home": "Zwolle",
+   "away": "Feyenoord",
+   "hg": 0,
+   "ag": 7,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-13:PSV Eindhoven:Sparta Rotterdam",
+   "league": "N1",
+   "date": "2026-09-13",
+   "home": "PSV Eindhoven",
+   "away": "Sparta Rotterdam",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-15:Ajax:Willem II",
+   "league": "N1",
+   "date": "2026-09-15",
+   "home": "Ajax",
+   "away": "Willem II",
+   "hg": 5,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-18:Groningen:Zwolle",
+   "league": "N1",
+   "date": "2026-09-18",
+   "home": "Groningen",
+   "away": "Zwolle",
+   "hg": 3,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-19:Den Haag:Cambuur",
+   "league": "N1",
+   "date": "2026-09-19",
+   "home": "Den Haag",
+   "away": "Cambuur",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-19:Sparta Rotterdam:Heerenveen",
+   "league": "N1",
+   "date": "2026-09-19",
+   "home": "Sparta Rotterdam",
+   "away": "Heerenveen",
+   "hg": 0,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-19:Ajax:Excelsior",
+   "league": "N1",
+   "date": "2026-09-19",
+   "home": "Ajax",
+   "away": "Excelsior",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-19:Willem II:For Sittard",
+   "league": "N1",
+   "date": "2026-09-19",
+   "home": "Willem II",
+   "away": "For Sittard",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-20:Feyenoord:Utrecht",
+   "league": "N1",
+   "date": "2026-09-20",
+   "home": "Feyenoord",
+   "away": "Utrecht",
+   "hg": 5,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-20:AZ Alkmaar:Telstar",
+   "league": "N1",
+   "date": "2026-09-20",
+   "home": "AZ Alkmaar",
+   "away": "Telstar",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-20:Twente:PSV Eindhoven",
+   "league": "N1",
+   "date": "2026-09-20",
+   "home": "Twente",
+   "away": "PSV Eindhoven",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "N1:2026-09-20:Nijmegen:Go Ahead Eagles",
+   "league": "N1",
+   "date": "2026-09-20",
+   "home": "Nijmegen",
+   "away": "Go Ahead Eagles",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-22:Luzern:Lausanne",
+   "league": "SWZ",
+   "date": "2026-08-22",
+   "home": "Luzern",
+   "away": "Lausanne",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-22:Zurich:Basel",
+   "league": "SWZ",
+   "date": "2026-08-22",
+   "home": "Zurich",
+   "away": "Basel",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-23:Young Boys:Vaduz",
+   "league": "SWZ",
+   "date": "2026-08-23",
+   "home": "Young Boys",
+   "away": "Vaduz",
+   "hg": 4,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-29:Lausanne:Zurich",
+   "league": "SWZ",
+   "date": "2026-08-29",
+   "home": "Lausanne",
+   "away": "Zurich",
+   "hg": 2,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-29:Servette:Luzern",
+   "league": "SWZ",
+   "date": "2026-08-29",
+   "home": "Servette",
+   "away": "Luzern",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-29:Young Boys:Basel",
+   "league": "SWZ",
+   "date": "2026-08-29",
+   "home": "Young Boys",
+   "away": "Basel",
+   "hg": 3,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-30:Sion:Lugano",
+   "league": "SWZ",
+   "date": "2026-08-30",
+   "home": "Sion",
+   "away": "Lugano",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-30:St. Gallen:Thun",
+   "league": "SWZ",
+   "date": "2026-08-30",
+   "home": "St. Gallen",
+   "away": "Thun",
+   "hg": 3,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-08-30:Vaduz:Grasshoppers",
+   "league": "SWZ",
+   "date": "2026-08-30",
+   "home": "Vaduz",
+   "away": "Grasshoppers",
+   "hg": 5,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-01:Zurich:Young Boys",
+   "league": "SWZ",
+   "date": "2026-09-01",
+   "home": "Zurich",
+   "away": "Young Boys",
+   "hg": 2,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-02:Grasshoppers:St. Gallen",
+   "league": "SWZ",
+   "date": "2026-09-02",
+   "home": "Grasshoppers",
+   "away": "St. Gallen",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-02:Luzern:Vaduz",
+   "league": "SWZ",
+   "date": "2026-09-02",
+   "home": "Luzern",
+   "away": "Vaduz",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-02:Thun:Lausanne",
+   "league": "SWZ",
+   "date": "2026-09-02",
+   "home": "Thun",
+   "away": "Lausanne",
+   "hg": 0,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-03:Basel:Sion",
+   "league": "SWZ",
+   "date": "2026-09-03",
+   "home": "Basel",
+   "away": "Sion",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-03:Lugano:Servette",
+   "league": "SWZ",
+   "date": "2026-09-03",
+   "home": "Lugano",
+   "away": "Servette",
+   "hg": 1,
+   "ag": 0,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-05:Vaduz:Lausanne",
+   "league": "SWZ",
+   "date": "2026-09-05",
+   "home": "Vaduz",
+   "away": "Lausanne",
+   "hg": 3,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-05:Young Boys:Luzern",
+   "league": "SWZ",
+   "date": "2026-09-05",
+   "home": "Young Boys",
+   "away": "Luzern",
+   "hg": 3,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-05:Grasshoppers:Zurich",
+   "league": "SWZ",
+   "date": "2026-09-05",
+   "home": "Grasshoppers",
+   "away": "Zurich",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-06:Servette:St. Gallen",
+   "league": "SWZ",
+   "date": "2026-09-06",
+   "home": "Servette",
+   "away": "St. Gallen",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-06:Basel:Lugano",
+   "league": "SWZ",
+   "date": "2026-09-06",
+   "home": "Basel",
+   "away": "Lugano",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-06:Sion:Thun",
+   "league": "SWZ",
+   "date": "2026-09-06",
+   "home": "Sion",
+   "away": "Thun",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-12:St. Gallen:Sion",
+   "league": "SWZ",
+   "date": "2026-09-12",
+   "home": "St. Gallen",
+   "away": "Sion",
+   "hg": 0,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-12:Thun:Grasshoppers",
+   "league": "SWZ",
+   "date": "2026-09-12",
+   "home": "Thun",
+   "away": "Grasshoppers",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-12:Lugano:Young Boys",
+   "league": "SWZ",
+   "date": "2026-09-12",
+   "home": "Lugano",
+   "away": "Young Boys",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-13:Zurich:Vaduz",
+   "league": "SWZ",
+   "date": "2026-09-13",
+   "home": "Zurich",
+   "away": "Vaduz",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-13:Lausanne:Servette",
+   "league": "SWZ",
+   "date": "2026-09-13",
+   "home": "Lausanne",
+   "away": "Servette",
+   "hg": 0,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-13:Luzern:Basel",
+   "league": "SWZ",
+   "date": "2026-09-13",
+   "home": "Luzern",
+   "away": "Basel",
+   "hg": 2,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-15:Grasshoppers:Sion",
+   "league": "SWZ",
+   "date": "2026-09-15",
+   "home": "Grasshoppers",
+   "away": "Sion",
+   "hg": 2,
+   "ag": 5,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-16:Lugano:St. Gallen",
+   "league": "SWZ",
+   "date": "2026-09-16",
+   "home": "Lugano",
+   "away": "St. Gallen",
+   "hg": 4,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-16:Thun:Servette",
+   "league": "SWZ",
+   "date": "2026-09-16",
+   "home": "Thun",
+   "away": "Servette",
+   "hg": 2,
+   "ag": 4,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-19:Luzern:Grasshoppers",
+   "league": "SWZ",
+   "date": "2026-09-19",
+   "home": "Luzern",
+   "away": "Grasshoppers",
+   "hg": 5,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-19:Sion:Zurich",
+   "league": "SWZ",
+   "date": "2026-09-19",
+   "home": "Sion",
+   "away": "Zurich",
+   "hg": 1,
+   "ag": 1,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-19:Young Boys:Servette",
+   "league": "SWZ",
+   "date": "2026-09-19",
+   "home": "Young Boys",
+   "away": "Servette",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-20:Vaduz:Thun",
+   "league": "SWZ",
+   "date": "2026-09-20",
+   "home": "Vaduz",
+   "away": "Thun",
+   "hg": 1,
+   "ag": 2,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-20:Basel:St. Gallen",
+   "league": "SWZ",
+   "date": "2026-09-20",
+   "home": "Basel",
+   "away": "St. Gallen",
+   "hg": 1,
+   "ag": 3,
+   "closing_fair": {}
+  },
+  {
+   "id": "SWZ:2026-09-20:Lausanne:Lugano",
+   "league": "SWZ",
+   "date": "2026-09-20",
+   "home": "Lausanne",
+   "away": "Lugano",
+   "hg": 0,
+   "ag": 4,
+   "closing_fair": {}
+  }
+ ]
+}
