@@ -64,9 +64,11 @@ nav {
   position: sticky; top: 0; z-index: 5; background: var(--bg);
   display: flex; gap: 6px; padding: 10px 0; border-bottom: 1px solid var(--line); margin-bottom: 16px;
 }
+nav { gap: 4px; }
 nav button {
-  flex: 1; border: 1px solid var(--line); background: var(--card); color: var(--text-2);
-  border-radius: 999px; padding: 8px 4px; font: inherit; font-weight: 600; cursor: pointer;
+  flex: 1 1 auto; border: 1px solid var(--line); background: var(--card); color: var(--text-2);
+  border-radius: 999px; padding: 8px 6px; font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+  white-space: nowrap;
 }
 nav button[aria-selected="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
 
@@ -92,6 +94,7 @@ h3 { font-size: 1rem; margin: 18px 0 6px; }
 }
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
 label.field { display: flex; align-items: center; gap: 6px; font-size: 0.9rem; color: var(--text-2); }
+select { max-width: 100%; }
 input, select {
   font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line);
   border-radius: 9px; padding: 7px 9px; min-width: 0;
@@ -175,3 +178,50 @@ form.grid label { display: flex; flex-direction: column; gap: 3px; font-size: 0.
 details summary { cursor: pointer; font-weight: 600; }
 
 .empty { text-align: center; color: var(--text-2); padding: 30px 10px; }
+
+/* --- Raster mit Mindestquoten (Fussball und Sport) --- */
+.match { padding-bottom: 10px; }
+.mrow { display: grid; grid-template-columns: 74px 1fr; gap: 8px; align-items: center; margin-top: 8px; }
+.mname { font-size: 0.74rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.03em; line-height: 1.2; }
+.cells { display: grid; grid-template-columns: repeat(auto-fit, minmax(48px, 1fr)); gap: 5px; }
+.cell {
+  display: flex; flex-direction: column; align-items: center; gap: 0; padding: 4px 2px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--text); border-radius: 9px;
+  font: inherit; cursor: pointer; min-width: 0;
+}
+.cell-label { font-size: 0.7rem; color: var(--text-3); white-space: nowrap; }
+.cell-odds { font-weight: 700; font-size: 0.95rem; }
+.cell.off .cell-odds { color: var(--text-3); font-weight: 400; }
+.cell.value { background: var(--good-soft); border-color: var(--good); }
+.cell.value .cell-odds { color: var(--good); }
+.cell.novalue { background: var(--card); }
+.cell.novalue .cell-odds { color: var(--text-3); text-decoration: line-through; }
+.cell.active { outline: 2px solid var(--accent); outline-offset: 1px; }
+.badge.live { color: var(--good); border-color: var(--good); }
+
+.panel { margin-top: 10px; padding: 10px 12px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 6px; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.close { border: 0; background: transparent; color: var(--text-3); font-size: 1rem; cursor: pointer; padding: 2px 6px; }
+.odds-field input { width: 110px; font-size: 1.1rem; text-align: center; }
+.sel-result { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px;
+  font-size: 0.88rem; border-radius: 9px; padding: 8px 10px; }
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* --- Kombi-Schein (unten fixiert) --- */
+.slip {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--card);
+  border-top: 1px solid var(--line); box-shadow: 0 -4px 16px rgba(0, 0, 0, .12);
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
+}
+.slip-head { width: 100%; max-width: 728px; margin: 0 auto; display: flex; justify-content: space-between; gap: 8px;
+  border: 0; background: transparent; color: var(--text); font: inherit; padding: 6px 0; cursor: pointer; }
+.slip-body { max-width: 728px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; padding-bottom: 6px; }
+.slip-leg { display: flex; justify-content: space-between; align-items: center; gap: 8px; border-top: 1px solid var(--line); padding-top: 6px; }
+
+/* --- Tabellen der Experimente --- */
+table.wrap-first td:first-child { white-space: normal; min-width: 150px; }
+tr.chosen td { font-weight: 700; }
+tr.reference td { color: var(--text-3); font-style: italic; }
+ul.plain { margin: 6px 0; padding-left: 18px; }
+ul.legs { margin: 4px 0 0; padding-left: 0; list-style: none; }

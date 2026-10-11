@@ -17,26 +17,31 @@
     </header>
 
     <nav role="tablist">
-      <button role="tab" data-view="tips" aria-selected="true">Tipps</button>
+      <button role="tab" data-view="tips" aria-selected="true">Fussball</button>
+      <button role="tab" data-view="sports" aria-selected="false">Sport</button>
       <button role="tab" data-view="backtest" aria-selected="false">Backtest</button>
       <button role="tab" data-view="journal" aria-selected="false">Tagebuch</button>
       <button role="tab" data-view="info" aria-selected="false">Info</button>
     </nav>
 
-    <!-- Tipps -->
+    <!-- Fussball -->
     <section id="view-tips">
       <div class="card note small">
-        Trag die <b>Sporttip-Quote</b> ein. Ist sie mindestens so hoch wie die <b>Mindestquote</b>,
-        hat die Wette Value, und die App sagt dir, wie viel du setzen sollst.
+        Die Zahlen sind <b>Mindestquoten</b>: Zahlt Sporttip mindestens so viel, hat die Wette Value.
+        Antippen, Sporttip-Quote eintragen, fertig. Grün = wetten, grau = nicht.
       </div>
       <div class="toolbar">
         <label class="field">Budget CHF <input id="bankroll" type="number" inputmode="decimal" min="0" step="10" style="width:90px"></label>
-        <button class="chip" id="market-1x2" aria-pressed="true">1X2</button>
-        <button class="chip" id="market-ou" aria-pressed="true">Tore</button>
+        <button class="ghost" id="live-button">↻ Live-Quoten</button>
       </div>
+      <p class="small muted" id="live-status"></p>
+      <div class="toolbar" id="group-filter"></div>
       <div class="toolbar" id="league-filter"></div>
       <div id="tips-list"></div>
     </section>
+
+    <!-- Andere Sportarten -->
+    <section id="view-sports" class="hidden"></section>
 
     <!-- Backtest -->
     <section id="view-backtest" class="hidden"></section>
@@ -46,37 +51,53 @@
 
     <!-- Info -->
     <section id="view-info" class="hidden">
-      <h2>So funktioniert Pastonmartin</h2>
+      <h2>Die wichtigste Erkenntnis</h2>
+      <div class="card">
+        <p>Mit öffentlichen Daten schlägt kein Modell die besten Buchmacher (Pinnacle, Betfair). Das zeigt auch
+          unser Backtest: Das eigene Modell ist stark verbessert worden und verliert trotzdem gegen den Markt.</p>
+        <p><b>Gewinn entsteht dort, wo ein Buchmacher von der fairen Quote abweicht.</b> Darum rechnet die App die faire
+          Quote aus den besten Marktquoten aus und sagt dir, ab welcher Sporttip-Quote eine Wette Value hat.
+          Wer überall die beste Quote nehmen kann (viele Buchmacher), findet viel Value. Bei einem einzigen Anbieter ist
+          es seltener. Wie oft genau, hängt von der echten Sporttip-Marge ab: Die misst das Tagebuch.</p>
+      </div>
+      <h2>So benutzt du die App</h2>
       <div class="card">
         <ol>
-          <li><b>Eigenes Modell:</b> Aus den Resultaten der letzten drei Jahre lernt ein Poisson-Modell,
-            wie stark jedes Team angreift und verteidigt. Daraus folgen Wahrscheinlichkeiten für 1/X/2
-            und über/unter 2.5 Tore.</li>
-          <li><b>Value-Finder:</b> Aus den Quoten von Pinnacle (dem genausten Buchmacher der Welt)
-            wird die Marge herausgerechnet. Das ergibt die faire Wahrscheinlichkeit des Marktes.
-            Fehlt Pinnacle, nehmen wir Betfair Exchange oder den Durchschnitt aller Buchmacher.</li>
-          <li><b>Kombination:</b> Beide werden gemischt. Wie stark das eigene Modell zählt, hat der
-            Backtest bestimmt.</li>
-          <li><b>Mindestquote:</b> (1 + Mindest-Value) ÷ Wahrscheinlichkeit. Erst ab dieser
-            Sporttip-Quote lohnt sich die Wette.</li>
-          <li><b>Einsatz:</b> ¼-Kelly, höchstens 2 % vom Budget. Kleine Einsätze, damit eine
-            Pechsträhne das Budget nicht auffrisst.</li>
+          <li>Am Automaten oder vor dem Programm: <b>↻ Live-Quoten</b> tippen. Dann sind die fairen Quoten aktuell.</li>
+          <li>Wette antippen und die <b>Sporttip-Quote</b> eintragen. Grün = Value, die App zeigt den Einsatz.</li>
+          <li><b>Ins Tagebuch</b>: Das Tagebuch rechnet nach dem Spiel selbst ab und misst den CLV.</li>
+          <li>Mehrere grüne Tipps aus verschiedenen Spielen kannst du zur <b>Kombi</b> verbinden: Der Value multipliziert sich,
+            aber die Kombi gewinnt seltener.</li>
+          <li>Ab und zu bei einem Spiel <b>alle</b> Quoten eines Marktes eintragen (1, X und 2). So misst die App die echte Sporttip-Marge.</li>
+          <li>Aktionen und Quoten-Boosts von Sporttip prüfen: Dort ist Value am wahrscheinlichsten.</li>
         </ol>
       </div>
-      <h2>Der Ablauf im Hintergrund</h2>
+      <h2>Wie gerechnet wird</h2>
       <div class="card">
-        <p>Die Seite selbst rechnet nichts. Ein GitHub-Roboter lädt täglich die neusten Resultate und
-          Quoten von football-data.co.uk, rechnet alles in Python durch und legt fertige Dateien hier ab.
-          Einmal pro Woche läuft der ganze Backtest neu.</p>
+        <ol>
+          <li><b>Faire Quote:</b> Aus den Quoten von Pinnacle (sonst Betfair Exchange) wird die Marge herausgerechnet, und zwar
+            mit der Methode, die im Backtest am genausten war (Power- oder Shin-Methode). Beide geben Aussenseitern weniger
+            Chance als die einfache Methode, weil Buchmacher ihre Marge vor allem dort verstecken.</li>
+          <li><b>Eigenes Modell:</b> Poisson-Modell mit Angriffs- und Abwehrstärke, gelernt aus Toren und Schüssen aufs Tor.
+            Es wird mit dem Markt kombiniert, so stark wie es der Backtest erlaubt (das Gewicht steht im Backtest).</li>
+          <li><b>Nebenmärkte:</b> Aus Sieger- und Torquoten werden die erwarteten Tore bestimmt. Daraus folgen Doppelte Chance,
+            Über/Unter 1.5 und 3.5 und Beide treffen.</li>
+          <li><b>Mindestquote:</b> (1 + Mindest-Value) ÷ faire Chance. Den Mindest-Value hat der Backtest gewählt.</li>
+          <li><b>Einsatz:</b> ¼-Kelly, höchstens 2 % vom Budget. Kleine Einsätze, damit eine Pechsträhne das Budget nicht auffrisst.</li>
+        </ol>
+        <p class="small muted">Im Hintergrund lädt ein GitHub-Roboter täglich Resultate und Quoten, rechnet in Python und legt
+          die Daten hier ab. Jeden Montag läuft der ganze Backtest neu.</p>
       </div>
       <h2>Wichtig</h2>
       <div class="card">
-        <p>Ein positiver Backtest ist keine Garantie. Auch ein gutes System hat lange Verlustphasen.
+        <p>Ein positiver Backtest ist keine Garantie. Auch mit echtem Vorteil gibt es lange Verlustphasen.
           Setz nur ein festes Budget, das du verlieren kannst, und schiess nie Geld nach.</p>
         <p class="small muted">Wenn Wetten aufhört, Spass zu machen: <a href="https://www.suchtschweiz.ch" target="_blank" rel="noopener">Sucht Schweiz</a> hilft anonym.</p>
       </div>
     </section>
   </div>
+
+  <div id="slip" class="slip hidden" aria-live="polite"></div>
 
   <script type="module" src="js/main.js"></script>
 </body>

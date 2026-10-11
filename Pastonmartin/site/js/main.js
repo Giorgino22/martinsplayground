@@ -1,6 +1,8 @@
-// Startpunkt der Seite: Daten laden und die vier Ansichten verbinden.
+// Startpunkt der Seite: Daten laden und die Ansichten verbinden.
 import { loadJson, formatStamp } from './util.js';
+import { initSlip } from './slip.js';
 import { initTips } from './tips.js';
+import { initSports } from './sports.js';
 import { initBacktest } from './backtest.js';
 import { initJournal } from './journal.js';
 
@@ -14,7 +16,9 @@ function show(name) {
 }
 tabs.forEach(tab => tab.addEventListener('click', () => show(tab.dataset.view)));
 const views = [...tabs].map(tab => tab.dataset.view);
-show(views.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'tips');
+const fromAddress = () => show(views.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'tips');
+window.addEventListener('hashchange', fromAddress);
+fromAddress();
 
 // Alle drei Dateien gleichzeitig laden
 const [tips, backtest, results] = await Promise.all([
@@ -25,6 +29,8 @@ if (tips) {
   document.getElementById('stand').textContent =
     `Stand ${formatStamp(tips.generated)}${tips.odds_api ? ' · Pinnacle live' : ''}`;
 }
+initSlip(tips);
 initTips(tips);
+initSports(tips);
 initBacktest(backtest);
-await initJournal(results);
+await initJournal(results, backtest);

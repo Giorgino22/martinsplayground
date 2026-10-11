@@ -1,0 +1,4 @@
+{
+  "//": "Damit Node.js (Tests) diese Dateien als ES-Module liest, wie der Browser.",
+  "type": "module"
+}

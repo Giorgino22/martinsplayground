@@ -13,7 +13,7 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 | `fottis/`     | `fottis.odermatts.ch`        | (Parked) Shared photo/video drop. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
 | `hater/`      | `oderkalender.odermatts.ch`  | Familienkalender. Read-only view of the family's public `.ics` feeds. Needs Pages Functions (Root directory `hater`), no bindings. Folder name is historical — it reuses the old `hater` Pages project. |
 | `nizza/`      | `nizza.odermatts.ch`         | **The app.** Installable PWA hub: home launcher + `/aura/`, `/chooser/`, `/hater/`. Needs D1 (`DB`), Workers AI (`AI`), R2 (`BUCKET`). |
-| `Pastonmartin/` | `pastonmartin.odermatts.ch` | Value-Wetten für Sporttip: Poisson-Modell + Pinnacle-Quoten, Backtest, Wett-Tagebuch. Python in GitHub Actions erzeugt die Daten. Root directory `Pastonmartin`, output `site`, optional D1 (`DB`). See `Pastonmartin/README.md`. |
+| `Pastonmartin/` | `pastonmartin.odermatts.ch` | Value-Wetten für Sporttip: faire Quoten aus Pinnacle/Betfair, Mindestquoten für viele Wettarten, Live-Quoten, Kombi, Tagebuch, Backtest. Python in GitHub Actions erzeugt die Daten. Root directory `Pastonmartin`, output `site`, optional D1 (`DB`), `ODDS_API_KEY`, `JOURNAL_KEY`. See `Pastonmartin/README.md`. |
 
 ### nizza app (everything in one PWA)
 
