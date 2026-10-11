@@ -1,0 +1,74 @@
+# Pastonmartin: rechnet Tipps und Backtest in Python und legt die Resultate
+# als JSON in Pastonmartin/site/data ab. Cloudflare Pages zeigt sie dann an.
+name: Pastonmartin
+
+on:
+  schedule:
+    - cron: "37 5 * * *"    # täglich morgens: Tipps
+    - cron: "37 14 * * *"   # täglich nachmittags: Tipps mit frischen Pinnacle-Quoten (Odds API)
+    - cron: "13 3 * * 1"    # Montag früh: ganzer Backtest
+  workflow_dispatch:
+    inputs:
+      backtest:
+        description: "Backtest auch laufen lassen?"
+        type: boolean
+        default: false
+  push:
+    paths:
+      - "Pastonmartin/engine/**"
+      - ".github/workflows/pastonmartin.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pastonmartin-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: Pastonmartin/engine
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: Pastonmartin/engine/requirements.txt
+
+      - run: pip install -r requirements.txt
+
+      # Heruntergeladene CSVs aufbewahren, damit alte Saisons nicht jedes Mal neu geladen werden
+      - uses: actions/cache@v4
+        with:
+          path: Pastonmartin/engine/cache
+          key: football-data-${{ github.run_id }}
+          restore-keys: football-data-
+
+      - name: Tests
+        run: python -m unittest
+
+      - name: Backtest
+        if: github.event_name == 'push' || github.event.schedule == '13 3 * * 1' || inputs.backtest
+        run: python run.py backtest
+
+      - name: Tipps
+        env:
+          ODDS_API_KEY: ${{ (github.event.schedule == '37 14 * * *' || github.event_name == 'workflow_dispatch') && secrets.ODDS_API_KEY || '' }}
+        run: python run.py tips
+
+      - name: Speichern
+        working-directory: Pastonmartin/site/data
+        run: |
+          git config user.name "pastonmartin-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          if git diff --cached --quiet; then echo "Nichts Neues."; exit 0; fi
+          git commit -m "Pastonmartin: Daten aktualisiert"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
