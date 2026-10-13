@@ -108,7 +108,9 @@ the variable replaces that person's `feeds` list in the code. An entry that obvi
 — a `?cid=` subscribe link, or anything without `http(s)://` — is skipped and named in that
 person's note rather than silently failing.
 
-All six entries exist as slots in `PEOPLE` (Martin, Patrick, Mamma, Familie, Geissepapi, Schöni).
+All eight entries exist as slots in `PEOPLE` (Martin, Patrick, Mamma, Familie, Geissepapi,
+Kanti Baden, Match, Schöni). *Match* deliberately shares Martin's orange; *Kanti Baden* is light
+blue. Their variables are `FEEDS_KANTIBADEN` and `FEEDS_MATCH` (spaces are dropped).
 A person with no feeds at all (in code or env) is left out of the response entirely, so an unset
 one shows no tab — set their variable and they appear on their own, no code change needed. Secrets are per **calendar**,
 not per account: someone with five calendars contributes five addresses to their variable.

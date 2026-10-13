@@ -75,6 +75,23 @@ export const PEOPLE = [
   { name: 'Geissepapi', env: 'FEEDS_PAPA', color: '#2ea043', feeds: [] },
 
   {
+    name: 'Kanti Baden',
+    color: '#38bdf8',
+    feeds: [
+      'webcal://volleymanager.volleyball.ch/iCal/schedule/3bb28213dbeb0751a87fc2156365f3bfb2ba6a01',
+      'webcal://volleymanager.volleyball.ch/iCal/schedule/47fe0eef23ec1f7a97841a4cc42071c26f8f4638'
+    ]
+  },
+
+  {
+    name: 'Match',
+    color: '#ff9500',            // bewusst dasselbe Orange wie Martin
+    feeds: [
+      'webcal://volleymanager.volleyball.ch/iCal/schedule/270b676e53a517179a249566bc9609555f5d506c'
+    ]
+  },
+
+  {
     name: 'Schöni',
     color: '#eab308',
     // Vereinskalender ist oft leer — dann gar keinen Reiter zeigen.
