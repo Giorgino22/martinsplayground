@@ -1,297 +1,434 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fottis</title>
+  <meta name="theme-color" content="#14111f">
+  <title>Humm</title>
   <style>
+    :root {
+      --bg: #14111f;
+      --card: #1f1b2e;
+      --line: #2e2943;
+      --text: #f2effa;
+      --muted: #9c95b5;
+      --accent: #ff6b5c;
+      --accent2: #ffb35c;
+      --good: #4fd18b;
+    }
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
       margin: 0;
+      background: var(--bg);
+      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #fff;
-      color: #111;
       line-height: 1.5;
     }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
-    h1 { font-weight: 600; }
-    h2 { font-weight: 600; font-size: 1.1rem; margin-top: 28px; }
-    button, .btn {
-      font: inherit; font-size: 1rem; padding: 10px 18px;
-      border: 1px solid #ccc; border-radius: 8px; background: #fff; color: #111;
-      cursor: pointer; text-decoration: none; display: inline-block;
+    .wrap { max-width: 640px; margin: 0 auto; padding: 28px 16px 80px; }
+    header { text-align: center; margin-bottom: 24px; }
+    header h1 { margin: 0; font-size: 2.4rem; letter-spacing: -0.03em; }
+    header h1 span { color: var(--accent); }
+    header p { margin: 4px 0 0; color: var(--muted); }
+
+    textarea, input[type=text] {
+      width: 100%; font: inherit; color: var(--text);
+      background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+      padding: 12px 14px; resize: vertical;
     }
-    button.primary, .btn.primary { background: #111; color: #fff; border-color: #111; }
-    button:active { background: #f2f2f2; }
+    textarea:focus, input:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+    label { display: block; font-size: 0.9rem; color: var(--muted); margin-bottom: 6px; }
+
+    button {
+      font: inherit; cursor: pointer; border: 1px solid var(--line); border-radius: 999px;
+      background: var(--card); color: var(--text); padding: 10px 18px;
+    }
     button:disabled { opacity: 0.4; cursor: default; }
-    input[type=text], input[type=password] { font: inherit; padding: 10px 12px; border: 1px solid #ccc; border-radius: 8px; flex: 1; min-width: 160px; }
-    .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .muted { color: #777; font-size: 0.9rem; }
-    .box { border: 1px solid #eee; border-radius: 12px; padding: 16px; margin: 16px 0; }
-    .hidden { display: none; }
-    a { color: #1a5fd0; }
+    button.primary { background: var(--accent); border-color: var(--accent); color: #1a0f0d; font-weight: 600; }
+    button.small { padding: 5px 12px; font-size: 0.85rem; }
 
-    #folderList { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
-    .folder { border: 1px solid #eee; border-radius: 12px; overflow: hidden; }
-    .folder .cover { aspect-ratio: 4/3; background: #f3f3f3; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #bbb; }
-    .folder .cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .folder .meta { padding: 8px 10px; }
-    .folder .meta b { display: block; word-break: break-word; }
-    .folder .meta .row { margin-top: 6px; gap: 6px; }
-    .folder .btn, .folder button { padding: 6px 10px; font-size: 0.85rem; }
+    /* The big round record button. --level (0..1) is set from JS while recording,
+       so the glow pulses with your voice. */
+    .mic-area { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 28px 0 18px; }
+    #mic {
+      --level: 0;
+      width: 132px; height: 132px; border-radius: 50%; padding: 0;
+      border: none; background: linear-gradient(140deg, var(--accent), var(--accent2));
+      color: #1a0f0d; font-size: 3rem;
+      box-shadow: 0 0 0 calc(var(--level) * 34px) rgba(255, 107, 92, 0.25);
+      transition: box-shadow 0.08s linear, transform 0.15s;
+    }
+    #mic:active { transform: scale(0.96); }
+    #mic.recording { background: #fff; color: var(--accent); }
+    #micLabel { color: var(--muted); font-size: 0.95rem; min-height: 1.5em; text-align: center; }
 
-    #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; margin-top: 16px; }
-    .tile { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; background: #f3f3f3; border: 1px solid #eee; }
-    .tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .tile .ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: #999; flex-direction: column; gap: 4px; padding: 6px; text-align: center; }
-    .tile .ph small { font-size: 0.65rem; word-break: break-all; }
-    .tile a.open { position: absolute; inset: 0; }
-    .tile .save { position: absolute; bottom: 6px; right: 6px; background: rgba(255,255,255,0.92); border-radius: 8px; padding: 4px 8px; font-size: 0.8rem; border: 1px solid #ddd; }
-    .badge { position: absolute; top: 6px; left: 6px; background: rgba(0,0,0,0.6); color: #fff; font-size: 0.65rem; padding: 2px 6px; border-radius: 6px; }
+    .take { display: none; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--line);
+            border-radius: 14px; padding: 8px 10px; margin-bottom: 14px; }
+    .take.show { display: flex; }
+    .take audio { flex: 1; min-width: 0; height: 36px; }
 
-    #progress div { font-size: 0.85rem; margin: 4px 0; }
-    .bar { height: 6px; background: #eee; border-radius: 4px; overflow: hidden; margin-top: 2px; }
-    .bar > span { display: block; height: 100%; background: #111; width: 0; transition: width 0.2s; }
-    .footer { margin-top: 40px; }
+    .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .error { color: #ff8a80; text-align: center; min-height: 1.5em; margin: 10px 0 0; }
+
+    /* Results */
+    #results { margin-top: 28px; }
+    .bubble { background: var(--line); border-radius: 14px 14px 4px 14px; padding: 8px 14px;
+              margin: 22px 0 10px auto; width: fit-content; max-width: 85%; }
+    .heard { color: var(--muted); font-style: italic; margin: 10px 0; }
+    .guess { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; margin: 10px 0; }
+    .guess .top { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .guess .title { font-weight: 700; font-size: 1.1rem; }
+    .guess .artist { color: var(--muted); }
+    .guess .pct { font-weight: 700; color: var(--accent2); white-space: nowrap; }
+    .bar { height: 4px; background: var(--line); border-radius: 4px; margin: 8px 0; overflow: hidden; }
+    .bar div { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .guess .why { font-size: 0.92rem; margin: 6px 0 10px; }
+    .links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .links a { color: var(--text); text-decoration: none; border: 1px solid var(--line); border-radius: 999px;
+               padding: 5px 12px; font-size: 0.85rem; }
+    .links a.yt { border-color: #ff4e45; }
+    .links a.sp { border-color: #1ed760; }
+    .found { border-color: var(--good) !important; color: var(--good); }
+    .question { border-left: 3px solid var(--accent2); padding: 4px 12px; margin: 14px 0; }
+    .thinking { color: var(--muted); text-align: center; margin: 18px 0; }
+    .thinking::after { content: ''; animation: dots 1.2s steps(4) infinite; }
+    @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
+
+    #followup { display: none; gap: 8px; margin-top: 16px; }
+    #followup.show { display: flex; }
+    #followup input { flex: 1; }
+
+    /* History */
+    #history { margin-top: 44px; }
+    #history h2 { font-size: 1.05rem; color: var(--muted); font-weight: 600; }
+    #history ul { list-style: none; padding: 0; margin: 0; }
+    #history li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+    #history li .info { flex: 1; min-width: 0; }
+    #history li .date { color: var(--muted); font-size: 0.8rem; }
+    #history li .del { background: none; border: none; color: var(--muted); font-size: 1.1rem; padding: 4px 8px; }
+    .empty { color: var(--muted); font-size: 0.92rem; }
   </style>
 </head>
 <body>
-  <div class="wrap">
+<div class="wrap">
+  <header>
+    <h1>Humm<span>.</span></h1>
+    <p>Hum it, sing it, "na na na" it. Find the song.</p>
+  </header>
 
-    <!-- ========== HOME (owner only) ========== -->
-    <section id="homeView">
-      <h1>📸 Fottis</h1>
+  <label for="hint">What do you remember? (optional)</label>
+  <textarea id="hint" rows="2" placeholder="e.g. Brazilian, World Cup song, lots of long O's, maybe 2014"></textarea>
 
-      <div id="loginBox">
-        <div class="row">
-          <input type="password" id="adminInput" placeholder="Passwort" autocomplete="current-password">
-          <button class="primary" id="loginBtn">Login</button>
-        </div>
-      </div>
-
-      <div id="adminArea" class="hidden">
-        <div class="box">
-          <div class="row">
-            <input type="text" id="folderName" placeholder="Ordnername (z.B. Italien 2026)">
-            <button class="primary" id="createBtn">Ordner erstellen</button>
-          </div>
-        </div>
-        <h2>Alle Ordner</h2>
-        <div id="folderList"></div>
-        <p id="noFolders" class="muted hidden">Noch keine Ordner. Erstelle den ersten! ☝️</p>
-        <p class="footer"><a id="logoutLink">Logout</a></p>
-      </div>
-    </section>
-
-    <!-- ========== GALLERY (anyone with the link) ========== -->
-    <section id="galleryView" class="hidden">
-      <div class="row" style="justify-content: space-between;">
-        <h1 style="margin:0;">📸 Fottis</h1>
-        <div class="row">
-          <button id="copyLink">Link kopieren</button>
-          <button id="deleteFolder" class="hidden">Ordner löschen</button>
-        </div>
-      </div>
-
-      <div class="box">
-        <label class="btn primary" for="fileInput">Fotos / Videos hochladen</label>
-        <input id="fileInput" type="file" multiple accept="image/*,video/*" class="hidden">
-        <div id="progress"></div>
-      </div>
-
-      <div class="row">
-        <button id="dlAll">⬇ Alle herunterladen</button>
-        <label class="muted"><input type="checkbox" id="exceptMine" checked> ohne meine</label>
-      </div>
-      <p class="muted">Tipp: Am Computer landet alles im Download-Ordner. Auf dem iPhone kommen die Dateien in die <b>Dateien</b>-App – dort markieren und „In Fotos sichern“. Einzeln: Foto antippen → gedrückt halten → „Zu Fotos hinzufügen“.</p>
-
-      <div id="empty" class="muted hidden">Noch keine Fotos. Lade die ersten hoch! ☝️</div>
-      <div id="grid"></div>
-    </section>
-
+  <div class="mic-area">
+    <button id="mic" aria-label="Record">🎤</button>
+    <div id="micLabel">Tap to record (up to 30 s)</div>
   </div>
 
-  <script>
-    const params = new URLSearchParams(location.search);
-    const folderId = params.get('f');
-    const ADMIN_LS = 'fottis_admin';
-    const getAdmin = () => localStorage.getItem(ADMIN_LS) || '';
+  <div class="take" id="take">
+    <audio id="player" controls></audio>
+    <button class="small" id="discard">Delete</button>
+  </div>
 
-    // ============================ HOME (owner) ============================
-    if (!folderId) {
-      const loginBox = document.getElementById('loginBox');
-      const adminArea = document.getElementById('adminArea');
+  <div class="actions">
+    <button class="primary" id="find" disabled>Find the song</button>
+    <button id="reset" style="display:none">New search</button>
+  </div>
+  <p class="error" id="error"></p>
 
-      async function showAdmin() {
-        const ok = await loadFolders();           // sends the saved password
-        if (ok) { loginBox.classList.add('hidden'); adminArea.classList.remove('hidden'); }
-        else { localStorage.removeItem(ADMIN_LS); loginBox.classList.remove('hidden'); adminArea.classList.add('hidden'); }
-      }
+  <section id="results"></section>
+  <form id="followup">
+    <input type="text" id="feedback" placeholder="Not it? e.g. &quot;older, more samba, a woman sings&quot;" autocomplete="off">
+    <button class="primary" type="submit">Send</button>
+  </form>
 
-      document.getElementById('loginBtn').onclick = async () => {
-        const key = document.getElementById('adminInput').value.trim();
-        if (!key) return;
-        const ok = (await (await fetch('/api/admin', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ adminKey: key }) })).json()).ok;
-        if (!ok) { alert('Falsches Passwort.'); return; }
-        localStorage.setItem(ADMIN_LS, key);       // remembered on this device -> automatic next time
-        showAdmin();
-      };
-      document.getElementById('adminInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); });
+  <section id="history">
+    <h2>Songs you found</h2>
+    <ul id="historyList"></ul>
+  </section>
+</div>
 
-      document.getElementById('logoutLink').onclick = () => { localStorage.removeItem(ADMIN_LS); location.reload(); };
+<script>
+  const MAX_SECONDS = 30;
+  const $ = id => document.getElementById(id);
 
-      document.getElementById('createBtn').onclick = async () => {
-        const name = document.getElementById('folderName').value.trim();
-        const r = await fetch('/api/folder', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ name, adminKey: getAdmin() }) });
-        const { folderId } = await r.json();
-        location.href = '/?f=' + folderId;
-      };
+  // Everything about the current search lives here.
+  const state = {
+    audio: null,      // base64 WAV of the recording (or null)
+    rounds: [],       // earlier answers + the feedback the user gave on each
+    lastAnswer: null, // the newest answer from the server
+    busy: false,
+  };
 
-      async function loadFolders() {
-        const res = await fetch('/api/folders', { headers: { 'x-admin-key': getAdmin() } });
-        if (res.status === 403) return false;
-        const folders = (await res.json()).folders || [];
-        const list = document.getElementById('folderList');
-        list.innerHTML = '';
-        document.getElementById('noFolders').classList.toggle('hidden', folders.length > 0);
-        for (const f of folders) {
-          const el = document.createElement('div');
-          el.className = 'folder';
-          const cover = f.cover ? `<img loading="lazy" src="/api/file?key=${encodeURIComponent(f.cover)}" onerror="this.parentElement.textContent='📁'">` : '📁';
-          el.innerHTML =
-            `<a href="/?f=${f.folderId}" style="text-decoration:none;color:inherit"><div class="cover">${cover}</div></a>` +
-            `<div class="meta"><b>${esc(f.name || 'Ohne Namen')}</b>` +
-            `<span class="muted">${f.count} Datei${f.count === 1 ? '' : 'en'}</span>` +
-            `<div class="row">` +
-            `<a class="btn" href="/?f=${f.folderId}">Öffnen</a>` +
-            `<button data-copy="${f.folderId}">Link</button>` +
-            `<button data-del="${f.folderId}">Löschen</button>` +
-            `</div></div>`;
-          list.appendChild(el);
-        }
-        list.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => copy(location.origin + '/?f=' + b.dataset.copy));
-        list.querySelectorAll('[data-del]').forEach(b => b.onclick = async () => {
-          if (!confirm('Diesen Ordner und ALLE Fotos löschen?')) return;
-          await fetch('/api/delete', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ folderId: b.dataset.del, adminKey: getAdmin() }) });
-          loadFolders();
-        });
-        return true;
-      }
+  // ---------- Recording ----------
 
-      if (getAdmin()) showAdmin();
+  let recorder, stream, meterCtx, timerId, startedAt;
+
+  $('mic').onclick = () => (recorder?.state === 'recording' ? stopRecording() : startRecording());
+
+  async function startRecording() {
+    showError('');
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch {
+      return showError('No microphone access. Allow it in your browser settings and try again.');
     }
 
-    // ============================ GALLERY (anyone with link) ============================
-    else {
-      document.getElementById('homeView').classList.add('hidden');
-      document.getElementById('galleryView').classList.remove('hidden');
-      document.getElementById('copyLink').onclick = () => copy(location.href);
+    // MediaRecorder collects the sound in small pieces ("chunks") until we stop.
+    const chunks = [];
+    recorder = new MediaRecorder(stream);
+    recorder.ondataavailable = e => chunks.push(e.data);
+    recorder.onstop = () => onRecorded(new Blob(chunks, { type: recorder.mimeType }));
+    recorder.start();
 
-      if (getAdmin()) {
-        const delBtn = document.getElementById('deleteFolder');
-        delBtn.classList.remove('hidden');
-        delBtn.onclick = async () => {
-          if (!confirm('Diesen Ordner und ALLE Fotos löschen?')) return;
-          await fetch('/api/delete', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ folderId, adminKey: getAdmin() }) });
-          location.href = '/';
-        };
-      }
+    startMeter(stream);
+    startedAt = Date.now();
+    timerId = setInterval(() => {
+      const s = Math.floor((Date.now() - startedAt) / 1000);
+      $('micLabel').textContent = `Recording… ${s}s / ${MAX_SECONDS}s  (tap to stop)`;
+      if (s >= MAX_SECONDS) stopRecording();
+    }, 200);
 
-      let files = [];
-      const mineKey = 'fottis_mine_' + folderId;
-      const getMine = () => new Set(JSON.parse(localStorage.getItem(mineKey) || '[]'));
-      const addMine = k => { const m = getMine(); m.add(k); localStorage.setItem(mineKey, JSON.stringify([...m])); };
+    $('mic').classList.add('recording');
+    $('mic').textContent = '■';
+    $('micLabel').textContent = 'Recording… tap to stop';
+  }
 
-      async function loadGallery() {
-        files = ((await (await fetch('/api/list?f=' + folderId)).json()).files) || [];
-        const grid = document.getElementById('grid');
-        const mine = getMine();
-        grid.innerHTML = '';
-        document.getElementById('empty').classList.toggle('hidden', files.length > 0);
-        for (const f of files) {
-          const isImg = f.contentType.startsWith('image/') || /\.(jpe?g|png|gif|webp|heic|heif)$/i.test(f.filename);
-          const src = '/api/file?key=' + encodeURIComponent(f.key);
-          const tile = document.createElement('div');
-          tile.className = 'tile';
-          tile.innerHTML =
-            (isImg
-              ? `<img loading="lazy" src="${src}" onerror="this.outerHTML='<div class=ph>🖼️<small>${esc(f.filename)}</small></div>'">`
-              : `<div class="ph">🎬<small>${esc(f.filename)}</small></div>`) +
-            (mine.has(f.key) ? `<span class="badge">meine</span>` : '') +
-            `<a class="open" href="${src}" target="_blank" rel="noopener"></a>` +
-            `<a class="save" href="${src}&download=1" download="${esc(f.filename)}">⬇</a>`;
-          grid.appendChild(tile);
-        }
-      }
+  function stopRecording() {
+    clearInterval(timerId);
+    recorder.stop();
+    stream.getTracks().forEach(t => t.stop()); // turns the mic (and the red dot) off
+    meterCtx?.close();
+    $('mic').classList.remove('recording');
+    $('mic').textContent = '🎤';
+    $('mic').style.setProperty('--level', 0);
+    $('micLabel').textContent = 'Tap to record again';
+  }
 
-      // ---- Upload (chunked multipart so big videos work) ----
-      const CHUNK = 90 * 1024 * 1024;
-      const fileInput = document.getElementById('fileInput');
-      const progress = document.getElementById('progress');
-      fileInput.onchange = async () => {
-        const chosen = [...fileInput.files];
-        fileInput.value = '';
-        for (const file of chosen) await uploadOne(file);
-        progress.innerHTML = '';
-        await loadGallery();
-      };
+  // Volume meter: an AnalyserNode lets us read the current sound wave.
+  // We compute its average loudness (RMS) every frame and feed it into the CSS glow.
+  function startMeter(stream) {
+    meterCtx = new AudioContext();
+    const analyser = meterCtx.createAnalyser();
+    meterCtx.createMediaStreamSource(stream).connect(analyser);
+    const wave = new Float32Array(analyser.fftSize);
+    const tick = () => {
+      if (recorder?.state !== 'recording') return;
+      analyser.getFloatTimeDomainData(wave);
+      const rms = Math.sqrt(wave.reduce((sum, v) => sum + v * v, 0) / wave.length);
+      $('mic').style.setProperty('--level', Math.min(1, rms * 6));
+      requestAnimationFrame(tick);
+    };
+    tick();
+  }
 
-      async function uploadOne(file) {
-        const row = document.createElement('div');
-        row.innerHTML = `${esc(file.name)} <div class="bar"><span></span></div>`;
-        progress.appendChild(row);
-        const bar = row.querySelector('span');
-
-        const c = await (await fetch('/api/upload/create', {
-          method: 'POST', headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ folderId, filename: file.name, contentType: file.type })
-        })).json();
-        if (c.error) { row.innerHTML = `❌ ${esc(file.name)} (${c.error})`; return; }
-
-        const parts = [];
-        let pos = 0, n = 1;
-        while (pos < file.size) {
-          const chunk = file.slice(pos, pos + CHUNK);
-          const res = await fetch(`/api/upload/part?key=${encodeURIComponent(c.key)}&uploadId=${encodeURIComponent(c.uploadId)}&partNumber=${n}`, { method: 'PUT', body: chunk });
-          const p = await res.json();
-          parts.push({ partNumber: n, etag: p.etag });
-          pos += CHUNK; n++;
-          bar.style.width = Math.min(100, Math.round(pos / file.size * 100)) + '%';
-        }
-        await fetch('/api/upload/complete', {
-          method: 'POST', headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ key: c.key, uploadId: c.uploadId, parts })
-        });
-        addMine(c.key);
-        bar.style.width = '100%';
-      }
-
-      // ---- Download all ----
-      document.getElementById('dlAll').onclick = async () => {
-        const exceptMine = document.getElementById('exceptMine').checked;
-        const mine = getMine();
-        const targets = files.filter(f => !(exceptMine && mine.has(f.key)));
-        if (!targets.length) { alert('Nichts zum Herunterladen.'); return; }
-        for (const f of targets) {
-          const a = document.createElement('a');
-          a.href = '/api/file?key=' + encodeURIComponent(f.key) + '&download=1';
-          a.download = f.filename;
-          document.body.appendChild(a);
-          a.click();
-          a.remove();
-          await new Promise(r => setTimeout(r, 700));
-        }
-      };
-
-      loadGallery();
+  async function onRecorded(blob) {
+    $('player').src = URL.createObjectURL(blob);
+    $('take').classList.add('show');
+    try {
+      state.audio = await toWavBase64(blob);
+    } catch {
+      state.audio = null;
+      showError('Could not read the recording. Please try again.');
     }
+    updateFindButton();
+  }
 
-    // ---------------- helpers ----------------
-    function esc(s) { return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
-    async function copy(text) {
-      try { await navigator.clipboard.writeText(text); alert('Link kopiert!'); }
-      catch { prompt('Link kopieren:', text); }
+  $('discard').onclick = () => {
+    state.audio = null;
+    $('player').removeAttribute('src');
+    $('take').classList.remove('show');
+    $('micLabel').textContent = `Tap to record (up to ${MAX_SECONDS} s)`;
+    updateFindButton();
+  };
+
+  // Browsers record in different formats (Chrome: webm, iPhone: mp4).
+  // To always send the same thing, we decode the recording and turn it into a
+  // small WAV file: 1 channel, 16 000 samples per second, 16-bit. That's plenty for a voice.
+  async function toWavBase64(blob) {
+    const ctx = new AudioContext();
+    const decoded = await ctx.decodeAudioData(await blob.arrayBuffer());
+    ctx.close();
+
+    // An OfflineAudioContext "plays" the sound into memory instead of the speakers,
+    // which resamples it to 16 kHz mono for us.
+    const rate = 16000;
+    const offline = new OfflineAudioContext(1, Math.ceil(decoded.duration * rate), rate);
+    const src = offline.createBufferSource();
+    src.buffer = decoded;
+    src.connect(offline.destination);
+    src.start();
+    const samples = (await offline.startRendering()).getChannelData(0);
+
+    // Humming is often quiet, so make the loudest point 90% of full volume.
+    const peak = samples.reduce((m, v) => Math.max(m, Math.abs(v)), 0) || 1;
+    const gain = 0.9 / peak;
+
+    // A WAV file is a 44-byte header that describes the format, followed by the samples.
+    const view = new DataView(new ArrayBuffer(44 + samples.length * 2));
+    const text = (pos, s) => [...s].forEach((c, i) => view.setUint8(pos + i, c.charCodeAt(0)));
+    text(0, 'RIFF'); view.setUint32(4, 36 + samples.length * 2, true); text(8, 'WAVE');
+    text(12, 'fmt '); view.setUint32(16, 16, true); view.setUint16(20, 1, true); view.setUint16(22, 1, true);
+    view.setUint32(24, rate, true); view.setUint32(28, rate * 2, true); view.setUint16(32, 2, true); view.setUint16(34, 16, true);
+    text(36, 'data'); view.setUint32(40, samples.length * 2, true);
+    samples.forEach((v, i) => view.setInt16(44 + i * 2, Math.max(-1, Math.min(1, v * gain)) * 0x7fff, true));
+
+    // Base64 turns the bytes into text so they fit into JSON. We convert in pieces
+    // because String.fromCharCode can't take millions of arguments at once.
+    const bytes = new Uint8Array(view.buffer);
+    let binary = '';
+    for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    return btoa(binary);
+  }
+
+  // ---------- Searching ----------
+
+  $('hint').oninput = updateFindButton;
+  function updateFindButton() {
+    $('find').disabled = state.busy || (!state.audio && !$('hint').value.trim());
+  }
+
+  $('find').onclick = () => {
+    state.rounds = [];
+    $('results').innerHTML = '';
+    search();
+  };
+
+  $('followup').onsubmit = e => {
+    e.preventDefault();
+    const feedback = $('feedback').value.trim();
+    if (!feedback || state.busy) return;
+    $('feedback').value = '';
+    state.rounds.push({ answer: state.lastAnswer, feedback });
+    $('results').append(el('div', { class: 'bubble' }, feedback));
+    search();
+  };
+
+  $('reset').onclick = () => {
+    state.rounds = [];
+    state.lastAnswer = null;
+    $('results').innerHTML = '';
+    $('hint').value = '';
+    $('discard').click();
+    $('followup').classList.remove('show');
+    $('reset').style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  async function search() {
+    state.busy = true;
+    updateFindButton();
+    showError('');
+    const thinking = el('div', { class: 'thinking' }, 'Listening');
+    $('results').append(thinking);
+    thinking.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    try {
+      const res = await fetch('/api/identify', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ audio: state.audio, hint: $('hint').value.trim(), rounds: state.rounds }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      state.lastAnswer = data;
+      thinking.replaceWith(renderAnswer(data));
+      $('followup').classList.add('show');
+      $('reset').style.display = '';
+    } catch (err) {
+      thinking.remove();
+      if (state.rounds.length) state.rounds.pop(); // let the user resend that feedback
+      showError(err.message);
+    } finally {
+      state.busy = false;
+      updateFindButton();
     }
-  </script>
+  }
+
+  function renderAnswer({ heard, guesses = [], question }) {
+    const box = el('div');
+    if (heard) box.append(el('p', { class: 'heard' }, heard));
+    if (!guesses.length) box.append(el('p', { class: 'empty' }, 'No idea yet. Add a hint below and try again.'));
+
+    for (const g of guesses) {
+      const pct = Math.max(0, Math.min(100, g.confidence || 0));
+      const query = encodeURIComponent(`${g.title} ${g.artist}`);
+      const foundBtn = el('button', { class: 'small' }, "✓ That's it!");
+      foundBtn.onclick = () => {
+        saveToHistory(g);
+        foundBtn.textContent = '✓ Saved';
+        foundBtn.classList.add('found');
+        foundBtn.disabled = true;
+      };
+      box.append(el('div', { class: 'guess' },
+        el('div', { class: 'top' },
+          el('div', {},
+            el('div', { class: 'title' }, g.title),
+            el('div', { class: 'artist' }, g.artist + (g.year ? ` · ${g.year}` : ''))),
+          el('div', { class: 'pct' }, `${pct}%`)),
+        el('div', { class: 'bar' }, el('div', { style: `width:${pct}%` })),
+        el('div', { class: 'why' }, g.why || ''),
+        el('div', { class: 'links' },
+          el('a', { class: 'yt', target: '_blank', rel: 'noopener', href: `https://www.youtube.com/results?search_query=${query}` }, '▶ YouTube'),
+          el('a', { class: 'sp', target: '_blank', rel: 'noopener', href: `https://open.spotify.com/search/${query}` }, '♫ Spotify'),
+          foundBtn)));
+    }
+    if (question) box.append(el('p', { class: 'question' }, question));
+    return box;
+  }
+
+  // ---------- History (saved on this device only) ----------
+
+  const HISTORY_KEY = 'humm-history';
+
+  function loadHistory() {
+    try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; } catch { return []; }
+  }
+  function storeHistory(list) {
+    try { localStorage.setItem(HISTORY_KEY, JSON.stringify(list)); } catch {}
+    renderHistory();
+  }
+  function saveToHistory({ title, artist, year }) {
+    const list = loadHistory().filter(s => !(s.title === title && s.artist === artist));
+    storeHistory([{ title, artist, year, date: Date.now() }, ...list]);
+  }
+
+  function renderHistory() {
+    const list = loadHistory();
+    const ul = $('historyList');
+    ul.innerHTML = '';
+    if (!list.length) ul.append(el('li', { class: 'empty' }, 'Nothing yet. Tap "That\'s it!" on a guess to keep it here.'));
+    list.forEach((s, i) => {
+      const query = encodeURIComponent(`${s.title} ${s.artist}`);
+      const del = el('button', { class: 'del', 'aria-label': 'Remove' }, '✕');
+      del.onclick = () => storeHistory(list.filter((_, j) => j !== i));
+      ul.append(el('li', {},
+        el('div', { class: 'info' },
+          el('div', {}, el('b', {}, s.title), ` – ${s.artist}${s.year ? ` (${s.year})` : ''}`),
+          el('div', { class: 'date' }, new Date(s.date).toLocaleDateString())),
+        el('div', { class: 'links' },
+          el('a', { class: 'yt', target: '_blank', rel: 'noopener', href: `https://www.youtube.com/results?search_query=${query}` }, '▶'),
+          el('a', { class: 'sp', target: '_blank', rel: 'noopener', href: `https://open.spotify.com/search/${query}` }, '♫')),
+        del));
+    });
+  }
+
+  // ---------- Helpers ----------
+
+  // Small helper to build HTML elements: el('a', { href: '…' }, 'text', otherElement).
+  // Text is added as text (never as HTML), so song names from the AI can't break the page.
+  function el(tag, attrs = {}, ...children) {
+    const node = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+    node.append(...children);
+    return node;
+  }
+
+  function showError(msg) { $('error').textContent = msg; }
+
+  if (!window.MediaRecorder || !navigator.mediaDevices) {
+    $('mic').disabled = true;
+    $('micLabel').textContent = 'This browser cannot record. You can still type hints.';
+  }
+  renderHistory();
+</script>
 </body>
 </html>
