@@ -10,7 +10,7 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 |---------------|------------------------------|-------------------------------------------|
 | `askMartin/`  | `askmartin.odermatts.ch`     | A big "Ja" in the middle of the page. `/second/` loads `second.asknils.ch`, then a shark swims in and swallows his whole site ("Nei" and all), leaving a big "Ja". |
 | `askSchoggi/` | `askschoggi.odermatts.ch`    | Waits 2–3s, then screams a massive "NEI". |
-| `fottis/`     | `fottis.odermatts.ch`        | **Humm** — hum, sing or "na na na" a melody and get the song name (Gemini). Root directory `fottis`, secret `GEMINI_API_KEY`. See below. |
+| `fottis/`     | `fottis.odermatts.ch`        | **Humm** — hum, sing or "na na na" a melody and get the song name (Gemini). Cloudflare **Worker** (not Pages), root directory `fottis`, secret `GEMINI_API_KEY`. See below. |
 | `hater/`      | `oderkalender.odermatts.ch`  | Familienkalender. Read-only view of the family's public `.ics` feeds. Needs Pages Functions (Root directory `hater`), no bindings. Folder name is historical — it reuses the old `hater` Pages project. |
 | `nizza/`      | `nizza.odermatts.ch`         | **The app.** Installable PWA hub: home launcher + `/aura/`, `/chooser/`, `/hater/`. Needs D1 (`DB`), Workers AI (`AI`), R2 (`BUCKET`). |
 | `Pastonmartin/` | `chooser.odermatts.ch` | Value-Wetten für Sporttip: faire Quoten aus Pinnacle/Betfair, Mindestquoten für viele Wettarten, Live-Quoten, Kombi, Tagebuch, Backtest. Python in GitHub Actions erzeugt die Daten. Root directory `Pastonmartin`, output `site`, optional D1 (`DB`), `ODDS_API_KEY`, `JOURNAL_KEY`. See `Pastonmartin/README.md`. |
@@ -201,12 +201,17 @@ record again. Tap *That's it!* to keep a song in *Songs you found* (stored in th
 The folder is still called `fottis/` because it reuses that old Pages project (the photo drop it
 used to hold is gone; it's in the git history).
 
-- `fottis/index.html` — records up to 30 s, converts it in the browser to a small 16 kHz mono WAV
+- `fottis/public/index.html` — records up to 30 s, converts it in the browser to a small 16 kHz mono WAV
   (every browser records in a different format), and shows the guesses and follow-up chat.
-- `fottis/functions/api/identify.js` — sends the recording, hints and earlier rounds to Gemini and
-  forces a JSON answer with a response schema.
+- `fottis/worker.js` — the Worker: `/api/identify` goes to `identify.js`, everything else is served
+  from `public/`. Configured in `fottis/wrangler.jsonc`.
+- `fottis/identify.js` — sends the recording, hints and earlier rounds to Gemini and forces a JSON
+  answer with a response schema.
 
-**Cloudflare:** Root directory `fottis`, Build output directory `/`. Add the secret
-**`GEMINI_API_KEY`** (free key from Google AI Studio). Optional variable `GEMINI_MODEL`
-(default `gemini-flash-latest`). The old R2 binding `BUCKET` and `ADMIN_KEY` are no longer used.
-The microphone only works over HTTPS, which Pages always is.
+**Cloudflare:** `fottis` is a **Workers** project (Workers Builds from git), not Pages, so a
+`functions/` folder would be ignored. Root directory `fottis`; the deploy command is the default
+`npx wrangler deploy`, which reads `wrangler.jsonc`. The `name` there must match the Worker's name in
+the dashboard. Add the secret **`GEMINI_API_KEY`** (free key from Google AI Studio) under the
+Worker's Variables and Secrets — this is only possible once the Worker has code, not just static
+assets. Optional variable `GEMINI_MODEL` (default `gemini-flash-latest`). The microphone only works
+over HTTPS.

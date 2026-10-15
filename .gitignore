@@ -4,3 +4,6 @@
 # Pastonmartin
 Pastonmartin/engine/cache/
 __pycache__/
+
+# Wrangler local dev
+.wrangler/

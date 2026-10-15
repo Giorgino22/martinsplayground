@@ -7,7 +7,7 @@
 // }
 // -> { heard, guesses: [{ title, artist, year, confidence, why }], question }
 //
-// Needs the secret GEMINI_API_KEY (Google AI Studio). GEMINI_MODEL is optional.
+// Called from worker.js. Needs the secret GEMINI_API_KEY (Google AI Studio). GEMINI_MODEL is optional.
 
 const json = (o, s = 200) => new Response(JSON.stringify(o), { status: s, headers: { 'content-type': 'application/json' } });
 
