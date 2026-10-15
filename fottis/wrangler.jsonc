@@ -4,6 +4,8 @@
   "name": "humm",
   "main": "worker.js",
   "compatibility_date": "2025-09-01",
+  // Keeps logs (console.log in identify.js) under the Worker's "Logs" tab.
+  "observability": { "enabled": true },
   "assets": {
     "directory": "./public",
     "binding": "ASSETS",

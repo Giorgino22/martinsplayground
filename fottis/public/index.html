@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#14111f">
   <title>Humm</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>">
   <style>
     :root {
       --bg: #14111f;
@@ -157,6 +158,7 @@
     rounds: [],       // earlier answers + the feedback the user gave on each
     lastAnswer: null, // the newest answer from the server
     busy: false,
+    converting: false, // true while the recording is turned into a WAV
   };
 
   // ---------- Recording ----------
@@ -224,12 +226,15 @@
   async function onRecorded(blob) {
     $('player').src = URL.createObjectURL(blob);
     $('take').classList.add('show');
+    state.converting = true;
+    updateFindButton();
     try {
       state.audio = await toWavBase64(blob);
     } catch {
       state.audio = null;
       showError('Could not read the recording. Please try again.');
     }
+    state.converting = false;
     updateFindButton();
   }
 
@@ -284,7 +289,7 @@
 
   $('hint').oninput = updateFindButton;
   function updateFindButton() {
-    $('find').disabled = state.busy || (!state.audio && !$('hint').value.trim());
+    $('find').disabled = state.busy || state.converting || (!state.audio && !$('hint').value.trim());
   }
 
   $('find').onclick = () => {
@@ -321,12 +326,17 @@
     const thinking = el('div', { class: 'thinking' }, 'Listening');
     $('results').append(thinking);
     thinking.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const started = Date.now();
+    const counter = setInterval(() => {
+      thinking.textContent = `Listening (${Math.round((Date.now() - started) / 1000)}s)`;
+    }, 1000);
 
     try {
       const res = await fetch('/api/identify', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ audio: state.audio, hint: $('hint').value.trim(), rounds: state.rounds }),
+        signal: AbortSignal.timeout(90_000), // never wait more than 90 s
       });
       // If the server function is missing, Cloudflare answers with an HTML page, not JSON.
       const data = await res.json().catch(() => ({}));
@@ -339,8 +349,9 @@
     } catch (err) {
       thinking.remove();
       if (state.rounds.length) state.rounds.pop(); // let the user resend that feedback
-      showError(err.message);
+      showError(err.name === 'TimeoutError' ? 'Gemini took too long. Please try again.' : err.message);
     } finally {
+      clearInterval(counter);
       state.busy = false;
       updateFindButton();
     }

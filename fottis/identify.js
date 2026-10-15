@@ -78,15 +78,30 @@ export async function onRequestPost({ env, request }) {
     generationConfig: { responseMimeType: 'application/json', responseSchema: SCHEMA, temperature: 0.4 },
   });
 
-  // Try each model in turn. If one is busy or not available for this key, move on to the next.
+  // Try each model in turn. If one is busy, too slow or not available for this key, move on.
   let lastError = '';
+  const started = Date.now();
   for (const model of modelsToTry(env)) {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
-      body,
-    });
+    const timeLeft = TOTAL_LIMIT_MS - (Date.now() - started);
+    if (timeLeft < 5000) break; // not enough time left for another try
+
+    const t0 = Date.now();
+    let res;
+    try {
+      res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+        body,
+        // Give up on this model after a while instead of waiting forever.
+        signal: AbortSignal.timeout(Math.min(MODEL_LIMIT_MS, timeLeft)),
+      });
+    } catch {
+      lastError = `${model} took too long`;
+      console.log(`${model}: timeout after ${Date.now() - t0} ms`);
+      continue;
+    }
     const data = await res.json().catch(() => ({}));
+    console.log(`${model}: status ${res.status} after ${Date.now() - t0} ms`); // visible in Cloudflare logs
 
     if (!res.ok) {
       lastError = data.error?.message || `Gemini error ${res.status}`;
@@ -106,6 +121,10 @@ export async function onRequestPost({ env, request }) {
   }
   return json({ error: `${lastError} (all models tried, please try again in a minute)` }, 502);
 }
+
+// How long to wait for one model, and for all tries together.
+const MODEL_LIMIT_MS = 30_000;
+const TOTAL_LIMIT_MS = 75_000;
 
 // Best first. Newer Flash models are free-tier, fast and understand audio.
 // GEMINI_MODEL (optional, set in Cloudflare) is always tried first.
