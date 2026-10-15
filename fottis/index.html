@@ -327,8 +327,10 @@
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ audio: state.audio, hint: $('hint').value.trim(), rounds: state.rounds }),
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
+      // If the server function is missing, Cloudflare answers with an HTML page, not JSON.
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 404) throw new Error('The song finder server (/api/identify) is not deployed. In Cloudflare, set the Root directory to "fottis" and redeploy.');
+      if (!res.ok) throw new Error(data.error || `Something went wrong (error ${res.status}).`);
       state.lastAnswer = data;
       thinking.replaceWith(renderAnswer(data));
       $('followup').classList.add('show');
