@@ -1,7 +1,7 @@
 // Cloudflare Workers config for Humm (fottis.odermatts.ch).
 // "name" must be exactly the Worker's name in the Cloudflare dashboard.
 {
-  "name": "fottis",
+  "name": "humm",
   "main": "worker.js",
   "compatibility_date": "2025-09-01",
   "assets": {
