@@ -68,7 +68,7 @@
     .take audio { flex: 1; min-width: 0; height: 36px; }
 
     .actions { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
-    .error { color: #ff8a80; text-align: center; min-height: 1.5em; margin: 10px 0 0; }
+    .error { color: #ff8a80; text-align: center; min-height: 1.5em; margin: 10px 0 0; white-space: pre-line; } /* keeps line breaks */
 
     /* Results */
     #results { margin-top: 28px; }
@@ -336,7 +336,7 @@
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ audio: state.audio, hint: $('hint').value.trim(), rounds: state.rounds }),
-        signal: AbortSignal.timeout(90_000), // never wait more than 90 s
+        signal: AbortSignal.timeout(100_000), // never wait more than 100 s
       });
       // If the server function is missing, Cloudflare answers with an HTML page, not JSON.
       const data = await res.json().catch(() => ({}));

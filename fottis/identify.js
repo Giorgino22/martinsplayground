@@ -79,7 +79,7 @@ export async function onRequestPost({ env, request }) {
   });
 
   // Try each model in turn. If one is busy, too slow or not available for this key, move on.
-  let lastError = '';
+  const errors = []; // one line per model that failed, shown to the user if all fail
   const started = Date.now();
   for (const model of modelsToTry(env)) {
     const timeLeft = TOTAL_LIMIT_MS - (Date.now() - started);
@@ -96,7 +96,7 @@ export async function onRequestPost({ env, request }) {
         signal: AbortSignal.timeout(Math.min(MODEL_LIMIT_MS, timeLeft)),
       });
     } catch {
-      lastError = `${model} took too long`;
+      errors.push(`${model}: no answer after ${Math.round((Date.now() - t0) / 1000)} s`);
       console.log(`${model}: timeout after ${Date.now() - t0} ms`);
       continue;
     }
@@ -104,9 +104,10 @@ export async function onRequestPost({ env, request }) {
     console.log(`${model}: status ${res.status} after ${Date.now() - t0} ms`); // visible in Cloudflare logs
 
     if (!res.ok) {
-      lastError = data.error?.message || `Gemini error ${res.status}`;
+      const message = data.error?.message || `Gemini error ${res.status}`;
+      errors.push(`${model}: ${message}`);
       if (TRY_NEXT.includes(res.status)) continue;
-      return json({ error: lastError }, 502); // e.g. a wrong API key: other models won't help
+      return json({ error: message }, 502); // e.g. a wrong API key: other models won't help
     }
 
     const text = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
@@ -116,19 +117,19 @@ export async function onRequestPost({ env, request }) {
       answer.model = model;
       return json(answer);
     } catch {
-      lastError = 'Gemini gave no usable answer.';
+      errors.push(`${model}: answer was not valid JSON`);
     }
   }
-  return json({ error: `${lastError} (all models tried, please try again in a minute)` }, 502);
+  return json({ error: `No model could answer:\n${errors.join('\n')}` }, 502);
 }
 
 // How long to wait for one model, and for all tries together.
-const MODEL_LIMIT_MS = 30_000;
-const TOTAL_LIMIT_MS = 75_000;
+const MODEL_LIMIT_MS = 45_000;
+const TOTAL_LIMIT_MS = 85_000;
 
 // Best first. Newer Flash models are free-tier, fast and understand audio.
 // GEMINI_MODEL (optional, set in Cloudflare) is always tried first.
-const MODELS = ['gemini-3.8-flash', 'gemini-3.6-flash', 'gemini-flash-latest', 'gemini-2.5-flash'];
+const MODELS = ['gemini-3.8-flash', 'gemini-3.6-flash', 'gemini-flash-latest'];
 
 // Status codes where another model might work:
 // 404 model doesn't exist, 429 quota used up, 500/503 overloaded, 400 model doesn't support this.
