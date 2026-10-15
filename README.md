@@ -10,7 +10,7 @@ Each folder is deployed as its own Cloudflare Pages project; pushing to
 |---------------|------------------------------|-------------------------------------------|
 | `askMartin/`  | `askmartin.odermatts.ch`     | A big "Ja" in the middle of the page. `/second/` loads `second.asknils.ch`, then a shark swims in and swallows his whole site ("Nei" and all), leaving a big "Ja". |
 | `askSchoggi/` | `askschoggi.odermatts.ch`    | Waits 2–3s, then screams a massive "NEI". |
-| `fottis/`     | `fottis.odermatts.ch`        | (Parked) Shared photo/video drop. Needs Cloudflare R2 (binding `BUCKET`) + Pages Functions. |
+| `fottis/`     | `fottis.odermatts.ch`        | **Humm** — hum, sing or "na na na" a melody and get the song name (Gemini). Root directory `fottis`, secret `GEMINI_API_KEY`. See below. |
 | `hater/`      | `oderkalender.odermatts.ch`  | Familienkalender. Read-only view of the family's public `.ics` feeds. Needs Pages Functions (Root directory `hater`), no bindings. Folder name is historical — it reuses the old `hater` Pages project. |
 | `nizza/`      | `nizza.odermatts.ch`         | **The app.** Installable PWA hub: home launcher + `/aura/`, `/chooser/`, `/hater/`. Needs D1 (`DB`), Workers AI (`AI`), R2 (`BUCKET`). |
 | `Pastonmartin/` | `chooser.odermatts.ch` | Value-Wetten für Sporttip: faire Quoten aus Pinnacle/Betfair, Mindestquoten für viele Wettarten, Live-Quoten, Kombi, Tagebuch, Backtest. Python in GitHub Actions erzeugt die Daten. Root directory `Pastonmartin`, output `site`, optional D1 (`DB`), `ODDS_API_KEY`, `JOURNAL_KEY`. See `Pastonmartin/README.md`. |
@@ -191,3 +191,22 @@ A feed that can't be read doesn't break the page: that person is marked with a n
 
 Put anything reused across sites in `shared/` and reference it with a
 relative path. (Created on demand.)
+
+### fottis (Humm — find a song by humming)
+
+Hum, whistle, sing or "na na na" a bit of a song, optionally type what you remember ("Brazilian,
+World Cup, long O's"), and get up to 5 guesses with a confidence, a short reason and YouTube/Spotify
+search links. Not it? Type feedback ("older, a woman sings") and it guesses again — no need to
+record again. Tap *That's it!* to keep a song in *Songs you found* (stored in the browser only).
+The folder is still called `fottis/` because it reuses that old Pages project (the photo drop it
+used to hold is gone; it's in the git history).
+
+- `fottis/index.html` — records up to 30 s, converts it in the browser to a small 16 kHz mono WAV
+  (every browser records in a different format), and shows the guesses and follow-up chat.
+- `fottis/functions/api/identify.js` — sends the recording, hints and earlier rounds to Gemini and
+  forces a JSON answer with a response schema.
+
+**Cloudflare:** Root directory `fottis`, Build output directory `/`. Add the secret
+**`GEMINI_API_KEY`** (free key from Google AI Studio). Optional variable `GEMINI_MODEL`
+(default `gemini-flash-latest`). The old R2 binding `BUCKET` and `ADMIN_KEY` are no longer used.
+The microphone only works over HTTPS, which Pages always is.
