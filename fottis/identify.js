@@ -72,26 +72,50 @@ export async function onRequestPost({ env, request }) {
     contents.push({ role: 'user', parts: [{ text: String(r.feedback || '').slice(0, 1000) }] });
   }
 
-  const model = env.GEMINI_MODEL || 'gemini-flash-latest';
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM }] },
-      contents,
-      generationConfig: { responseMimeType: 'application/json', responseSchema: SCHEMA, temperature: 0.4 },
-    }),
+  const body = JSON.stringify({
+    systemInstruction: { parts: [{ text: SYSTEM }] },
+    contents,
+    generationConfig: { responseMimeType: 'application/json', responseSchema: SCHEMA, temperature: 0.4 },
   });
 
-  const data = await res.json().catch(() => ({}));
-  if (!res.ok) return json({ error: data.error?.message || `Gemini error ${res.status}` }, 502);
+  // Try each model in turn. If one is busy or not available for this key, move on to the next.
+  let lastError = '';
+  for (const model of modelsToTry(env)) {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+      body,
+    });
+    const data = await res.json().catch(() => ({}));
 
-  const text = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
-  try {
-    const answer = JSON.parse(text);
-    answer.guesses = (answer.guesses || []).slice(0, 5);
-    return json(answer);
-  } catch {
-    return json({ error: 'Gemini gave no usable answer. Try again.' }, 502);
+    if (!res.ok) {
+      lastError = data.error?.message || `Gemini error ${res.status}`;
+      if (TRY_NEXT.includes(res.status)) continue;
+      return json({ error: lastError }, 502); // e.g. a wrong API key: other models won't help
+    }
+
+    const text = data.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
+    try {
+      const answer = JSON.parse(text);
+      answer.guesses = (answer.guesses || []).slice(0, 5);
+      answer.model = model;
+      return json(answer);
+    } catch {
+      lastError = 'Gemini gave no usable answer.';
+    }
   }
+  return json({ error: `${lastError} (all models tried, please try again in a minute)` }, 502);
+}
+
+// Best first. Newer Flash models are free-tier, fast and understand audio.
+// GEMINI_MODEL (optional, set in Cloudflare) is always tried first.
+const MODELS = ['gemini-3.8-flash', 'gemini-3.6-flash', 'gemini-flash-latest', 'gemini-2.5-flash'];
+
+// Status codes where another model might work:
+// 404 model doesn't exist, 429 quota used up, 500/503 overloaded, 400 model doesn't support this.
+const TRY_NEXT = [400, 404, 429, 500, 503];
+
+function modelsToTry(env) {
+  const list = env.GEMINI_MODEL ? [env.GEMINI_MODEL, ...MODELS] : MODELS;
+  return [...new Set(list)]; // Set removes duplicates
 }

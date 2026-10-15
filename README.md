@@ -213,5 +213,5 @@ used to hold is gone; it's in the git history).
 `npx wrangler deploy`, which reads `wrangler.jsonc`. The `name` there must match the Worker's name in
 the dashboard. Add the secret **`GEMINI_API_KEY`** (free key from Google AI Studio) under the
 Worker's Variables and Secrets — this is only possible once the Worker has code, not just static
-assets. Optional variable `GEMINI_MODEL` (default `gemini-flash-latest`). The microphone only works
+assets. It tries several Gemini models in order (see `MODELS` in `identify.js`) and moves on when one is busy or unavailable; the optional variable `GEMINI_MODEL` is tried first. The microphone only works
 over HTTPS.

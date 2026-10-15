@@ -89,6 +89,7 @@
     .links a.sp { border-color: #1ed760; }
     .found { border-color: var(--good) !important; color: var(--good); }
     .question { border-left: 3px solid var(--accent2); padding: 4px 12px; margin: 14px 0; }
+    .model { color: var(--muted); font-size: 0.75rem; text-align: right; margin: 4px 0 0; }
     .thinking { color: var(--muted); text-align: center; margin: 18px 0; }
     .thinking::after { content: ''; animation: dots 1.2s steps(4) infinite; }
     @keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
@@ -345,7 +346,7 @@
     }
   }
 
-  function renderAnswer({ heard, guesses = [], question }) {
+  function renderAnswer({ heard, guesses = [], question, model }) {
     const box = el('div');
     if (heard) box.append(el('p', { class: 'heard' }, heard));
     if (!guesses.length) box.append(el('p', { class: 'empty' }, 'No idea yet. Add a hint below and try again.'));
@@ -374,6 +375,7 @@
           foundBtn)));
     }
     if (question) box.append(el('p', { class: 'question' }, question));
+    if (model) box.append(el('p', { class: 'model' }, `answered by ${model}`));
     return box;
   }
 
