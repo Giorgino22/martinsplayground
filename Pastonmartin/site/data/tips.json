@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-20T18:41:33+00:00",
+ "generated": "2026-10-21T10:32:27+00:00",
  "params": {
   "model": {
    "decay": 0.003,
@@ -217,225 +217,6 @@
  "odds_api": false,
  "matches": [
   {
-   "id": "E1:2026-10-20:Wolves:Portsmouth",
-   "league": "E1",
-   "date": "2026-10-20",
-   "kickoff": "2026-10-20T18:45:00+00:00",
-   "home": "Wolves",
-   "away": "Portsmouth",
-   "reference": "Betfair",
-   "ref_odds": {
-    "1X2": [
-     1.65,
-     4.3,
-     6.0
-    ],
-    "OU": [
-     1.9,
-     2.08
-    ]
-   },
-   "model": {
-    "1X2": [
-     0.5613,
-     0.2335,
-     0.2053
-    ],
-    "OU": [
-     0.5668,
-     0.4332
-    ]
-   },
-   "expected_goals": [
-    1.89,
-    1.06
-   ],
-   "markets": {
-    "1X2": {
-     "edge": 0.01,
-     "max_odds": 8.0,
-     "derived": false,
-     "selections": [
-      {
-       "key": "H",
-       "short": "1",
-       "name": "Heimsieg",
-       "p": 0.6044,
-       "p_market": 0.6044,
-       "p_model": 0.5613,
-       "fair": 1.6547,
-       "min_odds": 1.6712
-      },
-      {
-       "key": "D",
-       "short": "X",
-       "name": "Unentschieden",
-       "p": 0.2307,
-       "p_market": 0.2307,
-       "p_model": 0.2335,
-       "fair": 4.3355,
-       "min_odds": 4.3788
-      },
-      {
-       "key": "A",
-       "short": "2",
-       "name": "Auswärtssieg",
-       "p": 0.165,
-       "p_market": 0.165,
-       "p_model": 0.2053,
-       "fair": 6.0609,
-       "min_odds": 6.1215
-      }
-     ]
-    },
-    "DC": {
-     "edge": 0.01,
-     "max_odds": 8.0,
-     "derived": false,
-     "selections": [
-      {
-       "key": "1X",
-       "short": "1X",
-       "name": "Heim oder Remis",
-       "p": 0.835,
-       "p_market": 0.835,
-       "p_model": 0.7947,
-       "fair": 1.1976,
-       "min_odds": 1.2096
-      },
-      {
-       "key": "12",
-       "short": "12",
-       "name": "Kein Remis",
-       "p": 0.7693,
-       "p_market": 0.7693,
-       "p_model": 0.7665,
-       "fair": 1.2998,
-       "min_odds": 1.3128
-      },
-      {
-       "key": "X2",
-       "short": "X2",
-       "name": "Remis oder Gast",
-       "p": 0.3956,
-       "p_market": 0.3956,
-       "p_model": 0.4387,
-       "fair": 2.5275,
-       "min_odds": 2.5528
-      }
-     ]
-    },
-    "OU15": {
-     "edge": 0.03,
-     "max_odds": 8.0,
-     "derived": true,
-     "selections": [
-      {
-       "key": "O15",
-       "short": "Ü1.5",
-       "name": "Über 1.5 Tore",
-       "p": 0.7758,
-       "p_market": 0.7758,
-       "p_model": 0.7994,
-       "fair": 1.2891,
-       "min_odds": 1.3277
-      },
-      {
-       "key": "U15",
-       "short": "U1.5",
-       "name": "Unter 1.5 Tore",
-       "p": 0.2242,
-       "p_market": 0.2242,
-       "p_model": 0.2006,
-       "fair": 4.4593,
-       "min_odds": 4.5931
-      }
-     ]
-    },
-    "OU": {
-     "edge": 0.02,
-     "max_odds": 8.0,
-     "derived": false,
-     "selections": [
-      {
-       "key": "O",
-       "short": "Ü2.5",
-       "name": "Über 2.5 Tore",
-       "p": 0.5228,
-       "p_market": 0.5228,
-       "p_model": 0.5668,
-       "fair": 1.9126,
-       "min_odds": 1.9509
-      },
-      {
-       "key": "U",
-       "short": "U2.5",
-       "name": "Unter 2.5 Tore",
-       "p": 0.4772,
-       "p_market": 0.4772,
-       "p_model": 0.4332,
-       "fair": 2.0958,
-       "min_odds": 2.1377
-      }
-     ]
-    },
-    "OU35": {
-     "edge": 0.03,
-     "max_odds": 8.0,
-     "derived": true,
-     "selections": [
-      {
-       "key": "O35",
-       "short": "Ü3.5",
-       "name": "Über 3.5 Tore",
-       "p": 0.3035,
-       "p_market": 0.3035,
-       "p_model": 0.3429,
-       "fair": 3.2954,
-       "min_odds": 3.3943
-      },
-      {
-       "key": "U35",
-       "short": "U3.5",
-       "name": "Unter 3.5 Tore",
-       "p": 0.6965,
-       "p_market": 0.6965,
-       "p_model": 0.6571,
-       "fair": 1.4357,
-       "min_odds": 1.4787
-      }
-     ]
-    },
-    "BTTS": {
-     "edge": 0.03,
-     "max_odds": 8.0,
-     "derived": true,
-     "selections": [
-      {
-       "key": "BY",
-       "short": "Ja",
-       "name": "Beide Teams treffen",
-       "p": 0.5082,
-       "p_market": 0.5082,
-       "p_model": 0.5616,
-       "fair": 1.9676,
-       "min_odds": 2.0266
-      },
-      {
-       "key": "BN",
-       "short": "Nein",
-       "name": "Nicht beide treffen",
-       "p": 0.4918,
-       "p_market": 0.4918,
-       "p_model": 0.4384,
-       "fair": 2.0335,
-       "min_odds": 2.0945
-      }
-     ]
-    }
-   }
-  },
-  {
    "id": "SP1:2026-10-21:Levante:Ath Bilbao",
    "league": "SP1",
    "date": "2026-10-21",
@@ -458,7 +239,7 @@
     "1X2": [
      0.3806,
      0.2735,
-     0.346
+     0.3459
     ],
     "OU": [
      0.4928,
@@ -501,7 +282,7 @@
        "name": "Auswärtssieg",
        "p": 0.4481,
        "p_market": 0.4481,
-       "p_model": 0.346,
+       "p_model": 0.3459,
        "fair": 2.2316,
        "min_odds": 2.2539
       }
@@ -518,7 +299,7 @@
        "name": "Heim oder Remis",
        "p": 0.5519,
        "p_market": 0.5519,
-       "p_model": 0.654,
+       "p_model": 0.6541,
        "fair": 1.812,
        "min_odds": 1.8301
       },
