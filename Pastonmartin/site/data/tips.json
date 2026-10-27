@@ -1,6 +1,6 @@
 {
  "version": 2,
- "generated": "2026-10-27T10:53:04+00:00",
+ "generated": "2026-10-27T19:36:28+00:00",
  "params": {
   "model": {
    "decay": 0.003,
@@ -215,5 +215,2196 @@
   }
  },
  "odds_api": false,
- "matches": []
+ "matches": [
+  {
+   "id": "I1:2026-10-27:Sassuolo:Lazio",
+   "league": "I1",
+   "date": "2026-10-27",
+   "kickoff": "2026-10-27T17:30:00+00:00",
+   "home": "Sassuolo",
+   "away": "Lazio",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     3.65,
+     3.65,
+     2.2
+    ],
+    "OU": [
+     1.76,
+     2.28
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.3081,
+     0.266,
+     0.4259
+    ],
+    "OU": [
+     0.5144,
+     0.4856
+    ]
+   },
+   "expected_goals": [
+    1.24,
+    1.5
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.2731,
+       "p_market": 0.2731,
+       "p_model": 0.3081,
+       "fair": 3.6611,
+       "min_odds": 3.6977
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.2731,
+       "p_market": 0.2731,
+       "p_model": 0.266,
+       "fair": 3.6611,
+       "min_odds": 3.6977
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.4537,
+       "p_market": 0.4537,
+       "p_model": 0.4259,
+       "fair": 2.2041,
+       "min_odds": 2.2261
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.5463,
+       "p_market": 0.5463,
+       "p_model": 0.5741,
+       "fair": 1.8305,
+       "min_odds": 1.8488
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.7269,
+       "p_market": 0.7269,
+       "p_model": 0.734,
+       "fair": 1.3758,
+       "min_odds": 1.3895
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.7269,
+       "p_market": 0.7269,
+       "p_model": 0.6919,
+       "fair": 1.3758,
+       "min_odds": 1.3895
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.8017,
+       "p_market": 0.8017,
+       "p_model": 0.7632,
+       "fair": 1.2473,
+       "min_odds": 1.2847
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.1983,
+       "p_market": 0.1983,
+       "p_model": 0.2368,
+       "fair": 5.0435,
+       "min_odds": 5.1948
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.565,
+       "p_market": 0.565,
+       "p_model": 0.5144,
+       "fair": 1.7699,
+       "min_odds": 1.8053
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.435,
+       "p_market": 0.435,
+       "p_model": 0.4856,
+       "fair": 2.2988,
+       "min_odds": 2.3448
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.3376,
+       "p_market": 0.3376,
+       "p_model": 0.2932,
+       "fair": 2.9623,
+       "min_odds": 3.0511
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.6624,
+       "p_market": 0.6624,
+       "p_model": 0.7068,
+       "fair": 1.5096,
+       "min_odds": 1.5549
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.5934,
+       "p_market": 0.5934,
+       "p_model": 0.5568,
+       "fair": 1.6852,
+       "min_odds": 1.7358
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.4066,
+       "p_market": 0.4066,
+       "p_model": 0.4432,
+       "fair": 2.4594,
+       "min_odds": 2.5331
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-27:Roma:Cagliari",
+   "league": "I1",
+   "date": "2026-10-27",
+   "kickoff": "2026-10-27T19:45:00+00:00",
+   "home": "Roma",
+   "away": "Cagliari",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     1.34,
+     5.9,
+     10.5
+    ],
+    "OU": [
+     1.67,
+     2.44
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.6366,
+     0.2271,
+     0.1363
+    ],
+    "OU": [
+     0.4823,
+     0.5177
+    ]
+   },
+   "expected_goals": [
+    1.87,
+    0.74
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.743,
+       "p_market": 0.743,
+       "p_model": 0.6366,
+       "fair": 1.3459,
+       "min_odds": 1.3593
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.165,
+       "p_market": 0.165,
+       "p_model": 0.2271,
+       "fair": 6.0588,
+       "min_odds": 6.1194
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.0919,
+       "p_market": 0.0919,
+       "p_model": 0.1363,
+       "fair": 10.8761,
+       "min_odds": 10.9849
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.9081,
+       "p_market": 0.9081,
+       "p_model": 0.8637,
+       "fair": 1.1013,
+       "min_odds": 1.1123
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.835,
+       "p_market": 0.835,
+       "p_model": 0.7729,
+       "fair": 1.1977,
+       "min_odds": 1.2097
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.257,
+       "p_market": 0.257,
+       "p_model": 0.3634,
+       "fair": 3.8912,
+       "min_odds": 3.9301
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.8219,
+       "p_market": 0.8219,
+       "p_model": 0.7383,
+       "fair": 1.2166,
+       "min_odds": 1.2531
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.1781,
+       "p_market": 0.1781,
+       "p_model": 0.2617,
+       "fair": 5.6161,
+       "min_odds": 5.7846
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.5949,
+       "p_market": 0.5949,
+       "p_model": 0.4823,
+       "fair": 1.6811,
+       "min_odds": 1.7147
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.4051,
+       "p_market": 0.4051,
+       "p_model": 0.5177,
+       "fair": 2.4682,
+       "min_odds": 2.5176
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.3736,
+       "p_market": 0.3736,
+       "p_model": 0.2646,
+       "fair": 2.6765,
+       "min_odds": 2.7568
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.6264,
+       "p_market": 0.6264,
+       "p_model": 0.7354,
+       "fair": 1.5965,
+       "min_odds": 1.6444
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.4651,
+       "p_market": 0.4651,
+       "p_model": 0.4461,
+       "fair": 2.1502,
+       "min_odds": 2.2147
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.5349,
+       "p_market": 0.5349,
+       "p_model": 0.5539,
+       "fair": 1.8694,
+       "min_odds": 1.9255
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-27:Torino:Como",
+   "league": "I1",
+   "date": "2026-10-27",
+   "kickoff": "2026-10-27T19:45:00+00:00",
+   "home": "Torino",
+   "away": "Como",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     5.1,
+     3.95,
+     1.79
+    ],
+    "OU": [
+     1.76,
+     2.3
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.1986,
+     0.2469,
+     0.5544
+    ],
+    "OU": [
+     0.5045,
+     0.4955
+    ]
+   },
+   "expected_goals": [
+    0.95,
+    1.74
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.1935,
+       "p_market": 0.1935,
+       "p_model": 0.1986,
+       "fair": 5.1669,
+       "min_odds": 5.2186
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.2504,
+       "p_market": 0.2504,
+       "p_model": 0.2469,
+       "fair": 3.9936,
+       "min_odds": 4.0336
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.5561,
+       "p_market": 0.5561,
+       "p_model": 0.5544,
+       "fair": 1.7984,
+       "min_odds": 1.8163
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.4439,
+       "p_market": 0.4439,
+       "p_model": 0.4456,
+       "fair": 2.2526,
+       "min_odds": 2.2751
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.7496,
+       "p_market": 0.7496,
+       "p_model": 0.7531,
+       "fair": 1.334,
+       "min_odds": 1.3474
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.8065,
+       "p_market": 0.8065,
+       "p_model": 0.8014,
+       "fair": 1.24,
+       "min_odds": 1.2524
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.8031,
+       "p_market": 0.8031,
+       "p_model": 0.7555,
+       "fair": 1.2451,
+       "min_odds": 1.2825
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.1969,
+       "p_market": 0.1969,
+       "p_model": 0.2445,
+       "fair": 5.0799,
+       "min_odds": 5.2322
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.5668,
+       "p_market": 0.5668,
+       "p_model": 0.5045,
+       "fair": 1.7643,
+       "min_odds": 1.7996
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.4332,
+       "p_market": 0.4332,
+       "p_model": 0.4955,
+       "fair": 2.3083,
+       "min_odds": 2.3545
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.3407,
+       "p_market": 0.3407,
+       "p_model": 0.2842,
+       "fair": 2.9352,
+       "min_odds": 3.0232
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.6593,
+       "p_market": 0.6593,
+       "p_model": 0.7158,
+       "fair": 1.5167,
+       "min_odds": 1.5622
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.5641,
+       "p_market": 0.5641,
+       "p_model": 0.5116,
+       "fair": 1.7726,
+       "min_odds": 1.8258
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.4359,
+       "p_market": 0.4359,
+       "p_model": 0.4884,
+       "fair": 2.2944,
+       "min_odds": 2.3632
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-28:Milan:Bologna",
+   "league": "I1",
+   "date": "2026-10-28",
+   "kickoff": "2026-10-28T17:30:00+00:00",
+   "home": "Milan",
+   "away": "Bologna",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     1.72,
+     4.1,
+     5.7
+    ],
+    "OU": [
+     1.9,
+     2.04
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.4597,
+     0.2826,
+     0.2577
+    ],
+    "OU": [
+     0.4267,
+     0.5733
+    ]
+   },
+   "expected_goals": [
+    1.4,
+    0.98
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.5812,
+       "p_market": 0.5812,
+       "p_model": 0.4597,
+       "fair": 1.7207,
+       "min_odds": 1.7379
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.2436,
+       "p_market": 0.2436,
+       "p_model": 0.2826,
+       "fair": 4.1044,
+       "min_odds": 4.1455
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.1752,
+       "p_market": 0.1752,
+       "p_model": 0.2577,
+       "fair": 5.7076,
+       "min_odds": 5.7647
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.8248,
+       "p_market": 0.8248,
+       "p_model": 0.7423,
+       "fair": 1.2124,
+       "min_odds": 1.2245
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.7564,
+       "p_market": 0.7564,
+       "p_model": 0.7174,
+       "fair": 1.3221,
+       "min_odds": 1.3353
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.4188,
+       "p_market": 0.4188,
+       "p_model": 0.5403,
+       "fair": 2.3875,
+       "min_odds": 2.4114
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.7715,
+       "p_market": 0.7715,
+       "p_model": 0.6949,
+       "fair": 1.2962,
+       "min_odds": 1.3351
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.2285,
+       "p_market": 0.2285,
+       "p_model": 0.3051,
+       "fair": 4.3764,
+       "min_odds": 4.5077
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.5182,
+       "p_market": 0.5182,
+       "p_model": 0.4267,
+       "fair": 1.9298,
+       "min_odds": 1.9684
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.4818,
+       "p_market": 0.4818,
+       "p_model": 0.5733,
+       "fair": 2.0755,
+       "min_odds": 2.117
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.2976,
+       "p_market": 0.2976,
+       "p_model": 0.2184,
+       "fair": 3.3601,
+       "min_odds": 3.4609
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.7024,
+       "p_market": 0.7024,
+       "p_model": 0.7816,
+       "fair": 1.4237,
+       "min_odds": 1.4664
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.5147,
+       "p_market": 0.5147,
+       "p_model": 0.4785,
+       "fair": 1.9428,
+       "min_odds": 2.001
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.4853,
+       "p_market": 0.4853,
+       "p_model": 0.5215,
+       "fair": 2.0607,
+       "min_odds": 2.1225
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-28:Parma:Udinese",
+   "league": "I1",
+   "date": "2026-10-28",
+   "kickoff": "2026-10-28T17:30:00+00:00",
+   "home": "Parma",
+   "away": "Udinese",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     3.1,
+     3.15,
+     2.72
+    ],
+    "OU": [
+     2.32,
+     1.71
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.325,
+     0.3011,
+     0.3739
+    ],
+    "OU": [
+     0.388,
+     0.612
+    ]
+   },
+   "expected_goals": [
+    1.07,
+    1.17
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.32,
+       "p_market": 0.32,
+       "p_model": 0.325,
+       "fair": 3.1248,
+       "min_odds": 3.156
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.3149,
+       "p_market": 0.3149,
+       "p_model": 0.3011,
+       "fair": 3.1755,
+       "min_odds": 3.2073
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.3651,
+       "p_market": 0.3651,
+       "p_model": 0.3739,
+       "fair": 2.7392,
+       "min_odds": 2.7666
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.6349,
+       "p_market": 0.6349,
+       "p_model": 0.6261,
+       "fair": 1.575,
+       "min_odds": 1.5907
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.6851,
+       "p_market": 0.6851,
+       "p_model": 0.6989,
+       "fair": 1.4597,
+       "min_odds": 1.4743
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.68,
+       "p_market": 0.68,
+       "p_model": 0.675,
+       "fair": 1.4706,
+       "min_odds": 1.4853
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.6949,
+       "p_market": 0.6949,
+       "p_model": 0.6617,
+       "fair": 1.4391,
+       "min_odds": 1.4823
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.3051,
+       "p_market": 0.3051,
+       "p_model": 0.3383,
+       "fair": 3.2774,
+       "min_odds": 3.3757
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.4226,
+       "p_market": 0.4226,
+       "p_model": 0.388,
+       "fair": 2.3665,
+       "min_odds": 2.4139
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.5774,
+       "p_market": 0.5774,
+       "p_model": 0.612,
+       "fair": 1.7318,
+       "min_odds": 1.7664
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.212,
+       "p_market": 0.212,
+       "p_model": 0.1885,
+       "fair": 4.7164,
+       "min_odds": 4.8578
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.788,
+       "p_market": 0.788,
+       "p_model": 0.8115,
+       "fair": 1.2691,
+       "min_odds": 1.3072
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.4914,
+       "p_market": 0.4914,
+       "p_model": 0.4597,
+       "fair": 2.035,
+       "min_odds": 2.096
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.5086,
+       "p_market": 0.5086,
+       "p_model": 0.5403,
+       "fair": 1.9662,
+       "min_odds": 2.0252
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-28:Venezia:Inter",
+   "league": "I1",
+   "date": "2026-10-28",
+   "kickoff": "2026-10-28T17:30:00+00:00",
+   "home": "Venezia",
+   "away": "Inter",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     8.6,
+     6.0,
+     1.38
+    ],
+    "OU": [
+     1.39,
+     3.4
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.0914,
+     0.1511,
+     0.7576
+    ],
+    "OU": [
+     0.691,
+     0.309
+    ]
+   },
+   "expected_goals": [
+    0.86,
+    2.7
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.1139,
+       "p_market": 0.1139,
+       "p_model": 0.0914,
+       "fair": 8.7826,
+       "min_odds": 8.8704
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.1638,
+       "p_market": 0.1638,
+       "p_model": 0.1511,
+       "fair": 6.1059,
+       "min_odds": 6.167
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.7224,
+       "p_market": 0.7224,
+       "p_model": 0.7576,
+       "fair": 1.3843,
+       "min_odds": 1.3982
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.2776,
+       "p_market": 0.2776,
+       "p_model": 0.2424,
+       "fair": 3.6018,
+       "min_odds": 3.6378
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.8362,
+       "p_market": 0.8362,
+       "p_model": 0.8489,
+       "fair": 1.1959,
+       "min_odds": 1.2078
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.8861,
+       "p_market": 0.8861,
+       "p_model": 0.9086,
+       "fair": 1.1285,
+       "min_odds": 1.1398
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.8907,
+       "p_market": 0.8907,
+       "p_model": 0.8741,
+       "fair": 1.1227,
+       "min_odds": 1.1563
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.1093,
+       "p_market": 0.1093,
+       "p_model": 0.1259,
+       "fair": 9.153,
+       "min_odds": 9.4276
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.714,
+       "p_market": 0.714,
+       "p_model": 0.691,
+       "fair": 1.4005,
+       "min_odds": 1.4285
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.286,
+       "p_market": 0.286,
+       "p_model": 0.309,
+       "fair": 3.4967,
+       "min_odds": 3.5666
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.5063,
+       "p_market": 0.5063,
+       "p_model": 0.4773,
+       "fair": 1.9749,
+       "min_odds": 2.0342
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.4937,
+       "p_market": 0.4937,
+       "p_model": 0.5227,
+       "fair": 2.0257,
+       "min_odds": 2.0865
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.6001,
+       "p_market": 0.6001,
+       "p_model": 0.5431,
+       "fair": 1.6665,
+       "min_odds": 1.7165
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.3999,
+       "p_market": 0.3999,
+       "p_model": 0.4569,
+       "fair": 2.5004,
+       "min_odds": 2.5754
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-28:Genoa:Juventus",
+   "league": "I1",
+   "date": "2026-10-28",
+   "kickoff": "2026-10-28T19:45:00+00:00",
+   "home": "Genoa",
+   "away": "Juventus",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     5.6,
+     3.85,
+     1.76
+    ],
+    "OU": [
+     2.2,
+     1.8
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.1934,
+     0.2717,
+     0.535
+    ],
+    "OU": [
+     0.4105,
+     0.5895
+    ]
+   },
+   "expected_goals": [
+    0.81,
+    1.52
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.1765,
+       "p_market": 0.1765,
+       "p_model": 0.1934,
+       "fair": 5.6646,
+       "min_odds": 5.7213
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.2574,
+       "p_market": 0.2574,
+       "p_model": 0.2717,
+       "fair": 3.8847,
+       "min_odds": 3.9236
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.566,
+       "p_market": 0.566,
+       "p_model": 0.535,
+       "fair": 1.7666,
+       "min_odds": 1.7843
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.434,
+       "p_market": 0.434,
+       "p_model": 0.465,
+       "fair": 2.3044,
+       "min_odds": 2.3274
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.7426,
+       "p_market": 0.7426,
+       "p_model": 0.7283,
+       "fair": 1.3467,
+       "min_odds": 1.3601
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.8235,
+       "p_market": 0.8235,
+       "p_model": 0.8066,
+       "fair": 1.2144,
+       "min_odds": 1.2265
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.7207,
+       "p_market": 0.7207,
+       "p_model": 0.6808,
+       "fair": 1.3875,
+       "min_odds": 1.4292
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.2793,
+       "p_market": 0.2793,
+       "p_model": 0.3192,
+       "fair": 3.5805,
+       "min_odds": 3.6879
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.4493,
+       "p_market": 0.4493,
+       "p_model": 0.4105,
+       "fair": 2.2259,
+       "min_odds": 2.2704
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.5507,
+       "p_market": 0.5507,
+       "p_model": 0.5895,
+       "fair": 1.8158,
+       "min_odds": 1.8521
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.2389,
+       "p_market": 0.2389,
+       "p_model": 0.2057,
+       "fair": 4.185,
+       "min_odds": 4.3106
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.7611,
+       "p_market": 0.7611,
+       "p_model": 0.7943,
+       "fair": 1.314,
+       "min_odds": 1.3534
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.4643,
+       "p_market": 0.4643,
+       "p_model": 0.4384,
+       "fair": 2.1539,
+       "min_odds": 2.2185
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.5357,
+       "p_market": 0.5357,
+       "p_model": 0.5616,
+       "fair": 1.8666,
+       "min_odds": 1.9226
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-28:Monza:Napoli",
+   "league": "I1",
+   "date": "2026-10-28",
+   "kickoff": "2026-10-28T19:45:00+00:00",
+   "home": "Monza",
+   "away": "Napoli",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     4.7,
+     4.1,
+     1.83
+    ],
+    "OU": [
+     1.75,
+     2.28
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.1862,
+     0.217,
+     0.5967
+    ],
+    "OU": [
+     0.6101,
+     0.3899
+    ]
+   },
+   "expected_goals": [
+    1.08,
+    2.07
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.2117,
+       "p_market": 0.2117,
+       "p_model": 0.1862,
+       "fair": 4.7227,
+       "min_odds": 4.7699
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.2428,
+       "p_market": 0.2428,
+       "p_model": 0.217,
+       "fair": 4.118,
+       "min_odds": 4.1592
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.5454,
+       "p_market": 0.5454,
+       "p_model": 0.5967,
+       "fair": 1.8334,
+       "min_odds": 1.8518
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.4546,
+       "p_market": 0.4546,
+       "p_model": 0.4033,
+       "fair": 2.1998,
+       "min_odds": 2.2218
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.7572,
+       "p_market": 0.7572,
+       "p_model": 0.783,
+       "fair": 1.3207,
+       "min_odds": 1.3339
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.7883,
+       "p_market": 0.7883,
+       "p_model": 0.8138,
+       "fair": 1.2686,
+       "min_odds": 1.2813
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.8055,
+       "p_market": 0.8055,
+       "p_model": 0.8273,
+       "fair": 1.2415,
+       "min_odds": 1.2788
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.1945,
+       "p_market": 0.1945,
+       "p_model": 0.1727,
+       "fair": 5.1406,
+       "min_odds": 5.2949
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.5667,
+       "p_market": 0.5667,
+       "p_model": 0.6101,
+       "fair": 1.7645,
+       "min_odds": 1.7998
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.4333,
+       "p_market": 0.4333,
+       "p_model": 0.3899,
+       "fair": 2.308,
+       "min_odds": 2.3541
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.344,
+       "p_market": 0.344,
+       "p_model": 0.3869,
+       "fair": 2.9073,
+       "min_odds": 2.9945
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.656,
+       "p_market": 0.656,
+       "p_model": 0.6131,
+       "fair": 1.5243,
+       "min_odds": 1.57
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.5726,
+       "p_market": 0.5726,
+       "p_model": 0.5823,
+       "fair": 1.7464,
+       "min_odds": 1.7988
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.4274,
+       "p_market": 0.4274,
+       "p_model": 0.4177,
+       "fair": 2.3397,
+       "min_odds": 2.4099
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-29:Frosinone:Lecce",
+   "league": "I1",
+   "date": "2026-10-29",
+   "kickoff": "2026-10-29T17:30:00+00:00",
+   "home": "Frosinone",
+   "away": "Lecce",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     1.73,
+     4.3,
+     5.1
+    ],
+    "OU": [
+     1.48,
+     3.0
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.6358,
+     0.1972,
+     0.167
+    ],
+    "OU": [
+     0.6656,
+     0.3344
+    ]
+   },
+   "expected_goals": [
+    2.31,
+    1.12
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.5759,
+       "p_market": 0.5759,
+       "p_model": 0.6358,
+       "fair": 1.7365,
+       "min_odds": 1.7539
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.2302,
+       "p_market": 0.2302,
+       "p_model": 0.1972,
+       "fair": 4.3433,
+       "min_odds": 4.3867
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.1939,
+       "p_market": 0.1939,
+       "p_model": 0.167,
+       "fair": 5.1574,
+       "min_odds": 5.209
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.8061,
+       "p_market": 0.8061,
+       "p_model": 0.833,
+       "fair": 1.2405,
+       "min_odds": 1.2529
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.7698,
+       "p_market": 0.7698,
+       "p_model": 0.8028,
+       "fair": 1.2991,
+       "min_odds": 1.3121
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.4241,
+       "p_market": 0.4241,
+       "p_model": 0.3642,
+       "fair": 2.3577,
+       "min_odds": 2.3813
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.8666,
+       "p_market": 0.8666,
+       "p_model": 0.8605,
+       "fair": 1.1539,
+       "min_odds": 1.1885
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.1334,
+       "p_market": 0.1334,
+       "p_model": 0.1395,
+       "fair": 7.4978,
+       "min_odds": 7.7228
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.6719,
+       "p_market": 0.6719,
+       "p_model": 0.6656,
+       "fair": 1.4884,
+       "min_odds": 1.5181
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.3281,
+       "p_market": 0.3281,
+       "p_model": 0.3344,
+       "fair": 3.0477,
+       "min_odds": 3.1086
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.4508,
+       "p_market": 0.4508,
+       "p_model": 0.4477,
+       "fair": 2.2182,
+       "min_odds": 2.2848
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.5492,
+       "p_market": 0.5492,
+       "p_model": 0.5523,
+       "fair": 1.8209,
+       "min_odds": 1.8755
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.6426,
+       "p_market": 0.6426,
+       "p_model": 0.6106,
+       "fair": 1.5563,
+       "min_odds": 1.603
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.3574,
+       "p_market": 0.3574,
+       "p_model": 0.3894,
+       "fair": 2.7976,
+       "min_odds": 2.8816
+      }
+     ]
+    }
+   }
+  },
+  {
+   "id": "I1:2026-10-29:Fiorentina:Atalanta",
+   "league": "I1",
+   "date": "2026-10-29",
+   "kickoff": "2026-10-29T19:45:00+00:00",
+   "home": "Fiorentina",
+   "away": "Atalanta",
+   "reference": "Betfair",
+   "ref_odds": {
+    "1X2": [
+     2.26,
+     3.75,
+     3.35
+    ],
+    "OU": [
+     1.66,
+     2.48
+    ]
+   },
+   "model": {
+    "1X2": [
+     0.2995,
+     0.2568,
+     0.4437
+    ],
+    "OU": [
+     0.5486,
+     0.4514
+    ]
+   },
+   "expected_goals": [
+    1.28,
+    1.6
+   ],
+   "markets": {
+    "1X2": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "H",
+       "short": "1",
+       "name": "Heimsieg",
+       "p": 0.4399,
+       "p_market": 0.4399,
+       "p_model": 0.2995,
+       "fair": 2.2732,
+       "min_odds": 2.296
+      },
+      {
+       "key": "D",
+       "short": "X",
+       "name": "Unentschieden",
+       "p": 0.2642,
+       "p_market": 0.2642,
+       "p_model": 0.2568,
+       "fair": 3.7856,
+       "min_odds": 3.8235
+      },
+      {
+       "key": "A",
+       "short": "2",
+       "name": "Auswärtssieg",
+       "p": 0.2959,
+       "p_market": 0.2959,
+       "p_model": 0.4437,
+       "fair": 3.3791,
+       "min_odds": 3.4129
+      }
+     ]
+    },
+    "DC": {
+     "edge": 0.01,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "1X",
+       "short": "1X",
+       "name": "Heim oder Remis",
+       "p": 0.7041,
+       "p_market": 0.7041,
+       "p_model": 0.5563,
+       "fair": 1.4203,
+       "min_odds": 1.4345
+      },
+      {
+       "key": "12",
+       "short": "12",
+       "name": "Kein Remis",
+       "p": 0.7358,
+       "p_market": 0.7358,
+       "p_model": 0.7432,
+       "fair": 1.359,
+       "min_odds": 1.3726
+      },
+      {
+       "key": "X2",
+       "short": "X2",
+       "name": "Remis oder Gast",
+       "p": 0.5601,
+       "p_market": 0.5601,
+       "p_model": 0.7005,
+       "fair": 1.7854,
+       "min_odds": 1.8033
+      }
+     ]
+    },
+    "OU15": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O15",
+       "short": "Ü1.5",
+       "name": "Über 1.5 Tore",
+       "p": 0.825,
+       "p_market": 0.825,
+       "p_model": 0.7874,
+       "fair": 1.2121,
+       "min_odds": 1.2485
+      },
+      {
+       "key": "U15",
+       "short": "U1.5",
+       "name": "Unter 1.5 Tore",
+       "p": 0.175,
+       "p_market": 0.175,
+       "p_model": 0.2126,
+       "fair": 5.7149,
+       "min_odds": 5.8863
+      }
+     ]
+    },
+    "OU": {
+     "edge": 0.02,
+     "max_odds": 8.0,
+     "derived": false,
+     "selections": [
+      {
+       "key": "O",
+       "short": "Ü2.5",
+       "name": "Über 2.5 Tore",
+       "p": 0.5998,
+       "p_market": 0.5998,
+       "p_model": 0.5486,
+       "fair": 1.6671,
+       "min_odds": 1.7004
+      },
+      {
+       "key": "U",
+       "short": "U2.5",
+       "name": "Unter 2.5 Tore",
+       "p": 0.4002,
+       "p_market": 0.4002,
+       "p_model": 0.4514,
+       "fair": 2.499,
+       "min_odds": 2.549
+      }
+     ]
+    },
+    "OU35": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "O35",
+       "short": "Ü3.5",
+       "name": "Über 3.5 Tore",
+       "p": 0.3736,
+       "p_market": 0.3736,
+       "p_model": 0.3252,
+       "fair": 2.677,
+       "min_odds": 2.7573
+      },
+      {
+       "key": "U35",
+       "short": "U3.5",
+       "name": "Unter 3.5 Tore",
+       "p": 0.6264,
+       "p_market": 0.6264,
+       "p_model": 0.6748,
+       "fair": 1.5963,
+       "min_odds": 1.6442
+      }
+     ]
+    },
+    "BTTS": {
+     "edge": 0.03,
+     "max_odds": 8.0,
+     "derived": true,
+     "selections": [
+      {
+       "key": "BY",
+       "short": "Ja",
+       "name": "Beide Teams treffen",
+       "p": 0.6242,
+       "p_market": 0.6242,
+       "p_model": 0.5812,
+       "fair": 1.6019,
+       "min_odds": 1.65
+      },
+      {
+       "key": "BN",
+       "short": "Nein",
+       "name": "Nicht beide treffen",
+       "p": 0.3758,
+       "p_market": 0.3758,
+       "p_model": 0.4188,
+       "fair": 2.6613,
+       "min_odds": 2.7411
+      }
+     ]
+    }
+   }
+  }
+ ]
 }
