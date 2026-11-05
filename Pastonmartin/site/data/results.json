@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05T13:28:20+00:00",
+ "generated": "2026-11-05T21:12:20+00:00",
  "results": [
   {
    "id": "E0:2026-09-06:Everton:Man United",
@@ -4077,11 +4077,11 @@
    }
   },
   {
-   "id": "E1:2026-11-03:Preston:Sheffield Utd",
+   "id": "E1:2026-11-03:Preston:Sheffield United",
    "league": "E1",
    "date": "2026-11-03",
    "home": "Preston",
-   "away": "Sheffield Utd",
+   "away": "Sheffield United",
    "hg": 2,
    "ag": 3,
    "closing_fair": {
