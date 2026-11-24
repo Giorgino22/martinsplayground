@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-24T01:52:05+00:00",
+ "generated": "2026-11-24T16:16:55+00:00",
  "results": [
   {
    "id": "E0:2026-10-10:Arsenal:Leeds",
@@ -12982,6 +12982,108 @@
     "1X": 0.6634,
     "12": 0.7533,
     "X2": 0.5833
+   }
+  },
+  {
+   "id": "SWZ:2026-11-21:Lugano:Grasshoppers",
+   "league": "SWZ",
+   "date": "2026-11-21",
+   "home": "Lugano",
+   "away": "Grasshoppers",
+   "hg": 2,
+   "ag": 1,
+   "closing_fair": {
+    "H": 0.7277,
+    "D": 0.1584,
+    "A": 0.1139,
+    "1X": 0.8861,
+    "12": 0.8416,
+    "X2": 0.2723
+   }
+  },
+  {
+   "id": "SWZ:2026-11-21:Young Boys:Thun",
+   "league": "SWZ",
+   "date": "2026-11-21",
+   "home": "Young Boys",
+   "away": "Thun",
+   "hg": 3,
+   "ag": 2,
+   "closing_fair": {
+    "H": 0.7172,
+    "D": 0.1536,
+    "A": 0.1291,
+    "1X": 0.8709,
+    "12": 0.8464,
+    "X2": 0.2828
+   }
+  },
+  {
+   "id": "SWZ:2026-11-21:Sion:Servette",
+   "league": "SWZ",
+   "date": "2026-11-21",
+   "home": "Sion",
+   "away": "Servette",
+   "hg": 2,
+   "ag": 0,
+   "closing_fair": {
+    "H": 0.5927,
+    "D": 0.2246,
+    "A": 0.1827,
+    "1X": 0.8173,
+    "12": 0.7754,
+    "X2": 0.4073
+   }
+  },
+  {
+   "id": "SWZ:2026-11-22:Zurich:St. Gallen",
+   "league": "SWZ",
+   "date": "2026-11-22",
+   "home": "Zurich",
+   "away": "St. Gallen",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {
+    "H": 0.2743,
+    "D": 0.2428,
+    "A": 0.4829,
+    "1X": 0.5171,
+    "12": 0.7572,
+    "X2": 0.7257
+   }
+  },
+  {
+   "id": "SWZ:2026-11-22:Basel:Luzern",
+   "league": "SWZ",
+   "date": "2026-11-22",
+   "home": "Basel",
+   "away": "Luzern",
+   "hg": 0,
+   "ag": 2,
+   "closing_fair": {
+    "H": 0.4404,
+    "D": 0.2324,
+    "A": 0.3272,
+    "1X": 0.6728,
+    "12": 0.7676,
+    "X2": 0.5596
+   }
+  },
+  {
+   "id": "SWZ:2026-11-22:Lausanne:Vaduz",
+   "league": "SWZ",
+   "date": "2026-11-22",
+   "home": "Lausanne",
+   "away": "Vaduz",
+   "hg": 2,
+   "ag": 2,
+   "closing_fair": {
+    "H": 0.5462,
+    "D": 0.219,
+    "A": 0.2348,
+    "1X": 0.7652,
+    "12": 0.781,
+    "X2": 0.4538
    }
   }
  ]
